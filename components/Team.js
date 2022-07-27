@@ -1,0 +1,44 @@
+/* eslint-disable @next/next/no-img-element */
+const people = [
+  {
+    name: "Whitney Francis",
+    role: "Copywriter",
+    imageUrl:
+      "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
+    bio: "Ultricies massa malesuada viverra cras lobortis. Tempor orci hac ligula dapibus mauris sit ut eu. Eget turpis urna maecenas cras. Nisl dictum.",
+  },
+  {
+    name: "Ope Francis",
+    role: "UI/UX Designer",
+    imageUrl:
+      "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
+    bio: "Ultricies massa malesuada viverra cras lobortis. Tempor orci hac ligula dapibus mauris sit ut eu. Eget turpis urna maecenas cras. Nisl dictum.",
+  },
+];
+
+export default function Team() {
+  return (
+    <div className='bg-gray-50'>
+      <div className='mx-auto py-4 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24'>
+        <ul className='space-y-4 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8 lg:gap-y-12 lg:space-y-0'>
+          {people.map((person) => (
+            <li key={person.name}>
+              <div className='space-y-4 sm:grid sm:grid-cols-3 sm:gap-6 sm:space-y-0 lg:gap-8'>
+                <div className='h-0 w-30 aspect-w-4 aspect-h-3 sm:aspect-w-3 sm:aspect-h-4'>
+                  <img className='object-cover shadow-lg rounded-lg' src={person.imageUrl} alt='' />
+                </div>
+                <div className='sm:col-span-2 flex justify-center items-center'>
+                  <div className='flex justify-center items-center'>
+                    <div className='text-lg'>
+                      <blockquote className='relative text-center p-10 w-full m-1 text-gray-500'>{person.bio}</blockquote>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
