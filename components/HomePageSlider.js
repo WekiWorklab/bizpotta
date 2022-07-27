@@ -17,13 +17,13 @@ export default function HomePageSlider() {
     <>
       <Swiper slidesPerView={3} spaceBetween={0} slidesPerGroup={3} loop={true} loopFillGroupWithBlank={true} navigation={true} className='mySwiper'>
         <SwiperSlide>
-          <Card />
+          <Card clip={true} />
         </SwiperSlide>
         <SwiperSlide>
-          <Card />
+          <Card clip={true} />
         </SwiperSlide>
         <SwiperSlide>
-          <Card />
+          <Card clip={true} />
         </SwiperSlide>
       </Swiper>
     </>

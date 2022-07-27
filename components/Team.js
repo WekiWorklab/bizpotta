@@ -1,18 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 const people = [
   {
-    name: "Whitney Francis",
-    role: "Copywriter",
     imageUrl:
-      "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
-    bio: "Ultricies massa malesuada viverra cras lobortis. Tempor orci hac ligula dapibus mauris sit ut eu. Eget turpis urna maecenas cras. Nisl dictum.",
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    bio: "Hi, I am Tolu Oluyemi, I am a Project Management  with over 15+ years of experience. I have helped over 5,000 student get started in tech.",
   },
   {
-    name: "Ope Francis",
-    role: "UI/UX Designer",
     imageUrl:
       "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
-    bio: "Ultricies massa malesuada viverra cras lobortis. Tempor orci hac ligula dapibus mauris sit ut eu. Eget turpis urna maecenas cras. Nisl dictum.",
+    bio: "Hi, I am Tolu Ghena, I am a Project Management  with over 15+ years of experience. I have helped over 5,000 student get started in tech.",
   },
 ];
 
@@ -23,11 +19,11 @@ export default function Team() {
         <ul className='space-y-4 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8 lg:gap-y-12 lg:space-y-0'>
           {people.map((person) => (
             <li key={person.name}>
-              <div className='space-y-4 sm:grid sm:grid-cols-3 sm:gap-6 sm:space-y-0 lg:gap-8'>
-                <div className='h-0 w-30 aspect-w-4 aspect-h-3 sm:aspect-w-3 sm:aspect-h-4'>
+              <div className='py-8 space-y-4 sm:grid sm:grid-cols-3 sm:gap-6 sm:space-y-0 lg:gap-8'>
+                <div className='h-0 w-30 aspect-w-4 aspect-h-3 sm:aspect-w-3 sm:aspect-h-4 '>
                   <img className='object-cover shadow-lg rounded-lg' src={person.imageUrl} alt='' />
                 </div>
-                <div className='sm:col-span-2 flex justify-center items-center'>
+                <div className='sm:col-span-2 flex justify-center items-center mt-4'>
                   <div className='flex justify-center items-center'>
                     <div className='text-lg'>
                       <blockquote className='relative text-center p-10 w-full m-1 text-gray-500'>{person.bio}</blockquote>
