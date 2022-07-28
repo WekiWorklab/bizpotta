@@ -281,7 +281,7 @@ export default function Home() {
             {/* CTA Section */}
             <div className='relative bg-gray-50 pb-10'>
               <h1 className='md:pl-28 text-center md:text-start text-lg font-light tracking-wider text-bizpotta-purple'>
-                <span className='font-medium'>Vocational Education</span>
+                <span className='font-medium text-2xl'>Vocational Education</span>
               </h1>
               <p className='md:pl-28 text-center md:text-start flex flex-col text-base font-light tracking-wider text-bizpotta-gray-800'>
                 <span className='text-bizpotta-gray-800'>Learn in-demand skills to increase your value in the Market</span>
@@ -302,7 +302,7 @@ export default function Home() {
             {/* Library Section */}
             <div className='relative bg-gray-50 pt-16  pb-8'>
               <h1 className='md:pl-28 text-center md:text-start text-lg font-light tracking-wider text-bizpotta-purple'>
-                <span className='font-medium'>Explore our course library</span>
+                <span className='font-medium text-2xl'>Explore our course library</span>
               </h1>
               <p className='md:pl-28 text-center md:text-start flex flex-col text-base font-light tracking-wider text-bizpotta-gray-800'>
                 <span className='text-bizpotta-gray-800'>Choose category that are of interest to you</span>
@@ -328,7 +328,7 @@ export default function Home() {
             {/* Specialization Program Section */}
             <div className='relative bg-gray-50 pt-16 pb-8'>
               <h1 className='md:pl-28 text-center md:text-start text-lg font-light tracking-wider text-bizpotta-purple'>
-                <span className='font-medium'>Specialization Program</span>
+                <span className='font-medium text-2xl'>Specialization Program</span>
               </h1>
               <p className='md:pl-28 text-center md:text-start flex flex-col text-base font-light tracking-wider text-bizpotta-gray-800'>
                 <span className='text-bizpotta-gray-800'>
@@ -487,7 +487,7 @@ export default function Home() {
             {/* Market and sell your Expertise Program Section */}
             <div className='relative bg-gray-50 pt-16 pb-8'>
               <h1 className='md:pl-28 text-center md:text-start text-lg font-light tracking-wider text-bizpotta-purple'>
-                <span className='font-medium'>Market and sell your Expertise</span>
+                <span className='font-medium text-2xl'>Market and sell your Expertise</span>
               </h1>
               <p className='md:pl-28 text-center md:text-start flex flex-col text-base font-light tracking-wider text-bizpotta-gray-800'>
                 <span className='text-bizpotta-gray-800'>Learn how to run sustainable and profitable businesses and accelerate business growth </span>
