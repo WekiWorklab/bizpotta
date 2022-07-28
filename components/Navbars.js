@@ -111,24 +111,21 @@ export default function Navbars() {
                   </Popover>
                 </Popover.Group>
               </div>
-              <div className='hidden md:flex md:items-center md:space-x-6'>
+              <div className='hidden md:flex md:items-center '>
                 <a
                   href='#'
-                  className='text-base inline-flex font-medium items-center px-8 py-2 text-bizpotta-purple border rounded-md border-bizpotta-purple hover:text-gray-300'
+                  className='text-lg inline-flex font-medium items-center px-8 py-1 text-bizpotta-purple border-r border-[#BAD5A2] hover:text-gray-300'
                 >
                   Become a Tutor
                 </a>
-                <a
-                  href='#'
-                  className='text-base  inline-flex font-medium items-center px-8 py-2  hover:text-gray-300 rounded-md text-white bg-bizpotta-purple'
-                >
-                  Sign Up
+                <a href='#' className='text-lg inline-flex font-medium items-center px-8 py-2  hover:text-gray-300 rounded-md text-bizpotta-purple'>
+                  Login
                 </a>
                 <a
                   href='#'
-                  className='inline-flex items-center px-8 py-2 border border-transparent text-base font-medium rounded-md text-white bg-bizpotta-purple hover:bg-gray-700'
+                  className='inline-flex items-center px-8 py-2 border border-transparent text-lg font-medium rounded-md text-white bg-bizpotta-purple hover:bg-gray-700'
                 >
-                  Log in
+                  Join for free
                 </a>
               </div>
             </nav>

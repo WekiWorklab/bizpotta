@@ -10,6 +10,7 @@ import Head from "next/head";
 import Testimonals from "../components/Testimonals";
 import Footer from "../components/Footer";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 const optionsLists = [
   {
@@ -55,6 +56,7 @@ const optionsLists = [
 ];
 
 export default function Home() {
+  const router = useRouter();
   const [selectedCourse, setSelectedCourse] = useState(null);
 
   const handleChangeCourse = (course) => {
@@ -62,6 +64,7 @@ export default function Home() {
   };
   const handleSelectLibrary = () => {
     console.log(selectedCourse);
+    router.push(`/learners-onboarding/${selectedCourse}`);
   };
   return (
     <>
@@ -74,7 +77,7 @@ export default function Home() {
           <main>
             <div className=' bg-gradient-to-b from-[#D6F7BA] to-white  '>
               <Navbars />
-              <div className='pt-10 sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden'>
+              <div className='pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden'>
                 <div className='mx-auto max-w-7xl lg:px-8'>
                   <div className='lg:grid lg:grid-cols-2 lg:gap-4'>
                     <div className='mx-auto max-w-4xl px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center'>
@@ -99,14 +102,6 @@ export default function Home() {
                                 <span className='w-0 h-0 rounded bg-bizpotta-green absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1'></span>
                                 <span className='w-full text-white  transition-colors duration-300 ease-in-out group-hover:text-bizpotta-purple z-10'>
                                   Join For Free
-                                </span>
-                              </button>
-
-                              <button className='btn relative px-4 py-2  inline-flex items-center justify-start overflow-hidden transition-all rounded-md border border-bizpotta-purple group md:py-3 md:text-lg md:px-12'>
-                                {/* purple box */}
-                                <span className='w-0 h-0 rounded bg-bizpotta-purple absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1'></span>
-                                <span className='w-full text-bizpotta-purple  transition-colors duration-300 ease-in-out group-hover:text-white z-10'>
-                                  Sign in
                                 </span>
                               </button>
                             </div>
