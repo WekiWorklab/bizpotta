@@ -516,11 +516,11 @@ export default function Home() {
               </p>
               {/* list of radio in boxes */}
               {/* <div className='flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-24 '> */}
-              <div className='flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-14 '>
+              <div className='flex flex-col w-full items-center px-10 lg:px-2 md:flex-row md:mx-auto gap-4 md:px-30  '>
                 {/* <div className='mx-auto py-4 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24 '> */}
-                <div className=' py-4 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24 '>
+                <div className=' py-4 px-4 max-w-7xl sm:px-6 lg:px-0 lg:py-24 md:ml-[20px] lg:ml-[78px] '>
                   {/* <ul className='space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-x-8  lg:space-y-0 '> */}
-                  <ul className='space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-x-8  lg:space-y-0  '>
+                  <ul className='space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-x-8  lg:space-y-0 '>
                     <Testimonals />
                     <Testimonals />
                     <Testimonals />
