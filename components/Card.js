@@ -15,7 +15,7 @@ export default function Card({ clip }) {
       {/* <!-- text information --> */}
       <div className={`p-4 bg-[#121F4C] rounded-b-md -mt-56 pb-16 ${clip ? "clip-card-path  pt-12" : ""}`}>
         <div className='flex justify-end items-end mb-10'>
-          <button className='px-6 py-1 bg-[#FFC700] rounded-md'>
+          <button className='px-6 py-1 bg-[#94F236] rounded-md'>
             <span className='text-[#121F4C]'>Enroll</span>
           </button>
         </div>

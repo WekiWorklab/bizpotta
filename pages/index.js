@@ -125,10 +125,10 @@ export default function Home() {
             </div>
 
             {/* Trusted by*/}
-            <div className='relative bg-white pt-16 sm:pt-24 lg:pt-32 shadow-sm'>
+            <div className='relative bg-[#fafafa] pt-16 sm:pt-24 lg:pt-32 shadow-sm'>
               <div className='mx-auto max-w-md px-4 text-center sm:px-6 sm:max-w-3xl lg:px-8 lg:max-w-7xl'>
                 <div>
-                  <h2 className='text-base font-light tracking-wider text-bizpotta-gray-800'>Over 15000+ companies trust Bizpotta</h2>
+                  <h2 className='text-base font-light tracking-wider text-bizpotta-gray-800'>Over 15,000 companies trust Bizpotta</h2>
                   <div className='max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8'>
                     <div className='grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5'>
                       <div className='col-span-1 flex justify-center md:col-span-2 lg:col-span-1'>
@@ -311,7 +311,7 @@ export default function Home() {
               {/* list of radio in boxes */}
               
               {/* <div className='w-full mx-auto flex flex-col gap-6 justify-center items-center md:grid md:grid-cols-3 md:gap-8 md:px-24 py-8'> */}
-              <div className='w-full mx-auto flex flex-col gap-6 justify-center items-center md:grid md:grid-cols-2 md:gap-8 md:px-28 lg:grid-cols-2 py-8'>
+              <div className='w-full mx-auto flex flex-col gap-6 justify-center items-center md:grid md:grid-cols-2 md:gap-8 md:w-[700px]  lg:grid-cols-3 lg:w-[1000px] py-8  md:items-center md:justify-center'>
                 {optionsLists.map((option, index) => (
                   <LibraryRadioButton key={index} option={option} setSelectedCourse={handleChangeCourse} />
                 ))}
@@ -516,9 +516,10 @@ export default function Home() {
               </p>
               {/* list of radio in boxes */}
               {/* <div className='flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-24 '> */}
-              <div className='flex flex-col w-full items-center px-10 lg:px-2 md:flex-row md:mx-auto gap-4 md:px-30  '>
+              <div className='flex flex-col w-full items-center px-10 lg:px-2 md:flex-row md:mx-auto gap-4 md:px-36 '>
                 {/* <div className='mx-auto py-4 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24 '> */}
-                <div className=' py-4 px-4 max-w-7xl sm:px-6 lg:px-0 lg:py-24 md:ml-[20px] lg:ml-[78px] '>
+                {/* md:ml-[20px] lg:ml-[78px] */}
+                <div className=' py-4 px-4 max-w-7xl sm:px-6 lg:px-0 lg:py-24 md:mx-auto '>
                   {/* <ul className='space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-x-8  lg:space-y-0 '> */}
                   <ul className='space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-x-8  lg:space-y-0 '>
                     <Testimonals />
