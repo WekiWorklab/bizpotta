@@ -1,59 +1,59 @@
-const tabs = [
-  {
-    id: 1,
-    name: "Agriculture",
-    href: "#",
-    current: false,
-  },
-  {
-    id: 2,
-    name: "Arts",
-    href: "#",
-    current: false,
-  },
-  {
-    id: 3,
-    name: "Business",
-    href: "#",
-    current: false,
-  },
-  {
-    id: 4,
-    name: "Engineering",
-    href: "#",
-    current: false,
-  },
-  {
-    id: 5,
-    name: "IT & Software",
-    href: "#",
-    current: false,
-  },
-  {
-    id: 6,
-    name: "Law",
-    href: "#",
-    current: false,
-  },
-  {
-    id: 7,
-    name: "Design",
-    href: "#",
-    current: true,
-  },
-  {
-    id: 8,
-    name: "Development",
-    href: "#",
-    current: false,
-  },
-];
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Tabs() {
+export default function Tabs({ current }) {
+  const tabs = [
+    {
+      id: 1,
+      name: "Agriculture",
+      href: "#",
+      current: current == 1 ? true : false,
+    },
+    {
+      id: 2,
+      name: "Arts",
+      href: "#",
+      current: current == 2 ? true : false,
+    },
+    {
+      id: 3,
+      name: "Business",
+      href: "#",
+      current: current == 3 ? true : false,
+    },
+    {
+      id: 4,
+      name: "Engineering",
+      href: "#",
+      current: current == 4 ? true : false,
+    },
+    {
+      id: 5,
+      name: "IT & Software",
+      href: "#",
+      current: current == 5 ? true : false,
+    },
+    {
+      id: 6,
+      name: "Law",
+      href: "#",
+      current: current == 6 ? true : false,
+    },
+    {
+      id: 7,
+      name: "Design",
+      href: "#",
+      current: current == 7 ? true : false,
+    },
+    {
+      id: 8,
+      name: "Development",
+      href: "#",
+      current: current == 8 ? true : false,
+    },
+  ];
+  console.log(current);
   return (
     <div>
       <div className='sm:hidden'>
