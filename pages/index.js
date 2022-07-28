@@ -311,7 +311,7 @@ export default function Home() {
               {/* list of radio in boxes */}
               
               {/* <div className='w-full mx-auto flex flex-col gap-6 justify-center items-center md:grid md:grid-cols-3 md:gap-8 md:px-24 py-8'> */}
-              <div className='w-full mx-auto flex flex-col gap-6 justify-center items-center md:grid md:grid-cols-3 md:gap-8 md:px-28 py-8'>
+              <div className='w-full mx-auto flex flex-col gap-6 justify-center items-center md:grid md:grid-cols-2 md:gap-8 md:px-28 lg:grid-cols-2 py-8'>
                 {optionsLists.map((option, index) => (
                   <LibraryRadioButton key={index} option={option} setSelectedCourse={handleChangeCourse} />
                 ))}
