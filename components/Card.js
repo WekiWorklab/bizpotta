@@ -13,7 +13,7 @@ export default function Card({ clip }) {
       />
 
       {/* <!-- text information --> */}
-      <div className={`p-4 bg-[#121F4C] rounded-b-md -mt-56 pb-16 ${clip ? "clip-card-path  pt-12" : ""}`}>
+      <div className={`p-4 bg-[#121F4C] rounded-b-md -mt-56 pb-8 ${clip ? "clip-card-path  pt-12" : ""}`}>
         <div className='flex justify-end items-end mb-10'>
           <button className='px-6 py-1 bg-[#94F236] rounded-md'>
             <span className='text-[#121F4C]'>Enroll</span>
@@ -21,7 +21,7 @@ export default function Card({ clip }) {
         </div>
 
         <h1 className='text-xl font-medium text-gray-50 pb-2'>Fashion Design</h1>
-        <div className='flex w-full justify-between '>
+        <div className='flex w-full justify-between pt-10'>
           <p className='text-sm tracking-tight font-light text-slate-400 leading-6'>Design</p>
           <div className='text-sm tracking-tight font-light text-slate-400 leading-6 '>
             <div className='flex flex-col items-center'>

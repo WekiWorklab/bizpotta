@@ -125,7 +125,7 @@ export default function Home() {
             </div>
 
             {/* Trusted by*/}
-            <div className='relative bg-[#fafafa] pt-16 sm:pt-24 lg:pt-32 shadow-sm'>
+            <div className='relative bg-gray-50 pt-16 sm:pt-24 lg:pt-32 shadow-sm'>
               <div className='mx-auto max-w-md px-4 text-center sm:px-6 sm:max-w-3xl lg:px-8 lg:max-w-7xl'>
                 <div>
                   <h2 className='text-base font-light tracking-wider text-bizpotta-gray-800'>Over 15,000 companies trust Bizpotta</h2>
@@ -309,7 +309,7 @@ export default function Home() {
                 <span className='text-bizpotta-gray-800'>Choose category that are of interest to you</span>
               </p>
               {/* list of radio in boxes */}
-              
+
               {/* <div className='w-full mx-auto flex flex-col gap-6 justify-center items-center md:grid md:grid-cols-3 md:gap-8 md:px-24 py-8'> */}
               <div className='w-full mx-auto flex flex-col gap-6 justify-center items-center md:grid md:grid-cols-2 md:gap-8 md:w-[700px]  lg:grid-cols-3 lg:w-[1000px] py-8  md:items-center md:justify-center'>
                 {optionsLists.map((option, index) => (
@@ -340,7 +340,7 @@ export default function Home() {
                 <span className='text-bizpotta-gray-800'>empower our learners with skill to help manage their business effectively.</span>
               </p>
               {/* list of radio in boxes */}
-              <div className='hidden  pt-8 md:flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-24 pb-8'>
+              <div className='hidden  pt-8 md:flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-6 md:px-28 pb-8'>
                 <HomePageSlider />
               </div>
               {/*Explore Courses */}
@@ -492,7 +492,9 @@ export default function Home() {
                 <span className='font-medium text-2xl'>Market and sell your Expertise</span>
               </h1>
               <p className='md:pl-28 text-center md:text-start flex flex-col text-base font-light tracking-wider text-bizpotta-gray-800'>
-                <span className='text-bizpotta-gray-800 '>Learn how to run sustainable and profitable businesses and accelerate business growth </span>
+                <span className='text-bizpotta-gray-800 '>
+                  Learn how to run sustainable and profitable businesses and accelerate business growth{" "}
+                </span>
               </p>
               {/* list of radio in boxes */}
               {/* <div className='flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-24'> */}
