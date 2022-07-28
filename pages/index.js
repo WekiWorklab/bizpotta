@@ -286,7 +286,8 @@ export default function Home() {
               <p className='md:pl-28 text-center md:text-start flex flex-col text-base font-light tracking-wider text-bizpotta-gray-800'>
                 <span className='text-bizpotta-gray-800'>Learn in-demand skills to increase your value in the Market</span>
               </p>
-              <div className='pt-8 flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-24 pb-8'>
+              {/** <div className='pt-8 flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-24 pb-8'>*/}
+              <div className='pt-8 flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-28 pb-8'>
                 <Card clip={true} />
                 <Card clip={true} />
                 <Card clip={true} />
@@ -308,7 +309,9 @@ export default function Home() {
                 <span className='text-bizpotta-gray-800'>Choose category that are of interest to you</span>
               </p>
               {/* list of radio in boxes */}
-              <div className='w-full mx-auto flex flex-col gap-6 justify-center items-center md:grid md:grid-cols-3 md:gap-8 md:px-24 py-8'>
+              
+              {/* <div className='w-full mx-auto flex flex-col gap-6 justify-center items-center md:grid md:grid-cols-3 md:gap-8 md:px-24 py-8'> */}
+              <div className='w-full mx-auto flex flex-col gap-6 justify-center items-center md:grid md:grid-cols-3 md:gap-8 md:px-28 py-8'>
                 {optionsLists.map((option, index) => (
                   <LibraryRadioButton key={index} option={option} setSelectedCourse={handleChangeCourse} />
                 ))}
@@ -485,15 +488,16 @@ export default function Home() {
               </div>
             </section>
             {/* Market and sell your Expertise Program Section */}
-            <div className='relative bg-gray-50 pt-16 pb-8'>
+            <div className='relative bg-gray-50 pt-16 pb-8 '>
               <h1 className='md:pl-28 text-center md:text-start text-lg font-light tracking-wider text-bizpotta-purple'>
                 <span className='font-medium text-2xl'>Market and sell your Expertise</span>
               </h1>
               <p className='md:pl-28 text-center md:text-start flex flex-col text-base font-light tracking-wider text-bizpotta-gray-800'>
-                <span className='text-bizpotta-gray-800'>Learn how to run sustainable and profitable businesses and accelerate business growth </span>
+                <span className='text-bizpotta-gray-800 '>Learn how to run sustainable and profitable businesses and accelerate business growth </span>
               </p>
               {/* list of radio in boxes */}
-              <div className='flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-24'>
+              {/* <div className='flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-24'> */}
+              <div className='flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-28'>
                 <Team />
               </div>
               {/*Explore Courses */}
@@ -509,12 +513,15 @@ export default function Home() {
                 <span className='font-medium'>Bizpotta Community</span>
               </h1>
               <p className='md:pl-28 text-center md:text-start flex flex-col text-base font-light tracking-wider text-bizpotta-gray-800'>
-                <span className='text-bizpotta-gray-800'>A community that is intensional about your business growth</span>
+                <span className='text-bizpotta-gray-800 '>A community that is intensional about your business growth</span>
               </p>
               {/* list of radio in boxes */}
-              <div className='flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-24'>
-                <div className='mx-auto py-4 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24'>
-                  <ul className='space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-x-8  lg:space-y-0'>
+              {/* <div className='flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-24 '> */}
+              <div className='flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-14 '>
+                {/* <div className='mx-auto py-4 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24 '> */}
+                <div className=' py-4 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24 '>
+                  {/* <ul className='space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-x-8  lg:space-y-0 '> */}
+                  <ul className='space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-x-8  lg:space-y-0  '>
                     <Testimonals />
                     <Testimonals />
                     <Testimonals />
