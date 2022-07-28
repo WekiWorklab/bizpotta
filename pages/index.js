@@ -9,6 +9,7 @@ import Team from "../components/Team";
 import Head from "next/head";
 import Testimonals from "../components/Testimonals";
 import Footer from "../components/Footer";
+import { useState } from "react";
 
 const optionsLists = [
   {
@@ -17,46 +18,51 @@ const optionsLists = [
     href: "#",
   },
   {
-    id: 1,
+    id: 2,
     name: "Arts",
     href: "#",
   },
   {
-    id: 1,
+    id: 3,
     name: "Business",
     href: "#",
   },
   {
-    id: 1,
+    id: 4,
     name: "Engineering",
     href: "#",
   },
   {
-    id: 1,
+    id: 5,
     name: "IT & Software",
     href: "#",
   },
   {
-    id: 1,
+    id: 6,
     name: "Law",
     href: "#",
   },
   {
-    id: 1,
+    id: 7,
     name: "Design",
     href: "#",
   },
   {
-    id: 1,
+    id: 8,
     name: "Development",
     href: "#",
   },
 ];
 
-const handleSelectLibrary = (library) => {
-  console.log(library);
-};
 export default function Home() {
+  const [selectedCourse, setSelectedCourse] = useState(null);
+
+  const handleChangeCourse = (course) => {
+    setSelectedCourse(course);
+  };
+  const handleSelectLibrary = () => {
+    console.log(selectedCourse);
+  };
   return (
     <>
       <Head>
@@ -292,7 +298,7 @@ export default function Home() {
                 <Card clip={true} />
               </div>
               {/*Explore Courses */}
-              <a href='#' onClick={handleSelectLibrary} className='pt-8 flex gap-2 w-full justify-center items-center text-bizpotta-purple'>
+              <a href='#' className='pt-8 flex gap-2 w-full justify-center items-center text-bizpotta-purple'>
                 <span>Explore Courses</span>
                 <ArrowRightIcon className='h-4 w-4 text-bizpotta-purple' aria-hidden='true' />
               </a>
@@ -309,14 +315,19 @@ export default function Home() {
               {/* list of radio in boxes */}
               <div className='w-full mx-auto flex flex-col gap-6 justify-center items-center md:grid md:grid-cols-3 md:gap-8 md:px-24 py-8'>
                 {optionsLists.map((option, index) => (
-                  <LibraryRadioButton key={index} option={option} />
+                  <LibraryRadioButton key={index} option={option} setSelectedCourse={handleChangeCourse} />
                 ))}
               </div>
               {/* continue with arrow */}
-              <a href='#' onClick={handleSelectLibrary} className='pt-8  flex gap-2 w-full justify-center items-center text-bizpotta-purple'>
+              <button
+                onClick={() => {
+                  handleSelectLibrary();
+                }}
+                className='pt-8 cursor-pointer flex gap-2 w-full justify-center items-center text-bizpotta-purple'
+              >
                 <span>Continue</span>
                 <ArrowRightIcon className='h-4 w-4 text-bizpotta-purple' aria-hidden='true' />
-              </a>
+              </button>
             </div>
 
             {/* Specialization Program Section */}
@@ -335,7 +346,7 @@ export default function Home() {
                 <HomePageSlider />
               </div>
               {/*Explore Courses */}
-              <a href='#' onClick={handleSelectLibrary} className='pt-8 pb-16 flex gap-2 w-full justify-center items-center text-bizpotta-purple'>
+              <a href='#' className='pt-8 pb-16 flex gap-2 w-full justify-center items-center text-bizpotta-purple'>
                 <span>Explore Courses</span>
                 <ArrowRightIcon className='h-4 w-4 text-bizpotta-purple' aria-hidden='true' />
               </a>
@@ -458,7 +469,7 @@ export default function Home() {
                       </button>
                     </div>
                     <div className='flex items-center justify-center'>
-                      <a href='#' onClick={handleSelectLibrary} className=' flex gap-2 w-full justify-center items-center text-bizpotta-purple'>
+                      <a href='#' className=' flex gap-2 w-full justify-center items-center text-bizpotta-purple'>
                         <span>Explore Courses</span>
                         <ArrowRightIcon className='h-4 w-4 text-bizpotta-purple' aria-hidden='true' />
                       </a>
@@ -491,7 +502,7 @@ export default function Home() {
                 <Team />
               </div>
               {/*Explore Courses */}
-              <a href='#' onClick={handleSelectLibrary} className='pb-16 flex gap-2 w-full justify-center items-center text-bizpotta-purple'>
+              <a href='#' className='pb-16 flex gap-2 w-full justify-center items-center text-bizpotta-purple'>
                 <span>Learn More</span>
                 <ArrowRightIcon className='h-4 w-4 text-bizpotta-purple' aria-hidden='true' />
               </a>
@@ -516,7 +527,7 @@ export default function Home() {
                 </div>
               </div>
               {/*Explore Courses */}
-              <a href='#' onClick={handleSelectLibrary} className='pb-16 flex gap-2 w-full justify-center items-center text-bizpotta-purple'>
+              <a href='#' className='pb-16 flex gap-2 w-full justify-center items-center text-bizpotta-purple'>
                 <span>More Testimonials</span>
                 <ArrowRightIcon className='h-4 w-4 text-bizpotta-purple' aria-hidden='true' />
               </a>

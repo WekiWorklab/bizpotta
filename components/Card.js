@@ -111,7 +111,7 @@ export default function Card({ clip }) {
         <h1 className='text-xl font-medium text-gray-50 pb-2'>Fashion Design</h1>
         <div className='flex w-full justify-between '>
           <p className='text-sm tracking-tight font-light text-slate-400 leading-6'>Design</p>
-          <p className='text-sm tracking-tight font-light text-slate-400 leading-6 '>
+          <div className='text-sm tracking-tight font-light text-slate-400 leading-6 '>
             <div className='flex flex-col items-center'>
               <div className='flex items-center'>
                 <svg
@@ -172,7 +172,7 @@ export default function Card({ clip }) {
                 117 Studnets
               </a>
             </div>
-          </p>
+          </div>
         </div>
       </div>
     </div>
