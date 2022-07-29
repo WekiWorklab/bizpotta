@@ -63,7 +63,6 @@ export default function Home() {
     setSelectedCourse(course);
   };
   const handleSelectLibrary = () => {
-    console.log(selectedCourse);
     router.push(`/learners-onboarding/${selectedCourse}`);
   };
   return (
@@ -287,11 +286,8 @@ export default function Home() {
                 <span className='text-bizpotta-gray-800'>Learn in-demand skills to increase your value in the Market</span>
               </p>
               {/** <div className='pt-8 flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-24 pb-8'>*/}
-              <div className='pt-8 flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-28 pb-8'>
-                <Card clip={true} />
-                <Card clip={true} />
-                <Card clip={true} />
-                <Card clip={true} />
+              <div className='hidden pt-8 md:flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-28 pb-8'>
+                <HomePageSlider />
               </div>
               {/*Explore Courses */}
               <a href='#' className='pt-8 flex gap-2 w-full justify-center items-center text-bizpotta-purple'>
@@ -340,7 +336,7 @@ export default function Home() {
                 <span className='text-bizpotta-gray-800'>empower our learners with skill to help manage their business effectively.</span>
               </p>
               {/* list of radio in boxes */}
-              <div className='hidden  pt-8 md:flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-6 md:px-28 pb-8'>
+              <div className='hidden pt-8 md:flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-28 pb-8'>
                 <HomePageSlider />
               </div>
               {/*Explore Courses */}
