@@ -23,8 +23,8 @@ const Header = ({show, setShow}) => {
             <BsChevronDown className='text-sm text-[#999999] font-light ml-2'/>
         </div>    
         <div className='flex flex-row h-[40px] justify-start '>
-            <input className='w-[170px] ml-2 sm:w-[200px] md:w-[350px] outline-none pl-2 text-xs sm:text-sm md:text-base border-2 rounded-l-md' placeholder='What do you want to learn'/>
-            <div className=' w-[55px] h-full border rounded-r-md bg-gradient-to-r from-[#121F4C] via-[#0E4858] via-[#0D585D] to-[#0B6C64] flex justify-center items-center'>
+            <input className='w-[170px] ml-2 sm:w-[200px] md:w-[350px] outline-none pl-2 text-xs sm:text-sm md:text-base border-2 rounded-l-md border-r-0' placeholder='What do you want to learn'/>
+            <div className=' w-[55px] h-full border  rounded-r-md bg-gradient-to-r from-[#121F4C] via-[#0E4858] via-[#0D585D] to-[#0B6C64] flex justify-center items-center'>
                 <FiSearch  className='text-white text-2xl'/>
             </div>
         </div>

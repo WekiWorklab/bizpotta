@@ -2,23 +2,10 @@ import React from 'react'
 import {BsHeart, BsPersonPlus, BsChatDots} from 'react-icons/bs'
 import {BiTransfer} from 'react-icons/bi'
 import { card_image } from '../public'
-
-
-
-
+import AreaChart from './Content-Components/AreaChart'
+import { CircleChart } from './Content-Components/DonutChart'
 
 const Content = () => {
-
-    const pieData = [
-        {
-            "name": "a",
-            "value": 25
-        }, 
-        {
-            "name": "b",
-            "value": 75
-        }
-    ]
 
     
 
@@ -37,14 +24,21 @@ const Content = () => {
                     <div className='flex flex-col '>
                         <div className='mb-10 '>
                             <p className='text-sm font-semibold mb-6'>Analytics</p>
-                            <div className='w-[320px] h-[100px] bg-darkBlue text-white rounded shadow-lg'>
-                                polar chart here
+                            <div className='w-[320px] h-[100px] bg-darkBlue text-white rounded shadow-lg flex flex-row'>
+                                <div className='border-r-2 border-gray-500 h-2/3 w-1/2 my-auto flex flex-col justify-evenly items-center'>
+                                    <p className='text-sm'>Weekly Target</p>
+                                    <p className='text-xs text-gray-500'>25% achieved</p>
+                                </div>
+
+                                <div className='m-auto  h-[90%]'>
+                                    {/* <CircleChart /> */}
+                                </div>
                             </div>
                         </div>
                         <div>
                             <p className='text-sm font-semibold mb-6'>Daily views</p>
-                            <div className='w-[350px] h-[180px] sm:w-[380px]  md:w-[530px] md:h-[215px] bg-gray-200 rounded-lg shadow-lg'>
-                                Area chart here
+                            <div className='w-[350px] h-[180px] sm:w-[380px] sm:h-[200px]  md:w-[530px] md:h-[270px] bg-gray-200 rounded-lg shadow-lg'>
+                                <AreaChart />
                             </div>
                         </div>
                     </div>
