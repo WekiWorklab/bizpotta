@@ -6,7 +6,7 @@ import XSidebar from '../../components/XSidebar'
 
 
 const LearnersDashboard = () => {
-  const [show, setShow] = useState(true)
+  const [show, setShow] = useState(false)
 
   return (
     <div className='relative'>
