@@ -14,8 +14,11 @@
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "next": "12.2.2",
     "react": "18.2.0",
+    "react-charts": "^3.0.0-beta.38",
     "react-dom": "18.2.0",
-    "swiper": "^8.3.1"
+    "react-icons": "^4.4.0",
+    "swiper": "^8.3.1",
+    "victory": "^36.5.3"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.2",

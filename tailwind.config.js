@@ -20,7 +20,7 @@ module.exports = {
           700: "#233245",
           800: "#282828",
         },
-        "newGray": "#fafafa"
+        "darkBlue" : "#121F4C"
       },
     },
   },
