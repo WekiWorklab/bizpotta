@@ -18,8 +18,8 @@ export default function VSidebar() {
 
   return (
     <>
-
-      <nav className="fixed md:hidden top-0 translate-x-0 w-[200px] py-4 px-6 shadow-xl bg-white  flex-wrap items-center justify-between h-full z-10">
+  {/* shadow-xl */}
+      <nav className="fixed md:hidden top-0 translate-x-0 w-[200px] py-4 px-6  bg-white  flex-wrap items-center justify-between h-full z-10">
           
           <div
             className='w-full mt-[120px]'

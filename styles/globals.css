@@ -64,4 +64,9 @@ blockquote:after {
   .clip-card-path {
     clip-path: polygon(0 25%, 100% 0, 100% 100%, 0 100%);
   }
+
+  /* This is new: for the ContentCard component*/
+  .clip-card-path2 {
+    clip-path: polygon(0 50%, 100% 0, 100% 100%, 0 100%);
+  }
 }

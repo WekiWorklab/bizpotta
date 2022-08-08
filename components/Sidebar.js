@@ -18,8 +18,8 @@ export default function Sidebar() {
 
   return (
     <>
-
-      <nav className="fixed top-0 left-0 w-[200px] py-4 px-6 shadow-xl bg-white hidden md:flex flex-wrap items-center justify-between h-full z-10">
+{/* shadow-xl */}
+      <nav className="fixed top-0 left-0 w-[200px] py-4 px-6  bg-white hidden md:flex flex-wrap items-center justify-between h-full z-10">
           
           <div
             className='w-full mt-20'
