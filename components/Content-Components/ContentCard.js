@@ -7,7 +7,7 @@ const ContentCard = ({data}) => {
     
   return (
     <div className='w-[220px] h-[220px] rounded-md bg-no-repeat bg-cover bg-center pt-[80px]' style={{backgroundImage: `url(${imageSrc})`}}>
-        <div className='clip-card-path2 bg-[#121F4C] text-[white] border border-red-400 h-full flex flex-row justify-between pl-4 pr-2 rounded-b-md'>
+        <div className='clip-card-path2 bg-[#121F4C] text-[white]  h-full flex flex-row justify-between pl-4 pr-2 rounded-b-md'>
             <div className='flex flex-col '>
                 <p className='text-[14px] mt-[80px]'>{data.name}</p>
                 <p className='text-[11px]'>{data.category}</p>
