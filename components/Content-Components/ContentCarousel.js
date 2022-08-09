@@ -21,9 +21,9 @@ const ContentCarousel = ({data}) => {
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
         >
-            {data.map((el) => (
-                <SwiperSlide> 
-                    <ContentCard key={data.indexOf(el)} data={el} /> 
+            {data.map((el, index) => (
+                <SwiperSlide key={index}> 
+                    <ContentCard data={el} /> 
                 </SwiperSlide>
                 )
               )
