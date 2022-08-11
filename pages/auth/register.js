@@ -10,7 +10,7 @@ import Button from "./Auth-Components/Button";
 import {BiHide, BiShow} from 'react-icons/bi'
 import {FcGoogle, FcInfo} from 'react-icons/fc'
 
-export default function register() {
+export default function Register() {
 
   const [registerData, setRegisterData] = useState({firstName: "", lastName: '', email: "", password: ""})
   const [passwordType, setPasswordType] = useState("password")
