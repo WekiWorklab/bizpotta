@@ -7,6 +7,7 @@ import { card_image } from '../public'
 import {BsChevronDown} from 'react-icons/bs'
 import {IoMenuOutline} from 'react-icons/io5'
 import {MdOutlineCancel} from 'react-icons/md'
+import HoverSearch from './Header-Components/HoverSearch'
 
 
 
@@ -20,13 +21,14 @@ const Header = ({show, setShow}) => {
     <div className='fixed w-full z-20 h-[120px] bg-white flex flex-row justify-between items-center px-2 lg:px-8 '>
         <div className='flex flex-row justify-start items-center'>
             <img className='  h-8 w-[120px] md:w-auto sm:h-10' src={logo.src} alt='' />
-            <BsChevronDown className='hidden sm:block text-sm text-[#999999] font-light ml-2'/>
+            <BsChevronDown className='hidden md:block text-sm text-[#999999] font-light ml-2'/>
         </div>    
         <div className='flex flex-row h-[40px] justify-start '>
             <input className='w-[160px] ml-2 sm:w-[200px] md:w-[350px] outline-none pl-2 text-xs sm:text-sm md:text-base border-2 rounded-l-md border-r-0' placeholder='What do you want to learn'/>
             <div className=' w-[55px] h-full border  rounded-r-md bg-gradient-to-r from-[#121F4C] via-[#0E4858] via-[#0D585D] to-[#0B6C64] flex justify-center items-center'>
                 <FiSearch  className='text-white text-2xl'/>
             </div>
+            <HoverSearch />
         </div>
         <div className=' hidden sm:flex flex-row  w-[100px] sm:w-[280px] justify-evenly items-center'>
             <AiOutlineShoppingCart className='  text-darkBlue text-2xl' />
@@ -51,7 +53,3 @@ const Header = ({show, setShow}) => {
 
 export default Header
 
-// {!show ? 
-//             <IoMenuOutline size={22} color = '#121F4C' className='absolute top-24 left-4 hover:cursor-pointer md:hidden' onClick={() => setShow(true)} /> 
-//             : 
-//             <MdOutlineCancel size={22} color = '#121F4C' className='absolute top-24 left-4 hover:cursor-pointer md:hidden' onClick={() => setShow(false)} />}
