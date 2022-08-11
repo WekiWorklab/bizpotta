@@ -1,3 +1,28 @@
+export const hoverData = ["Art & Entertainment", "Business", "Community & Government", "Design and Style", "Food", "Home & Lifestyle", "Music", "Science and Technology", "Sports and gaming"]
+
+export const searchData = [
+    {
+        name: "Thomas Adekunle",
+        title: "Increase sales in 1 hour",
+    },
+    {
+        name: "Thomas Adekunle",
+        title: "Increase sales in 1 hour",
+    },
+    {
+        name: "Thomas Adekunle",
+        title: "Increase sales in 1 hour",
+    },
+    {
+        name: "Thomas Adekunle",
+        title: "Increase sales in 1 hour",
+    },
+    {
+        name: "Thomas Adekunle",
+        title: "Increase sales in 1 hour",
+    },
+]
+
 export const Data = [
     {
         name: "Fashion Design",

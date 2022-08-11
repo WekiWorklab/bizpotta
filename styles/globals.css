@@ -37,10 +37,7 @@
   object-fit: cover;
 }
 
-.no_decor{
-  text-decoration: none;
-  outline: none;
-}
+
 
 .shadow1{
   box-shadow: 10px 10px 51px -37px rgba(0,0,0,0.75);

@@ -13,7 +13,7 @@ const LearnersDashboard = () => {
       <Header show = {show} setShow = {setShow}/>
       <Content />
       <Sidebar />
-      {show ? <XSidebar /> : null} {/** Sidebar with toggle functionality */}
+      {show ? <XSidebar  show = {show} setShow = {setShow} /> : null} {/** Sidebar with toggle functionality */}
     </div>
   )
 }

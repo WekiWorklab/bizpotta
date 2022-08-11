@@ -7,10 +7,10 @@ import { card_image } from '../../public'
 
 const TopSection = () => {
   return (
-    <div className=' pl-0 lg:pl-5 pt-8 flex flex-col xl:flex-row w-full'>
+    <div className=' pl-0 lg:pl-5 lg:pt-5 flex flex-col xl:flex-row w-full'>
             <div className=' w-full m-auto md:w-[650px] lg:w-[850px]'>
                 <div className='bg-white pl-4 pr-2 flex flex-col items-center '>
-                    <h1 className='text-sm font-semibold mb-8 '>Programs</h1>
+                    <h1 className='text-sm font-semibold mt-8 mb-8 w-full '>Programs</h1>
 
                     <div className='hidden items-center md:flex  flex-row flex-wrap w-full md:w-[90%] lg:w-[70%] xl:w-full justify-between pl-0 '>
                         <div className='w-[260px] bg-[#5FFC54] h-[125px] rounded-lg flex items-center text-sm pl-5 mb-10 '>VOCATIONAL EDUCATION</div>
@@ -107,7 +107,7 @@ const TopSection = () => {
 
                 <div className='border bg-white w-full  md:hidden'>
                     <div className='flex flex-row px-2 justify-between py-4 bg-gray-50'>
-                        <div className='flex flex-col flex-2  w-[55%] '>
+                        <div className='flex flex-col flex-2 w-[55%] '>
                             <div className=' w-full flex flex-col items-center bg-white justify-center rounded-[8px]  shadow-lg mb-2 py-4'>
                                 <h1 className='text-[12px] font-bold mb-3 text-center'>What is your current job description?</h1>
                                 <p className='text-[12px] mb-5 text-center'>Business Analysis</p>
@@ -188,8 +188,8 @@ const TopSection = () => {
             </div>
 
 
-        <div className=' bg-white w-full md:w-[650px] lg:w-[850px] flex flex-col sm:flex-row xl:flex-col items-center justify-center mx-auto pt-2 '>
-            <div className='hidden md:block text-center w-[300px] xl:w-[250px] px-3 py-8 mx-auto border rounded-md'>
+        <div className=' bg-white w-full md:w-[650px] lg:w-[850px] flex flex-col sm:flex-row xl:flex-col items-center justify-center mx-auto pt-8 '>
+            <div className='hidden md:block text-center w-[300px] xl:w-[250px] px-3 py-8 mx-auto border rounded-md '>
                 <h1 className='text-sm font-bold mb-3'>What is your current job description?</h1>
                 <p className='text-xs mb-5'>Business Analysis</p>
 
