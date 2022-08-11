@@ -12,7 +12,7 @@ import {FcGoogle, FcInfo} from 'react-icons/fc'
 import Link from 'next/link';
 
 
-export default function login() {
+export default function Login() {
 
   const [loginData, setLoginData] = useState({email: "", password: ""})
   const [passwordType, setPasswordType] = useState("password")
