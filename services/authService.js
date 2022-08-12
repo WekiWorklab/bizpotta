@@ -32,7 +32,7 @@ const logout = () => {
 // Get user data
 const getUser = () => {
   if (typeof window !== "undefined") {
-    const user = localStorage.getItem("user");
+    const user = localStorage.getItem("bizpotta_user");
     return user ? JSON.parse(user) : null;
   }
   return null;
@@ -41,7 +41,7 @@ const getUser = () => {
 // get token for localstorage and cookie
 const getToken = () => {
   if (typeof window !== "undefined") {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("bizpotta_token");
     return token ? JSON.parse(token) : null;
   }
   return null;
