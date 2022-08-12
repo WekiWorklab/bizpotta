@@ -51,7 +51,7 @@ const getToken = () => {
 const getUser = async () => {
   let user = null;
   if (typeof window !== "underfined") {
-    user = localStorage.getItem("user");
+    user = window.localStorage.getItem("user");
   }
   if (user) {
     return JSON.parse(user);
@@ -73,7 +73,7 @@ const getUserFromServer = async () => {
     });
     if (response.data) {
       if (typeof window !== "undefined") {
-        localStorage.setItem("user", JSON.stringify(response.data));
+        window.localStorage.setItem("user", JSON.stringify(response.data));
       }
       return response.data;
     }
