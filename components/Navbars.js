@@ -16,6 +16,7 @@ import {
 } from "@heroicons/react/outline";
 import { ChartBarIcon, ChevronDownIcon, CursorClickIcon, ExternalLinkIcon, PlayIcon, ViewGridIcon } from "@heroicons/react/solid";
 import { logo } from "../public";
+import Link from "next/link";
 
 const navigation = [{ name: "Product", href: "#" }];
 const features = [
@@ -112,21 +113,27 @@ export default function Navbars() {
                 </Popover.Group>
               </div>
               <div className='hidden md:flex md:items-center '>
-                <a
-                  href='#'
-                  className='text-lg inline-flex font-medium items-center px-8 py-1 text-bizpotta-purple border-r border-[#BAD5A2] hover:text-gray-300'
-                >
-                  Become a Tutor
-                </a>
-                <a href='#' className='text-lg inline-flex font-medium items-center px-8 py-2  hover:text-gray-300 rounded-md text-bizpotta-purple'>
-                  Login
-                </a>
-                <a
-                  href='#'
-                  className='inline-flex items-center px-8 py-2 border border-transparent text-lg font-medium rounded-md text-white bg-bizpotta-purple hover:bg-gray-700'
-                >
-                  Join for free
-                </a>
+                <Link href='/'>
+                  <a
+                    href='#'
+                    className='text-lg inline-flex font-medium items-center px-8 py-1 text-bizpotta-purple border-r border-[#BAD5A2] hover:text-gray-300'
+                  >
+                    Become a Tutor
+                  </a>
+                </Link>
+                <Link href='/auth/login'>
+                  <a href='#' className='text-lg inline-flex font-medium items-center px-8 py-2  hover:text-gray-300 rounded-md text-bizpotta-purple'>
+                    Login
+                  </a>
+                </Link>
+                <Link href='/auth/register'>
+                  <a
+                    href='#'
+                    className='inline-flex items-center px-8 py-2 border border-transparent text-lg font-medium rounded-md text-white bg-bizpotta-purple hover:bg-gray-700'
+                  >
+                    Join for free
+                  </a>
+                </Link>
               </div>
             </nav>
           </div>

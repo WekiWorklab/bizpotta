@@ -32,12 +32,7 @@ export default function Login() {
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Email is required"),
-    password: Yup.string()
-      .required("Please Enter your password")
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
-      ),
+    password: Yup.string().required("Please Enter your password"),
   });
 
   const formOptions = { resolver: yupResolver(validationSchema) };
@@ -51,12 +46,12 @@ export default function Login() {
   };
 
   return (
-    <div className='bg-[#E5E5E5] h-[100vh] flex flex-col justify-center items-center'>
+    <div className='bg-[#FAFAFA] h-[100vh] flex flex-col justify-center items-center'>
       <div className='w-[130px] h-[65px] mb-2 '>
         <img src={logo.src} alt='' className='w-full h-full object-contain' />
       </div>
       <form onSubmit={submitForm}>
-        <div className=' w-[360px] py-[30px] sm:py-[40px] bg-[#E5E5E5] sm:bg-white flex flex-col justify-center items-center '>
+        <div className=' w-[360px] py-[30px] sm:py-[40px] bg-[#FAFAFA] sm:bg-white flex flex-col justify-center items-center '>
           <div className=' w-[330px]'>
             <h3 className='text-[18px] text-[#282828]  '>Sign into your account</h3>
             <p className='text-[12px] text-[#999999]'>Welcome back!</p>
@@ -120,7 +115,7 @@ export default function Login() {
               <FcGoogle size={24} className='' />
               <p className='text-[11px]'>Sign in with Google</p>
             </div>
-            <div className=' w-[150px] rounded-[12px] bg-[#D6F5C3] h-[45px] flex flex-row justify-evenly items-center'>
+            <div className=' w-[150px] rounded-[12px] bg-[#DBE9FF] h-[45px] flex flex-row justify-evenly items-center'>
               <FcInfo size={24} className='' />
               <p className='text-[11px]'>Sign in with Facebook</p>
             </div>

@@ -51,21 +51,21 @@ export default function Register() {
   };
 
   return (
-    <div className='bg-[#E5E5E5] flex flex-col justify-center items-center pb-10'>
+    <div className='bg-[#FAFAFA] flex flex-col justify-center items-center pb-10'>
       <div className='w-[130px] h-[65px] mb-2 '>
         <img src={logo.src} alt='' className='w-full h-full object-contain' />
       </div>
       <form onSubmit={submitForm}>
-        <div className=' w-[360px] py-[30px] sm:py-[40px] bg-[#E5E5E5] sm:bg-white flex flex-col justify-center items-center '>
+        <div className=' w-[360px] py-[30px] sm:py-[40px] bg-[#FAFAFA] sm:bg-[#FAFAFA] flex flex-col justify-center items-center '>
           <div className=' w-[330px]'>
             <h3 className='text-[18px] text-[#282828]'>Sign up to get started</h3>
             <p className='text-[12px] text-[#999999]'>Take the first step in making your dream a reality</p>
           </div>
 
           <div className='mt-10 flex flex-row w-[330px] items-center justify-between'>
-            <p className='w-[70px] border-[1px] border-[#999999]'></p>
+            <p className='w-[70px] border-[1px] border-opacity-40 border-[#999999]'></p>
             <p className='text-sm text-[#999999] '>or sign in with your socials</p>
-            <p className='w-[70px] border-[1px] border-[#999999] '></p>
+            <p className='w-[70px] border-[1px] border-opacity-40 border-[#999999]'></p>
           </div>
 
           <div className='mt-6 flex flex-row w-[330px] items-center justify-evenly'>
@@ -73,7 +73,7 @@ export default function Register() {
               <FcGoogle size={24} className='' />
               <p className='text-[11px]'>Sign up with Google</p>
             </div>
-            <div className=' w-[150px] rounded-[12px] bg-[#D6F5C3] h-[45px] flex flex-row justify-evenly items-center'>
+            <div className=' w-[150px] rounded-[12px] bg-[#DBE9FF] h-[45px] flex flex-row justify-evenly items-center'>
               <FcInfo size={24} className='' />
               <p className='text-[11px]'>Sign up with Facebook</p>
             </div>
