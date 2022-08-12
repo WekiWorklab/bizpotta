@@ -118,6 +118,14 @@ export default function Navbars() {
                     href='#'
                     className='text-lg inline-flex font-medium items-center px-8 py-1 text-bizpotta-purple border-r border-[#BAD5A2] hover:text-gray-300'
                   >
+                    Become a Partner
+                  </a>
+                </Link>
+                <Link href='/'>
+                  <a
+                    href='#'
+                    className='text-lg inline-flex font-medium items-center px-8 py-1 text-bizpotta-purple border-r border-[#BAD5A2] hover:text-gray-300'
+                  >
                     Become a Tutor
                   </a>
                 </Link>

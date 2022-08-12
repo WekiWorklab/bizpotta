@@ -63,7 +63,9 @@ const getUserFromServer = async () => {
       },
     });
     if (response.data) {
-      localStorage.setItem("user", JSON.stringify(response.data));
+      if (typeof window !== "undefined") {
+        localStorage.setItem("user", JSON.stringify(response.data));
+      }
       return response.data;
     }
   }
