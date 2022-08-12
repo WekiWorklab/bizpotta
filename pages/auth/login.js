@@ -11,6 +11,8 @@ import { FcGoogle, FcInfo } from "react-icons/fc";
 
 import Link from "next/link";
 
+// //////////////Comment
+
 export default function Login() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [passwordType, setPasswordType] = useState("password");
