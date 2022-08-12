@@ -30,7 +30,7 @@ export default function LibraryCheckBox({ option, setSelectedCourses, current, s
         name={option.id}
         value={checked}
         onChange={handleChange}
-
+        className='focus:ring-0 rounded-full text-bizpotta-green'
       />
     </div>
   );
