@@ -9,7 +9,9 @@ const register = async (userData) => {
   const response = await axios.post(`${API_URL}/api/register`, userData);
   console.log(response);
   if (response.data) {
-    localStorage.setItem("user", JSON.stringify(response.data.data));
+    if (typeof window !== "undefined") {
+      localStorage.setItem("user", JSON.stringify(response.data.data));
+    }
     Cookies.set("bizpotta_token", response.data.access_token);
     setCookie("bizpotta_token", response.data.access_token, {
       path: "/",
@@ -25,14 +27,18 @@ const register = async (userData) => {
 const login = async (userData) => {
   const response = await axios.post(API_URL + "login", userData);
   if (response.data) {
-    localStorage.setItem("user", JSON.stringify(response.data));
+    if (typeof window !== "undefined") {
+      localStorage.setItem("user", JSON.stringify(response.data));
+    }
   }
   return response.data.user;
 };
 
 // Logout user
 const logout = () => {
-  localStorage.removeItem("user");
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("user");
+  }
 };
 
 // get token for localstorage and cookie
@@ -43,7 +49,10 @@ const getToken = () => {
 
 // get user from localstorage or server
 const getUser = async () => {
-  let user = localStorage.getItem("user");
+  let user = null;
+  if (typeof window !== "underfined") {
+    user = localStorage.getItem("user");
+  }
   if (user) {
     return JSON.parse(user);
   } else {
