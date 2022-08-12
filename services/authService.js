@@ -1,13 +1,14 @@
 import axios from "axios";
 
-const API_URL = "https://127.0.0.1/api/";
+const API_URL = "https://bizpotta-api-dev.herokuapp.com/api/";
 
 // Register user
 const register = async (userData) => {
   const response = await axios.post(API_URL, userData);
 
   if (response.data) {
-    localStorage.setItem("user", JSON.stringify(response.data));
+    localStorage.setItem("user", JSON.stringify(response.data.data));
+    localStorage.setItem("token", response.data.access.token);
   }
 
   return response.data;
@@ -42,7 +43,7 @@ const getUser = () => {
 const getToken = () => {
   if (typeof window !== "undefined") {
     const token = localStorage.getItem("bizpotta_token");
-    return token ? JSON.parse(token) : null;
+    return token ? token : null;
   }
   return null;
 };
