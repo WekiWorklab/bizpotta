@@ -306,10 +306,9 @@ export default function Home() {
               </p>
               {/* list of radio in boxes */}
 
-              {/* <div className='w-full mx-auto flex flex-col gap-6 justify-center items-center md:grid md:grid-cols-3 md:gap-8 md:px-24 py-8'> */}
               <div className='w-full mx-auto flex flex-col gap-6 justify-center items-center md:grid md:grid-cols-2 md:gap-8 md:w-[700px]  lg:grid-cols-3 lg:w-[1000px] py-8  md:items-center md:justify-center'>
                 {optionsLists.map((option, index) => (
-                  <LibraryRadioButton key={index} option={option} setSelectedCourse={handleChangeCourse} />
+                  <LibraryRadioButton key={index} option={option} setSelectedCourse={handleChangeCourse} multiSelect = {false} />
                 ))}
               </div>
               {/* continue with arrow */}
