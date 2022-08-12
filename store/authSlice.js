@@ -2,11 +2,10 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import authService from "../services/authService";
 
 // get user and token for localstorage and cookie
-const user = authService.getUser();
 const token = authService.getToken();
 
 const initialState = {
-  user: user ? user : null,
+  isAuthenticated: token ? true : false,
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -14,7 +13,7 @@ const initialState = {
   token: token ? token : null,
 };
 // Register user
-export const register = createAsyncThunk("auth/register", async (user, thunkAPI) => {
+export const registerUser = createAsyncThunk("auth/register", async (user, thunkAPI) => {
   try {
     return await authService.register(user);
   } catch (error) {
@@ -50,15 +49,15 @@ export const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(register.pending, (state) => {
+      .addCase(registerUser.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(register.fulfilled, (state, action) => {
+      .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.user = action.payload;
       })
-      .addCase(register.rejected, (state, action) => {
+      .addCase(registerUser.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

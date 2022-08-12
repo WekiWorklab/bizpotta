@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -9,45 +10,38 @@ import FormInput from "../../components/Auth-Components/Input";
 import Button from "../../components/Auth-Components/Button";
 import { BiHide, BiShow } from "react-icons/bi";
 import { FcGoogle, FcInfo } from "react-icons/fc";
+import { useSelector } from "react-redux";
+import { registerUser, reset } from "../../store/authSlice";
+import { useDispatch } from "react-redux";
 
 export default function Register() {
   const [registerData, setRegisterData] = useState({ firstName: "", lastName: "", email: "", password: "" });
   const [passwordType, setPasswordType] = useState("password");
-
-  const [agree, setAgree] = useState(false);
-  const handleCheck = () => {
-    setAgree((prev) => !prev);
-  };
-
-  const handleChange = (event) => {
-    event.preventDefault();
-    const { name, value } = event.target;
-    const newData = { [name]: value };
-    setRegisterData((prevState) => ({ ...prevState, ...newData }));
-  };
+  const dispatch = useDispatch();
+  const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth);
 
   const handlePassword = () => {
     setPasswordType((prevState) => (prevState === "password" ? "text" : "password"));
   };
 
   const validationSchema = Yup.object().shape({
+    firstName: Yup.string().required("First Name is required"),
+    lastName: Yup.string().required("Last Name is required"),
     email: Yup.string().email("Invalid email").required("Email is required"),
     password: Yup.string()
       .required("Please Enter your password")
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
-      ),
+      .min(8, "Must be more than 8 characters")
+      .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, "Must contain mixed characters, a number and a symbol"),
   });
 
   const formOptions = { resolver: yupResolver(validationSchema) };
   const { register, handleSubmit, formState, setValue } = useForm(formOptions);
   const { errors } = formState;
 
-  const submitForm = () => {
-    event.preventDefault();
-    console.log(loginData);
+  const submitForm = (data) => {
     console.log(errors);
+    console.log(data);
+    dispatch(registerUser(data));
   };
 
   return (
@@ -55,7 +49,7 @@ export default function Register() {
       <div className='w-[130px] h-[65px] mb-2 '>
         <img src={logo.src} alt='' className='w-full h-full object-contain' />
       </div>
-      <form onSubmit={submitForm}>
+      <form onSubmit={handleSubmit(submitForm)}>
         <div className=' w-[360px] py-[30px] sm:py-[40px] bg-[#FAFAFA] sm:bg-[#FAFAFA] flex flex-col justify-center items-center '>
           <div className=' w-[330px]'>
             <h3 className='text-[18px] text-[#282828]'>Sign up to get started</h3>
@@ -81,41 +75,20 @@ export default function Register() {
 
           <div className=' flex flex-col mt-[40px]'>
             <p className='text-[#282828]'>First Name</p>
-            <FormInput
-              register={register}
-              handleChange={handleChange}
-              value={registerData.firstName}
-              name='firstName'
-              type='text'
-              placeholder='First Name'
-              required
-            />
+            <FormInput register={register} name='firstName' type='text' placeholder='First Name' required />
+            <div className='px-2 text-red-500 text-sm font-medium'>{errors.firstName?.message}</div>
           </div>
 
           <div className=' flex flex-col mt-[25px]'>
             <p className='text-[#282828]'>Last Name</p>
-            <FormInput
-              register={register}
-              handleChange={handleChange}
-              value={registerData.lastName}
-              name='lastName'
-              type='text'
-              placeholder='Last Name'
-              required
-            />
+            <FormInput register={register} value={registerData.lastName} name='lastName' type='text' placeholder='Last Name' required />
+            <div className='px-2 text-red-500 text-sm font-medium'>{errors.lastName?.message}</div>
           </div>
 
           <div className=' flex flex-col mt-[25px]'>
             <p className='text-[#282828]'> Email Address</p>
-            <FormInput
-              register={register}
-              handleChange={handleChange}
-              value={registerData.email}
-              name='email'
-              type='email'
-              placeholder='someone@gmail.com'
-              required
-            />
+            <FormInput register={register} value={registerData.email} name='email' type='email' placeholder='someone@gmail.com' required />
+            <div className='px-2 text-red-500 text-sm font-medium'>{errors.email?.message}</div>
           </div>
 
           <div className=' flex flex-col mt-[25px]'>
@@ -123,7 +96,6 @@ export default function Register() {
             <div className='relative'>
               <FormInput
                 register={register}
-                handleChange={handleChange}
                 value={registerData.password}
                 name='password'
                 type={passwordType}
@@ -139,9 +111,10 @@ export default function Register() {
               )}
             </div>
           </div>
+          <div className='px-4 text-red-500 text-[12px] md:text-sm font-medium'>{errors.password?.message}</div>
 
           <div className='w-[300px] flex flex-row justify-evenly mt-[10px]'>
-            <input type='checkbox' value={agree} onChange={handleCheck} className='focus:text-darkBlue focus:ring-0' />
+            <input required type='checkbox' className='focus:text-darkBlue focus:ring-0' />
             <p className='text-[11px]'>
               I agree to the <span className='text-[11px] text-[#475F8F]'>Terms of Services</span> and{" "}
               <span className='text-[11px] text-[#475F8F]'>Privacy policy</span>

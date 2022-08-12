@@ -22,9 +22,14 @@ const courseSlice = createSlice({
     addCategory: (state, action) => {
       state.courseCategory = action.payload;
     },
+    reset: (state) => {
+      state.courseCategory = null;
+      state.total_courses = [];
+      state.show_course_modal = false;
+    },
   },
 });
 
-export const { addCourse, removeCourse, showCourseModal, addCategory } = courseSlice.actions;
+export const { addCourse, removeCourse, showCourseModal, addCategory, reset } = courseSlice.actions;
 
 export default courseSlice.reducer;
