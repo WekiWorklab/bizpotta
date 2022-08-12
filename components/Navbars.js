@@ -114,10 +114,7 @@ export default function Navbars() {
               </div>
               <div className='hidden md:flex md:items-center '>
                 <Link href='/'>
-                  <a
-                    href='#'
-                    className='text-lg inline-flex font-medium items-center px-8 py-1 text-bizpotta-purple border-r border-[#BAD5A2] hover:text-gray-300'
-                  >
+                  <a href='#' className='text-lg inline-flex font-medium items-center px-2 py-1 text-bizpotta-purple  hover:text-gray-300'>
                     Become a Partner
                   </a>
                 </Link>
