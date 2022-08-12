@@ -48,15 +48,13 @@ const getToken = () => {
 };
 
 // get user from localstorage or server
-const getUser = async () => {
+const getUser = () => {
   let user = null;
-  if (typeof window !== "underfined") {
+  if (typeof window !== "undefined" && window.localStorage.getItem("user")) {
     user = window.localStorage.getItem("user");
   }
   if (user) {
     return JSON.parse(user);
-  } else {
-    user = await getUserFromServer();
   }
   return user;
 };
