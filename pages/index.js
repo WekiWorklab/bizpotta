@@ -11,6 +11,8 @@ import Testimonals from "../components/Testimonals";
 import Footer from "../components/Footer";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { addCategory } from "../store/courseSlice";
 
 const optionsLists = [
   {
@@ -57,12 +59,14 @@ const optionsLists = [
 
 export default function Home() {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [selectedCourse, setSelectedCourse] = useState(null);
 
   const handleChangeCourse = (course) => {
     setSelectedCourse(course);
   };
   const handleSelectLibrary = () => {
+    dispatch(addCategory(selectedCourse));
     router.push(`/learners-onboarding/${selectedCourse}`);
   };
   return (
@@ -308,7 +312,7 @@ export default function Home() {
 
               <div className='w-full mx-auto flex flex-col gap-6 justify-center items-center md:grid md:grid-cols-2 md:gap-8 md:w-[700px]  lg:grid-cols-3 lg:w-[1000px] py-8  md:items-center md:justify-center'>
                 {optionsLists.map((option, index) => (
-                  <LibraryRadioButton key={index} option={option} setSelectedCourse={handleChangeCourse} multiSelect = {false} />
+                  <LibraryRadioButton key={index} option={option} setSelectedCourse={handleChangeCourse} multiSelect={false} />
                 ))}
               </div>
               {/* continue with arrow */}
