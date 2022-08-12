@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const API_URL = "https://bizpotta-api-dev.herokuapp.com/api/";
+const API_URL = process.env.NEXT_PUBLIC_REACT_APP_API_URL;
 
 // Register user
 const register = async (userData) => {
-  const response = await axios.post(API_URL, userData);
-
+  const response = await axios.post(`${API_URL}/api/register`, userData);
+  console.log(response);
   if (response.data) {
     localStorage.setItem("user", JSON.stringify(response.data.data));
     localStorage.setItem("token", response.data.access.token);
@@ -17,11 +17,9 @@ const register = async (userData) => {
 // Login user
 const login = async (userData) => {
   const response = await axios.post(API_URL + "login", userData);
-
   if (response.data) {
     localStorage.setItem("user", JSON.stringify(response.data));
   }
-
   return response.data;
 };
 
