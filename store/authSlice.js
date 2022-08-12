@@ -3,8 +3,10 @@ import authService from "../services/authService";
 
 // get user and token for localstorage and cookie
 const token = authService.getToken();
+const user = authService.getUser();
 
 const initialState = {
+  user: user ? user : null,
   isAuthenticated: token ? true : false,
   isError: false,
   isSuccess: false,
@@ -55,7 +57,9 @@ export const authSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.user = action.payload;
+        state.token = action.payload.access_token;
+        state.isAuthenticated = true;
+        state.user = action.payload.data;
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -69,7 +73,9 @@ export const authSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.user = action.payload;
+        state.token = action.payload.access_token;
+        state.isAuthenticated = true;
+        state.user = action.payload.user;
       })
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;

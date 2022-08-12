@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { useEffect } from "react";
 import { logo } from "../../public";
 import { set, useForm } from "react-hook-form";
 import * as Yup from "yup";
@@ -13,12 +12,15 @@ import { FcGoogle, FcInfo } from "react-icons/fc";
 import { useSelector } from "react-redux";
 import { registerUser, reset } from "../../store/authSlice";
 import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
 
 export default function Register() {
   const [registerData, setRegisterData] = useState({ firstName: "", lastName: "", email: "", password: "" });
   const [passwordType, setPasswordType] = useState("password");
+
   const dispatch = useDispatch();
-  const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth);
+  const router = useRouter();
+  const { isAuthenticated, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth);
 
   const handlePassword = () => {
     setPasswordType((prevState) => (prevState === "password" ? "text" : "password"));
@@ -37,10 +39,21 @@ export default function Register() {
   const formOptions = { resolver: yupResolver(validationSchema) };
   const { register, handleSubmit, formState, setValue } = useForm(formOptions);
   const { errors } = formState;
+  setTimeout(() => {}, 1000);
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+
+    if (isSuccess || isAuthenticated) {
+      router.push("/learn");
+    }
+
+    dispatch(reset());
+  }, [isAuthenticated, isError, isSuccess, message, dispatch, router]);
 
   const submitForm = (data) => {
-    console.log(errors);
-    console.log(data);
     dispatch(registerUser(data));
   };
 
@@ -121,9 +134,9 @@ export default function Register() {
             </p>
           </div>
 
-          <button type='submit' className='mt-6 '>
-            <Button name='Sign In' />
-          </button>
+          <div type='submit' className='mt-6 '>
+            <Button name='Sign Up' type={"submit"} loading={isLoading} />
+          </div>
           <p className='text-[12px] text-[#999999] mt-[10px]'>
             Already have an account?{" "}
             <span className='text-[#475F8F]'>

@@ -66,7 +66,7 @@ export default function Navbars() {
                     </Popover.Button>
                   </div>
                 </div>
-                <Popover.Group as='nav' className='hidden md:flex space-x-10'>
+                {/* <Popover.Group as='nav' className='hidden md:flex space-x-10'>
                   <Popover className='relative'>
                     {({ open }) => (
                       <>
@@ -110,7 +110,7 @@ export default function Navbars() {
                       </>
                     )}
                   </Popover>
-                </Popover.Group>
+                </Popover.Group> */}
               </div>
               <div className='hidden md:flex md:items-center '>
                 <Link href='/'>
