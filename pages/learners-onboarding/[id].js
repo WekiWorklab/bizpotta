@@ -63,30 +63,23 @@ export default function SelectCourse() {
 
   const handleContinue = () => {
     const childNodes = parentRef.current?.childNodes;
-    console.log(childNodes);
+    // console.log(childNodes);
     let total = [];
 
     for (const x of childNodes) {
       const checked = x.childNodes[1].checked;
       const name = x.childNodes[1].name;
-      console.log(checked, name);
+      // console.log(checked, name);
       checked && total.push({ name, checked });
       // checked && dispatch(addCourse({name, checked}))
     }
 
-    if (total.length > 5) {
-      // pop the last element.
-      // dispatch showModal to be false
-    } else if (total.length > 0 && total.length <= 5) {
-      dispatch(addCourse(total));
-      dispatch(showCourseModal(true));
-    }
-
-    // console.log(total_courses)
+    dispatch(addCourse(total));
+    dispatch(showCourseModal(true));
   };
 
   return (
-    <div className='w-full h-screen bg-gray-50 md:px-52 py-40 px-4 font-light'>
+    <div className='w-full h-screen bg-gray-50 md:px-52 py-40 px-4 font-light border border-red-200'>
       <h1 className='font-fancy text-2xl md:text-3xl text-bizpotta-purple px-4'>Explore our course library</h1>
       <div className='flex flex-col space-y-4 py-4'>
         <Tabs current={id} />
@@ -108,7 +101,7 @@ export default function SelectCourse() {
           </Link>
         </div>
       </div>
-      <SelectCoursesModal />
+      <SelectCoursesModal courses={total_courses.length} />
     </div>
   );
 }
