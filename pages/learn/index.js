@@ -13,7 +13,7 @@ const index = () => {
       <Content />
     </Layout>
       
-      
+        
   )
 }
 
