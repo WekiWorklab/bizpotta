@@ -2,7 +2,11 @@ import React from 'react'
 
 const Content = () => {
   return (
-    <div>Content</div>
+    <div className='relative w-full  md:bg-gray-50 flex flex-col pt-[90px] md:pt-[120px] md:justify-start md:translate-x-[200px] md:w-[calc(100%-200px)] text-darkBlue border-2 border-red-500'>
+        
+Content
+    
+    </div>
   )
 }
 
