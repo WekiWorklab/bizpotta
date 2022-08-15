@@ -79,11 +79,41 @@ export default function SelectCourse() {
   };
 
   return (
-    <div className='w-full h-screen bg-gray-50 md:px-52 py-40 px-4 font-light border border-red-200'>
+    <div className='w-full h-screen bg-gray-50 flex flex flex-col items-center py-40 px-4 font-light'>
       <h1 className='font-fancy text-2xl md:text-3xl text-bizpotta-purple px-4'>Explore our course library</h1>
       <div className='flex flex-col space-y-4 py-4'>
         <Tabs current={id} />
         {/* This div will be the parent reference */}
+        <div className='flex flex-col items-center justify-center gap-6 md:grid md:grid-cols-2 md:gap-4 md:gap-x-[50px]  xl:grid-cols-3 xl:gap-8  py-8' ref={parentRef}>
+          {optionsLists.map((option, index) => (
+            <LibraryCheckBox key={index} option={option} current={id} selectedCourses={selectedCourses} setSelectedCourses={setSelectedCourses} />
+          ))}
+        </div>
+        <div className='flex mx-auto gap-2 items-center justify-center'>
+          <a href='#' onClick={handleContinue} className='flex gap-2 w-full justify-center items-center text-bizpotta-purple'>
+            <span>Continue</span>
+            <ArrowRightIcon className='h-4 w-4 text-bizpotta-purple' aria-hidden='true' />
+          </a>
+          <Link href='/auth/register'>
+            <a href='#' className='flex w-full justify-center items-center text-gray-300'>
+              <span>Skip</span>
+            </a>
+          </Link>
+        </div>
+      </div>
+      <SelectCoursesModal courses={total_courses.length} />
+    </div>
+  );
+}
+
+
+
+
+/**
+ * <div className='w-full h-screen bg-gray-50 md:px-52 py-40 px-4 font-light border border-red-200'>
+      <h1 className='font-fancy text-2xl md:text-3xl text-bizpotta-purple px-4'>Explore our course library</h1>
+      <div className='flex flex-col space-y-4 py-4'>
+        <Tabs current={id} />
         <div className='flex flex-col items-center justify-center gap-6 md:grid md:grid-cols-3 md:gap-8  py-8 mx-2' ref={parentRef}>
           {optionsLists.map((option, index) => (
             <LibraryCheckBox key={index} option={option} current={id} selectedCourses={selectedCourses} setSelectedCourses={setSelectedCourses} />
@@ -103,5 +133,5 @@ export default function SelectCourse() {
       </div>
       <SelectCoursesModal courses={total_courses.length} />
     </div>
-  );
-}
+ * 
+ */

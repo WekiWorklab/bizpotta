@@ -7,24 +7,28 @@ import {BsStarFill} from 'react-icons/bs'
 const InstructorCard = ({data}) => {
     const imageSrc = 'https://images.pexels.com/photos/1172253/pexels-photo-1172253.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
     
+    
+
   return (
-    <div className='w-[220px] h-[220px] rounded-md bg-no-repeat bg-cover bg-center pt-[80px]' style={{backgroundImage: `url(${imageSrc})`}}>
+    //  <div className='w-[220px] h-[220px] rounded-md bg-no-repeat bg-cover bg-center pt-[80px]' style={{backgroundImage: `url(${imageSrc})`}}>
+    <div className='w-[220px] h-[220px] md:w-[180px] md:h-[180px] xl:h-[220px] xl:w-[220px] rounded-md bg-no-repeat bg-cover bg-center pt-[80px]' style={{backgroundImage: `url(${imageSrc})`}}>
         <div className='clip-card-path2 bg-[#121F4C] text-[white]  h-full flex flex-row justify-between pl-2 pr-2 rounded-b-md'>
             <div className='flex flex-col '>
-                <p className='text-[14px] mt-[70px]'>{data.name}</p>
-                <p className='text-[11px]'>{data.title}</p>
-                <p className='text-[11px]'>{data.courseNo}</p>
+                {/* <p className='text-[14px] mt-[70px]'></p> */}
+                <p className='text-[14px] mt-[70px] xl:text-[14px] xl:mt-[70px] md:text-[10px] md:mt-[50px]'>{data.name}</p> 
+                <p className='text-[11px] xl:text-[11px] md:text-[10px]'>{data.title}</p>
+                <p className='text-[11px] xl:text-[11px] md:text-[10px]'>{data.courseNo}</p>
 
             </div>
             <div className='flex flex-col'>
-                <div className='flex flex-row mt-[90px]'>
+                <div className='flex flex-row mt-[90px] xl:mt-[90px] md:mt-[55px]'>
                     <BsStarFill size={14} color='#FFC700'/>
                     <BsStarFill size={14} color='#FFC700'/>
                     <BsStarFill size={14} color='#FFC700'/>
                     <BsStarFill size={14} color='#FFC700'/>
                     <BsStarFill size={14} color='#FFC700'/>
                 </div>
-                <p className='text-xs'>{data.studentNo} students</p>
+                <p className='text-xs xl:text-xs md:text-[10px] '>{data.studentNo} students</p>
             </div>
         </div>
 

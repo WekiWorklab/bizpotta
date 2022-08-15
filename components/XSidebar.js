@@ -21,7 +21,7 @@ export default function XSidebar({show, setShow}) {
   return (
     <>
   {/* shadow-xl */}
-      <nav className="fixed md:hidden top-0 translate-x-0 w-[350px] pt-24 px-6 bg-gray-50 rounded-r-[20px] shadow-md flex-wrap items-center justify-between h-full z-[9999] ">
+      <nav className="fixed md:hidden top-0 translate-x-0 w-[350px] pt-14 px-6 bg-gray-50 rounded-r-[20px] shadow-md flex-wrap items-center justify-between h-full z-[9999] ">
 
       <div className="absolute top-[40px] right-[20px]" onClick={() => setShow(false)}>
         <svg xmlns="http://www.w3.org/2000/svg" className="h-[20px] w-[20px]" fill="none" viewBox="0 0 20 20" stroke="#999999" strokeWidth={2}>

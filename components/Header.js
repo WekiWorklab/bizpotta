@@ -21,6 +21,8 @@ const Header = ({ show, setShow }) => {
     setShowHover(false);
   };
 
+  // window.onClick(setShowHover(false))
+
   const handleFocus = () => {
     setShowSearch(true);
     setShowHover(false);
@@ -70,7 +72,7 @@ const Header = ({ show, setShow }) => {
         <div className=' w-[55px] h-full border  rounded-r-md bg-gradient-to-r from-[#121F4C] via-[#0E4858]  to-[#0B6C64] flex justify-center items-center'>
           <FiSearch className='text-white text-2xl' />
         </div>
-        <SearchMenu showHover={showHover} showSearch={showSearch} handleMouseOver={handleMouseOver} handleMouseOut={handleMouseOut} />
+        <SearchMenu showHover={showHover} showSearch={showSearch} handleMouseOver={handleMouseOver} handleMouseOut={handleMouseOut} handleBlur={handleBlur}/>
       </div>
 
       {/* Accounts info, carts and notification icons */}

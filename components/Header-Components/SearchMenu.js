@@ -45,11 +45,11 @@ const Search = ({searchData}) => {
     </div>)
 }
 
-const Hover = ({hoverData, handleMouseOver, handleMouseOut}) => {
+const Hover = ({hoverData, handleMouseOver, handleMouseOut, handleBlur}) => {
 
     return(
         // <div className='w-full'>
-        <div className='fixed top-[82px] left-[37%] sm:left-[25%] md:left-[25%] lg:left-[29%] xl:left-[33.6%] bg-gray-50 shadow-md w-[300px] md:w-[350px]  rounded-md py-2 px-2' onMouseOver={handleMouseOver} onMouseOut = {handleMouseOut}>
+        <div className='fixed top-[82px] left-[37%] sm:left-[25%] md:left-[25%] lg:left-[29%] xl:left-[33.6%] bg-gray-50 shadow-md w-[300px] md:w-[350px]  rounded-md py-2 px-2' onMouseOver={handleMouseOver}  onMouseOut={handleMouseOut}>
            { hoverData.map((el, index) => (
                <div key={index} className='h-10 text-xs  flex flex-col justify-center rounded-md hover:bg-[#7AA6FA] pl-4'>{el}</div>     
             ))}

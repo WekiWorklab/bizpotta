@@ -30,7 +30,7 @@ const SelectCoursesModal = ({courses}) => {
   // console.log(courses)
 
   return (
-    <Dialog as='div' className='fixed z-50 left-0 bottom-0 sm:inset-0 overflow-y-auto' open={show} onClose={closeModal}>
+    <Dialog as='div' className='fixed w-screen z-50 left-0 bottom-0 sm:inset-0 overflow-y-auto ' open={show} onClose={closeModal}>
       <div className='flex items-end justify-center min-h-screen text-center sm:block sm:p-0 '>
         <Dialog.Overlay className='fixed inset-0 bg-cuddle-purple-500 backdrop-blur-sm bg-opacity-75 transition-opacity ' />
 
@@ -43,7 +43,7 @@ const SelectCoursesModal = ({courses}) => {
         {/* inline-block align-bottom bg-white rounded-tl-xl rounded-tr-xl h-max md:h-auto sm:rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle md:max-w-lg sm:max-w-sm sm:w-full border border-red-300  */}
 
         {(
-          <div className='inline-block align-bottom bg-white rounded-tl-xl rounded-tr-xl h-max md:h-auto sm:rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle  sm:w-full border border-red-300 sm:w-[350px] '>
+          <div className='w-full inline-block align-bottom bg-white rounded-tl-xl rounded-tr-xl h-max md:h-auto sm:rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle  sm:w-full sm:w-[350px] '>
             {
               (courses < 6)
                    ? 
