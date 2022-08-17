@@ -62,7 +62,7 @@ export const Data = [
     }
 ]
 
-export  const instructorData = [
+export const instructorData = [
     {
         name: "Ayokunle Peters", 
         title: "UI/UX Design",
