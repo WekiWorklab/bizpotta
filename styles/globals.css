@@ -37,14 +37,24 @@
   object-fit: cover;
 }
 
-/* .select{
-  background-color: #94f236;
-  height: 200px;
-  
-} */
-/* .select::after{
-  background-color: #94f236;
-} */
+
+.styled-scrollbar::-webkit-scrollbar{
+  background: #E5E5E5;
+  width: 8px;
+}
+
+.styled-scrollbar::-webkit-scrollbar-track{
+  background: #E5E5E5;
+  width: 8px;
+
+}
+
+.styled-scrollbar::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px 4px 4px 4px;
+}
+
+
 
 .shadow1{
   box-shadow: 10px 10px 51px -37px rgba(0,0,0,0.75);

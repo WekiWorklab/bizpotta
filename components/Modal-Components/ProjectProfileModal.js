@@ -5,8 +5,8 @@ import { showCourseModal, showProfileModal } from '../../store/courseSlice'
 
 import { Dialog, Transition } from "@headlessui/react";
 import {MdAddCircleOutline} from 'react-icons/md'
-import {AiOutlineHeart} from 'react-icons/ai'
-
+import {AiOutlineHeart, AiOutlineLink} from 'react-icons/ai'
+import {BsPerson} from 'react-icons/bs'
 // import { showCourseModal } from '../../store/courseSlice'
 
 const ProjectProfileModal = () => {
@@ -48,10 +48,13 @@ const ProjectProfileModal = () => {
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <div className="inline-block align-bottom bg-gray-50 rounded-lg pl-4 pt-1  pb-1 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle w-[800px] max-h-[400px]">
+            <div className="inline-block align-bottom bg-gray-50 rounded-lg pl-4 pt-4  pb-1 text-left overflow-y-scroll shadow-xl transform transition-all sm:my-8 sm:align-middle w-[800px] max-h-[400px]  styled-scrollbar">
                 <div className='w-full min-h-[400px] flex flex-row'>
                     <div className='flex flex-col w-[500px] '>
-                        <div className='h-6 w-[150px] bg-white text-xs flex justify-center items-center self-end rounded-[6px]'>Copy Projects Link</div>
+                        <div className='h-6 w-[150px] bg-white text-xs flex justify-evenly items-center self-end rounded-[6px]'>
+                          <AiOutlineLink size={17} />
+                          <p>Copy Projects Link</p>
+                          </div>
                         <p className='text-[14px] font-[600]'>Savy Monkey</p>
                         <div className='w-[100%] h-[180px] rounded-[6px] bg-no-repeat bg-cover bg-center shadow-xl' style={{backgroundImage: `url(${image})`}}>
 
@@ -59,11 +62,18 @@ const ProjectProfileModal = () => {
                         <p className='text-[14px] mt-6'>Description</p>
                         <p className='text-xs mt-2'>
                         Up until version 1.8.0, this package was using Moment.js. Starting v2.0.0, we switched to using date-fns, which uses native Date objects, to reduce the size of the package. If youre switching from 1.8.0 to 2.0.0 or higher, please see the updated example above of check out the examples site for up to date examples.
+                        Up until version 1.8.0, this package was using Moment.js. Starting v2.0.0, we switched to using date-fns, which uses native Date objects, to reduce the size of the package. If youre switching from 1.8.0 to 2.0.0 or higher, please see the updated example above of check out the examples site for up to date examples.
+                        Up until version 1.8.0, this package was using Moment.js. Starting v2.0.0, we switched to using date-fns, which uses native Date objects, to reduce the size of the package. If youre switching from 1.8.0 to 2.0.0 or higher, please see the updated example above of check out the examples site for up to date examples.
+                        Up until version 1.8.0, this package was using Moment.js. Starting v2.0.0, we switched to using date-fns, which uses native Date objects, to reduce the size of the package. If youre switching from 1.8.0 to 2.0.0 or higher, please see the updated example above of check out the examples site for up to date examples.
+                        Up until version 1.8.0, this package was using Moment.js. Starting v2.0.0, we switched to using date-fns, which uses native Date objects, to reduce the size of the package. If youre switching from 1.8.0 to 2.0.0 or higher, please see the updated example above of check out the examples site for up to date examples.
+                        Up until version 1.8.0, this package was using Moment.js. Starting v2.0.0, we switched to using date-fns, which uses native Date objects, to reduce the size of the package. If youre switching from 1.8.0 to 2.0.0 or higher, please see the updated example above of check out the examples site for up to date examples.
+                        Up until version 1.8.0, this package was using Moment.js. Starting v2.0.0, we switched to using date-fns, which uses native Date objects, to reduce the size of the package. If youre switching from 1.8.0 to 2.0.0 or higher, please see the updated example above of check out the examples site for up to date examples.
+                        Up until version 1.8.0, this package was using Moment.js. Starting v2.0.0, we switched to using date-fns, which uses native Date objects, to reduce the size of the package. If youre switching from 1.8.0 to 2.0.0 or higher, please see the updated example above of check out the examples site for up to date examples.
                         </p>
                     </div>
 
-                    <div className='w-[calc(100%-500px)] min-h-full border border-red-300 flex flex-col'>
-                        <div className='flex flex-row border border-red-300 items-center justify-evenly px-6'>
+                    <div className='w-[calc(100%-500px)] min-h-full  flex flex-col pt-6'>
+                        <div className='flex flex-row  items-center justify-evenly'>
                             <img src={image} alt="" className='h-[70px] w-[70px] rounded-full'  />
                             <div className='flex flex-col items-center justify-center'>
                                 <p className='text-[15px] font-[600]'>Emeka Samuel</p>
@@ -74,7 +84,7 @@ const ProjectProfileModal = () => {
                             </div>
                         </div>
 
-                        <div className='flex flex-row border border-red-300 items-center justify-between px-4 mt-4'>
+                        <div className='flex flex-row  items-center justify-between pl-6 pr-2 mt-4'>
                             <div className='flex flex-row justify-center items-center'>
                                 <AiOutlineHeart size={14}/>
                                 <p className='text-[11px] ml-1'>12 likes</p>
@@ -89,16 +99,29 @@ const ProjectProfileModal = () => {
                             </div>
                         </div>
 
-                        <div className='flex flex-col px-4 mt-4 h-[50px] '>
-                            {/* <div className='h-[1px] w-full bg-gray-400'></div> */}
-                            <p className='text-[14px] font-[600]'>Class</p>
-                            <div className='text-[11px]'>
-                                <span className='text-blue-800'>Course title:</span>
-                                <span className='ml-1'>3D illustration</span>
+                        <div className='flex flex-col pl-6 pr-2 mt-4  '>
+                            
+                            <div className='border-t-[1px] border-b-[1px] border-gray-400 pt-2 pb-2 '>
+                                <p className='text-[14px] font-[600]'>Class</p>
+                              <div className='text-[11px]'>
+                                  <span className='text-blue-800'>Course title:</span>
+                                  <span className='ml-1'>3D illustration</span>
+                              </div>
+                              <div className='text-[11px]'>
+                                  <span className='text-blue-800'>Tutor:</span>
+                                  <span className='ml-1'>Frank Vogel</span>
+                              </div>
                             </div>
-                            <div className='text-[11px]'>
-                                <span className='text-blue-800'>Tutor:</span>
-                                <span className='ml-1'>Frank Vogel</span>
+                            
+                        </div>
+
+                        <div className='flex flex-col pl-6 pr-2  pt-4'>
+                            <p className='text-[15px] font-[600]'>Comment</p>
+                            <div className='flex flex-row justify-center'>
+                              <BsPerson size={20} color="#222222"/>
+                              <textarea className='w-[200px] h-[100px] shadow-xl focus:outline-none focus:ring-0 text-[12px] styled-scrollbar'>
+
+                              </textarea>
                             </div>
                         </div>
 

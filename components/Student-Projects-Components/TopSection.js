@@ -16,7 +16,7 @@ const TopSection = () => {
    const [startDate, setStartDate] = useState(new Date());
    // eslint-disable-next-line react/display-name
    const ExampleCustomInput = forwardRef(({value, onClick }, ref) => (
-    <div className="w-[335px] h-[50px] outline-none rounded-md flex pl-6 items-center bg-white text-gray-500" onClick={onClick} ref={ref}>
+    <div className="w-[335px] h-[50px] outline-none rounded-md flex pl-6 items-center bg-gray-50 sm:bg-white text-gray-500" onClick={onClick} ref={ref}>
         {value}
     </div>
   ));
@@ -29,11 +29,11 @@ const handleChange = (value) => {
   return (
     <div className='w-full xl-w-[1000px] pt-10'>
 
-        <p>My Projects</p>    
+        <p className='text-center lg:text-justify'>My Projects</p>    
 
-        <div className='flex flex-row pt-8 justify-start'>
+        <div className='flex flex-col items-center lg:flex-row pt-8 lg:justify-start'>
 
-            <div className='mr-20'>
+            <div className='lg:mr-20 '>
                 <p className='mb-2'>Date</p>
                <DatePicker 
                 selected={startDate} 
@@ -43,7 +43,7 @@ const handleChange = (value) => {
             </div>
             
             <div>
-                <p className='mb-2'>Course title</p>
+                <p className='mb-2 mt-8 lg:mt-0'>Course title</p>
                 <div className='w-[335px] h-[50px] lg:w-[240px] lg:h-[50px] xl:w-[335px] xl:h-[50px] flex flex-row justify-evenly rounded-md items-center border-none bg-gray-50 sm:bg-white '>
                 
                 <input
