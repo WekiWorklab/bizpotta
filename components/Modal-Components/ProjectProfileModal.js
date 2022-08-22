@@ -48,9 +48,9 @@ const ProjectProfileModal = () => {
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <div className="inline-block align-bottom bg-gray-50 rounded-lg pl-4 pt-4  pb-1 text-left overflow-y-scroll shadow-xl transform transition-all sm:my-8 sm:align-middle w-[800px] max-h-[400px]  styled-scrollbar">
-                <div className='w-full min-h-[400px] flex flex-row'>
-                    <div className='flex flex-col w-[500px] '>
+            <div className="inline-block align-bottom bg-gray-50 rounded-lg sm:pl-4 pt-4  pb-1 text-left overflow-y-scroll shadow-xl transform transition-all sm:my-8 sm:align-middle w-[800px] max-h-[400px]  styled-scrollbar">
+                <div className='w-full min-h-[400px] flex flex-col items-center md:flex-row md:items-start'>
+                    <div className='flex flex-col w-[350px] md:w-[500px] '>
                         <div className='h-6 w-[150px] bg-white text-xs flex justify-evenly items-center self-end rounded-[6px]'>
                           <AiOutlineLink size={17} />
                           <p>Copy Projects Link</p>
@@ -72,7 +72,7 @@ const ProjectProfileModal = () => {
                         </p>
                     </div>
 
-                    <div className='w-[calc(100%-500px)] min-h-full  flex flex-col pt-6'>
+                    <div className='md:w-[calc(100%-500px)] min-h-full  flex flex-col pt-6'>
                         <div className='flex flex-row  items-center justify-evenly'>
                             <img src={image} alt="" className='h-[70px] w-[70px] rounded-full'  />
                             <div className='flex flex-col items-center justify-center'>
