@@ -1,23 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { logo } from "../../public";
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+//
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
+import { BiHide, BiShow } from "react-icons/bi";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { FcGoogle, FcInfo } from "react-icons/fc";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
+//
+import { logo } from "../../public";
 import FormInput from "../../components/Auth-Components/Input";
 import Button from "../../components/Auth-Components/Button";
-
-import { BiHide, BiShow } from "react-icons/bi";
-import { FcGoogle, FcInfo } from "react-icons/fc";
-
-import Link from "next/link";
-
-// //////////////Comment
+import { login, reset } from "../../store/authSlice";
 
 export default function Login() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [passwordType, setPasswordType] = useState("password");
+  const dispatch = useDispatch();
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -25,6 +27,20 @@ export default function Login() {
     const newData = { [name]: value };
     setLoginData((prevState) => ({ ...prevState, ...newData }));
   };
+  const { isAuthenticated, isLoading, user, isError, isSuccess, message } = useSelector((state) => state.auth);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+
+    if (isSuccess || user) {
+      router.push("/students");
+    }
+
+    dispatch(reset());
+  }, [isError, isSuccess, message, dispatch, router, user]);
 
   const handlePassword = () => {
     setPasswordType((prevState) => (prevState === "password" ? "text" : "password"));
@@ -36,13 +52,11 @@ export default function Login() {
   });
 
   const formOptions = { resolver: yupResolver(validationSchema) };
-  const { register, handleSubmit, formState, setValue } = useForm(formOptions);
+  const { register, handleSubmit, formState } = useForm(formOptions);
   const { errors } = formState;
 
-  const submitForm = () => {
-    event.preventDefault();
-    console.log(loginData);
-    console.log(errors);
+  const submitForm = (data) => {
+    dispatch(login(data));
   };
 
   return (
@@ -50,7 +64,7 @@ export default function Login() {
       <div className='w-[130px] h-[65px] mb-2 '>
         <img src={logo.src} alt='' className='w-full h-full object-contain' />
       </div>
-      <form onSubmit={submitForm}>
+      <form onSubmit={handleSubmit(submitForm)}>
         <div className=' w-[360px] py-[30px] sm:py-[40px] bg-[#FAFAFA] sm:bg-white flex flex-col justify-center items-center '>
           <div className=' w-[330px]'>
             <h3 className='text-[18px] text-[#282828]  '>Sign into your account</h3>

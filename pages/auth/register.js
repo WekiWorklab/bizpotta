@@ -9,10 +9,10 @@ import FormInput from "../../components/Auth-Components/Input";
 import Button from "../../components/Auth-Components/Button";
 import { BiHide, BiShow } from "react-icons/bi";
 import { FcGoogle, FcInfo } from "react-icons/fc";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { registerUser, reset } from "../../store/authSlice";
-import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 export default function Register() {
   const [registerData, setRegisterData] = useState({ firstName: "", lastName: "", email: "", password: "" });
@@ -47,7 +47,7 @@ export default function Register() {
     }
 
     if (isSuccess || isAuthenticated) {
-      router.push("/learn");
+      router.push("/students");
     }
 
     dispatch(reset());

@@ -19,13 +19,12 @@ const register = async (userData) => {
       secure: process.env.NODE_ENV === "production",
     });
   }
-
   return response.data;
 };
 
 // Login user
 const login = async (userData) => {
-  const response = await axios.post(API_URL + "login", userData);
+  const response = await axios.post(API_URL + "/api/login", userData);
   if (response.data) {
     if (typeof window !== "undefined") {
       localStorage.setItem("user", JSON.stringify(response.data));
