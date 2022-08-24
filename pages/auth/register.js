@@ -46,12 +46,12 @@ export default function Register() {
       toast.error(message);
     }
 
-    if (isSuccess || user) {
+    if (isSuccess || isAuthenticated) {
       router.push("/students");
     }
 
     dispatch(reset());
-  }, [isAuthenticated, isError, isSuccess, message, dispatch, router, user]);
+  }, [isAuthenticated, isError, isSuccess, message, dispatch, router]);
 
   const submitForm = (data) => {
     dispatch(registerUser(data));

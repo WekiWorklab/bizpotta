@@ -27,18 +27,18 @@ export default function Login() {
     const newData = { [name]: value };
     setLoginData((prevState) => ({ ...prevState, ...newData }));
   };
-  const { isAuthenticated, isLoading, user, isError, isSuccess, message } = useSelector((state) => state.auth);
+  const { isAuthenticated, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth);
   const router = useRouter();
 
   useEffect(() => {
     if (isError) {
       toast.error(message);
     }
-    if (isSuccess || user) {
+    if (isSuccess || isAuthenticated) {
       router.push("/students");
     }
     dispatch(reset());
-  }, [isError, isSuccess, message, dispatch, router, user]);
+  }, [isError, isSuccess, message, dispatch, router, isAuthenticated]);
 
   const handlePassword = () => {
     setPasswordType((prevState) => (prevState === "password" ? "text" : "password"));
