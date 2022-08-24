@@ -1,33 +1,23 @@
 import React, { useEffect } from 'react'
-// import Modal from 'react-modal'
-import { useSelector, useDispatch } from 'react-redux'
-import { showCourseModal } from '../../store/courseSlice'
 
+//////////
+import { useSelector, useDispatch } from 'react-redux'
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/outline";
 
+/////////
 import Button from '../Auth-Components/Button'
-
-// import { showCourseModal } from '../../store/courseSlice'
+import { showCourseModal } from '../../store/courseSlice'
 
 const SelectCoursesModal = ({courses}) => {
   const dispatch = useDispatch()
   const show = useSelector(state => state.course.show_course_modal)
   const total = useSelector(state => state.course.total_courses)
 
-  // useEffect(() => {
-  //   console.log(total)
-  // })
-  
+
   const closeModal = () => {
     dispatch(showCourseModal(false))
   } 
-
-  // if (courses > 6) {
-  //   console.log('greater than 6')
-  // }
-
-  // console.log(courses)
 
   return (
     <Dialog as='div' className='fixed w-screen z-50 left-0 bottom-0 sm:inset-0 overflow-y-auto ' open={show} onClose={closeModal}>

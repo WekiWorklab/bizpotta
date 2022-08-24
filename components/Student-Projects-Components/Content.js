@@ -1,4 +1,6 @@
 import React from 'react'
+
+/////////////
 import MiddleSection from './MiddleSection'
 import NoProjects from './NoProjects'
 import TopSection from './TopSection'

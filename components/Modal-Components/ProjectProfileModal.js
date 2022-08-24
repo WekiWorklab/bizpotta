@@ -1,13 +1,15 @@
 import React, { Fragment, useEffect } from 'react'
-// import Modal from 'react-modal'
-import { useSelector, useDispatch } from 'react-redux'
-import { showCourseModal, showProfileModal } from '../../store/courseSlice'
 
+//////////
+import { useSelector, useDispatch } from 'react-redux'
 import { Dialog, Transition } from "@headlessui/react";
 import {MdAddCircleOutline} from 'react-icons/md'
 import {AiOutlineHeart, AiOutlineLink} from 'react-icons/ai'
 import {BsPerson} from 'react-icons/bs'
-// import { showCourseModal } from '../../store/courseSlice'
+
+//////////
+import { showCourseModal, showProfileModal } from '../../store/courseSlice'
+
 
 const ProjectProfileModal = () => {
   const dispatch = useDispatch()

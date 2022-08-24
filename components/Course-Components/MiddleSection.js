@@ -6,7 +6,7 @@ import ScheduleCard from './ScheduleCard'
 
 const MiddleSection = () => {
   return (
-    <div className='redBorder w-full pt-4 pr-24 text-[darkBlue]'>
+    <div className='redBorder hidden  md:block w-full pt-4 pr-24 text-[darkBlue]'>
         <div className='flex flex-row'>
             <div className='flex flex-col items-center'>
                 <div className='w-8 h-8 rounded-full bg-darkBlue'></div>
@@ -34,6 +34,9 @@ const MiddleSection = () => {
         </div>
 
         <div className='mt-10'>
+            <ScheduleCard />
+            <ScheduleCard />
+            <ScheduleCard />
             <ScheduleCard />
         </div>
         
