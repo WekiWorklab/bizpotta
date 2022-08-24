@@ -34,11 +34,9 @@ export default function Login() {
     if (isError) {
       toast.error(message);
     }
-
     if (isSuccess || user) {
       router.push("/students");
     }
-
     dispatch(reset());
   }, [isError, isSuccess, message, dispatch, router, user]);
 

@@ -3,10 +3,10 @@ import authService from "../services/authService";
 
 // get user and token for localstorage and cookie
 const token = authService.getToken();
-const user = authService.getUser();
+const user = authService.getUser() || authService.getUserFromServer();
 
 const initialState = {
-  user: user ? user : null,
+  user: user == null || user == "undefined" ? null : user,
   isAuthenticated: token ? true : false,
   isError: false,
   isSuccess: false,

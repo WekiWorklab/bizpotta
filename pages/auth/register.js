@@ -13,14 +13,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { registerUser, reset } from "../../store/authSlice";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import { useIsAuthStudent } from "../../components/Auth-Components/AuthState";
 
 export default function Register() {
   const [registerData, setRegisterData] = useState({ firstName: "", lastName: "", email: "", password: "" });
   const [passwordType, setPasswordType] = useState("password");
-
   const dispatch = useDispatch();
   const router = useRouter();
-  const { isAuthenticated, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth);
+  const { isAuthenticated, isLoading, isError, isSuccess, message, user } = useSelector((state) => state.auth);
 
   const handlePassword = () => {
     setPasswordType((prevState) => (prevState === "password" ? "text" : "password"));
@@ -46,12 +46,12 @@ export default function Register() {
       toast.error(message);
     }
 
-    if (isSuccess || isAuthenticated) {
+    if (isSuccess || user) {
       router.push("/students");
     }
 
     dispatch(reset());
-  }, [isAuthenticated, isError, isSuccess, message, dispatch, router]);
+  }, [isAuthenticated, isError, isSuccess, message, dispatch, router, user]);
 
   const submitForm = (data) => {
     dispatch(registerUser(data));
