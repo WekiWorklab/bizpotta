@@ -107,7 +107,7 @@ export default function Login() {
           <p className='text-xs text-[#999999] mt-4 ml-[55%]'>Forgot password</p>
 
           <button type='submit' className='mt-6 '>
-            <Button name='Sign In' />
+            <Button name='Sign In' type={"submit"} loading={isLoading} />
           </button>
           <p className='text-[12px] text-[#999999] mt-[10px]'>
             Don&apos;t have an account?{" "}
