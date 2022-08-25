@@ -9,7 +9,7 @@ import NoContent from '../../components/Content-Components/NoContent'
 const index = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
 
-  const content = false
+  const content = true
 
   return (
     <Layout>

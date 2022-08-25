@@ -5,7 +5,7 @@ const Button = ({ name, loading, type }) => {
     <button
       type={type}
       disabled={loading}
-      className='w-[330px] h-[45px] flex justify-center items-center bg-darkBlue text-white text-sm rounded-md hover:bg-white hover:text-darkBlue hover:text-sm hover:border-[1px] hover:font-bold hover:border-darkBlue'
+      className='w-[330px] h-[45px] flex justify-center items-center bg-darkBlue text-white text-sm rounded-md hover:bg-white hover:text-darkBlue hover:text-sm hover:border-[1px] hover:font-bold hover:border-darkBlue mr-2'
     >
       {name}
       {loading ? <Spinner /> : null}

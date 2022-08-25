@@ -1,4 +1,5 @@
 import React from 'react'
+// import {ReactComponent as NoteSvg} from '../../public/vectors/clarity_note-line.svg'
 
 //////
 import {FaRegStickyNote} from 'react-icons/fa' 
@@ -14,6 +15,7 @@ const Notes = () => {
         />
 
         <FaRegStickyNote size={36} color = '#121F4C' className='mt-32 mx-auto'/>
+        {/* <NoteSvg  /> */}
     </div>
     
   )

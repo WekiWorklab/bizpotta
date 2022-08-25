@@ -18,8 +18,6 @@ import { useDispatch, useSelector } from "react-redux";
   // const color = useSelector(state => state.course.color)
 
   const router = useRouter();
-
-  
   const path = router.asPath
 
   return (
