@@ -7,6 +7,7 @@ const courseSlice = createSlice({
     total_courses: [],
     show_course_modal: false,
     show_profile_modal: false,
+    // color: ''
   },
 
   reducers: {
@@ -25,6 +26,9 @@ const courseSlice = createSlice({
     addCategory: (state, action) => {
       state.courseCategory = action.payload;
     },
+    // changeColor: (state, action) => {
+    //   state.color = action.payload
+    // },
     reset: (state) => {
       state.courseCategory = null;
       state.total_courses = [];

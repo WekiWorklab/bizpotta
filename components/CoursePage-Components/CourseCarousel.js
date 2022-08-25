@@ -6,8 +6,11 @@ import 'swiper/css/pagination';
 
 import { useSwiper } from 'swiper/react';
 import CourseCard from './CourseCard';
+import { Router, useRouter } from 'next/router';
 
 const CourseCarousel = ({data, screen}) => {
+
+  const router = useRouter()
 
   const slidesPerView = () => {
     if (screen === 'big'){
@@ -43,6 +46,10 @@ const CourseCarousel = ({data, screen}) => {
     }
   }
 
+  const handleClick = () => {
+   router.push("/students/courses/course")
+  }
+
   return (
         <Swiper
         slidesPerView={slidesPerView()}
@@ -51,12 +58,10 @@ const CourseCarousel = ({data, screen}) => {
         clickable: true,
         }}
         modules={[Pagination]}
-        // style={{ backgroundColor: "#F9FAFB", marginLeft: "-10px"}, {(screen === "mobile") ? {backgroundColor: "white"} : {backgroundColor: "#F9FAFB"}}}
         style={screen === "mobile" ? {backgroundColor: "white", marginLeft: "-10px"} : {backgroundColor: "#F9FAFB", marginLeft: "-10px"} }
         >
-          {/* style={{width:"325px", backgroundColor: "#F9FAFB",paddingLeft: "-16px"}} */}
             {data.map((el, index) => (
-                <SwiperSlide key={index} style={screen==="mobile" ? {width:"325px", backgroundColor: "white",paddingLeft: "-16px"} : {width:"325px", backgroundColor: "#F9FAFB",paddingLeft: "-16px"}}> 
+                <SwiperSlide key={index} style={screen==="mobile" ? {width:"325px", backgroundColor: "white",paddingLeft: "-16px", cursor: "pointer"} : {width:"325px", backgroundColor: "#F9FAFB",paddingLeft: "-16px", cursor: "pointer"}} onClick = {() => handleClick()}> 
                     <CourseCard data = {el} length={data.length}/>
                 </SwiperSlide>
                 )

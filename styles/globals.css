@@ -64,6 +64,7 @@
   position: absolute;
   top: 36px;
   transform: translateX(30%);
+  /* left: 30%; */
   border-radius: 4px;
   z-index: 100;
   overflow-y: hidden;
@@ -79,8 +80,9 @@
   position: absolute;
   /* opacity: 0; */
   top: 36px;
-  transform: translateX(30%);
+  transform: translateX(0%);
   border-radius: 4px;
+  /* left: 30%; */
   
   height: 0px;
   z-index: 100;
@@ -110,7 +112,29 @@
   /* transition: translate ; */
   transform: translateY(-110%);
   transition: all 500ms ease-out;
+}
 
+.Group{
+  /* background-color: red; */
+}
+.Group:nth-child(4){
+    /* border: 1px solid blue; */
+  }
+@media(max-width: 640px) and (min-width: 0px){
+
+  .dropdown{
+    /* background-color: red; */
+  transform: translateX(-2%);
+  /* left: 0%; */
+  transition: transform 500ms ease-in;
+
+  }
+
+  /* .no-dropdown{
+    transform: translateX(0%);
+  transition: l 500ms ease-in;
+  } */
+  
 
 }
 

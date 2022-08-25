@@ -14,7 +14,16 @@ import {VscChevronRight} from 'react-icons/vsc'
 
 export default function XSidebar({show, setShow}) {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
+
   const router = useRouter();
+  
+  const path = router.asPath
+
+  const handleClick = (path) => {
+    setShow(false)
+    router.push(path)
+    
+  }
 
   
 
@@ -37,7 +46,7 @@ export default function XSidebar({show, setShow}) {
           >
 
             <ul className="md:flex-col md:min-w-full flex flex-col list-none mb-8 mt-5 ">
-              <li className="flex items-center h-[45px] mb-2">
+              <li className="flex items-center cursor-pointer h-[45px] mb-2" onClick={() => handleClick('/students')}>
                 <div  className="flex flex-row justify-start items-center">
                   <MdOutlineDashboard color="#121F4C"/>
                   <div className="text-sm text-darkBlue font-semibold w-[230px] ml-5">
@@ -50,7 +59,7 @@ export default function XSidebar({show, setShow}) {
 
               {/* "#E5E5E5" */}
               {/* text-[#999999] */}
-              <li className="items-center  mb-2">
+              <li className="items-center cursor-pointer mb-2" onClick={() => handleClick('/students/courses')}>
                 <div  className="flex items-center h-[45px]">
                   <HiOutlineBookOpen color="gray"/>
                   <div className="text-sm text-gray-600 w-[230px] font-light ml-5">
@@ -62,7 +71,7 @@ export default function XSidebar({show, setShow}) {
                 </div>
               </li>
 
-              <li className="items-center  mb-2">
+              <li className="items-center cursor-pointer mb-2">
                 <div  className="flex items-center h-[45px]">
                   <MdOutlineSchool color="gray"/>
                   <div className="text-sm text-gray-600 w-[230px] font-light ml-5">
@@ -80,7 +89,7 @@ export default function XSidebar({show, setShow}) {
             <hr className="my-4 md:min-w-full border" />
             {/* Heading */}
             <ul className="md:flex-col md:min-w-full flex flex-col list-none mb-8 mt-5"> 
-            <li className="items-center  mb-2">
+            <li className="items-center cursor-pointer mb-2">
                 <div  className="flex items-center h-[45px]">
                   <AiOutlineProject color="gray"/>
                   <div className="text-sm text-gray-600 w-[230px] font-light ml-5">
@@ -92,7 +101,7 @@ export default function XSidebar({show, setShow}) {
                 </div>
               </li>
 
-              <li className="items-center  mb-2">
+              <li className="items-center cursor-pointer mb-2">
                 <div  className="flex items-center h-[45px]">
                   <AiOutlineProject color="gray"/>
                   <div className="text-sm text-gray-600 w-[230px] font-light ml-5">
@@ -104,7 +113,7 @@ export default function XSidebar({show, setShow}) {
                 </div>
               </li>
 
-              <li className="items-center  mb-2">
+              <li className="items-center cursor-pointer mb-2">
                 <div  className="flex items-center h-[45px]">
                   <AiOutlineSave color="gray"/>
                   <div className="text-sm text-gray-600 w-[230px] font-light ml-5">
@@ -121,7 +130,7 @@ export default function XSidebar({show, setShow}) {
             {/* Divider */}
             <hr className="my-4 md:min-w-full border" />
             <ul className="md:flex-col md:min-w-full flex flex-col list-none mb-10 mt-5 ">
-              <li className="items-center  mb-2">
+              <li className="items-center cursor-pointer mb-2">
                   <div  className="flex items-center h-[45px]">
                     <CgProfile color="gray"/>
                     <div className="text-sm text-gray-600 w-[230px] font-light ml-5">
@@ -133,7 +142,7 @@ export default function XSidebar({show, setShow}) {
                   </div>
                 </li>
 
-                <li className="items-center  mb-2">
+                <li className="items-center cursor-pointer mb-2">
                 <div  className="flex items-center h-[45px]">
                   <IoSettingsOutline color="gray"/>
                   <div className="text-sm text-gray-600 w-[230px] font-light ml-5">
@@ -145,7 +154,7 @@ export default function XSidebar({show, setShow}) {
                 </div>
               </li>
 
-              <li className="items-center  mb-2">
+              <li className="items-center cursor-pointer mb-2">
                 <div  className="flex items-center h-[45px]">
                   <IoLogOutOutline color="gray"/>
                   <div className="text-sm text-gray-600 w-[230px] font-light ml-5">
