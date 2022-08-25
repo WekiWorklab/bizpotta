@@ -63,7 +63,7 @@ export default function Register() {
         <img src={logo.src} alt='' className='w-full h-full object-contain' />
       </div>
       <form onSubmit={handleSubmit(submitForm)}>
-        <div className=' w-[360px] py-[30px] sm:py-[40px] bg-[#FAFAFA] sm:bg-[#FAFAFA] flex flex-col justify-center items-center '>
+        <div className=' w-[360px] py-[20px] sm:py-[20px] bg-[#FAFAFA] sm:bg-[#FAFAFA] flex flex-col justify-center items-center '>
           <div className=' w-[330px]'>
             <h3 className='text-[18px] text-[#282828]'>Sign up to get started</h3>
             <p className='text-[12px] text-[#999999]'>Take the first step in making your dream a reality</p>
