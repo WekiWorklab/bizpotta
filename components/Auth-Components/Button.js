@@ -5,7 +5,7 @@ const Button = ({ name, loading, type }) => {
     <button
       type={type}
       disabled={loading}
-      className='w-[330px] h-[45px] flex justify-center items-center bg-darkBlue text-white text-sm rounded-md hover:bg-white hover:text-darkBlue hover:text-sm hover:border-[1px] hover:font-bold hover:border-darkBlue mr-2'
+      className='w-[330px] h-[45px] flex justify-center items-center bg-darkBlue text-white text-sm rounded-md hover:bg-white hover:text-darkBlue hover:text-sm hover:border-[1px] hover:font-bold hover:border-darkBlue '
     >
       {name}
       {loading ? <Spinner /> : null}
@@ -19,7 +19,7 @@ const Spinner = () => {
   return (
     <svg
       role='status'
-      className='inline mr-3 w-4 h-4 text-bizpotta-purple animate-spin'
+      className='inline mr-3 ml-4 w-4 h-4 text-bizpotta-purple animate-spin'
       viewBox='0 0 100 101'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
