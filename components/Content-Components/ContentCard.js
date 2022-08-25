@@ -27,7 +27,7 @@ const ContentCard = ({data, bottom}) => {
                 <p className='text-[11px]'>{data.category}</p>
             </div>
             <div className='flex flex-col'>
-                <div className='text-[13px] mt-[35px] h-[30px] rounded-[5px] flex justify-center items-center bg-[#94F236] text-[13px]'>Enroll</div>
+                <div className='text-[13px] mt-[35px] h-[30px] rounded-[5px] flex justify-center items-center bg-[#94F236] text-[13px] text-darkBlue'>Enroll</div>
                 <div className={bottom === true ? bottomStar : topStar}>
                     <BsStarFill size={14} color='#FFC700'/>
                     <BsStarFill size={14} color='#FFC700'/>
