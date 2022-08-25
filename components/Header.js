@@ -10,12 +10,16 @@ import { IoMenuOutline } from "react-icons/io5";
 import { MdOutlineCancel } from "react-icons/md";
 import SearchMenu from "./Header-Components/SearchMenu";
 import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 const Header = ({ show, setShow }) => {
   const { user } = useSelector((state) => state.auth);
   const [showHover, setShowHover] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   console.log(user);
+
+  const router = useRouter()
+
   const handleBlur = () => {
     setShowSearch(false);
     setShowHover(false);
@@ -51,7 +55,7 @@ const Header = ({ show, setShow }) => {
     <div className='fixed w-full z-20 h-[90px] md:h-[120px] bg-white flex flex-row justify-between items-center px-4 lg:px-8 '>
       {/* Logo */}
       <div className='flex flex-row justify-start items-center '>
-        <div className='h-8 w-[120px] sm:w-[200px] sm:h-10 flex flex-row justify-center items-center'>
+        <div className='h-8 w-[120px] sm:w-[200px] sm:h-10 flex flex-row justify-center items-center cursor-pointer' onClick={() => router.push('/')}>
           <img src={logo.src} alt='' className='object-cover' />
         </div>
 
