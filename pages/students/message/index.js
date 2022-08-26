@@ -1,13 +1,11 @@
 import React from 'react'
 import Layout from '../../../components/Layout-Components/Layout'
-import Content from '../../../components/Notes-Components/Content'
+import Content from '../../../components/Message-Component/Content'
 
 const index = () => {
-
-
   return (
     <Layout>
-        <Content/>
+        <Content />
     </Layout>
   )
 }

@@ -4,11 +4,13 @@ import NextNProgress from "nextjs-progressbar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
 function MyApp({ Component, pageProps }) {
+  
   return (
     <>
       <NextNProgress color='#121f4c' />
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
       <ToastContainer />
     </>
   );
