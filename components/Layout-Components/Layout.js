@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import BlueFooter from '../BlueFooter'
 
 
 //////
@@ -14,6 +15,7 @@ const Layout = ({children}) => {
     <div className='relative'>
         <Header show = {show} setShow = {setShow}/>
         {children}
+        <BlueFooter />
         <Sidebar />
         {show ? <XSidebar  show = {show} setShow = {setShow} /> : null} {/** Sidebar with toggle functionality */}
     </div>
