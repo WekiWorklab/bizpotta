@@ -12,7 +12,7 @@ import SearchMenu from "./Header-Components/SearchMenu";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
-const Header = ({ show, setShow }) => {
+const Header = ({ show, setShow, setSlideIn }) => {
   const { user } = useSelector((state) => state.auth);
   const [showHover, setShowHover] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
@@ -107,7 +107,7 @@ const Header = ({ show, setShow }) => {
 
             <IoNotificationsOutline size={20} className='text-darkBlue ' />
 
-            <IoMenuOutline size={20} color='#121F4C' className='md:ml-[10px] hover:cursor-pointer md:hidden' onClick={() => setShow(true)} />
+            <IoMenuOutline size={20} color='#121F4C' className='md:ml-[10px] hover:cursor-pointer md:hidden' onClick={() => {setShow(true); setSlideIn(true)}} />
           </div>
         ) : null
         // <MdOutlineCancel size={22} color = '#121F4C' className='md:ml-[10px] hover:cursor-pointer md:hidden' onClick={() => setShow(false)} />

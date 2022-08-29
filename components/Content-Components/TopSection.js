@@ -12,7 +12,7 @@ const TopSection = () => {
     <div className=' pl-0 lg:pl-5 lg:pt-5 flex flex-col xl:flex-row w-full '>
         {/* Start of left section */}
             <div className=' w-full m-auto md:w-[650px] lg:w-[850px] '>
-                <div className='bg-white pl-4 pr-2 flex flex-col items-center '>
+                <div className='bg-white px-2 md:pl-4 pr-2 flex flex-col items-center '>
                     <h1 className='text-sm font-semibold mt-8 mb-8 w-full '>Programs</h1>
 
                     <div className='hidden items-center md:flex  flex-row flex-wrap w-full md:w-[90%] lg:w-[70%] xl:w-full justify-between pl-0 '>
@@ -31,7 +31,7 @@ const TopSection = () => {
                         <div className='w-[260px] bg-[#2ABB1A] h-[125px] rounded-lg flex items-center text-sm pl-5 mb-10'>MASTER CLASS</div>
                     </div>
 
-                    <div className='w-[360px] ml-[-10px] md:hidden '>
+                    <div className='w-[360px] ml-[-10px] md:hidden'>
                        <ProgramCarousel/>  
                     </div>
 

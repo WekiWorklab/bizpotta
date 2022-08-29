@@ -92,13 +92,14 @@ export default function BlueFooter() {
   };
 
   return (
-    <footer className='bg-darkBlue text-white md:translate-x-[200px] md:w-[calc(100%-200px)]' aria-labelledby='footerHeading'>
+    <footer className='bg-darkBlue text-white w-full md:translate-x-[200px] md:w-[calc(100%-200px)]' aria-labelledby='footerHeading'>
       <h2 id='footerHeading' className='sr-only'>
         Footer
       </h2>
-      <div className='max-w-md mx-auto pt-12 px-4 sm:max-w-7xl sm:px-6 lg:pt-16 lg:px-8'>
-        <div className='w-full flex flex-col items-center justify-center md:flex-row flex-wrap md:justify-between gap-6 md:gap-0'>
-          <div>
+      <div className='max-w-md mx-auto pt-12 lg:pt-16 lg:px-8'>
+        {/* <div className='w-full flex flex-col items-center justify-center md:flex-row flex-wrap md:justify-between gap-6 md:gap-0'> */}
+        <div className='w-full grid grid-cols-2 items-center justify-center md:flex-row flex-wrap md:justify-between gap-6 md:gap-0'>
+          <div className="redBorder">
             <h3 className='text-center text-sm font-semibold text-white tracking-wider uppercase'>Solutions</h3>
             <ul className='mt-4 space-y-4 text-center '>
               {footerNavigation.solutions.map((item) => (
@@ -110,7 +111,7 @@ export default function BlueFooter() {
               ))}
             </ul>
           </div>
-          <div>
+          <div className="text-center">
             <h3 className='text-sm font-semibold text-white tracking-wider uppercase'>Solutions</h3>
             <ul className='mt-4 space-y-4 text-center'>
               {footerNavigation.solutions.map((item) => (
@@ -122,7 +123,7 @@ export default function BlueFooter() {
               ))}
             </ul>
           </div>
-          <div>
+          <div className="text-center">
             <h3 className='text-sm font-semibold text-white tracking-wider uppercase'>Solutions</h3>
             <ul className='mt-4 space-y-4 text-center'>
               {footerNavigation.solutions.map((item) => (
@@ -134,7 +135,7 @@ export default function BlueFooter() {
               ))}
             </ul>
           </div>
-          <div>
+          <div className="text-center">
             <h3 className='text-sm font-semibold text-white tracking-wider uppercase'>Solutions</h3>
             <ul className='mt-4 space-y-4 text-center'>
               {footerNavigation.solutions.map((item) => (
@@ -146,7 +147,7 @@ export default function BlueFooter() {
               ))}
             </ul>
           </div>
-          <div>
+          <div className="text-center">
             <h3 className='text-sm font-semibold text-white tracking-wider uppercase'>Solutions</h3>
             <ul className='mt-4 space-y-4 text-center'>
               {footerNavigation.solutions.map((item) => (

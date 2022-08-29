@@ -12,7 +12,7 @@ import {VscChevronRight} from 'react-icons/vsc'
 
 
 
-export default function XSidebar({show, setShow}) {
+export default function XSidebar({show, setShow, slideIn, setSlideIn}) {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
 
   const router = useRouter();
@@ -30,9 +30,9 @@ export default function XSidebar({show, setShow}) {
   return (
     <>
   {/* shadow-xl */}
-      <nav className="fixed md:hidden top-0 translate-x-0 w-[350px] pt-14 px-6 bg-gray-50 rounded-r-[20px] shadow-md flex-wrap items-center justify-between h-full z-[9999] ">
+      <nav className={`${slideIn ? "SideBar" : "NoSideBar"}  fixed md:hidden top-0  w-[350px] pt-14 px-6 bg-gray-50 rounded-r-[20px] shadow-md flex-wrap items-center justify-between h-full z-[9999]`}>
 
-      <div className="absolute top-[40px] right-[20px]" onClick={() => setShow(false)}>
+      <div className="absolute top-[40px] right-[20px] cursor-pointer" onClick={() => {setShow(false); setSlideIn(false)}}>
         <svg xmlns="http://www.w3.org/2000/svg" className="h-[20px] w-[20px]" fill="none" viewBox="0 0 20 20" stroke="#999999" strokeWidth={2}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
       </svg>
@@ -48,8 +48,8 @@ export default function XSidebar({show, setShow}) {
             <ul className="md:flex-col md:min-w-full flex flex-col list-none mb-8 mt-5 ">
               <li className="flex items-center cursor-pointer h-[45px] mb-2" onClick={() => handleClick('/students')}>
                 <div  className="flex flex-row justify-start items-center">
-                  <MdOutlineDashboard color="#121F4C"/>
-                  <div className="text-sm text-darkBlue font-semibold w-[230px] ml-5">
+                  <MdOutlineDashboard color={(path === "/students") ? "#121F4C" : "gray"}/>
+                  <div className={`${(path === "/students" ? "text-darkBlue font-semibold" : "text-gray-400 font-light")}text-sm  w-[230px] ml-5`}>
                     Dashboard
                   </div>
                   <VscChevronRight color="#999999" />
@@ -61,8 +61,8 @@ export default function XSidebar({show, setShow}) {
               {/* text-[#999999] */}
               <li className="items-center cursor-pointer mb-2" onClick={() => handleClick('/students/courses')}>
                 <div  className="flex items-center h-[45px]">
-                  <HiOutlineBookOpen color="gray"/>
-                  <div className="text-sm text-gray-600 w-[230px] font-light ml-5">
+                  <HiOutlineBookOpen color={(path === "/students/courses") ? "#121F4C" : "gray"}/>
+                  <div className={`${(path === "/students/courses" ? "text-darkBlue font-semibold" : "text-gray-400 font-light")}text-sm  w-[230px] ml-5`}>
                     Courses
                   </div>
                   <VscChevronRight color="#999999" />
@@ -89,10 +89,10 @@ export default function XSidebar({show, setShow}) {
             <hr className="my-4 md:min-w-full border" />
             {/* Heading */}
             <ul className="md:flex-col md:min-w-full flex flex-col list-none mb-8 mt-5"> 
-            <li className="items-center cursor-pointer mb-2">
+            <li className="items-center cursor-pointer mb-2" onClick={() => router.push('/students/all-projects')}>
                 <div  className="flex items-center h-[45px]">
-                  <AiOutlineProject color="gray"/>
-                  <div className="text-sm text-gray-600 w-[230px] font-light ml-5">
+                  <AiOutlineProject color={(path === '/students/all-projects') ? "#121F4C" : "gray"}/>
+                  <div className={`${(path === "/students/all-projects" ? "text-darkBlue font-semibold" : "text-gray-400 font-light")}text-sm  w-[230px] ml-5`}>
                     Project
                   </div>
                   <VscChevronRight color="#999999" />
@@ -101,10 +101,10 @@ export default function XSidebar({show, setShow}) {
                 </div>
               </li>
 
-              <li className="items-center cursor-pointer mb-2">
+              <li className="items-center cursor-pointer mb-2" onClick={() => router.push('/students/student')}>
                 <div  className="flex items-center h-[45px]">
-                  <AiOutlineProject color="gray"/>
-                  <div className="text-sm text-gray-600 w-[230px] font-light ml-5">
+                  <AiOutlineProject color={(path === '/students/student') ? "#121F4C" : "gray"}/>
+                  <div className={`${(path === "/students/student" ? "text-darkBlue font-semibold" : "text-gray-400 font-light")} text-sm w-[230px] ml-5`}>
                     My Projects
                   </div>
                   <VscChevronRight color="#999999" />
@@ -113,11 +113,11 @@ export default function XSidebar({show, setShow}) {
                 </div>
               </li>
 
-              <li className="items-center cursor-pointer mb-2">
+              <li className="items-center cursor-pointer mb-2" onClick={() => router.push('/students/student/projects')}>
                 <div  className="flex items-center h-[45px]">
-                  <AiOutlineSave color="gray"/>
-                  <div className="text-sm text-gray-600 w-[230px] font-light ml-5">
-                    Saved Projects
+                  <AiOutlineSave color={(path === '/students/student/projects') ? "#121F4C" : "gray"}/>
+                  <div className={`${(path === "/students/student/projects" ? "text-darkBlue font-semibold" : "text-gray-400 font-light")} text-sm w-[230px] ml-5`}>
+                    Browse
                   </div>
                   <VscChevronRight color="#999999" />
 
