@@ -302,10 +302,10 @@ export default function Home() {
 
             {/* Library Section */}
             <div className='relative bg-gray-50 pt-16  pb-8'>
-              <h1 className='md:pl-28 text-center md:text-start text-lg font-light tracking-wider text-bizpotta-purple'>
-                <span className='font-medium text-2xl'>Explore our course library</span>
+              <h1 className='lg:w-[1000px] mx-auto  text-center md:text-start text-lg font-light tracking-wider text-bizpotta-purple'>
+                <span className='font-medium text-2xl '>Explore our course library</span>
               </h1>
-              <p className='md:pl-28 text-center md:text-start flex flex-col text-base font-light tracking-wider text-bizpotta-gray-800'>
+              <p className='text-center md:text-start flex flex-col text-base font-light tracking-wider text-bizpotta-gray-800 lg:w-[1000px] mx-auto text-start '>
                 <span className='text-bizpotta-gray-800'>Choose category that are of interest to you</span>
               </p>
               {/* list of radio in boxes */}

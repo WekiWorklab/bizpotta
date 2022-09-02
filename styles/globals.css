@@ -168,6 +168,15 @@
 /********/
 
 
+/*******/
+.resources::nth-last-child(1) {
+/* border-bottom: none; */
+background-color: #94f236;
+}
+
+/******/
+
+
 .shadow1{
   box-shadow: 10px 10px 51px -37px rgba(0,0,0,0.75);
 -webkit-box-shadow: 10px 10px 51px -37px rgba(0,0,0,0.75);

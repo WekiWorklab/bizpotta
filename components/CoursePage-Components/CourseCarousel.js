@@ -63,7 +63,7 @@ const CourseCarousel = ({data, screen}) => {
             {data.map((el, index) => (
                 <SwiperSlide key={index} style={screen==="mobile" ? {width:"325px", backgroundColor: "white",paddingLeft: "-16px", cursor: "pointer"} : {width:"325px", backgroundColor: "#F9FAFB",paddingLeft: "-16px", cursor: "pointer"}} onClick = {() => handleClick()}> 
                     <CourseCard data = {el} length={data.length}/>
-                </SwiperSlide>
+                </SwiperSlide> 
                 )
               )
             }

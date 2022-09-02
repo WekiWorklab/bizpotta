@@ -7,7 +7,7 @@ import 'swiper/css/pagination';
 
 import { useSwiper } from 'swiper/react';
 
-const ProgramCarousel = ({data}) => {
+const ProgramCarousel = () => {
 
     return (
         <Swiper

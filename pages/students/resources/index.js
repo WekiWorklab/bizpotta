@@ -1,12 +1,12 @@
 import React from 'react'
-import Layout from '../../../components/Layout-Components/Layout'
+import NewLayout from '../../../components/Layout-Components/NewLayout'
 import Content from '../../../components/Resources-Components/Content'
 
 const index = () => {
   return (
-    <Layout>
+    <NewLayout>
         <Content />
-    </Layout>
+    </NewLayout>
   )
 }
 
