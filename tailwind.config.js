@@ -21,7 +21,8 @@ module.exports = {
           700: "#233245",
           800: "#282828",
         },
-        "darkBlue" : "#121F4C"
+        "darkBlue" : "#121F4C",
+        "seaBlue": "#3771C8"
       },
     },
   },
