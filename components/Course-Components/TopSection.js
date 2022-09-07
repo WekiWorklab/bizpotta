@@ -23,13 +23,15 @@ const handleBack = () => {
 }
 
   return (
-    <div className=' w-full flex flex-col pt-4 pr-2 md:pr-24 '>
+    <div className=' w-full flex flex-col pt-4 pr-2 md:pr-6 '>
         <div className='text-[13px] cursor-pointer' onClick={() => handleBack()}>
             <AiOutlineLeft className='inline mr-2'/>
             <p className='inline'>Go to home</p>
         </div>
 
-        <div className = 'w-full h-[230px]  sm:w-[500px] sm:h-[300px] xl:w-[850px] xl:h-[370px] mt-4  bg-no-repeat bg-cover bg-center flex justify-center items-center cursor-pointer' style={{backgroundImage: `url(${image}) `}} onClick={() => handleClick()}>
+        {/* sm:w-[500px] sm:h-[300px] xl:w-[850px] xl:h-[370px] */}
+
+        <div className = 'w-full h-[230px] w-full h-[500px]  mt-4  bg-no-repeat bg-cover bg-center flex justify-center items-center cursor-pointer' style={{backgroundImage: `url(${image}) `}} onClick={() => handleClick()}>
             <FaPlay size={40} color='white'/>
         </div>
         {/* <img src={image} alt='' className = 'w-full h-[230px]  sm:w-[500px] sm:h-[300px] xl:w-[850px] xl:h-[370px] mt-4 '/> */}
@@ -94,19 +96,19 @@ const handleBack = () => {
 
         <h1 className='font-[600] text-[14px] mt-6 '>What you will learn</h1>
         <li className='font-[600] text-[14px] mt-4 list-disc ml-2'>What is photography?</li>
-        <p className='text-[13px]'>
+        <p className='text-[13px] leading-[24px]'>
             Dui morbi nisl suscipit pharetra. Tristique sit nisl velit, vulputate sit nisl. Bibendum elit, non cursus rhoncus integer id. Tristique praesent in malesuada lacus, et. Vulputate pharetra in odio nisi fermentum semper lectus scelerisque. Eget vestibulum sapien augue feugiat morbi. Nibh pretium nibh et quis viverra magna. Nisl, urna quis donec rhoncus. Sollicitudin tincidunt in vitae scelerisque et viverra pharetra. Lectus in sodales duis euismod quis in. Facilisi sed non quis magna scelerisque posuere non id phasellus..
         </p>
         <li className='font-[600] text-[14px] mt-4 list-disc ml-2'>What is photography?</li>
-        <p className='text-[13px]'>
+        <p className='text-[13px] leading-[24px]'>
             Dui morbi nisl suscipit pharetra. Tristique sit nisl velit, vulputate sit nisl. Bibendum elit, non cursus rhoncus integer id. Tristique praesent in malesuada lacus, et. Vulputate pharetra in odio nisi fermentum semper lectus scelerisque. Eget vestibulum sapien augue feugiat morbi. Nibh pretium nibh et quis viverra magna. Nisl, urna quis donec rhoncus. Sollicitudin tincidunt in vitae scelerisque et viverra pharetra. Lectus in sodales duis euismod quis in. Facilisi sed non quis magna scelerisque posuere non id phasellus..
         </p>
         <li className='font-[600] text-[14px] mt-4 list-disc ml-2'>What is photography?</li>
-        <p className='text-[13px]'>
+        <p className='text-[13px] leading-[24px]'>
             Dui morbi nisl suscipit pharetra. Tristique sit nisl velit, vulputate sit nisl. Bibendum elit, non cursus rhoncus integer id. Tristique praesent in malesuada lacus, et. Vulputate pharetra in odio nisi fermentum semper lectus scelerisque. Eget vestibulum sapien augue feugiat morbi. Nibh pretium nibh et quis viverra magna. Nisl, urna quis donec rhoncus. Sollicitudin tincidunt in vitae scelerisque et viverra pharetra. Lectus in sodales duis euismod quis in. Facilisi sed non quis magna scelerisque posuere non id phasellus..
         </p>
         <li className='font-[600] text-[14px] mt-4 list-disc ml-2'>What is photography?</li>
-        <p className='text-[13px]'>
+        <p className='text-[13px] leading-[24px]'>
             Dui morbi nisl suscipit pharetra. Tristique sit nisl velit, vulputate sit nisl. Bibendum elit, non cursus rhoncus integer id. Tristique praesent in malesuada lacus, et. Vulputate pharetra in odio nisi fermentum semper lectus scelerisque. Eget vestibulum sapien augue feugiat morbi. Nibh pretium nibh et quis viverra magna. Nisl, urna quis donec rhoncus. Sollicitudin tincidunt in vitae scelerisque et viverra pharetra. Lectus in sodales duis euismod quis in. Facilisi sed non quis magna scelerisque posuere non id phasellus..
         </p>
 
