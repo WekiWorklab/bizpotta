@@ -6,7 +6,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import {MdAddCircleOutline} from 'react-icons/md'
 import {AiOutlineHeart, AiOutlineLink, AiOutlineLoading3Quarters} from 'react-icons/ai'
 import {BsPerson} from 'react-icons/bs'
-import { showUploadModal, showUploadSuccessModal } from '../../../store/courseSlice';
+import { showUploadModal, showUploadSuccessModal } from '../../../../store/courseSlice';
 
 //////////
 // import { showCourseModal, showProfileModal } from '../../store/courseSlice'

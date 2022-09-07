@@ -5,7 +5,7 @@ import {AiOutlineInbox} from 'react-icons/ai'
 import {BsChevronDown, BsPlayCircle} from 'react-icons/bs'
  
 ////////
-import CoursesTable from './CoursesTable'
+import CoursesTable from '../LayoutComponents/CoursesTable'
 import DashBoardCard from '../LayoutComponents/DashBoardCard'
 import VideoCard from '../LayoutComponents/VideoCard'
 import ResourcesCard from '../LayoutComponents/ResourcesCard'

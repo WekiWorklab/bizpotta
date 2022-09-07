@@ -1,32 +1,38 @@
 import React from 'react'
 
-import { TextEditor } from '../../TextEditor'
+// import { TextEditor } from '../../TextEditor'
 
 
 import { AiFillCaretDown } from 'react-icons/ai'
 import { BsPencil, BsThreeDotsVertical, BsTrash } from 'react-icons/bs'
 import {TiDocumentText} from 'react-icons/ti'
 import { IoCheckmarkCircleOutline } from 'react-icons/io5'
+import { TextEditor } from '../../../TextEditor'
+import NotesSuccessModal from './NotesSuccessModal'
+import { useState } from 'react'
 
-const SecondContent = () => {
+const FirstContent = () => {
+
+    const [initialState, setInitialState] = useState([
+        {section1: "k"},
+        {section2: "o"},
+        {section3: "8"},
+        {section4: "a"},
+    ])
+
+    const [success, setSuccess] = useState(false)
+    const [currentValue, setCurrentValue] = useState(null)
+    const [section, setSection] = useState(null)
+
   return (
-    <div className='relative w-full h-full bg-white flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-8 py-10 text-darkGray'>
-        <div className='w-full '>
-            <div className='flex flex-row gap-x-6 text-[15px] font-bold pl-10 ml-[10%]'>
-                <p className={` border-bizpotta-green px-2`} onClick = {() => setSelect('instructor')}>Instructor&#39;s Profile</p>
-                <p className={` border-bizpotta-green px-2`} onClick = {() => setSelect('landing')}>Course Landing Page</p>
-                <p className={`border-b-4 border-bizpotta-green px-2`} onClick = {() => setSelect('structure')}>Course Structure</p>
-                <p className={` border-bizpotta-green px-2`} onClick = {() => setSelect('pricing')}>Pricing</p>
-            </div>
-
-        </div>
+    <div className='w-full '>
 
         <div className='w-full border-[1px] rounded-sm border-gray-500 mt-8 py-10 pl-10'>
                 <p className='text-[14px] font-bold'>Resources</p>
                 <p className='text-[13px] mt-4'>We have shared helpful of resources, if you need more assistance, kindly contact us on our Helpline or you can ask for help in <span className='text-seaBlue'>Bizpotta Instructor&#39;s Community</span></p>
                 
                 <div className='flex flex-row gap-x-4 items-center mt-8 '>
-                    <div className='text-seaBlue border-b-2 border-seaBlue text-[14px]'>Get started with teaching</div>
+                    <div className='text-seaBlue border-b-2 border-seaBlue text-[14px]'>Get started with teaching vocational skills</div>
                 </div>
                 <div className='flex flex-row gap-x-4 items-center mt-8'>
                     <div className='text-seaBlue border-b-2 border-seaBlue text-[14px]'>Video setup &#38; equipment</div>
@@ -38,9 +44,11 @@ const SecondContent = () => {
                     <div className='text-seaBlue border-b-2 border-seaBlue text-[14px]'>Audio and video editing</div>
                 </div>
                 <div className='flex flex-row gap-x-4 items-center mt-8'>
-                    <div className='text-seaBlue border-b-2 border-seaBlue text-[14px]'>Tips to buildan outstanding course</div>
+                    <div className='text-seaBlue border-b-2 border-seaBlue text-[14px]'>Get started in teaching master class </div>
                 </div>
-                
+                <div className='flex flex-row gap-x-4 items-center mt-8'>
+                    <div className='text-seaBlue border-b-2 border-seaBlue text-[14px]'>Get started in teaching certificate program </div>
+                </div>
             </div>
 
 
@@ -48,23 +56,20 @@ const SecondContent = () => {
                 <div className='flex flex-row justify-between items-center'>
                     <div>Course Structure</div>
                     <div className='flex flex-row gap-x-2 items-center'>
-                        <div className='w-[100px] h-[35px] flex justify-center items-center bg-darkBlue rounded-md text-white text-[13px]'>Pressure</div>
+                        <div className='w-[100px] h-[35px] flex justify-center items-center bg-darkBlue rounded-md text-white text-[13px]'>Preview</div>
                         <BsThreeDotsVertical />
                     </div>
                 </div>
 
                 <div className='text-[13px] mt-8'>
-                    The following descriptions will be publicly visible on your <span className='text-seaBlue'>Landing Page</span> and will have a direct impact on your course performance. These descriptions will help learners decide if your course is right for them.
-                </div>
-                <div className='text-[13px]'>
-                    You can create minimum of <span className='text-seaBlue'>two section for short class</span> and maximum of <span className='text-seaBlue'>four sections for full class</span>. I advise you read the article on <span className='text-seaBlue'>getting started in teaching</span>
+                The following descriptions will be publicly visible on your <span className='text-seaBlue'>Landing Page</span> and will have a direct impact on your course performance. These descriptions will help learners decide if your course is right for them.
                 </div>
 
                 <div className='mt-8 flex flex-col gap-y-8'>   
-                    <Section />
-                    <Section />
-                    <Section />
-                    <Section />
+                    <Section value = {initialState[0].section1} setSuccess = {setSuccess} setCurrentValue = {setCurrentValue} section = "section1" setSection = {setSection}/>
+                    <Section value = {initialState[1].section2} setSuccess = {setSuccess} setCurrentValue = {setCurrentValue} section = "section2" setSection = {setSection}/>
+                    <Section value = {initialState[2].section3} setSuccess = {setSuccess} setCurrentValue = {setCurrentValue} section = "section3" setSection = {setSection}/>
+                    <Section value = {initialState[3].section4} setSuccess = {setSuccess} setCurrentValue = {setCurrentValue} section = "section4" setSection = {setSection}/>
 
                     <div className='w-[150px] h-[40px] flex justify-center items-center font-bold border rounded-md'> + Add Section</div>
                 </div>
@@ -74,20 +79,28 @@ const SecondContent = () => {
                         Save changes
                     </div>
                 </div>
-
             </div>
-        
+
+
+            <NotesSuccessModal success = {success}  setSuccess = {setSuccess}  value = {currentValue} setCurrentValue = {setCurrentValue} section = {section} initialState = {initialState} setInitialState = {setInitialState}/>
+
     </div>
   )
 }
 
-export default SecondContent
+export default FirstContent
 
 
 
 
 
-const Section = () => {
+const Section = ({value, setSuccess, setCurrentValue, section, setSection}) => {
+
+    const handleClick = () => {
+        setCurrentValue(value)
+        setSection(section)
+        setSuccess(true)
+    }
 
     return(
         <div className='w-[550px]'>
@@ -104,7 +117,10 @@ const Section = () => {
             </div>
 
             <div className='mt-6'>
-                <TextEditor />
+                {/* <TextEditor /> */}
+                <div className='min-w-[400px] min-h-[150px] border' onClick={() => handleClick()}>
+                    {value}
+                </div>
             </div>
 
             <div className='flex flex-col gap-y-2 mt-4'>

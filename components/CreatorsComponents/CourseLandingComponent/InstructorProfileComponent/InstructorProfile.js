@@ -2,12 +2,14 @@ import React from 'react'
 import { useState } from 'react'
 import { AiFillCaretDown, AiOutlinePicture } from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
-import { showUploadModal } from '../../../store/courseSlice'
+// import { showUploadModal } from '../../../store/courseSlice'
+import { showUploadModal } from '../../../../store/courseSlice'
+// import InputForm from './InputForm'
 import InputForm from './InputForm'
 import UploadingModal from './UploadingModal'
 import UploadingSuccessModal from './UploadingSuccessModal'
 
-const Content = () => {
+const InstructorProfile = () => {
 
     const [select, setSelect] = useState('instructor')
 
@@ -20,15 +22,10 @@ const Content = () => {
 
 
   return (
-    <div className='relative w-full h-full bg-[#E5E5E5] flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-16 py-10 text-darkGray'>
-        <div className='flex flex-row gap-x-6 text-[15px] font-bold pl-10'>
-            <p className={`${select === 'instructor' ? " border-b-4" : ''} border-bizpotta-green px-2`} onClick = {() => setSelect('instructor')}>Instructor&#39;s Profile</p>
-            <p className={`${select === 'landing' ? " border-b-4" : ''} border-bizpotta-green px-2`} onClick = {() => setSelect('landing')}>Course Landing Page</p>
-            <p className={`${select === 'structure' ? " border-b-4" : ''} border-bizpotta-green px-2`} onClick = {() => setSelect('structure')}>Course Structure</p>
-            <p className={`${select === 'pricing' ? " border-b-4" : ''} border-bizpotta-green px-2`} onClick = {() => setSelect('pricing')}>Pricing</p>
-        </div>
 
-        <div className='w-full border-[1px] rounded-sm border-gray-500 mt-8 py-10 pl-10'>
+    <div className='w-full'>
+
+        <div className='w-full border-[1px] rounded-sm border-gray-500 mt-8 pb-10 pl-10'>
             <p className='text-[14px] font-bold'>Resources</p>
             <p className='text-[13px] mt-4'>We have shared helpful of resources, if you need more assistance, kindly contact us on our Helpline or you can ask for help in <span className='text-seaBlue'>Bizpotta Instructor&#39;s Community</span></p>
             
@@ -206,9 +203,9 @@ const Content = () => {
         {/* Success modal  */}
 
 
-
-    </div>
+        </div>
+    
   )
 }
 
-export default Content
+export default InstructorProfile

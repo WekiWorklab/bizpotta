@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { TextEditor } from '../../TextEditor'
 import NotesErrorModal from './NotesErrorModal'
-import NotesSuccessModal from './NotesSuccessModal'
+import NotesSuccessModal from '../CourseLandingComponent/CourseStructureComponent/NotesSuccessModal'
 
 const Content = () => {
 

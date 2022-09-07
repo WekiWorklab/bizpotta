@@ -1,12 +1,17 @@
 import React from 'react'
-import Content from '../../../components/CreatorsComponents/CoursesComponent/Content'
+import NewContent from '../../../components/CreatorsComponents/CourseLandingComponent/NewContent'
+import OldContent from '../../../components/CreatorsComponents/CourseLandingComponent/OldContent'
 import Layout from '../../../components/CreatorsComponents/LayoutComponents/Layout'
 
 const index = () => {
+
+  const newCreator  = false
+
   return (
     <Layout>
-        <Content />
-    </Layout> 
+        {!newCreator ? <OldContent /> :
+        <NewContent />}
+    </Layout>
   )
 }
 

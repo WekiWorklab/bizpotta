@@ -6,20 +6,32 @@ import { Dialog, Transition } from "@headlessui/react";
 import {MdAddCircleOutline} from 'react-icons/md'
 import {AiOutlineHeart, AiOutlineLink, AiOutlineLoading3Quarters} from 'react-icons/ai'
 import {BsPerson} from 'react-icons/bs'
-import { showUploadModal, showUploadSuccessModal } from '../../../store/courseSlice';
+import { showUploadModal, showUploadSuccessModal } from '../../../../store/courseSlice';
+// import { showUploadModal, showUploadSuccessModal } from '../../../store/courseSlice';
 
-//////////
+// import { showUploadModal, showUploadSuccessModal } from '../../../../store/courseSlice';
 
 
-const NotesErrorModal = ({error, setError, success, setSuccess}) => {
+
+const UploadingModal = () => {
+  const dispatch = useDispatch()
+
+useEffect(() => {
+    setTimeout(() => {
+    dispatch(showUploadSuccessModal(true))
+    }, 5000);
+    return clearTimeout()
+} , [])
+
+const show = useSelector(state => state.course.show_upload_modal)
 
   const closeModal = () => {
-        setError(false)
+    dispatch(showUploadModal(false))
   } 
 
   return (
-    <Transition.Root show={error} as={Fragment}>
-      <Dialog as="div" static className="fixed z-10 inset-0 overflow-y-auto" open={error} onClose={closeModal}>
+    <Transition.Root show={show} as={Fragment}>
+      <Dialog as="div" static className="fixed z-10 inset-0 overflow-y-auto" open={show} onClose={closeModal}>
         <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center block sm:p-0  ">
           <Transition.Child
             as={Fragment}
@@ -48,12 +60,9 @@ const NotesErrorModal = ({error, setError, success, setSuccess}) => {
           >
             <div className="inline-block align-top bg-white rounded-lg overflow-hidden shadow-xl transform transition-all">
               <div className='w-[230px] h-[230px] flex flex-col items-center justify-center'>
-                    <p className=''>Oops</p>
-                    <p className='text-[13px] mt-4 text-gray-500'>Video quality does not meet the standard</p>
-                    <p className='text-[13px] mt-2 text-gray-500'>kindly read our <span className="text-seaBlue">Course quality requirements</span></p>
-                    <div className='w-[80px] h-[30px] flex justify-center items-center text-[14px] text-white bg-darkBlue mt-4 rounded-md' onClick={() => {closeModal(); setSuccess(true)}}>
-                        Continue
-                    </div>
+                    <AiOutlineLoading3Quarters color='#121F4C' size={30} className=''/>
+                    <p className='text-[13px] mt-2 text-gray-500'>Uploading video</p>
+                    <p className='text-[13px] mt-[1px] text-gray-500'>53%</p>
               </div>
 
 
@@ -66,7 +75,7 @@ const NotesErrorModal = ({error, setError, success, setSuccess}) => {
   )
 }
 
-export default NotesErrorModal
+export default UploadingModal
 
 
 

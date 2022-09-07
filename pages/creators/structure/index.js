@@ -8,9 +8,10 @@ import Layout from '../../../components/CreatorsComponents/LayoutComponents/Layo
 const index = () => {
     const first = false
   return (
-    <Layout>
-        {first ? <FirstContent /> : <SecondContent />}
-    </Layout>
+    <div>
+      {first ? <FirstContent /> : <SecondContent />}
+    </div>
+        
   )
 }
 

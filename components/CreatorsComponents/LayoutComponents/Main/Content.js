@@ -8,22 +8,63 @@ import VideoCard from '../VideoCard'
 ////////////////
 import {AiOutlineInbox} from 'react-icons/ai'
 import {BsChevronDown, BsPlayCircle} from 'react-icons/bs'
+import CoursesTable from '../CoursesTable'
+import LChart from '../Line-Chart'
+import { useState } from 'react'
+import EnrollmentTable from '../EnrollmentTable'
+import IncomeTableChart from '../IncomeTableChart'
 
 
 
 const Content = () => {
 
+    const [select, setSelected] = useState('')
+
+    const ongoing = true
+
+    const times = {
+      total: 90,
+      completed: 24
+  }
+
+  const value = (times.completed / times.total) * 100
+  console.log(value)
     
 
-  return (
-    <div className='relative w-full h-full bg-white flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-12 py-10 text-darkGray redBorder'>
-        <p className='redBorder mb-8'>Dashboard</p>
 
-        <div className='w-full flex flex-row justify-between redBorder'>
-            <DashBoardCard />
-            <DashBoardCard />
-            <DashBoardCard />
+  return (
+    <div className='relative w-full h-full bg-white flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-12 py-10 text-darkGray '>
+
+        {!ongoing && <p className='mb-8'>Dashboard</p>}
+
+        {
+          ongoing &&
+          (
+          <div className='mb-10 w-full'>
+            <div className='flex flex-row justify-between w-full '>
+            <p className='text-[17px] font-bold'>Introduction to fashion designing</p>
+            <p className='text-[12px] text-dark-gray-100'>{Math.round(value)}%</p>
+            </div>
+            
+            <div className='w-full h-[15px] mt-2 rounded-[20px] bg-[#FBFFF8] border border-bizpotta-green'>
+            <div className='h-full rounded-[20px] bg-bizpotta-green' style={{width: `${((times.completed / times.total) * 100)}%`}}></div>
+            </div>
+          </div>
+          )
+        }
+
+        <div className='w-full flex flex-row justify-between '>
+            <DashBoardCard select = {select} title = "income" setSelected = {setSelected} />
+            <DashBoardCard select = {select} title = "enrollment" setSelected = {setSelected}/>
+            <DashBoardCard select = {select} title = "courses" setSelected = {setSelected}/>
         </div>
+
+
+      <div className='mt-16'>
+        <RenderTableChart select={select} />
+      </div>
+        
+
 
         <p className='mt-10 font-[600]'>Resources</p>
         <p className='mt-2'>Just creating your first class, we got you covered</p>
@@ -59,3 +100,18 @@ export default Content
 
 
 
+const RenderTableChart = ({select}) => {
+
+  if (select === "courses") {
+    return <CoursesTable />
+  }
+  else if (select === "income"){
+    return <IncomeTableChart />
+  }
+  else if (select === "enrollment") {
+    return <EnrollmentTable />
+  }
+
+  else return <div></div>
+  
+}
