@@ -6,6 +6,7 @@ import {BiTransfer} from 'react-icons/bi'
 import { card_image } from '../../public'
 import ContentCarousel from './ContentCarousel'
 import { Data } from './Data'
+import PieChart from './PieChart'
 
 const TopSection = () => {
   return (
@@ -46,16 +47,22 @@ const TopSection = () => {
                                         <p className='text-xs text-gray-500'>25% achieved</p>
                                     </div>
 
-                                    <div className='m-auto  h-[90%]'>
-                                        {/* <CircleChart /> */}
+                                    <div className='m-auto relative h-[100px] flex items-center'>
+                                        <PieChart />
+                                        <div className='absolute left-[40px] text-[#C14242] text-[13px] font-bold'>
+                                            25%
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div>
                                 <p className='text-sm font-semibold mb-6'>Daily views</p>
-                                <div className='w-[350px] h-[180px] sm:w-[380px] sm:h-[200px]  md:w-[530px] md:h-[270px] bg-gray-200 rounded-lg shadow-lg'>
+                                {/* <div className='w-[350px] h-[180px] sm:w-[380px] sm:h-[200px]  md:w-[530px] md:h-[270px] bg-gray-200 rounded-lg shadow-lg'> */}
+                                <div className=' w-full rounded-lg shadow-lg md:w-[600px] ml-[-5px]'>
                                     <AreaChart />
                                 </div>
+                                    
+                                {/* </div> */}
                             </div>
                         </div>
 

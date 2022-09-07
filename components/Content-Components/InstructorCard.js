@@ -12,7 +12,7 @@ const InstructorCard = ({data}) => {
   return (
    
     <div className='w-[220px] h-[220px] md:w-[180px] md:h-[180px] xl:h-[220px] xl:w-[220px] rounded-md bg-no-repeat bg-cover bg-center pt-[80px]' style={{backgroundImage: `url(${imageSrc})`}}>
-        <div className='clip-card-path2 bg-[#121F4C] text-[white]  h-full flex flex-col justify-end px-2 pb-2 rounded-b-md'>
+        <div className='clip-card-path2 bg-[#333333] text-[white]  h-full flex flex-col justify-end px-2 pb-2 rounded-b-md'>
             <div className='text-[14px] mt-[3px] xl:text-[14px] md:text-[10px] box-overflow'>{data.name}</div>
 
             <div className='flex flex-row justify-between'>
