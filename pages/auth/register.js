@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { logo } from "../../public";
+import { Facebook, logo } from "../../public";
 import { set, useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -81,7 +81,7 @@ export default function Register() {
               <p className='text-[11px]'>Sign up with Google</p>
             </div>
             <div className=' w-[150px] rounded-[12px] bg-[#DBE9FF] h-[45px] flex flex-row justify-evenly items-center'>
-              <FcInfo size={24} className='' />
+              <Facebook />
               <p className='text-[11px]'>Sign up with Facebook</p>
             </div>
           </div>

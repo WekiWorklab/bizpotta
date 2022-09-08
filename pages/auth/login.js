@@ -16,6 +16,8 @@ import FormInput from "../../components/Auth-Components/Input";
 import Button from "../../components/Auth-Components/Button";
 import { login, reset } from "../../store/authSlice";
 
+import { Facebook } from "../../public";
+
 export default function Login() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [passwordType, setPasswordType] = useState("password");
@@ -65,7 +67,7 @@ export default function Login() {
       <form onSubmit={handleSubmit(submitForm)}>
         <div className=' w-[360px] py-[30px] sm:py-[40px] bg-[#FAFAFA] sm:bg-white flex flex-col justify-center items-center '>
           <div className=' w-[330px]'>
-            <h3 className='text-[18px] text-[#282828]  '>Sign into your account</h3>
+            <h3 className='text-[18px] text-[#282828]'>Sign into your account</h3>
             <p className='text-[12px] text-[#999999]'>Welcome back!</p>
           </div>
 
@@ -128,7 +130,7 @@ export default function Login() {
               <p className='text-[11px]'>Sign in with Google</p>
             </div>
             <div className=' w-[150px] rounded-[12px] bg-[#DBE9FF] h-[45px] flex flex-row justify-evenly items-center'>
-              <FcInfo size={24} className='' />
+              <Facebook />
               <p className='text-[11px]'>Sign in with Facebook</p>
             </div>
           </div>

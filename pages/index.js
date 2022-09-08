@@ -271,7 +271,7 @@ export default function Home() {
               </div>
             </div>
             {/* Programs Section */}
-            <div className='relative bg-gray-50 py-10 sm:pt-24 lg:pt-32 md:pl-28 '>
+            <div className='relative bg-gray-50 py-10 sm:pt-10 lg:pt-14 md:pl-28 '>
               <h1 className='text-center md:text-start text-lg font-light tracking-wider text-bizpotta-purple'>
                 <span className='font-normal'>Programs</span>
               </h1>
@@ -486,7 +486,7 @@ export default function Home() {
               </div>
             </section>
             {/* Market and sell your Expertise Program Section */}
-            <div className='relative bg-gray-50 pt-16 pb-8 '>
+            <div className='relative bg-gray-50 pt-12 pb-2 '>
               <h1 className='md:pl-28 text-center md:text-start text-lg font-light tracking-wider text-bizpotta-purple'>
                 <span className='font-medium text-2xl'>Market and sell your Expertise</span>
               </h1>
@@ -501,14 +501,14 @@ export default function Home() {
                 <Team />
               </div>
               {/*Explore Courses */}
-              <a href='#' className='pb-16 flex gap-2 w-full justify-center items-center text-bizpotta-purple'>
+              <a href='#' className='pb-6 flex gap-2 w-full justify-center items-center text-bizpotta-purple'>
                 <span>Learn More</span>
                 <ArrowRightIcon className='h-4 w-4 text-bizpotta-purple' aria-hidden='true' />
               </a>
             </div>
 
             {/* Market and sell your Expertise Program Section */}
-            <div className='relative bg-gray-50 pt-16 pb-8'>
+            <div className='relative bg-gray-50 pt-10 pb-8'>
               <h1 className='md:pl-28 text-center md:text-start text-lg font-light tracking-wider text-bizpotta-purple'>
                 <span className='font-medium'>Bizpotta Community</span>
               </h1>
@@ -520,7 +520,7 @@ export default function Home() {
               <div className='flex flex-col w-full items-center px-10 lg:px-2 md:flex-row md:mx-auto gap-4 md:px-36 '>
                 {/* <div className='mx-auto py-4 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24 '> */}
                 {/* md:ml-[20px] lg:ml-[78px] */}
-                <div className=' py-4 px-4 max-w-7xl sm:px-6 lg:px-0 lg:py-24 md:mx-auto '>
+                <div className=' py-4 px-4 max-w-7xl sm:px-6 lg:px-0 lg:py-12 md:mx-auto '>
                   {/* <ul className='space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-x-8  lg:space-y-0 '> */}
                   <ul className='space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-x-8  lg:space-y-0 '>
                     <Testimonals />

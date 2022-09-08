@@ -14,9 +14,9 @@ const people = [
 
 export default function Team() {
   return (
-    <div className='bg-gray-50 '>
+    <div className='bg-gray-50  '>
       {/* <div className='mx-auto py-4 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24'> */}
-      <div className='mx-auto py-4 px-4 max-w-7xl sm:px-6 lg:px-0 lg:py-24 '>
+      <div className='mx-auto py-4 px-4 max-w-7xl sm:px-6 lg:px-0 lg:py-10 '>
         <ul className='space-y-4 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8 lg:gap-y-12 lg:space-y-0 '>
           {people.map((person, index) => (
             <li key={index}>
