@@ -6,10 +6,10 @@ import ResourcesCard from '../ResourcesCard'
 import VideoCard from '../VideoCard'
 
 ////////////////
-import {AiOutlineInbox} from 'react-icons/ai'
-import {BsChevronDown, BsPlayCircle} from 'react-icons/bs'
+// import {AiOutlineInbox} from 'react-icons/ai'
+// import {BsChevronDown, BsPlayCircle} from 'react-icons/bs'
 import CoursesTable from '../CoursesTable'
-import LChart from '../Line-Chart'
+// import LChart from '../Line-Chart'
 import { useState } from 'react'
 import EnrollmentTable from '../EnrollmentTable'
 import IncomeTableChart from '../IncomeTableChart'
@@ -94,9 +94,6 @@ const Content = () => {
 }
 
 export default Content
-
-
-
 
 
 

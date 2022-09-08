@@ -1,14 +1,14 @@
-import React from 'react'
-import Layout from '../../../components/CreatorsComponents/LayoutComponents/Layout'
-import Content from '../../../components/CreatorsComponents/NoteComponent/Content'
+// import React from 'react'
+// import Layout from '../../../components/CreatorsComponents/LayoutComponents/Layout'
+// import Content from '../../../components/CreatorsComponents/NoteComponent/Content'
 
 
-const index = () => {
-  return (
-    <Layout>
-        <Content />
-    </Layout>
-  )
-}
+// const index = () => {
+//   return (
+//     <Layout>
+//         <Content />
+//     </Layout>
+//   )
+// }
 
-export default index
+// export default index

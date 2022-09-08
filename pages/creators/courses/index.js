@@ -5,7 +5,7 @@ import Layout from '../../../components/CreatorsComponents/LayoutComponents/Layo
 
 const index = () => {
 
-  const newCreator  = false
+  const newCreator = false
 
   return (
     <Layout>
