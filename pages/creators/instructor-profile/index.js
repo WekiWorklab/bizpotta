@@ -1,12 +1,15 @@
 import React from 'react'
-import Content from '../../../components/CreatorsComponents/InstructorProfileComponent/Content'
-import Layout from '../../../components/CreatorsComponents/LayoutComponents/Layout'
+// import Content from '../../../components/CreatorsComponents/InstructorProfileComponent/Content'
+// import Layout from '../../../components/CreatorsComponents/LayoutComponents/Layout'
 
 const index = () => {
   return (
-    <Layout>
-        <Content />
-    </Layout>
+    // <Layout>
+    //     <Content />
+    // </Layout>
+    <div>
+      This page has been deleted
+    </div>
   )
 }
 

@@ -2,8 +2,8 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { TextEditor } from '../../TextEditor'
-import NotesErrorModal from './NotesErrorModal'
-import NotesSuccessModal from '../CourseLandingComponent/CourseStructureComponent/NotesSuccessModal'
+// import NotesErrorModal from './NotesErrorModal'
+// import NotesSuccessModal from '../CourseLandingComponent/CourseStructureComponent/NotesSuccessModal'
 
 const Content = () => {
 
@@ -32,9 +32,9 @@ const Content = () => {
             </div> 
             </div>
             
-            <NotesErrorModal error= {error} setError = {setError} success = {success}  setSuccess = {setSuccess} />
+            {/* <NotesErrorModal error= {error} setError = {setError} success = {success}  setSuccess = {setSuccess} /> */}
 
-            <NotesSuccessModal error= {error} setError = {setError} success = {success}  setSuccess = {setSuccess} />
+            {/* <NotesSuccessModal error= {error} setError = {setError} success = {success}  setSuccess = {setSuccess} /> */}
 
         </div>
 

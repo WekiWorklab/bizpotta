@@ -3,7 +3,7 @@ import React from 'react'
 ///////
 import {AiOutlineInbox} from 'react-icons/ai'
 import {BsChevronDown, BsPlayCircle} from 'react-icons/bs'
-import CoursesTable from '../CoursesComponent/CoursesTable'
+// import CoursesTable from '../CoursesComponent/CoursesTable'
 import DashBoardCard from '../LayoutComponents/DashBoardCard'
 import ResourcesCard from '../LayoutComponents/ResourcesCard'
 import VideoCard from '../LayoutComponents/VideoCard'

@@ -19,7 +19,7 @@ const AreaChart = () => {
         <XAxis dataKey="month" />
         <YAxis />
         <CartesianGrid strokeDasharray="3 3" vertical = {false} />
-        <Tooltip />
+        {/* <Tooltip /> */}
 
         <Area type="linear" dataKey="time" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
         </AChart>
