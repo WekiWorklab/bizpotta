@@ -17,7 +17,7 @@ const CourseCard = ({data: {title, name, ID, time:{total, completed}}, length}) 
         
         <p className='mt-4 text-[15px] box-overflow'>{title}</p>
         <p className='text-[12px] mt-1 box-overflow'>{name}</p>
-        <div className='flex flex-row items-center justify-between'>
+        <div className='flex flex-row items-center justify-between mt-3'>
             <ProgressBar time={{completed, total}}/>
             <span className='text-xs'>{total-completed} mins left</span>
         </div>

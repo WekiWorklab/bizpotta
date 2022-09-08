@@ -65,7 +65,7 @@ const Header = ({ show, setShow, setSlideIn }) => {
       {/* Large Screen Search */}
       <div className='hidden md:flex flex-row h-[40px] justify-start '>
         <input
-          className='w-[160px] ml-2 sm:w-[200px] md:w-[350px] outline-none pl-2 text-xs sm:text-sm md:text-base border-2 rounded-l-md border-r-0'
+          className='w-[160px] ml-2 sm:w-[200px] md:w-[350px] outline-none md:pl-6 text-xs sm:text-sm md:text-[14px] border-2 rounded-l-md border-r-0'
           placeholder='What do you want to learn'
           onBlur={handleBlur}
           onFocus={handleFocus}

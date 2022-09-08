@@ -17,6 +17,7 @@ import { addCategory } from "../store/courseSlice";
 import {BsArrowRight} from 'react-icons/bs'
 import LandingMarketingCarousel, { MarketingCard } from "../components/LandingMarketingCarousel";
 import LandingTestimonialCarousel from "../components/LandingTestimonialCarousel";
+import GreenFooter from "../components/GreenFooter";
 
 const optionsLists = [
   {
@@ -276,7 +277,7 @@ export default function Home() {
             </div>
             {/* Programs Section */}
             <div className='relative bg-gray-50 pt-10 pb-6 sm:pt-10 lg:pt-14 px-6 md:pl-28'>
-              <h1 className='text-start text-[15px] md:text-lg font-light tracking-wider text-black'>
+              <h1 className='text-start text-base md:text-lg font-light tracking-wider text-black'>
                 <span className='font-bold'>Programs</span>
               </h1>
               <p className='text-start flex flex-col text-[13px] md:text-base font-light tracking-wider text-bizpotta-gray-800'>
@@ -286,11 +287,11 @@ export default function Home() {
             </div>
 
             {/* CTA Section */}
-            <div className='relative bg-gray-50 pb-10 px-6'>
-              <h1 className='md:pl-28 text-start md:text-lg font-light tracking-wider text-bizpotta-purple'>
+            <div className='relative bg-gray-50 pb-10 '>
+              <h1 className='px-6 md:pl-28 text-start md:text-lg font-light tracking-wider text-bizpotta-purple'>
                 <span className='font-bold md:font-medium text-[15px] md:text-2xl'>Vocational Education</span>
               </h1>
-              <p className='md:pl-28 text-start flex flex-col text-[13px] md:text-base font-light tracking-wider text-bizpotta-gray-800'>
+              <p className='px-6  md:pl-28 text-start flex flex-col text-[13px] md:text-base font-light tracking-wider text-bizpotta-gray-800'>
                 <span className='text-bizpotta-gray-800'>Learn in-demand skills to increase your value in the Market</span>
               </p>
               {/** <div className='pt-8 flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-24 pb-8'>*/}
@@ -305,16 +306,16 @@ export default function Home() {
             </div>
 
             {/* Library Section */}
-            <div className='relative bg-gray-50 pt-16 pb-8 px-6 md:pl-2'>
-              <h1 className='lg:w-[1000px] mx-auto text-start text-lg font-light tracking-wider text-bizpotta-purple'>
+            <div className='relative bg-gray-50 pt-16 pb-8 px-6 md:pl-28'>
+              <h1 className='lg:w-[1000px] mx-auto md:mx-0  text-start text-lg font-light tracking-wider text-bizpotta-purple'>
                 <span className='font-bold md:font-medium text-[15px] md:text-2xl '>Explore our course library</span>
               </h1>
-              <p className='text-start flex flex-col text-base font-light tracking-wider text-bizpotta-gray-800 lg:w-[1000px] mx-auto text-start '>
+              <p className='text-start flex flex-col text-base font-light tracking-wider text-bizpotta-gray-800 lg:w-[1000px] mx-auto md:mx-0  text-start '>
                 <span className='text-bizpotta-gray-800 text-[14px] md:text-base'>Choose category that are of interest to you</span>
               </p>
               {/* list of radio in boxes */}
 
-              <div className='w-full mx-auto grid grid-cols-2 gap-y-6 md:gap-6 justify-center items-center md:grid md:grid-cols-2 md:gap-8 md:w-[700px] lg:grid-cols-3 lg:w-[1000px] py-8  md:items-center md:justify-center'>
+              <div className='w-full mx-auto md:mx-0 grid grid-cols-2 gap-y-6 md:gap-6 justify-center items-center md:grid md:grid-cols-2 md:gap-8 md:w-[700px] lg:grid-cols-3 lg:w-[1000px] py-8  md:items-center md:justify-center'>
                 {optionsLists.map((option, index) => (
                   <LibraryRadioButton key={index} option={option} setSelectedCourse={handleChangeCourse} multiSelect={false} />
                 ))}
@@ -333,7 +334,7 @@ export default function Home() {
 
             {/* Specialization Program Section */}
             <div className='relative bg-gray-50 pt-6 md:pt-16 pb-8'>
-              <h1 className=' px-6 l-28 text-start text-lg font-light tracking-wider text-bizpotta-purple'>
+              <h1 className=' px-6 md:pl-28 text-start text-lg font-light tracking-wider text-bizpotta-purple'>
                 <span className='font-bold md:font-medium text-[15px] md:text-2xl'>Specialization Program</span>
               </h1>
               <p className=' px-6 md:pr-4 md:pl-28  text-start flex flex-col text-[13px] md:text-base font-light tracking-wider text-bizpotta-gray-800'>
@@ -354,7 +355,7 @@ export default function Home() {
             </div>
 
             {/* MasterClass Section */}
-            <section className='bg-bizpotta-green-100 mx-auto w-full py-8 md:py-20 px-6 md:px-16 mb-10'>
+            <section className='bg-[#FFC700] orange-gradient mx-auto w-full py-8 md:py-20 px-6 md:px-16 mb-10'>
               <div className='max-w-7xl lg:grid lg:grid-cols-12 lg:gap-8'>
                 <div className='sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left'>
                   <h1>
@@ -385,7 +386,7 @@ export default function Home() {
                           strokeLinejoin='round'
                         />
                       </svg>{" "}
-                      <p className='text-base md:text-lg ml-9 '>Learn from the best in various industries</p>
+                      <p className='text-base md:text-lg ml-9 text-black'>Learn from the best in various industries</p>
                     </dt>
                     <dt>
                       <svg
@@ -404,7 +405,7 @@ export default function Home() {
                           strokeLinejoin='round'
                         />
                       </svg>{" "}
-                      <p className='text-base md:text-lg ml-9  leading-7'>Have the best vocational skills at your finger tips</p>
+                      <p className='text-base md:text-lg ml-9 text-black leading-7'>Have the best vocational skills at your finger tips</p>
                     </dt>
                     <dt>
                       <svg
@@ -423,7 +424,7 @@ export default function Home() {
                           strokeLinejoin='round'
                         />
                       </svg>{" "}
-                      <p className='text-base md:text-lg ml-9  leading-7'>Mentorship programs from top leaders in industries</p>
+                      <p className='text-base md:text-lg ml-9 text-black leading-7'>Mentorship programs from top leaders in industries</p>
                     </dt>
                     <dt>
                       <svg
@@ -442,7 +443,7 @@ export default function Home() {
                           strokeLinejoin='round'
                         />
                       </svg>{" "}
-                      <p className='text-base md:text-lg ml-9  leading-7'>Access to numerous resourses</p>
+                      <p className='text-base md:text-lg ml-9 text-black leading-7'>Access to numerous resourses</p>
                     </dt>
                     <dt>
                       <svg
@@ -461,24 +462,24 @@ export default function Home() {
                           strokeLinejoin='round'
                         />
                       </svg>{" "}
-                      <p className='text-base md:text-lg ml-9  leading-7'>Business development and management</p>
+                      <p className='text-base md:text-lg ml-9 text-black leading-7'>Business development and management</p>
                     </dt>
                   </div>
                   <div className='md:px-8 w-full hidden md:flex items-center justify-start gap-14 mt-8 md:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0'>
                     <div className='flex items-center justify-center'>
-                      <button className='px-6 py-2 h-14 w-30 inline-flex items-center justify-start overflow-hidden transition-all rounded-md bg-bizpotta-green'>
+                      <button className='px-6 py-2 h-14 w-30 inline-flex items-center justify-start overflow-hidden transition-all rounded-md bg-darkBlue'>
                         {/* purple box */}
                         <span className='w-0 h-0 rounded bg-bizpotta-purple absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1'></span>
-                        <span className='w-full text-gray-800 transition-colors duration-300 ease-in-out group-hover:text-bizpotta-purple z-10'>
+                        <span className='w-full text-white transition-colors duration-300 ease-in-out group-hover:text-bizpotta-purple z-10'>
                           Get started
                         </span>
                       </button>
                     </div>
-                    <div className='flex items-center justify-center'>
+                    {/* <div className='flex items-center justify-center'>
                       <a href='#' className=' flex gap-2 w-full justify-center items-center text-bizpotta-purple'>
                         <span>Explore Courses</span>
                       </a>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                 <div className=' mt-6 md:mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center '>
@@ -559,7 +560,8 @@ export default function Home() {
               </a>
             </div>
           </main>
-          <Footer />
+          {/* <Footer /> */}
+          <GreenFooter />
         </div>
       </div>
     </>

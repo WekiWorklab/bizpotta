@@ -247,7 +247,7 @@ const TopSection = () => {
 
 
             <div className=' hidden w-full xl:flex flex-col flex-wrap justify-evenly items-center xl:w-[252px] xl:mt-2  mx-auto '>
-                <h1 className='mt-10 mx-auto'>Newly added</h1>
+                <h1 className='mt-10 mx-auto  xl:w-full'>Newly added</h1>
 
                 
                 <div className='w-[250px] h-[96px] bg-[#F9FFF3] relative rounded-md flex flex-row justify-evenly items-center mt-5'>
@@ -288,7 +288,7 @@ const TopSection = () => {
 
 
 
-                <h1 className='mt-16 mx-auto'>Learn Courses for free</h1>
+                <h1 className='mt-16 mx-auto xl:w-full'>Learn Courses for free</h1>
                     
                 <div className='w-[250px] h-[96px] bg-[#F9FFF3] relative rounded-md flex flex-row justify-evenly items-center mt-5'>
                     <img src={card_image.src} className = 'h-12 w-12 rounded-md'/>

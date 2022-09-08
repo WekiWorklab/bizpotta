@@ -7,10 +7,10 @@ const ProjectCard = ({data}) => {
         <div className='bg-[#121F4C] text-[white]  h-full flex flex-row justify-between pl-2 pr-2 rounded-b-md'>
             <div className='flex flex-col justify-center max-w-[70%] box-overflow'>
                 <p className='text-[14px] '>{data.name}</p> 
-                <p className='text-[11px] '>{data.title}</p>
+                <p className='text-[11px] capitalize'>{data.title}</p>
             </div>
             <div className='flex flex-col justify-center items-center rounded-[4px] h-[25px] w-[60px] mt-4 bg-bizpotta-green'>
-                <p className='text-xs text-black'>follow</p>
+                <p className='text-xs text-black'>View</p>
             </div>
         </div>
 

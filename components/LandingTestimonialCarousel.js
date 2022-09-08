@@ -80,11 +80,11 @@ export const TestimonialCard = ({el:{imageUrl, note, name, location}}) => {
         <div className='w-full flex flex-col items-center  bg-gray-50 px-2' >
             <div className='w-[250px] h-[200px] bg-no-repeat bg-cover bg-center rounded-md' style={{backgroundImage:`url(${imageUrl})`}} />
 
-            <p className='mt-4  text-[14px] w-[250px] text-center italic'>{name}</p>
+            <p className='mt-4 text-[14px] w-[250px] italic'>{name}</p>
 
-            <p className='text-[13px] font-extralight w-[250px] text-center italic mt-4'>{note}</p>
+            <p className='text-[13px] font-extralight w-[250px] italic mt-4'>{note}</p>
 
-            <p className='text-[13px] font-extralight w-[250px] text-center italic mt-4'>{location}</p>
+            <p className='text-[13px] font-extralight w-[250px] italic mt-4'>{location}</p>
             
         </div>
     )
