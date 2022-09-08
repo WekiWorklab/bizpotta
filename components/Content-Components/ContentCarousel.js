@@ -18,8 +18,6 @@ const ContentCarousel = ({data, smallScreen, bottom}) => {
         }}
         modules={[Pagination]}
         className='mySwiper'
-        // onSlideChange={() => console.log('slide change')}
-        // onSwiper={(swiper) => console.log(swiper)}
         >
             {data.map((el, index) => (
                 <SwiperSlide key={index}> 
@@ -31,11 +29,6 @@ const ContentCarousel = ({data, smallScreen, bottom}) => {
 
         <div className='h-10'></div>
         </Swiper>
-    
-    
-    // <div>
-    //     <ContentCard />
-    // </div>
   )
 }
 
