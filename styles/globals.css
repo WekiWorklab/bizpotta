@@ -44,6 +44,14 @@
   object-fit: cover;
 }
 
+/* For centering elemnts children */
+.centerFlex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 
 /** Scrollbar***/
 .styled-scrollbar::-webkit-scrollbar{

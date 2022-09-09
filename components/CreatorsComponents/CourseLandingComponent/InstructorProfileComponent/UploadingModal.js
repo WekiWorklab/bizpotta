@@ -18,7 +18,7 @@ const UploadingModal = () => {
 
 useEffect(() => {
     setTimeout(() => {
-    dispatch(showUploadSuccessModal(true))
+    // dispatch(showUploadSuccessModal(true))
     }, 5000);
     return clearTimeout()
 } , [])

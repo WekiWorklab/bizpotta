@@ -1,41 +1,18 @@
 import React, { useMemo, useState, useRef } from 'react'
 import { Editor } from '@tinymce/tinymce-react';
 
-export const TextEditorNotesModal = ({api_key, value, setCurrentValue, section, initialState, setInitialState}) => {
+export const TextEditorNotesModal = ({api_key, value, section, setSuccess, initialState, setInitialState}) => {
 
     // console.log(section)
     // console.log(initialState[0])
 
     const editorRef = useRef(null);
     const log = () => {
-
-
-      if (editorRef.current) {
-        console.log(editorRef.current.getContent());
-        let newValue = {}
-
-        // const stateFunc = (prev) => {
-            // console.log(prev)
-            for(let el in initialState){
-                if (el.key === section) {
-                    console.log(el)
-                    // return({[section]: editorRef.current.getContent()})
-                    // break
-                    // console.log({[section]: editorRef.current.getContent()})
-                    newValue = {[section]: editorRef.current.getContent()}
-                    console.log(newValue)
-                    // console.log({name: 'hgvbnkj'})
-                }
-            }
-        // }
-
-        // state
-        setInitialState(
-            (prevState) => [...prevState, newValue]
-        )
-
-      }
+      setInitialState((prevState) => ({...prevState, [section]: editorRef.current?.getContent()}))
+      setSuccess(false)
     };
+
+
     return (
       <>
         <Editor
@@ -63,3 +40,28 @@ export const TextEditorNotesModal = ({api_key, value, setCurrentValue, section, 
       </>
     );
   }
+
+
+
+
+
+
+
+
+
+
+
+    /** Turned out to be overkill but is good reference material */
+  // if (editorRef.current) {
+      //   for(let el in initialState){
+      //       if (el === section) {
+      //           console.log(el)
+      //           newValue = {[el]: editorRef.current?.getContent()}
+      //       }
+      //   }
+
+      //   console.log(newValue)
+      //   setInitialState(
+      //       (prevState) => ({...prevState, ...newValue})
+      //   )
+      // }

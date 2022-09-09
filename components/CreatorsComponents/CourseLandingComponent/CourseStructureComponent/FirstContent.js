@@ -13,19 +13,14 @@ import { useState } from 'react'
 
 const FirstContent = () => {
 
-    const [initialState, setInitialState] = useState([
-        {section1: "k"},
-        {section2: "o"},
-        {section3: "8"},
-        {section4: "a"},
-    ])
+    const [initialState, setInitialState] = useState({section1: "a", section2: 'b', section3: "c", section4: "d"})
 
     const [success, setSuccess] = useState(false)
     const [currentValue, setCurrentValue] = useState(null)
     const [section, setSection] = useState(null)
 
   return (
-    <div className='w-full '>
+    <div className='w-[100%] '>
 
         <div className='w-full border-[1px] rounded-sm border-gray-500 mt-8 py-10 pl-10'>
                 <p className='text-[14px] font-bold'>Resources</p>
@@ -66,10 +61,10 @@ const FirstContent = () => {
                 </div>
 
                 <div className='mt-8 flex flex-col gap-y-8'>   
-                    <Section value = {initialState[0].section1} setSuccess = {setSuccess} setCurrentValue = {setCurrentValue} section = "section1" setSection = {setSection}/>
-                    <Section value = {initialState[1].section2} setSuccess = {setSuccess} setCurrentValue = {setCurrentValue} section = "section2" setSection = {setSection}/>
-                    <Section value = {initialState[2].section3} setSuccess = {setSuccess} setCurrentValue = {setCurrentValue} section = "section3" setSection = {setSection}/>
-                    <Section value = {initialState[3].section4} setSuccess = {setSuccess} setCurrentValue = {setCurrentValue} section = "section4" setSection = {setSection}/>
+                    <Section value = {initialState.section1} setSuccess = {setSuccess} setCurrentValue = {setCurrentValue} section = "section1" setSection = {setSection}/>
+                    <Section value = {initialState.section2} setSuccess = {setSuccess} setCurrentValue = {setCurrentValue} section = "section2" setSection = {setSection}/>
+                    <Section value = {initialState.section3} setSuccess = {setSuccess} setCurrentValue = {setCurrentValue} section = "section3" setSection = {setSection}/>
+                    <Section value = {initialState.section4} setSuccess = {setSuccess} setCurrentValue = {setCurrentValue} section = "section4" setSection = {setSection}/>
 
                     <div className='w-[150px] h-[40px] flex justify-center items-center font-bold border rounded-md'> + Add Section</div>
                 </div>
@@ -145,3 +140,6 @@ const Section = ({value, setSuccess, setCurrentValue, section, setSection}) => {
         </div>
     )
 }
+
+
+
