@@ -7,10 +7,10 @@
   opacity: 0.1;
 }
 
-.orange-gradient {
-  box-shadow: 7px 6px 24px 5px rgba(255,199,0,0.75);
--webkit-box-shadow: 7px 6px 24px 5px rgba(255,199,0,0.75);
--moz-box-shadow: 7px 6px 24px 5px rgba(255,199,0,0.75);
+.blueShadow {
+  box-shadow: 10px 4px 28px 15px rgba(157,185,228,0.75);
+-webkit-box-shadow: 10px 4px 28px 15px rgba(157,185,228,0.75);
+-moz-box-shadow: 10px 4px 28px 15px rgba(157,185,228,0.75);
 }
 
 .swiper {

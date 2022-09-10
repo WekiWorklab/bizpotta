@@ -355,7 +355,7 @@ export default function Home() {
             </div>
 
             {/* MasterClass Section */}
-            <section className='bg-[#FFC700] orange-gradient mx-auto w-full py-8 md:py-20 px-6 md:px-16 mb-10'>
+            <section className='bg-gradient-to-br blueShadow from-[#9DB9E4] to-[#B5DDFA] mx-auto  w-full py-8 md:py-20 px-6 md:px-16 mb-10 mt-10'>
               <div className='max-w-7xl lg:grid lg:grid-cols-12 lg:gap-8'>
                 <div className='sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left'>
                   <h1>
