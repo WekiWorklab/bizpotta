@@ -12,7 +12,6 @@ const BottomSection = () => {
   return (
     <div className='pl-0 lg:pl-5 flex flex-col xl:flex-row  w-full'>
 
-{/* <div className='bg-white w-full m-auto md:w-[650px] lg:w-[850px]  '> */}
 
                 <div className='bg-white w-full m-auto  '>
                     

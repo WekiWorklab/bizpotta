@@ -18,6 +18,7 @@ const Layout = ({ children }) => {
     if (!isAuthenticated) {
       router.push("/auth/login");
     } else {
+      console.log(isAuthenticated)
       setLoading(false);
     }
     return () => {
