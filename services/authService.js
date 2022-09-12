@@ -1,55 +1,55 @@
-import axios from "axios";
+import AxoisApi from "../utils/index";
+import { APIS } from "../utils/api";
 import Cookies from "js-cookie";
 import { setCookie } from "cookies-next";
 
-const API_URL = process.env.NEXT_PUBLIC_REACT_APP_API_URL;
-
-// Register user
-const register = async (userData) => {
-  const response = await axios.post(`${API_URL}/api/register`, userData);
-  console.log(response);
-  if (response.data) {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("user", JSON.stringify(response.data.data));
-    }
-    Cookies.set("bizpotta_token", response.data.access_token);
-    setCookie("bizpotta_token", response.data.access_token, {
-      path: "/",
-      httpOnly: process.env.NODE_ENV === "production",
-      secure: process.env.NODE_ENV === "production",
-    });
-  }
-  return response.data;
+const verifyEmail = (email, phone) => {
+  return AxoisApi.post(`${APIS.AUTH.VERIFY_EMAIL}`, {
+    email,
+    phone,
+  }).then((res) => {
+    return res.data;
+  });
 };
 
-// Login user
-const login = async (userData) => {
-  const response = await axios.post(API_URL + "/api/login", userData);
-  if (response.data) {
+const register = (data) => {
+  return AxoisApi.post(`${APIS.AUTH.SIGNUP}`, data).then((res) => {
+    console.log(res);
     if (typeof window !== "undefined") {
-      localStorage.setItem("user", JSON.stringify(response.data.data));
+      localStorage.setItem("user", JSON.stringify(res.data.data));
+    }
+    return res.data;
+  });
+};
+
+const login = (data) => {
+  return AxoisApi.post(`${APIS.AUTH.SIGNIN}`, {
+    email: data.email,
+    password: data.password,
+  }).then((res) => {
+    if (res.data.token) {
       Cookies.set("bizpotta_token", response.data.access_token);
       setCookie("bizpotta_token", response.data.access_token, {
         path: "/",
         httpOnly: process.env.NODE_ENV === "production",
         secure: process.env.NODE_ENV === "production",
       });
+      if (typeof window !== "undefined") {
+        localStorage.setItem("bizpotta_token", res.data.access_token);
+        localStorage.setItem("user", JSON.stringify(res.data.data));
+      }
     }
-  }
-  return response.data;
+
+    return res.data;
+  });
 };
 
-// Logout user
-const logout = () => {
-  if (typeof window !== "undefined") {
-    localStorage.removeItem("user");
-  }
-};
-
-// get token for localstorage and cookie
-const getToken = () => {
-  let token = Cookies.get("bizpotta_token");
-  return token ? token : null;
+const forgotPassword = (email) => {
+  return AxoisApi.post(`${APIS.AUTH.FORGOT_PASSWORD}`, {
+    email,
+  }).then((res) => {
+    return res.data;
+  });
 };
 
 // get user from localstorage or server
@@ -62,11 +62,17 @@ const getUser = () => {
   return user;
 };
 
+// get token for localstorage and cookie
+const getToken = () => {
+  let token = Cookies.get("bizpotta_token");
+  return token ? token : null;
+};
+
 // get user from server
 const getUserFromServer = async () => {
   const token = getToken();
   if (token) {
-    const response = await axios.get(API_URL + "/api/user", {
+    const response = await AxoisApi.get(`${APIS.AUTH.USER}`, {
       headers: {
         Authorization: "Bearer " + token,
         "Content-Type": "application/json",
@@ -81,13 +87,44 @@ const getUserFromServer = async () => {
   }
   return null;
 };
+
+const resetPassword = (data) => {
+  return AxoisApi.post(`${APIS.AUTH.RESET_PASSWORD}`, data).then((res) => {
+    return res.data;
+  });
+};
+
+const logout = () => {
+  const token = getToken();
+  if (token) {
+    return AxoisApi.post(
+      `${APIS.AUTH.LOGOUT}`,
+      {},
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  }
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("user");
+    localStorage.removeItem("bizpotta_token");
+    Cookies.remove("bizpotta_token");
+  }
+};
+
 const authService = {
+  verifyEmail,
   register,
-  logout,
   login,
-  getToken,
+  forgotPassword,
   getUser,
   getUserFromServer,
+  getToken,
+  resetPassword,
+  logout,
 };
 
 export default authService;
