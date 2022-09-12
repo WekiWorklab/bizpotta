@@ -138,6 +138,21 @@
   transition: all 500ms ease-out;
 }
 
+
+.show-drop{
+  transform: translateY(0%);
+  transition: transform 0.5s ease-in-out;
+}
+.no-drop{
+ transform: translateY(-105%);
+ transition: transform 0.5s ease-in-out;
+}
+.parent-drop{
+  transition: height 0.5s ease-in-out;
+}
+
+
+
 @media(max-width: 640px) and (min-width: 0px){
 
   .dropdown{
@@ -220,6 +235,19 @@ blockquote:after {
   top: auto;
   bottom: -20px;
 }
+
+
+
+/* Masters gradient */
+.rad-gradient{
+  background-image: radial-gradient(rgba(148, 242, 54, 0.30), #E5E5E5);
+}
+
+.middle-path{
+  clip-path: polygon(0 0, 52% 5%, 100% 1%, 100% 100%, 51% 94%, 0 99%);
+
+}
+
 
 @layer utilities {
   .clip-card-path {
