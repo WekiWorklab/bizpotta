@@ -7,7 +7,7 @@ const user = authService.getUser() || authService.getUserFromServer();
 
 const initialState = {
   user: user == null || user == "undefined" ? null : user,
-  isAuthenticated: token ? true : false,
+  isAuthenticated: token ? true : user ? true : false,
   isError: false,
   isSuccess: false,
   isLoading: false,
