@@ -3,10 +3,16 @@ import { AiOutlinePicture } from 'react-icons/ai'
 import InputForm from './InstructorProfileComponent/InputForm'
 
 const CourseLanding = () => {
+
+
+    const handleSubmit = () => {
+
+    }
+
   return (
     <div className='w-full'>
         <div className='w-full border-[1px] rounded-sm border-gray-500 mt-8 pb-10 pl-10'>
-                <p className='text-[14px] font-bold'>Resources</p>
+                <p className='text-[14px] font-bold mt-10'>Resources</p>
                 <p className='text-[13px] mt-4'>We have shared helpful of resources, if you need more assistance, kindly contact us on our Helpline or you can ask for help in <span className='text-seaBlue'>Bizpotta Instructor&#39;s Community</span></p>
                 
                 <div className='flex flex-row gap-x-4 items-center mt-8 '>
@@ -116,7 +122,7 @@ const CourseLanding = () => {
 
 
             <div className='flex justify-end mt-6'>
-                <div className='w-[120px] h-[45px] flex items-center justify-center bg-darkBlue text-white text-[13px] font-bold rounded-md' onClick = {() => handleSubmit()}>
+                <div className='w-[120px] h-[45px] flex items-center justify-center bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer' onClick = {() => handleSubmit()}>
                     Save changes
                 </div>
             </div>

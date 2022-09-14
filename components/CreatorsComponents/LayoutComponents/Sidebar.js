@@ -27,7 +27,7 @@ import { useDispatch, useSelector } from "react-redux";
           <div className='w-full ' >
 
             <ul className="md:flex-col md:min-w-full flex flex-col list-none   ">
-              <li className="items-center cursor-pointer  mb-5" onClick={() => router.push('/students')}>
+              <li className="items-center cursor-pointer  mb-5" onClick={() => router.push('/creators')}>
                 <div  className="flex flex-row justify-start items-center">
                   <MdOutlineDashboard color={(path === "/creators" ) ? "#121F4C" : 'gray'}/>
                   <div className= {`${(path === "/creators" ? "text-darkBlue font-semibold" : "text-gray-400 font-light")} text-sm  ml-5`}>
@@ -37,9 +37,9 @@ import { useDispatch, useSelector } from "react-redux";
                 </div>
               </li>
 
-              <li className="items-center cursor-pointer  mb-5" onClick={() => router.push('/students/courses')}>
+              <li className="items-center cursor-pointer  mb-5" onClick={() => router.push('/creators/courses')}>
                 <div  className="flex flex-row justify-start items-center" >
-                  <HiOutlineBookOpen color={(path === '/students/courses' ) ? "#121F4C" : 'gray'}/>
+                  <HiOutlineBookOpen color={(path === '/creators/courses' ) ? "#121F4C" : 'gray'}/>
                   <div className={`${(path === '/students/courses' ? "text-darkBlue font-semibold" : 'text-gray-400 font-light')} text-sm   ml-5`}>
                     Courses
                   </div>

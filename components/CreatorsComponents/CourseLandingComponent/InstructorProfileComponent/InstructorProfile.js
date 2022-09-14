@@ -10,6 +10,7 @@ import UploadingSuccessModal from './UploadingSuccessModal'
 const InstructorProfile = () => {
 
     const [select, setSelect] = useState('instructor')
+    const [files, setFiles] = useState([])
 
     const dispatch = useDispatch()
 
@@ -24,7 +25,7 @@ const InstructorProfile = () => {
     <div className='w-full'>
 
         <div className='w-full border-[1px] rounded-sm border-gray-500 mt-8 pb-10 pl-10'>
-            <p className='text-[14px] font-bold'>Resources</p>
+            <p className='text-[14px] font-bold mt-10'>Resources</p>
             <p className='text-[13px] mt-4'>We have shared helpful of resources, if you need more assistance, kindly contact us on our Helpline or you can ask for help in <span className='text-seaBlue'>Bizpotta Instructor&#39;s Community</span></p>
             
             <div className='flex flex-row gap-x-4 items-center mt-8'>
@@ -73,7 +74,7 @@ const InstructorProfile = () => {
                     <input 
                         type='number'
                         name='phone'
-                        className={`h-[40px] w-[400px] bg-[#FCFDFE] border-0  text-gray-300 pl-4 text-[14px] focus:ring-0 focus:outline-none`}
+                        className={`h-[40px] w-[400px] bg-[#FCFDFE] border-0 text-gray-600 pl-4 text-[14px] focus:ring-0 focus:outline-none`}
                     /> 
                 </div>
             </div>
@@ -96,10 +97,11 @@ const InstructorProfile = () => {
                 <div className='flex items-center px-4 py-4 border rounded-lg shadow-md' >
                     <AiOutlinePicture />
                     <p className='text-[12px] ml-2'>Upload Instructors photo</p>
-                    <div className='w-[100px] h-[30px] bg-darkBlue text-white flex flex-row justify-center items-center rounded-md gap-x-4 ml-6'>
+                    <label htmlFor='file' className='w-[100px] h-[30px] bg-darkBlue text-white flex flex-row justify-center items-center rounded-md gap-x-4 ml-6 cursor-pointer'>
+                        <input type='file' id='file' accept='.png, .jpeg, .jpg' onChange={() => setFiles(e.target.value)} className = 'hidden'/>
                         <p className='text-[12px]'>Browse</p>
                         <AiFillCaretDown color='white'/>
-                    </div>
+                    </label>
                 </div>
             </div>
 
@@ -113,7 +115,7 @@ const InstructorProfile = () => {
 
             <div className=' mt-6'>
                 <p className='text-[13px] font-bold'>Instructor Bio</p>
-                <textarea className='w-[600px] min-h-[200px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-[#C4C4C4] pl-4 text-[14px]'>
+                <textarea className='w-[600px] min-h-[200px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-gray-600 pl-4 text-[14px]'>
 
                 </textarea>
                 <p className='text-[13px] text-[#C4C4C4]'>Minimum of 1000 words</p>
@@ -181,7 +183,7 @@ const InstructorProfile = () => {
 
 
             <div className='flex justify-end mt-6'>
-                <div className='w-[120px] h-[45px] flex items-center justify-center bg-darkBlue text-white text-[13px] font-bold rounded-md' onClick = {() => handleSubmit()}>
+                <div className='w-[120px] h-[45px] flex items-center justify-center bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer' onClick = {() => handleSubmit()}>
                     Save changes
                 </div>
             </div>

@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import React from 'react'
 import { AiFillCaretDown, AiOutlineCloudUpload, AiOutlinePicture, AiOutlinePrinter } from 'react-icons/ai'
 import { BiNote } from 'react-icons/bi'
@@ -9,6 +10,13 @@ import InputForm from './InstructorProfileComponent/InputForm'
 
 
 const NewContent = () => {
+
+    const router = useRouter()
+
+    const handleSubmit = () => {
+        router.push('/creators/courses')
+    }
+
   return (
     <div className='relative w-full h-full bg-white flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 py80 text-darkGray mb-10'>
         <div className='w-full flex flex-col'>
@@ -19,7 +27,7 @@ const NewContent = () => {
                 <p className='text-[12px]'>You can make edits at anytime</p>
             </div>
 
-            <div className='flex flex-row justify-evenly items-center shadow-md w-[70px] h-[27px] rounded-md border'>
+            <div className='flex flex-row justify-evenly items-center shadow-md w-[70px] h-[27px] rounded-md border cursor-pointer' onClick={() => router.push('/creators/courses')}>
                 <p className='text-[13px]'>Skip</p>
                 <BsArrowRight size={14} />
             </div>
@@ -155,7 +163,7 @@ const NewContent = () => {
 
 
                 <div className='flex justify-end mt-6'>
-                    <div className='w-[120px] h-[45px] flex items-center justify-center bg-darkBlue text-white text-[13px] font-bold rounded-md' onClick = {() => handleSubmit()}>
+                    <div className='w-[120px] h-[45px] flex items-center justify-center bg-darkBlue text-white text-[13px] font-bold rounded-md hover:cursor-pointer' onClick = {() => handleSubmit()}>
                         Save changes
                     </div>
                 </div>

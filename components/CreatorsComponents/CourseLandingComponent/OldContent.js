@@ -9,7 +9,7 @@ import CourseStructure from './CourseStructureComponent/CourseStructure'
 
 const OldContent = () => {
 
-    const [select, setSelect] = useState('instructor')
+    const [select, setSelect] = useState('landing')
 
     const dispatch = useDispatch()
 

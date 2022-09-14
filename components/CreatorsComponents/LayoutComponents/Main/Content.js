@@ -47,7 +47,7 @@ const Content = () => {
         <DashBoardCard select={select} title='courses' setSelected={setSelected} />
       </div>
 
-      <div className='mt-16'>
+      <div className='mt-16 w-full'>
         <RenderTableChart select={select} />
       </div>
 
@@ -57,11 +57,11 @@ const Content = () => {
       <div className='grid grid-cols-2 gap-x-20 mt-10 self-start'>
         <VideoCard />
         <VideoCard />
-        <div className='text-[13px] text-bizpotta-gray-600  col-span-2 text-center mt-4'>View More</div>
+        <div className='text-[13px] text-bizpotta-gray-600 col-span-2 text-center mt-10'>View More</div>
       </div>
 
-      <p className='mt-10 font-[600]'>Resourses to help you get started</p>
-      <div className='border rounded-md mb-6 border-gray-700'>
+      <p className='mt-16 font-[600]'>Resourses to help you get started</p>
+      <div className='border rounded-md mb-6 mt-8 border-gray-700'>
         <ResourcesCard />
         <ResourcesCard />
         <ResourcesCard />

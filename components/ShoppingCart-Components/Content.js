@@ -10,7 +10,7 @@ const Content = () => {
     <div className='relative w-full h-full bg-white  flex flex-col mt-[90px] md:mt-[120px]  md:translate-x-[200px] md:w-[calc(100%-200px)] pl-8 py-10'>
       <div className='text-md font-bold'>Shopping Cart</div>
 
-      <div className='flex flex-row mt-8 gap-x-52'>
+      <div className='flex flex-row mt-8 gap-x-48'>
         <div>
           <CourseCard />
           <CourseCard />

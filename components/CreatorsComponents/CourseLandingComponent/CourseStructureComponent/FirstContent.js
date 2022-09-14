@@ -13,7 +13,7 @@ import { useState } from 'react'
 
 const FirstContent = () => {
 
-    const [initialState, setInitialState] = useState({section1: "a", section2: 'b', section3: "c", section4: "d"})
+    const [initialState, setInitialState] = useState({section1: "", section2: '', section3: "", section4: ""})
 
     const [success, setSuccess] = useState(false)
     const [currentValue, setCurrentValue] = useState(null)
@@ -113,7 +113,7 @@ const Section = ({value, setSuccess, setCurrentValue, section, setSection}) => {
 
             <div className='mt-6'>
                 {/* <TextEditor /> */}
-                <div className='min-w-[400px] min-h-[150px] border' onClick={() => handleClick()}>
+                <div className='min-w-[400px] min-h-[150px] border break-all p-2' onClick={() => handleClick()}>
                     {value}
                 </div>
             </div>

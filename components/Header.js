@@ -103,15 +103,16 @@ const Header = ({ show, setShow, setSlideIn }) => {
             {/* Search Icon for small screens */}
             <BiSearchAlt size={20} color='#121F4C' className='block' />
 
+            
             <AiOutlineShoppingCart size={20} className='text-darkBlue' />
+              
 
             <IoNotificationsOutline size={20} className='text-darkBlue ' />
 
             <IoMenuOutline size={20} color='#121F4C' className='md:ml-[10px] hover:cursor-pointer md:hidden' onClick={() => {setShow(true); setSlideIn(true)}} />
           </div>
         ) : null
-        // <MdOutlineCancel size={22} color = '#121F4C' className='md:ml-[10px] hover:cursor-pointer md:hidden' onClick={() => setShow(false)} />
-        // <BiSearchAlt  size={18} color='#121F4C' className='block mr-[20px]' />
+        
       }
     </div>
   );
