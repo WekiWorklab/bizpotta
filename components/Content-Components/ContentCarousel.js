@@ -7,12 +7,12 @@ import 'swiper/css/pagination';
 
 import { useSwiper } from 'swiper/react';
 
-const ContentCarousel = ({data, smallScreen, bottom}) => {
+const ContentCarousel = ({data, screen}) => {
 
   return (
         <Swiper
-        slidesPerView={smallScreen ? 1.5 : (bottom ? 4 : 3)}
-        spaceBetween={smallScreen ? 10 : 40}
+        slidesPerView={screen[0]}
+        spaceBetween={screen[1]}
         pagination={{
         clickable: true,
         }}
@@ -21,7 +21,7 @@ const ContentCarousel = ({data, smallScreen, bottom}) => {
         >
             {data.map((el, index) => (
                 <SwiperSlide key={index}  style={{backgroundColor: "transparent"}}> 
-                    <ContentCard data={el} bottom = {bottom}/> 
+                    <ContentCard data={el} /> 
                 </SwiperSlide>
                 )
               )

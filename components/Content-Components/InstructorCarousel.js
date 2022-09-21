@@ -7,12 +7,12 @@ import 'swiper/css/pagination';
 
 import { useSwiper } from 'swiper/react';
 
-const InstructorCarousel = ({data, smallScreen, bottom}) => {
+const InstructorCarousel = ({data, screen}) => {
 
   return (
         <Swiper
-        slidesPerView={smallScreen ? 1.5 : 4}
-        spaceBetween={smallScreen ? 10: 40}
+        slidesPerView={screen[0]}
+        spaceBetween={screen[1]}
         pagination={{
         clickable: true,
         }}
@@ -23,7 +23,7 @@ const InstructorCarousel = ({data, smallScreen, bottom}) => {
         >
             {data.map((el, index) => (
                 <SwiperSlide key={index} style={{backgroundColor: "transparent"}}> 
-                    <InstructorCard data = {el} bottom={bottom}/>
+                    <InstructorCard data = {el}/>
                 </SwiperSlide>
                 )
               )

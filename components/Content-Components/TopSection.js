@@ -5,8 +5,10 @@ import {BsHeart, BsPersonPlus, BsChatDots} from 'react-icons/bs'
 import {BiTransfer} from 'react-icons/bi'
 import { card_image } from '../../public'
 import ContentCarousel from './ContentCarousel'
-import { Data } from './Data'
+import { Data, instructorData } from './Data'
 import PieChart from './PieChart'
+import InstructorCarousel from './InstructorCarousel'
+import { StyleCarousel } from '../StyleCarousel'
 
 const TopSection = () => {
   return (
@@ -14,27 +16,6 @@ const TopSection = () => {
         {/* Start of left section */}
             <div className=' w-full mx-auto md:w-[650px] lg:w-[850px] h-full'>
                 <div className='bg-white px-2 md:pl-4 pr-2 flex flex-col items-center pt-10 '>
-                    {/* <h1 className='text-sm font-semibold mt-20 mb-8 w-full '>Programs</h1> */}
-
-                    {/* <div className='hidden items-center md:flex  flex-row flex-wrap w-full md:w-[90%] lg:w-[70%] xl:w-full justify-between pl-0 '>
-                        <div className='w-[260px] bg-[#5FFC54] h-[125px] rounded-lg flex items-center text-sm pl-5 mb-10 '>
-                            VOCATIONAL EDUCATION
-                            <svg viewBox="-37 55 110 150" xmlns="http://www.w3.org/2000/svg" >
-                                <path fill="#FDBC64" d="M41,-35.9C47.5,-24.6,43.1,-7.9,41.7,13.9C40.2,35.7,41.6,62.6,28.8,74.2C16.1,85.9,-10.9,82.3,-33.7,70.9C-56.4,59.6,-74.9,40.4,-71.1,25.3C-67.3,10.1,-41.4,-1.1,-25.8,-14.4C-10.3,-27.7,-5.1,-43.2,6.1,-48C17.3,-52.9,34.6,-47.1,41,-35.9Z" transform="translate(100 100)" />
-                            </svg>
-                        </div>
-                        <div className='w-[260px] bg-[#2ABB1A] h-[125px] rounded-lg flex items-center text-sm pl-5 mb-10'>
-                            CERTIFICATE PROGRAM
-                            <svg viewBox="-13 39 139 139" xmlns="http://www.w3.org/2000/svg">
-                                <path fill="#AE5050" d="M33.4,-39C41.9,-32.6,46.7,-20.8,45.5,-10.5C44.4,-0.2,37.4,8.7,30.8,15.8C24.3,22.8,18.2,28.2,7.7,40.4C-2.9,52.7,-18.1,72,-21.2,67C-24.3,62,-15.3,32.8,-15.6,16.6C-15.9,0.4,-25.4,-2.9,-29.4,-9.5C-33.3,-16.1,-31.7,-26,-25.9,-32.8C-20.1,-39.7,-10,-43.4,1.2,-44.8C12.4,-46.2,24.8,-45.3,33.4,-39Z" transform="translate(100 100) rotate(-36)" />
-                            </svg>
-                        </div>
-                        <div className='w-[260px] bg-[#2ABB1A] h-[125px] rounded-lg flex items-center text-sm pl-5 mb-10'>MASTER CLASS</div>
-                    </div>
-
-                    <div className='w-[360px] ml-[-10px] md:hidden'>
-                       <ProgramCarousel/>  
-                    </div> */}
 
 
                     <div className=' hidden md:flex flex-col items-center w-full xl:flex-row xl:justify-between '>
@@ -57,12 +38,9 @@ const TopSection = () => {
                             </div>
                             <div>
                                 <p className='text-sm font-semibold mb-6'>Daily views</p>
-                                {/* <div className='w-[350px] h-[180px] sm:w-[380px] sm:h-[200px]  md:w-[530px] md:h-[270px] bg-gray-200 rounded-lg shadow-lg'> */}
                                 <div className=' w-full rounded-lg shadow-lg md:w-[600px] ml-[-5px]'>
                                     <AreaChart />
                                 </div>
-                                    
-                                {/* </div> */}
                             </div>
                         </div>
 
@@ -207,31 +185,74 @@ const TopSection = () => {
                 </div>
 
                 <div>
-                <div className='pt-[50px] flex flex-col bg-white'>
-                            <p className="text-[14px] mb-4 md:text-md font-semibold md:font-bold md:mb-8 ml-4">Recommended Courses on Vocational Education</p>
-                            <div className='block w-[360px] m-auto md:hidden'>
-                                <ContentCarousel data = {Data} smallScreen = {true} />
-                            </div>
-                            <div className='hidden md:block'>
-                                <ContentCarousel data = {Data} smallScreen = {false} bottom={false}/>
-                            </div> 
+                    <div className='pt-[50px] flex flex-col bg-white'>
+                        <p className="text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">Recommended Courses on Vocational Education</p>
+                        <div className='block w-[360px] m-auto md:hidden w-full'>
+                            <ContentCarousel data = {Data} screen = {[1.5, 10]} />
+                        </div>
+                        <div className='hidden m-auto md:block lg:hidden w-full'>
+                            <ContentCarousel data = {Data} screen = {[2, 20]} />
+                        </div>
+                        <div className='hidden lg:block w-full'>
+                            <ContentCarousel data = {Data} screen = {[3, 40]} />
+                        </div> 
                     </div>
                     <div className='pt-[50px] flex flex-col bg-white'>
-                            <p className="text-[14px] mb-4 md:text-md font-semibold md:mb-8 ml-4">Popular courses</p>
-                            <div className='block w-[360px] m-auto md:hidden'>
-                                <ContentCarousel data = {Data} smallScreen = {true} />
-                            </div>
-                            <div className='hidden md:block'>
-                                <ContentCarousel data = {Data} smallScreen = {false} bottom={false}/>
-                            </div> 
-                    </div>                     
+                        <p className="text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">Popular courses on vocational program</p>
+                        <div className='block w-[360px] m-auto md:hidden w-full'>
+                            <ContentCarousel data = {Data} screen = {[1.5, 10]} />
+                        </div>
+                        <div className='hidden m-auto md:block lg:hidden w-full'>
+                            <ContentCarousel data = {Data} screen = {[2, 20]} />
+                        </div>
+                        <div className='hidden lg:block w-full'>
+                            <ContentCarousel data = {Data} screen = {[3, 40]} />
+                        </div> 
+                    </div>
+                    <div className='pt-[50px] flex flex-col bg-white'>
+                        <p className="text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8">Take your business to the next level by exploring any of these courses</p>
+                        <div className='block w-[360px] m-auto md:hidden w-full'>
+                            <ContentCarousel data = {Data} screen = {[1.5, 10]} />
+                        </div>
+                        <div className='hidden m-auto md:block lg:hidden w-full'>
+                            <ContentCarousel data = {Data} screen = {[2, 20]} />
+                        </div>
+                        <div className='hidden lg:block w-full'>
+                            <ContentCarousel data = {Data} screen = {[3, 40]} />
+                        </div> 
+                    </div>
+                    <div className='pt-[50px] flex flex-col'>
+                        <p className="text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8">Instructors</p>
+                        <div className='block w-[360px] m-auto md:hidden w-full'>
+                            <InstructorCarousel data = {instructorData} screen = {[1.5, 10]} />
+                        </div>
+                        <div className='hidden m-auto md:block lg:hidden w-full'>
+                            <InstructorCarousel data = {instructorData} screen = {[2, 20]} />
+                        </div>
+                        <div className='hidden lg:block w-full'>
+                            <InstructorCarousel data = {instructorData} screen = {[3, 40]} />
+                        </div>  
+                    </div>  
+
+
+                    <p className='text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8 mt-10'>Up-coming</p>
+                    <div className='block w-[360px] m-auto md:hidden w-full'>
+                        <StyleCarousel screen = {[1, 10]}/>
+                    </div>
+                    <div className='hidden m-auto md:block lg:hidden w-full'>
+                        <StyleCarousel screen = {[1.7, 10]}/>
+                    </div>
+                    <div className='hidden lg:block w-full'>
+                        <StyleCarousel screen = {[2.4, 10]}/>
+                    </div>
+
+
                 </div>
             </div> {/*End of left section */}
 
 
         {/*Start of Right section */}
-        {/* <div className=' bg-white w-full md:w-[650px] lg:w-[850px] flex flex-col sm:flex-row xl:flex-col items-center justify-center mx-auto pt-8 border-2 border-red-300 '></div> */}
-        <div className=' bg-white w-full flex flex-col sm:flex-row xl:flex-col items-center justify-start mx-auto pt-8  '>
+        <div className=' bg-white w-full flex flex-col sm:flex-row xl:flex-col items-center justify-start mx-auto pt-8 '>
             <div className='hidden md:block text-center w-[300px] xl:w-[250px] px-3 py-8 mx-auto border rounded-md '>
                 <h1 className='text-sm font-bold mb-3'>What is your current job description?</h1>
                 <p className='text-xs mb-5'>Business Analysis</p>
@@ -327,7 +348,48 @@ const TopSection = () => {
                 </div>
 
 
+
+                <h1 className='mt-16 mx-auto xl:w-full'>Offering 50% discount on all course</h1>
+                    
+                <div className='w-[250px] h-[96px] bg-[#F9FFF3] relative rounded-md flex flex-row justify-evenly items-center mt-5'>
+                    <img src={card_image.src} className = 'h-12 w-12 rounded-md'/>
+                    <div className='flex flex-col'>
+                        <p className='text-[13px]'>Cut and sew tops for women </p>
+                        <p className='text-[11px]'>By Queen Paul</p>
+                    </div>
+                    <p className='text-[9px] absolute top-[78px] right-2'>Monday 9pm</p>
+                </div>
+
+                <div className='w-[250px] h-[96px] bg-[#F9FFF3] relative rounded-md flex flex-row justify-evenly items-center mt-5'>
+                    <img src={card_image.src} className = 'h-12 w-12 rounded-md'/>
+                    <div className='flex flex-col'>
+                        <p className='text-[13px]'>Cut and sew tops for women </p>
+                        <p className='text-[11px]'>By Queen Paul</p>
+                    </div>
+                    <p className='text-[9px] absolute top-[78px] right-2'>Monday 9pm</p>
+                </div>
+
+                <div className='w-[250px] h-[96px] bg-[#F9FFF3] relative rounded-md flex flex-row justify-evenly items-center mt-5'>
+                    <img src={card_image.src} className = 'h-12 w-12 rounded-md'/>
+                    <div className='flex flex-col'>
+                        <p className='text-[13px]'>Cut and sew tops for women </p>
+                        <p className='text-[11px]'>By Queen Paul</p>
+                    </div>
+                    <p className='text-[9px] absolute top-[78px] right-2'>Monday 9pm</p>
+                </div>
+
+                <div className='w-[250px] h-[96px] bg-[#F9FFF3] relative rounded-md flex flex-row justify-evenly items-center mt-5'>
+                    <img src={card_image.src} className = 'h-12 w-12 rounded-md'/>
+                    <div className='flex flex-col'>
+                        <p className='text-[13px]'>Cut and sew tops for women </p>
+                        <p className='text-[11px]'>By Queen Paul</p>
+                    </div>
+                    <p className='text-[9px] absolute top-[78px] right-2'>Monday 9pm</p>
+                </div>
+
             </div>
+
+
 
             
 
@@ -337,3 +399,33 @@ const TopSection = () => {
 }
 
 export default TopSection
+
+
+
+
+
+
+
+
+
+ {/* <h1 className='text-sm font-semibold mt-20 mb-8 w-full '>Programs</h1> */}
+
+                    {/* <div className='hidden items-center md:flex  flex-row flex-wrap w-full md:w-[90%] lg:w-[70%] xl:w-full justify-between pl-0 '>
+                        <div className='w-[260px] bg-[#5FFC54] h-[125px] rounded-lg flex items-center text-sm pl-5 mb-10 '>
+                            VOCATIONAL EDUCATION
+                            <svg viewBox="-37 55 110 150" xmlns="http://www.w3.org/2000/svg" >
+                                <path fill="#FDBC64" d="M41,-35.9C47.5,-24.6,43.1,-7.9,41.7,13.9C40.2,35.7,41.6,62.6,28.8,74.2C16.1,85.9,-10.9,82.3,-33.7,70.9C-56.4,59.6,-74.9,40.4,-71.1,25.3C-67.3,10.1,-41.4,-1.1,-25.8,-14.4C-10.3,-27.7,-5.1,-43.2,6.1,-48C17.3,-52.9,34.6,-47.1,41,-35.9Z" transform="translate(100 100)" />
+                            </svg>
+                        </div>
+                        <div className='w-[260px] bg-[#2ABB1A] h-[125px] rounded-lg flex items-center text-sm pl-5 mb-10'>
+                            CERTIFICATE PROGRAM
+                            <svg viewBox="-13 39 139 139" xmlns="http://www.w3.org/2000/svg">
+                                <path fill="#AE5050" d="M33.4,-39C41.9,-32.6,46.7,-20.8,45.5,-10.5C44.4,-0.2,37.4,8.7,30.8,15.8C24.3,22.8,18.2,28.2,7.7,40.4C-2.9,52.7,-18.1,72,-21.2,67C-24.3,62,-15.3,32.8,-15.6,16.6C-15.9,0.4,-25.4,-2.9,-29.4,-9.5C-33.3,-16.1,-31.7,-26,-25.9,-32.8C-20.1,-39.7,-10,-43.4,1.2,-44.8C12.4,-46.2,24.8,-45.3,33.4,-39Z" transform="translate(100 100) rotate(-36)" />
+                            </svg>
+                        </div>
+                        <div className='w-[260px] bg-[#2ABB1A] h-[125px] rounded-lg flex items-center text-sm pl-5 mb-10'>MASTER CLASS</div>
+                    </div>
+
+                    <div className='w-[360px] ml-[-10px] md:hidden'>
+                       <ProgramCarousel/>  
+                    </div> */}

@@ -3,11 +3,7 @@ import ContentCarousel from '../Content-Components/ContentCarousel'
 import { Data as data, instructorData } from '../Content-Components/Data'
 import { Data } from './Data'
 import InstructorCarousel from '../Content-Components/InstructorCarousel'
-import BottomSection from './BottomSection'
-import CourseCarousel from './CourseCarousel'
-import MiddleSection from './MiddleSection'
 import ProgramCarousel from './ProgramCarousel'
-import TopSection from './TopSection'
 
 const NoContent = () => {
   return (
@@ -19,33 +15,8 @@ const NoContent = () => {
     <p className=' hidden sm:block sm:font-[600] sm:mb-[20px]'>Hi Naomi, you are currently not enrolled at the moment</p>
     <div className='mb-[20px]'>
     <p className='text-gray-400 text-[13px] mt-2'>Explore our various courses</p>
-      {/* <p className='block sm:hidden text-[14px] font-[600]'>Continue from where you stopped</p> */}
     </div>
-    
-    {/* Big screens */}
-    {/* <div className='hidden xl:flex xl:w-full '>
-      <CourseCarousel screen='big' data={Data} />
-    </div> */}
-    
-    {/* Medium screens */}
-    {/* <div className='hidden lg:flex lg:w-full xl:hidden'>
-      <CourseCarousel screen='medium' data={Data} />
-    </div> */}
-    
-    {/* Small screens */}
 
-    {/* <div className='hidden sm:flex sm:flex-nowrap sm:w-full lg:hidden'>
-      <CourseCarousel screen='small' data={Data} />
-    </div> */}
-
-    {/* Mobile */}
-    {/* <div className='flex w-full sm:hidden'>
-      <CourseCarousel screen='mobile' data={Data} />
-    </div> */}
-
-    {/* <h1 className='text-sm font-semibold mt-6  w-full '>Explore various programs</h1> */}
-
-   
 
     <div className='hidden md:flex flex-row items-center flex-wrap  md:w-[90%] lg:w-[70%] xl:w-[80%] justify-between pl-0 mt-4'>
         <div className='w-[260px] bg-[#5FFC54] h-[125px] rounded-lg flex items-center text-sm pl-5 mb-10 '>
@@ -70,59 +41,56 @@ const NoContent = () => {
 
     
     
-    <div className='bg-transparent'>
-            
-            <div className='pt-[50px] flex flex-col '>
-                <p className="text-[14px] mb-4 md:text-md font-semibold md:mb-8 ml-4">Browse courses based on your recent activities</p>
-                <div className='block w-[360px] m-auto md:hidden'>
-                    <ContentCarousel data = {data} smallScreen = {true} />
+        <div className='bg-transparent w-full xl:w-[85%] lg:mx-auto lg:mx-0 '>
+            <div className='pt-[50px] flex flex-col'>
+                <p className="text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">Recommended Courses on Vocational Education</p>
+                <div className='block w-[360px] m-auto md:hidden w-full'>
+                    <ContentCarousel data = {data} screen = {[1.5, 10]} />
                 </div>
-                <div className='hidden md:block '>
-                    <ContentCarousel data = {data} smallScreen = {false} bottom={true}/>
+                <div className='hidden m-auto md:block lg:hidden w-full'>
+                    <ContentCarousel data = {data} screen = {[2, 20]} />
+                </div>
+                <div className='hidden lg:block w-full'>
+                    <ContentCarousel data = {data} screen = {[3, 40]} />
                 </div> 
             </div>
             <div className='pt-[50px] flex flex-col'>
-                <p className="text-[14px] mb-4 md:text-md font-semibold md:mb-8 ml-4">Popular courses on vacational programs</p>
-                <div className='block w-[360px] m-auto md:hidden'>
-                    <ContentCarousel data = {data} smallScreen = {true} />
+                <p className="text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">Popular courses on vocational program</p>
+                <div className='block w-[360px] m-auto md:hidden w-full'>
+                    <ContentCarousel data = {data} screen = {[1.5, 10]} />
                 </div>
-                <div className='hidden md:block'>
-                    <ContentCarousel data = {data} smallScreen = {false} bottom={true}/>
+                <div className='hidden m-auto md:block lg:hidden w-full'>
+                    <ContentCarousel data = {data} screen = {[2, 20]} />
+                </div>
+                <div className='hidden lg:block w-full'>
+                    <ContentCarousel data = {data} screen = {[3, 40]} />
                 </div> 
             </div>
             <div className='pt-[50px] flex flex-col'>
-                <p className="text-[14px] mb-4 md:text-md font-semibold md:mb-8 ml-4">Based on your recent activities</p>
-                <div className='block w-[360px] m-auto md:hidden'>
-                    <ContentCarousel data = {data} smallScreen = {true} />
+                <p className="text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8">Take your business to the next level by exploring any of these courses</p>
+                <div className='block w-[360px] m-auto md:hidden w-full'>
+                    <ContentCarousel data = {data} screen = {[1.5, 10]} />
                 </div>
-                <div className='hidden md:block'>
-                    <ContentCarousel data = {data} smallScreen = {false} bottom={true}/>
+                <div className='hidden m-auto md:block lg:hidden w-full'>
+                    <ContentCarousel data = {data} screen = {[2, 20]} />
+                </div>
+                <div className='hidden lg:block w-full'>
+                    <ContentCarousel data = {data} screen = {[3, 40]} />
                 </div> 
             </div>
             <div className='pt-[50px] flex flex-col'>
-                <p className="text-[14px] mb-4 md:text-md font-semibold md:mb-8 ml-4">Trending courses</p>
-                <div className='block w-[360px] m-auto md:hidden'>
-                    <ContentCarousel data = {data} smallScreen = {true} />
+                <p className="text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8">Instructors</p>
+                <div className='block w-[360px] m-auto md:hidden w-full'>
+                    <InstructorCarousel data = {instructorData} screen = {[1.5, 10]} />
                 </div>
-                <div className='hidden md:block'>
-                    <ContentCarousel data = {data} smallScreen = {false} bottom={true}/>
-                </div> 
-            </div>
-
-
-            <div className='pt-[50px] flex flex-col'>
-                <p className="text-[14px] mb-4 md:text-md font-semibold md:mb-8 ml-4 ">Instructors</p>
-                <div className='block w-[360px] m-auto md:hidden'>
-                    <InstructorCarousel data = {instructorData} smallScreen = {true} />
+                <div className='hidden m-auto md:block lg:hidden w-full'>
+                    <InstructorCarousel data = {instructorData} screen = {[2, 20]} />
                 </div>
-                <div className='hidden md:block'>
-                    <InstructorCarousel data = {instructorData} smallScreen = {false} bottom={true}/>
-                </div> 
-            </div>
-
-
+                <div className='hidden lg:block w-full'>
+                    <InstructorCarousel data = {instructorData} screen = {[3, 40]} />
+                </div>  
+            </div>                   
         </div>
-
 
     
     </div>
@@ -130,3 +98,35 @@ const NoContent = () => {
 }
 
 export default NoContent
+
+
+
+
+
+
+
+
+
+
+{/* Big screens */}
+    {/* <div className='hidden xl:flex xl:w-full '>
+      <CourseCarousel screen='big' data={Data} />
+    </div> */}
+    
+    {/* Medium screens */}
+    {/* <div className='hidden lg:flex lg:w-full xl:hidden'>
+      <CourseCarousel screen='medium' data={Data} />
+    </div> */}
+    
+    {/* Small screens */}
+
+    {/* <div className='hidden sm:flex sm:flex-nowrap sm:w-full lg:hidden'>
+      <CourseCarousel screen='small' data={Data} />
+    </div> */}
+
+    {/* Mobile */}
+    {/* <div className='flex w-full sm:hidden'>
+      <CourseCarousel screen='mobile' data={Data} />
+    </div> */}
+
+    {/* <h1 className='text-sm font-semibold mt-6  w-full '>Explore various programs</h1> */}

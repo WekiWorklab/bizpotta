@@ -13,33 +13,42 @@ const BottomSection = () => {
     <div className='pl-0 lg:pl-5 flex flex-col xl:flex-row  w-full'>
                 <div className='bg-white w-full m-auto  '>
                     
-                    <div className='pt-[50px] flex flex-col'>
-                            <p className="text-[14px] mb-4 md:text-md font-semibold md:mb-8 ml-4">Popular Courses</p>
-                            <div className='block w-[360px] m-auto md:hidden'>
-                                <ContentCarousel data = {Data} smallScreen = {true} />
-                            </div>
-                            <div className='hidden md:block'>
-                                <ContentCarousel data = {Data} smallScreen = {false} bottom={true}/>
-                            </div> 
+                <div className='pt-[50px] flex flex-col bg-white'>
+                        <p className="text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">Popular Courses</p>
+                        <div className='block w-[360px] m-auto md:hidden w-full'>
+                            <ContentCarousel data = {Data} screen = {[1.5, 10]} />
+                        </div>
+                        <div className='hidden m-auto md:block lg:hidden w-full'>
+                            <ContentCarousel data = {Data} screen = {[2, 20]} />
+                        </div>
+                        <div className='hidden lg:block w-full'>
+                            <ContentCarousel data = {Data} screen = {[3, 40]} />
+                        </div> 
+                    </div>
+                    <div className='pt-[50px] flex flex-col bg-white'>
+                        <p className="text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">Trending Courses</p>
+                        <div className='block w-[360px] m-auto md:hidden w-full'>
+                            <ContentCarousel data = {Data} screen = {[1.5, 10]} />
+                        </div>
+                        <div className='hidden m-auto md:block lg:hidden w-full'>
+                            <ContentCarousel data = {Data} screen = {[2, 20]} />
+                        </div>
+                        <div className='hidden lg:block w-full'>
+                            <ContentCarousel data = {Data} screen = {[3, 40]} />
+                        </div> 
                     </div>
                     <div className='pt-[50px] flex flex-col'>
-                            <p className="text-[14px] mb-4 md:text-md font-semibold md:mb-8 ml-4">Trending Courses</p>
-                            <div className='block w-[360px] m-auto md:hidden'>
-                                <ContentCarousel data = {Data} smallScreen = {true} />
-                            </div>
-                            <div className='hidden md:block'>
-                                <ContentCarousel data = {Data} smallScreen = {false} bottom={true}/>
-                            </div> 
-                    </div>
-                    <div className='pt-[50px] flex flex-col'>
-                            <p className="text-[14px] mb-4 md:text-md font-semibold md:mb-8 ml-4 ">Instructors</p>
-                            <div className='block w-[360px] m-auto md:hidden'>
-                                <InstructorCarousel data = {instructorData} smallScreen = {true} />
-                            </div>
-                            <div className='hidden md:block'>
-                                <InstructorCarousel data = {instructorData} smallScreen = {false} bottom={true}/>
-                            </div> 
-                    </div>
+                        <p className="text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8">Instructors</p>
+                        <div className='block w-[360px] m-auto md:hidden w-full'>
+                            <InstructorCarousel data = {instructorData} screen = {[1.5, 10]} />
+                        </div>
+                        <div className='hidden m-auto md:block lg:hidden w-full'>
+                            <InstructorCarousel data = {instructorData} screen = {[2, 20]} />
+                        </div>
+                        <div className='hidden lg:block w-full'>
+                            <InstructorCarousel data = {instructorData} screen = {[3, 40]} />
+                        </div>  
+                    </div> 
                 </div>
 
 
