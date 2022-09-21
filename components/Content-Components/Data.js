@@ -26,39 +26,45 @@ export const searchData = [
 export const Data = [
     {
         name: "Fashion Design",
-        category: "Design",
+        category: "Design, styling",
         total_students: 500,
-        rating: 4
+        rating: 4,
+        academy: "Dth academy"
     },
     {
         name: "React",
-        category: "Software dev",
+        category: "Software, coding",
         total_students: 450,
-        rating: 5
+        rating: 5,
+        academy: "Amaka academy"
     },
     {
         name: "React Hooks",
-        category: "Software dev",
+        category: "Software, coding",
         total_students: 500,
-        rating: 3
+        rating: 3,
+        academy: "Dth academy"
     },
     {
         name: "Javascript",
-        category: "Software dev",
+        category: "Software, coding",
         total_students: 100,
-        rating: 4
+        rating: 4,
+        academy: "Amaka academy"
     },
     {
         name: "Digital marketing",
         category: "Marketing",
         total_students: 210,
-        rating: 4
+        rating: 4,
+        academy: "Dth academy"
     },
     {
         name: "UI/UX design",
         category: "Web dev",
         total_students: 350,
-        rating: 4
+        rating: 4,
+        academy: "Dth academy"
     }
 ]
 

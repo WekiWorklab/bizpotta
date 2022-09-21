@@ -22,14 +22,14 @@ const InstructorCarousel = ({data, smallScreen, bottom}) => {
         // onSwiper={(swiper) => console.log(swiper)}
         >
             {data.map((el, index) => (
-                <SwiperSlide key={index}> 
+                <SwiperSlide key={index} style={{backgroundColor: "transparent"}}> 
                     <InstructorCard data = {el} bottom={bottom}/>
                 </SwiperSlide>
                 )
               )
             }
 
-        <div className='h-[95px]'></div>
+        <div className='h-[55px]'></div>
         </Swiper>
   )
 }

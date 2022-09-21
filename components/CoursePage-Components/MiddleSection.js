@@ -1,26 +1,73 @@
 import React from 'react'
 import BrowseCourse from './BrowseCourse'
-import { instructorData } from '../Content-Components/Data'
+import { Data, instructorData } from '../Content-Components/Data'
+import ContentCarousel from '../Content-Components/ContentCarousel'
+import InstructorCarousel from '../Content-Components/InstructorCarousel'
 
 const MiddleSection = () => {
   return (
-    <div className=' pr-4 sm:pr-10 mt-8'>
-        <div className='flex flex-row justify-between items-center '>
-            <div>
-                <p className='font-[600]'>Browse Courses</p>
-                <p className='text-[12px]'>10,000 total results</p>
+    // <div>
+        <div className='bg-transparent'>
+            
+            <div className='pt-[50px] flex flex-col '>
+                <p className="text-[14px] mb-4 md:text-md font-semibold md:mb-8 ml-4">Browse courses based on your recent activities</p>
+                <div className='block w-[360px] m-auto md:hidden'>
+                    <ContentCarousel data = {Data} smallScreen = {true} />
+                </div>
+                <div className='hidden md:block '>
+                    <ContentCarousel data = {Data} smallScreen = {false} bottom={true}/>
+                </div> 
             </div>
-            <p className='text-[12px]'>
-                View more
-            </p>
+            <div className='pt-[50px] flex flex-col'>
+                <p className="text-[14px] mb-4 md:text-md font-semibold md:mb-8 ml-4">Popular courses on vacational programs</p>
+                <div className='block w-[360px] m-auto md:hidden'>
+                    <ContentCarousel data = {Data} smallScreen = {true} />
+                </div>
+                <div className='hidden md:block'>
+                    <ContentCarousel data = {Data} smallScreen = {false} bottom={true}/>
+                </div> 
+            </div>
+            <div className='pt-[50px] flex flex-col'>
+                <p className="text-[14px] mb-4 md:text-md font-semibold md:mb-8 ml-4">Based on your recent activities</p>
+                <div className='block w-[360px] m-auto md:hidden'>
+                    <ContentCarousel data = {Data} smallScreen = {true} />
+                </div>
+                <div className='hidden md:block'>
+                    <ContentCarousel data = {Data} smallScreen = {false} bottom={true}/>
+                </div> 
+            </div>
+            <div className='pt-[50px] flex flex-col'>
+                <p className="text-[14px] mb-4 md:text-md font-semibold md:mb-8 ml-4">Trending courses</p>
+                <div className='block w-[360px] m-auto md:hidden'>
+                    <ContentCarousel data = {Data} smallScreen = {true} />
+                </div>
+                <div className='hidden md:block'>
+                    <ContentCarousel data = {Data} smallScreen = {false} bottom={true}/>
+                </div> 
+            </div>
+
+
+            <div className='pt-[50px] flex flex-col'>
+                <p className="text-[14px] mb-4 md:text-md font-semibold md:mb-8 ml-4 ">Instructors</p>
+                <div className='block w-[360px] m-auto md:hidden'>
+                    <InstructorCarousel data = {instructorData} smallScreen = {true} />
+                </div>
+                <div className='hidden md:block'>
+                    <InstructorCarousel data = {instructorData} smallScreen = {false} bottom={true}/>
+                </div> 
+            </div>
+
+
         </div>
-        <div className='mt-6'>
-       { instructorData.slice(0,4).map((el, index) => (
-            <BrowseCourse key={index} bought = {false} data={el}/>
-        ))}
-        </div>
-    </div>
+
+       
   )
 }
 
 export default MiddleSection
+
+
+
+
+
+

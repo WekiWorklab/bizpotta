@@ -10,13 +10,13 @@ import PieChart from './PieChart'
 
 const TopSection = () => {
   return (
-    <div className=' pl-0 lg:pl-5 lg:pt-5 flex flex-col xl:flex-row w-full '>
+    <div className=' pl-0 lg:pl-5 lg:pt-5 flex flex-col xl:flex-row w-full bg-white'>
         {/* Start of left section */}
-            <div className=' w-full m-auto md:w-[650px] lg:w-[850px] '>
-                <div className='bg-white px-2 md:pl-4 pr-2 flex flex-col items-center '>
-                    <h1 className='text-sm font-semibold mt-8 mb-8 w-full '>Programs</h1>
+            <div className=' w-full mx-auto md:w-[650px] lg:w-[850px] h-full'>
+                <div className='bg-white px-2 md:pl-4 pr-2 flex flex-col items-center pt-10 '>
+                    {/* <h1 className='text-sm font-semibold mt-20 mb-8 w-full '>Programs</h1> */}
 
-                    <div className='hidden items-center md:flex  flex-row flex-wrap w-full md:w-[90%] lg:w-[70%] xl:w-full justify-between pl-0 '>
+                    {/* <div className='hidden items-center md:flex  flex-row flex-wrap w-full md:w-[90%] lg:w-[70%] xl:w-full justify-between pl-0 '>
                         <div className='w-[260px] bg-[#5FFC54] h-[125px] rounded-lg flex items-center text-sm pl-5 mb-10 '>
                             VOCATIONAL EDUCATION
                             <svg viewBox="-37 55 110 150" xmlns="http://www.w3.org/2000/svg" >
@@ -34,7 +34,7 @@ const TopSection = () => {
 
                     <div className='w-[360px] ml-[-10px] md:hidden'>
                        <ProgramCarousel/>  
-                    </div>
+                    </div> */}
 
 
                     <div className=' hidden md:flex flex-col items-center w-full xl:flex-row xl:justify-between '>
@@ -208,7 +208,7 @@ const TopSection = () => {
 
                 <div>
                 <div className='pt-[50px] flex flex-col bg-white'>
-                            <p className="text-[14px] mb-4 md:text-md font-semibold md:mb-8 ml-4">Recommended for you</p>
+                            <p className="text-[14px] mb-4 md:text-md font-semibold md:font-bold md:mb-8 ml-4">Recommended Courses on Vocational Education</p>
                             <div className='block w-[360px] m-auto md:hidden'>
                                 <ContentCarousel data = {Data} smallScreen = {true} />
                             </div>

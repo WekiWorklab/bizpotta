@@ -1,5 +1,6 @@
 import React from 'react'
-import {BsStarFill} from 'react-icons/bs'
+import {BsStarFill, BsTag} from 'react-icons/bs'
+import { offer } from '../../public'
 
 
 const ContentCard = ({data, bottom}) => {
@@ -13,9 +14,9 @@ const ContentCard = ({data, bottom}) => {
     const bottomText = 'text-[14px] mt-[3px] xl:text-[14px] xl:mt-[3px] md:text-[11px] md:mt-[3px]  break-words'
     const topText = 'text-[14px] mt-[3px]'
 
-    const bottomStar = 'flex flex-row'
-    const topStar = 'flex flex-row'
-    
+    const bottomStar = 'flex flex-row gap-x justify-end'
+    const topStar = 'flex flex-row gap-x justify-end'
+     
 
   return (
     
@@ -29,23 +30,59 @@ const ContentCard = ({data, bottom}) => {
 
         <div className = {bottom === true ? bottomText : topText}>{data.name}</div>
 
-        <div className='flex flex-row justify-between '>
-            <p className='text-[11px] max-w-[60%] box-overflow'>{data.category}</p>
-
+        <div className='flex flex-row justify-between items-center mt-1'>
+            <div className=''>
+                <div className='flex items-center gap-x-2'>
+                    <div className='w-[20px] h-[20px] '>
+                        <img src={offer.src} alt='' className='rounded-full' />
+                    </div>
+                    <p className='text-[13px]'>{data.academy}</p>
+                </div>
+                <div className='flex items-center gap-x-2 mt-1'>
+                    <BsTag size={13}/>
+                    <p className='text-[11px]  box-overflow'>{data.category}</p>
+                </div>
+            </div>
             <div>
                 <div className={bottom === true ? bottomStar : topStar}>
-                    <BsStarFill size={14} color='#FFC700'/>
-                    <BsStarFill size={14} color='#FFC700'/>
-                    <BsStarFill size={14} color='#FFC700'/>
-                    <BsStarFill size={14} color='#FFC700'/>
-                    <BsStarFill size={14} color='#FFC700'/>
+                    <BsStarFill size={12} color='#FFC700'/>
+                    <BsStarFill size={12} color='#FFC700'/>
+                    <BsStarFill size={12} color='#FFC700'/>
+                    <BsStarFill size={12} color='#FFC700'/>
+                    <BsStarFill size={12} color='#FFC700'/>
                 </div>
                 <p className='text-xs'>{data.total_students} students</p>
             </div>
         </div>
-        
+        </div>
 
-            {/* <div className='flex flex-col '>
+    </div>
+  )
+}
+
+export default ContentCard
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/* <div className='flex flex-col '>
                 <p className = {bottom === true ? bottomText : topText}>{data.name}</p>
                 <p className='text-[11px]'>{data.category}</p>
             </div>
@@ -60,17 +97,6 @@ const ContentCard = ({data, bottom}) => {
                 </div>
                 <p className='text-xs'>{data.total_students} students</p>
             </div> */}
-        </div>
-
-    </div>
-  )
-}
-
-export default ContentCard
-
-
-
-
 
 
 

@@ -17,17 +17,17 @@ const ContentCarousel = ({data, smallScreen, bottom}) => {
         clickable: true,
         }}
         modules={[Pagination]}
-        className='mySwiper'
+        className='mySwiper '
         >
             {data.map((el, index) => (
-                <SwiperSlide key={index}> 
+                <SwiperSlide key={index}  style={{backgroundColor: "transparent"}}> 
                     <ContentCard data={el} bottom = {bottom}/> 
                 </SwiperSlide>
                 )
               )
             }
 
-        <div className='h-20'></div>
+        <div className='h-14'></div>
         </Swiper>
   )
 }
