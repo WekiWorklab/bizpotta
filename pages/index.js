@@ -383,17 +383,21 @@ export default function Home() {
                 <div className="w-[100px] h-[100px] bg-transparent absolute top-[43%] left-0 flex justify-center items-center rounded-full">
                     <AiFillCaretLeft size={80}  color='#797979'  onClick = {() => clickScroll(-width - 8)}/>
                 </div>
-                <div className=" mx-auto w-[1140px]  flex flex-row overflow-x-hidden gap-x-2 scroll-smooth " ref={scrollRef}>
+                <div className=" mx-auto w-[85vw] flex flex-row overflow-x-hidden gap-x-2 scroll-smooth " ref={scrollRef}>
                     <BlueSection ref={childRef} router = {router} />
                     <GreenSection  router = {router} />
                 </div>
                 <div className="w-[100px] h-[100px] bg-transparent absolute top-[43%] right-0 flex justify-center items-center rounded-full">
                     <AiFillCaretRight size={80} color='#797979' onClick = {() => clickScroll(width + 8)} />
                 </div>
+
+                <div>
+                  <div className=""></div>
+                </div>
             </div>
             
             {/* Market and sell your Expertise Program Section */}
-            <div className='relative bg-gray-50 pt-2 md:pt-12 pb-2 '>
+            <div className='relative bg-gray-50 pt-2 md:pt-24 pb-2 '>
               <h1 className=' px-6 md:pl-28 text-start text-lg font-light tracking-wider text-bizpotta-purple'>
                 <span className='text-[15px] font-bold md:font-medium  md:text-2xl'>Market and sell your Expertise</span>
               </h1>
@@ -421,7 +425,7 @@ export default function Home() {
             </div>
 
             {/* Market and sell your Expertise Program Section */}
-            <div className='relative bg-gray-50 pt-10 pb-8'>
+            <div className='relative bg-gray-50 mt-16 pb-8'>
               <h1 className='px-6 md:pl-28 text-start text-[15px] md:text-lg font-light tracking-wider text-bizpotta-purple'>
                 <span className='font-bold md:font-medium'>Bizpotta Community</span>
               </h1>
@@ -466,7 +470,7 @@ export default function Home() {
 
 const GreenSection = () => {
   return (
-    <section className='bg-[#1F9A5F] mx-auto  w-full  py-8 md:py-20 px-6 md:px-16 h-[600px] min-w-[1140px] rounded-xl'>
+    <section className='bg-[#1F9A5F] mx-auto py-8 md:py-20 px-6 md:px-16 h-[600px] min-w-[85vw] rounded-xl'>
       <div className=" ">
         <div className="flex flex-row items-center gap-x-8">
           <div className="min-w-[70px] min-h-[5px] rounded-xl bg-bizpotta-green" />
@@ -493,7 +497,7 @@ const GreenSection = () => {
 // eslint-disable-next-line react/display-name
 const BlueSection = forwardRef(({router}, ref) => {
   return (
-    <section className='bg-gradient-to-br from-[#9DB9E4] to-[#B5DDFA] mx-auto blueShadow w-full  py-8 md:py-14 px-6 md:px-10 h-[600px] min-w-[1140px] rounded-xl' ref = {ref}>
+    <section className='bg-gradient-to-br from-[#9DB9E4] to-[#B5DDFA] mx-auto blueShadow  py-8 md:py-14 px-6 md:px-10 h-[600px] min-w-[85vw] rounded-xl' ref = {ref}>
                 <div className='max-w-7xl lg:grid lg:grid-cols-12 lg:gap-8 '>
                   <div className='sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left'>
                     <h1>

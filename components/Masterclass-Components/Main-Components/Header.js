@@ -23,15 +23,44 @@ const Header = () => {
     }
 
   return (
-    <div className='w-full h-[130px] flex flex-row items-center justify-between px-10'>
+    <div className='w-full h-[130px] flex flex-row items-center justify-between px-16'>
         {/* Logo Section */}
         <div className='flex items-center cursor-pointer' onClick={() => router.push('/')}>
             <img src={logo.src} className = 'w-[200px] mr-1' alt=''/>
             <AiOutlineDown />
         </div>
 
-        {/* Search Categories section */}
-        <div className='flex items-center font-bold text-darkBlue'>
+        <div className='flex flex-row items-center gap-x-6'>
+            <div className='flex flex-row items-center gap-x-1 text-darkBlue'>
+                <p>Programs</p>
+                <AiOutlineDown color='#B1B1B1' />
+            </div>
+            <div className='text-darkBlue'>Become a partner</div>
+            <div className='text-darkBlue'>Become a Tutor</div>
+            <div className='border h-[35px] w-[0.5px]'></div>
+            <div>Login</div>
+            <div className='w-[160px] h-[50px] rounded-md  bg-darkBlue centerFlex text-white'>
+                Join for free
+            </div>
+        </div>
+
+        
+    </div>
+  )
+}
+
+export default Header
+
+
+
+
+
+
+
+
+/**
+ * 
+ * <div className='flex items-center font-bold text-darkBlue'>
             <div className='flex items-center relative' >
                 <p>All categories</p>
                 <AiOutlineDown className='ml-1 mr-4 cursor-pointer' size={14} onClick={handleCat}/>
@@ -45,7 +74,6 @@ const Header = () => {
             </div>
         </div>
 
-        {/* Accounts details */}
         <div className='flex items-center text-darkBlue gap-x-4'>
             <AiOutlineShoppingCart size={20} className='text-darkBlue' />
             <IoNotificationsOutline size={20} className='text-darkBlue' />
@@ -56,18 +84,9 @@ const Header = () => {
 
             </div>
         </div>
-
-    </div>
-  )
-}
-
-export default Header
-
-
-
-
-
-
+ 
+ * 
+ */
 
 
 

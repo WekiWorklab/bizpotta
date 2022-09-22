@@ -9,13 +9,15 @@ import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { AiOutlineDown } from 'react-icons/ai';
+import Navbars from '../../Navbars';
 
 const TopSection = () => {
   return (
-    <div className='w-full rad-gradient   pb-10'>
+    <div className='w-full rad-gradient pb-10'>
         <Header />
+        {/* <Navbars /> */}
         <div className='px-24'>
-            <div>
+            <div className='mt-10'>
                 <p className='text-darkBlue font-semibold'>Master Program</p>
                 <CurvyUnderline />
             </div>
