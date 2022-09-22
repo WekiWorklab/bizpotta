@@ -252,10 +252,15 @@ blockquote:after {
 -moz-box-shadow: 2px 2px 16px 0px rgba(0,0,0,0.75);
 }
 
+.masters-shadow{
+  box-shadow: -1px 0px 6px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: -1px 0px 6px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: -1px 0px 6px 0px rgba(0,0,0,0.75);
+}
 
 /* Masters gradient */
 .rad-gradient{
-  background-image: radial-gradient(rgba(148, 242, 54, 0.30), #E5E5E5);
+  background-image: radial-gradient(rgba(148, 242, 54, 0.30), #FDFFFA);
 }
 
 .middle-path{

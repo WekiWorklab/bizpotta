@@ -380,15 +380,15 @@ export default function Home() {
 
             {/* MasterClass Section */}
             <div className="relative ">
-                <div className="w-[100px] h-[100px] bg-red-600 absolute top-[43%] left-0 flex justify-end items-center">
-                    <AiFillCaretLeft size={80} onClick = {() => clickScroll(-width)}/>
+                <div className="w-[100px] h-[100px] bg-transparent absolute top-[43%] left-0 flex justify-center items-center rounded-full">
+                    <AiFillCaretLeft size={80}  color='#797979'  onClick = {() => clickScroll(-width - 8)}/>
                 </div>
                 <div className=" mx-auto w-[1140px]  flex flex-row overflow-x-hidden gap-x-2 scroll-smooth " ref={scrollRef}>
-                    <BlueSection ref={childRef}/>
-                    <GreenSection />
+                    <BlueSection ref={childRef} router = {router} />
+                    <GreenSection  router = {router} />
                 </div>
-                <div className="w-[100px] h-[100px] bg-red-600 absolute top-[43%] right-0 flex justify-start items-center">
-                    <AiFillCaretRight size={80} className = '' onClick = {() => clickScroll(width)} />
+                <div className="w-[100px] h-[100px] bg-transparent absolute top-[43%] right-0 flex justify-center items-center rounded-full">
+                    <AiFillCaretRight size={80} color='#797979' onClick = {() => clickScroll(width + 8)} />
                 </div>
             </div>
             
@@ -491,7 +491,7 @@ const GreenSection = () => {
 
 
 // eslint-disable-next-line react/display-name
-const BlueSection = forwardRef((props, ref) => {
+const BlueSection = forwardRef(({router}, ref) => {
   return (
     <section className='bg-gradient-to-br from-[#9DB9E4] to-[#B5DDFA] mx-auto blueShadow w-full  py-8 md:py-14 px-6 md:px-10 h-[600px] min-w-[1140px] rounded-xl' ref = {ref}>
                 <div className='max-w-7xl lg:grid lg:grid-cols-12 lg:gap-8 '>
@@ -605,7 +605,7 @@ const BlueSection = forwardRef((props, ref) => {
                     </div>
                     <div className='md:px-8 w-full hidden md:flex items-center justify-start gap-14 mt-8 md:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0'>
                       <div className='flex items-center justify-center'>
-                        <button className='px-6 py-2 h-14 w-30 inline-flex items-center justify-start overflow-hidden transition-all rounded-md bg-darkBlue'>
+                        <button className='px-6 py-2 h-14 w-30 inline-flex items-center justify-start overflow-hidden transition-all rounded-md bg-darkBlue' onClick={() => router.push('/masters')}>
                           {/* purple box */}
                           <span className='w-0 h-0 rounded bg-bizpotta-purple absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1'></span>
                           <span className='w-full text-white transition-colors duration-300 ease-in-out group-hover:text-bizpotta-purple z-10'>

@@ -10,6 +10,50 @@ import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { FaQuoteLeft } from 'react-icons/fa';
 
 
+
+
+
+export const ExpertsCarousel = () => {
+
+  const arr = new Array(9).fill("")
+
+  return(
+    <Swiper
+        slidesPerView={3}
+        spaceBetween={10}
+        pagination={{
+        clickable: true,
+        }}
+        modules={[Pagination]}
+        style={{backgroundColor: "transparent"}}
+        >
+          {
+            arr.map((el, index) => (
+              <SwiperSlide key={index} style={{backgroundColor: "transparent"}}>
+                  <div className='w-[350px] p-3 flex flex-row gap-x-4'>
+                    <div className='bg-no-repeat bg-cover bg-center w-[50px] h-[50px] rounded-full' style={{backgroundImage: `url(${offer.src})`}} />
+
+                    <div className=' w-[250px]'>
+                      <p className='text-darkBlue font-bold'>Bello Hassan M.sc</p>
+                      <p className='text-[14px] text-bizpotta-green'>Product Designer</p>
+                      <p className='text-gray-500 text-[13px] mt-2'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Volutpat mauris id malesuada commodo mattis.</p>
+                    </div>
+                  </div>
+              </SwiperSlide>
+            ))
+          }
+
+          <div className='h-14'></div>
+        </Swiper>
+  )
+}
+
+
+
+
+
+
+
 export const MainCarousel = () => {
 
   const arr = new Array(9).fill("")
@@ -41,7 +85,7 @@ export const MainCarousel = () => {
                         <div className='w-[70px] h-[4px] bg-white mb-2'></div>
                         <p className='text-lg font-bold text-white mb-2'>Charles Mark</p>
                         <div className='w-[120px] h-[35px] text-[14px] centerFlex bg-bizpotta-green rounded-md'>
-                          Set reminder
+                          Get started
                         </div>
                       </div>
                   </div>
@@ -80,7 +124,7 @@ export const TestimonialCarousel = () => {
             arr.map((el, index) => (
             <SwiperSlide key={index} style={{backgroundColor:"transparent", padding:"0px",  }}>
                 <div className='w-[400px] h-[320px] relative  centerFlex '>
-                  <div className='w-[380px] h-[250px] bg-white '>
+                  <div className='w-[380px] h-[250px] bg-white border rounded-md'>
                     <div className='flex flex-row gap-x-1 mt-16 ml-8 mr-2'>
                       <AiFillStar color='#94F236' size={18}/>
                       <AiFillStar color='#94F236' size={18}/>

@@ -5,8 +5,11 @@ import { card_image, logo } from '../../../public'
 import {AiOutlineDown, AiOutlineShoppingCart} from 'react-icons/ai'
 import {FiSearch} from 'react-icons/fi'
 import { IoNotificationsOutline } from 'react-icons/io5'
+import { useRouter } from 'next/router'
 
 const Header = () => {
+
+    const router = useRouter()
 
     const [showCat, setShowCat] = useState(false)
     const [showSearch, setShowSearch] = useState(false)
@@ -22,7 +25,7 @@ const Header = () => {
   return (
     <div className='w-full h-[130px] flex flex-row items-center justify-between px-10'>
         {/* Logo Section */}
-        <div className='flex items-center'>
+        <div className='flex items-center cursor-pointer' onClick={() => router.push('/')}>
             <img src={logo.src} className = 'w-[200px] mr-1' alt=''/>
             <AiOutlineDown />
         </div>
@@ -59,6 +62,24 @@ const Header = () => {
 }
 
 export default Header
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

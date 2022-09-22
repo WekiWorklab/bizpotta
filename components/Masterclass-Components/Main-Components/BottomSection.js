@@ -5,14 +5,14 @@ import { useRef } from 'react'
 import {BsArrowRight, BsDashLg} from 'react-icons/bs'
 import { GoPrimitiveDot } from 'react-icons/go'
 import { offer } from '../../../public'
-import { MainCarousel, TestimonialCarousel } from './MainCarousel'
+import { ExpertsCarousel, MainCarousel, TestimonialCarousel } from './MainCarousel'
 
 const BottomSection = () => {
   return (
-    <div className='w-full  bg-gradient-to-b from-[#E5E5E5] to-[#E5E5E5] pb-20'>
+    <div className='w-full  bg-gradient-to-b from-[#FDFFFA] to-[#FDFFFA] pb-20 pt-10'>
         <p className='ml-40 text-xl font-bold'>Upcoming Sessions </p>
 
-        <div className='my-8 px-20 py-10 shadow-2xl '>
+        <div className='my-8 px-20 py-10 masters-shadow '>
         <div className='w-full flex items-center gap-x-10  '>
             <div className='flex items-center  rounded-md px-6 py-8 w-3/4  mx-auto'>
                 <div className='w-3/4'>
@@ -62,10 +62,17 @@ const BottomSection = () => {
         </div>
 
 
-        <div className='w-full mt-20 px-20'>
+        <div className='w-full mt-24 px-20'>
             <div className='text-xl font-bold'>Learn social tools for business success</div>              
             <div className='w-full'>  
             <MainCarousel />
+            </div>
+        </div>
+
+        <div className='w-full px-20 mt-20'>
+            <div className='text-xl font-bold'>Get to Meet Top Business Expert</div>              
+            <div className='w-full mt-10'>  
+            <ExpertsCarousel />
             </div>
         </div>
 
