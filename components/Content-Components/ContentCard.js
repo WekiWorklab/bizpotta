@@ -26,10 +26,10 @@ const ContentCard = ({data}) => {
                     </div>
                     <p className='text-[13px]'>{data.academy}</p>
                 </div>
-                <div className='flex items-center gap-x-2 mt-1'>
+                {/* <div className='flex items-center gap-x-2 mt-1'>
                     <BsTag size={13}/>
                     <p className='text-[11px]  box-overflow'>{data.category}</p>
-                </div>
+                </div> */}
             </div>
             <div>
                 <div className='flex flex-row gap-x justify-end'>

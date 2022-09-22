@@ -12,7 +12,7 @@ import { StyleCarousel } from '../StyleCarousel'
 
 const TopSection = () => {
   return (
-    <div className=' pl-0 lg:pl-5 lg:pt-5 flex flex-col xl:flex-row w-full bg-white'>
+    <div className=' pl-0 lg:pl-5 lg:pt-5 flex flex-col xl:flex-row w-full bg-white pb-10'>
         {/* Start of left section */}
             <div className=' w-full mx-auto md:w-[650px] lg:w-[850px] h-full'>
                 <div className='bg-white px-2 md:pl-4 pr-2 flex flex-col items-center pt-10 '>
