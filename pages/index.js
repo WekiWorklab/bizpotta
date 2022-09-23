@@ -500,7 +500,7 @@ const Carousel = () => {
 
   return (
 
-    <div className="mx-auto w-[85vw] flex flex-row overflow-x-hidden relative ">
+    <div className="mx-auto w-[85vw] flex flex-row overflow-x-hidden overflow-y-hidden relative ">
         <BlueSection currentIndex = {currentIndex} router={router}/>
         <GreenSection currentIndex = {currentIndex} router={router}/>
         <Indicator currentIndex = {currentIndex} setCurrentIndex = {setCurrentIndex}/>
