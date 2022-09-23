@@ -354,48 +354,18 @@ export default function Home() {
                 onClick={() => {
                   handleSelectLibrary();
                 }}
-                className='pt-4 md:pt-8 cursor-pointer flex gap-2 w-full justify-center items-center text-bizpotta-purple'
+                className='pt-4 md:pt-4 cursor-pointer flex gap-2 w-full justify-center items-center text-bizpotta-purple'
               >
                 <span>Continue</span>
                 <ArrowRightIcon className='h-4 w-4 text-bizpotta-purple' aria-hidden='true' />
               </button>
             </div>
 
-            {/* Specialization Program Section */}
-            <div className='relative bg-gray-50 pt-6 md:pt-16 pb-8'>
-              <h1 className=' px-6 md:pl-28 text-start text-lg font-light tracking-wider text-bizpotta-purple'>
-                <span className='font-bold md:font-medium text-[15px] md:text-2xl'>Specialization Program</span>
-              </h1>
-              <p className=' px-6 md:pr-4 md:pl-28  text-start flex flex-col text-[13px] md:text-base font-light tracking-wider text-bizpotta-gray-800'>
-                <span className='text-bizpotta-gray-800'>
-                  Learn the basics of business development management and get certificate on completion, This program will{" "}
-                </span>
-                <span className='text-bizpotta-gray-800'>empower our learners with skill to help manage their business effectively.</span>
-              </p>
-              {/* list of radio in boxes */}
-              <div className='hidden pt-8 md:flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-28 pb-8'>
-                <HomePageSlider />
-              </div>
-              {/*Explore Courses */}
-              <a href='#' className='pt-8 pb-16 flex gap-2 w-full justify-center items-center text-bizpotta-purple'>
-                <span>Explore Courses</span>
-                <ArrowRightIcon className='h-4 w-4 text-bizpotta-purple' aria-hidden='true' />
-              </a>
-            </div>
+            
 
             {/* MasterClass Section */}
                 <Carousel  />
-                {/* <div className="w-[100px] h-[100px] bg-transparent absolute top-[43%] left-0 flex justify-center items-center rounded-full">
-                    <AiFillCaretLeft size={80}  color='#797979'  onClick = {() => clickScroll(-width - 8)}/>
-                </div> */}
-                {/* <div className=" mx-auto w-[85vw] flex flex-row overflow-x-hidden gap-x-2 scroll-smooth " ref={scrollRef}>
-                    <BlueSection ref={childRef} router = {router} />
-                    <GreenSection  router = {router} />
-                </div> */}
-                {/* <div className="w-[100px] h-[100px] bg-transparent absolute top-[43%] right-0 flex justify-center items-center rounded-full">
-                    <AiFillCaretRight size={80} color='#797979' onClick = {() => clickScroll(width + 8)} />
-                </div> */}
-
+                
             
             {/* Market and sell your Expertise Program Section */}
             <div className='relative bg-gray-50 pt-2 md:pt-24 pb-2 '>
@@ -500,7 +470,7 @@ const Carousel = () => {
 
   return (
 
-    <div className="mx-auto w-[85vw] flex flex-row overflow-x-hidden overflow-y-hidden relative ">
+    <div className="mx-auto mt-12 w-[85vw] flex flex-row overflow-x-hidden overflow-y-hidden relative ">
         <BlueSection currentIndex = {currentIndex} router={router}/>
         <GreenSection currentIndex = {currentIndex} router={router}/>
         <Indicator currentIndex = {currentIndex} setCurrentIndex = {setCurrentIndex}/>
