@@ -23,6 +23,11 @@ import { useRef } from "react";
 import { forwardRef } from "react";
 import { useEffect } from "react";
 
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/pagination';
+
 const optionsLists = [
   {
     id: 1,
@@ -379,22 +384,18 @@ export default function Home() {
             </div>
 
             {/* MasterClass Section */}
-            <div className="relative ">
-                <div className="w-[100px] h-[100px] bg-transparent absolute top-[43%] left-0 flex justify-center items-center rounded-full">
+                <Carousel  />
+                {/* <div className="w-[100px] h-[100px] bg-transparent absolute top-[43%] left-0 flex justify-center items-center rounded-full">
                     <AiFillCaretLeft size={80}  color='#797979'  onClick = {() => clickScroll(-width - 8)}/>
-                </div>
-                <div className=" mx-auto w-[85vw] flex flex-row overflow-x-hidden gap-x-2 scroll-smooth " ref={scrollRef}>
+                </div> */}
+                {/* <div className=" mx-auto w-[85vw] flex flex-row overflow-x-hidden gap-x-2 scroll-smooth " ref={scrollRef}>
                     <BlueSection ref={childRef} router = {router} />
                     <GreenSection  router = {router} />
-                </div>
-                <div className="w-[100px] h-[100px] bg-transparent absolute top-[43%] right-0 flex justify-center items-center rounded-full">
+                </div> */}
+                {/* <div className="w-[100px] h-[100px] bg-transparent absolute top-[43%] right-0 flex justify-center items-center rounded-full">
                     <AiFillCaretRight size={80} color='#797979' onClick = {() => clickScroll(width + 8)} />
-                </div>
+                </div> */}
 
-                <div>
-                  <div className=""></div>
-                </div>
-            </div>
             
             {/* Market and sell your Expertise Program Section */}
             <div className='relative bg-gray-50 pt-2 md:pt-24 pb-2 '>
@@ -468,9 +469,66 @@ export default function Home() {
 
 
 
-const GreenSection = () => {
+
+
+
+
+
+
+
+
+const Carousel = () => {
+
+  const router = useRouter()
+
+  const [currentIndex, setCurrentIndex] = useState(0)
+  let autoplayTime = 4000
+
+  const nextSlide = (slideIndex = currentIndex + 1) => {
+    const newSlideIndex = slideIndex === 2 ? 0 : 1
+    setCurrentIndex(newSlideIndex)
+  }
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      nextSlide()
+    }, autoplayTime);
+
+    return () => clearTimeout(timer)
+  }, [currentIndex])
+
+
   return (
-    <section className='bg-[#1F9A5F] mx-auto py-8 md:py-20 px-6 md:px-16 h-[600px] min-w-[85vw] rounded-xl'>
+
+    <div className="mx-auto w-[85vw] flex flex-row overflow-x-hidden relative ">
+        <BlueSection currentIndex = {currentIndex} router={router}/>
+        <GreenSection currentIndex = {currentIndex} router={router}/>
+        <Indicator currentIndex = {currentIndex} setCurrentIndex = {setCurrentIndex}/>
+    </div>
+
+  )
+}
+
+
+const Indicator = ({currentIndex, setCurrentIndex}) => {
+  
+
+  return (
+    <div className="absolute top-[93%] left-[46%] z-10 flex gap-x-2">
+        <div className={` h-[10px] rounded-full slide-dot ${currentIndex === 0 ? "bg-blue-600 w-[30px]" : "bg-white w-[10px]" }`} onClick={() => setCurrentIndex(0)}/>
+        <div className={` h-[10px] rounded-full slide-dot ${currentIndex === 1 ? "bg-blue-600 w-[30px]" : "bg-white w-[10px]" }`} onClick={() => setCurrentIndex(1)}/>
+    </div>
+  )
+}
+
+
+const GreenSection = ({router, currentIndex}) => {
+
+  return (
+    <section style={{
+      marginLeft: currentIndex === 1 ? "0" : "100%"
+    }}
+     className={`bg-[#1F9A5F] mx-auto py-8 md:py-20 px-6 md:px-16 h-[600px] min-w-[85vw] rounded-xl ${currentIndex === 1 ? "slider" : "sliding" }`}>
       <div className=" ">
         <div className="flex flex-row items-center gap-x-8">
           <div className="min-w-[70px] min-h-[5px] rounded-xl bg-bizpotta-green" />
@@ -495,9 +553,11 @@ const GreenSection = () => {
 
 
 // eslint-disable-next-line react/display-name
-const BlueSection = forwardRef(({router}, ref) => {
+const BlueSection = forwardRef(({router, currentIndex},) => {
   return (
-    <section className='bg-gradient-to-br from-[#9DB9E4] to-[#B5DDFA] mx-auto blueShadow  py-8 md:py-14 px-6 md:px-10 h-[600px] min-w-[85vw] rounded-xl' ref = {ref}>
+    <section style={{
+      marginLeft: currentIndex === 0 ? "0%" : "-100%"
+    }} className={`bg-gradient-to-br from-[#9DB9E4] to-[#B5DDFA] mx-auto blueShadow  py-8 md:py-14 px-6 md:px-10 h-[600px] min-w-[85vw] rounded-xl ${currentIndex === 0 ? " slide" : "slide "} `} >
                 <div className='max-w-7xl lg:grid lg:grid-cols-12 lg:gap-8 '>
                   <div className='sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left'>
                     <h1>
