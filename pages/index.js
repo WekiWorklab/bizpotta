@@ -335,21 +335,21 @@ export default function Home() {
             </div>
 
             {/* Library Section */}
-            <div className='relative bg-gray-50 pt-16 pb-8 px-6 md:pl-28'>
+            {/* <div className='relative bg-gray-50 pt-16 pb-8 px-6 md:pl-28'>
               <h1 className='lg:w-[1000px] mx-auto md:mx-0  text-start text-lg font-light tracking-wider text-bizpotta-purple'>
                 <span className='font-bold md:font-medium text-[15px] md:text-2xl '>Explore our course library</span>
               </h1>
               <p className='text-start flex flex-col text-base font-light tracking-wider text-bizpotta-gray-800 lg:w-[1000px] mx-auto md:mx-0  text-start '>
                 <span className='text-bizpotta-gray-800 text-[14px] md:text-base'>Choose category that are of interest to you</span>
               </p>
-              {/* list of radio in boxes */}
+
 
               <div className='w-full mx-auto md:mx-0 grid grid-cols-2 gap-y-6 md:gap-6 justify-center items-center md:grid md:grid-cols-2 md:gap-8 md:w-[700px] lg:grid-cols-3 lg:w-[1000px] py-8  md:items-center md:justify-center'>
                 {optionsLists.map((option, index) => (
                   <LibraryRadioButton key={index} option={option} setSelectedCourse={handleChangeCourse} multiSelect={false} />
                 ))}
               </div>
-              {/* continue with arrow */}
+
               <button
                 onClick={() => {
                   handleSelectLibrary();
@@ -359,7 +359,7 @@ export default function Home() {
                 <span>Continue</span>
                 <ArrowRightIcon className='h-4 w-4 text-bizpotta-purple' aria-hidden='true' />
               </button>
-            </div>
+            </div> */}
 
             
 
