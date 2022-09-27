@@ -1,7 +1,7 @@
 import AxoisApi from "../utils/index";
 import { APIS } from "../utils/api";
 import Cookies from "js-cookie";
-import { setCookie } from "cookies-next";
+import { setCookie, removeCookies } from "cookies-next";
 
 const verifyEmail = (email, phone) => {
   return AxoisApi.post(`${APIS.AUTH.VERIFY_EMAIL}`, {
@@ -115,6 +115,7 @@ const logout = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("bizpotta_token");
     Cookies.remove("bizpotta_token");
+    removeCookies("bizpotta_token");
   }
 };
 

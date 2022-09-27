@@ -16,6 +16,7 @@
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tanstack/react-table": "^8.5.13",
     "@tinymce/tinymce-react": "^4.2.0",
+    "@vimeo/player": "^2.17.1",
     "axios": "^0.27.2",
     "chart.js": "^3.8.2",
     "cookies-next": "^2.1.1",
@@ -37,6 +38,8 @@
     "react-transition-group": "^4.4.5",
     "recharts": "^2.1.12",
     "swiper": "^8.3.1",
+    "tus-js-client": "^2.3.2",
+    "use-tus": "^0.7.0",
     "victory": "^36.5.3",
     "yup": "^0.32.11"
   },
