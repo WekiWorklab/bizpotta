@@ -1,4 +1,5 @@
 import React from "react";
+import { FcGoogle } from "react-icons/fc";
 
 const Button = ({ name, loading, type }) => {
   return (
@@ -12,8 +13,6 @@ const Button = ({ name, loading, type }) => {
     </button>
   );
 };
-
-export default Button;
 
 const Spinner = () => {
   return (
@@ -36,3 +35,19 @@ const Spinner = () => {
     </svg>
   );
 };
+
+const WhiteButton = ({ name, loading, type, onClick }) => {
+  return (
+    <button
+      type={type}
+      disabled={loading}
+      onClick={onClick}
+      className='w-[330px] gap-2 h-[45px] flex justify-center items-center bg-white text-darkBlue text-sm rounded-md hover:bg-white hover:text-darkBlue hover:text-sm border-[1px] hover:font-bold border-darkBlue '
+    >
+      <FcGoogle size={24} className='' />
+      {name}
+    </button>
+  );
+};
+
+export { Button, WhiteButton };

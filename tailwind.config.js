@@ -3,7 +3,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-  
+
   theme: {
     extend: {
       fontFamily: {
@@ -21,9 +21,12 @@ module.exports = {
           700: "#233245",
           800: "#282828",
         },
-        "darkBlue" : "#121F4C",
-        "seaBlue": "#3771C8"
+        darkBlue: "#121F4C",
+        seaBlue: "#3771C8",
       },
+      backgroundImage: (theme) => ({
+        "auth-pattern": "url('/images/authLayoutImg.png')",
+      }),
     },
   },
   plugins: [require("@tailwindcss/forms"), require("@tailwindcss/aspect-ratio")],

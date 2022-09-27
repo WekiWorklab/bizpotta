@@ -27,16 +27,16 @@ const login = (data) => {
     email: data.email,
     password: data.password,
   }).then((res) => {
-    if (res.data.token) {
-      Cookies.set("bizpotta_token", response.data.access_token);
-      setCookie("bizpotta_token", response.data.access_token, {
+    if (res.data.access_token) {
+      Cookies.set("bizpotta_token", res.data.access_token);
+      setCookie("bizpotta_token", res.data.access_token, {
         path: "/",
         httpOnly: process.env.NODE_ENV === "production",
         secure: process.env.NODE_ENV === "production",
       });
       if (typeof window !== "undefined") {
         localStorage.setItem("bizpotta_token", res.data.access_token);
-        localStorage.setItem("user", JSON.stringify(res.data.data));
+        localStorage.setItem("user", JSON.stringify(res.data.user));
       }
     }
 
@@ -57,9 +57,12 @@ const getUser = () => {
   let user = null;
   if (typeof window !== "undefined" && window.localStorage.getItem("user")) {
     user = window.localStorage.getItem("user");
-    return JSON.parse(user);
+    console.log("local", user);
+    if (user != "undefined") {
+      return JSON.parse(user);
+    }
   }
-  return user;
+  return null;
 };
 
 // get token for localstorage and cookie
@@ -81,6 +84,7 @@ const getUserFromServer = async () => {
         "Content-Type": "application/json",
       },
     });
+    console.log("server", response);
     if (response.data) {
       if (typeof window !== "undefined") {
         window.localStorage.setItem("user", JSON.stringify(response.data));
@@ -100,7 +104,7 @@ const resetPassword = (data) => {
 const logout = () => {
   const token = getToken();
   if (token) {
-    return AxoisApi.post(
+    AxoisApi.post(
       `${APIS.AUTH.LOGOUT}`,
       {},
       {
@@ -117,6 +121,7 @@ const logout = () => {
     Cookies.remove("bizpotta_token");
     removeCookies("bizpotta_token");
   }
+  return;
 };
 
 const authService = {
