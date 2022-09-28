@@ -1,11 +1,13 @@
 import React, { useMemo, useState, useRef } from 'react'
 import { Editor } from '@tinymce/tinymce-react';
 
-export const TextEditorNotesModal = ({api_key, value, section, setSuccess, initialState, setInitialState}) => {
+export const TextEditorNotesModal = ({api_key, value, week, setSuccess, initialState, setInitialState, type, setCurrentValue}) => {
 
-    // console.log(section)
-    // console.log(initialState[0])
+    console.log(value)
+    console.log(initialState)
 
+    // let previousObj = initialState[week]
+    // console.log(previousObj, week)
     const editorRef = useRef(null);
     const log = () => {
 
@@ -15,8 +17,16 @@ export const TextEditorNotesModal = ({api_key, value, section, setSuccess, initi
       else
         stringValue = stringValue.toString().replace( /(<([^>]+)>)/ig, '');
 
-      setInitialState((prevState) => ({...prevState, [section]: stringValue}))
-      setSuccess(false)
+      console.log(initialState)
+
+      let newObj = {...initialState[week], [type]: stringValue}
+      console.log(newObj)
+
+      const newState = initialState.splice((week - 1), 1, newObj)
+      console.log(newState)
+
+      setInitialState((prevState) => [...newState])
+      // setSuccess(false)
     };
 
 
@@ -26,7 +36,8 @@ export const TextEditorNotesModal = ({api_key, value, section, setSuccess, initi
         <Editor
           apiKey={api_key}
           onInit={(evt, editor) => editorRef.current = editor}
-          initialValue={value}
+          // initialValue={value}
+          initialValue='value'
           init={{
             width: "100%",
             height: "100%",
@@ -56,6 +67,36 @@ export const TextEditorNotesModal = ({api_key, value, section, setSuccess, initi
 
 
 
+
+
+
+
+
+  /**
+   * 
+   *  let stringValue = editorRef.current?.getContent()
+      if ((stringValue===null) || (stringValue===''))
+        return false;
+      else
+        stringValue = stringValue.toString().replace( /(<([^>]+)>)/ig, '');
+
+      console.log(initialState)
+
+      let newElement;
+      let elIndex ;
+      for(let el of previousArray) {
+        if(Object.keys(el) === type) {
+          newElement = {type: stringValue}
+          elIndex = previousArray.indexOf(el)
+        }
+      }
+
+      const arr = previousArray.splice(elIndex, 1, newElement)
+
+      setInitialState((prevState) => ({...prevState, [week]: arr}))
+      setSuccess(false)
+      console.log(initialState)
+   */
 
 
 

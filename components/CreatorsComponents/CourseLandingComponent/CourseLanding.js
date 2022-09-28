@@ -11,7 +11,7 @@ const CourseLanding = () => {
 
   return (
     <div className='w-full'>
-        <div className='w-full border-[1px] rounded-sm border-gray-500 mt-8 pb-10 pl-10'>
+        <div className='w-full border-[1px] rounded-sm border-gray-500 mt-8 pb-10 px-4 md:pl-10'>
                 <p className='text-[14px] font-bold mt-10'>Resources</p>
                 <p className='text-[13px] mt-4'>We have shared helpful of resources, if you need more assistance, kindly contact us on our Helpline or you can ask for help in <span className='text-seaBlue'>Bizpotta Instructor&#39;s Community</span></p>
                 
@@ -36,7 +36,7 @@ const CourseLanding = () => {
 
         {/* Landing Page Form */}
 
-        <div className='px-10 bg-white py-8 mt-10 rounded-sm shadow-xl border'>
+        <div className='px-4 md:px-10 bg-white py-8 mt-10 rounded-sm shadow-xl border'>
             <p className='font-bold'>Landing Page</p>
 
             <div className='text-[13px] mt-6'>
@@ -70,7 +70,7 @@ const CourseLanding = () => {
             <div className=' mt-10'>
                 <p className='text-[13px] font-bold'>Course Description</p>
                 <p className='text-[12px] mt-2 '>Kindly give a detailed decription of your course. Minimum 1000 words</p>
-                <textarea className='w-[600px] min-h-[200px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-[#C4C4C4] pl-4 text-[14px] mt-2'>
+                <textarea className='w-full lg:w-[600px] min-h-[200px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-[#C4C4C4] pl-4 text-[14px] mt-2'>
                 </textarea>
             </div>
 
@@ -100,7 +100,7 @@ const CourseLanding = () => {
                 <p className='text-[13px] font-bold'>Course Image</p>
                 <p className='text-[12px]'>Image quality 750x422 pixel. jpg, jpeg, gif or png</p>
 
-                <div className='h-[40px] w-[500px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-[#C4C4C4] pl-4 text-[15px] flex flex-row items-center gap-x-4'>
+                <div className='h-[40px] w-full sm:w-[300px] lg:w-[500px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-[#C4C4C4] pl-4 text-[15px] flex flex-row items-center gap-x-4'>
                     <AiOutlinePicture size={18} />
                     <input type='file' name='image' className='text-[12px] ml-2 focus:ring-0 focus:outline-none' />
                 </div>
@@ -111,7 +111,7 @@ const CourseLanding = () => {
                 <p className='text-[13px] font-bold'>Promotional Video</p>
                 <p className='text-[12px]'>Video quality 750x422 pixel. jpg, jpeg, gif or png</p>
 
-                <div className='h-[40px] w-[500px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-[#C4C4C4] pl-4 text-[15px] flex flex-row items-center gap-x-4'>
+                <div className='h-[40px] w-full sm:w-[300px] lg:w-[500px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-[#C4C4C4] pl-4 text-[15px] flex flex-row items-center gap-x-4'>
                     <AiOutlinePicture size={18} />
                     <input type='file' name='image' className='text-[12px] ml-2 focus:ring-0 focus:outline-none' />
                 </div>

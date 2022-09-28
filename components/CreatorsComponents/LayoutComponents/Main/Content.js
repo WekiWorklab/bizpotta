@@ -14,7 +14,7 @@ import IncomeTableChart from "../IncomeTableChart";
 const Content = () => {
   const [select, setSelected] = useState("");
 
-  const ongoing = true;
+  const ongoing = false;
 
   const times = {
     total: 90,
@@ -25,7 +25,7 @@ const Content = () => {
   console.log(value);
 
   return (
-    <div className='relative w-full h-full bg-white flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-12 py-10 text-darkGray '>
+    <div className='relative w-full h-full bg-white flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-4 xl:px-12 py-10 redBorder text-darkGray '>
       {!ongoing && <p className='mb-8'>Dashboard</p>}
 
       {ongoing && (
@@ -41,7 +41,7 @@ const Content = () => {
         </div>
       )}
 
-      <div className='w-full flex flex-row justify-between '>
+      <div className='w-full flex flex-row flex-wrap justify-center gap-8 xl:gap-0 xl:justify-between '>
         <DashBoardCard select={select} title='income' setSelected={setSelected} />
         <DashBoardCard select={select} title='enrollment' setSelected={setSelected} />
         <DashBoardCard select={select} title='courses' setSelected={setSelected} />

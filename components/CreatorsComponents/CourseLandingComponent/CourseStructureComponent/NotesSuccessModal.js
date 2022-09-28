@@ -13,7 +13,7 @@ import { TextEditorNotesModal } from './TextEditorNotesModal';
 //////////
 
 
-const NotesSuccessModal = ({error, setError, success, setSuccess, value, setCurrentValue, section, initialState, setInitialState}) => {
+const NotesSuccessModal = ({error, setError, success, setSuccess, value, setCurrentValue, week, initialState, setInitialState, type}) => {
 
   const closeModal = () => {
         setSuccess(false)
@@ -58,7 +58,7 @@ const NotesSuccessModal = ({error, setError, success, setSuccess, value, setCurr
 
               <div className='w-[500px] flex flex-col items-center justify-center'>
            
-                  <TextEditorNotesModal api_key = {API_KEY} value = {value} setCurrentValue = {setCurrentValue} section = {section}  initialState = {initialState} setInitialState = {setInitialState} setSuccess = {setSuccess}/>
+                  <TextEditorNotesModal api_key = {API_KEY} value = {value} setCurrentValue = {setCurrentValue} week = {week} type={type}  initialState = {initialState} setInitialState = {setInitialState} setSuccess = {setSuccess}/>
                     
               </div>
 

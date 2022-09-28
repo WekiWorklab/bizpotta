@@ -24,7 +24,7 @@ const InstructorProfile = () => {
 
     <div className='w-full'>
 
-        <div className='w-full border-[1px] rounded-sm border-gray-500 mt-8 pb-10 pl-10'>
+        <div className='w-full border-[1px] rounded-sm border-gray-500 mt-8 pb-10 px-4 md:pl-10'>
             <p className='text-[14px] font-bold mt-10'>Resources</p>
             <p className='text-[13px] mt-4'>We have shared helpful of resources, if you need more assistance, kindly contact us on our Helpline or you can ask for help in <span className='text-seaBlue'>Bizpotta Instructor&#39;s Community</span></p>
             
@@ -54,12 +54,12 @@ const InstructorProfile = () => {
 
         {/* Instructor Profile Form */}
 
-        <div className='px-10 bg-white py-8 mt-10 rounded-md shadow-xl '>
+        <div className='px-4 md:px-10 bg-white py-8 mt-10 rounded-md shadow-xl '>
             <p className='font-bold'>Instructor Profile</p>
 
             <div className=' mt-6'>
                 <p className='text-[13px] font-bold'>Name</p>
-                <div className='flex flex-row gap-x-8 mt-2'>
+                <div className='flex flex-col gap-y-5 sm:flex-row gap-x-8 mt-2'>
                    <InputForm width='300px' placeholder='First Name' type='text'/>
                    <InputForm width='300px' placeholder='Surname' type='text'/> 
                 </div>
@@ -67,14 +67,14 @@ const InstructorProfile = () => {
 
             <div className=' mt-6'>
                 <p className='text-[13px] font-bold'>Phone number</p>
-                <div className='flex flex-row mt-2 items-center w-[440px] rounded-md border border text-[14px]'>
+                <div className='flex flex-row mt-2 items-center w-[300px] sm:w-[440px] rounded-md border border text-[14px]'>
                     <div className='w-[50px] h-full bg-white flex justify-center items-center'>
                         +234
                     </div>
                     <input 
                         type='number'
                         name='phone'
-                        className={`h-[40px] w-[400px] bg-[#FCFDFE] border-0 text-gray-600 pl-4 text-[14px] focus:ring-0 focus:outline-none`}
+                        className={`h-[40px] w-full bg-[#FCFDFE] border-0 text-gray-600 pl-4 text-[14px] focus:ring-0 focus:outline-none`}
                     /> 
                 </div>
             </div>
@@ -115,7 +115,7 @@ const InstructorProfile = () => {
 
             <div className=' mt-6'>
                 <p className='text-[13px] font-bold'>Instructor Bio</p>
-                <textarea className='w-[600px] min-h-[200px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-gray-600 pl-4 text-[14px]'>
+                <textarea className='w-full md:w-[600px] min-h-[200px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-gray-600 pl-4 text-[14px]'>
 
                 </textarea>
                 <p className='text-[13px] text-[#C4C4C4]'>Minimum of 1000 words</p>
