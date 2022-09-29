@@ -21,7 +21,7 @@ const OldContent = () => {
 
 
   return (
-    <div className='relative w-full h-full bg-white flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-3 xl:px-16 py-10 redBorder text-darkGray'>
+    <div className='relative w-full h-full bg-white flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 xl:px-16 py-10 redBorder text-darkGray'>
           <div className='flex flex-row gap-x-6 text-[13px] md:text-[15px] font-bold justify-center'>
                 <p className={`${(select === "instructor") ? "border-b-4" : ""} border-bizpotta-green px-2`} onClick = {() => setSelect('instructor')}>Instructor&#39;s Profile</p>
                 <p className={`${(select === "video") ? "border-b-4" : ""} border-bizpotta-green px-2`} onClick = {() => setSelect('video')}>Live video request</p>

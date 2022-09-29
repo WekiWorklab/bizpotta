@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
   const [collapseShow, setCollapseShow] = React.useState("hidden");
 
   const router = useRouter();
-  const path = router.asPath 
+  const path = router.asPath
 
   return (
     <>
@@ -26,7 +26,7 @@ import { useDispatch, useSelector } from "react-redux";
           
           <div className='w-full ' >
 
-            <ul className="md:flex-col md:min-w-full flex flex-col list-none   ">
+            <ul className="md:flex-col md:min-w-full flex flex-col list-none">
               <li className="items-center cursor-pointer  mb-5" onClick={() => router.push('/creators')}>
                 <div  className="flex flex-row justify-start items-center">
                   <MdOutlineDashboard color={(path === "/creators" ) ? "#121F4C" : 'gray'}/>

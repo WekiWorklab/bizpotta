@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 
- function XSidebar() {
+ function XSidebar({show, setShow, slideIn, setSlideIn}) {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
 
   const router = useRouter();
@@ -22,12 +22,18 @@ import { useDispatch, useSelector } from "react-redux";
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-[250px] pt-[140px] px-6 bg-white hidden md:flex flex-row flex-wrap  justify-between h-full z-10 redBorder">
+      <nav className={`${slideIn ? "SideBar" : "NoSideBar"} fixed md:hidden top-0  w-[350px] pt-14 px-6 bg-gray-50 rounded-r-[20px] shadow-md flex-wrap items-center justify-between h-full z-[9999]`}>
+
+        <div className="absolute top-[40px] right-[20px] cursor-pointer" onClick={() => {setShow(false); setSlideIn(false)}}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-[20px] w-[20px]" fill="none" viewBox="0 0 20 20" stroke="#999999" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+        </div>
           
           <div className='w-full ' >
 
-            <ul className="md:flex-col md:min-w-full flex flex-col list-none   ">
-              <li className="items-center cursor-pointer  mb-5" onClick={() => router.push('/students')}>
+            <ul className="md:flex-col md:min-w-full flex flex-col list-none  mt-10 ">
+              <li className="items-center cursor-pointer  mb-5" onClick={() => router.push('/creators')}>
                 <div  className="flex flex-row justify-start items-center">
                   <MdOutlineDashboard color={(path === "/creators" ) ? "#121F4C" : 'gray'}/>
                   <div className= {`${(path === "/creators" ? "text-darkBlue font-semibold" : "text-gray-400 font-light")} text-sm  ml-5`}>
@@ -37,7 +43,7 @@ import { useDispatch, useSelector } from "react-redux";
                 </div>
               </li>
 
-              <li className="items-center cursor-pointer  mb-5" onClick={() => router.push('/students/courses')}>
+              <li className="items-center cursor-pointer  mb-5" onClick={() => router.push('/creators/courses')}>
                 <div  className="flex flex-row justify-start items-center" >
                   <HiOutlineBookOpen color={(path === '/students/courses' ) ? "#121F4C" : 'gray'}/>
                   <div className={`${(path === '/students/courses' ? "text-darkBlue font-semibold" : 'text-gray-400 font-light')} text-sm   ml-5`}>

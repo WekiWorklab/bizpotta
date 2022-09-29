@@ -25,7 +25,7 @@ const Content = () => {
   console.log(value);
 
   return (
-    <div className='relative w-full h-full bg-white flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-4 xl:px-12 py-10 redBorder text-darkGray '>
+    <div className='relative w-full h-full bg-white flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 sm:px-4 xl:px-12 py-10  text-darkGray '>
       {!ongoing && <p className='mb-8'>Dashboard</p>}
 
       {ongoing && (
@@ -41,26 +41,26 @@ const Content = () => {
         </div>
       )}
 
-      <div className='w-full flex flex-row flex-wrap justify-center gap-8 xl:gap-0 xl:justify-between '>
+      <div className='w-full flex flex-row flex-wrap justify-center gap-3 sm:gap-8 xl:gap-0 xl:justify-between '>
         <DashBoardCard select={select} title='income' setSelected={setSelected} />
         <DashBoardCard select={select} title='enrollment' setSelected={setSelected} />
         <DashBoardCard select={select} title='courses' setSelected={setSelected} />
       </div>
 
-      <div className='mt-16 w-full'>
+      <div className='mt-6 lg:mt-16 w-full'>
         <RenderTableChart select={select} />
       </div>
 
-      <p className='mt-10 font-[600]'>Resources</p>
+      <p className='mt-3 lg:mt-10 font-[600]'>Resources</p>
       <p className='mt-2'>Just creating your first class, we got you covered</p>
 
-      <div className='grid grid-cols-2 gap-x-20 mt-10 self-start'>
+      <div className='grid grid-cols-1 lg:grid-cols-2 gap-y-6 mx-auto lg:gap-x-20 mt-10 self-start'>
         <VideoCard />
         <VideoCard />
-        <div className='text-[13px] text-bizpotta-gray-600 col-span-2 text-center mt-10'>View More</div>
+        <div className='text-[13px] text-bizpotta-gray-600 lg:col-span-2 text-center lg:mt-10'>View More</div>
       </div>
 
-      <p className='mt-16 font-[600]'>Resourses to help you get started</p>
+      <p className='mt-6 lg:mt-16 font-[600]'>Resourses to help you get started</p>
       <div className='border rounded-md mb-6 mt-8 border-gray-700'>
         <ResourcesCard />
         <ResourcesCard />

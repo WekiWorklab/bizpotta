@@ -33,29 +33,29 @@ const NewContent = () => {
             </div>
         </div>
 
-        <div className='w-full flex flex-row justify-between'>
+        <div className='w-full flex flex-col-reverse xl:flex-row justify-between'>
             {/* form */}
-            <div className='px-10 bg-white py-8 mt-10 rounded-md shadow-xl w-[700px]'>
+            <div className='px-2 md:px-10 bg-white py-8 mt-2 xl:mt-10 rounded-md shadow-xl w-full xl:w-[700px]'>
                 <p className='font-bold'>Instructor Profile</p>
 
                 <div className=' mt-6'>
                     <p className='text-[13px] font-bold'>Name</p>
-                    <div className='flex flex-row gap-x-8 mt-2'>
+                    <div className='flex flex-col gap-y-4 sm:flex-row gap-x-8 mt-2'>
                     <InputForm width='300px' placeholder='First Name' type='text'/>
                     <InputForm width='300px' placeholder='Surname' type='text'/> 
                     </div>
                 </div>
 
-                <div className=' mt-6'>
+                <div className=' mt-10'>
                     <p className='text-[13px] font-bold'>Phone number</p>
-                    <div className='flex flex-row mt-2 items-center w-[440px] rounded-md border border text-[14px]'>
+                    <div className='flex flex-row mt-2 items-center w-full sm:w-[440px]  rounded-md border border text-[14px]'>
                         <div className='w-[50px] h-full bg-white flex justify-center items-center'>
                             +234
                         </div>
                         <input 
                             type='number'
                             name='phone'
-                            className={`h-[40px] w-[400px] bg-[#FCFDFE] border-0  text-gray-300 pl-4 text-[14px] focus:ring-0 focus:outline-none`}
+                            className={`h-[40px] w-full  bg-[#FCFDFE] border-0  text-gray-300 pl-4 text-[14px] focus:ring-0 focus:outline-none`}
                         /> 
                     </div>
                 </div>
@@ -95,7 +95,7 @@ const NewContent = () => {
 
                 <div className=' mt-6'>
                     <p className='text-[13px] font-bold'>Instructor Bio</p>
-                    <textarea className='w-[600px] min-h-[200px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-[#C4C4C4] pl-4 text-[14px]'>
+                    <textarea className='w-full lg:w-[600px] min-h-[200px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-[#C4C4C4] pl-4 text-[14px]'>
 
                     </textarea>
                     <p className='text-[13px] text-[#C4C4C4]'>Minimum of 1000 words</p>
@@ -175,7 +175,7 @@ const NewContent = () => {
 {/* #121F4C */}
 
             
-            <div className=' w-[260px] flex flex-col items-center mt-32 gap-y-8'>
+            <div className='w-[260px] mx-auto flex flex-col items-center mt-2 xl:mt-32 gap-y-2 lg:gap-y-8'>
                 <div className='w-full h-[47px] flex flex-row justify-center items-center rounded-xl gap-x-10 text-white bg-darkBlue'>
                     <FiSave size={24}  color = 'white'/>
                     <p>Instructor Profile</p>
@@ -187,19 +187,19 @@ const NewContent = () => {
                 </div>
 
                 <div className='w-full h-[47px] flex flex-row justify-center items-center rounded-xl gap-x-10 text-white bg-gray-200'>
-                    <AiOutlinePrinter size={24}  color = 'black'/>
-                    <p className='text-black'>Payment plan</p>
+                    <AiOutlineCloudUpload size={24}  color = 'black'/>
+                    <p className='text-black'>New course</p>
                 </div>
 
                 <div className='w-full h-[47px] flex flex-row justify-center items-center rounded-xl gap-x-10 text-white bg-gray-200'>
                     <BiNote size={24}  color = 'black'/>
-                    <p className='text-black'>Social links</p>
+                    <p className='text-black'>Payment plan</p>
                 </div>
 
-                <div className='w-full h-[47px] flex flex-row justify-center items-center rounded-xl gap-x-10 text-white bg-gray-200'>
+                {/* <div className='w-full h-[47px] flex flex-row justify-center items-center rounded-xl gap-x-10 text-white bg-gray-200'>
                     <HiOutlinePaperAirplane size={24}  color = 'black' className='rotate-45'/>
                     <p className='text-black'>Social links</p>
-                </div>
+                </div> */}
             </div>
 
 

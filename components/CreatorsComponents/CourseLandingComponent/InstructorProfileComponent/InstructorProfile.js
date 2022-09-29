@@ -27,7 +27,7 @@ const InstructorProfile = () => {
         <div className='w-full border-[1px] rounded-sm border-gray-500 mt-8 pb-10 px-4 md:pl-10'>
             <p className='text-[14px] font-bold mt-10'>Resources</p>
             <p className='text-[13px] mt-4'>We have shared helpful of resources, if you need more assistance, kindly contact us on our Helpline or you can ask for help in <span className='text-seaBlue'>Bizpotta Instructor&#39;s Community</span></p>
-            
+             
             <div className='flex flex-row gap-x-4 items-center mt-8'>
                 <div className='w-[7px] h-[7px] rounded-full bg-seaBlue'></div>
                 <div className='text-seaBlue'>Get started with teaching</div>
@@ -115,7 +115,7 @@ const InstructorProfile = () => {
 
             <div className=' mt-6'>
                 <p className='text-[13px] font-bold'>Instructor Bio</p>
-                <textarea className='w-full md:w-[600px] min-h-[200px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-gray-600 pl-4 text-[14px]'>
+                <textarea className='w-full lg:w-[550px] min-h-[200px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-gray-600 pl-4 text-[14px]'>
 
                 </textarea>
                 <p className='text-[13px] text-[#C4C4C4]'>Minimum of 1000 words</p>

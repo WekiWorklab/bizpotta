@@ -32,7 +32,7 @@ const FirstContent = () => {
     const [type, setType] = useState(null)
 
   return (
-    <div className='w-full '>
+    <div className=''>
 {/* w-full border-[1px] rounded-sm border-gray-500 mt-8 pb-10 px-4 md:pl-10 */}
         <div className='w-full border-[1px] rounded-sm border-gray-500 mt-8 py-10 px-4 md:pl-10'>
                 <p className='text-[14px] font-bold'>Resources</p>
@@ -132,14 +132,14 @@ const Section = ({value, setSuccess, setCurrentValue, week, setWeek, type, setTy
 
                 <div className='mt-6'>
                     {/* <TextEditor /> */}
-                    <div className=' min-h-[150px] w-[320px] sm:w-full border  break-all p-2' onClick={() => handleClick('lecture')}>
+                    <div className=' min-h-[150px] w-full md:w-[480px] sm:w-full border  break-all p-2' onClick={() => handleClick('lecture')}>
                         {value.lecture}
                     </div>
                 </div>
 
                 <div className='flex flex-col gap-y-2 mt-4'>
                     <div className='flex flex-row items-center gap-x-3'>
-                    <div className=' font-bold border rounded-md w-[350px] h-[50px] flex flex-row items-center gap-x-2 pl-2'>
+                    <div className=' font-bold border rounded-md w-full md:w-[350px] h-[50px] flex flex-row items-center gap-x-2 pl-2'>
                             <IoCheckmarkCircleOutline className='' size={26} color='#94F236'/>
                             <p>Video upload successful</p>
                         </div> 
@@ -147,7 +147,7 @@ const Section = ({value, setSuccess, setCurrentValue, week, setWeek, type, setTy
                     </div>
 
                     <div className='flex flex-row items-center gap-x-3'>
-                    <div className=' font-bold border rounded-md w-[350px] h-[50px] flex flex-row items-center gap-x-2 pl-2'>
+                    <div className=' font-bold border rounded-md w-full md:w-[350px] h-[50px] flex flex-row items-center gap-x-2 pl-2'>
                             <IoCheckmarkCircleOutline className='' size={26} color='#94F236'/>
                             <p>Content upload successful</p>
                         </div> 
@@ -172,14 +172,14 @@ const Section = ({value, setSuccess, setCurrentValue, week, setWeek, type, setTy
 
                 <div className='mt-6'>
                     {/* <TextEditor /> */}
-                    <div className='min-h-[150px] w-[320px] sm:w-full border break-all p-2' onClick={() => handleClick('resources')}>
+                    <div className='min-h-[150px] w-full md:w-[480px] sm:w-full border break-all p-2' onClick={() => handleClick('resources')}>
                     {value.resources}
                     </div>
                 </div>
 
                 <div className='flex flex-col gap-y-2 mt-4'>
                     <div className='flex flex-row items-center gap-x-3'>
-                    <div className=' font-bold border rounded-md w-[350px] h-[50px] flex flex-row items-center gap-x-2 pl-2'>
+                    <div className=' font-bold border rounded-md w-full md:w-[350px] h-[50px] flex flex-row items-center gap-x-2 pl-2'>
                             <AiOutlineLink className='' size={26} color='#999999'/>
                             <p>Paste link to resources</p>
                         </div> 
@@ -187,7 +187,7 @@ const Section = ({value, setSuccess, setCurrentValue, week, setWeek, type, setTy
                     </div>
 
                     <div className='flex flex-row items-center gap-x-3'>
-                    <div className=' font-bold border rounded-md w-[350px] h-[50px] flex flex-row items-center gap-x-2 pl-2'>
+                    <div className=' font-bold border rounded-md w-full md:w-[350px] h-[50px] flex flex-row items-center gap-x-2 pl-2'>
                             <AiOutlineLink className='' size={26} color='#999999'/>
                             <p>Paste link to resources</p>
                         </div> 
@@ -213,14 +213,14 @@ const Section = ({value, setSuccess, setCurrentValue, week, setWeek, type, setTy
 
                     <div className='mt-6'>
                         {/* <TextEditor /> */}
-                        <div className='min-h-[150px] w-[320px] sm:w-full border break-all p-2' onClick={() => handleClick('project')}>
+                        <div className='min-h-[150px] w-full md:w-[480px] sm:w-full border break-all p-2' onClick={() => handleClick('project')}>
                         {value.project}
                         </div>
                     </div>
 
                     <div className='flex flex-col gap-y-2 mt-4'>
                         <div className='flex flex-row items-center gap-x-3'>
-                        <div className=' font-bold border rounded-md w-[350px] h-[50px] flex flex-row items-center gap-x-2 pl-2'>
+                        <div className=' font-bold border rounded-md w-full md:w-[480px] h-[50px] flex flex-row items-center gap-x-2 pl-2'>
                                 <AiOutlineLink className='' size={26} color='#999999'/>
                                 <p>Paste link to resources</p>
                             </div> 
@@ -228,7 +228,7 @@ const Section = ({value, setSuccess, setCurrentValue, week, setWeek, type, setTy
                         </div>
 
                         <div className='flex flex-row items-center gap-x-3'>
-                        <div className=' font-bold border rounded-md w-[350px] h-[50px] flex flex-row items-center gap-x-2 pl-2'>
+                        <div className=' font-bold border rounded-md w-full md:w-[480px] h-[50px] flex flex-row items-center gap-x-2 pl-2'>
                                 <AiOutlineLink className='' size={26} color='#999999'/>
                                 <p>Paste link to resources</p>
                             </div> 
@@ -253,7 +253,7 @@ const Section = ({value, setSuccess, setCurrentValue, week, setWeek, type, setTy
 
                 <div className='mt-6'>
                     {/* <TextEditor /> */}
-                    <div className='min-h-[150px] w-[320px] sm:w-full border break-all p-2' onClick={() => handleClick('test')}>
+                    <div className='min-h-[150px] w-full md:w-[480px] sm:w-full border break-all p-2' onClick={() => handleClick('test')}>
                     {value.test}
                     </div>
                 </div>
@@ -276,7 +276,7 @@ const Section = ({value, setSuccess, setCurrentValue, week, setWeek, type, setTy
 
                 <div className='mt-6'>
                     {/* <TextEditor /> */}
-                    <div className='min-h-[150px] w-[320px] sm:w-full border break-all p-2' onClick={() => handleClick('assignment')}>
+                    <div className='min-h-[150px] w-full md:w-[480px] sm:w-full border break-all p-2' onClick={() => handleClick('assignment')}>
                     {value.assignment}
                     </div>
                 </div>

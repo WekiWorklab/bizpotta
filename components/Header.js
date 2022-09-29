@@ -103,9 +103,7 @@ const Header = ({ show, setShow, setSlideIn }) => {
             {/* Search Icon for small screens */}
             <BiSearchAlt size={20} color='#121F4C' className='block' />
 
-            
             <AiOutlineShoppingCart size={20} className='text-darkBlue' />
-              
 
             <IoNotificationsOutline size={20} className='text-darkBlue ' />
 

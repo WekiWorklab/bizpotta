@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import BlueFooter from '../../BlueFooter'
 import Header from '../../Header'
 import Sidebar from './Sidebar'
+import XSidebar from './XSidebar'
 
 const Layout = ({children}) => {
     const [show, setShow] = useState(false)
@@ -15,8 +16,7 @@ const Layout = ({children}) => {
           <Sidebar />
 
           {/* {show ? <XSidebar  show = {show} setShow = {setShow} slideIn = {slideIn} setSlideIn={setSlideIn} /> : null} * Sidebar with toggle functionality */}
-          
-          {/* <XSidebar  show = {show} setShow = {setShow} slideIn = {slideIn} setSlideIn={setSlideIn} /> */}
+          <XSidebar show={show} setShow={setShow} slideIn={slideIn} setSlideIn={setSlideIn} />
       </div>
     )
 }

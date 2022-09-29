@@ -61,13 +61,15 @@ import LChart from "./Line-Chart";
     return(
 
 <div className="flex flex-col mx-auto ">
-      <div className="my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+        {/* <div className="my-2 overflow-x-auto sm:-mx-6 lg:-mx-8"> */}
+      <div className="my-2 styled-scrollbar overflow-x-scroll xl:overflow-x-hidden">
+        {/* <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8"> */}
+        <div className="py-2 align-middle inline-block min-w-[1000px] sm:px-6 lg:px-8">
           <div className="shadow overflow-hidden  pb-4 border-b border-gray-200 sm:rounded-lg  py-6">
 
             {/* Table */}
 
-            { (select === 'table') && <table className="min-w-full divide-y divide-gray-200">
+            { (select === 'table') && <table className=" min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
                   <th

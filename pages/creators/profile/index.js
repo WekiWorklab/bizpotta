@@ -5,11 +5,11 @@ import Layout from "../../../components/CreatorsComponents/LayoutComponents/Layo
 
 const index = () => {
 
-  const mentor = true
+  const mentor = false
 
   return (
     <Layout>
-        {mentor ? <NewMentorContent /> :<NewContent />}
+        {mentor ? <NewMentorContent /> : <NewContent />}
     </Layout>
     )
 
