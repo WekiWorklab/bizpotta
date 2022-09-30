@@ -23,12 +23,12 @@ export default function AuthLayout({ children }) {
           router.push("/students");
           break;
         default:
-          router.push("creator");
+          router.push("/creator");
           break;
       }
     }
     if (isSuccess || isAuthenticated) {
-      router.push("//onboarding");
+      router.push("/onboarding/onboard");
     }
     dispatch(reset());
   }, [isError, isSuccess, message, dispatch, router, isAuthenticated]);
