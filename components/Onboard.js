@@ -44,7 +44,7 @@ const Onboard = () => {
       router.push('/learners-onboarding')
     }
 
-    else if (userType === 'Mentor' || 'Tutor'){
+    else if (userType === 'Mentor' || userType === 'Tutor'){
       router.push('/creators/profile')
     }
   }
