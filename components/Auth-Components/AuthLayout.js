@@ -28,7 +28,7 @@ export default function AuthLayout({ children }) {
       }
     }
     if (isSuccess || isAuthenticated) {
-      router.push("/onboarding/onboard");
+      router.push("/onboarding");
     }
     dispatch(reset());
   }, [isError, isSuccess, message, dispatch, router, isAuthenticated]);

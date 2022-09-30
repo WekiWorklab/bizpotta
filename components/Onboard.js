@@ -73,19 +73,19 @@ const Onboard = () => {
                 <div className='flex gap-x-3 md:gap-x-6 mt-6'>
                   <p className='text-[#282828] text-[14px]'>I am a (an) </p>
                   <div className=' relative min-w-[100px] border-b-[3px] border-bizpotta-green pp'  onClick={() => handleDropDown('usertype', 'user', user )}>
-                    <p className='text-center text-[14px] mr-4'>{userType}</p>
+                    <p className='text-center text-[14px] text-[#282828] mr-4'>{userType}</p>
                     <BiChevronDown className='absolute right-0 text-[20px] top-1' color='#8F8F8F'/>
                     {(dropdown === 'usertype' && user ) && <OnboardingDropDown setUserType={setUserType} setIndustry={setIndustry} setJobDesc={setJobDesc} setDropdown = {setDropdown} type = 'usertype' data = {data1} />}
                   </div>
                 </div>
 
-                {userType === ("Mentor" || "Student") && 
+                {(userType === "Mentor" || userType === "Tutor") && 
                 <div className=''>
                   <div>
                     <div className='flex gap-x-3 md:gap-x-6 mt-6'>
                       <p className='text-[#282828] text-[14px]'>I am representing</p>
                       <div className=' relative min-w-[100px] border-b-[3px] border-bizpotta-green pp'>
-                        <input className='text-center text-[14px] mr-4 outline-0 focus:border-0 focus:ring-0 w-full' value = {workType} onChange = {handleChange} /> 
+                        <input className='text-center text-[#282828] text-[14px] mr-4 outline-0 focus:border-0 focus:ring-0 w-full' value = {workType} onChange = {handleChange} /> 
                       </div>
                     </div>
                     <div className='w-full flex justify-end text-[10px] pr-16'>(Where do you work)</div>
@@ -94,7 +94,7 @@ const Onboard = () => {
                   <div className='flex gap-x-3 md:gap-x-6 mt-6'>
                   <p className='text-[#282828] text-[14px]'>My business industry is ?</p>
                   <div className=' relative min-w-[100px] border-b-[3px] border-bizpotta-green pp' onClick={() => handleDropDown('industry', 'sector', sector )}>
-                    <p className='text-center text-[14px] mr-4'>{industry}</p>
+                    <p className='text-center text-[#282828] text-[14px] mr-4'>{industry}</p>
                     <BiChevronDown className='absolute right-0 text-[20px] top-1' color='#8F8F8F' />
                     {(dropdown === 'industry' && sector ) && <OnboardingDropDown setUserType={setUserType} setIndustry={setIndustry} setJobDesc={setJobDesc} type = 'industry' data = {data2} setDropdown = {setDropdown}/>}
 
@@ -104,7 +104,7 @@ const Onboard = () => {
                 <div className='flex gap-x-3 md:gap-x-6 mt-6'>
                   <p className='text-[#282828] text-[14px]'>My job description is ?</p>
                   <div className=' relative min-w-[100px] border-b-[3px] border-bizpotta-green pp'  onClick={() => handleDropDown('jobDesc', 'job', job )}>
-                    <p className='text-center text-[14px] mr-4'>{jobDesc}</p>
+                    <p className='text-center text-[#282828] text-[14px] mr-4'>{jobDesc}</p>
                     <BiChevronDown className='absolute right-0 text-[20px] top-1' color='#8F8F8F'/>
                     {(dropdown === 'jobDesc' && job ) && <OnboardingDropDown setUserType={setUserType} setJobDesc={setJobDesc} setIndustry={setIndustry} setDropdown = {setDropdown} type = 'jobDesc' data = {data3} />}
 
@@ -114,6 +114,7 @@ const Onboard = () => {
 
                 <div>
                 </div>
+
 
                 <div className='w-full  flex justify-end mt-16'>
                   <div className='w-[100px] h-[40px] centerFlex bg-gray-300 text-[#7C7C7C] rounded-md cursor-pointer' onClick={() => handleNext()}>Next</div>
@@ -132,20 +133,33 @@ export default Onboard
 
 const OnboardingDropDown = ({data, type, setUserType, setIndustry, setJobDesc, setDropdown}) => {
 
-  const [select, setSelected] = useState('')
-
   const handleClick = (el) => {
     console.log(type, el)
-    if(type === 'usertype') {
-      setUserType(el)
-    }
-    else if (type === "industry") {
-      setIndustry(el)
+
+    switch (type) {
+        case 'usertype':
+            setUserType(el)
+            break;
+        case 'industry':
+            setIndustry(el)
+            break;
+        case 'jobDesc':
+            setJobDesc(el)
+            break;    
+        default:
+            break;
     }
 
-    else if (type === 'jobDesc') {
-      setJobDesc(el)
-    }
+    // if(type === 'usertype') {
+    //   setUserType(el)
+    // }
+    // else if (type === "industry") {
+    //   setIndustry(el)
+    // }
+
+    // else if (type === 'jobDesc') {
+    //   setJobDesc(el)
+    // }
 
     setDropdown('')
 

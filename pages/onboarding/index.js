@@ -3,7 +3,6 @@ import Onboard from '../../components/Onboard'
 
 const index = () => {
   return (
-    
     <Onboard />
   )
 }
