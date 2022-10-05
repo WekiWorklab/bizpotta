@@ -21,7 +21,7 @@ const NoContent = () => {
     
 
   return (
-    <div className='relative w-full h-full bg-white sm:bg-gray-50 flex flex-col pt-[90px] md:pt-[120px] md:justify-start md:translate-x-[200px] md:w-[calc(100%-200px)] px-2 md:px-10 pb-10'>
+    <div className='relative w-full h-full bg-white sm:bg-gray-50 flex flex-col pt-[90px] md:pt-[120px] md:justify-start md:translate-x-[200px] md:w-[calc(100%-200px)] px-2 md:px-4 pb-10'>
       
     {/* <TopSection /> */}
 
@@ -35,7 +35,6 @@ const NoContent = () => {
 
     <ClassCards />
 
-    
     <div className='w-[370px] mx-auto md:hidden'>
         <ClassCardsMobile />
     </div>
@@ -53,7 +52,7 @@ const NoContent = () => {
                     <ContentCarousel data = {data} screen = {[2, 20]} />
                 </div>
                 <div className='hidden lg:block w-full'>
-                    <ContentCarousel data = {data} screen = {[3, 40]} />
+                    <ContentCarousel data = {data} screen = {[4, 30]} />
                 </div> 
             </div>
             <div className='pt-[50px] flex flex-col'>
@@ -65,7 +64,7 @@ const NoContent = () => {
                     <ContentCarousel data = {data} screen = {[2, 20]} />
                 </div>
                 <div className='hidden lg:block w-full'>
-                    <ContentCarousel data = {data} screen = {[3, 40]} />
+                    <ContentCarousel data = {data} screen = {[4, 30]} />
                 </div> 
             </div>
             <div className='pt-[50px] flex flex-col'>
@@ -77,7 +76,7 @@ const NoContent = () => {
                     <ContentCarousel data = {data} screen = {[2, 20]} />
                 </div>
                 <div className='hidden lg:block w-full'>
-                    <ContentCarousel data = {data} screen = {[3, 40]} />
+                    <ContentCarousel data = {data} screen = {[4, 30]} />
                 </div> 
             </div>
             <div className='pt-[50px] flex flex-col'>
@@ -89,7 +88,7 @@ const NoContent = () => {
                     <InstructorCarousel data = {instructorData} screen = {[2, 20]} />
                 </div>
                 <div className='hidden lg:block w-full'>
-                    <InstructorCarousel data = {instructorData} screen = {[3, 40]} />
+                    <InstructorCarousel data = {instructorData} screen = {[4, 30]} />
                 </div>  
             </div>                   
         </div>

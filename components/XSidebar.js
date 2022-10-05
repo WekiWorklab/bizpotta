@@ -59,10 +59,10 @@ export default function XSidebar({show, setShow, slideIn, setSlideIn}) {
 
               {/* "#E5E5E5" */}
               {/* text-[#999999] */}
-              <li className="items-center cursor-pointer mb-2" onClick={() => handleClick('/students/courses')}>
+              <li className="items-center cursor-pointer mb-2" onClick={() => handleClick('/students/courses/vocational')}>
                 <div  className="flex items-center h-[45px]">
-                  <HiOutlineBookOpen color={(path === "/students/courses") ? "#121F4C" : "gray"}/>
-                  <div className={`${(path === "/students/courses" ? "text-darkBlue font-semibold" : "text-gray-400 font-light")}text-sm  w-[230px] ml-5`}>
+                  <HiOutlineBookOpen color={(path === "/students/courses/vocational") ? "#121F4C" : "gray"}/>
+                  <div className={`${(path === "/students/courses/vocational" ? "text-darkBlue font-semibold" : "text-gray-400 font-light")}text-sm w-[230px] ml-5`}>
                     Courses
                   </div>
                   <VscChevronRight color="#999999" />

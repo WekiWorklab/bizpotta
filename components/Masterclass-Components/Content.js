@@ -9,6 +9,9 @@ import ClassCards, { ClassCardsMobile } from '../ClassCards';
 import { StyleCarousel } from '../StyleCarousel';
 import MastersCourseCarousel from './MastersCourseCarousel';
 import { Data } from '../CoursePage-Components/Data';
+import {Data as data} from '../Content-Components/Data'
+import ContentCarousel from '../Content-Components/ContentCarousel';
+
 
 const Content = () => {
   return (
@@ -16,7 +19,20 @@ const Content = () => {
         
         <p className='text-sm text-darkBlue font-semibold  mt-10'>Live session</p>
 
-        <RoundProfileCarousel />
+        <div className='hidden xl:flex xl:w-full '>
+            <RoundProfileCarousel screen = {[12, 2]}/>
+        </div>
+        <div className='hidden lg:flex lg:w-full xl:hidden'>
+            <RoundProfileCarousel screen = {[8, 4]}/>
+        </div>
+        <div className='hidden sm:flex sm:flex-nowrap sm:w-full lg:hidden'>
+            <RoundProfileCarousel screen = {[6, 4]}/>
+        </div>
+        <div className='flex w-full sm:hidden'>
+            <RoundProfileCarousel screen = {[4, 4]}/>
+        </div>
+
+
 
         <div className='w-full bg-transparent mt-10 '>
 
@@ -25,21 +41,17 @@ const Content = () => {
             <MastersCourseCarousel screen='big' data={Data} />
             </div>
             
-
             {/* Medium screens */}
             <div className='hidden lg:flex lg:w-full xl:hidden'>
             <MastersCourseCarousel screen='medium' data={Data} />
             </div>
-            
 
             {/* Small screens */}
-
             <div className='hidden sm:flex sm:flex-nowrap sm:w-full lg:hidden'>
             <MastersCourseCarousel screen='small' data={Data} />
             </div>
-
+            
             {/* Mobile */}
-
             <div className='flex w-full sm:hidden'>
             <MastersCourseCarousel screen='mobile' data={Data} />
             </div>
@@ -83,28 +95,37 @@ const Content = () => {
             <StyleCarousel screen = {[2.4, 10]}/>
         </div>
 
-
-        <p className='text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8 mt-10'>How to monetize your idea</p>
-        <div className='block w-[360px] m-auto md:hidden w-full'>
-            <StyleCarousel screen = {[1, 10]}/>
+        <p className='mt-10 text-[14px] text-center lg:text-left lg:pl-4 mb-4 md:text-md font-semibold md:font-bold md:mb-8 mt-10'>Take your business to the next level by exploring any of this course</p>
+        <div className='block w-[360px] m-auto md:hidden w-full '>
+            <ContentCarousel data = {data} screen = {[1.5, 10]} type = 'masterclass'/>
         </div>
         <div className='hidden m-auto md:block lg:hidden w-full'>
-            <StyleCarousel screen = {[1.7, 10]}/>
+            <ContentCarousel data = {data} screen = {[2, 20]} type = 'masterclass'/>
         </div>
-        <div className='hidden lg:block lg:w-full xl:w-[90%] '>
-            <StyleCarousel screen = {[2.4, 10]}/>
+        <div className='hidden lg:block w-full'>
+            <ContentCarousel data = {data} screen = {[4, 30]} type = 'masterclass'/>
         </div>
 
-
-        <p className='text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8 mt-10'>Business acceleration program</p>
-        <div className='block w-[360px] m-auto md:hidden w-full'>
-            <StyleCarousel screen = {[1, 10]}/>
+        <p className='text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8 mt-10'>Take your business to the next level by exploring any of this course</p>
+        <div className='block w-[360px] m-auto md:hidden w-full '>
+            <ContentCarousel data = {data} screen = {[1.5, 10]} type = 'masterclass'/>
         </div>
         <div className='hidden m-auto md:block lg:hidden w-full'>
-            <StyleCarousel screen = {[1.7, 10]}/>
+            <ContentCarousel data = {data} screen = {[2, 20]} type = 'masterclass'/>
         </div>
-        <div className='hidden lg:block lg:w-full xl:w-[90%] '>
-            <StyleCarousel screen = {[2.4, 10]}/>
+        <div className='hidden lg:block w-full'>
+            <ContentCarousel data = {data} screen = {[4, 30]} type = 'masterclass'/>
+        </div>
+
+        <p className='text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8 mt-10'>Take your business to the next level by exploring any of this course</p>
+        <div className='block w-[360px] m-auto md:hidden w-full '>
+            <ContentCarousel data = {data} screen = {[1.5, 10]} type = 'masterclass'/>
+        </div>
+        <div className='hidden m-auto md:block lg:hidden w-full'>
+            <ContentCarousel data = {data} screen = {[2, 20]} type = 'masterclass'/>
+        </div>
+        <div className='hidden lg:block w-full'>
+            <ContentCarousel data = {data} screen = {[4, 30]} type = 'masterclass'/>
         </div>
 
     </div>
@@ -116,17 +137,13 @@ export default Content
 
 
 
-
-
-
-
-const RoundProfileCarousel = () => {
+const RoundProfileCarousel = ({screen}) => {
     const arr = new Array(20).fill("")
 
-  return(
+    return(
     <Swiper
-    slidesPerView={12}
-    spaceBetween={10}
+    slidesPerView={screen[0]}
+    spaceBetween={screen[1]}
     pagination={{
     clickable: true,
     }}
@@ -152,3 +169,30 @@ const RoundProfileCarousel = () => {
     </Swiper>
   )
 }
+      
+      
+      
+      
+      
+              {/* <p className='text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8 mt-10'>How to monetize your idea</p>
+              <div className='block w-[360px] m-auto md:hidden w-full'>
+                  <StyleCarousel screen = {[1, 10]}/>
+              </div>
+              <div className='hidden m-auto md:block lg:hidden w-full'>
+                  <StyleCarousel screen = {[1.7, 10]}/>
+              </div>
+              <div className='hidden lg:block lg:w-full xl:w-[90%] '>
+                  <StyleCarousel screen = {[2.4, 10]}/>
+              </div> */}
+      
+      
+              {/* <p className='text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8 mt-10'>Business acceleration program</p>
+              <div className='block w-[360px] m-auto md:hidden w-full'>
+                  <StyleCarousel screen = {[1, 10]}/>
+              </div>
+              <div className='hidden m-auto md:block lg:hidden w-full'>
+                  <StyleCarousel screen = {[1.7, 10]}/>
+              </div>
+              <div className='hidden lg:block lg:w-full xl:w-[90%] '>
+                  <StyleCarousel screen = {[2.4, 10]}/>
+              </div> */}

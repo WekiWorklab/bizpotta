@@ -7,7 +7,7 @@ import 'swiper/css/pagination';
 
 import { useSwiper } from 'swiper/react';
 
-const ContentCarousel = ({data, screen}) => {
+const ContentCarousel = ({data, type, screen}) => {
 
   return (
         <Swiper
@@ -21,7 +21,7 @@ const ContentCarousel = ({data, screen}) => {
         >
             {data.map((el, index) => (
                 <SwiperSlide key={index}  style={{backgroundColor: "transparent"}}> 
-                    <ContentCard data={el} /> 
+                    <ContentCard data={el} type = {type}/> 
                 </SwiperSlide>
                 )
               )

@@ -194,7 +194,7 @@ const TopSection = () => {
                             <ContentCarousel data = {Data} screen = {[2, 20]} />
                         </div>
                         <div className='hidden lg:block w-full'>
-                            <ContentCarousel data = {Data} screen = {[3, 40]} />
+                            <ContentCarousel data = {Data} screen = {[3, 30]} />
                         </div> 
                     </div>
                     <div className='pt-[50px] flex flex-col bg-white'>
@@ -206,7 +206,7 @@ const TopSection = () => {
                             <ContentCarousel data = {Data} screen = {[2, 20]} />
                         </div>
                         <div className='hidden lg:block w-full'>
-                            <ContentCarousel data = {Data} screen = {[3, 40]} />
+                            <ContentCarousel data = {Data} screen = {[4, 30]} />
                         </div> 
                     </div>
                     <div className='pt-[50px] flex flex-col bg-white'>
@@ -218,7 +218,7 @@ const TopSection = () => {
                             <ContentCarousel data = {Data} screen = {[2, 20]} />
                         </div>
                         <div className='hidden lg:block w-full'>
-                            <ContentCarousel data = {Data} screen = {[3, 40]} />
+                            <ContentCarousel data = {Data} screen = {[4, 30]} />
                         </div> 
                     </div>
                     <div className='pt-[50px] flex flex-col'>
@@ -230,7 +230,7 @@ const TopSection = () => {
                             <InstructorCarousel data = {instructorData} screen = {[2, 20]} />
                         </div>
                         <div className='hidden lg:block w-full'>
-                            <InstructorCarousel data = {instructorData} screen = {[3, 40]} />
+                            <InstructorCarousel data = {instructorData} screen = {[4, 30]} />
                         </div>  
                     </div>  
 

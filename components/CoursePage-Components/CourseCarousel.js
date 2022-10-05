@@ -8,7 +8,7 @@ import { useSwiper } from 'swiper/react';
 import CourseCard from './CourseCard';
 import { Router, useRouter } from 'next/router';
 
-const CourseCarousel = ({data, screen}) => {
+const CourseCarousel = ({data, screen, type}) => {
 
   const router = useRouter()
 

@@ -41,10 +41,10 @@ function Sidebar() {
 
             {/* "#E5E5E5" */}
             {/* text-[#999999] */}
-            <li className='items-center cursor-pointer mb-5' onClick={() => router.push("/students/courses")}>
+            <li className='items-center cursor-pointer mb-5' onClick={() => router.push("/students/courses/vocational")}>
               <div className='flex flex-row justify-start items-center'>
-                <HiOutlineBookOpen color={path === "/students/courses" ? "#121F4C" : "gray"} />
-                <div className={`${path === "/students/courses" ? "text-darkBlue font-semibold" : "text-gray-400 font-light"} text-sm   ml-5`}>
+                <HiOutlineBookOpen color={path === "/students/courses/vocational" ? "#121F4C" : "gray"} />
+                <div className={`${path === "/students/courses/vocational" ? "text-darkBlue font-semibold" : "text-gray-400 font-light"} text-sm ml-5`}>
                   Courses
                 </div>
               </div>

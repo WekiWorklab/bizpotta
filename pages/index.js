@@ -334,32 +334,6 @@ export default function Home() {
               </a>
             </div>
 
-            {/* Library Section */}
-            {/* <div className='relative bg-gray-50 pt-16 pb-8 px-6 md:pl-28'>
-              <h1 className='lg:w-[1000px] mx-auto md:mx-0  text-start text-lg font-light tracking-wider text-bizpotta-purple'>
-                <span className='font-bold md:font-medium text-[15px] md:text-2xl '>Explore our course library</span>
-              </h1>
-              <p className='text-start flex flex-col text-base font-light tracking-wider text-bizpotta-gray-800 lg:w-[1000px] mx-auto md:mx-0  text-start '>
-                <span className='text-bizpotta-gray-800 text-[14px] md:text-base'>Choose category that are of interest to you</span>
-              </p>
-
-
-              <div className='w-full mx-auto md:mx-0 grid grid-cols-2 gap-y-6 md:gap-6 justify-center items-center md:grid md:grid-cols-2 md:gap-8 md:w-[700px] lg:grid-cols-3 lg:w-[1000px] py-8  md:items-center md:justify-center'>
-                {optionsLists.map((option, index) => (
-                  <LibraryRadioButton key={index} option={option} setSelectedCourse={handleChangeCourse} multiSelect={false} />
-                ))}
-              </div>
-
-              <button
-                onClick={() => {
-                  handleSelectLibrary();
-                }}
-                className='pt-4 md:pt-4 cursor-pointer flex gap-2 w-full justify-center items-center text-bizpotta-purple'
-              >
-                <span>Continue</span>
-                <ArrowRightIcon className='h-4 w-4 text-bizpotta-purple' aria-hidden='true' />
-              </button>
-            </div> */}
 
             
 
@@ -461,7 +435,7 @@ const Carousel = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      nextSlide()
+      // nextSlide()
     }, autoplayTime);
 
     return () => clearTimeout(timer)
@@ -502,7 +476,7 @@ const GreenSection = ({router, currentIndex}) => {
       <div className=" ">
         <div className="flex flex-row items-center gap-x-8">
           <div className="min-w-[70px] min-h-[5px] rounded-xl bg-bizpotta-green" />
-          <div className="text-white text-[18px] ">Coming soon</div>
+          <div className="text-white text-[18px]">Coming soon</div>
         </div>
 
         <div className="text-base mt-12 tracking-tight font-bold md:font-light sm:text-5xl xl:text-6xl text-white ">Specialization Program</div>
@@ -510,9 +484,9 @@ const GreenSection = ({router, currentIndex}) => {
         <div className="text-base md:text-xl text-white mt-5">This program will empower you with skills needed to manage your business effectively.</div>
         <div className="text-white text-[18px] mt-16">Get notifications when we launch</div>
 
-        <div className="w-[450px] h-[60px] rounded-md bg-white flex flex-row items-center mt-10">
-            <input type="text" placeholder="Enter email address"  className="w-full h-[50px] outline-none border-0 bg-transparent text-gray-500 text-[15px] " />
-            <div className="h-full w-[180px] bg-darkBlue centerFlex rounded-r-md text-white">
+        <div className="w-full  lg:w-[450px] h-[40px] lg:h-[60px] rounded-md  flex flex-row items-center mt-10">
+            {/* <input type="text" placeholder="Enter email address" className="w-full h-[50px] outline-none border-0 bg-transparent text-gray-500 text-[15px] " /> */}
+            <div className="h-full w-[180px] bg-darkBlue centerFlex rounded-l-md rounded-r-md text-white">
               Notify me
             </div>
         </div>
@@ -532,15 +506,15 @@ const BlueSection = forwardRef(({router, currentIndex},) => {
                   <div className='sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left'>
                     <h1>
                       <span className='pl-0 md:px-8 block text-base md:text-2xl tracking-tight font-bold md:font-light sm:text-5xl xl:text-6xl'>
-                        <span className='block text-gray-900'>Masterclass Program</span>
+                        <span className='block text-gray-900 '>Masterclass Program</span>
                       </span>
                     </h1>
                       
                     <div className="w-full flex md:hidden text-[13px] text-gray-900">
-                      Meet and connect with the best in industries
+                        Meet and connect with the best in industries
                     </div>
 
-                    <div className='hidden md:block mt-6 md:px-8 text-gray-500 space-y-6 relative'>
+                    <div className='hidden lg:block mt-6 md:px-8 text-gray-500 space-y-6 relative'>
                       <dt>
                         <svg
                           width='20'
@@ -637,7 +611,7 @@ const BlueSection = forwardRef(({router, currentIndex},) => {
                         <p className='text-base md:text-lg ml-9 text-black leading-7'>Business development and management</p>
                       </dt>
                     </div>
-                    <div className='md:px-8 w-full hidden md:flex items-center justify-start gap-14 mt-8 md:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0'>
+                    <div className='md:px-8 w-full hidden lg:flex items-center justify-start gap-14 mt-8 md:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0'>
                       <div className='flex items-center justify-center'>
                         <button className='px-6 py-2 h-14 w-30 inline-flex items-center justify-start overflow-hidden transition-all rounded-md bg-darkBlue' onClick={() => router.push('/masters')}>
                           {/* purple box */}
@@ -676,3 +650,33 @@ const BlueSection = forwardRef(({router, currentIndex},) => {
   )
 }
 )
+
+
+
+
+  {/* Library Section */}
+  {/* <div className='relative bg-gray-50 pt-16 pb-8 px-6 md:pl-28'>
+  <h1 className='lg:w-[1000px] mx-auto md:mx-0  text-start text-lg font-light tracking-wider text-bizpotta-purple'>
+  <span className='font-bold md:font-medium text-[15px] md:text-2xl '>Explore our course library</span>
+  </h1>
+  <p className='text-start flex flex-col text-base font-light tracking-wider text-bizpotta-gray-800 lg:w-[1000px] mx-auto md:mx-0  text-start '>
+  <span className='text-bizpotta-gray-800 text-[14px] md:text-base'>Choose category that are of interest to you</span>
+  </p>
+
+
+  <div className='w-full mx-auto md:mx-0 grid grid-cols-2 gap-y-6 md:gap-6 justify-center items-center md:grid md:grid-cols-2 md:gap-8 md:w-[700px] lg:grid-cols-3 lg:w-[1000px] py-8  md:items-center md:justify-center'>
+  {optionsLists.map((option, index) => (
+  <LibraryRadioButton key={index} option={option} setSelectedCourse={handleChangeCourse} multiSelect={false} />
+  ))}
+  </div>
+
+  <button
+  onClick={() => {
+  handleSelectLibrary();
+  }}
+  className='pt-4 md:pt-4 cursor-pointer flex gap-2 w-full justify-center items-center text-bizpotta-purple'
+  >
+  <span>Continue</span>
+  <ArrowRightIcon className='h-4 w-4 text-bizpotta-purple' aria-hidden='true' />
+  </button>
+  </div> */}
