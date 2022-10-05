@@ -6,11 +6,12 @@ import Layout from '../../../components/Layout-Components/Layout'
 const index = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
 
-  const enrolled = true
+  const enrolled = false
 
   return (
     <Layout>
         {enrolled === true ? <Content /> : <NoContent />}
+        {/* <Content /> */}
     </Layout>
       
       

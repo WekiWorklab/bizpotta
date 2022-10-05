@@ -24,7 +24,7 @@ const NoContent = () => {
             <div className='w-full'>
                 <ClassCards />
             </div>
-            <div className='w-[360px] ml-[-10px] md:hidden'>
+            <div className='w-[370px]  md:hidden'>
                 <ClassCardsMobile />  
             </div>
         </div>

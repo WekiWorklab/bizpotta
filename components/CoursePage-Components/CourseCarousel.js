@@ -31,7 +31,7 @@ const CourseCarousel = ({data, screen}) => {
 
   const spaceBtw = () => {
     if (screen === 'big'){
-      return 30
+      return 10 
     }
     else if (screen === 'medium'){
       return 10
@@ -58,7 +58,7 @@ const CourseCarousel = ({data, screen}) => {
         clickable: true,
         }}
         modules={[Pagination]}
-        style={screen === "mobile" ? {backgroundColor: "white", marginLeft: "-10px"} : {backgroundColor: "#F9FAFB", marginLeft: "-10px"} }
+        style={screen === "mobile" ? {backgroundColor: "white", margin: "auto"} : {backgroundColor: "#F9FAFB", margin: "auto"} }
         >
             {data.map((el, index) => (
                 <SwiperSlide key={index} style={screen==="mobile" ? {width:"325px", backgroundColor: "white",paddingLeft: "-16px", cursor: "pointer"} : {width:"325px", backgroundColor: "#F9FAFB",paddingLeft: "-16px", cursor: "pointer"}} onClick = {() => handleClick()}> 
@@ -72,5 +72,7 @@ const CourseCarousel = ({data, screen}) => {
         </Swiper>
   )
 }
+
+// marginLeft: "-10px"
 
 export default CourseCarousel

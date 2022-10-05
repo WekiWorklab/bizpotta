@@ -23,7 +23,7 @@ export const StyleCarousel = ({screen}) => {
         clickable: true,
         }}
         modules={[Pagination]}
-        style={{backgroundColor: "transparent",  height: "520px", border:"none",}}
+        style={{backgroundColor: "transparent",  height: "520px", border:"none", marginLeft: "-10px" }}
         >
     
           {

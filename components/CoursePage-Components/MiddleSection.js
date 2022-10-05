@@ -7,7 +7,7 @@ import InstructorCarousel from '../Content-Components/InstructorCarousel'
 const MiddleSection = () => {
   return (
     // <div>
-        <div className='bg-transparent w-full xl:w-[85%] lg:mx-auto lg:mx-0 '>
+        <div className='bg-transparent w-full xl:w-full lg:mx-auto lg:mx-0 '>
             
             <div className='pt-[50px] flex flex-col '>
                 <p className="text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">Browse course based on your recent activities</p>
@@ -46,7 +46,7 @@ const MiddleSection = () => {
                 </div> 
             </div>
             <div className='pt-[50px] flex flex-col '>
-                <p className="text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">Trending courses</p>
+                <p className="text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8 ">Trending courses</p>
                 <div className='block w-[360px] m-auto md:hidden w-full'>
                     <ContentCarousel data = {Data} screen = {[1.5, 10]} />
                 </div>
@@ -68,7 +68,7 @@ const MiddleSection = () => {
                     <InstructorCarousel data = {instructorData} screen = {[2, 20]} />
                 </div>
                 <div className='hidden lg:block w-full'>
-                    <InstructorCarousel data = {instructorData} screen = {[3, 40]} />
+                    <InstructorCarousel data = {instructorData} screen = {[4, 40]} />
                 </div>  
             </div>
 

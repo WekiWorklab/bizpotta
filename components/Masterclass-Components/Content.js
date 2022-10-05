@@ -52,10 +52,10 @@ const Content = () => {
             <div className='mb-[20px]'>
                 <p className='text-gray-400 text-[13px] mt-2'>Explore our various courses</p>
             </div>
-            <div className='w-full'>
+            <div className='hidden md:block w-full'>
                 <ClassCards />
             </div>
-            <div className='w-[360px] ml-[-10px] md:hidden'>
+            <div className='w-[370px] ml-[-10px] md:hidden'>
                 <ClassCardsMobile />  
             </div>
         </div>
