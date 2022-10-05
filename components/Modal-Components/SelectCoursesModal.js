@@ -1,21 +1,27 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 //////////
 import { useSelector, useDispatch } from "react-redux";
-import { Dialog, Transition } from "@headlessui/react";
-import { CheckIcon } from "@heroicons/react/outline";
+import { Dialog } from "@headlessui/react";
 
 /////////
-import { Button } from "../Auth-Components/Button";
-import { showCourseModal } from "../../store/courseSlice";
+import { set_learners_pereference } from "../../store/courseSlice";
 
 const SelectCoursesModal = ({ courses }) => {
   const dispatch = useDispatch();
   const show = useSelector((state) => state.course.show_course_modal);
+  const category = useSelector((state) => state.course.courseCategory);
   const total = useSelector((state) => state.course.total_courses);
 
   const closeModal = () => {
-    dispatch(showCourseModal(false));
+    let subCategory = [];
+    for (const x of total) {
+      subCategory.push(x.name);
+    }
+  };
+
+  const handleContinue = () => {
+    dispatch(set_learners_pereference({ category, subCategory }));
   };
 
   return (
@@ -32,7 +38,7 @@ const SelectCoursesModal = ({ courses }) => {
         {/* inline-block align-bottom bg-white rounded-tl-xl rounded-tr-xl h-max md:h-auto sm:rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle md:max-w-lg sm:max-w-sm sm:w-full border border-red-300  */}
 
         {
-          <div className='w-full inline-block align-bottom bg-white rounded-tl-xl rounded-tr-xl h-max md:h-auto sm:rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle  sm:w-full sm:w-[350px] '>
+          <div className='w-full inline-block align-bottom bg-white rounded-tl-xl rounded-tr-xl h-max md:h-auto sm:rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle  sm:w-[350px] '>
             {courses < 6 ? (
               // If no. of selected courses is less than 6
               <div className='w-full py-16 flex flex-col items-center justify-content'>

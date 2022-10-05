@@ -1,59 +1,18 @@
+import { useRouter } from "next/router";
+import { useState } from "react";
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Tabs({ current }) {
-  const tabs = [
-    {
-      id: 1,
-      name: "Agriculture",
-      href: "#",
-      current: current == 1 ? true : false,
-    },
-    {
-      id: 2,
-      name: "Arts",
-      href: "#",
-      current: current == 2 ? true : false,
-    },
-    {
-      id: 3,
-      name: "Business",
-      href: "#",
-      current: current == 3 ? true : false,
-    },
-    {
-      id: 4,
-      name: "Engineering",
-      href: "#",
-      current: current == 4 ? true : false,
-    },
-    {
-      id: 5,
-      name: "IT & Software",
-      href: "#",
-      current: current == 5 ? true : false,
-    },
-    {
-      id: 6,
-      name: "Law",
-      href: "#",
-      current: current == 6 ? true : false,
-    },
-    {
-      id: 7,
-      name: "Design",
-      href: "#",
-      current: current == 7 ? true : false,
-    },
-    {
-      id: 8,
-      name: "Development",
-      href: "#",
-      current: current == 8 ? true : false,
-    },
-  ];
-  console.log(current);
+export default function Tabs({ current, courseCategories }) {
+  const tabs = courseCategories;
+  const router = useRouter();
+
+  const handleClick = (id) => {
+    router.push(`/learners-onboarding/${id}`);
+  };
+
   return (
     <div>
       <div className='sm:hidden'>
@@ -76,9 +35,13 @@ export default function Tabs({ current }) {
           {tabs.map((tab) => (
             <a
               key={tab.name}
-              href={tab.href}
-              className={classNames(tab.current ? "font-bold" : "text-gray-500 hover:text-gray-700", "px-3 py-2 font-medium text-lg rounded-md")}
-              aria-current={tab.current ? "page" : undefined}
+              href='#'
+              onClick={() => handleClick(tab.id)}
+              className={classNames(
+                tab.id == current ? "font-bold" : "text-gray-500 hover:text-gray-700",
+                "px-3 py-2 font-medium text-lg rounded-md"
+              )}
+              aria-current={tab.id == current ? "page" : undefined}
             >
               {tab.name}
             </a>
