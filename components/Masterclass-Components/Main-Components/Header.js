@@ -32,14 +32,14 @@ const Header = () => {
 
         <div className='flex flex-row items-center gap-x-6'>
             <div className='flex flex-row items-center gap-x-1 text-darkBlue'>
-                <p>Programs</p>
+                <p className='text-darkBlue font-medium text-[18px]'>Programs</p>
                 <AiOutlineDown color='#B1B1B1' />
             </div>
-            <div className='text-darkBlue'>Become a partner</div>
-            <div className='text-darkBlue'>Become a Tutor</div>
+            <div className='text-darkBlue font-medium text-[18px]'>Become a partner</div>
+            <div className='text-darkBlue font-medium text-[18px]'>Become a Tutor</div>
             <div className='border h-[35px] w-[0.5px]'></div>
-            <div>Login</div>
-            <div className='w-[160px] h-[50px] rounded-md  bg-darkBlue centerFlex text-white'>
+            <div className='text-darkBlue font-medium text-[18px]'>Login</div>
+            <div className='w-[160px] h-[50px] rounded-md  bg-darkBlue centerFlex text-white font-medium text-[18px]'>
                 Join for free
             </div>
         </div>

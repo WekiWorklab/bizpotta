@@ -27,6 +27,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import Header from "../components/Masterclass-Components/Main-Components/Header";
 
 const optionsLists = [
   {
@@ -113,7 +114,8 @@ export default function Home() {
         <div className='relative overflow-hidden'>
           <main>
             <div className=' bg-gradient-to-b from-[#D6F7BA] to-white  '>
-              <Navbars />
+              {/* <Navbars /> */}
+              <Header />
               <div className='pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden'>
                 <div className='mx-auto max-w-7xl lg:px-8'>
                   <div className='lg:grid lg:grid-cols-2 lg:gap-4'>
@@ -342,7 +344,7 @@ export default function Home() {
                 
             
             {/* Market and sell your Expertise Program Section */}
-            <div className='relative bg-gray-50 pt-2 md:pt-24 pb-2 '>
+            <div className='relative bg-gray-50 pt-2 md:pt-36 pb-2 '>
               <h1 className=' px-6 md:pl-28 text-start text-lg font-light tracking-wider text-bizpotta-purple'>
                 <span className='text-[15px] font-bold md:font-medium  md:text-2xl'>Market and sell your Expertise</span>
               </h1>
@@ -370,7 +372,7 @@ export default function Home() {
             </div>
 
             {/* Market and sell your Expertise Program Section */}
-            <div className='relative bg-gray-50 mt-16 pb-8'>
+            <div className='relative bg-gray-50 mt-28 pb-8'>
               <h1 className='px-6 md:pl-28 text-start text-[15px] md:text-lg font-light tracking-wider text-bizpotta-purple'>
                 <span className='font-bold md:font-medium'>Bizpotta Community</span>
               </h1>
@@ -394,7 +396,7 @@ export default function Home() {
                 </div>
               </div>
               {/*Explore Courses */}
-              <a href='#' className='pb-2 mt-4 sm:mt-0 sm:pb-6 flex gap-2 w-full justify-center items-center font-bold text-[13px] sm:text-base text-bizpotta-purple'>
+              <a href='#' className='pb-2 mt-4 sm:mt-0 sm:pb-6 sm:mb-24 flex gap-2 w-full justify-center items-center font-bold text-[13px] sm:text-base text-bizpotta-purple'>
                 <span>More Testimonals</span>
                 <ArrowRightIcon className='w-3 h-3 sm:h-4  sm:w-4 text-bizpotta-purple' aria-hidden='true' />
               </a>
