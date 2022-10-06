@@ -50,6 +50,7 @@ const courseSlice = createSlice({
       state.show_upload_modal = false;
       state.show_upload_success_modal = false;
       state.show_notes = false;
+      state.show_course_details_modal = false
     },
   },
 });

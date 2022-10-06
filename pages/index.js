@@ -484,9 +484,9 @@ const GreenSection = ({router, currentIndex}) => {
         <div className="text-base md:text-xl text-white mt-5">This program will empower you with skills needed to manage your business effectively.</div>
         <div className="text-white text-[18px] mt-16">Get notifications when we launch</div>
 
-        <div className="w-full  lg:w-[450px] h-[40px] lg:h-[60px] rounded-md  flex flex-row items-center mt-10">
-            {/* <input type="text" placeholder="Enter email address" className="w-full h-[50px] outline-none border-0 bg-transparent text-gray-500 text-[15px] " /> */}
-            <div className="h-full w-[180px] bg-darkBlue centerFlex rounded-l-md rounded-r-md text-white">
+        <div className="w-full lg:w-[450px] h-[40px] lg:h-[60px] rounded-md  flex flex-row items-center mt-10">
+            <input type="text" placeholder="Enter email address" className="w-full h-[50px] outline-none border-0 bg-white text-gray-500 text-[15px] rounded-l-md " />
+            <div className="h-[50px] w-[180px] bg-darkBlue centerFlex  rounded-r-md text-white">
               Notify me
             </div>
         </div>

@@ -2,6 +2,9 @@ import React from 'react'
 import {BsStarFill, BsTag} from 'react-icons/bs'
 import { offer } from '../../public'
 
+import { useDispatch } from 'react-redux'
+import { showCourseDetailsModal } from '../../store/courseSlice'
+
 
 const ContentCard = ({data, type}) => {
     const imageSrc = 'https://images.pexels.com/photos/1172253/pexels-photo-1172253.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
@@ -17,10 +20,13 @@ const ContentCard = ({data, type}) => {
         }
     };
 
+    const dispatch = useDispatch()
+
+
   return (
     
 
-    <div className='w-[220px] h-[220px] rounded-[4px] bg-no-repeat bg-cover bg-center flex flex-col justify-end' style={{backgroundImage: `url(${imageSrc})`}}>
+    <div className='w-[220px] h-[220px] rounded-[4px] bg-no-repeat bg-cover bg-center flex flex-col justify-end' style={{backgroundImage: `url(${imageSrc})`}} onClick={() => { dispatch(showCourseDetailsModal(true)); console.log('kjhgfdxcvbhjkjhygtfdc') }} >
         <div className={`clip-card-path2 ${colorType(type)} text-[white] h-3/5 flex flex-col justify-end px-2 pb-2 rounded-b-md`}>
         
         <div className='flex flex-row justify-end'>
