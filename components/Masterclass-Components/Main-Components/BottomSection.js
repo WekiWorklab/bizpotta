@@ -62,21 +62,21 @@ const BottomSection = () => {
         </div>
 
 
-        <div className='w-full mt-24 px-20'>
+        <div className='w-full mt-32 px-20'>
             <div className='text-xl font-bold'>Learn social tools for business success</div>              
             <div className='w-full'>  
             <MainCarousel />
             </div>
         </div>
 
-        <div className='w-full px-20 mt-20'>
+        <div className='w-full px-20 mt-32'>
             <div className='text-xl font-bold'>Get to Meet Top Business Expert</div>              
             <div className='w-full mt-10'>  
             <ExpertsCarousel />
             </div>
         </div>
 
-        <div className='w-full px-20 mt-20'>
+        <div className='w-full px-20 mt-32'>
             <div className='text-xl font-bold'>What our learners have to say</div>              
             <div className='w-full'>  
             <TestimonialCarousel />
@@ -84,7 +84,7 @@ const BottomSection = () => {
         </div>
 
 
-        <div className='w-full px-24 py-20 flex flex-row items-center justify'>
+        <div className='w-full px-24 mt-32 pb-20 flex flex-row items-center justify'>
               <div>
                   <p className='text-[30px] font-bold'>Any questions ?</p>
                   <p className='text-[30px] font-bold'>We got you</p>

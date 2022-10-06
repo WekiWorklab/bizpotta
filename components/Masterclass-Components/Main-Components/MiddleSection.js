@@ -6,11 +6,11 @@ import { MainCarousel, TestimonialCarousel } from './MainCarousel'
 
 const MiddleSection = () => {
   return (
-    <div className='w-full  bg-gradient-to-b from-[#FDFFFA] to-[#FDFFFA] px-20 py-16'>
+    <div className='w-full  bg-gradient-to-b from-[#FDFFFA] to-[#FDFFFA] px-20 py-24'>
         <p className='text-xl font-bold'>Expand your skillset, gain insights, and get support from mentors</p>
         <div className='w-full h-[500px] mt-10 bg-center bg-no-repeat bg-cover rounded-lg' style={{backgroundImage: `url(${offer.src})`}} />
 
-        <div className='px-10 mt-20'>
+        <div className='px-10 mt-40'>
             <p className='text-xl font-bold'>How mentors on Bizpotta can help achieve your dreams</p>
             <div className='w-full flex items-center justify-center gap-x-16 mt-10'>
                 <div className='w-[300px] h-[180px] text-white bg-darkBlue rounded-md py-4 px-6 flex flex-col justify-between'>
@@ -40,8 +40,8 @@ const MiddleSection = () => {
         </div>
 
 
-        <div className='w-full flex items-center gap-x-10 mt-24'>
-            <div className='flex items-center border border-[#b1adad] rounded-md px-6 py-8 w-2/3'>
+        <div className='w-full flex items-center gap-x-10 mt-40'>
+            <div className='flex items-center border masters-shadow2 border-[#b1adad] rounded-md px-6 py-8 w-2/3'>
                 <div className='w-2/3'>
                     <div className='flex items-center gap-x-2'>
                         <GoPrimitiveDot size={14} color='red' />
@@ -145,14 +145,14 @@ const MiddleSection = () => {
 
         </div>
 
-        <div className='w-full mt-24'>
+        <div className='w-full mt-32'>
             <div className='text-xl font-bold'>Top courses on business plan development</div>              
             <div className='w-full'>  
             <MainCarousel />
             </div>
         </div>
 
-        <div className='w-full mt-24'>
+        <div className='w-full mt-36'>
             <div className='text-xl font-bold'>Most enrolled courses on disruptive business model</div>              
             <div className='w-full'>  
             <MainCarousel />
