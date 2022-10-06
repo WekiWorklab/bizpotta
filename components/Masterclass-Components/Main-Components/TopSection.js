@@ -24,7 +24,7 @@ const TopSection = () => {
             <p className='text-sm text-darkBlue font-semibold mt-10 mb-8'>Live session</p>
             <CircularProfileCarousel />
 
-            <div className='w-full flex flex-col items-center justify-center gap-y-6  relative  h-[630px] '>
+            <div className='w-full flex flex-col items-center justify-center gap-y-6 relative h-[630px]'>
 
             <div className='w-full px-[190px] flex flex-col items-center justify-center gap-y-6 '>
                 <p className='font-bold text-3xl uppercase text-center'>Meet and connect with world best business expert</p>
@@ -32,10 +32,10 @@ const TopSection = () => {
                 {/* <div className='w-[190px] h-[55px] mt-4 centerFlex rounded-md bg-darkBlue text-white'>
                     Watch Triller
                 </div> */}
-                <div className='w-[470px] h-[50px] pl-4 flex justify-end items-center gap-x-2 border   border-[#b1adad] rounded-md'>
+                <div className='w-[470px] h-[50px] pl-4 flex justify-end items-center gap-x-2 border border-[#b1adad] rounded-md'>
                     <BiSearchAlt size={20} color='#b1adad' />
                     <input className='w-[35%] outline-none bg-transparent'  placeholder='Search by name, role, or company'/>
-                    <div className='w-[30%]  flex items-center justify-center gap-x-1 text-darkBlue border-l-2 border-[#b1adad]'>
+                    <div className='w-[30%] flex items-center justify-center gap-x-1 text-darkBlue border-l-2 border-[#b1adad]'>
                         <p className='font-bold '>Expertise</p>
                         <AiOutlineDown />
                     </div>

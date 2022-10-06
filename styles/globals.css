@@ -273,7 +273,7 @@ blockquote:after {
 
 /* Masters gradient */
 .rad-gradient{
-  background-image: radial-gradient(rgba(148, 242, 54, 0.30), #FDFFFA);
+  background-image: radial-gradient(rgba(181, 245, 116, 0.14), #FDFFFA);
 }
 
 .middle-path{
