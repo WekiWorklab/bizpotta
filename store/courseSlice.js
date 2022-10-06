@@ -10,6 +10,7 @@ const courseSlice = createSlice({
     show_upload_modal: false,
     show_upload_success_modal: false,
     show_notes: false,
+    show_course_details_modal: false
   },
 
   reducers: {
@@ -37,6 +38,9 @@ const courseSlice = createSlice({
     showNotes: (state, action) => {
       state.show_notes = action.payload;
     },
+    showCourseDetailsModal: (state, action) => {
+      state.show_course_details_modal = action.payload
+    },
 
     reset: (state) => {
       state.courseCategory = null;
@@ -50,7 +54,7 @@ const courseSlice = createSlice({
   },
 });
 
-export const { addCourse, removeCourse, showCourseModal, showProfileModal, addCategory, showUploadModal, showUploadSuccessModal, showNotes, reset } =
+export const { addCourse, removeCourse, showCourseModal, showProfileModal, addCategory, showUploadModal, showUploadSuccessModal, showNotes,showCourseDetailsModal, reset } =
   courseSlice.actions;
 
 export default courseSlice.reducer;

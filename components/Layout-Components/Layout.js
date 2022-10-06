@@ -7,6 +7,8 @@ import Header from "../Header";
 import Sidebar from "../Sidebar";
 import XSidebar from "../XSidebar";
 
+import CourseDetailsModal from '../CourseDetailsModal'
+
 const Layout = ({ children }) => {
   const router = useRouter();
   const { user, isAuthenticated } = useSelector((state) => state.auth);
@@ -34,10 +36,16 @@ const Layout = ({ children }) => {
       {children}
       {/* <BlueFooter /> */}
       <Sidebar />
-      {/* {show ? <XSidebar  show = {show} setShow = {setShow} slideIn = {slideIn} setSlideIn={setSlideIn} /> : null} * Sidebar with toggle functionality */}
       <XSidebar show={show} setShow={setShow} slideIn={slideIn} setSlideIn={setSlideIn} />
+      {(typeof window !== "undefined") && <CourseDetailsModal />}
     </div>
   );
 };
 
 export default Layout;
+
+
+
+
+
+{/* {show ? <XSidebar  show = {show} setShow = {setShow} slideIn = {slideIn} setSlideIn={setSlideIn} /> : null} * Sidebar with toggle functionality */}

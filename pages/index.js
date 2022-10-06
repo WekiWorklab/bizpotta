@@ -435,7 +435,7 @@ const Carousel = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      // nextSlide()
+      nextSlide()
     }, autoplayTime);
 
     return () => clearTimeout(timer)
@@ -497,7 +497,7 @@ const GreenSection = ({router, currentIndex}) => {
 
 
 // eslint-disable-next-line react/display-name
-const BlueSection = forwardRef(({router, currentIndex},) => {
+const BlueSection = ({router, currentIndex}) => {
   return (
     <section style={{
       marginLeft: currentIndex === 0 ? "0%" : "-100%"
@@ -649,7 +649,7 @@ const BlueSection = forwardRef(({router, currentIndex},) => {
               </section>
   )
 }
-)
+
 
 
 
