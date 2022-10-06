@@ -14,8 +14,8 @@ export default function AuthLayout({ children }) {
     if (isError) {
       toast.error(message);
     }
-    if (user.is_onboarded) {
-      switch (user.roles_id) {
+    if (user?.is_onboarded) {
+      switch (user?.roles_id) {
         case 1:
           router.push("/admin");
           break;
