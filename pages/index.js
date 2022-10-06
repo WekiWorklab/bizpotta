@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { ArrowRightIcon, CheckIcon, ExternalLinkIcon } from "@heroicons/react/solid";
 import Navbars from "../components/Navbars";
-import { home_page, masterclass, offer } from "../public";
+import { home_page, masterclass, offer, specialization } from "../public";
 import Card from "../components/Card";
 import LibraryRadioButton from "../components/LibraryRadioButton";
 import HomePageSlider from "../components/HomePageSlider";
@@ -474,24 +474,29 @@ const GreenSection = ({router, currentIndex}) => {
     <section style={{
       marginLeft: currentIndex === 1 ? "0" : "100%"
     }}
-     className={`bg-[#1F9A5F] mx-auto py-8 md:py-20 px-6 md:px-16 h-[600px] min-w-[85vw] rounded-xl ${currentIndex === 1 ? "slider" : "sliding" }`}>
-      <div className=" ">
-        <div className="flex flex-row items-center gap-x-8">
-          <div className="min-w-[70px] min-h-[5px] rounded-xl bg-bizpotta-green" />
-          <div className="text-white text-[18px]">Coming soon</div>
-        </div>
+     className={`bg-[#1F9A5F] mx-auto flex  h-[600px] min-w-[85vw] rounded-xl ${currentIndex === 1 ? "slider" : "sliding" }`}>
+      <div className=" w-1/2 px-14 py-14">
+        {/* <div className=""> */}
+          <div className="flex flex-row items-center gap-x-8">
+            <div className="min-w-[70px] min-h-[5px] rounded-xl bg-bizpotta-green" />
+            <div className="text-white text-[18px]">Coming soon</div>
+          </div>
 
-        <div className="text-base mt-12 tracking-tight font-bold md:font-light sm:text-5xl xl:text-6xl text-white ">Specialization Program</div>
-        <div className="text-base md:text-xl text-white mt-5">Learn the basics of business development and management, get certificate on completion. </div>
-        <div className="text-base md:text-xl text-white mt-5">This program will empower you with skills needed to manage your business effectively.</div>
-        <div className="text-white text-[18px] mt-16">Get notifications when we launch</div>
+          <div className="text-base mt-12 tracking-tight font-bold md:font-light sm:text-4xl xl:text-5xl text-white ">Specialization Program</div>
+          <div className="text-base md:text-xl text-white mt-5 w-">Learn the basics of business development and management, get certificate on completion. </div>
+          <div className="text-base md:text-xl text-white mt-5">This program will empower you with skills needed to manage your business effectively.</div>
+          <div className="text-white text-[18px] mt-16">Get notifications when we launch</div>
 
-        <div className="w-full lg:w-[450px] h-[40px] lg:h-[60px] rounded-md  flex flex-row items-center mt-10">
-            <input type="text" placeholder="Enter email address" className="w-full h-[50px] outline-none border-0 bg-white text-gray-500 text-[15px] rounded-l-md " />
-            <div className="h-[50px] w-[180px] bg-darkBlue centerFlex  rounded-r-md text-white">
-              Notify me
-            </div>
-        </div>
+          <div className="w-full lg:w-[450px] h-[40px] lg:h-[60px] rounded-md  flex flex-row items-center mt-10">
+              <input type="text" placeholder="Enter email address" className="w-full h-[50px] outline-none border-0 bg-white text-gray-500 text-[15px] rounded-l-md " />
+              <div className="h-[50px] w-[180px] bg-darkBlue centerFlex  rounded-r-md text-white">
+                Notify me
+              </div>
+          </div>
+        {/* </div> */}
+      </div>
+      <div className="w-1/2 rounded-r-xl bg-no-repeat bg-cover bg-center h-full" style={{backgroundImage: `url(${specialization.src})`}}>
+        
       </div>
     </section>
   )

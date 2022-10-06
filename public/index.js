@@ -5,8 +5,9 @@ import card_image from "./images/card_image.png";
 import masterclass from "./images/home_page/masterclass.png";
 import paypal from './images/paypal.jpg'
 import cards from './images/cards.jpg'
+import specialization from './images/home_page/specialization.png'
 
-export { home_page, logo, offer, card_image, masterclass, paypal, cards };
+export { home_page, logo, offer, card_image, masterclass, paypal, cards, specialization };
 
 export const Facebook = () => (
     <svg width="24" height="24" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
