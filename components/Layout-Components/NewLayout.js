@@ -18,10 +18,8 @@ const NewLayout = ({children}) => {
     <div className='relative overflow-hidden'>
         <Header show = {show} setShow = {setShow} slideIn = {slideIn} setSlideIn={setSlideIn}/>
         {children}
-        <BlueFooter />
+        {/* <BlueFooter /> */}
         <NewSidebar />
-        {/* {show ? <XSidebar  show = {show} setShow = {setShow} slideIn = {slideIn} setSlideIn={setSlideIn} /> : null} * Sidebar with toggle functionality */}
-        {/* <XSidebar  show = {show} setShow = {setShow} slideIn = {slideIn} setSlideIn={setSlideIn} /> */}
         <NewXSidebar show = {show} setShow = {setShow} slideIn = {slideIn} setSlideIn={setSlideIn}/>
     </div>
   )

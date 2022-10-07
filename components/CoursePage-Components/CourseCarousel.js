@@ -47,7 +47,7 @@ const CourseCarousel = ({data, screen, type}) => {
   }
 
   const handleClick = () => {
-   router.push("/students/courses/course")
+   router.push("/students/course")
   }
 
   return (

@@ -1,51 +1,63 @@
 import React, { useState } from 'react'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 import { card_image, logo } from '../../../public'
 
 import {AiOutlineDown, AiOutlineShoppingCart} from 'react-icons/ai'
-import {FiSearch} from 'react-icons/fi'
+import {FiMenu, FiSearch} from 'react-icons/fi'
+import {BiMenu} from 'react-icons/bi'
 import { IoNotificationsOutline } from 'react-icons/io5'
-import { useRouter } from 'next/router'
-import Link from 'next/link'
 
-const Header = () => {
+const Header = ({show, setShow, slideIn, setSlideIn}) => {
 
     const router = useRouter()
 
-    const [showCat, setShowCat] = useState(false)
-    const [showSearch, setShowSearch] = useState(false)
-    
-    const handleCat = () => {
-        setShowCat(prev => !prev)
-    }
+    useEffect(() => {
+        setUrl(router.asPath)
+    }, [router])
 
-    const handleSearch = () => {
-        setShowSearch(prev => !prev)
-    }
+    const [url, setUrl] = useState()
+    const [programDrop, setProgramDrop] = useState(false)
+
+    console.log(router.asPath)
 
   return (
-    <div className='w-full h-[130px] flex flex-row items-center justify-between px-16'>
+    <div className='relative w-full h-[130px] flex flex-row items-center justify-between px-4 xl:px-16'>
         {/* Logo Section */}
         <div className='flex items-center cursor-pointer' onClick={() => router.push('/')}>
-            <img src={logo.src} className = 'w-[200px] mr-1' alt=''/>
+            <img src={logo.src} className = ' max-w-[200px] mr-1' alt=''/>
             <AiOutlineDown />
         </div>
+        
+        {/* <div> */}
+            {!show && <BiMenu color='#121F4C' className = 'block lg:hidden text-3xl md:text-4xl' onClick={() => {setShow(true); setSlideIn(true)}}/>}
+        {/* </div> */}
 
-        <div className='flex flex-row items-center gap-x-6'>
+        <div className='hidden lg:flex flex-row items-center gap-x-6'>
             <div className='flex flex-row items-center gap-x-1 text-darkBlue'>
-                <p className='text-darkBlue font-medium text-[18px]'>Programs</p>
-                <AiOutlineDown color='#B1B1B1' />
+                <p className='text-darkBlue font-medium text-[16px] lg:text-[18px]'>Programs</p>
+                <AiOutlineDown color='#B1B1B1' onClick={() => { setProgramDrop(prev => !prev) }} />
+                {programDrop && (
+                    <div className=' absolute top-20 min-w-[220px] max-w-[250px] px-5 py-8 bg-white rounded-lg flex flex-col text-[14px] gap-y-5'>
+                        {(url !== '/masters') && <p className='cursor-pointer hover:text-bizpotta-green-500 hover:font-bold' onClick = {() => router.push('/masters')}>Masterclass Program</p>}
+                        {(url !== '/specialization') && <p className='cursor-pointer hover:text-bizpotta-green-500 hover:font-bold'>Specialization Program</p>}
+                        {(url !== '/') && <p className='cursor-pointer hover:text-bizpotta-green-500 hover:font-bold' onClick = {() => router.push('/')}>Vocational Education Program</p>}
+                    </div>    
+                )}
+
             </div>
-            <div className='text-darkBlue font-medium text-[18px]'>Become a partner</div>
-            <div className='text-darkBlue font-medium text-[18px]'>Become a Tutor</div>
+            <div className='text-darkBlue font-medium text-[16px] lg:text-[18px]'>Become a partner</div>
+            <div className='text-darkBlue font-medium text-[16px] lg:text-[18px]'>Become a Tutor</div>
             <div className='border h-[35px] w-[0.5px]'></div>
             <Link href='/auth/login' >
-                <a className='text-darkBlue font-medium text-[18px]'>
+                <a className='text-darkBlue font-medium text-[16px] lg:text-[18px]'>
                 Login
                 </a>
             </Link>
             <Link href='/auth/register' >
-                <a className='w-[160px] h-[50px] rounded-md  bg-darkBlue centerFlex text-white font-medium text-[18px]'>
+                <a className='w-[160px] h-[50px] rounded-md  bg-darkBlue centerFlex text-white font-medium text-[16px] lg:text-[18px]'>
                     Join for free
                 </a>
             </Link>
@@ -64,6 +76,18 @@ export default Header
 
 
 
+
+
+// const [showCat, setShowCat] = useState(false)
+    // const [showSearch, setShowSearch] = useState(false)
+    
+    // const handleCat = () => {
+    //     setShowCat(prev => !prev)
+    // }
+
+    // const handleSearch = () => {
+    //     setShowSearch(prev => !prev)
+    // }
 
 /**
  * 

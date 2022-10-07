@@ -14,7 +14,7 @@ import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { addCategory } from "../store/courseSlice";
 
-import {BsArrowRight} from 'react-icons/bs'
+import {BsArrowRight, BsChevronRight} from 'react-icons/bs'
 import {AiFillCaretLeft, AiFillCaretRight} from 'react-icons/ai'
 import LandingMarketingCarousel, { MarketingCard } from "../components/LandingMarketingCarousel";
 import LandingTestimonialCarousel from "../components/LandingTestimonialCarousel";
@@ -88,7 +88,6 @@ export default function Home() {
   }, [])
 
 
-
   const [selectedCourse, setSelectedCourse] = useState(null);
 
   const handleChangeCourse = (course) => {
@@ -103,6 +102,11 @@ export default function Home() {
     scrollRef.current.scrollLeft += scrollOffset 
   }
 
+  const [show, setShow] = useState(false)
+  const [slideIn, setSlideIn] = useState(false)
+
+
+
 
   return (
     <>
@@ -110,12 +114,15 @@ export default function Home() {
         <title key='title'>BizPotta - Home</title>
       </Head>
 
-      <div className='bg-gray-50'>
+      <div className='relative bg-gray-50 '>
+
+        <HomeSideBar show = {show} setShow = {setShow} slideIn = {slideIn} setSlideIn = {setSlideIn}/>
+
         <div className='relative overflow-hidden'>
           <main>
             <div className=' bg-gradient-to-b from-[#D6F7BA] to-white  '>
               {/* <Navbars /> */}
-              <Header />
+              <Header show = {show} setShow = {setShow} slideIn = {slideIn} setSlideIn = {setSlideIn} /> 
               <div className='pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden'>
                 <div className='mx-auto max-w-7xl lg:px-8'>
                   <div className='lg:grid lg:grid-cols-2 lg:gap-4'>
@@ -139,7 +146,7 @@ export default function Home() {
                               <button className='btn relative px-4 py-2  inline-flex items-center justify-start overflow-hidden transition-all rounded-md bg-bizpotta-purple group md:py-3 md:text-lg md:px-10'>
                                 {/* purple box */}
                                 <span className='w-0 h-0 rounded bg-bizpotta-green absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1'></span>
-                                <span className='w-full text-white  transition-colors duration-300 ease-in-out group-hover:text-bizpotta-purple z-10'>
+                                <span className='w-full text-white  transition-colors duration-300 ease-in-out group-hover:text-bizpotta-purple'>
                                   Join For Free
                                 </span>
                               </button>
@@ -412,8 +419,97 @@ export default function Home() {
 
 
 
+const HomeSideBar = ({show, setShow, slideIn, setSlideIn}) => {
 
 
+  return (
+      <div className={`${slideIn ? "SideBar" : "NoSideBar"} w-[320px] h-screen fixed z-40 opacity-1 rounded-r-3xl bg-[#FAFAFA] flex lg:hidden items-center `}>
+
+      <div className="absolute top-[40px] right-[20px] cursor-pointer" onClick={() => {setShow(false); setSlideIn(false)}}>
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-[20px] w-[20px]" fill="none" viewBox="0 0 20 20" stroke="#999999" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+      </div>
+    
+      <div className='w-full ' >
+            <ul className="flex flex-col gap-y-3 ">
+
+            <li className={`flex  justify-start items-center  h-[50px]  bg-[#F2FFE4] cursor-pointer mb-2 pl-4 pr-2`} onClick = {() => {}}>
+                <div className="text-sm font-bold text-darkBlue">
+                Account
+                </div>
+            </li>
+
+            <li className={`flex w-full justify-start items-center  h-[50px]  cursor-pointer mb-2 pl-4 pr-2`} onClick = {() => {}}>
+                <div  className="flex w-full flex-row justify-between items-center text-gray-500">
+                  <div className="text-sm font-light ">
+                    Sign up
+                  </div>
+                  <BsChevronRight  />
+                </div>
+            </li>
+
+
+            <li className={`flex w-full justify-start items-center  h-[50px]  cursor-pointer mb-2 pl-4 pr-2`} onClick = {() => {}}>
+                <div  className="flex w-full flex-row justify-between items-center text-gray-500">
+                  <div className="text-sm font-light ">
+                    Sign in
+                  </div>
+                  <BsChevronRight  />
+                </div>
+            </li>
+
+            <li className={`flex w-full justify-start items-center  h-[50px]  cursor-pointer mb-2 pl-4 pr-2`} onClick = {() => {}}>
+                <div  className="flex w-full flex-row justify-between items-center text-gray-500">
+                  <div className="text-sm font-light ">
+                    Become an instructor
+                  </div>
+                  <BsChevronRight  />
+                </div>
+            </li>
+
+            
+            <li className={`flex   justify-start items-center  h-[50px]  bg-[#F2FFE4] cursor-pointer mb-2 pl-4 pr-2`} onClick = {() => {}}>
+                <div className="text-sm font-bold text-darkBlue">
+                  Programs
+                </div>
+            </li>
+
+            <li className={`flex  w-full justify-start items-center  h-[50px]  cursor-pointer mb-2 pl-4 pr-2`} onClick = {() => {}}>
+                <div  className="flex w-full flex-row justify-between items-center text-gray-500">
+                  <div className="text-sm font-light ">
+                    Vocational Education
+                  </div>
+                  <BsChevronRight  />
+                </div>
+            </li>
+
+            <li className={`flex w-full justify-start items-center  h-[50px]  cursor-pointer mb-2 pl-4 pr-2`} onClick = {() => {}}>
+                <div  className="flex w-full flex-row justify-between items-center text-gray-500">
+                  <div className="text-sm font-light ">
+                    Specialization Program
+                  </div>
+                  <BsChevronRight  />
+                </div>
+            </li>
+
+            <li className={`flex w-full  justify-start items-center  h-[50px]  cursor-pointer mb-2 pl-4 pr-2`} onClick = {() => {}}>
+                <div  className="w-full flex flex-row justify-between items-center text-gray-500">
+                  <div className="text-sm font-light ">
+                    Masters Program
+                  </div>
+                  <BsChevronRight  />
+                </div>
+            </li>
+
+            </ul>                      
+        </div>
+      </div>
+  )
+}
+
+
+// AiOutlineRight
 
 
 

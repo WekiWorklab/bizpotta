@@ -15,11 +15,11 @@ const image = 'https://cdn.pixabay.com/photo/2022/01/17/17/20/bored-6945309__340
 const router = useRouter()
 
 const handleClick = () => {
-    router.push('/students/courses/course/video')
+    router.push('/students/course/video')
 }
 
 const handleBack = () => {
-    router.push('/students/courses/')
+    router.push('/students/courses/vocational')
 }
 
   return (
@@ -29,18 +29,17 @@ const handleBack = () => {
             <p className='inline'>Go to home</p>
         </div>
 
-        {/* sm:w-[500px] sm:h-[300px] xl:w-[850px] xl:h-[370px] */}
 
         <div className = 'w-full h-[230px] w-full h-[500px]  mt-4  bg-no-repeat bg-cover bg-center flex justify-center items-center cursor-pointer' style={{backgroundImage: `url(${image}) `}} onClick={() => handleClick()}>
             <FaPlay size={40} color='white'/>
         </div>
-        {/* <img src={image} alt='' className = 'w-full h-[230px]  sm:w-[500px] sm:h-[300px] xl:w-[850px] xl:h-[370px] mt-4 '/> */}
+        
 
         <h1 className='text-[18px] font-[600] mt-4'>Fundamentals of DSLR Photography</h1>
         <div className='flex flex-row items-center w-full justify-between '>
             <div className='flex flex-row items-center '>
                 <img src={image} className='w-[40px] h-[40px] rounded-full mr-4 '/>
-                <p>by Thomas Mat (Ph.d, Ms.c) </p>
+                <p className='text-[12px] sm:text-base '>by Thomas Mat (Ph.d, Ms.c) </p>
             </div>
             <div className='flex flex-row justify-self-end  items-center'>
                 <IoIosPeople className='text-[20px] mr-4'/>

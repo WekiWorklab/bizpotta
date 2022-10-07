@@ -1,4 +1,6 @@
 import React from 'react'
+import { AiFillCaretDown } from 'react-icons/ai'
+import { MdOutlineDateRange } from 'react-icons/md'
 import { TextEditor } from '../TextEditor'
 
 const Content = () => {
@@ -7,17 +9,17 @@ const Content = () => {
 const API_KEY = process.env.NEXT_PUBLIC_TINY_API_KEY
 
   return (
-    <div className='relative w-full h-full min-h-[100vh] bg-white sm:bg-gray-50 flex flex-col pt-[90px] md:pt-[120px]   md:translate-x-[200px]  md:w-[calc(100%-200px)] px-2 lg:pl-8 lg:pr-10 pb-10 text-darkBlue'>
+    <div className='relative w-full h-full min-h-[100vh] bg-white sm:bg-gray-50 flex flex-col pt-[90px] md:pt-[120px] md:translate-x-[200px]  md:w-[calc(100%-200px)] px-2 lg:pl-8 lg:pr-10 pb-10 text-darkBlue'>
         <div className='mt-10'>
             <p className='text-[15px] font-bold'>Message</p>
-            <div className='w-full mt-8 bg-white rounded-md pt-8 pb-6'>
-                <div className='flex flex-row text-[13px] pl-8 gap-x-24 border-b-2'>
+            <div className='w-full mt-8  bg-white rounded-md pt-8 pb-6'>
+                <div className='flex flex-row text-[13px] pl-8 gap-x-10 md:gap-x-24 border-b-2'>
                     <p className='border-b-[3px] border-darkBlue'>Inbox</p>
                     <p>Updates</p>
                     <p>Message</p>
                 </div>
 
-                <div className='w-[600px] mx-auto pt-16'>
+                <div className='w-full px-1 md:w-[500px] lg:w-[600px] mx-auto pt-16'>
                     <p>Search</p>
                     <textarea className='w-full h-[45px] bg-gray-50  rounded-md' ></textarea>
 
@@ -47,6 +49,18 @@ const API_KEY = process.env.NEXT_PUBLIC_TINY_API_KEY
                             <TextEditor api_key = {API_KEY} />
                         </div>
 
+                    </div>
+
+                    <div className='mt-10 gap-x-8 flex justify-end'>
+                        <div className='flex items-center text-[13px] sm:text-[14px] gap-x-2 px-3 py-2 shadow-md rounded-md'>
+                            <p className=''>Schedule Message</p>
+                            <MdOutlineDateRange color='121F4C'  />
+                        </div>
+
+                        <div className='flex items-center text-[13px] sm:text-[14px] gap-x-2 px-3 py-2 shadow-md rounded-md bg-[#121F4C] text-white'>
+                            <p className=''>Send Message</p>
+                            <AiFillCaretDown   />
+                        </div>
                     </div>
 
                 </div>

@@ -12,8 +12,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 
  function NewSidebar() {
-  const [collapseShow, setCollapseShow] = React.useState("hidden");
-  
+
+    const [select, setSelect] = useState('')
 
   const router = useRouter();
   const path = router.asPath
@@ -23,35 +23,35 @@ import { useDispatch, useSelector } from "react-redux";
       <nav className="fixed top-0 left-0 w-[200px] pt-[140px] px-6 bg-white hidden md:flex flex-row flex-wrap  justify-between h-full z-10 ">
           
           <div className='w-full ' >
-            <ul>
+            <ul className="flex flex-col gap-y-3">
 
-            <li className=" flex  justify-start items-center h-[50px] redBorder cursor-pointer mb-2">
-                <div className="text-sm text-gray-600 font-light">
+            <li className={`flex  justify-start items-center h-[40px] ${router.asPath === '/students/course' || router.asPath === '/students/course/video' ? "border-r-4 border-darkBlue" : ""} cursor-pointer mb-2`} onClick = {() => {router.push('/students/course')}}>
+                <div className="text-sm text-gray-600 font-light ">
                 Overview
                 </div>
             </li>
 
-            <li className="flex justify-start items-center h-[50px] redBorder cursor-pointer mb-2">
+            <li className={`flex  justify-start items-center h-[40px] ${router.asPath === '/students/grades' ? "border-r-4 border-darkBlue" : ""} cursor-pointer mb-2`} onClick = {() => {router.push('/students/grades')}}>
                 <div className="text-sm text-gray-600 font-light ">
                 Grades
                 </div>
             </li>
 
 
-            <li className="flex justify-start items-center h-[50px] redBorder cursor-pointer mb-2">
+            <li className={`flex  justify-start items-center h-[40px] ${router.asPath === '/students/notes' ? "border-r-4 border-darkBlue" : ""} cursor-pointer mb-2`} onClick = {() => {router.push('/students/notes')}}>
                 <div className="text-sm text-gray-600 font-light ">
                 Notes
                 </div>
             </li>
 
-            <li className="flex justify-start items-center h-[50px] redBorder cursor-pointer mb-2">
+            <li className={`flex  justify-start items-center h-[40px] ${router.asPath === '/students/discussion' ? "border-r-4 border-darkBlue" : ""} cursor-pointer mb-2`} onClick = {() => { router.push('/students/discussion')}}>
                 <div className="text-sm text-gray-600 font-light ">
                 Discussion Forums
                 </div>
             </li>
 
             
-            <li className="flex justify-start items-center h-[50px] redBorder cursor-pointer mb-2">
+            <li className={`flex  justify-start items-center h-[40px] ${router.asPath === '/students/livesession' ? "border-r-4 border-darkBlue" : ""} cursor-pointer mb-2`} onClick = {() => { router.push('/students/livesession')}}>
                 <div  className="flex flex-row justify-start items-center">
                 <div className="text-sm text-gray-600 font-light ">
                     Live sessions
@@ -59,7 +59,7 @@ import { useDispatch, useSelector } from "react-redux";
                 </div>
             </li>
 
-            <li className="flex justify-start items-center h-[50px] redBorder cursor-pointer mb-2">
+            <li className={`flex  justify-start items-center h-[40px] ${router.asPath === '/students/message' ? "border-r-4 border-darkBlue" : ""} cursor-pointer mb-2`} onClick = {() => { router.push('/students/message')}}>
                 <div  className="flex flex-row justify-start items-center">
                     <div className="text-sm text-gray-600 font-light ">
                     Messages
@@ -67,7 +67,7 @@ import { useDispatch, useSelector } from "react-redux";
                 </div>
             </li>
 
-            <li className="flex justify-start items-center h-[50px] redBorder cursor-pointer mb-2">
+            <li className={`flex  justify-start items-center h-[40px] ${router.asPath === '/students/resources' ? "border-r-4 border-darkBlue" : ""} cursor-pointer mb-2`} onClick = {() => { router.push('/students/resources')}}>
                 <div  className="flex flex-row justify-start items-center">
                     <div className="text-sm text-gray-600 font-light ">
                     Resources

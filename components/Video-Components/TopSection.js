@@ -13,7 +13,7 @@ const TopSection = () => {
     const router = useRouter()
 
     const handleClick = () => {
-        router.push('/students/courses')
+        router.push('/students/course')
     }
 
   return (
