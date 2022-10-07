@@ -6,6 +6,7 @@ import {AiOutlineDown, AiOutlineShoppingCart} from 'react-icons/ai'
 import {FiSearch} from 'react-icons/fi'
 import { IoNotificationsOutline } from 'react-icons/io5'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 const Header = () => {
 
@@ -38,10 +39,16 @@ const Header = () => {
             <div className='text-darkBlue font-medium text-[18px]'>Become a partner</div>
             <div className='text-darkBlue font-medium text-[18px]'>Become a Tutor</div>
             <div className='border h-[35px] w-[0.5px]'></div>
-            <div className='text-darkBlue font-medium text-[18px]'>Login</div>
-            <div className='w-[160px] h-[50px] rounded-md  bg-darkBlue centerFlex text-white font-medium text-[18px]'>
-                Join for free
-            </div>
+            <Link href='/auth/login' >
+                <a className='text-darkBlue font-medium text-[18px]'>
+                Login
+                </a>
+            </Link>
+            <Link href='/auth/register' >
+                <a className='w-[160px] h-[50px] rounded-md  bg-darkBlue centerFlex text-white font-medium text-[18px]'>
+                    Join for free
+                </a>
+            </Link>
         </div>
 
         

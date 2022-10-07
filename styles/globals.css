@@ -77,7 +77,7 @@
 }
 
 
-/** Scrollbar***/
+/** Vertical Scrollbar***/
 .styled-scrollbar::-webkit-scrollbar{
   background: #E5E5E5;
   width: 8px;
@@ -94,6 +94,24 @@
   border-radius: 4px 4px 4px 4px;
 }
 /*********/
+
+/** Horizontal Scrollbar***/
+.horizontal-scrollbar::-webkit-scrollbar{
+  background: #E5E5E5;
+  height: 4px;
+}
+
+.horizontal-scrollbar::-webkit-scrollbar-track{
+  background: #E5E5E5;
+  height: 4px;
+
+}
+
+.horizontal-scrollbar::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px 4px 4px 4px;
+}
+
 
 
 /** message Drop **/
