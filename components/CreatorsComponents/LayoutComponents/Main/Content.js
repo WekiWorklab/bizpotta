@@ -14,7 +14,7 @@ import IncomeTableChart from "../IncomeTableChart";
 const Content = () => {
   const [select, setSelected] = useState("");
 
-  const ongoing = false;
+  const ongoing = true;
 
   const times = {
     total: 90,
@@ -25,11 +25,19 @@ const Content = () => {
   console.log(value);
 
   return (
-    <div className='relative w-full h-full bg-white flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 sm:px-4 xl:px-12 py-10  text-darkGray '>
-      {!ongoing && <p className='mb-8'>Dashboard</p>}
+    <div className='relative w-full h-full bg-white flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-1 py-10  text-darkGray '>
+      <p className='mb-8'>Dashboard</p>
 
-      {ongoing && (
-        <div className='mb-10 w-full'>
+      
+
+      <div className='w-full flex flex-row flex-wrap justify-center gap-3 sm:gap-8 xl:gap-0 xl:justify-between '>
+        <DashBoardCard select={select} title='income' setSelected={setSelected} />
+        <DashBoardCard select={select} title='enrollment' setSelected={setSelected} />
+        <DashBoardCard select={select} title='courses' setSelected={setSelected} />
+      </div>
+
+      {(ongoing && select === "courses") && (
+        <div className='mt-14 w-full'>
           <div className='flex flex-row justify-between w-full '>
             <p className='text-[17px] font-bold'>Introduction to fashion designing</p>
             <p className='text-[12px] text-dark-gray-100'>{Math.round(value)}%</p>
@@ -41,14 +49,12 @@ const Content = () => {
         </div>
       )}
 
-      <div className='w-full flex flex-row flex-wrap justify-center gap-3 sm:gap-8 xl:gap-0 xl:justify-between '>
-        <DashBoardCard select={select} title='income' setSelected={setSelected} />
-        <DashBoardCard select={select} title='enrollment' setSelected={setSelected} />
-        <DashBoardCard select={select} title='courses' setSelected={setSelected} />
-      </div>
-
       <div className='mt-6 lg:mt-16 w-full'>
         <RenderTableChart select={select} />
+      </div>
+
+      <div className="w-full h-[110px] bg-[#FEF5C9] bg-opacity-[0.32] centerFlex">
+
       </div>
 
       <p className='mt-3 lg:mt-10 font-[600]'>Resources</p>
