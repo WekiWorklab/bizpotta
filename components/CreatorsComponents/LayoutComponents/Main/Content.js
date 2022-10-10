@@ -30,7 +30,7 @@ const Content = () => {
 
       
 
-      <div className='w-full flex flex-row flex-wrap justify-center gap-3 sm:gap-8 xl:gap-0 xl:justify-between '>
+      <div className='w-full flex flex-row flex-wrap justify-center md:pr-3 gap-3 sm:gap-8 xl:gap-0 xl:justify-between '>
         <DashBoardCard select={select} title='income' setSelected={setSelected} />
         <DashBoardCard select={select} title='enrollment' setSelected={setSelected} />
         <DashBoardCard select={select} title='courses' setSelected={setSelected} />
