@@ -47,4 +47,4 @@ export const learnersSlice = createSlice({
 });
 
 export const { reset } = learnersSlice.actions;
-export default learnersSlices.reducer;
+export default learnersSlice.reducer;

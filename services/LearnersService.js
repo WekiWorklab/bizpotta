@@ -3,7 +3,7 @@ import { APIS } from "../utils/api";
 import Cookies from "js-cookie";
 import { setCookie, removeCookies } from "cookies-next";
 
-export const setLearningPreferences = async (data) => {
+export const setLearnersPreferences = async (data) => {
   try {
     const response = await AxoisApi.post(APIS.LEARNERS.SET_LEARNING_PREFERENCES, {
       category_id: data.category_id,
