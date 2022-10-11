@@ -11,5 +11,6 @@ export const APIS = {
   },
   LEARNERS: {
     SET_LEARNING_PREFERENCES: `${api}/set-learning-preferences`,
+    GET_LEARNING_PREFERENCES: `${api}/get-learning-preferences`,
   },
 };

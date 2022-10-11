@@ -35,7 +35,7 @@ export default function SelectCourse({ optionsLists, optionsLists1 }) {
   };
 
   return (
-    <div className='w-full h-screen bg-gray-50 flex flex flex-col items-center py-40 px-4 font-light'>
+    <div className='w-full h-screen bg-gray-50 flex  flex-col items-center py-40 px-4 font-light'>
       <h1 className='font-fancy text-2xl md:text-3xl text-bizpotta-purple px-4'>Explore our course library</h1>
       <div className='flex flex-col space-y-4 py-4'>
         <Tabs current={id} courseCategories={optionsLists1} />

@@ -14,6 +14,18 @@ const initialState = {
   message: "",
   token: token ? token : null,
 };
+
+// set user
+
+export const setUser = createAsyncThunk("auth/setUser", async (data, thunkAPI) => {
+  try {
+    return await authService.getUserFromServer();
+  } catch (error) {
+    const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
 // Register user
 export const registerUser = createAsyncThunk("auth/register", async (user, thunkAPI) => {
   try {

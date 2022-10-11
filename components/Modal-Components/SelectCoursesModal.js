@@ -5,7 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Dialog } from "@headlessui/react";
 
 /////////
-import { set_learners_pereference } from "../../store/courseSlice";
+import { showCourseModal } from "../../store/courseSlice";
+import { set_learners_pereference } from "../../store/learnersSlice";
 
 const SelectCoursesModal = ({ courses }) => {
   const dispatch = useDispatch();
@@ -18,10 +19,21 @@ const SelectCoursesModal = ({ courses }) => {
     for (const x of total) {
       subCategory.push(x.name);
     }
+    dispatch(showCourseModal(false));
   };
 
   const handleContinue = () => {
-    dispatch(set_learners_pereference({ category, subCategory }));
+    let subCategory = [];
+    for (const x of total) {
+      subCategory.push(x.name);
+    }
+
+    let data = {
+      category_id: category,
+      sub_category_id: subCategory,
+    };
+
+    dispatch(set_learners_pereference(data));
   };
 
   return (
@@ -48,7 +60,10 @@ const SelectCoursesModal = ({ courses }) => {
 
                 {courses > 0 ? (
                   <>
-                    <div className='flex items-center text-[18px] justify-center bg-[#E8ECFF] mb-4 w-full py-2 cursor-pointer' onClick={closeModal}>
+                    <div
+                      className='flex items-center text-[18px] justify-center bg-[#E8ECFF] mb-4 w-full py-2 cursor-pointer'
+                      onClick={handleContinue}
+                    >
                       Continue
                     </div>
                     <div className='flex items-center text-[18px] justify-center bg-[#E8ECFF] w-full py-2 cursor-pointer' onClick={closeModal}>
