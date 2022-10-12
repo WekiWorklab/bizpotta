@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getLearningPreferences, setLearnersPreferences } from "../services/LearnersService";
+import learnersService from "../services/LearnersService";
 
 // Set User Preference
 export const setLearningPreferences = createAsyncThunk("learners/setLearningPreferences", async (data, thunkAPI) => {
   try {
-    return await setLearnersPreferences(data);
+    return await learnersService.setLearnersPreferences(data);
   } catch (error) {
     const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
     return thunkAPI.rejectWithValue(message);
@@ -18,7 +18,7 @@ export const learnersSlice = createSlice({
     isError: false,
     isSuccess: false,
     message: "",
-    learningPreferences: getLearningPreferences() || [],
+    learningPreferences: learnersService.getLearningPreferences() || [],
   },
   reducers: {
     reset: (state) => {

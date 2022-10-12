@@ -2,13 +2,21 @@ import { ArrowRightIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/router";
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LibraryRadioButton from "../../components/LibraryRadioButton";
 import { addCategory } from "../../store/courseSlice";
 
 const Index = ({ courseCategoryData }) => {
   const dispatch = useDispatch();
   const router = useRouter();
+
+  const { user } = useSelector((state) => state.auth);
+
+  React.useEffect(() => {
+    if (!user) {
+      router.push("/auth/login");
+    }
+  }, [router, user]);
 
   const optionsLists = courseCategoryData;
 

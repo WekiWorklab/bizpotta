@@ -6,13 +6,18 @@ import { Dialog } from "@headlessui/react";
 
 /////////
 import { showCourseModal } from "../../store/courseSlice";
-import { set_learners_pereference } from "../../store/learnersSlice";
+import { setUser, reset } from "../../store/authSlice";
+import { setLearningPreferences } from "../../store/learnersSlice";
+import { useRouter } from "next/router";
 
 const SelectCoursesModal = ({ courses }) => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const show = useSelector((state) => state.course.show_course_modal);
   const category = useSelector((state) => state.course.courseCategory);
   const total = useSelector((state) => state.course.total_courses);
+
+  const { isLoading, isSuccess } = useSelector((state) => state.learners);
 
   const closeModal = () => {
     let subCategory = [];
@@ -22,6 +27,13 @@ const SelectCoursesModal = ({ courses }) => {
     dispatch(showCourseModal(false));
   };
 
+  React.useEffect(() => {
+    if (isSuccess) {
+      dispatch(setUser());
+      // dispatch(showCourseModal(false));
+    }
+  }, [dispatch, isSuccess]);
+
   const handleContinue = () => {
     let subCategory = [];
     for (const x of total) {
@@ -29,11 +41,11 @@ const SelectCoursesModal = ({ courses }) => {
     }
 
     let data = {
-      category_id: category,
+      category_id: category ? category : 1,
       sub_category_id: subCategory,
     };
 
-    dispatch(set_learners_pereference(data));
+    dispatch(setLearningPreferences(data));
   };
 
   return (
@@ -65,6 +77,7 @@ const SelectCoursesModal = ({ courses }) => {
                       onClick={handleContinue}
                     >
                       Continue
+                      {isLoading && "loading"}
                     </div>
                     <div className='flex items-center text-[18px] justify-center bg-[#E8ECFF] w-full py-2 cursor-pointer' onClick={closeModal}>
                       Go back

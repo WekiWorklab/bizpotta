@@ -1,10 +1,19 @@
-import React from 'react'
-import Onboard from '../../components/Onboard'
+import React from "react";
+import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import Onboard from "../../components/Onboard";
 
-const index = () => {
-  return (
-    <Onboard />
-  )
-}
+const Index = () => {
+  const router = useRouter();
 
-export default index
+  const { user } = useSelector((state) => state.auth);
+
+  React.useEffect(() => {
+    if (!user) {
+      router.push("/auth/login");
+    }
+  }, [router, user]);
+  return <Onboard />;
+};
+
+export default Index;

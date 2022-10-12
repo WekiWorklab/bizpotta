@@ -13,6 +13,14 @@ export default function SelectCourse({ optionsLists, optionsLists1 }) {
   const router = useRouter();
   const { id } = router.query;
 
+  const { user } = useSelector((state) => state.auth);
+
+  React.useEffect(() => {
+    if (!user) {
+      router.push("/auth/login");
+    }
+  }, [router, user]);
+
   const dispatch = useDispatch();
   const total_courses = useSelector((state) => state.course.total_courses);
 

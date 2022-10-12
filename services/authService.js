@@ -17,6 +17,7 @@ const register = (data) => {
     console.log(res);
     if (typeof window !== "undefined") {
       localStorage.setItem("user", JSON.stringify(res.data.data));
+      localStorage.setItem("bizpotta_token", res.data.access_token);
     }
     return res.data;
   });

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 function getToken() {
-  let token = localStorage.getItem("token") ?? null;
+  let token = localStorage.getItem("bizpotta_token") ?? null;
   return token;
 }
 
@@ -13,7 +13,6 @@ AxoisApi.defaults.headers = {
   "Content-Type": "application/json",
   "Access-Control-Allow-Origin": "*",
   Accept: "application/json",
-  //    "User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 11_2_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"
 };
 
 AxoisApi.interceptors.response.use(
