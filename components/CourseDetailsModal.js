@@ -13,7 +13,6 @@ const CourseDetailsModal = () => {
 
     const dispatch = useDispatch()
     const success = useSelector(state => state.course.show_course_details_modal )
-    // const success = true
     console.log(success)
 
   const closeModal = () => {

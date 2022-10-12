@@ -4,9 +4,13 @@ import { GoSettings } from 'react-icons/go'
 import { MdOutlineArrowUpward } from 'react-icons/md'
 import moment from 'moment';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 const DeactivateCourses = () => {
   const router = useRouter()
+
+  const [showFilter, setShowFilter] = useState(false)
+  const [showExport, setShowExport] = useState(false)
 
   const data = [
     {
@@ -83,24 +87,34 @@ const DeactivateCourses = () => {
   },
   ]
 
+
   return (
     <div className="flex flex-col w-full">
       <div className="my-2 horizontal-scrollbar overflow-x-scroll xl:overflow-x-hidden">
 
-        <div className="min-w-[1050px] xl:w-full h-[50px] mt-6 mb-2 bg-[#9B9FC6] bg-opacity-[0.12] rounded-md flex items-center justify-center px-3">
+      <div className="min-w-[1050px] xl:w-full h-[50px] mt-6 mb-2 bg-[#9B9FC6] bg-opacity-[0.12] rounded-md flex items-center justify-center px-3">
           <input className="w-[400px] text-[13px] rounded-sm italic h-[35px] pl-4 outline-none focus:ring-0" placeholder="Search income by entering keywords, name, or course"/>
-          <div className="h-[35px] centerFlex  w-[120px] text-[#191919] text-[14px] gap-x-3 bg-white rounded-md ml-20">
+          <div className="h-[35px] relative centerFlex  w-[120px] text-[#191919] text-[14px] gap-x-3 bg-white rounded-md ml-20 cursor-pointer" onClick={() => {setShowFilter(prev => !prev); setShowExport(false)}}>
             <GoSettings  className=""/>
             <p className="font-bold">Filter</p>
+            {/* filter dropdown */}
+            {showFilter && <div className='absolute top-[40px] w-[180px] py-4 gap-y-2 flex flex-col justify-center items-center bg-white rounded-md'>
+                <p className='w-full text-center py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>This Week</p>
+                <p className='w-full text-center py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>This Year</p>
+            </div>}
           </div>
 
-          <div className="h-[35px] centerFlex  w-[120px] text-[#191919] text-[14px] gap-x-3 bg-white rounded-md ml-7">
+          <div className="h-[35px] centerFlex relative w-[120px] text-[#191919] text-[14px] gap-x-3 bg-white rounded-md ml-7 cursor-pointer" onClick={() => {setShowFilter(false); setShowExport(prev => !prev)}}>
             <div className="w-[17px] h-[17px] centerFlex rounded-full border border-[#191919]">
               <MdOutlineArrowUpward color="#191919"/>
             </div>
             <p className="font-bold">Export</p>
+            {/* export dropdown */}
+            {showExport && <div className='absolute top-[40px] w-[180px] py-4 gap-y-2 flex flex-col justify-center items-center bg-white rounded-md'>
+                <p className='w-full text-center py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>Export as CSV</p>
+                <p className='w-full text-center py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>Export as .xlsx</p>
+            </div>}
           </div>
-
         </div>
 
 
