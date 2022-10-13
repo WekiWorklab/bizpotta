@@ -14,8 +14,6 @@ const Layout = ({children}) => {
           {children}
           {/* <BlueFooter /> */}
           <Sidebar />
-
-          {/* {show ? <XSidebar  show = {show} setShow = {setShow} slideIn = {slideIn} setSlideIn={setSlideIn} /> : null} * Sidebar with toggle functionality */}
           <XSidebar show={show} setShow={setShow} slideIn={slideIn} setSlideIn={setSlideIn} />
       </div>
     )

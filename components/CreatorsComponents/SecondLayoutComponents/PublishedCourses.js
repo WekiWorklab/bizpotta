@@ -5,15 +5,20 @@ import React from 'react'
 import { GoSettings } from 'react-icons/go'
 import { MdOutlineArrowUpward } from 'react-icons/md'
 import moment from 'moment';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { TableFooter, TableHeader } from './Content';
 
 const PublishedCourses = () => {
+
+  const router = useRouter()
 
   const data = [
     {
       item: 1,
       name: "Chibuike Umoh",
       price: "N12,000",
-      course: "Introduction to fashion designing",
+      course: "Introduction to fashion designing Introduction to fashion designing",
       subscription: "Monthly",
       student: 30,
       coupon: "10%",
@@ -84,29 +89,14 @@ const PublishedCourses = () => {
   ]
 
   return (
-    <div className="flex flex-col mx-auto">
+    <div className="flex flex-col w-full">
       <div className="my-2 horizontal-scrollbar overflow-x-scroll xl:overflow-x-hidden">
 
-        <div className="w-[1050px] h-[50px] mt-6 mb-2 bg-[#9B9FC6] bg-opacity-[0.12] rounded-md flex items-center justify-center px-3">
-          <input className="w-[400px] text-[13px] rounded-sm italic h-[35px] pl-4 outline-none focus:ring-0" placeholder="Search income by entering keywords, name, or course"/>
-          <div className="h-[35px] centerFlex  w-[120px] text-[#191919] text-[14px] gap-x-3 bg-white rounded-md ml-20">
-            <GoSettings  className=""/>
-            <p className="font-bold">Filter</p>
-          </div>
-
-          <div className="h-[35px] centerFlex  w-[120px] text-[#191919] text-[14px] gap-x-3 bg-white rounded-md ml-7">
-            <div className="w-[17px] h-[17px] centerFlex rounded-full border border-[#191919]">
-              <MdOutlineArrowUpward color="#191919"/>
-            </div>
-            <p className="font-bold">Export</p>
-          </div>
-
-        </div>
+      <TableHeader />
 
 
-        <div className="py-2 align-middle inline-block min-w-[1050px] px-1">
+        <div className="py-2 align-middle inline-block min-w-[1050px] xl:w-full">
             {/* Table */}
-
             {<table className=" min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
@@ -116,12 +106,7 @@ const PublishedCourses = () => {
                   >
                     #
                   </th>
-                  {/* <th
-                    scope="col"
-                    className="px-2 py-3 text-center text-xs font-medium text-gray-500 tracking-wider"
-                  >
-                    Creators name
-                  </th> */}
+                  
                   <th
                     scope="col"
                     className="px-2 py-3 text-center text-xs font-medium text-gray-500 tracking-wider"
@@ -164,6 +149,12 @@ const PublishedCourses = () => {
                   >
                     Referral code
                   </th>
+                  <th
+                    scope="col"
+                    className="px-2 py-3 text-center text-xs font-medium text-gray-500 tracking-wider"
+                  >
+                    
+                  </th>
                   
                 </tr>
               </thead>
@@ -173,10 +164,8 @@ const PublishedCourses = () => {
                     <td className="px-2 py-4 whitespace-nowrap">
                       <div className="text-sm text-gray-900">{el.item}</div>
                     </td>
-                    {/* <td className="px-2 py-4 whitespace-nowrap text-center">
-                      <div className="text-sm text-gray-900 text-center">{el.name}</div>
-                    </td> */}
-                    <td className="px-2 py-4 whitespace-nowrap text-sm text-gray-500 text-center">{el.course}</td>
+                    
+                    <td className="px-2 py-4 max-w-[200px] break-words text-sm text-gray-500 text-center" onClick={() => router.push(`/creators/courses/${el.item}`)}>{el.course}</td>
                     
                     <td className="px-2 py-4 whitespace-nowrap text-center">
                       <div className="text-sm text-gray-900 text-center">{el.subscription}</div>
@@ -196,6 +185,12 @@ const PublishedCourses = () => {
                     <td className="px-2 py-4 whitespace-nowrap text-center">
                       <div className="text-sm text-gray-900 text-center">{el.code}</div>
                     </td>
+                    <td className="px-1 py-2 whitespace-nowrap text-center">
+                        <div className="flex flex-col items-center justify-center gap-y-2 bg-[#F3F3FF] px-[3px] py-1 rounded-full ">
+                          <div className='w-[7px] h-[7px] rounded-full bg-[#121F4C] ' />
+                          <div className='w-[7px] h-[7px] rounded-full bg-[#121F4C] ' />
+                        </div>
+                    </td>
                     
                   </tr>
                 ))}
@@ -204,6 +199,8 @@ const PublishedCourses = () => {
 
           {/* </div> */}
         </div>
+
+        <TableFooter />
       </div>
     </div>
   )

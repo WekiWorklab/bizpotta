@@ -68,7 +68,7 @@
   object-fit: cover;
 }
 
-/* For centering elemnts children */
+/* For centering elements children */
 .centerFlex {
   display: flex;
   flex-direction: row;
@@ -76,6 +76,21 @@
   align-items: center;
 }
 
+.dropdown-shadow {
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-card-shadow{
+  box-shadow: 0px 0px 18px rgba(245, 245, 245, 0.21);
+}
+
+.resources-child{
+  border: 0.35px solid rgba(133, 133, 133, 0.16);
+}
+
+.resources-child:nth-last-child(2) {
+  border: none;
+}
 
 /** Vertical Scrollbar***/
 .styled-scrollbar::-webkit-scrollbar{

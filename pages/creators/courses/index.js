@@ -1,14 +1,13 @@
-import React from "react";
-// import NewContent from "../../../components/CreatorsComponents/CourseLandingComponent/NewContent";
-import OldContent from "../../../components/CreatorsComponents/CourseLandingComponent/OldContent";
-import Layout from "../../../components/CreatorsComponents/LayoutComponents/Layout";
+import React from 'react'
+import Layout from '../../../components/CreatorsComponents/LayoutComponents/Layout'
+import Content from '../../../components/CreatorsComponents/SecondLayoutComponents/Content'
 
 const index = () => {
-  // const newCreator = false;
-  return <Layout> <OldContent /> </Layout>;
+  return (
+    <Layout>
+        <Content />
+    </Layout>
+  )
+}
 
-
-  // return <Layout>{!newCreator ? <OldContent /> : <NewContent />}</Layout>;
-};
-
-export default index;
+export default index
