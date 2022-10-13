@@ -14,7 +14,6 @@ const verifyEmail = (email, phone) => {
 
 const register = (data) => {
   return AxoisApi.post(`${APIS.AUTH.SIGNUP}`, data).then((res) => {
-    console.log(res);
     if (typeof window !== "undefined") {
       localStorage.setItem("user", JSON.stringify(res.data.data));
       localStorage.setItem("bizpotta_token", res.data.access_token);
@@ -68,7 +67,7 @@ const getUser = () => {
 
 // get token for localstorage and cookie
 const getToken = () => {
-  let token = Cookies.get("bizpotta_token");
+  let token = null;
   if (typeof window !== "undefined" && window.localStorage.getItem("bizpotta_token")) {
     return token ? token : window.localStorage.getItem("bizpotta_token");
   }
@@ -85,7 +84,6 @@ const getUserFromServer = async () => {
         "Content-Type": "application/json",
       },
     });
-    console.log("server", response);
     if (response.data) {
       if (typeof window !== "undefined") {
         window.localStorage.setItem("user", JSON.stringify(response.data));

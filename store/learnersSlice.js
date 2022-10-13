@@ -18,7 +18,7 @@ export const learnersSlice = createSlice({
     isError: false,
     isSuccess: false,
     message: "",
-    learningPreferences: learnersService.getLearningPreferences() || [],
+    learningPreferences: [],
   },
   reducers: {
     reset: (state) => {

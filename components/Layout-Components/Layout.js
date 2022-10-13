@@ -7,7 +7,8 @@ import Header from "../Header";
 import Sidebar from "../Sidebar";
 import XSidebar from "../XSidebar";
 
-import CourseDetailsModal from '../CourseDetailsModal'
+import CourseDetailsModal from "../CourseDetailsModal";
+import { FullPageSpinner } from "../Lib";
 
 const Layout = ({ children }) => {
   const router = useRouter();
@@ -20,7 +21,7 @@ const Layout = ({ children }) => {
     if (!isAuthenticated) {
       router.push("/auth/login");
     } else {
-      console.log(isAuthenticated)
+      console.log(isAuthenticated);
       setLoading(false);
     }
     return () => {
@@ -28,7 +29,7 @@ const Layout = ({ children }) => {
     };
   }, [isAuthenticated, router]);
 
-  if (loading) return null;
+  if (loading) return <FullPageSpinner />;
 
   return (
     <div className='relative overflow-hidden'>
@@ -37,15 +38,13 @@ const Layout = ({ children }) => {
       {/* <BlueFooter /> */}
       <Sidebar />
       <XSidebar show={show} setShow={setShow} slideIn={slideIn} setSlideIn={setSlideIn} />
-      {(typeof window !== "undefined") && <CourseDetailsModal />}
+      {typeof window !== "undefined" && <CourseDetailsModal />}
     </div>
   );
 };
 
 export default Layout;
 
-
-
-
-
-{/* {show ? <XSidebar  show = {show} setShow = {setShow} slideIn = {slideIn} setSlideIn={setSlideIn} /> : null} * Sidebar with toggle functionality */}
+{
+  /* {show ? <XSidebar  show = {show} setShow = {setShow} slideIn = {slideIn} setSlideIn={setSlideIn} /> : null} * Sidebar with toggle functionality */
+}

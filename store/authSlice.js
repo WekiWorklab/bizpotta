@@ -12,6 +12,7 @@ const initialState = {
   isSuccess: false,
   isLoading: false,
   message: "",
+  isRegistered: false,
   token: token ? token : null,
 };
 
@@ -59,18 +60,29 @@ export const authSlice = createSlice({
       state.isSuccess = false;
       state.isError = false;
       state.message = "";
+      state.isRegistered = false;
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(registerUser.pending, (state) => {
+      .addCase(setUser.pending, (state) => {
         state.isLoading = true;
+      })
+      .addCase(setUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isRegistered = false;
+      })
+      .addCase(setUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
         state.token = action.payload.access_token;
         state.isAuthenticated = true;
+        state.isRegistered = true;
         state.user = action.payload.data;
       })
       .addCase(registerUser.rejected, (state, action) => {

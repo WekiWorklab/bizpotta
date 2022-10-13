@@ -1,8 +1,11 @@
 import axios from "axios";
 
 function getToken() {
-  let token = localStorage.getItem("bizpotta_token") ?? null;
-  return token;
+  if (typeof window !== "undefined" && window.localStorage.getItem("bizpotta_token")) {
+    let token = localStorage.getItem("bizpotta_token") ?? null;
+    return token;
+  }
+  return null;
 }
 
 let AxoisApi = axios.create({
