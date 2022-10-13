@@ -56,6 +56,7 @@ export default function SelectCourse({ optionsLists, optionsLists1 }) {
             <LibraryCheckBox key={index} option={option} current={id} selectedCourses={selectedCourses} setSelectedCourses={setSelectedCourses} />
           ))}
         </div>
+
         <div className='flex mx-auto gap-2 items-center justify-center'>
           <a href='#' onClick={handleContinue} className='flex gap-2 w-full justify-center items-center text-bizpotta-purple'>
             <span>Continue</span>

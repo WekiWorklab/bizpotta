@@ -3,12 +3,15 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { reset } from "../../store/authSlice";
+import { reset, setUser } from "../../store/authSlice";
+import { FullPageSpinner } from "../Lib";
 
 export default function AuthLayout({ children }) {
   const router = useRouter();
-  const { isAuthenticated, isError, isSuccess, message, user } = useSelector((state) => state.auth);
+  const { isAuthenticated, isError, isRegistered, message, user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+
+  const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
     if (isError) {
@@ -27,11 +30,21 @@ export default function AuthLayout({ children }) {
           break;
       }
     }
-    if (isSuccess || isAuthenticated) {
-      router.push("/onboarding");
+    if (!user) {
+      setLoading(false);
+    }
+
+    if (isRegistered) {
+      toast.success("Registration successful");
+      dispatch(reset());
+      dispatch(setUser());
+      router.push("/auth/verify-email");
     }
     dispatch(reset());
-  }, [isError, isSuccess, message, dispatch, router, isAuthenticated]);
+  }, [isError, isRegistered, message, dispatch, router, isAuthenticated, user?.is_onboarded, user?.roles_id, user]);
+
+  if (loading) return <FullPageSpinner />;
+
   return (
     <div className='flex items-center justify-center h-screen py-2 '>
       <div className='hidden md:block md:w-2/4 h-screen bg-auth-pattern bg-cover'></div>

@@ -8,6 +8,7 @@ export const APIS = {
     FORGOT_PASSWORD: `${api}/forgot-password`,
     RESET_PASSWORD: `${api}/resetPassword`,
     LOGOUT: `${api}/logout`,
+    USER: `${api}/user`,
   },
   LEARNERS: {
     SET_LEARNING_PREFERENCES: `${api}/set-learning-preferences`,
