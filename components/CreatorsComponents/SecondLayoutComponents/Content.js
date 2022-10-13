@@ -57,7 +57,7 @@ const NewDashBoardCard = ({select, title, setSelected}) => {
 
 
     return(
-        <div className={`w-[150px] sm:w-[200px] lg:w-[320px] ${(select === title) ? "bg-bizpotta-gray-500" : "bg-gray-100"} cursor-pointer rounded-md p-2 lg:p-8`} onClick={() => setSelected(title)}>
+        <div className={`w-[150px] sm:w-[200px] lg:w-[320px] ${(select === title) ? "bg-[#F3F4F6]" : "bg-[#FDFDFD]"} dashboard-card-shadow cursor-pointer rounded-md p-2 lg:p-8`} onClick={() => setSelected(title)}>
             <div className='flex flex-row justify-between items-center mb-4 font-bold'>
                 <AiOutlineInbox size = {24} color='#787878'/>
                 <BsChevronDown size = {14} color='#787878'/>

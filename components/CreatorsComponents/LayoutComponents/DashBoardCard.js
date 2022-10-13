@@ -9,7 +9,7 @@ import { BsChevronDown } from "react-icons/bs"
 const DashBoardCard = ({select, title, setSelected}) => {
 
     return(
-        <div className={`w-[150px] sm:w-[200px] lg:w-[320px] ${(select === title) ? "bg-bizpotta-gray-500" : "bg-gray-100"} rounded-md p-2 lg:p-8`} onClick={() => setSelected(title)}>
+        <div className={`w-[150px] sm:w-[200px] lg:w-[320px] dashboard-card-shadow cursor-pointer ${(select === title) ? "bg-[#F3F4F6]" : "bg-[#FDFDFD]"} rounded-md p-2 lg:p-8`} onClick={() => setSelected(title)}>
             <div className='flex flex-row justify-between items-center mb-4'>
                 <AiOutlineInbox size = {24} color='#787878'/>
                 <BsChevronDown size = {14} color='#787878'/>
