@@ -5,6 +5,8 @@ import { MdOutlineArrowUpward, MdOutlineCancel } from 'react-icons/md'
 import moment from 'moment';
 import {useRouter } from 'next/router';
 import { Dialog, Transition } from "@headlessui/react";
+import { TableFooter, TableHeader } from './Content';
+import { Confirmation } from '../../../public/vectors/svgs';
 
 const ClickedCourse = () => {
   
@@ -96,7 +98,7 @@ const ClickedCourse = () => {
         <div className="flex flex-col w-full">
         <div className="my-2 horizontal-scrollbar overflow-x-scroll xl:overflow-x-hidden">
 
-        <div className="min-w-[1050px] xl:w-full h-[50px] mt-6 mb-2 bg-[#9B9FC6] bg-opacity-[0.12] rounded-md flex items-center justify-center">
+        {/* <div className="min-w-[1050px] xl:w-full h-[50px] mt-6 mb-2 bg-[#9B9FC6] bg-opacity-[0.12] rounded-md flex items-center justify-center">
           <input className="w-[400px] text-[13px] rounded-sm italic h-[35px] pl-4 outline-none focus:ring-0" placeholder="Search income by entering keywords, name, or course"/>
           <div className="h-[35px] centerFlex  w-[120px] text-[#191919] text-[14px] gap-x-3 bg-white rounded-md ml-20">
             <GoSettings  className=""/>
@@ -109,7 +111,9 @@ const ClickedCourse = () => {
             </div>
             <p className="font-bold">Export</p>
           </div>
-        </div>
+        </div> */}
+
+        <TableHeader />
 
         <div className="py-2 align-middle inline-block min-w-[1050px] xl:w-full">
             {/* Table */}
@@ -194,6 +198,8 @@ const ClickedCourse = () => {
 
           {/* </div> */}
         </div>
+
+        <TableFooter />
       </div>
     </div>
 
@@ -255,7 +261,8 @@ const ActivateCourseModal = ({isActive, showModal, setShowModal}) => {
                 <div className='w-10 h-10 self-end centerFlex' onClick = {() => closeModal()}>
                   <MdOutlineCancel color='#191919' size={22} />
                 </div>
-                <div className='w-[70px] h-[70px]  rounded-full bg-gray-500'></div>
+                {/* <div className='w-[70px] h-[70px]  rounded-full bg-gray-500'></div> */}
+                <Confirmation />
                 <p className='font-bold mt-3 '>Are you sure you want to deactivate this course?</p>
                 <p className='text-[13px] mt-4'>Deactivating this course means this course would no longer be available for purchase and it would be completely deactivated after 60 days for currently enrolled learner.</p>
 
