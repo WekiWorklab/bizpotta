@@ -2,13 +2,9 @@ import React from 'react'
 
 
 //////////
-import { AiOutlineCaretLeft, AiOutlineCaretRight, AiOutlineLineChart, AiOutlineMenu } from 'react-icons/ai'
-import { GoSettings } from 'react-icons/go'
-import { MdOutlineArrowUpward } from 'react-icons/md'
-// import {moment} from 'moment'
 import moment from 'moment';
-import { NoActivities } from '../../../public/vectors/Svgs';
 import { MainTableFooter, MainTableHeader } from './Main/Content';
+import { NoActivities } from '../../../public';
 
 
 const EnrollmentTable = () => {

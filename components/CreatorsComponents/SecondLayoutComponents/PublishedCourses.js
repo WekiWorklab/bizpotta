@@ -88,9 +88,6 @@ const PublishedCourses = () => {
   },
   ]
 
-  const [showFilter, setShowFilter] = useState(false)
-  const [showExport, setShowExport] = useState(false)
-
   return (
     <div className="flex flex-col w-full">
       <div className="my-2 horizontal-scrollbar overflow-x-scroll xl:overflow-x-hidden">

@@ -1,15 +1,16 @@
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { AiOutlineInbox, AiOutlineLeft, AiOutlineLeftCircle, AiOutlineRightCircle } from "react-icons/ai"
 import { BsChevronDown } from "react-icons/bs"
-import { GoSettings } from 'react-icons/go'
 import { IoAddCircleOutline } from 'react-icons/io5'
 import { MdOutlineArrowUpward } from 'react-icons/md'
-import { Filter } from '../../../public/vectors/Svgs'
+import { Filter } from '../../../public'
 import ActiveCourses from './ActiveCourses'
 import DeactivateCourses from './DeactivateCourses'
 import PublishedCourses from './PublishedCourses'
 
 const Content = () => {
+
 
     const [clickedCourse, setClickedCourse] = useState(true)
     const [select, setSelected] = useState('Published courses')
@@ -28,11 +29,13 @@ export default Content
 
 const MainContent = ({select, setSelected, setClickedCourse}) => {
 
+    const router = useRouter()
+
     return (
         <div className='relative w-full h-full bg-white flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 py-6  text-darkGray'>
 
 
-            <div className='w-[165px] h-[40px] rounded-md shadow-md flex justify-center items-center gap-x-2 self-end cursor-pointer' onClick={() => {}}>
+            <div className='w-[165px] h-[40px] rounded-md shadow-md flex justify-center items-center gap-x-2 self-end cursor-pointer' onClick={() => {router.push('/creators/courses/create')}}>
                 <IoAddCircleOutline className='text-[22px]'/>
                 <p className='text-[13px]'>Create a new course</p>
             </div>

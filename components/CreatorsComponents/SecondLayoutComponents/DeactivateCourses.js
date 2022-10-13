@@ -10,9 +10,6 @@ import { TableFooter, TableHeader } from './Content';
 const DeactivateCourses = () => {
   const router = useRouter()
 
-  const [showFilter, setShowFilter] = useState(false)
-  const [showExport, setShowExport] = useState(false)
-
   const data = [
     {
       item: 1,

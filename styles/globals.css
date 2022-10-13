@@ -68,7 +68,7 @@
   object-fit: cover;
 }
 
-/* For centering elemnts children */
+/* For centering elements children */
 .centerFlex {
   display: flex;
   flex-direction: row;

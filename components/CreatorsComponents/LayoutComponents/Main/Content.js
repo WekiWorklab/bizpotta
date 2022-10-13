@@ -11,12 +11,12 @@ import { useState } from "react";
 import EnrollmentTable from "../EnrollmentTable";
 import IncomeTableChart from "../IncomeTableChart";
 import { MdOutlineArrowUpward } from "react-icons/md";
-import { Facebook, Filter, Group, Instagram, Suprise, Telegram, Twitter} from "../../../../public/vectors/Svgs";
 import { AiOutlineLeftCircle, AiOutlineRightCircle } from "react-icons/ai";
 import { IoLogoWhatsapp } from "react-icons/io5";
+import { BlueFacebook, BlueGroup, BlueInstagram, BlueTelegram, BlueTwitter, Filter, Suprise } from "../../../../public";
 
 const Content = () => {
-  const [select, setSelected] = useState("enrollment");
+  const [select, setSelected] = useState("");
 
   const ongoing = true;
 
@@ -184,12 +184,11 @@ export const AffiliateSection = () => {
 
         <div className="flex items-center gap-x-5  h-2/3 px-4 lg:px-20 lg:border-l-2 border-[#FEF5C9] ">
 
-          <Group />
-          <Facebook />
-          <Instagram />
-          <Twitter />
-          <Telegram />
-          {/* <Whatsapp /> */}
+          <BlueGroup />
+          <BlueFacebook />
+          <BlueInstagram />
+          <BlueTwitter />
+          <BlueTelegram />
           <IoLogoWhatsapp size={22} />
         </div>
 
