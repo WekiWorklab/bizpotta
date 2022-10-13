@@ -6,7 +6,7 @@ import moment from 'moment';
 import {useRouter } from 'next/router';
 import { Dialog, Transition } from "@headlessui/react";
 import { TableFooter, TableHeader } from './Content';
-import { Confirmation } from '../../../public/vectors/svgs';
+import { Confirmation } from '../../../public/vectors/Svgs';
 
 const ClickedCourse = () => {
   

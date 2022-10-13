@@ -11,7 +11,7 @@ import { useState } from "react";
 import EnrollmentTable from "../EnrollmentTable";
 import IncomeTableChart from "../IncomeTableChart";
 import { MdOutlineArrowUpward } from "react-icons/md";
-import { Facebook, Filter, Group, Instagram, Suprise, Telegram, Twitter, Whatsapp } from "../../../../public/vectors/svgs";
+import { Facebook, Filter, Group, Instagram, Suprise, Telegram, Twitter} from "../../../../public/vectors/Svgs";
 import { AiOutlineLeftCircle, AiOutlineRightCircle } from "react-icons/ai";
 import { IoLogoWhatsapp } from "react-icons/io5";
 

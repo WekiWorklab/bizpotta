@@ -5,7 +5,7 @@ import {GoSettings} from 'react-icons/go'
 import { MdOutlineArrowUpward } from "react-icons/md";
 import moment from 'moment';
 import { AffiliateSection, MainTableFooter } from "./Main/Content";
-import { Filter, NoActivities } from "../../../public/vectors/svgs";
+import { Filter, NoActivities } from "../../../public/vectors/Svgs";
 
 
  const IncomeTableChart = () => {

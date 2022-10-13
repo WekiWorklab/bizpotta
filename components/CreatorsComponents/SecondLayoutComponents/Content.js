@@ -4,7 +4,7 @@ import { BsChevronDown } from "react-icons/bs"
 import { GoSettings } from 'react-icons/go'
 import { IoAddCircleOutline } from 'react-icons/io5'
 import { MdOutlineArrowUpward } from 'react-icons/md'
-import { Filter } from '../../../public/vectors/svgs'
+import { Filter } from '../../../public/vectors/Svgs'
 import ActiveCourses from './ActiveCourses'
 import DeactivateCourses from './DeactivateCourses'
 import PublishedCourses from './PublishedCourses'
@@ -12,13 +12,11 @@ import PublishedCourses from './PublishedCourses'
 const Content = () => {
 
     const [clickedCourse, setClickedCourse] = useState(true)
-
     const [select, setSelected] = useState('Published courses')
 
   return (
     <div className='w-full'>
         <MainContent select = {select} setSelected = {setSelected} setClickedCourse = {setClickedCourse} />
-         {/* : <ClickedCourseContent select = {select} setSelected = {setSelected} /> */}
     </div>
   )
 }
@@ -34,7 +32,7 @@ const MainContent = ({select, setSelected, setClickedCourse}) => {
         <div className='relative w-full h-full bg-white flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 py-6  text-darkGray'>
 
 
-            <div className='w-[165px] h-[40px] rounded-md shadow-md flex justify-center items-center gap-x-2 self-end cursor-pointer'>
+            <div className='w-[165px] h-[40px] rounded-md shadow-md flex justify-center items-center gap-x-2 self-end cursor-pointer' onClick={() => {}}>
                 <IoAddCircleOutline className='text-[22px]'/>
                 <p className='text-[13px]'>Create a new course</p>
             </div>

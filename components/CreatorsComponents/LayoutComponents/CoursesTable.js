@@ -5,7 +5,7 @@ import React from 'react'
 import { GoSettings } from 'react-icons/go'
 import { MdOutlineArrowUpward } from 'react-icons/md'
 import moment from 'moment';
-import { NoActivities } from '../../../public/vectors/svgs';
+import { NoActivities } from '../../../public/vectors/Svgs';
 import { MainTableFooter, MainTableHeader } from './Main/Content';
 
 const CoursesTable = () => {
