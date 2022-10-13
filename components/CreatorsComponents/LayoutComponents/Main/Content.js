@@ -74,7 +74,7 @@ const Content = () => {
       </div>
 
       <p className='mt-6 lg:mt-16 font-[600]'>Resourses to help you get started</p>
-      <div className='border rounded-md mb-6 mt-8 border-gray-700'>
+      <div className='border resources-child rounded-md mb-6 mt-8 border-gray-700'>
         <ResourcesCard />
         <ResourcesCard />
         <ResourcesCard />
