@@ -16,9 +16,9 @@ const Content = () => {
     const [select, setSelected] = useState('Published courses')
 
   return (
-    <div className='w-full'>
+    // <div className='w-full'>
         <MainContent select = {select} setSelected = {setSelected} setClickedCourse = {setClickedCourse} />
-    </div>
+    // </div>
   )
 }
 
@@ -32,7 +32,7 @@ const MainContent = ({select, setSelected, setClickedCourse}) => {
     const router = useRouter()
 
     return (
-        <div className='relative w-full h-full bg-white flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 py-6  text-darkGray'>
+        <div className='relative w-full h-full bg-[#FEFEFE] flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 xl:px-8 py-6  text-darkGray'>
 
 
             <div className='w-[165px] h-[40px] rounded-md shadow-md flex justify-center items-center gap-x-2 self-end cursor-pointer' onClick={() => {router.push('/creators/courses/create')}}>
