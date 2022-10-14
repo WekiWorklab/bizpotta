@@ -90,7 +90,7 @@ const DeactivateCourses = () => {
     <div className="flex flex-col w-full">
       <div className="my-2 horizontal-scrollbar overflow-x-scroll xl:overflow-x-visible">
 
-      <TableHeader />
+      <TableHeader placeholder='Search by entering keywords, name, or course' />
 
 
         <div className="py-2 align-middle inline-block min-w-[1050px] xl:w-full">

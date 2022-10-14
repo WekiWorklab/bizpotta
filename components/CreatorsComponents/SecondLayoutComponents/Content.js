@@ -4,7 +4,7 @@ import { AiOutlineInbox, AiOutlineLeft, AiOutlineLeftCircle, AiOutlineRightCircl
 import { BsChevronDown } from "react-icons/bs"
 import { IoAddCircleOutline } from 'react-icons/io5'
 import { MdOutlineArrowUpward } from 'react-icons/md'
-import { Filter } from '../../../public'
+import { CoursesIcon, EnrollmentIcon, Filter, IncomeIcon } from '../../../public'
 import ActiveCourses from './ActiveCourses'
 import DeactivateCourses from './DeactivateCourses'
 import PublishedCourses from './PublishedCourses'
@@ -61,7 +61,8 @@ const NewDashBoardCard = ({select, title, setSelected}) => {
     return(
         <div className={`w-[150px] sm:w-[200px] lg:w-[320px] border-[1px] border-[#858585] border-opacity-[0.25] ${(select === title) ? "bg-[#F3F4F6]" : "bg-[#FDFDFD]"} dashboard-card-shadow cursor-pointer rounded-md p-2 lg:p-8`} onClick={() => setSelected(title)}>
             <div className='flex flex-row justify-between items-center mb-4 font-bold'>
-                <AiOutlineInbox size = {24} color='#787878'/>
+                {/* <AiOutlineInbox size = {24} color='#787878'/> */}
+                {title === 'Published courses' ? <IncomeIcon /> : (title === "Active courses" ? <CoursesIcon /> : <EnrollmentIcon /> ) }
                 <BsChevronDown size = {14} color='#787878'/>
             </div>
 
