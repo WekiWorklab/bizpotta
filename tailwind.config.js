@@ -14,6 +14,8 @@ module.exports = {
         "bizpotta-purple": "#121F4C",
         "bizpotta-green": "#94F236",
         "bizpotta-green-500": "rgba(148, 242, 54, 0.64)",
+        "bizpotta-card-opacity": "rgba(133, 133, 133, 0.25)",
+        "bizpotta-card-opacity-2": "rgba(204, 204, 204, 0.45)",
         "bizpotta-green-100": "#F2FFE4",
         "bizpotta-hover": "#DFE3F0",
         "bizpotta-gray": {
