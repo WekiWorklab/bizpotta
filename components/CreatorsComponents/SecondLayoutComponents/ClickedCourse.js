@@ -74,7 +74,7 @@ const ClickedCourse = () => {
 
 
   return (
-    <div className='relative w-full h-full bg-[#FEFEFE] flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 py-10 text-darkGray'>
+    <div className='relative w-full h-full bg-[#FEFEFE] flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 xl:px-8 py-10 text-darkGray'>
         
         <div className = 'flex items-center gap-x-1 text-[#999999] text-[14px] cursor-pointer' onClick={() => router.back()}> 
             <AiOutlineLeft />
@@ -96,22 +96,7 @@ const ClickedCourse = () => {
         </div>
 
         <div className="flex flex-col w-full">
-        <div className="my-2 horizontal-scrollbar overflow-x-scroll xl:overflow-x-hidden">
-
-        {/* <div className="min-w-[1050px] xl:w-full h-[50px] mt-6 mb-2 bg-[#9B9FC6] bg-opacity-[0.12] rounded-md flex items-center justify-center">
-          <input className="w-[400px] text-[13px] rounded-sm italic h-[35px] pl-4 outline-none focus:ring-0" placeholder="Search income by entering keywords, name, or course"/>
-          <div className="h-[35px] centerFlex  w-[120px] text-[#191919] text-[14px] gap-x-3 bg-white rounded-md ml-20">
-            <GoSettings  className=""/>
-            <p className="font-bold">Filter</p>
-          </div>
-
-          <div className="h-[35px] centerFlex  w-[120px] text-[#191919] text-[14px] gap-x-3 bg-white rounded-md ml-7">
-            <div className="w-[17px] h-[17px] centerFlex rounded-full border border-[#191919]">
-              <MdOutlineArrowUpward color="#191919"/>
-            </div>
-            <p className="font-bold">Export</p>
-          </div>
-        </div> */}
+        <div className="my-2 horizontal-scrollbar overflow-x-scroll xl:overflow-x-visible">
 
         <TableHeader />
 

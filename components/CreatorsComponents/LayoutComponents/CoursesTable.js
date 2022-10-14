@@ -95,7 +95,7 @@ const CoursesTable = () => {
           <NoActivities />
         </div>}
       
-        { activities && <div className="my-2 horizontal-scrollbar overflow-x-scroll xl:overflow-x-hidden">
+        { activities && <div className="my-2 horizontal-scrollbar overflow-x-scroll xl:overflow-x-visible">
 
         <MainTableHeader filter = {courseFilter }/>
 

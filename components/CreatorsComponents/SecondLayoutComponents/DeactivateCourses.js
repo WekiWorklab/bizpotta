@@ -88,7 +88,7 @@ const DeactivateCourses = () => {
 
   return (
     <div className="flex flex-col w-full">
-      <div className="my-2 horizontal-scrollbar overflow-x-scroll xl:overflow-x-hidden">
+      <div className="my-2 horizontal-scrollbar overflow-x-scroll xl:overflow-x-visible">
 
       <TableHeader />
 

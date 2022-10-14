@@ -85,39 +85,43 @@ import { Filter, NoActivities } from "../../../public";
           <NoActivities />
         </div>}
       
-        { activities && <div className="my-2 horizontal-scrollbar overflow-x-scroll xl:overflow-x-hidden">
+        { activities && <div className="my-2 horizontal-scrollbar overflow-x-scroll xl:overflow-x-visible">
 
-        <div className="min-w-[1050px] xl:w-full h-[50px] mt-6 mb-2 bg-[#9B9FC6] bg-opacity-[0.12] rounded-md flex items-center justify-center px-3">
-          <input className="w-[400px] text-[13px] rounded-sm italic h-[35px] pl-4 outline-none focus:ring-0" placeholder="Search income by entering keywords, name, or course"/>
-          <div className="h-[35px] relative centerFlex  w-[120px] text-[#191919] text-[14px] gap-x-3 bg-white rounded-md ml-20 cursor-pointer" onClick={() => {setShowFilter(prev => !prev); setShowExport(false)}}>
-            <Filter />
-            <p className="font-bold">Filter</p>
-            {/* filter dropdown */}
-            {showFilter && <div className='absolute top-[40px] w-[180px] py-4 gap-y-2 flex flex-col justify-center items-start dropdown-shadow bg-white rounded-md'>
-                <p className='w-full text-left px-3 py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>All earning</p>
-                <p className='w-full text-left px-3 py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>Last month earning</p>
-                <p className='w-full text-left px-3 py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>Last six month earnings</p>
-            </div>}
-          </div>
+        <div className="min-w-[1050px] xl:w-full h-[55px] mt-6 mb-2 bg-[#9B9FC6] bg-opacity-[0.12] rounded-md flex items-center justify-between px-8">
+          <input className="w-[500px] text-[13px] text-[#191919] rounded-sm h-[35px] pl-4 outline-none focus:ring-0" placeholder="Search income by entering keywords, name, or course"/>
+          
+          <div className='flex items-center gap-x-4'>
 
-          <div className="h-[35px] centerFlex relative w-[120px] text-[#191919] text-[14px] gap-x-3 bg-white rounded-md ml-7 cursor-pointer" onClick={() => {setShowFilter(false); setShowExport(prev => !prev)}}>
-            <div className="w-[17px] h-[17px] centerFlex rounded-full border border-[#191919]">
-              <MdOutlineArrowUpward color="#191919"/>
+            <div className="h-[35px] relative centerFlex  w-[120px] text-[#191919] text-[14px] gap-x-3 bg-white rounded-md cursor-pointer" onClick={() => {setShowFilter(prev => !prev); setShowExport(false)}}>
+              <Filter />
+              <p className="font-bold">Filter</p>
+              {/* filter dropdown */}
+              {showFilter && <div className='absolute top-[40px] w-[180px] py-4 gap-y-2 flex flex-col justify-center items-start dropdown-shadow bg-white rounded-md'>
+                  <p className='w-full text-left px-3 py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>All earning</p>
+                  <p className='w-full text-left px-3 py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>Last month earning</p>
+                  <p className='w-full text-left px-3 py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>Last six month earnings</p>
+              </div>}
             </div>
-            <p className="font-bold">Export</p>
-            {/* export dropdown */}
-            {showExport && <div className='absolute top-[40px] w-[180px] py-4 gap-y-2 flex flex-col justify-center dropdown-shadow items-center bg-white rounded-md'>
-                <p className='w-full text-center py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>Export as CSV</p>
-                <p className='w-full text-center py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>Export as .xlsx</p>
-            </div>}
-          </div>
 
-            {select === "chart" &&  <div className='ml-6 w-[30px] h-[30px] flex justify-center items-center rounded-sm bg-white' onClick={() => setSelected('table')}>
+            <div className="h-[35px] centerFlex relative w-[120px] text-[#191919] text-[14px] gap-x-3 bg-white rounded-md cursor-pointer" onClick={() => {setShowFilter(false); setShowExport(prev => !prev)}}>
+              <div className="w-[17px] h-[17px] centerFlex rounded-full border border-[#191919]">
+                <MdOutlineArrowUpward color="#191919"/>
+              </div>
+              <p className="font-bold">Export</p>
+              {/* export dropdown */}
+              {showExport && <div className='absolute top-[40px] w-[180px] py-4 gap-y-2 flex flex-col justify-center dropdown-shadow items-center bg-white rounded-md'>
+                  <p className='w-full text-center py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>Export as CSV</p>
+                  <p className='w-full text-center py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>Export as .xlsx</p>
+              </div>}
+            </div>
+
+            {select === "chart" &&  <div className='cursor-pointer w-[30px] h-[30px] flex justify-center items-center rounded-sm bg-white' onClick={() => setSelected('table')}>
                 <AiOutlineMenu size={16} color = '#121F4C'/>
             </div>}
-            {select === "table" &&  <div className='ml-6 w-[30px] h-[30px] flex justify-center items-center rounded-sm bg-white' onClick={() => setSelected('chart')}>
+            {select === "table" &&  <div className='cursor-pointer w-[30px] h-[30px] flex justify-center items-center rounded-sm bg-white' onClick={() => setSelected('chart')}>
                 <AiOutlineLineChart size={16} color = '#121F4C'/>
             </div>}
+        </div>
         </div>
 
           <div className="py-2 align-middle inline-block min-w-[1050px] xl:w-full">

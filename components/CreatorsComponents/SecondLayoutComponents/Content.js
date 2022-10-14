@@ -32,15 +32,14 @@ const MainContent = ({select, setSelected, setClickedCourse}) => {
     const router = useRouter()
 
     return (
-        <div className='relative w-full h-full bg-[#FEFEFE] flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 xl:px-8 py-6  text-darkGray'>
-
+        <div className='relative w-full h-full bg-[#FEFEFE] flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 xl:px-8 py-6 text-darkGray'>
 
             <div className='w-[165px] h-[40px] rounded-md shadow-md flex justify-center items-center gap-x-2 self-end cursor-pointer' onClick={() => {router.push('/creators/courses/create')}}>
                 <IoAddCircleOutline className='text-[22px]'/>
                 <p className='text-[13px]'>Create a new course</p>
             </div>
 
-            <div className='w-full flex flex-row flex-wrap justify-center gap-3 mt-10  sm:gap-8 xl:gap-0 xl:justify-between '>
+            <div className='w-full flex flex-row flex-wrap justify-center gap-3 mt-10 sm:gap-8 xl:gap-0 xl:justify-between '>
                 <NewDashBoardCard select={select} title='Published courses' setSelected={setSelected} />
                 <NewDashBoardCard select={select} title='Active courses' setSelected={setSelected} />
                 <NewDashBoardCard select={select} title='Deactivated courses' setSelected={setSelected} />
@@ -50,7 +49,7 @@ const MainContent = ({select, setSelected, setClickedCourse}) => {
                 <RenderTable select={select} setClickedCourse = {setClickedCourse}/>
             </div>
       
-    </div>
+        </div>
     )
 }
 
@@ -60,7 +59,7 @@ const NewDashBoardCard = ({select, title, setSelected}) => {
 
 
     return(
-        <div className={`w-[150px] sm:w-[200px] lg:w-[320px] ${(select === title) ? "bg-[#F3F4F6]" : "bg-[#FDFDFD]"} dashboard-card-shadow cursor-pointer rounded-md p-2 lg:p-8`} onClick={() => setSelected(title)}>
+        <div className={`w-[150px] sm:w-[200px] lg:w-[320px] border-[1px] border-[#858585] border-opacity-[0.25] ${(select === title) ? "bg-[#F3F4F6]" : "bg-[#FDFDFD]"} dashboard-card-shadow cursor-pointer rounded-md p-2 lg:p-8`} onClick={() => setSelected(title)}>
             <div className='flex flex-row justify-between items-center mb-4 font-bold'>
                 <AiOutlineInbox size = {24} color='#787878'/>
                 <BsChevronDown size = {14} color='#787878'/>
@@ -68,7 +67,7 @@ const NewDashBoardCard = ({select, title, setSelected}) => {
 
             <p className='text-bizpotta-green mb-2 font-bold'>{title}</p>
 
-            <div className='font-[600] text-[14px] lg:text-base  text-bizpotta-gray-700'>23</div>
+            <div className='font-[600] text-[14px] lg:text-base text-bizpotta-gray-700'>23</div>
             
         </div>
     )
@@ -94,7 +93,7 @@ const RenderTable = ({ select,}) => {
 
 
 
-export const TableHeader = () => {
+export const TableHeader = ({placeholder}) => {
 
 
     const [showFilter, setShowFilter] = useState(false)
@@ -102,29 +101,34 @@ export const TableHeader = () => {
 
     return (
 
-        <div className="min-w-[1050px] xl:w-full h-[50px] mt-6 mb-2 bg-[#9B9FC6] bg-opacity-[0.12] rounded-md flex items-center justify-center px-3">
-          <input className="w-[400px] text-[13px] rounded-sm italic h-[35px] pl-4 outline-none focus:ring-0" placeholder="Search income by entering keywords, name, or course"/>
-          <div className="h-[35px] relative centerFlex  w-[120px] text-[#191919] text-[14px] gap-x-3 bg-white rounded-md ml-20 cursor-pointer" onClick={() => {setShowFilter(prev => !prev); setShowExport(false)}}>
-            <Filter />
-            <p className="font-bold">Filter</p>
-            {/* filter dropdown */}
-            {showFilter && <div className='absolute top-[40px] w-[180px] py-4 gap-y-2 flex flex-col justify-center items-center dropdown-shadow bg-white rounded-md'>
-                <p className='w-full text-center py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>This Week</p>
-                <p className='w-full text-center py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>This Year</p>
-            </div>}
+        <div className="min-w-[1050px] xl:w-full h-[55px] mt-6 mb-2 bg-[#9B9FC6] bg-opacity-[0.12] rounded-md flex items-center justify-between px-8">
+          <input className="w-[500px] text-[13px] text-[#191919] rounded-sm h-[35px] pl-4 outline-none focus:ring-0"  placeholder={placeholder}/>
+
+          <div className='flex items-center gap-x-4'>
+            <div className="h-[35px] relative centerFlex  w-[120px] text-[#191919] text-[14px] gap-x-3 bg-white rounded-md dropdown-shadow cursor-pointer" onClick={() => {setShowFilter(prev => !prev); setShowExport(false)}}>
+                <Filter />
+                <p className="">Filter</p>
+                {/* filter dropdown */}
+                {showFilter && <div className='absolute top-[40px] w-[180px] py-4 gap-y-2 flex flex-col justify-center items-center dropdown-shadow bg-white rounded-md'>
+                    <p className='w-full text-center py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>This Week</p>
+                    <p className='w-full text-center py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>This Year</p>
+                </div>}
+            </div>
+
+            <div className="h-[35px] centerFlex relative w-[120px] text-[#191919] text-[14px] gap-x-3 bg-white rounded-md dropdown-shadow cursor-pointer" onClick={() => {setShowFilter(false); setShowExport(prev => !prev)}}>
+                <div className="w-[17px] h-[17px] centerFlex rounded-full border border-[#191919]">
+                <MdOutlineArrowUpward color="#191919"/>
+                </div>
+                <p className="">Export</p>
+                {/* export dropdown */}
+                {showExport && <div className='absolute top-[40px] w-[180px] py-4 gap-y-2 flex flex-col justify-center dropdown-shadow items-center bg-white rounded-md'>
+                    <p className='w-full text-center py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>Export as CSV</p>
+                    <p className='w-full text-center py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>Export as .xlsx</p>
+                </div>}
+            </div>
+
           </div>
 
-          <div className="h-[35px] centerFlex relative w-[120px] text-[#191919] text-[14px] gap-x-3 bg-white rounded-md ml-7 cursor-pointer" onClick={() => {setShowFilter(false); setShowExport(prev => !prev)}}>
-            <div className="w-[17px] h-[17px] centerFlex rounded-full border border-[#191919]">
-              <MdOutlineArrowUpward color="#191919"/>
-            </div>
-            <p className="font-bold">Export</p>
-            {/* export dropdown */}
-            {showExport && <div className='absolute top-[40px] w-[180px] py-4 gap-y-2 flex flex-col justify-center dropdown-shadow items-center bg-white rounded-md'>
-                <p className='w-full text-center py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>Export as CSV</p>
-                <p className='w-full text-center py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>Export as .xlsx</p>
-            </div>}
-          </div>
 
         </div>
 

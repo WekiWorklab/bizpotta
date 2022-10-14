@@ -13,7 +13,7 @@ import IncomeTableChart from "../IncomeTableChart";
 import { MdOutlineArrowUpward } from "react-icons/md";
 import { AiOutlineLeftCircle, AiOutlineRightCircle } from "react-icons/ai";
 import { IoLogoWhatsapp } from "react-icons/io5";
-import { BlueFacebook, BlueGroup, BlueInstagram, BlueTelegram, BlueTwitter, Filter, Suprise } from "../../../../public";
+import { BlueFacebook, BlueGroup, BlueInstagram, BlueTelegram, BlueTwitter, Filter, Money, Suprise } from "../../../../public";
 
 const Content = () => {
   const [select, setSelected] = useState("");
@@ -29,7 +29,7 @@ const Content = () => {
   console.log(value);
 
   return (
-    <div className='relative w-full h-full bg-white flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-1 py-10  text-darkGray '>
+    <div className='relative w-full h-full bg-[#FEFEFE] flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 xl:px-8 py-6  text-darkGray '>
       <p className='mb-8'>Hello, Ahmed</p>
 
       
@@ -67,10 +67,10 @@ const Content = () => {
       <p className='mt-3 lg:mt-10 font-[600]'>Resources</p>
       <p className='mt-2'>Just creating your first class, we got you covered</p>
 
-      <div className='grid grid-cols-1 lg:grid-cols-2 gap-y-6 mx-auto lg:gap-x-20 mt-10 self-start'>
+      <div className='grid grid-cols-1 lg:grid-cols-2 mx-auto lg:mx-1  gap-y-6  lg:gap-x-20 mt-10 self-start'>
         <VideoCard />
         <VideoCard />
-        <div className='text-[13px] text-bizpotta-gray-600 lg:col-span-2 text-center lg:mt-10'>View More</div>
+        <div className='text-[14px] text-bizpotta-gray-600 lg:col-span-2 text-center lg:mt-10'>View More</div>
       </div>
 
       <p className='mt-6 lg:mt-16 font-[600]'>Resourses to help you get started</p>
@@ -129,7 +129,7 @@ export const MainTableFooter = () => {
   )
 }
 
-export const MainTableHeader = ({filter}) => {
+export const MainTableHeader = ({filter, placeholder}) => {
 
 
   const [showFilter, setShowFilter] = useState(false)
@@ -137,32 +137,37 @@ export const MainTableHeader = ({filter}) => {
 
   return (
 
-      <div className="min-w-[1050px] xl:w-full h-[50px] mt-6 mb-2 bg-[#9B9FC6] bg-opacity-[0.12] rounded-md flex items-center justify-center px-3">
-        <input className="w-[400px] text-[13px] rounded-sm italic h-[35px] pl-4 outline-none focus:ring-0" placeholder="Search income by entering keywords, name, or course"/>
-        <div className="h-[35px] relative centerFlex  w-[120px] text-[#191919] text-[14px] gap-x-3 bg-white rounded-md ml-20 cursor-pointer" onClick={() => {setShowFilter(prev => !prev); setShowExport(false)}}>
-          <Filter />
-          <p className="font-bold">Filter</p>
-          {/* filter dropdown */}
-          {showFilter && <div className='absolute top-[40px] w-[180px] py-4 gap-y-2 flex flex-col justify-center items-center dropdown-shadow bg-white rounded-md'>
-            {
-              filter.map((el, index) => (
-                <p key = {index} className='w-full text-left px-3 py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>{el}</p>
-              ))
-            }
-          </div>}
-        </div>
+      <div className="min-w-[1050px] xl:w-full h-[55px] mt-6 mb-2 bg-[#9B9FC6] bg-opacity-[0.12] rounded-md flex items-center justify-between px-8">
+        <input className="w-[500px] text-[13px] text-[#191919] rounded-sm h-[35px] pl-4 outline-none focus:ring-0" placeholder={placeholder}/>
 
-        <div className="h-[35px] centerFlex relative w-[120px] text-[#191919] text-[14px] gap-x-3 bg-white rounded-md ml-7 cursor-pointer" onClick={() => {setShowFilter(false); setShowExport(prev => !prev)}}>
-          <div className="w-[17px] h-[17px] centerFlex rounded-full border border-[#191919]">
-            <MdOutlineArrowUpward color="#191919"/>
+        <div className='flex items-center gap-x-4'>
+
+          <div className="h-[35px] relative centerFlex w-[120px] text-[#191919] text-[14px] gap-x-3 bg-white rounded-md cursor-pointer" onClick={() => {setShowFilter(prev => !prev); setShowExport(false)}}>
+            <Filter />
+            <p className="">Filter</p>
+            {/* filter dropdown */}
+            {showFilter && <div className='absolute top-[40px] w-[180px] py-4 gap-y-2 flex flex-col justify-center items-center dropdown-shadow bg-white rounded-md'>
+              {
+                filter.map((el, index) => (
+                  <p key = {index} className='w-full text-left px-3 py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>{el}</p>
+                ))
+              }
+            </div>}
           </div>
-          <p className="font-bold">Export</p>
-          {/* export dropdown */}
-          {showExport && <div className='absolute top-[40px] w-[180px] py-4 gap-y-2 flex flex-col justify-center dropdown-shadow items-center bg-white rounded-md'>
-              <p className='w-full text-center py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>Export as CSV</p>
-              <p className='w-full text-center py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>Export as .xlsx</p>
-          </div>}
-        </div>
+
+          <div className="h-[35px] centerFlex relative w-[120px] text-[#191919] text-[14px] gap-x-3 bg-white rounded-md cursor-pointer" onClick={() => {setShowFilter(false); setShowExport(prev => !prev)}}>
+            <div className="w-[17px] h-[17px] centerFlex rounded-full border border-[#191919]">
+              <MdOutlineArrowUpward color="#191919"/>
+            </div>
+            <p className="">Export</p>
+            {/* export dropdown */}
+            {showExport && <div className='absolute top-[40px] w-[180px] py-4 gap-y-2 flex flex-col justify-center dropdown-shadow items-center bg-white rounded-md'>
+                <p className='w-full text-center py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>Export as CSV</p>
+                <p className='w-full text-center py-2 cursor-pointer text-[13px] hover:bg-[#858585]'>Export as .xlsx</p>
+            </div>}
+            </div>
+
+          </div>
 
       </div>
 
@@ -198,12 +203,16 @@ export const AffiliateSection = () => {
 
 export const WithdrawSection = () => {
    return (
-    <div className="w-full h-[100px] bg-[#94F236] bg-opacity-[0.06] flex flex-col gap-y-2 sm:flex-row justify-center sm:justify-between items-center rounded-md px-16 mt-16 ">
-      <div className="text-[#222222] text-[14px] centerFlex gap-x-2">
-        <p className="">Available balance</p>
-        <p className="text-[18px]">N405,000</p> 
-      </div>
+    <div className="w-full h-[100px] bg-[#94F236] bg-opacity-[0.06] flex flex-col gap-y-2 sm:flex-row justify-center sm:justify-between items-center rounded-md px-10 mt-16 ">
+      
+      <div className="flex items-center gap-x-4">    
+        <Money />
 
+        <div className="text-[#222222] text-[14px] centerFlex gap-x-2 font-bold">
+          <p className="text-[16px]">Available balance</p>
+          <p className="text-[20px]">N405,000</p> 
+        </div>
+      </div>
       <div className="w-[120px] h-[38px] text-[14px] rounded-md font-bold bg-bizpotta-green centerFlex">
         Withdraw
       </div>

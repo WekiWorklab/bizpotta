@@ -94,9 +94,9 @@ const EnrollmentTable = () => {
           <NoActivities />
         </div>}
       
-        { activities && <div className="my-2 horizontal-scrollbar overflow-x-scroll xl:overflow-x-hidden">
+        { activities && <div className="my-2 horizontal-scrollbar overflow-x-scroll xl:overflow-x-visible">
 
-        <MainTableHeader filter = {enrollFilter}/>
+        <MainTableHeader filter = {enrollFilter} placeholder = 'Search enrollment by entering keywords, name, or course'/>
 
          <div className="py-2 align-middle inline-block min-w-[1050px] xl:w-full">
 
