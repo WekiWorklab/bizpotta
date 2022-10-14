@@ -3,7 +3,7 @@ import React from 'react'
 // import { TextEditor } from '../../TextEditor'
 
 
-import { AiFillCaretDown, AiOutlineCheck, AiOutlineLink } from 'react-icons/ai'
+import { AiFillCaretDown, AiOutlineCaretDown, AiOutlineCaretUp, AiOutlineCheck, AiOutlineLink } from 'react-icons/ai'
 import { BsPencil, BsThreeDotsVertical, BsTrash } from 'react-icons/bs'
 import {TiDocumentText} from 'react-icons/ti'
 import { IoCheckmarkCircleOutline } from 'react-icons/io5'
@@ -83,13 +83,13 @@ export default FirstContent
 const WeekSection = ({week_no}) => {
 
     const [editWeekTitle, setEditWeekTitle] = useState(false) //controls the ability to change the title of the week
-    const [collapseWeek, setCollapseWeek] = useState(true)  //controls collapse and expansion of week
+    const [collapseWeek, setCollapseWeek] = useState(week_no > 1 && true)  //controls collapse and expansion of week
     
     return (
         <div className='w-full py-2'>
             <div className='w-full'>
                 <div className='flex w-full justify-between items-center'>
-                    <div className='flex items-center gap-x-3'>
+                    <div className='flex items-center gap-x-5'>
                         <div>Week {week_no} </div>
                         {!editWeekTitle && <div className='flex items-center gap-x-2 text-gray-400 text-[14px] '>
                             <p>Introduction</p>
@@ -101,14 +101,15 @@ const WeekSection = ({week_no}) => {
                             <AiOutlineCheck color='green' className = 'cursor-pointer' onClick={() => {setEditWeekTitle(false)}}/>
                         </div>
                         }
+                        <BsTrash color='red' size={14}/> 
                     </div>
 
                     <div className=''>
-                        {collapseWeek && <div className='text-[#999999] font-bold cursor-pointer' onClick={() => setCollapseWeek(false)}>Expand section</div>}
-                        {!collapseWeek && <div className='text-[#999999] font-bold cursor-pointer' onClick={() => setCollapseWeek(true)}>Collpase section</div>}
+                        {collapseWeek && <AiOutlineCaretDown className='text-[#999999] text-[20px] font-bold cursor-pointer' onClick={() => setCollapseWeek(false)} />}
+                        {!collapseWeek && <AiOutlineCaretUp className='text-[#999999] text-[20px] font-bold cursor-pointer' onClick={() => setCollapseWeek(true)} />}
                     </div>
 
-                    <BsTrash color='red' size={14}/> 
+                    
                 </div>
  
                 {!collapseWeek && 
