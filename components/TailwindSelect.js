@@ -13,7 +13,7 @@ function classNames(...classes) {
 
 
 export default function TailwindSelect({data, initial}) {
-  const [selected, setSelected] = useState(initial)
+  const [selected, setSelected] = useState(initial || data)
 
   return (
     <Listbox value={selected} onChange={setSelected}>
