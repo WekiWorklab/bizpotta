@@ -7,18 +7,20 @@ import {SlPicture} from 'react-icons/si'
 
 const Content = () => {
 
-    const [select, setSelect] = useState('company')
+    const [select, setSelect] = useState('account')
 
   return (
     <div className='relative w-full h-full bg-[#FDFDFD] flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 xl:px-10 py-10 text-darkGray'>
 
         {/* Nav section */}
-        <div className='w-full flex items-center gap-x-12 ' >
-            <div className={`${select === "personal" ? 'bg-[#94F236] bg-opacity-[0.06] text-[#5CAC0D]' : "text-[#999999]"} px-2 py-2 rounded-md text-[13px] cursor-pointer `} onClick = {() => setSelect("personal")}>Personal information</div>
-            <div className={`${select === "education" ? 'bg-[#94F236] bg-opacity-[0.06] text-[#5CAC0D]' : "text-[#999999]"} px-2 py-2 rounded-md text-[13px] cursor-pointer `} onClick = {() => setSelect("education")} >Education</div>
-            <div className={`${select === "company" ? 'bg-[#94F236] bg-opacity-[0.06] text-[#5CAC0D]' : "text-[#999999]"} px-2 py-2 rounded-md text-[13px] cursor-pointer `} onClick = {() => setSelect("company")} >Company Profile</div>
-            <div className={`${select === "payment" ? 'bg-[#94F236] bg-opacity-[0.06] text-[#5CAC0D]' : "text-[#999999]"} px-2 py-2 rounded-md text-[13px] cursor-pointer `} onClick = {() => setSelect("payment")} >Payment</div>
-            <div className={`${select === "account" ? 'bg-[#94F236] bg-opacity-[0.06] text-[#5CAC0D]' : "text-[#999999]"} px-2 py-2 rounded-md text-[13px] cursor-pointer `} onClick = {() => setSelect("account")} >Account</div>
+        <div className='w-full overflow-x-scroll horizontal-scrollbar'>
+            <div className='min-w-[670px] flex items-center gap-x-12 ' >
+                <div className={`${select === "personal" ? 'bg-[#94F236] bg-opacity-[0.06] text-[#5CAC0D]' : "text-[#999999]"} px-2 py-2 rounded-md text-[13px] cursor-pointer `} onClick = {() => setSelect("personal")}>Personal information</div>
+                <div className={`${select === "education" ? 'bg-[#94F236] bg-opacity-[0.06] text-[#5CAC0D]' : "text-[#999999]"} px-2 py-2 rounded-md text-[13px] cursor-pointer `} onClick = {() => setSelect("education")} >Education</div>
+                <div className={`${select === "company" ? 'bg-[#94F236] bg-opacity-[0.06] text-[#5CAC0D]' : "text-[#999999]"} px-2 py-2 rounded-md text-[13px] cursor-pointer `} onClick = {() => setSelect("company")} >Company Profile</div>
+                <div className={`${select === "payment" ? 'bg-[#94F236] bg-opacity-[0.06] text-[#5CAC0D]' : "text-[#999999]"} px-2 py-2 rounded-md text-[13px] cursor-pointer `} onClick = {() => setSelect("payment")} >Payment</div>
+                <div className={`${select === "account" ? 'bg-[#94F236] bg-opacity-[0.06] text-[#5CAC0D]' : "text-[#999999]"} px-2 py-2 rounded-md text-[13px] cursor-pointer `} onClick = {() => setSelect("account")} >Account</div>
+            </div>
         </div>
 
         {/* Body */}
@@ -28,7 +30,7 @@ const Content = () => {
             {select === "education" && <Education />}
             {select === "company" && <CompanyProfile />}
             {select === "payment" && <Payment />}
-            {select === "account" && <PersonalInformation />}
+            {select === "account" && <Account />}
         </div>
 
 
@@ -42,7 +44,7 @@ const Content = () => {
 export default Content
 
 
-
+// Select Components
 const SelectOptions = ({data, option, setOption, width}) => {
 
     const [showSelect, setShowSelect] = useState(false)
@@ -55,7 +57,7 @@ const SelectOptions = ({data, option, setOption, width}) => {
                 </div>
                 <AiFillCaretDown size={20} color='#999999' onClick={() => setShowSelect(prev => !prev)}/>
             </div>
-            {showSelect && <div className='absolute z-20 top-[42px] left-0 py-4 bg-white rounded-md dropdown-shadow'>
+            {showSelect && <div className='absolute min-w-[200px] z-20 top-[42px] left-0 py-4 bg-white rounded-md dropdown-shadow'>
                 {
                     data.map((el, index) => (
                         <div key={index} className='py-2 px-4 hover:bg-gray-500 hover:text-white text-[13px]' onClick={() => {setOption(el); setShowSelect(false)}}>
@@ -69,6 +71,70 @@ const SelectOptions = ({data, option, setOption, width}) => {
 }
 
 
+// Account Section
+const Account = () => {
+
+    const [industry, setIndustry] = useState("")
+    const [experience, setExperience] = useState("")
+    const [material, setMaterial] = useState("")
+    const [revenue, setRevenue] = useState("")
+ 
+    const Industry = ["Less than 1 year", "Less than 5 years", "Less than 10 years", "More than 10 years"]
+    const Experience = ["Less than 1 year", "Less than 5 years", "Less than 10 years", "More than 10 years"]
+
+    return(
+        <div className='w-full mt-8 pb-20'>
+            <div className='font-bold text-[16px]'>Account</div>
+
+            <div className = "mt-16 text-[14px]">
+                <p className='font-bold'>What industry would you be teaching in</p>
+                <div>
+                    <SelectOptions data = {Industry} width = '330px' option = {industry} setOption = {setIndustry} />
+                </div>
+            </div>
+
+            <div className = "mt-16 text-[14px]">
+                <p className='font-bold'>How many years of experience do you have in this field?</p>
+                <div>
+                    <SelectOptions data = {Experience} width = '330px' option = {experience} setOption = {setExperience} />
+                </div>
+            </div>
+            <div className = "mt-16 text-[14px]">
+                <p className='font-bold'>How much training material do you have?</p>
+                <div>
+                    <SelectOptions data = {Experience} width = '330px' option = {material} setOption = {setMaterial} />
+                </div>
+            </div>
+            <div className = "mt-16 text-[14px]">
+                <p className='font-bold'>How much do you plan on making from teaching this course?</p>
+                <div>
+                    <SelectOptions data = {Experience} width = '330px' option = {revenue} setOption = {setRevenue} />
+                </div>
+            </div>
+            <div className = "mt-16 text-[14px]">
+                <p className='font-bold'>How much time do you have in creating your course weekly?</p>
+                <p className='font-bold text-[11px]' >It is nothing to worry about, we will help you acheive your goals</p>
+                <div>
+                    <SelectOptions data = {Experience} width = '330px' option = {revenue} setOption = {setRevenue} />
+                </div>
+            </div>
+            <div className = "mt-16 text-[14px]">
+                <p className='font-bold'>Social Handles</p>
+                <p className='text-[11px] mt-4 bold'>Website</p>
+                <textarea className='w-[300px] h-[50px] inputField mt-1'></textarea>
+            </div>
+
+            <div className='flex justify-center  gap-x-3 mt-16'>
+                <div className='w-[120px] h-[40px] bg-darkBlue text-white centerFlex font-bold rounded-md text-[13px] cursor-pointer' onClick={() => {}}> Save changes </div>
+            </div>
+
+        </div>
+        
+    )
+} 
+
+
+// Payments section
 const Payment = ({}) => {
 
     const [bank, setBank] = useState()
@@ -78,14 +144,14 @@ const Payment = ({}) => {
     return(
     <div className='w-full mt-8 pb-20'>
         <div className='font-bold text-[16px]'>Payment</div>
-        <div className = "mt-8 text-[14px]">
+        <div className = "mt-16 text-[14px]">
             <p className='font-bold'>Bank Name</p>
             <div>
                 <SelectOptions data = {banks} width = '330px' option = {bank} setOption = {setBank} />
             </div>
         </div>
 
-        <div className = "mt-8 text-[14px]">
+        <div className = "mt-16 text-[14px]">
             <p className='font-bold'>Account Number</p>
             <input className='w-[300px] h-[50px] inputField mt-4' type='number' />
         </div>
@@ -107,22 +173,22 @@ const CompanyProfile = () => {
         <div className='w-full mt-8 pb-20'>
             <div className='font-bold text-[16px]'>Education</div>
 
-            <div className = "mt-8 text-[14px]">
+            <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>Highest level of education</p>
                 <textarea className='w-[300px] h-[100px] inputField mt-4'></textarea>
             </div>
 
-            <div className = "mt-8 text-[14px]">
+            <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>Instructors Bio</p>
                 <textarea className='w-[300px] h-[100px] inputField mt-4'></textarea>
             </div>
 
-            <div className = "mt-8 text-[14px]">
+            <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>Company’s Profile</p>
                 <textarea className='w-[300px] h-[100px] inputField mt-4'></textarea>
             </div>
 
-            <div className = "mt-8 text-[14px]">
+            <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>Image</p>
                 <label htmlFor='file' className='w-[345px] sm:w-[400px] h-[50px] inputField mt-4 flex items-center justify-between px-4'>
                     <p className='text-[#CCCCCC] text-[12px] '>Upload a Logo thumbnail for easy identification</p>
@@ -132,7 +198,7 @@ const CompanyProfile = () => {
                 <p className='mt-3 max-w-[400px] break-words text-[#CCCCCC] text-[12px]'>This is the first image attendees will see at the top of your listing. Use a high quality image: 48x48px (1:1 ratio)</p>
             </div>
 
-            <div className = "mt-8 text-[14px]">
+            <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>Job Location Status</p>
                 <div className='flex items-center gap-x-5'>
                     <div className='flex gap-x-1 items-center'>
@@ -156,19 +222,19 @@ const CompanyProfile = () => {
                 </div>
             </div>
 
-            <div className = "mt-8 text-[14px]">
+            <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>Job Location Description</p>
                 <p className='text-[11px] bold'>Provide a detailed description of where your office is located</p>
                 <textarea className='w-[300px] h-[50px] text-[12px] inputField mt-4' placeholder = '12, Omowunmi Lane, Ikeja Bus Stop, Lagos'  ></textarea>
             </div>
 
-            <div className = "mt-8 text-[14px]">
+            <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>Social Handles</p>
                 <p className='text-[11px] mt-4 bold'>Website</p>
                 <textarea className='w-[300px] h-[50px] inputField mt-1'></textarea>
             </div>
 
-            <div className='flex justify-center  gap-x-3 mt-14'>
+            <div className='flex justify-center  gap-x-3 mt-16'>
                 <div className='w-[120px] h-[40px] bg-white border-[1px] border-darkBlue text-darkBlue centerFlex font-bold rounded-md text-[13px] cursor-pointer' onClick={() => {}}> Cancel </div>
                 <div className='w-[120px] h-[40px] bg-darkBlue text-white centerFlex font-bold rounded-md text-[13px] cursor-pointer' onClick={() => {}}> Save changes </div>
             </div>
@@ -203,42 +269,42 @@ const Education = () => {
         <div className='w-full mt-8 pb-20'>
             <div className='font-bold text-[16px]'>Education</div>
 
-            <div className = "mt-8 text-[14px]">
+            <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>Highest level of education</p>
                 <div>
                     <SelectOptions data = {level} width = '330px' option = {education} setOption = {setEducation} />
                 </div>
             </div>
 
-            <div className = "mt-8 text-[14px]">
+            <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>Work Experience</p>
                 <div>
                     <SelectOptions data = {Experience} width = '330px' option = {experience} setOption = {setExperience} />
                 </div>
             </div>
 
-            <div className = "mt-8 text-[14px]">
+            <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>Institution</p>
                 <div>
                     <SelectOptions data = {Institution} width = '280px' option = {institution} setOption = {setInstitution} />
                 </div>
             </div>
 
-            <div className = "mt-8 text-[14px]">
+            <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>Departmental Role</p>
                 <div>
                     <SelectOptions data = {Institution} width = '280px' option = {institution} setOption = {setInstitution} />
                 </div>
             </div>
 
-            <div className = "mt-8 text-[14px]">
+            <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>Years of Experience</p>
                 <div>
                     <SelectOptions data = {timeExperience} width = '280px' option = {time} setOption = {setTime} />
                 </div>
             </div>
 
-            <div className = "mt-8 text-[14px]">
+            <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>Certification</p>
                 <div>
                     <SelectOptions data = {timeExperience} width = '280px' option = {time} setOption = {setTime} />
@@ -256,7 +322,7 @@ const Education = () => {
             </div>
 
 
-            <div className='flex justify-center sm:justify-end gap-x-3 mt-10'>
+            <div className='flex justify-center sm:justify-end gap-x-3 mt-16'>
                 <div className='w-[120px] h-[40px] bg-white border-[1px] border-darkBlue text-darkBlue centerFlex font-bold rounded-md text-[13px] cursor-pointer' onClick={() => {}}> Cancel </div>
                 <div className='w-[120px] h-[40px] bg-darkBlue text-white centerFlex font-bold rounded-md text-[13px] cursor-pointer' onClick={() => {}}> Save changes </div>
             </div>

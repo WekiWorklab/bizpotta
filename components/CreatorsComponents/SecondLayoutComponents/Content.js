@@ -33,7 +33,6 @@ const MainContent = ({select, setSelected, setClickedCourse}) => {
 
     return (
         <div className='relative w-full h-full bg-[#FEFEFE] flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 xl:px-8 py-6 text-darkGray'>
-
             <div className='w-[165px] h-[40px] rounded-md shadow-md flex justify-center items-center gap-x-2 self-end cursor-pointer' onClick={() => {router.push('/creators/courses/create')}}>
                 <IoAddCircleOutline className='text-[22px]'/>
                 <p className='text-[13px]'>Create a new course</p>
@@ -56,8 +55,7 @@ const MainContent = ({select, setSelected, setClickedCourse}) => {
 
 
 const NewDashBoardCard = ({select, title, setSelected}) => {
-
-
+    
     return(
         <div className={`w-[150px] sm:w-[200px] lg:w-[320px] border-[1px] border-[#858585] border-opacity-[0.25] ${(select === title) ? "bg-[#F3F4F6]" : "bg-[#FDFDFD]"} dashboard-card-shadow cursor-pointer rounded-md p-2 lg:p-8`} onClick={() => setSelected(title)}>
             <div className='flex flex-row justify-between items-center mb-4 font-bold'>

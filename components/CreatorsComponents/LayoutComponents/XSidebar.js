@@ -123,7 +123,7 @@ import { useDispatch, useSelector } from "react-redux";
                 </div>
               </li>
 
-              <li className="items-center cursor-pointer mb-5">
+              <li className="items-center cursor-pointer mb-5" onClick={() => router.push('/creators/settings')}>
                 <div  className="flex flex-row justify-start items-center">
                   <IoSettingsOutline color="gray"/>
                   <div className="text-sm text-gray-600 font-light ml-5">
