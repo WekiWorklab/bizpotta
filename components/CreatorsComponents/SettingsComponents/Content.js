@@ -1,12 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
 import { AiFillCaretDown, AiOutlineArrowDown, AiOutlinePicture } from 'react-icons/ai'
-import { specialization } from '../../../public'
+import { Picture, specialization } from '../../../public'
 import TailwindSelect from '../../TailwindSelect'
+import {SlPicture} from 'react-icons/si'
 
 const Content = () => {
 
-    const [select, setSelect] = useState('education')
+    const [select, setSelect] = useState('company')
 
   return (
     <div className='relative w-full h-full bg-[#FDFDFD] flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 xl:px-10 py-10 text-darkGray'>
@@ -25,8 +26,8 @@ const Content = () => {
         <div className='w-full '>
             {select === "personal" && <PersonalInformation />}
             {select === "education" && <Education />}
-            {select === "company" && <PersonalInformation />}
-            {select === "payment" && <PersonalInformation />}
+            {select === "company" && <CompanyProfile />}
+            {select === "payment" && <Payment />}
             {select === "account" && <PersonalInformation />}
         </div>
 
@@ -41,6 +42,146 @@ const Content = () => {
 export default Content
 
 
+
+const SelectOptions = ({data, option, setOption, width}) => {
+
+    const [showSelect, setShowSelect] = useState(false)
+
+    return (
+        <div className='relative mt-4'>
+            <div className='flex items-center gap-x-3'>
+                <div className={`w-[${width}] h-[40px] px-1 rounded-md focus:ring-0 outline-none border border-[1px] border-[#CCCCCC] border-opacity-[0.45] flex items-center text-[13px] text-gray-400 pl-10 `} >
+                    {option || "select"}
+                </div>
+                <AiFillCaretDown size={20} color='#999999' onClick={() => setShowSelect(prev => !prev)}/>
+            </div>
+            {showSelect && <div className='absolute z-20 top-[42px] left-0 py-4 bg-white rounded-md dropdown-shadow'>
+                {
+                    data.map((el, index) => (
+                        <div key={index} className='py-2 px-4 hover:bg-gray-500 hover:text-white text-[13px]' onClick={() => {setOption(el); setShowSelect(false)}}>
+                            {el}
+                        </div>
+                    ))
+                }
+            </div>}
+        </div>
+    )
+}
+
+
+const Payment = ({}) => {
+
+    const [bank, setBank] = useState()
+
+    const banks = ["GT Bank", "Access Bank", "Zenith Bank", "Wema Bank", "Diamond Bank"]
+
+    return(
+    <div className='w-full mt-8 pb-20'>
+        <div className='font-bold text-[16px]'>Payment</div>
+        <div className = "mt-8 text-[14px]">
+            <p className='font-bold'>Bank Name</p>
+            <div>
+                <SelectOptions data = {banks} width = '330px' option = {bank} setOption = {setBank} />
+            </div>
+        </div>
+
+        <div className = "mt-8 text-[14px]">
+            <p className='font-bold'>Account Number</p>
+            <input className='w-[300px] h-[50px] inputField mt-4' type='number' />
+        </div>
+
+        <div className='flex justify-center  gap-x-3 mt-14'>
+            <div className='w-[120px] h-[40px] bg-darkBlue text-white centerFlex font-bold rounded-md text-[13px] cursor-pointer' onClick={() => {}}> Save changes </div>
+        </div>
+    </div>
+    )
+}
+
+
+
+const CompanyProfile = () => {
+    
+    const [select, setSelect] = useState('')
+    
+    return (
+        <div className='w-full mt-8 pb-20'>
+            <div className='font-bold text-[16px]'>Education</div>
+
+            <div className = "mt-8 text-[14px]">
+                <p className='font-bold'>Highest level of education</p>
+                <textarea className='w-[300px] h-[100px] inputField mt-4'></textarea>
+            </div>
+
+            <div className = "mt-8 text-[14px]">
+                <p className='font-bold'>Instructors Bio</p>
+                <textarea className='w-[300px] h-[100px] inputField mt-4'></textarea>
+            </div>
+
+            <div className = "mt-8 text-[14px]">
+                <p className='font-bold'>Company’s Profile</p>
+                <textarea className='w-[300px] h-[100px] inputField mt-4'></textarea>
+            </div>
+
+            <div className = "mt-8 text-[14px]">
+                <p className='font-bold'>Image</p>
+                <label htmlFor='file' className='w-[345px] sm:w-[400px] h-[50px] inputField mt-4 flex items-center justify-between px-4'>
+                    <p className='text-[#CCCCCC] text-[12px] '>Upload a Logo thumbnail for easy identification</p>
+                    <input type='file' id='file' className='hidden' />
+                    <Picture />
+                </label>
+                <p className='mt-3 max-w-[400px] break-words text-[#CCCCCC] text-[12px]'>This is the first image attendees will see at the top of your listing. Use a high quality image: 48x48px (1:1 ratio)</p>
+            </div>
+
+            <div className = "mt-8 text-[14px]">
+                <p className='font-bold'>Job Location Status</p>
+                <div className='flex items-center gap-x-5'>
+                    <div className='flex gap-x-1 items-center'>
+                        <div className='w-[12px] h-[12px] border-[1px] centerFlex border-black rounded-full' onClick={() => setSelect('physical')}>
+                            {select==='physical' && <div className='w-[6px] h-[6px] bg-black rounded-full'  />}
+                        </div>
+                        <p className='text-[12px]'>Physical</p>
+                    </div>
+                    <div className='flex gap-x-1  items-center'>
+                        <div className='w-[12px] h-[12px] border-[1px] centerFlex border-black rounded-full' onClick={() => setSelect('remote')}>
+                            {select==='remote' && <div className='w-[6px] h-[6px] bg-black rounded-full'  />}
+                        </div>
+                        <p className='text-[12px]'>Remote</p>
+                    </div>
+                    <div className='flex gap-x-1  items-center'>
+                        <div className='w-[12px] h-[12px] border-[1px] centerFlex border-black rounded-full' onClick={() => setSelect('hybrid')}>
+                            {select==='hybrid' && <div className='w-[6px] h-[6px] bg-black rounded-full'  />}
+                        </div>
+                        <p className='text-[12px]'>Hybrid</p>
+                    </div>
+                </div>
+            </div>
+
+            <div className = "mt-8 text-[14px]">
+                <p className='font-bold'>Job Location Description</p>
+                <p className='text-[11px] bold'>Provide a detailed description of where your office is located</p>
+                <textarea className='w-[300px] h-[50px] text-[12px] inputField mt-4' placeholder = '12, Omowunmi Lane, Ikeja Bus Stop, Lagos'  ></textarea>
+            </div>
+
+            <div className = "mt-8 text-[14px]">
+                <p className='font-bold'>Social Handles</p>
+                <p className='text-[11px] mt-4 bold'>Website</p>
+                <textarea className='w-[300px] h-[50px] inputField mt-1'></textarea>
+            </div>
+
+            <div className='flex justify-center  gap-x-3 mt-14'>
+                <div className='w-[120px] h-[40px] bg-white border-[1px] border-darkBlue text-darkBlue centerFlex font-bold rounded-md text-[13px] cursor-pointer' onClick={() => {}}> Cancel </div>
+                <div className='w-[120px] h-[40px] bg-darkBlue text-white centerFlex font-bold rounded-md text-[13px] cursor-pointer' onClick={() => {}}> Save changes </div>
+            </div>
+
+        </div>
+    )
+}
+
+
+
+
+
+/** Education section */
 const Education = () => {
 
     const [education, setEducation] = useState()
@@ -126,33 +267,7 @@ const Education = () => {
 
 
 
-const SelectOptions = ({data, option, setOption, width}) => {
-
-    const [showSelect, setShowSelect] = useState(false)
-
-    return (
-        <div className='relative mt-4'>
-            <div className='flex items-center gap-x-3'>
-                <div className={`w-[${width}] h-[40px] px-1 rounded-md focus:ring-0 outline-none border border-[1px] border-[#CCCCCC] border-opacity-[0.45] flex items-center text-[13px] text-gray-400 pl-10 `} >
-                    {option || "select"}
-                </div>
-                <AiFillCaretDown size={20} color='#999999' onClick={() => setShowSelect(prev => !prev)}/>
-            </div>
-            {showSelect && <div className='absolute z-20 top-[42px] left-0 py-4 bg-white rounded-md dropdown-shadow'>
-                {
-                    data.map((el, index) => (
-                        <div key={index} className='py-2 px-4 hover:bg-gray-500 hover:text-white text-[13px]' onClick={() => {setOption(el); setShowSelect(false)}}>
-                            {el}
-                        </div>
-                    ))
-                }
-            </div>}
-        </div>
-    )
-}
-
-
-
+/** Personal Information Section */
 
 const PersonalInformation = () => {
 
