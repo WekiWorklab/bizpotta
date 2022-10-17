@@ -28,16 +28,16 @@ const Content = () => {
             {/* navsection */}
             <div className='w-full flex justify-between items-center text-[12px] sm:text-[15px]'>
                 <div className='flex items-center gap-x-3 md:gap-x-20'>
-                    <div className={`flex items-center px-2 py-2 rounded-sm ${select === "inbox" ? "bg-[#94F236] bg-opacity-[0.06] " : ""}`} onClick = {() => setSelected("inbox")}>
+                    <div className={`flex cursor-pointer items-center px-2 py-2 rounded-sm ${select === "inbox" ? "bg-[#94F236] bg-opacity-[0.06] " : ""}`} onClick = {() => setSelected("inbox")}>
                         <div className={`px-1 py-1 centerFlex font-bold ${select === "inbox" ? "text-[#5CAC0D]" : "text-[#999999]" }`}>Inbox</div>
                         <div className={`w-[14px] h-[14px] font-bold rounded-full pt-[0.4px] text-[8px] centerFlex ${select === "inbox" ? "bg-[#5CAC0D]" : "bg-[#999999]" }`}>20</div>
                     </div>
 
-                    <div className={`flex items-center px-2 py-2 rounded-sm ${select === "updates" ? "bg-[#94F236] bg-opacity-[0.06] " : " bg-transparent"}`} onClick = {() => setSelected("updates")}>
+                    <div className={`flex cursor-pointer items-center px-2 py-2 rounded-sm ${select === "updates" ? "bg-[#94F236] bg-opacity-[0.06] " : " bg-transparent"}`} onClick = {() => setSelected("updates")}>
                         <div className={`px-1 py-1 centerFlex font-bold ${select === "updates" ? "text-[#5CAC0D]" : "text-[#999999]" }`}>Updates</div>
                     </div>
 
-                    <div className={`flex items-center px-2 py-2 rounded-sm ${select === "starred" ? "bg-[#94F236] bg-opacity-[0.06] " : " bg-transparent"}`} onClick = {() => setSelected("starred")}>
+                    <div className={`flex cursor-pointer items-center px-2 py-2 rounded-sm ${select === "starred" ? "bg-[#94F236] bg-opacity-[0.06] " : " bg-transparent"}`} onClick = {() => setSelected("starred")}>
                         <div className={`px-1 py-1 centerFlex font-bold ${select === "starred" ? "text-[#5CAC0D]" : "text-[#999999]" }`}>Starred Message</div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@ const Inbox = () => {
                     <td className="px-2 py-2 whitespace-nowrap">
                         <img src={specialization.src} alt='' className ='w-[48px] h-[48px] rounded-full' />
                     </td>
-                    <td className="px-2 py-2 whitespace-nowrap ">
+                    <td className="px-2 py-2 whitespace-nowrap">
                         <div className='text-[12px] text-white centerFlex bg-[#5CAC0D] w-[50px] h-[25px] rounded-sm'>
                             New
                         </div>
@@ -146,8 +146,9 @@ const Inbox = () => {
                       <BsDashLg />
                     </td>
 
-                    <td className="px-2 py-2 cursor-pointer" onClick={() => router.push(`/creators/messages/${el.item}`)}>
-                        <div className='max-w-[520px] break-all '>{el.message}</div>
+                    <td className="px-2 py-2 cursor-pointer max-w-[320px] break-all" onClick={() => router.push(`/creators/messages/${el.item}`)}>
+                        {/* <div className='max-w-[420px] break-all '>{el.message}</div> */}
+                        {el.message}
                     </td>
 
                    

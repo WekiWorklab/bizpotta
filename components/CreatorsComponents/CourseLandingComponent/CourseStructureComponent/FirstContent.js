@@ -10,6 +10,7 @@ import { IoCheckmarkCircleOutline } from 'react-icons/io5'
 import { TextEditor } from '../../../TextEditor'
 import NotesSuccessModal from './NotesSuccessModal'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 const FirstContent = () => {
     const [state, setState] = useState({lecture: "", resources: "", projects: "", })
@@ -82,6 +83,8 @@ export default FirstContent
 
 const WeekSection = ({week_no}) => {
 
+    const router = useRouter()
+
     const [editWeekTitle, setEditWeekTitle] = useState(false) //controls the ability to change the title of the week
     const [collapseWeek, setCollapseWeek] = useState(week_no > 1 && true)  //controls collapse and expansion of week
     
@@ -123,8 +126,12 @@ const WeekSection = ({week_no}) => {
                             <AiFillCaretDown />
                         </div>
 
-                        <div className='mt-6'>
-                            <div className=' min-h-[150px] w-full border break-all p-2' onClick={() => {/**Take the user to the lecture edit page */}}>
+                        <div className='mt-6 '>
+                            {/* Clicking on this takes the user to the page for typing and editing lectures */}
+                            <div className='min-h-[150px] w-full border break-all p-2 cursor-pointer' onClick={() => router.push({
+                            pathname: "/creators/courses/create/structure",
+                            query: {type: "lecture", week_no: week_no}
+                            })}>
                                 
                             </div>
                         </div>
@@ -161,8 +168,10 @@ const WeekSection = ({week_no}) => {
                     </div>
 
                 <div className='mt-6'>
-                    {/* <TextEditor /> */}
-                    <div className=' min-h-[150px] w-full border break-all p-2' >
+                    <div className=' min-h-[150px] w-full border break-all p-2 cursor-pointer' onClick={() => router.push({
+                            pathname: "/creators/courses/create/structure",
+                            query: {type: "resource", week_no: week_no}
+                            })} >
                     </div>
                 </div>
 
@@ -215,7 +224,11 @@ const WeekSection = ({week_no}) => {
                         <BsTrash color='red' size={14}/> 
                     </div>
                     <div className='mt-6'>
-                        <div className=' min-h-[150px] w-full border break-all p-2'>
+                            {/* Clicking on this takes the user to the page for typing and editing assignments */}
+                        <div className=' min-h-[150px] w-full border break-all p-2 cursor-pointer' onClick={() => router.push({
+                            pathname: "/creators/courses/create/structure",
+                            query: {type: "assignment", week_no: week_no}
+                            })}>
 
                         </div>
                     </div>

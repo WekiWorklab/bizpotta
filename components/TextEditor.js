@@ -30,7 +30,9 @@ export const TextEditor = ({api_key}) => {
             content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
           }}
         />
-        {/* <button onClick={log} className='mx-auto border-2'>Log editor content</button> */}
+        {/* <div className='flex center mt-7'>
+          <button onClick={log} className=' mx-auto border-2'>Log editor content</button>
+        </div> */}
         {/* This button above outputs what is typed into the text editor.*/}
       </>
     );
