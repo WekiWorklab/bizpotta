@@ -13,7 +13,14 @@ function MyApp({ Component, pageProps }) {
     <>
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
-          <NextNProgress color='#121f4c' />
+          <NextNProgress
+            color='#121f4c'
+            options={{
+              showSpinner: false,
+              trickleSpeed: 100,
+              minimum: 0.3,
+            }}
+          />
           <Component {...pageProps} />
           <ToastContainer />
         </Hydrate>
