@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useRef, useState } from "react";
 import { logo } from "../public";
 import { FiSearch } from "react-icons/fi";
@@ -18,7 +19,7 @@ const Header = ({ show, setShow, setSlideIn }) => {
   const [showSearch, setShowSearch] = useState(false);
   console.log(user);
 
-  const router = useRouter()
+  const router = useRouter();
 
   const handleBlur = () => {
     setShowSearch(false);
@@ -55,7 +56,7 @@ const Header = ({ show, setShow, setSlideIn }) => {
     <div className='fixed w-full z-20 h-[90px] md:h-[120px] bg-white flex flex-row justify-between items-center px-4 lg:px-8'>
       {/* Logo */}
       <div className='flex flex-row justify-start items-center '>
-        <div className='h-8 w-[120px] sm:w-[200px] sm:h-10 flex flex-row justify-center items-center cursor-pointer' onClick={() => router.push('/')}>
+        <div className='h-8 w-[120px] sm:w-[200px] sm:h-10 flex flex-row justify-center items-center cursor-pointer' onClick={() => router.push("/")}>
           <img src={logo.src} alt='' className='object-cover' />
         </div>
 
@@ -89,29 +90,34 @@ const Header = ({ show, setShow, setSlideIn }) => {
       <div className=' hidden md:flex flex-row  w-[100px] md:w-[280px] justify-evenly items-center'>
         <AiOutlineShoppingCart className='  text-darkBlue text-2xl' />
         <IoNotificationsOutline className=' text-darkBlue text-2xl' />
-        <img src={card_image.src} className=' h-9 w-9 rounded-full' />
+        <img src={card_image.src} className=' h-9 w-9 rounded-full' alt='user_image' />
         <div className='hidden sm:flex flex-col'>
           <p className='text-sm'>{user?.firstName}</p>
-          <p className='text-xs'>Student</p>
+          <p className='text-xs'>{user?.roles_id == 3 ? "Tutor" : user?.roles_id == 4 ? "Mentor" : "Instituion Admin"}</p>
         </div>
       </div>
 
       {/* Sidebar toogle icons */}
-      {
-        !show ? (
-          <div className='flex flex-row  w-[120px] justify-between items-center md:hidden'>
-            {/* Search Icon for small screens */}
-            <BiSearchAlt size={20} color='#121F4C' className='block' />
+      {!show ? (
+        <div className='flex flex-row  w-[120px] justify-between items-center md:hidden'>
+          {/* Search Icon for small screens */}
+          <BiSearchAlt size={20} color='#121F4C' className='block' />
 
-            <AiOutlineShoppingCart size={20} className='text-darkBlue' />
+          <AiOutlineShoppingCart size={20} className='text-darkBlue' />
 
-            <IoNotificationsOutline size={20} className='text-darkBlue ' />
+          <IoNotificationsOutline size={20} className='text-darkBlue ' />
 
-            <IoMenuOutline size={20} color='#121F4C' className='md:ml-[10px] hover:cursor-pointer md:hidden' onClick={() => {setShow(true); setSlideIn(true)}} />
-          </div>
-        ) : null
-        
-      }
+          <IoMenuOutline
+            size={20}
+            color='#121F4C'
+            className='md:ml-[10px] hover:cursor-pointer md:hidden'
+            onClick={() => {
+              setShow(true);
+              setSlideIn(true);
+            }}
+          />
+        </div>
+      ) : null}
     </div>
   );
 };

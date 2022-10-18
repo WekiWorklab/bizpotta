@@ -6,9 +6,16 @@ import { BiChevronDown } from "react-icons/bi";
 import { OnboardingSvg } from "../public/vectors/onboardingSvg";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import Select from "react-select";
 
 const Onboard = () => {
   const router = useRouter();
+
+  const options = [
+    { value: "chocolate", label: "Chocolate" },
+    { value: "strawberry", label: "Strawberry" },
+    { value: "vanilla", label: "Vanilla" },
+  ];
 
   const [dropdown, setDropdown] = useState("usertype");
   const [toggleDrop, setToggleDrop] = useState({ user: false, work: false, sector: false, job: false });

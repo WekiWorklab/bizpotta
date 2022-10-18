@@ -29,6 +29,8 @@ export default function AuthLayout({ children }) {
           router.push("/creator");
           break;
       }
+    } else {
+      router.push("/onboarding");
     }
     if (!user) {
       setLoading(false);
