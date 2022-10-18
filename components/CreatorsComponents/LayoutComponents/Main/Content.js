@@ -28,7 +28,6 @@ const Content = () => {
   };
 
   const value = (times.completed / times.total) * 100;
-  console.log(value);
 
   return (
     <div className='relative w-full h-full bg-[#FEFEFE] flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 xl:px-8 py-6  text-darkGray '>
