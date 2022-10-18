@@ -1,17 +1,23 @@
+import React from "react";
 import { wrapper } from "../store/store";
 import "../styles/globals.css";
 import NextNProgress from "nextjs-progressbar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { Hydrate, QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function MyApp({ Component, pageProps }) {
-  
+  const [queryClient] = React.useState(() => new QueryClient());
+
   return (
     <>
-      <NextNProgress color='#121f4c' />
-      <Component {...pageProps} />
-      <ToastContainer />
+      <QueryClientProvider client={queryClient}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <NextNProgress color='#121f4c' />
+          <Component {...pageProps} />
+          <ToastContainer />
+        </Hydrate>
+      </QueryClientProvider>
     </>
   );
 }
