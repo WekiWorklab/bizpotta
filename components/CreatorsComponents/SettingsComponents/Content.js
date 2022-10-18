@@ -4,16 +4,20 @@ import { AiFillCaretDown, AiOutlineArrowDown, AiOutlinePicture } from 'react-ico
 import { Picture, specialization } from '../../../public'
 import TailwindSelect from '../../TailwindSelect'
 import {SlPicture} from 'react-icons/si'
+import { useEffect } from 'react'
 
 const Content = () => {
 
     const [select, setSelect] = useState('account')
+    const [open, setOpen] = useState('0')
+    /**The open and setOpen objects are used to make sure that multiple select dropdowns can't be open at the same time */
+    
 
   return (
     <div className='relative w-full h-full bg-[#FDFDFD] flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 xl:px-10 py-10 text-darkGray'>
 
         {/* Nav section */}
-        <div className='w-full overflow-x-scroll horizontal-scrollbar'>
+        <div className='w-full overflow-x-scroll green-horizontal-scrollbar lg:overflow-x-hidden  '>
             <div className='min-w-[670px] flex items-center gap-x-12 ' >
                 <div className={`${select === "personal" ? 'bg-[#94F236] bg-opacity-[0.06] text-[#5CAC0D]' : "text-[#999999]"} px-2 py-2 rounded-md text-[13px] cursor-pointer `} onClick = {() => setSelect("personal")}>Personal information</div>
                 <div className={`${select === "education" ? 'bg-[#94F236] bg-opacity-[0.06] text-[#5CAC0D]' : "text-[#999999]"} px-2 py-2 rounded-md text-[13px] cursor-pointer `} onClick = {() => setSelect("education")} >Education</div>
@@ -26,16 +30,12 @@ const Content = () => {
         {/* Body */}
 
         <div className='w-full '>
-            {select === "personal" && <PersonalInformation />}
-            {select === "education" && <Education />}
-            {select === "company" && <CompanyProfile />}
-            {select === "payment" && <Payment />}
-            {select === "account" && <Account />}
+            {select === "personal" && <PersonalInformation open = {open} setOpen = {setOpen}/>}
+            {select === "education" && <Education open = {open} setOpen = {setOpen}/>}
+            {select === "company" && <CompanyProfile open = {open} setOpen = {setOpen}/>}
+            {select === "payment" && <Payment open = {open} setOpen = {setOpen}/>}
+            {select === "account" && <Account open = {open} setOpen = {setOpen}/>}
         </div>
-
-
-
-
 
     </div>
   )
@@ -45,19 +45,29 @@ export default Content
 
 
 // Select Components
-const SelectOptions = ({data, option, setOption, width}) => {
+const SelectOptions = ({data, option, setOption, width, type, open, setOpen}) => {
+
 
     const [showSelect, setShowSelect] = useState(false)
+
+    useEffect(() => {
+      if(open != type) {
+        setShowSelect(false)
+      }
+    }, [open, type])
+    
+    /**This useffect ensures that all non-opened dropdowns have their showSelect boolean set to false when a different dropdown is opened. This prevents faulty toggling of the showSelect variable */
+
 
     return (
         <div className='relative mt-4'>
             <div className='flex items-center gap-x-3'>
-                <div className={`w-[${width}] h-[40px] px-1 rounded-md focus:ring-0 outline-none border border-[1px] border-[#CCCCCC] border-opacity-[0.45] flex items-center text-[13px] text-gray-400 pl-10 `} >
+                <div className={`w-[${width}] h-[40px] px-2 rounded-md focus:ring-0 outline-none border border-[1px] border-[#CCCCCC] border-opacity-[0.45] flex justify-between items-center text-[13px] text-gray-400`} >
                     {option || "select"}
+                    <AiFillCaretDown size={20} color='#999999' onClick={() => {setShowSelect(prev => !prev); setOpen(type)}}/>
                 </div>
-                <AiFillCaretDown size={20} color='#999999' onClick={() => setShowSelect(prev => !prev)}/>
             </div>
-            {showSelect && <div className='absolute min-w-[200px] z-20 top-[42px] left-0 py-4 bg-white rounded-md dropdown-shadow'>
+            {(showSelect && open === type) && <div className='absolute min-w-[200px] z-20 top-[42px] left-0 py-4 bg-white rounded-md dropdown-shadow'>
                 {
                     data.map((el, index) => (
                         <div key={index} className='py-2 px-4 hover:bg-gray-500 hover:text-white text-[13px]' onClick={() => {setOption(el); setShowSelect(false)}}>
@@ -72,7 +82,7 @@ const SelectOptions = ({data, option, setOption, width}) => {
 
 
 // Account Section
-const Account = () => {
+const Account = ({open, setOpen}) => {
 
     const [industry, setIndustry] = useState("")
     const [experience, setExperience] = useState("")
@@ -82,6 +92,7 @@ const Account = () => {
     const Industry = ["Less than 1 year", "Less than 5 years", "Less than 10 years", "More than 10 years"]
     const Experience = ["Less than 1 year", "Less than 5 years", "Less than 10 years", "More than 10 years"]
 
+
     return(
         <div className='w-full mt-8 pb-20'>
             <div className='font-bold text-[16px]'>Account</div>
@@ -89,33 +100,33 @@ const Account = () => {
             <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>What industry would you be teaching in</p>
                 <div>
-                    <SelectOptions data = {Industry} width = '330px' option = {industry} setOption = {setIndustry} />
+                    <SelectOptions data = {Industry} width = '330px' option = {industry} setOption = {setIndustry} open = {open} setOpen = {setOpen} type='1'/>
                 </div>
             </div>
 
             <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>How many years of experience do you have in this field?</p>
                 <div>
-                    <SelectOptions data = {Experience} width = '330px' option = {experience} setOption = {setExperience} />
+                    <SelectOptions data = {Experience} width = '330px' option = {experience} setOption = {setExperience} open = {open} setOpen = {setOpen} type='2'/>
                 </div>
             </div>
             <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>How much training material do you have?</p>
                 <div>
-                    <SelectOptions data = {Experience} width = '330px' option = {material} setOption = {setMaterial} />
+                    <SelectOptions data = {Experience} width = '330px' option = {material} setOption = {setMaterial} open = {open} setOpen = {setOpen} type='3'/>
                 </div>
             </div>
             <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>How much do you plan on making from teaching this course?</p>
                 <div>
-                    <SelectOptions data = {Experience} width = '330px' option = {revenue} setOption = {setRevenue} />
+                    <SelectOptions data = {Experience} width = '330px' option = {revenue} setOption = {setRevenue} open = {open} setOpen = {setOpen} type='4'/>
                 </div>
             </div>
             <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>How much time do you have in creating your course weekly?</p>
                 <p className='font-bold text-[11px]' >It is nothing to worry about, we will help you acheive your goals</p>
                 <div>
-                    <SelectOptions data = {Experience} width = '330px' option = {revenue} setOption = {setRevenue} />
+                    <SelectOptions data = {Experience} width = '330px' option = {revenue} setOption = {setRevenue} open = {open} setOpen = {setOpen} type='5'/>
                 </div>
             </div>
             <div className = "mt-16 text-[14px]">
@@ -135,7 +146,7 @@ const Account = () => {
 
 
 // Payments section
-const Payment = ({}) => {
+const Payment = ({open, setOpen}) => {
 
     const [bank, setBank] = useState()
 
@@ -147,7 +158,7 @@ const Payment = ({}) => {
         <div className = "mt-16 text-[14px]">
             <p className='font-bold'>Bank Name</p>
             <div>
-                <SelectOptions data = {banks} width = '330px' option = {bank} setOption = {setBank} />
+                <SelectOptions data = {banks} width = '330px' option = {bank} setOption = {setBank} open = {open} setOpen = {setOpen} type='1'/>
             </div>
         </div>
 
@@ -248,7 +259,7 @@ const CompanyProfile = () => {
 
 
 /** Education section */
-const Education = () => {
+const Education = ({open, setOpen}) => {
 
     const [education, setEducation] = useState()
     const [experience, setExperience] = useState()
@@ -272,42 +283,42 @@ const Education = () => {
             <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>Highest level of education</p>
                 <div>
-                    <SelectOptions data = {level} width = '330px' option = {education} setOption = {setEducation} />
+                    <SelectOptions data = {level} width = '330px' option = {education} setOption = {setEducation} open = {open} setOpen = {setOpen} type='1'/>
                 </div>
             </div>
 
             <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>Work Experience</p>
                 <div>
-                    <SelectOptions data = {Experience} width = '330px' option = {experience} setOption = {setExperience} />
+                    <SelectOptions data = {Experience} width = '330px' option = {experience} setOption = {setExperience} open = {open} setOpen = {setOpen} type='2'/>
                 </div>
             </div>
 
             <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>Institution</p>
                 <div>
-                    <SelectOptions data = {Institution} width = '280px' option = {institution} setOption = {setInstitution} />
+                    <SelectOptions data = {Institution} width = '280px' option = {institution} setOption = {setInstitution} open = {open} setOpen = {setOpen} type='3'/>
                 </div>
             </div>
 
             <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>Departmental Role</p>
                 <div>
-                    <SelectOptions data = {Institution} width = '280px' option = {institution} setOption = {setInstitution} />
+                    <SelectOptions data = {Institution} width = '280px' option = {institution} setOption = {setInstitution} open = {open} setOpen = {setOpen} type='4'/>
                 </div>
             </div>
 
             <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>Years of Experience</p>
                 <div>
-                    <SelectOptions data = {timeExperience} width = '280px' option = {time} setOption = {setTime} />
+                    <SelectOptions data = {timeExperience} width = '280px' option = {time} setOption = {setTime} open = {open} setOpen = {setOpen} type='5'/>
                 </div>
             </div>
 
             <div className = "mt-16 text-[14px]">
                 <p className='font-bold'>Certification</p>
                 <div>
-                    <SelectOptions data = {timeExperience} width = '280px' option = {time} setOption = {setTime} />
+                    <SelectOptions data = {timeExperience} width = '280px' option = {time} setOption = {setTime} open = {open} setOpen = {setOpen} type='6'/>
                 </div>
                 <div className='flex w-[280px] items-center mt-3'>
                     <AiOutlinePicture size={20} />

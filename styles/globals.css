@@ -143,6 +143,24 @@
   border-radius: 4px 4px 4px 4px;
 }
 
+/** Green Horizontal Scrollbar***/
+.green-horizontal-scrollbar::-webkit-scrollbar{
+  background: rgba(148, 242, 54, 0.06);
+  height: 4px;
+}
+
+.green-horizontal-scrollbar::-webkit-scrollbar-track{
+  background: rgba(148, 242, 54, 0.06);
+  height: 4px;
+
+}
+
+.green-horizontal-scrollbar::-webkit-scrollbar-thumb {
+  background: #5CAC0D;
+  border-radius: 4px 4px 4px 4px;
+}
+
+
 
 
 /** message Drop **/
