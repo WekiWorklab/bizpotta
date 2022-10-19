@@ -15,10 +15,14 @@ import { AiOutlineLeftCircle, AiOutlineRightCircle } from "react-icons/ai";
 import { IoLogoWhatsapp } from "react-icons/io5";
 import { BlueFacebook, BlueGroup, BlueInstagram, BlueTelegram, BlueTwitter, Filter, Money, Suprise } from "../../../../public";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { useQuery } from "@tanstack/react-query";
+
+const baseUrl = process.env.NEXT_PUBLIC_REACT_APP_API_URL;
 
 const Content = () => {
   const [select, setSelected] = useState("");
-  const { user } = useSelector((state) => state.auth);
+  const { user, token } = useSelector((state) => state.auth);
 
   const ongoing = true;
 
@@ -29,14 +33,30 @@ const Content = () => {
 
   const value = (times.completed / times.total) * 100;
 
+  const fetchDashboardStats = async () => {
+    const res = await fetch(`${baseUrl}/creators/tutors-dashboard-stats`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    return data.data;
+  };
+
+  // react query
+
+  const { data, isLoading, isError } = useQuery(["dashboardStats"], fetchDashboardStats);
+
   return (
     <div className='relative w-full h-full bg-[#FEFEFE] flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 xl:px-8 py-6  text-darkGray '>
       <p className='mb-8'>Hello, {user?.firstName}</p>
 
       <div className='w-full flex flex-row flex-wrap justify-center md:pr-3 gap-3 sm:gap-8 xl:gap-0 xl:justify-between '>
-        <DashBoardCard select={select} title='income' value='100000' type='1' setSelected={setSelected} />
-        <DashBoardCard select={select} title='enrollment' value='20' type='2' setSelected={setSelected} />
-        <DashBoardCard select={select} title='courses' value='30' type='3' setSelected={setSelected} />
+        <DashBoardCard select={select} title='income' value={data?.totalIncome} type='1' setSelected={setSelected} />
+        <DashBoardCard select={select} title='enrollment' value={data?.totalStudents} type='2' setSelected={setSelected} />
+        <DashBoardCard select={select} title='courses' value={data?.totalCourses} type='3' setSelected={setSelected} />
       </div>
 
       {ongoing && select === "courses" && (
@@ -52,13 +72,13 @@ const Content = () => {
         </div>
       )}
 
-      {select === "income" && <WithdrawSection />}
+      {select === "income" && <WithdrawSection token={token} />}
 
       <div className='mt-6 lg:mt-12 w-full'>
         <RenderTableChart select={select} />
       </div>
 
-      {select === "income" && <AffiliateSection />}
+      {select === "income" && <AffiliateSection code={user?.referral_code} />}
 
       <p className='mt-3 lg:mt-10 font-[600]'>Resources</p>
       <p className='mt-2'>Just creating your first class, we got you covered</p>
@@ -114,7 +134,6 @@ export const MainTableFooter = () => {
 
         <div className='centerFlex gap-x-3'>
           <button
-            className
             disabled={currentPage === 1}
             onClick={() => {
               console.log(1);
@@ -123,7 +142,6 @@ export const MainTableFooter = () => {
             <AiOutlineLeftCircle size={19} />
           </button>
           <button
-            className
             onClick={() => {
               console.log(2);
             }}
@@ -190,30 +208,66 @@ export const MainTableHeader = ({ filter, placeholder }) => {
   );
 };
 
-export const AffiliateSection = () => {
+export const AffiliateSection = ({ code }) => {
+  const affilateLink = `https://bizpotta.com/?ref=${code}`;
   return (
     <div className='w-full h-[140px] lg:h-[110px] bg-[#FEF5C9] bg-opacity-[0.32] border border-[#FEF5C9] rounded-md flex flex-col lg:flex-row justify-center lg:justify-between items-center px-2 lg:px-6 mt-16'>
       <div className='flex items-center'>
         <Suprise />
         <div className=''>
           <p className='text-[13px]'>Share your affilate code </p>
-          <p className='text-[13px] font-bold'>tumiLara213</p>
+          <p className='text-[13px] font-bold'>{code}</p>
         </div>
       </div>
 
       <div className='flex items-center gap-x-5  h-2/3 px-4 lg:px-20 lg:border-l-2 border-[#FEF5C9] '>
-        <BlueGroup />
-        <BlueFacebook />
-        <BlueInstagram />
-        <BlueTwitter />
-        <BlueTelegram />
-        <IoLogoWhatsapp size={22} />
+        <a
+          rel='noreferrer'
+          onClick={() => {
+            navigator.clipboard.writeText(affilateLink);
+            toast.success("Copied to clipboard");
+          }}
+          target='_blank'
+          className='flex items-center gap-x-2 text-[#191919] text-[13px] cursor-pointer'
+        >
+          <BlueGroup />
+        </a>
+        <a rel='noreferrer' href={`http://www.facebook.com/share.php?u=${affilateLink}`} target='_blank'>
+          <BlueFacebook />
+        </a>
+        <a rel='noreferrer' href={`https://www.instagram.com/?url=${affilateLink}`} target='_blank'>
+          <BlueInstagram />
+        </a>
+        <a rel='noreferrer' href={`http://www.twitter.com/share?url=${affilateLink}`} target='_blank'>
+          <BlueTwitter />
+        </a>
+        <a rel='noreferrer' href={`https://t.me/share/url?url={${affilateLink}}`} target='_blank'>
+          <BlueTelegram />
+        </a>
+        <a rel='noreferrer' href={`whatsapp://send?text=${affilateLink}`} target='_blank'>
+          <IoLogoWhatsapp size={22} />
+        </a>
       </div>
     </div>
   );
 };
 
-export const WithdrawSection = () => {
+export const WithdrawSection = ({ token }) => {
+  const fetchWallet = async () => {
+    const res = await fetch(`${baseUrl}/creators/wallet`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    return data.data;
+  };
+
+  // react query
+
+  const { data, isLoading, isError } = useQuery(["wallet"], fetchWallet);
   return (
     <div className='w-full h-[100px] bg-[#94F236] bg-opacity-[0.06] flex flex-col gap-y-2 sm:flex-row justify-center sm:justify-between items-center rounded-md px-10 mt-16 '>
       <div className='flex items-center gap-x-4'>
@@ -221,10 +275,10 @@ export const WithdrawSection = () => {
 
         <div className='text-[#222222] text-[14px] centerFlex gap-x-2 font-bold'>
           <p className='text-[16px]'>Available balance</p>
-          <p className='text-[20px]'>N405,000</p>
+          <p className='text-[20px]'>₦{Number(data?.balance).toLocaleString()}</p>
         </div>
       </div>
-      <div className='w-[120px] h-[38px] text-[14px] rounded-md font-bold bg-bizpotta-green centerFlex'>Withdraw</div>
+      <div className='w-[120px] h-[38px] text-[14px] rounded-md font-bold bg-bizpotta-green centerFlex cursor-pointer'>Withdraw</div>
     </div>
   );
 };
