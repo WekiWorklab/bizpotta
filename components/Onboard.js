@@ -8,8 +8,9 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Select from "react-select";
 
-const Onboard = () => {
+const Onboard = ({ data }) => {
   const router = useRouter();
+  console.log(data);
 
   const options = [
     { value: "chocolate", label: "Chocolate" },

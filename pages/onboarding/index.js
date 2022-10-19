@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import Onboard from "../../components/Onboard";
 import { FullPageSpinner } from "../../components/Lib";
 
-const Index = () => {
+const Index = ({ data }) => {
   const router = useRouter();
   const [loading, setLoading] = React.useState(true);
   const { user } = useSelector((state) => state.auth);
@@ -18,7 +18,19 @@ const Index = () => {
 
   if (loading) return <FullPageSpinner />;
 
-  return <Onboard />;
+  return <Onboard data={data} />;
 };
 
 export default Index;
+
+export async function getStaticProps() {
+  const base = process.env.NEXT_PUBLIC_REACT_APP_API_URL;
+  const res = await fetch(`${base}/onboardData`);
+  const result = await res.json();
+  const { data } = result;
+  return {
+    props: {
+      data,
+    },
+  };
+}
