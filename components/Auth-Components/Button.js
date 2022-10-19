@@ -1,12 +1,16 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 
-const Button = ({ name, loading, type }) => {
+const Button = ({ name, loading, type, size }) => {
   return (
     <button
       type={type}
       disabled={loading}
-      className='w-[330px] h-[45px] flex justify-center items-center bg-darkBlue text-white text-sm rounded-md hover:bg-white hover:text-darkBlue hover:text-sm hover:border-[1px] hover:font-bold hover:border-darkBlue '
+      className={
+        size
+          ? `${size} h-[45px] flex justify-center items-center bg-darkBlue text-white text-sm rounded-md hover:bg-white hover:text-darkBlue hover:text-sm hover:border-[1px] hover:font-bold hover:border-darkBlue`
+          : "w-[330px] h-[45px] flex justify-center items-center bg-darkBlue text-white text-sm rounded-md hover:bg-white hover:text-darkBlue hover:text-sm hover:border-[1px] hover:font-bold hover:border-darkBlue"
+      }
     >
       {name}
       {loading ? <Spinner /> : null}

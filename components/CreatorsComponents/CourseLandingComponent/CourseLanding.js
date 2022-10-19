@@ -1,17 +1,59 @@
+import { set, useForm } from "react-hook-form";
+import * as Yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useRouter } from "next/router";
 import React from "react";
 import { AiOutlinePicture } from "react-icons/ai";
 import InputForm from "./InstructorProfileComponent/InputForm";
+import { Button } from "../../../components/Auth-Components/Button";
 
-const CourseLanding = ({ data }) => {
-  console.log(data);
-  const handleSubmit = () => {};
+const CourseLanding = ({ data, setSelect }) => {
   const [categories, setCategories] = React.useState();
+  const [loading, setLoading] = React.useState(false);
+  const [subCategoriesSeleted, setSubCategoriesSeleted] = React.useState();
+  const [levelSeleted, setLevelSeleted] = React.useState();
+  const validationSchema = Yup.object().shape({
+    courseTitle: Yup.string().required("Course Title is required"),
+    courseSubTitle: Yup.string().required("Course Sub Description is required"),
+    courseDescription: Yup.string().required("Course Description is required"),
+    coursePrice: Yup.string().required("Course Price is required"),
+    language: Yup.string().required("Course Language is required"),
+    category: Yup.string().required("Course Category is required"),
+    subCategory: Yup.string().required("Course Sub Category is required"),
+    level: Yup.string().required("Course Level is required"),
+  });
+
+  const formOptions = { resolver: yupResolver(validationSchema) };
+  const { register, handleSubmit, formState, setValue } = useForm(formOptions);
+  const { errors } = formState;
+
+  const router = useRouter();
+  const submitCourse = () => {
+    router.query.courseId = "VALUE";
+    router.push(router);
+    setSelect("structure");
+  };
 
   const onChangeCategories = (e) => {
     setCategories(e.target.value);
+    setValue("category", e.target.value);
+  };
+  const onChangeLevel = (e) => {
+    setLevelSeleted(e.target.value);
+    setValue("level", e.target.value);
+  };
+  const onChangeSubCategories = (e) => {
+    setSubCategoriesSeleted(e.target.value);
+    setValue("subCategory", e.target.value);
   };
 
-  const subCategories = data?.subCategories?.filter((item) => item.course_category_id === categories);
+  const subCategories = data?.subCategories?.filter((item) => item.course_category_id == categories);
+
+  const level = [
+    { id: "Beginner", name: "Beginner" },
+    { id: "Intermediate", name: "Intermediate" },
+    { id: "Advanced", name: "Advanced" },
+  ];
 
   return (
     <div className='w-full'>
@@ -43,98 +85,114 @@ const CourseLanding = ({ data }) => {
 
       <div className='px-4 md:px-10 bg-white py-8 mt-10 rounded-sm shadow-xl border'>
         <p className='font-bold'>Landing Page</p>
-
-        <div className='text-[13px] mt-6'>
-          The following descriptions will be publicly visible on your <span className='text-seaBlue'>Landing Page</span> and will have a direct impact
-          on your course performance. These descriptions will help learners decide if your course is right for them.
-        </div>
-
-        <div className=' mt-10'>
-          <p className='text-[13px] font-bold'>Course Title</p>
-          <p className='text-[12px]'>Give your course a clear title that will explain what the course is all about. Max of 100 words.</p>
-          <div className='flex flex-row gap-x-8 mt-2'>
-            <InputForm width='500px' placeholder='' type='text' />
+        <form onSubmit={handleSubmit(submitCourse)}>
+          <div className='text-[13px] mt-6'>
+            The following descriptions will be publicly visible on your <span className='text-seaBlue'>Landing Page</span> and will have a direct
+            impact on your course performance. These descriptions will help learners decide if your course is right for them.
           </div>
-        </div>
 
-        <div className=' mt-10'>
-          <p className='text-[13px] font-bold'>Course Subtitle</p>
-          <p className='text-[12px]'>Give your course a clear title that will explain what the course is all about. Max of 100 words.</p>
-          <div className='flex flex-row gap-x-8 mt-2'>
-            <InputForm width='500px' placeholder='' type='text' />
+          <div className=' mt-10'>
+            <p className='text-[13px] font-bold'>Course Title</p>
+            <p className='text-[12px]'>Give your course a clear title that will explain what the course is all about. Max of 100 words.</p>
+            <div className='flex flex-row gap-x-8 mt-2'>
+              <InputForm width='500px' placeholder='' type='text' register={register} InputName='courseTitle' />
+            </div>
+            <div className='px-4 text-red-500 text-[12px] md:text-sm font-medium'>{errors.courseTitle?.message}</div>
           </div>
-        </div>
 
-        <div className=' mt-10'>
+          <div className=' mt-10'>
+            <p className='text-[13px] font-bold'>Course Subtitle</p>
+            <p className='text-[12px]'>Give your course a clear title that will explain what the course is all about. Max of 100 words.</p>
+            <div className='flex flex-row gap-x-8 mt-2'>
+              <InputForm width='500px' placeholder='' type='text' register={register} InputName='courseSubTitle' />
+            </div>
+            <div className='px-4 text-red-500 text-[12px] md:text-sm font-medium'>{errors.courseSubTitle?.message}</div>
+          </div>
+
+          {/* <div className=' mt-10'>
           <p className='text-[13px] font-bold'>Course Hastags</p>
           <p className='text-[12px]'>Give your course a clear title that will explain what the course is all about. Max of 100 words.</p>
           <div className='flex flex-row gap-x-8 mt-2'>
             <InputForm width='500px' placeholder='' type='text' />
           </div>
-        </div>
+        </div> */}
 
-        <div className=' mt-10'>
-          <p className='text-[13px] font-bold'>Course Description</p>
-          <p className='text-[12px] mt-2 '>Kindly give a detailed decription of your course. Minimum 1000 words</p>
-          <textarea className='w-full lg:w-[600px] min-h-[200px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-[#C4C4C4] pl-4 text-[14px] mt-2'></textarea>
-        </div>
-
-        <div className=' mt-10'>
-          <p className='text-[13px] font-bold'>Language</p>
-          <div className='flex flex-row gap-x-8 mt-2'>
-            <InputForm width='500px' placeholder='' type='text' />
+          <div className=' mt-10'>
+            <p className='text-[13px] font-bold'>Course Description</p>
+            <p className='text-[12px] mt-2 '>Kindly give a detailed decription of your course. Minimum 1000 words</p>
+            <textarea
+              {...register("courseDescription")}
+              className='w-full lg:w-[600px] min-h-[200px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-[#C4C4C4] pl-4 text-[14px] mt-2'
+            ></textarea>
+            <div className='px-4 text-red-500 text-[12px] md:text-sm font-medium'>{errors.courseDescription?.message}</div>
           </div>
-        </div>
 
-        <div className=' mt-10'>
-          <p className='text-[13px] font-bold'>Level</p>
-          <div className='flex flex-row gap-x-8 mt-2'>
-            <InputForm width='500px' placeholder='' type='text' />
+          <div className=' mt-10'>
+            <p className='text-[13px] font-bold'>Language</p>
+            <div className='flex flex-row gap-x-8 mt-2'>
+              <InputForm width='500px' placeholder='' type='text' register={register} InputName='language' />
+            </div>
+            <div className='px-4 text-red-500 text-[12px] md:text-sm font-medium'>{errors.language?.message}</div>
           </div>
-        </div>
 
-        <div className=' mt-10'>
-          <p className='text-[13px] font-bold'>Course Category</p>
-          <div className='flex flex-row gap-x-8 mt-2'>
-            <SelectForm width='500px' data={data?.categories} name='categories' onChange={onChangeCategories} />
+          <div className=' mt-10'>
+            <p className='text-[13px] font-bold'>Level</p>
+            <div className='flex flex-row gap-x-8 mt-2'>
+              <SelectForm width='500px' data={level} name='level' onChange={onChangeLevel} />
+            </div>
+            <div className='px-4 text-red-500 text-[12px] md:text-sm font-medium'>{errors.level?.message}</div>
           </div>
-        </div>
 
-        <div className=' mt-10'>
-          <p className='text-[13px] font-bold'>Course SubCategory</p>
-          <div className='flex flex-row gap-x-8 mt-2'>
-            <SelectForm width='500px' data={data?.subCategories} name='subCategories' />
+          <div className=' mt-10'>
+            <p className='text-[13px] font-bold'>Course Category</p>
+            <div className='flex flex-row gap-x-8 mt-2'>
+              <SelectForm width='500px' data={data?.categories} name='categories' onChange={onChangeCategories} />
+            </div>
+            <div className='px-4 text-red-500 text-[12px] md:text-sm font-medium'>{errors.category?.message}</div>
           </div>
-        </div>
 
-        <div className=' mt-10'>
-          <p className='text-[13px] font-bold'>Course Image</p>
-          <p className='text-[12px]'>Image quality 750x422 pixel. jpg, jpeg, gif or png</p>
-
-          <div className='h-[40px] w-full sm:w-[300px] lg:w-[500px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-[#C4C4C4] pl-4 text-[15px] flex flex-row items-center gap-x-4'>
-            <AiOutlinePicture size={18} />
-            <input type='file' name='image' className='text-[12px] ml-2 focus:ring-0 focus:outline-none' />
+          <div className=' mt-10'>
+            <p className='text-[13px] font-bold'>Course SubCategory</p>
+            <div className='flex flex-row gap-x-8 mt-2'>
+              <SelectForm width='500px' data={subCategories} name='subCategories' onChange={onChangeSubCategories} />
+            </div>
+            <div className='px-4 text-red-500 text-[12px] md:text-sm font-medium'>{errors.subCategory?.message}</div>
           </div>
-        </div>
 
-        <div className=' mt-10'>
-          <p className='text-[13px] font-bold'>Promotional Video</p>
-          <p className='text-[12px]'>Video quality 750x422 pixel. jpg, jpeg, gif or png</p>
+          <div className=' mt-10'>
+            <p className='text-[13px] font-bold'>Course Image</p>
+            <p className='text-[12px]'>Image quality 750x422 pixel. jpg, jpeg, gif or png</p>
 
-          <div className='h-[40px] w-full sm:w-[300px] lg:w-[500px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-[#C4C4C4] pl-4 text-[15px] flex flex-row items-center gap-x-4'>
-            <AiOutlinePicture size={18} />
-            <input type='file' name='image' className='text-[12px] ml-2 focus:ring-0 focus:outline-none' />
+            <div className='h-[40px] w-full sm:w-[300px] lg:w-[500px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-[#C4C4C4] pl-4 text-[15px] flex flex-row items-center gap-x-4'>
+              <AiOutlinePicture size={18} />
+              <input type='file' name='image' className='text-[12px] ml-2 focus:ring-0 focus:outline-none' required />
+            </div>
+            <div className='px-4 text-red-500 text-[12px] md:text-sm font-medium'>{errors.image?.message}</div>
           </div>
-        </div>
 
-        <div className='flex justify-end mt-6'>
-          <div
-            className='w-[120px] h-[45px] flex items-center justify-center bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer'
-            onClick={() => handleSubmit()}
-          >
-            Save changes
+          <div className=' mt-10'>
+            <p className='text-[13px] font-bold'>Promotional Video</p>
+            <p className='text-[12px]'>Video quality 750x422 pixel. jpg, jpeg, gif or png</p>
+
+            <div className='h-[40px] w-full sm:w-[300px] lg:w-[500px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-[#C4C4C4] pl-4 text-[15px] flex flex-row items-center gap-x-4'>
+              <AiOutlinePicture size={18} />
+              <input type='file' name='video' className='text-[12px] ml-2 focus:ring-0 focus:outline-none' required />
+            </div>
+            <div className='px-4 text-red-500 text-[12px] md:text-sm font-medium'>{errors.video?.message}</div>
           </div>
-        </div>
+
+          <div className='flex justify-end mt-6 cursor-pointer'>
+            <Button
+              className='w-[120px]  h-[45px] flex items-center justify-center bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer'
+              type='submit'
+              name={" Save changes"}
+              size={"w-[120px]"}
+              loading={loading}
+            >
+              Save changes
+            </Button>
+          </div>
+        </form>
       </div>
     </div>
   );
