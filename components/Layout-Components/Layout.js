@@ -10,6 +10,10 @@ import XSidebar from "../XSidebar";
 import CourseDetailsModal from "../CourseDetailsModal";
 import { FullPageSpinner } from "../Lib";
 
+import { motion } from 'framer-motion'
+
+
+
 const Layout = ({ children }) => {
   const router = useRouter();
   const { user, isAuthenticated } = useSelector((state) => state.auth);
@@ -34,8 +38,13 @@ const Layout = ({ children }) => {
   return (
     <div className='relative overflow-hidden'>
       <Header show={show} setShow={setShow} slideIn={slideIn} setSlideIn={setSlideIn} />
+      <motion.div className = 'w-full' 
+            initial={{ opacity: 0, x: '20%' }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ease: "easeOut", duration: 1 }}
+          >
       {children}
-      {/* <BlueFooter /> */}
+      </motion.div>
       <Sidebar />
       <XSidebar show={show} setShow={setShow} slideIn={slideIn} setSlideIn={setSlideIn} />
       {typeof window !== "undefined" && <CourseDetailsModal />}
