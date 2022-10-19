@@ -17,20 +17,22 @@ export default function AuthLayout({ children }) {
     if (isError) {
       toast.error(message);
     }
-    if (user?.is_onboarded) {
-      switch (user?.roles_id) {
-        case 1:
-          router.push("/admin");
-          break;
-        case 2:
-          router.push("/students");
-          break;
-        default:
-          router.push("/creator");
-          break;
+    if (user) {
+      if (user?.is_onboarded) {
+        switch (user?.roles_id) {
+          case 1:
+            router.push("/admin");
+            break;
+          case 2:
+            router.push("/students");
+            break;
+          default:
+            router.push("/creator");
+            break;
+        }
+      } else {
+        router.push("/onboarding");
       }
-    } else {
-      router.push("/onboarding");
     }
     if (!user) {
       setLoading(false);
