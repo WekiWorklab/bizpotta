@@ -1,6 +1,5 @@
 ////////
 import React, { memo, useEffect, useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 ////////
@@ -11,12 +10,15 @@ import { CgProfile } from "react-icons/cg";
 import { IoSettingsOutline, IoLogOutOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { AffiliateSVG } from "../../../public";
+import { logout } from "../../../store/authSlice";
 
 function Sidebar() {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
 
   const router = useRouter();
   const path = router.asPath;
+
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -127,7 +129,12 @@ function Sidebar() {
               </div>
             </li>
 
-            <li className='items-center cursor-pointer'>
+            <li
+              className='items-center cursor-pointer'
+              onClick={() => {
+                dispatch(logout());
+              }}
+            >
               <div className='flex flex-row justify-start items-center'>
                 <IoLogOutOutline color='gray' />
                 <div className='text-gray-400 font-light text-sm ml-5'>Log-out</div>
