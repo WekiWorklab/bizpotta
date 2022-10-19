@@ -47,7 +47,7 @@ const Content = () => {
 
   // react query
 
-  const { data, isLoading, isError } = useQuery(["dashboardStats"], fetchDashboardStats);
+  const { data } = useQuery(["dashboardStats"], fetchDashboardStats);
 
   return (
     <div className='relative w-full h-full bg-[#FEFEFE] flex flex-col mt-[90px] md:mt-[120px] md:justify-center items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 xl:px-8 py-6  text-darkGray '>
@@ -267,7 +267,7 @@ export const WithdrawSection = ({ token }) => {
 
   // react query
 
-  const { data, isLoading, isError } = useQuery(["wallet"], fetchWallet);
+  const { data } = useQuery(["wallet"], fetchWallet);
   return (
     <div className='w-full h-[100px] bg-[#94F236] bg-opacity-[0.06] flex flex-col gap-y-2 sm:flex-row justify-center sm:justify-between items-center rounded-md px-10 mt-16 '>
       <div className='flex items-center gap-x-4'>
