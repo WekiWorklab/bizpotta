@@ -9,13 +9,14 @@ const initialState = {
 };
 
 // set user
-export const updateUser = createAsyncThunk("creator/setUser", async (data, thunkAPI) => {
+export const onBoardUser = createAsyncThunk("creator/onBoard", async (data, thunkAPI) => {
   try {
     if (data.user_type === 3) {
-      return await creatorService.getUserFromServer();
+      console.log("data", data);
+      return await creatorService.onBoardMentor(data);
     }
     if (data.user_type === 4) {
-      return await creatorService.getUserFromServer();
+      return await creatorService.onBoardTutor(data);
     }
   } catch (error) {
     const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
@@ -36,17 +37,17 @@ export const creatorSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(updateUser.pending, (state) => {
+      .addCase(onBoardUser.pending, (state) => {
         state.isLoading = true;
         state.message = null;
       })
-      .addCase(updateUser.fulfilled, (state, { payload }) => {
+      .addCase(onBoardUser.fulfilled, (state, { payload }) => {
         state.isError = false;
         state.isLoading = false;
         state.message = payload.message;
         state.isUserUpdated = true;
       })
-      .addCase(updateUser.rejected, (state, { payload }) => {
+      .addCase(onBoardUser.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.isUserUpdated = false;
         state.isError = true;

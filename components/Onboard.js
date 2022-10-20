@@ -13,11 +13,15 @@ import { Fragment } from "react";
 import { Reciept } from "../public";
 
 import { MdOutlineCancel } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { onBoardUser } from "../store/creatorSlice";
+import { setUser, reset } from "../store/authSlice";
 
 const Onboard = ({ data }) => {
   const router = useRouter();
   const { isUserUpdated } = useSelector((state) => state.creator);
+  const [showButton, setShowButton] = useState(false);
 
   const [toggleDrop, setToggleDrop] = useState({
     personnel: false,
@@ -31,6 +35,7 @@ const Onboard = ({ data }) => {
   const [tutorWork, setTutorWork] = useState();
   const [industry, setIndustry] = useState();
   const [jobDesc, setJobDesc] = useState();
+  const dispatch = useDispatch();
 
   const [show, setShow] = useState(false);
   const [canSubmit, setCanSubmit] = useState(false);
@@ -46,14 +51,24 @@ const Onboard = ({ data }) => {
     const { value } = event.target;
     setTutorWork(value);
   };
-
-  if (tutorWork && industry && jobDesc) {
-    console.log("can submit");
-  }
-
-  if (mentorWork && industry && jobDesc) {
-    console.log("can submit 2");
-  }
+  useEffect(() => {
+    if (userType?.name === "Student") {
+      setShowButton(true);
+    } else if (userType?.name === "Mentor") {
+      if (!mentorWork || !industry || !jobDesc) {
+        setShowButton(false);
+      }
+      if (mentorWork && industry && jobDesc) {
+        setShowButton(true);
+      }
+    } else if (userType?.name === "Tutor") {
+      if (tutorWork && industry && jobDesc) {
+        setShowButton(true);
+      } else if (!tutorWork || !industry || !jobDesc) {
+        setShowButton(false);
+      }
+    }
+  }, [tutorWork, industry, jobDesc, mentorWork, userType]);
 
   const filteredItems = useMemo(() => {
     if (tutorWork) {
@@ -75,8 +90,7 @@ const Onboard = ({ data }) => {
         work_type: mentorWork,
         jobDesc: jobDesc?.name,
       };
-      dispatch(updateUser(data));
-      router.push("/creators");
+      dispatch(onBoardUser(data));
     }
 
     if (userType.name === "Tutor") {
@@ -86,15 +100,12 @@ const Onboard = ({ data }) => {
         work_type: tutorWork,
         jobDesc: jobDesc?.id,
       };
-
-      dispatch(updateUser(data));
-      router.push("/creators");
-      dispatch(updateUser(data));
+      dispatch(onBoardUser(data));
     }
   };
 
   useEffect(() => {
-    if (isUserUpdated && userType.id == 3) router.push("/creator");
+    if (isUserUpdated && userType.id == 3) router.push("/creators");
     if (isUserUpdated && userType.id == 4) {
       if (filteredItems?.length > 0 && tutorWork.trim().length > 0) {
         router.push("/creators");
@@ -110,7 +121,6 @@ const Onboard = ({ data }) => {
     { id: 2, name: "Student" },
     { id: 3, name: "Mentor" },
     { id: 4, name: "Tutor" },
-    { id: 5, name: "Institution" },
   ];
 
   return (
@@ -214,9 +224,12 @@ const Onboard = ({ data }) => {
       </div>
       <div className='w-full flex justify-end mt-16 items-end'>
         <button
-          className='w-[100px] h-[40px] centerFlex bg-gray-300 text-[#7C7C7C] rounded-md '
-          onClick={() => handleNext()}
-          // disabled = {canSubmit}
+          className={
+            showButton
+              ? `w-[100px] h-[45px] flex justify-center items-center bg-darkBlue text-white text-sm rounded-md hover:bg-white hover:text-darkBlue hover:text-sm hover:border-[1px] hover:font-bold hover:border-darkBlue`
+              : `w-[100px] h-[40px] centerFlex bg-gray-300 text-[#7C7C7C] rounded-md`
+          }
+          onClick={() => (showButton ? handleNext() : toast.error("Please complete the form"))}
         >
           Next
         </button>
@@ -232,9 +245,15 @@ export default Onboard;
 
 const OnboardModal = ({ showModal, setShowModal }) => {
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const closeModal = () => {
     setShowModal(false);
+  };
+
+  const handleNext = () => {
+    dispatch(setUser());
+    router.push("/creators");
   };
 
   return (
@@ -289,7 +308,7 @@ const OnboardModal = ({ showModal, setShowModal }) => {
                   <p
                     className='text-[13px] text-[#3B3B3B] underline cursor-pointer'
                     onClick={() => {
-                      router.push("/creators/courses");
+                      handleNext();
                     }}
                   >
                     No, Skip

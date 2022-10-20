@@ -15,4 +15,13 @@ export const APIS = {
     SET_LEARNING_PREFERENCES: `${api}/set-learning-preferences`,
     GET_LEARNING_PREFERENCES: `${api}/get-learning-preferences`,
   },
+  MENTORS: {
+    SET_MENTORING_PREFERENCES: `${api}/creators/set-mentor-preferences`,
+  },
+  TUTORS: {
+    SET_TUTORING_PREFERENCES: `${api}/creators/set-tutor-preferences`,
+  },
+  COMPANIES: {
+    SET_COMPANY_PREFERENCES: `${api}/creators/set-institue-preferences`,
+  },
 };

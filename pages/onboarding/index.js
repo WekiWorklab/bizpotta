@@ -17,6 +17,11 @@ const Index = ({ data }) => {
         router.push("/auth/verify-email");
       }
     }
+    if (user?.email_verified_at !== null) {
+      if (user?.onboarded === 1) {
+        router.push("/auth/login");
+      }
+    }
     setLoading(false);
   }, [router, user]);
 
