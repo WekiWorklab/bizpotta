@@ -24,10 +24,20 @@ const onBoardTutor = ({ user_type, industry, work_type, jobDesc }) => {
     return res.data;
   });
 };
+const addCompnay = ({ name, jobDescription, category_id }) => {
+  return AxoisApi.post(`${APIS.TUTORS.ADD_COMPANY}`, {
+    name,
+    jobDescription,
+    category_id,
+  }).then((res) => {
+    return res.data;
+  });
+};
 
 const creatorService = {
   onBoardMentor,
   onBoardTutor,
+  addCompnay,
 };
 
 export default creatorService;

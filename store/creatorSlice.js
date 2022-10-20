@@ -24,6 +24,15 @@ export const onBoardUser = createAsyncThunk("creator/onBoard", async (data, thun
   }
 });
 
+export const addCompnay = createAsyncThunk("creator/addCompnay", async (data, thunkAPI) => {
+  try {
+    return await creatorService.addCompnay(data);
+  } catch (error) {
+    const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
 export const creatorSlice = createSlice({
   name: "creatorData",
   initialState,
@@ -50,6 +59,21 @@ export const creatorSlice = createSlice({
       .addCase(onBoardUser.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.isUserUpdated = false;
+        state.isError = true;
+        state.message = payload;
+      })
+      .addCase(addCompnay.pending, (state) => {
+        state.isLoading = true;
+        state.message = null;
+      })
+      .addCase(addCompnay.fulfilled, (state, { payload }) => {
+        state.isError = false;
+        state.isLoading = false;
+        state.message = payload.message;
+        state.isSuccess = true;
+        state.isUserUpdated = true;
+      })
+      .addCase(addCompnay.rejected, (state, { payload }) => {
         state.isError = true;
         state.message = payload;
       });
