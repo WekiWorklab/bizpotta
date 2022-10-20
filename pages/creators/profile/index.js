@@ -3,20 +3,13 @@ import NewContent from "../../../components/CreatorsComponents/CourseLandingComp
 import NewMentorContent from "../../../components/CreatorsComponents/CourseLandingComponent/NewMentorContent";
 import Layout from "../../../components/CreatorsComponents/LayoutComponents/Layout";
 
-const index = () => {
+const Index = () => {
+  const mentor = false;
 
-  const mentor = false
-
-  return (
-    <Layout>
-        {mentor ? <NewMentorContent /> : <NewContent />}
-    </Layout>
-    )
+  return <Layout>{mentor ? <NewMentorContent /> : <NewContent />}</Layout>;
 
   //New Content is the tutor section for first time tutors
   //NewMentorContent is the mentor section for first time mentors
-
 };
 
-export default index;
-
+export default Index;
