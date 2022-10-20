@@ -34,7 +34,7 @@ const Content = () => {
   const [select, setSelected] = useState("");
   const { user, token } = useSelector((state) => state.auth);
 
-  const [showWithdrawModal, setShowWithdrawModal] = useState(true);
+  const [showWithdrawModal, setShowWithdrawModal] = useState(false);
   const [amount, setAmount] = useState(null);
 
   const ongoing = true;

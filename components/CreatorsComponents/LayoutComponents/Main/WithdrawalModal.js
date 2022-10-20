@@ -11,6 +11,8 @@ const WithdrawalModal = ({ showWithdrawModal, setShowWithdrawModal, amount, setA
     const router = useRouter()
         
     const closeModal = () => {
+        setAmount(null)
+        setSection("acc_amount")
       setShowWithdrawModal(false);
     };
   
