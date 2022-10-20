@@ -72,6 +72,7 @@ export const creatorSlice = createSlice({
         state.message = payload.message;
         state.isSuccess = true;
         state.isUserUpdated = true;
+        state.isUserUpdated = true;
       })
       .addCase(addCompnay.rejected, (state, { payload }) => {
         state.isError = true;

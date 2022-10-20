@@ -11,7 +11,7 @@ import { setUser } from "../store/authSlice";
 const CompanyOnboard = ({ data }) => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { isSuccess, isError, message } = useSelector((state) => state.creator);
+  const { isSuccess, isUserUpdated, isError, message } = useSelector((state) => state.creator);
 
   const [toggleDrop, setToggleDrop] = useState({
     personnel: false,
@@ -43,7 +43,7 @@ const CompanyOnboard = ({ data }) => {
   };
 
   useEffect(() => {
-    if (isSuccess) {
+    if (isUserUpdated) {
       toast.success("Company added successfully");
       dispatch(reset());
       dispatch(setUser());
@@ -56,7 +56,7 @@ const CompanyOnboard = ({ data }) => {
         dispatch(reset());
       }, 2000);
     }
-  }, [isSuccess, dispatch, router, isError, message]);
+  }, [isUserUpdated, dispatch, router, isError, message]);
 
   return (
     <div className='w-full min-h-screen px-2 md:px-4 xl:px-32 relative py-20'>
