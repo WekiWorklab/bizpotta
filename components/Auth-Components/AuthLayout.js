@@ -18,20 +18,24 @@ export default function AuthLayout({ children }) {
       toast.error(message);
     }
     if (user) {
-      if (user?.is_onboarded) {
-        switch (user?.roles_id) {
-          case 1:
-            router.push("/admin");
-            break;
-          case 2:
-            router.push("/students");
-            break;
-          default:
-            router.push("/creator");
-            break;
-        }
+      if (user.email_verified_at === null) {
+        router.push("/auth/verify-email");
       } else {
-        router.push("/onboarding");
+        if (user?.is_onboarded) {
+          switch (user?.roles_id) {
+            case 1:
+              router.push("/admin");
+              break;
+            case 2:
+              router.push("/students");
+              break;
+            default:
+              router.push("/creator");
+              break;
+          }
+        } else {
+          router.push("/onboarding");
+        }
       }
     }
     if (!user) {

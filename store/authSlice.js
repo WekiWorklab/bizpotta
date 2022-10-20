@@ -17,7 +17,6 @@ const initialState = {
 };
 
 // set user
-
 export const setUser = createAsyncThunk("auth/setUser", async (data, thunkAPI) => {
   try {
     return await authService.getUserFromServer();
@@ -47,6 +46,26 @@ export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
   }
 });
 
+// Send  Email verification code
+export const sendVerificationCode = createAsyncThunk("auth/sendVerificationCode", async (thunkAPI) => {
+  try {
+    return await authService.sendVerificationCode();
+  } catch (error) {
+    const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
+// Send  Email verification code
+export const verifyEmail = createAsyncThunk("auth/verifyEmail", async (passcode, thunkAPI) => {
+  try {
+    return await authService.VerifyCode(passcode);
+  } catch (error) {
+    const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
 export const logout = createAsyncThunk("auth/logout", async () => {
   await authService.logout();
 });
@@ -65,6 +84,40 @@ export const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(verifyEmail.pending, (state) => {
+        state.isLoading = true;
+        state.message = null;
+      })
+      .addCase(verifyEmail.fulfilled, (state, { payload }) => {
+        state.isError = false;
+        state.isEmailVerified = true;
+        state.isLoading = false;
+        state.message = payload.message;
+      })
+      .addCase(verifyEmail.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isError = true;
+        state.message = payload;
+      })
+      .addCase(sendVerificationCode.pending, (state) => {
+        state.isLoading = true;
+        state.isSuccess = false;
+        state.isError = false;
+        state.message = "";
+      })
+      .addCase(sendVerificationCode.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isError = false;
+        state.message = payload.message;
+      })
+      .addCase(sendVerificationCode.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.isSuccess = false;
+        state.isError = true;
+        state.message = payload;
+      })
       .addCase(setUser.pending, (state) => {
         state.isLoading = true;
       })

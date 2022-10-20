@@ -100,6 +100,20 @@ const resetPassword = (data) => {
   });
 };
 
+const sendVerificationCode = () => {
+  return AxoisApi.post(`${APIS.AUTH.VERIFY_EMAIL}`, {}).then((res) => {
+    return res.data;
+  });
+};
+
+const VerifyCode = (otp) => {
+  return AxoisApi.post(`${APIS.AUTH.VERIFY_CODE}`, {
+    passcode: otp,
+  }).then((res) => {
+    return res.data;
+  });
+};
+
 const logout = () => {
   const token = getToken();
   if (token) {
@@ -133,6 +147,8 @@ const authService = {
   getToken,
   resetPassword,
   logout,
+  sendVerificationCode,
+  VerifyCode,
 };
 
 export default authService;

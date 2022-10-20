@@ -2,7 +2,8 @@ const api = process.env.NEXT_PUBLIC_REACT_APP_API_URL;
 
 export const APIS = {
   AUTH: {
-    VERIFY_EMAIL: `${api}/auth/verifyEmail`,
+    VERIFY_EMAIL: `${api}/email/verification-notification`,
+    VERIFY_CODE: `${api}/verify-email`,
     SIGNUP: `${api}/register`,
     SIGNIN: `${api}/login`,
     FORGOT_PASSWORD: `${api}/forgot-password`,

@@ -1,7 +1,5 @@
 import AxoisApi from "../utils/index";
 import { APIS } from "../utils/api";
-import Cookies from "js-cookie";
-import { setCookie, removeCookies } from "cookies-next";
 
 export const getCourseCategories = async () => {
   try {

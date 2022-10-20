@@ -8,34 +8,38 @@
 }
 
 .blueShadow {
-  box-shadow: -1px 5px 39px -7px rgba(157,185,228,0.75);
--webkit-box-shadow: -1px 5px 39px -7px rgba(157,185,228,0.75);
--moz-box-shadow: -1px 5px 39px -7px rgba(157,185,228,0.75);
+  box-shadow: -1px 5px 39px -7px rgba(157, 185, 228, 0.75);
+  -webkit-box-shadow: -1px 5px 39px -7px rgba(157, 185, 228, 0.75);
+  -moz-box-shadow: -1px 5px 39px -7px rgba(157, 185, 228, 0.75);
 }
 
-
-.slide-dot{
+.slide-dot {
   transition: all 500ms ease-in;
 }
 
-.slide{
+.slide {
   transition: all 500ms ease-in;
 }
 
-.slider{
+.slider {
   transition: all 0ms ease-in;
 }
 
-.sliding{
+.sliding {
   transition: all 11000ms ease-in-out;
 }
 
 @keyframes slideshow {
-  0% {transform: translateX(0);}
-  50%{transform: translate(-100%);}
-  100%{transform: translateX(0%);}
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translate(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
-
 
 .swiper {
   width: 100%;
@@ -72,12 +76,12 @@
 
 .inputField {
   border: 1px solid rgba(204, 204, 204, 0.45);
-  background-color: #FCFDFE;
-  background-color: #FCFDFE;
+  background-color: #fcfdfe;
+  background-color: #fcfdfe;
   border-radius: 3px;
   outline: none;
 }
-.inputField:focus{
+.inputField:focus {
   box-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
 }
 
@@ -88,7 +92,7 @@
   align-items: center;
 }
 
-.resize{
+.resize {
   resize: none;
 }
 
@@ -96,11 +100,11 @@
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.dashboard-card-shadow{
+.dashboard-card-shadow {
   box-shadow: 0px 0px 18px rgba(245, 245, 245, 0.21);
 }
 
-.resources-child{
+.resources-child {
   border: 0.35px solid rgba(133, 133, 133, 0.16);
 }
 
@@ -109,15 +113,14 @@
 }
 
 /** Vertical Scrollbar***/
-.styled-scrollbar::-webkit-scrollbar{
-  background: #E5E5E5;
+.styled-scrollbar::-webkit-scrollbar {
+  background: #e5e5e5;
   width: 8px;
 }
 
-.styled-scrollbar::-webkit-scrollbar-track{
-  background: #E5E5E5;
+.styled-scrollbar::-webkit-scrollbar-track {
+  background: #e5e5e5;
   width: 8px;
-
 }
 
 .styled-scrollbar::-webkit-scrollbar-thumb {
@@ -127,15 +130,14 @@
 /*********/
 
 /** Horizontal Scrollbar***/
-.horizontal-scrollbar::-webkit-scrollbar{
-  background: #E5E5E5;
+.horizontal-scrollbar::-webkit-scrollbar {
+  background: #e5e5e5;
   height: 4px;
 }
 
-.horizontal-scrollbar::-webkit-scrollbar-track{
-  background: #E5E5E5;
+.horizontal-scrollbar::-webkit-scrollbar-track {
+  background: #e5e5e5;
   height: 4px;
-
 }
 
 .horizontal-scrollbar::-webkit-scrollbar-thumb {
@@ -144,47 +146,43 @@
 }
 
 /** Green Horizontal Scrollbar***/
-.green-horizontal-scrollbar::-webkit-scrollbar{
+.green-horizontal-scrollbar::-webkit-scrollbar {
   background: rgba(148, 242, 54, 0.06);
   height: 4px;
 }
 
-.green-horizontal-scrollbar::-webkit-scrollbar-track{
+.green-horizontal-scrollbar::-webkit-scrollbar-track {
   background: rgba(148, 242, 54, 0.06);
   height: 4px;
-
 }
 
 .green-horizontal-scrollbar::-webkit-scrollbar-thumb {
-  background: #5CAC0D;
+  background: #5cac0d;
   border-radius: 4px 4px 4px 4px;
 }
 
-
-
-
 /** message Drop **/
 
-.drop{
+.drop {
   transform: translateY(0%);
   transition: all 500ms ease-in;
   padding-bottom: 50px;
 }
 
-.no-drop{
+.no-drop {
   transform: translateY(-110%);
   transition: all 500ms ease-in;
   /* padding-bottom: 20px; */
 }
 
-.dropParent{
+.dropParent {
   overflow-y: hidden;
   transition: height 500ms ease-out;
 }
 
 /****Description dropdown****/
 
-.dropdown{
+.dropdown {
   position: absolute;
   top: 36px;
   left: 10px;
@@ -194,14 +192,14 @@
   z-index: 100;
   overflow-y: hidden;
   background-color: white;
-  box-shadow: 9px 10px 26px -4px rgba(0,0,0,0.66);
-  -webkit-box-shadow: 9px 10px 26px -4px rgba(0,0,0,0.66);
-  -moz-box-shadow: 9px 10px 26px -4px rgba(0,0,0,0.66); 
+  box-shadow: 9px 10px 26px -4px rgba(0, 0, 0, 0.66);
+  -webkit-box-shadow: 9px 10px 26px -4px rgba(0, 0, 0, 0.66);
+  -moz-box-shadow: 9px 10px 26px -4px rgba(0, 0, 0, 0.66);
   transition: all 500ms ease-in;
   padding: 15px;
 }
 
-.no-dropdown{
+.no-dropdown {
   position: absolute;
   top: 36px;
   left: 10px;
@@ -211,13 +209,13 @@
   z-index: 100;
   overflow-y: hidden;
   background-color: white;
-  box-shadow: 9px 10px 26px -4px rgba(0,0,0,0.66);
-  -webkit-box-shadow: 9px 10px 26px -4px rgba(0,0,0,0.66);
-  -moz-box-shadow: 9px 10px 26px -4px rgba(0,0,0,0.66); 
+  box-shadow: 9px 10px 26px -4px rgba(0, 0, 0, 0.66);
+  -webkit-box-shadow: 9px 10px 26px -4px rgba(0, 0, 0, 0.66);
+  -moz-box-shadow: 9px 10px 26px -4px rgba(0, 0, 0, 0.66);
   transition: all 500ms ease-in;
 }
 
-.dropdown-enter{
+.dropdown-enter {
   width: 300px;
   background-color: none;
   border-radius: 2px;
@@ -226,50 +224,43 @@
   transition: all 500ms ease-in;
 }
 
-.dropdown-exit{
+.dropdown-exit {
   width: 300px;
   transform: translateY(-110%);
   transition: all 500ms ease-out;
 }
 
-
-.show-drop{
+.show-drop {
   transform: translateY(0%);
   transition: transform 0.5s ease-in-out;
 }
-.no-drop{
- transform: translateY(-105%);
- transition: transform 0.5s ease-in-out;
+.no-drop {
+  transform: translateY(-105%);
+  transition: transform 0.5s ease-in-out;
 }
-.parent-drop{
+.parent-drop {
   transition: height 0.5s ease-in-out;
 }
 
-
-
-@media(max-width: 640px) and (min-width: 0px){
-
-  .dropdown{
-  transform: translateX(-2%);
-  transition: transform 500ms ease-in;
+@media (max-width: 640px) and (min-width: 0px) {
+  .dropdown {
+    transform: translateX(-2%);
+    transition: transform 500ms ease-in;
   }
-  
-
 }
 
-.arrow-right{
+.arrow-right {
   transform: rotate(-90deg);
   transition: transform ease-in 500ms;
 }
-.arrow-down{
+.arrow-down {
   transform: rotate(0deg);
   transition: transform ease-in 500ms;
 }
 
 /*********/
 
-
-.redBorder{
+.redBorder {
   border: 1px solid red;
 }
 
@@ -277,33 +268,30 @@
   word-break: break-all;
 }
 
-
 /*****Sidebar animations******/
-.SideBar{
+.SideBar {
   transform: translateX(0%);
   transition: transform 0.5s ease-in-out;
 }
 
-.NoSideBar{
+.NoSideBar {
   transform: translateX(-105%);
   transition: transform 0.5s ease-in-out;
 }
 
 /********/
 
-
 /*******/
 .resources::nth-last-child(1) {
-background-color: #94f236;
+  background-color: #94f236;
 }
 
 /******/
 
-
-.shadow1{
-  box-shadow: 10px 10px 51px -37px rgba(0,0,0,0.75);
--webkit-box-shadow: 10px 10px 51px -37px rgba(0,0,0,0.75);
--moz-box-shadow: 10px 10px 51px -37px rgba(0,0,0,0.75);
+.shadow1 {
+  box-shadow: 10px 10px 51px -37px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 10px 10px 51px -37px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 51px -37px rgba(0, 0, 0, 0.75);
 }
 
 blockquote:before,
@@ -331,28 +319,26 @@ blockquote:after {
 
 .masters-card {
   box-shadow: 0px 2px 12px rgba(226, 226, 226, 0.25);
--webkit-box-shadow: 0px 2px 12px rgba(226, 226, 226, 0.25);
--moz-box-shadow: 0px 2px 12px rgba(226, 226, 226, 0.25);
+  -webkit-box-shadow: 0px 2px 12px rgba(226, 226, 226, 0.25);
+  -moz-box-shadow: 0px 2px 12px rgba(226, 226, 226, 0.25);
 }
 
-.masters-shadow{
-  box-shadow: 0px 1px 48px rgba(235, 235, 235, 0.25)
+.masters-shadow {
+  box-shadow: 0px 1px 48px rgba(235, 235, 235, 0.25);
 }
 
-.masters-shadow2{
-  box-shadow: 0px -3px 123px rgba(152, 153, 151, 0.09)
+.masters-shadow2 {
+  box-shadow: 0px -3px 123px rgba(152, 153, 151, 0.09);
 }
 
 /* Masters gradient */
-.rad-gradient{
-  background-image: radial-gradient(rgba(181, 245, 116, 0.14), #FDFFFA);
+.rad-gradient {
+  background-image: radial-gradient(rgba(181, 245, 116, 0.14), #fdfffa);
 }
 
-.middle-path{
+.middle-path {
   clip-path: polygon(0 0, 52% 5%, 100% 1%, 100% 100%, 51% 94%, 0 99%);
-
 }
-
 
 @layer utilities {
   .clip-card-path {
@@ -371,5 +357,19 @@ blockquote:after {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+}
 
+@media (max-width: 600px) {
+  .takke-otp-input__container {
+    width: 100% !important;
+    flex-direction: row;
+    justify-content: center;
+    padding-left: 20px;
+  }
+  .takke-otp-input {
+    display: flex !important;
+    width: 100% !important;
+    height: 40px !important;
+    color: #111;
+  }
 }

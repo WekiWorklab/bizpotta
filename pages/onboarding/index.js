@@ -12,6 +12,10 @@ const Index = ({ data }) => {
   React.useEffect(() => {
     if (!user) {
       router.push("/auth/login");
+    } else {
+      if (user?.email_verified_at === null) {
+        router.push("/auth/verify-email");
+      }
     }
     setLoading(false);
   }, [router, user]);
