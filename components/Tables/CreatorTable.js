@@ -36,6 +36,7 @@ function GlobalFilter({ preGlobalFilteredRows, globalFilter, setGlobalFilter }) 
         setValue(e.target.value);
         onChange(e.target.value);
       }}
+      value = {value}
       id='search'
       name='search'
     />
