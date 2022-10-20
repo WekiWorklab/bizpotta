@@ -38,7 +38,7 @@ export default function AuthLayout({ children }) {
               router.push("/students");
               break;
             default:
-              router.push("/creator");
+              router.push("/creators");
               break;
           }
         } else {
