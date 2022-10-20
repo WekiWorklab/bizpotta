@@ -18,6 +18,7 @@ const SelectCoursesModal = ({ courses }) => {
   const total = useSelector((state) => state.course.total_courses);
 
   const { isLoading, isSuccess } = useSelector((state) => state.learners);
+  const { user } = useSelector((state) => state.auth);
 
   const closeModal = () => {
     let subCategory = [];
@@ -28,9 +29,15 @@ const SelectCoursesModal = ({ courses }) => {
   };
 
   React.useEffect(() => {
+    if (user?.is_onboarded) {
+      dispatch(reset());
+      router.push("/students");
+    }
+  }, [router, user, dispatch, user?.is_onboarded]);
+
+  React.useEffect(() => {
     if (isSuccess) {
       dispatch(setUser());
-      // dispatch(showCourseModal(false));
     }
   }, [dispatch, isSuccess]);
 

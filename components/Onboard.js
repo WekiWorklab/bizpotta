@@ -13,10 +13,11 @@ import { Fragment } from "react";
 import { Reciept } from "../public";
 
 import { MdOutlineCancel } from "react-icons/md";
+import { useSelector } from "react-redux";
 
 const Onboard = ({ data }) => {
   const router = useRouter();
-  console.log(data);
+  const { isUserUpdated } = useSelector((state) => state.creator);
 
   const [toggleDrop, setToggleDrop] = useState({
     personnel: false,
@@ -26,7 +27,6 @@ const Onboard = ({ data }) => {
   });
 
   const [userType, setUserType] = useState();
-  // const [workType, setWorkType] = useState();
   const [mentorWork, setMentorWork] = useState();
   const [tutorWork, setTutorWork] = useState();
   const [industry, setIndustry] = useState();
@@ -45,8 +45,15 @@ const Onboard = ({ data }) => {
   const handleTutorChange = (event) => {
     const { value } = event.target;
     setTutorWork(value);
-    console.log(value);
   };
+
+  if (tutorWork && industry && jobDesc) {
+    console.log("can submit");
+  }
+
+  if (mentorWork && industry && jobDesc) {
+    console.log("can submit 2");
+  }
 
   const filteredItems = useMemo(() => {
     if (tutorWork) {
@@ -59,87 +66,110 @@ const Onboard = ({ data }) => {
   const handleNext = () => {
     if (userType.name === "Student") {
       router.push("/learners-onboarding");
-    } else if (userType.name === "Mentor") {
-      router.push("/creators/courses");
-    } else if (userType.name === "Tutor") {
+    }
+
+    if (userType.name === "Mentor") {
+      const data = {
+        user_type: userType.id,
+        industry: industry.id,
+        work_type: mentorWork,
+        jobDesc: jobDesc?.name,
+      };
+      dispatch(updateUser(data));
+      router.push("/creators");
+    }
+
+    if (userType.name === "Tutor") {
+      const data = {
+        user_type: userType.id,
+        industry: industry.id,
+        work_type: tutorWork,
+        jobDesc: jobDesc?.id,
+      };
+
+      dispatch(updateUser(data));
+      router.push("/creators");
+      dispatch(updateUser(data));
+    }
+  };
+
+  useEffect(() => {
+    if (isUserUpdated && userType.id == 3) router.push("/creator");
+    if (isUserUpdated && userType.id == 4) {
       if (filteredItems?.length > 0 && tutorWork.trim().length > 0) {
-        //All is fine
-        router.push("/creators/courses");
-      } else if (filteredItems?.length < 1 || filteredItems === undefined) {
-        // Show the modal for company registration request
+        router.push("/creators");
+      }
+
+      if (filteredItems?.length < 1 || filteredItems === undefined) {
         setShowModal(true);
       }
     }
-  };
+  }, [isUserUpdated, userType, router, filteredItems, tutorWork]);
 
   const personnel = [
     { id: 2, name: "Student" },
     { id: 3, name: "Mentor" },
-    { id: 3, name: "Tutor" },
-    { id: 4, name: "Institution" },
+    { id: 4, name: "Tutor" },
+    { id: 5, name: "Institution" },
   ];
 
   return (
-    <div className="w-full min-h-screen px-2 md:px-4 xl:px-32 relative py-20">
-      <div className="flex h-auto item-center my-auto gap-x-6 xl:justify-around mt-20 ">
-        <div className="hidden lg:flex flex-col justify-center items-center">
+    <div className='w-full min-h-screen px-2 md:px-4 xl:px-32 relative py-20'>
+      <div className='flex h-auto item-center my-auto gap-x-6 xl:justify-around mt-20 '>
+        <div className='hidden lg:flex flex-col justify-center items-center'>
           <OnboardingSvg />
-          <p className="font-bold text-center mt-8">New to bizpotta?</p>
-          <p className="text-[13px] text-[#7C7C7C] text-center mt-4">
-            Help us know the best program you would like to run
-          </p>
+          <p className='font-bold text-center mt-8'>New to bizpotta?</p>
+          <p className='text-[13px] text-[#7C7C7C] text-center mt-4'>Help us know the best program you would like to run</p>
         </div>
 
-        <div className="flex flex-col justify-start items-start">
-          <p className="font-bold text-lg">Lets help you set up</p>
+        <div className='flex flex-col justify-start items-start'>
+          <p className='font-bold text-lg'>Lets help you set up</p>
 
           <PersonnelDropDown
             data={personnel}
             userType={userType}
             setUserType={setUserType}
             setIndustry={setIndustry}
-            type="student"
+            type='student'
             toggleDrop={toggleDrop}
             setToggleDrop={setToggleDrop}
             setJobDesc={setJobDesc}
           />
 
           {(userType?.name === "Mentor" || userType?.name === "Tutor") && (
-            <div className="">
+            <div className=''>
               <div>
-                <div className="flex gap-x-3 md:gap-x-6 mt-10 items-center justify-center">
-                  <p className="text-[#282828] text-[14px]">
-                    I am representing
-                  </p>
-                  <div className="-mt-4 relative min-w-[120px] border-b-[3px] border-bizpotta-green pp">
+                <div className='flex gap-x-3 md:gap-x-6 mt-10 items-center justify-center'>
+                  <p className='text-[#282828] text-[14px]'>I am representing</p>
+                  <div className='-mt-4 relative min-w-[120px] border-b-[3px] border-bizpotta-green pp'>
                     {/* Input for Mentors */}
                     {userType?.name === "Mentor" && (
                       <input
-                        className="text-center text-[#282828] text-[14px] mr-4 outline-0 ring-0 border-0 focus:border-0 focus:ring-0 w-full"
+                        className='text-center text-[#282828] text-[14px] mr-4 outline-0 ring-0 border-0 focus:border-0 focus:ring-0 w-full'
                         value={mentorWork}
                         onChange={handleMentorChange}
-                        type="text"
+                        type='text'
                       />
                     )}
 
                     {/* Input for Tutors */}
                     {userType?.name === "Tutor" && (
                       <input
-                        className="text-center text-[#282828] text-[14px] mr-4 outline-0 ring-0 border-0 focus:border-0 focus:ring-0 w-full"
+                        className='text-center text-[#282828] text-[14px] mr-4 outline-0 ring-0 border-0 focus:border-0 focus:ring-0 w-full'
                         value={tutorWork}
                         onChange={handleTutorChange}
-                        type="search"
+                        type='search'
                         onClick={() => {
                           setShow(true);
                         }}
                       />
                     )}
                     {filteredItems?.length > 0 && show && (
-                      <div className="absolute top-8 left-[-20px] sm:left-2 z-10 px-2 py-3 flex flex-col justify-center items-start bg-white shadow-md rounded-lg">
+                      <div className='absolute top-8 left-[-20px] sm:left-2 z-10 px-2 py-3 flex flex-col justify-center items-start bg-white shadow-md rounded-lg'>
                         {filteredItems?.map((el, index) => (
                           <div
                             key={index}
-                            className="py-2 px-2 hover:bg-blue-300 text-[13px] rounded-md hover:text-white w-[250px] break-words"
+                            className='py-2 px-2 hover:bg-blue-300 text-[13px] rounded-md hover:text-white w-[250px] break-words'
                             onClick={() => {
                               setTutorWork(el.name);
                               setShow(false);
@@ -152,9 +182,7 @@ const Onboard = ({ data }) => {
                     )}
                   </div>
                 </div>
-                <div className="w-full flex justify-end text-[10px] pr-16">
-                  (Where do you work)
-                </div>
+                <div className='w-full flex justify-end text-[10px] pr-16'>(Where do you work)</div>
               </div>
 
               <IndustryDropDown
@@ -162,7 +190,7 @@ const Onboard = ({ data }) => {
                 industry={industry}
                 setIndustry={setIndustry}
                 userType={userType}
-                type="instructor"
+                type='instructor'
                 toggleDrop={toggleDrop}
                 setToggleDrop={setToggleDrop}
               />
@@ -184,9 +212,9 @@ const Onboard = ({ data }) => {
           <div></div>
         </div>
       </div>
-      <div className="w-full flex justify-end mt-16 items-end">
+      <div className='w-full flex justify-end mt-16 items-end'>
         <button
-          className="w-[100px] h-[40px] centerFlex bg-gray-300 text-[#7C7C7C] rounded-md "
+          className='w-[100px] h-[40px] centerFlex bg-gray-300 text-[#7C7C7C] rounded-md '
           onClick={() => handleNext()}
           // disabled = {canSubmit}
         >
@@ -211,61 +239,46 @@ const OnboardModal = ({ showModal, setShowModal }) => {
 
   return (
     <Transition.Root show={showModal} as={Fragment}>
-      <Dialog
-        as="div"
-        static
-        className="fixed z-10 inset-0 overflow-y-auto"
-        open={showModal}
-        onClose={() => {}}
-      >
-        <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center block sm:p-0  ">
+      <Dialog as='div' static className='fixed z-10 inset-0 overflow-y-auto' open={showModal} onClose={() => {}}>
+        <div className='flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center  sm:p-0  '>
           <Transition.Child
             as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+            enter='ease-out duration-300'
+            enterFrom='opacity-0'
+            enterTo='opacity-100'
+            leave='ease-in duration-200'
+            leaveFrom='opacity-100'
+            leaveTo='opacity-0'
           >
-            <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+            <Dialog.Overlay className='fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity' />
           </Transition.Child>
 
           {/* This element is to trick the browser into centering the modal contents. */}
-          <span
-            className="hidden sm:inline-block sm:align-middle sm:h-screen"
-            aria-hidden="true"
-          >
+          <span className='hidden sm:inline-block sm:align-middle sm:h-screen' aria-hidden='true'>
             &#8203;
           </span>
           <Transition.Child
             as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-            enterTo="opacity-100 translate-y-0 sm:scale-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-            leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+            enter='ease-out duration-300'
+            enterFrom='opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'
+            enterTo='opacity-100 translate-y-0 sm:scale-100'
+            leave='ease-in duration-200'
+            leaveFrom='opacity-100 translate-y-0 sm:scale-100'
+            leaveTo='opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'
           >
-            <div className="inline-block align-top bg-white rounded-lg overflow-hidden shadow-xl transform transition-all">
-              <div className="w-[340px] sm:w-[400px] md:w-[400px] md:h-[400px] flex flex-col px-4 py-6 items-center justify-start">
-                <div className="w-full flex justify-end">
-                  <MdOutlineCancel
-                    className="cursor-pointer"
-                    color="#191919"
-                    size={22}
-                    onClick={closeModal}
-                  />
+            <div className='inline-block align-top bg-white rounded-lg overflow-hidden shadow-xl transform transition-all'>
+              <div className='w-[340px] sm:w-[400px] md:w-[400px] md:h-[400px] flex flex-col px-4 py-6 items-center justify-start'>
+                <div className='w-full flex justify-end'>
+                  <MdOutlineCancel className='cursor-pointer' color='#191919' size={22} onClick={closeModal} />
                 </div>
-                <div className="flex flex-col px-6 mt-7 gap-y-6 items-center justify-center">
+                <div className='flex flex-col px-6 mt-7 gap-y-6 items-center justify-center'>
                   <Reciept />
-                  <p className="text-[#3B3B3B] text-[13px]">
-                    Your company is not registered with bizpotta, we advise you
-                    register your company to properly manage contents
+                  <p className='text-[#3B3B3B] text-[13px]'>
+                    Your company is not registered with bizpotta, we advise you register your company to properly manage contents
                   </p>
 
                   <div
-                    className="w-[120px] h-[35px] centerFlex rounded-md bg-darkBlue text-white text-[13px] dropdown-shadow cursor-pointer"
+                    className='w-[120px] h-[35px] centerFlex rounded-md bg-darkBlue text-white text-[13px] dropdown-shadow cursor-pointer'
                     onClick={() => {
                       router.push("/onboarding/company");
                     }}
@@ -274,7 +287,7 @@ const OnboardModal = ({ showModal, setShowModal }) => {
                   </div>
 
                   <p
-                    className="text-[13px] text-[#3B3B3B] underline cursor-pointer"
+                    className='text-[13px] text-[#3B3B3B] underline cursor-pointer'
                     onClick={() => {
                       router.push("/creators/courses");
                     }}
@@ -291,16 +304,7 @@ const OnboardModal = ({ showModal, setShowModal }) => {
   );
 };
 
-const PersonnelDropDown = ({
-  data,
-  userType,
-  setUserType,
-  type,
-  toggleDrop,
-  setIndustry,
-  setToggleDrop,
-  setJobDesc,
-}) => {
+const PersonnelDropDown = ({ data, userType, setUserType, type, toggleDrop, setIndustry, setToggleDrop, setJobDesc }) => {
   const handleDropDown = () => {
     setToggleDrop((prev) => ({
       ...prev,
@@ -317,25 +321,17 @@ const PersonnelDropDown = ({
   };
 
   return (
-    <div className="flex gap-x-3 md:gap-x-6 mt-6">
-      <p className="text-[#282828] text-[14px]">I am a (an)</p>
-      <div
-        onClick={() => handleDropDown()}
-        className="-mt-1 relative min-w-[100px] border-b-[3px] border-bizpotta-green pp"
-      >
-        <p className="text-center text-[14px] text-[#282828] mr-4">
-          {userType?.name}
-        </p>
-        <BiChevronDown
-          className="absolute right-0 text-[20px] top-1"
-          color="#8F8F8F"
-        />
+    <div className='flex gap-x-3 md:gap-x-6 mt-6'>
+      <p className='text-[#282828] text-[14px]'>I am a (an)</p>
+      <div onClick={() => handleDropDown()} className='-mt-1 relative min-w-[100px] border-b-[3px] border-bizpotta-green pp'>
+        <p className='text-center text-[14px] text-[#282828] mr-4'>{userType?.name}</p>
+        <BiChevronDown className='absolute right-0 text-[20px] top-1' color='#8F8F8F' />
         {toggleDrop.personnel && (
-          <div className="absolute top-8 left-[-20px] sm:left-2 z-10 px-2 py-3 flex flex-col justify-center items-start bg-white shadow-md rounded-lg">
+          <div className='absolute top-8 left-[-20px] sm:left-2 z-10 px-2 py-3 flex flex-col justify-center items-start bg-white shadow-md rounded-lg'>
             {data.map((el, index) => (
               <div
                 key={index}
-                className="py-2 px-2 hover:bg-blue-300 text-[13px] rounded-md hover:text-white w-[250px] break-words"
+                className='py-2 px-2 hover:bg-blue-300 text-[13px] rounded-md hover:text-white w-[250px] break-words'
                 onClick={() => handleClick(el)}
               >
                 {el.name}
@@ -348,14 +344,7 @@ const PersonnelDropDown = ({
   );
 };
 
-const IndustryDropDown = ({
-  data,
-  industry,
-  setIndustry,
-  userType,
-  toggleDrop,
-  setToggleDrop,
-}) => {
+const IndustryDropDown = ({ data, industry, setIndustry, userType, toggleDrop, setToggleDrop }) => {
   const [Data, setData] = useState();
 
   const handleDropDown = () => {
@@ -384,25 +373,17 @@ const IndustryDropDown = ({
   }, [data, userType]);
 
   return (
-    <div className="flex gap-x-3 md:gap-x-6 mt-6">
-      <p className="text-[#282828] text-[14px]">My business industry is ?</p>
-      <div
-        className="-mt-1 relative min-w-[100px] border-b-[3px] border-bizpotta-green pp"
-        onClick={() => handleDropDown()}
-      >
-        <p className="text-center text-[14px] text-[#282828] mr-4">
-          {industry?.name}
-        </p>
-        <BiChevronDown
-          className="absolute right-0 text-[20px] top-1"
-          color="#8F8F8F"
-        />
+    <div className='flex gap-x-3 md:gap-x-6 mt-6'>
+      <p className='text-[#282828] text-[14px]'>My business industry is ?</p>
+      <div className='-mt-1 relative min-w-[100px] border-b-[3px] border-bizpotta-green pp' onClick={() => handleDropDown()}>
+        <p className='text-center text-[14px] text-[#282828] mr-4'>{industry?.name}</p>
+        <BiChevronDown className='absolute right-0 text-[20px] top-1' color='#8F8F8F' />
         {toggleDrop.instructor && (
-          <div className="absolute top-8 left-[-20px] sm:left-2 z-10 px-2 py-3 flex flex-col justify-center items-start bg-white shadow-md rounded-lg">
+          <div className='absolute top-8 left-[-20px] sm:left-2 z-10 px-2 py-3 flex flex-col justify-center items-start bg-white shadow-md rounded-lg'>
             {Data?.map((el, index) => (
               <div
                 key={index}
-                className="py-2 px-2 hover:bg-blue-300 text-[13px] rounded-md hover:text-white w-[250px] break-words"
+                className='py-2 px-2 hover:bg-blue-300 text-[13px] rounded-md hover:text-white w-[250px] break-words'
                 onClick={() => handleClick(el)}
               >
                 {el.name}
@@ -415,15 +396,7 @@ const IndustryDropDown = ({
   );
 };
 
-const JobDescDropdown = ({
-  data,
-  jobDesc,
-  setJobDesc,
-  userType,
-  toggleDrop,
-  setToggleDrop,
-  industry,
-}) => {
+const JobDescDropdown = ({ data, jobDesc, setJobDesc, userType, toggleDrop, setToggleDrop, industry }) => {
   const [Data, setData] = useState();
 
   const handleDropDown = () => {
@@ -443,11 +416,7 @@ const JobDescDropdown = ({
   useEffect(() => {
     switch (userType?.name) {
       case "Tutor":
-        setData(
-          data.subCategories.filter(
-            (el) => el.course_category_id === industry.id
-          )
-        );
+        setData(data.subCategories.filter((el) => el.course_category_id === industry.id));
         break;
       case "Mentor":
         // convert data.jobDescriptionsForCompany to array of objects with id and name properties
@@ -461,25 +430,17 @@ const JobDescDropdown = ({
   }, [data, userType, industry]);
 
   return (
-    <div className="flex gap-x-3 md:gap-x-6 mt-6">
-      <p className="text-[#282828] text-[14px]">My job description is ?</p>
-      <div
-        className="-mt-1 relative min-w-[100px] border-b-[3px] border-bizpotta-green pp"
-        onClick={() => handleDropDown()}
-      >
-        <p className="text-center text-[14px] text-[#282828] mr-4">
-          {jobDesc?.name}
-        </p>
-        <BiChevronDown
-          className="absolute right-0 text-[20px] top-1"
-          color="#8F8F8F"
-        />
+    <div className='flex gap-x-3 md:gap-x-6 mt-6'>
+      <p className='text-[#282828] text-[14px]'>My job description is ?</p>
+      <div className='-mt-1 relative min-w-[100px] border-b-[3px] border-bizpotta-green pp' onClick={() => handleDropDown()}>
+        <p className='text-center text-[14px] text-[#282828] mr-4'>{jobDesc?.name}</p>
+        <BiChevronDown className='absolute right-0 text-[20px] top-1' color='#8F8F8F' />
         {toggleDrop.job && (
-          <div className="absolute top-8 left-[-20px] sm:left-2 z-10 px-2 py-3 flex flex-col justify-center items-start bg-white shadow-md rounded-lg">
+          <div className='absolute top-8 left-[-20px] sm:left-2 z-10 px-2 py-3 flex flex-col justify-center items-start bg-white shadow-md rounded-lg'>
             {Data?.map((el, index) => (
               <div
                 key={index}
-                className="py-2 px-2 hover:bg-blue-300 text-[13px] rounded-md hover:text-white w-[250px] break-words"
+                className='py-2 px-2 hover:bg-blue-300 text-[13px] rounded-md hover:text-white w-[250px] break-words'
                 onClick={() => handleClick(el)}
               >
                 {el.name}

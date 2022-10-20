@@ -17,7 +17,6 @@ const Header = ({ show, setShow, setSlideIn }) => {
   const { user } = useSelector((state) => state.auth);
   const [showHover, setShowHover] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
-  console.log(user);
 
   const router = useRouter();
 
@@ -26,7 +25,7 @@ const Header = ({ show, setShow, setSlideIn }) => {
     setShowHover(false);
   };
 
-  // window.onClick(setShowHover(false))
+  const imgUrl = user?.image || `https://ui-avatars.com/api/?name=${user?.firstName + " " + user?.lastName}&background=${"121F4C"}&color=${"ffffff"}`;
 
   const handleFocus = () => {
     setShowSearch(true);
@@ -88,12 +87,22 @@ const Header = ({ show, setShow, setSlideIn }) => {
 
       {/* Accounts info, carts and notification icons */}
       <div className=' hidden md:flex flex-row  w-[100px] md:w-[280px] justify-evenly items-center'>
-        <AiOutlineShoppingCart className='  text-darkBlue text-2xl' />
-        <IoNotificationsOutline className=' text-darkBlue text-2xl' />
-        <img src={card_image.src} className=' h-9 w-9 rounded-full' alt='user_image' />
+        <AiOutlineShoppingCart className=' text-darkBlue text-2xl' />
+        <IoNotificationsOutline className='text-darkBlue text-2xl' />
+        <img src={imgUrl} className=' h-9 w-9 rounded-full' alt='user_image' />
         <div className='hidden sm:flex flex-col'>
           <p className='text-sm'>{user?.firstName}</p>
-          <p className='text-xs'>{user?.roles_id == 3 ? "Tutor" : user?.roles_id == 4 ? "Mentor" : "Instituion Admin"}</p>
+          <p className='text-xs'>
+            {user?.roles_id == 2
+              ? "Student"
+              : user?.roles_id == 3
+              ? "Tutor"
+              : user?.roles_id == 4
+              ? "Mentor"
+              : user?.roles_id == 5
+              ? "Instituion Admin"
+              : "User"}
+          </p>
         </div>
       </div>
 
