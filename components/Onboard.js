@@ -1,12 +1,18 @@
 import React from "react";
 import { useState } from "react";
 
+import { Dialog, Transition } from "@headlessui/react";
+
 import { BsArrowLeft } from "react-icons/bs";
 import { BiChevronDown } from "react-icons/bi";
 import { OnboardingSvg } from "../public/vectors/onboardingSvg";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useMemo } from "react";
+import { Fragment } from "react";
+import { Reciept } from "../public";
+
+import { MdOutlineCancel } from "react-icons/md";
 
 const Onboard = ({ data }) => {
   const router = useRouter();
@@ -27,6 +33,9 @@ const Onboard = ({ data }) => {
   const [jobDesc, setJobDesc] = useState();
 
   const [show, setShow] = useState(false);
+  const [canSubmit, setCanSubmit] = useState(false);
+
+  const [showModal, setShowModal] = useState(false);
 
   const handleMentorChange = (event) => {
     const { value } = event.target;
@@ -48,10 +57,18 @@ const Onboard = ({ data }) => {
   }, [data, tutorWork]);
 
   const handleNext = () => {
-    if (userType === "Student") {
+    if (userType.name === "Student") {
       router.push("/learners-onboarding");
-    } else if (userType === "Mentor" || userType === "Tutor") {
-      router.push("/creators/profile");
+    } else if (userType.name === "Mentor") {
+      router.push("/creators/courses");
+    } else if (userType.name === "Tutor") {
+      if (filteredItems?.length > 0 && tutorWork.trim().length > 0) {
+        //All is fine
+        router.push("/creators/courses");
+      } else if (filteredItems?.length < 1 || filteredItems === undefined) {
+        // Show the modal for company registration request
+        setShowModal(true);
+      }
     }
   };
 
@@ -63,12 +80,7 @@ const Onboard = ({ data }) => {
   ];
 
   return (
-    <div className="w-full min-h-screen px-2 md:px-4 xl:px-32  py-20">
-      <div className="flex items-center gap-x-2 text-[13px] text-[#7C7C7C]">
-        <BsArrowLeft className="cursor-pointer" />
-        <p>Back</p>
-      </div>
-
+    <div className="w-full min-h-screen px-2 md:px-4 xl:px-32 relative py-20">
       <div className="flex h-auto item-center my-auto gap-x-6 xl:justify-around mt-20 ">
         <div className="hidden lg:flex flex-col justify-center items-center">
           <OnboardingSvg />
@@ -122,7 +134,7 @@ const Onboard = ({ data }) => {
                         }}
                       />
                     )}
-                    {tutorWork && show && (
+                    {filteredItems?.length > 0 && show && (
                       <div className="absolute top-8 left-[-20px] sm:left-2 z-10 px-2 py-3 flex flex-col justify-center items-start bg-white shadow-md rounded-lg">
                         {filteredItems?.map((el, index) => (
                           <div
@@ -138,14 +150,6 @@ const Onboard = ({ data }) => {
                         ))}
                       </div>
                     )}
-                    {/* {
-                      filteredItems?.map((el, index) => (
-                        <div key={index} className="">
-                          {el.name}
-                          jhbnmkj
-                        </div>
-                      ))
-                    } */}
                   </div>
                 </div>
                 <div className="w-full flex justify-end text-[10px] pr-16">
@@ -181,18 +185,111 @@ const Onboard = ({ data }) => {
         </div>
       </div>
       <div className="w-full flex justify-end mt-16 items-end">
-        <div
-          className="w-[100px] h-[40px] centerFlex bg-gray-300 text-[#7C7C7C] rounded-md cursor-pointer"
+        <button
+          className="w-[100px] h-[40px] centerFlex bg-gray-300 text-[#7C7C7C] rounded-md "
           onClick={() => handleNext()}
+          // disabled = {canSubmit}
         >
           Next
-        </div>
+        </button>
       </div>
+
+      {/* Modal */}
+      <OnboardModal showModal={showModal} setShowModal={setShowModal} />
     </div>
   );
 };
 
 export default Onboard;
+
+const OnboardModal = ({ showModal, setShowModal }) => {
+  const router = useRouter();
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  return (
+    <Transition.Root show={showModal} as={Fragment}>
+      <Dialog
+        as="div"
+        static
+        className="fixed z-10 inset-0 overflow-y-auto"
+        open={showModal}
+        onClose={() => {}}
+      >
+        <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center block sm:p-0  ">
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+          </Transition.Child>
+
+          {/* This element is to trick the browser into centering the modal contents. */}
+          <span
+            className="hidden sm:inline-block sm:align-middle sm:h-screen"
+            aria-hidden="true"
+          >
+            &#8203;
+          </span>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+            enterTo="opacity-100 translate-y-0 sm:scale-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+            leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          >
+            <div className="inline-block align-top bg-white rounded-lg overflow-hidden shadow-xl transform transition-all">
+              <div className="w-[340px] sm:w-[400px] md:w-[400px] md:h-[400px] flex flex-col px-4 py-6 items-center justify-start">
+                <div className="w-full flex justify-end">
+                  <MdOutlineCancel
+                    className="cursor-pointer"
+                    color="#191919"
+                    size={22}
+                    onClick={closeModal}
+                  />
+                </div>
+                <div className="flex flex-col px-6 mt-7 gap-y-6 items-center justify-center">
+                  <Reciept />
+                  <p className="text-[#3B3B3B] text-[13px]">
+                    Your company is not registered with bizpotta, we advise you
+                    register your company to properly manage contents
+                  </p>
+
+                  <div
+                    className="w-[120px] h-[35px] centerFlex rounded-md bg-darkBlue text-white text-[13px] dropdown-shadow cursor-pointer"
+                    onClick={() => {
+                      router.push("/onboarding/company");
+                    }}
+                  >
+                    Yes, go ahead
+                  </div>
+
+                  <p
+                    className="text-[13px] text-[#3B3B3B] underline cursor-pointer"
+                    onClick={() => {
+                      router.push("/creators/courses");
+                    }}
+                  >
+                    No, Skip
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Transition.Child>
+        </div>
+      </Dialog>
+    </Transition.Root>
+  );
+};
 
 const PersonnelDropDown = ({
   data,
@@ -270,11 +367,10 @@ const IndustryDropDown = ({
       job: false,
     }));
   };
+
   const handleClick = (el) => {
     setIndustry(el);
   };
-
-  // console.log(toggleDrop);
 
   useEffect(() => {
     switch (userType.name) {
@@ -339,8 +435,6 @@ const JobDescDropdown = ({
       instructor: false,
     }));
   };
-
-  // console.log(industry);
 
   const handleClick = (el) => {
     setJobDesc(el);
