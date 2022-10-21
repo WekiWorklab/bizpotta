@@ -19,6 +19,7 @@ const Header = ({ show, setShow, setSlideIn }) => {
   const [showSearch, setShowSearch] = useState(false);
 
   const router = useRouter();
+  // console.log(user)
 
   const handleBlur = () => {
     setShowSearch(false);
