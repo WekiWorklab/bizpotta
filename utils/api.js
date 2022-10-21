@@ -17,7 +17,7 @@ export const APIS = {
   MENTORS: {
     SET_MENTORING_PREFERENCES: `${api}/creators/set-mentor-preferences`,
     CREATE_MENTORING_SESSION: `${api}/creators/create-mentoring-session`,
-    CREATE_COURSE: `${api}/creators/mentor/create-course`,
+    CREATE_COURSE: `${api}/creators/mentor/create-courses`,
   },
   TUTORS: {
     SET_TUTORING_PREFERENCES: `${api}/creators/set-tutor-preferences`,
