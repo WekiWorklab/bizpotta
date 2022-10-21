@@ -9,68 +9,7 @@ import { Filter, NoActivities } from "../../../public";
 import CreatorTable from "../../Tables/CreatorTable";
 
 const IncomeTableChart = () => {
-  const data1 = [
-    {
-      item: 1,
-      name: "Chibuke Umoh",
-      course: "Introduction to fashion designing",
-      type: "full",
-      price: "N12,000,000",
-      coupon: "10%",
-      date: Date.now(),
-      ID: "0001KJH",
-    },
-    {
-      item: 2,
-      name: "Chibuke Umoh",
-      course: "Introduction to fashion designing",
-      type: "full",
-      price: "N12,000,000",
-      coupon: "10%",
-      date: Date.now(),
-      ID: "0001KJH",
-    },
-    {
-      item: 3,
-      name: "Chibuke Umoh",
-      course: "Introduction to fashion designing",
-      type: "full",
-      price: "N12,000,000",
-      coupon: "10%",
-      date: Date.now(),
-      ID: "0001KJH",
-    },
-    {
-      item: 4,
-      name: "Chibuke Umoh",
-      course: "Introduction to fashion designing",
-      type: "full",
-      price: "N12,000,000",
-      coupon: "10%",
-      date: Date.now(),
-      ID: "0001KJH",
-    },
-    {
-      item: 5,
-      name: "Chibuke Umoh",
-      course: "Introduction to fashion designing",
-      type: "full",
-      price: "N12,000,000",
-      coupon: "10%",
-      date: Date.now(),
-      ID: "0001KJH",
-    },
-    {
-      item: 6,
-      name: "Chibuke Umoh",
-      course: "Introduction to fashion designing",
-      type: "full",
-      price: "N12,000,000",
-      coupon: "10%",
-      date: Date.now(),
-      ID: "0001KJH",
-    },
-  ];
+  const data1 = [];
   const data = data1.map((item) => {
     return {
       id: item.item,
@@ -116,7 +55,7 @@ const IncomeTableChart = () => {
   const [showFilter, setShowFilter] = useState(false);
   const [showExport, setShowExport] = useState(false);
 
-  const activities = true;
+  const activities = data.length > 0 ? true : false;
 
   return (
     <div className='flex flex-col mx-auto'>

@@ -34,10 +34,17 @@ const addCompnay = ({ name, jobDescription, category_id }) => {
   });
 };
 
+const getCourses = async () => {
+  return AxoisApi.get(`${APIS.TUTORS.GET_COURSES}`).then((res) => {
+    return res.data;
+  });
+};
+
 const creatorService = {
   onBoardMentor,
   onBoardTutor,
   addCompnay,
+  getCourses,
 };
 
 export default creatorService;

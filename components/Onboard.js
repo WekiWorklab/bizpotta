@@ -105,7 +105,11 @@ const Onboard = ({ data }) => {
   };
 
   useEffect(() => {
-    if (isUserUpdated && userType.id == 3) router.push("/creators");
+    if (isUserUpdated && userType.id == 3) {
+      dispatch(reset());
+      dispatch(setUser());
+      
+      router.push("/creators");}
     if (isUserUpdated && userType.id == 4) {
       if (filteredItems?.length > 0 && tutorWork.trim().length > 0) {
         router.push("/creators");

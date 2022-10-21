@@ -95,9 +95,9 @@ const Header = ({ show, setShow, setSlideIn }) => {
           <p className='text-xs'>
             {user?.roles_id == 2
               ? "Student"
-              : user?.roles_id == 3
-              ? "Tutor"
               : user?.roles_id == 4
+              ? "Tutor"
+              : user?.roles_id == 3
               ? "Mentor"
               : user?.roles_id == 5
               ? "Instituion Admin"
