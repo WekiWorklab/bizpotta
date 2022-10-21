@@ -216,7 +216,7 @@ const CourseLanding = ({ data, setSelect }) => {
 
           <div className=' mt-10'>
             <p className='text-[13px] font-bold'>Promotional Video</p>
-            <p className='text-[12px]'>Video quality 750x422 pixel. jpg, jpeg, gif or png</p>
+            <p className='text-[12px]'>Video quality max 720 pixel.</p>
 
             <div className='h-[40px] w-full sm:w-[300px] lg:w-[500px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-[#C4C4C4] pl-4 text-[15px] flex flex-row items-center gap-x-4'>
               <AiOutlinePicture size={18} />
