@@ -41,6 +41,14 @@ export const createMentorCourse = createAsyncThunk("creator/createMentorCourse",
     return thunkAPI.rejectWithValue(message);
   }
 });
+export const createTutorCourse = createAsyncThunk("creator/createTutorCourse", async (data, thunkAPI) => {
+  try {
+    return await creatorService.createTutorCourse(data);
+  } catch (error) {
+    const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+    return thunkAPI.rejectWithValue(message);
+  }
+});
 
 export const creatorSlice = createSlice({
   name: "creatorData",
@@ -90,6 +98,32 @@ export const creatorSlice = createSlice({
       .addCase(createMentorCourse.rejected, (state, { payload }) => {
         state.isError = true;
         state.message = payload;
+      })
+      .addCase(createMentorCourse.pending, (state) => {
+        state.isLoading = true;
+        state.message = null;
+      })
+      .addCase(createMentorCourse.fulfilled, (state, { payload }) => {
+        state.isError = false;
+        state.isLoading = false;
+        state.message = payload.message;
+        state.isSuccess = true;
+        state.courseID = payload.data;
+      })
+      .addCase(createTutorCourse.rejected, (state, { payload }) => {
+        state.isError = true;
+        state.message = payload;
+      })
+      .addCase(createTutorCourse.pending, (state) => {
+        state.isLoading = true;
+        state.message = null;
+      })
+      .addCase(createTutorCourse.fulfilled, (state, { payload }) => {
+        state.isError = false;
+        state.isLoading = false;
+        state.message = payload.message;
+        state.isSuccess = true;
+        state.courseID = payload.data;
       });
   },
 });
