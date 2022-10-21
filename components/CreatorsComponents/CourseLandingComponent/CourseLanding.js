@@ -2,14 +2,16 @@ import { set, useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
 import { AiOutlinePicture } from "react-icons/ai";
 import InputForm from "./InstructorProfileComponent/InputForm";
 import { Button } from "../../../components/Auth-Components/Button";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const CourseLanding = ({ data, setSelect }) => {
   const { user } = useSelector((state) => state.auth);
+  const { message, isError, isSuccess, courseID } = useSelector((state) => state.creator);
   const dispatch = useDispatch();
 
   const [categories, setCategories] = React.useState();
@@ -53,6 +55,17 @@ const CourseLanding = ({ data, setSelect }) => {
     if (user?.roles_id == 3) dispatch(CreateMentorCourse);
     if (user?.roles_id == 4) dispatch(CreateMentorCourse);
   };
+
+  useEffect(() => {
+    if (isSuccess && courseID) {
+      router.query.courseId = "VALUE";
+      router.push(router);
+      setSelect("structure");
+    }
+    if (isError) {
+      toast.error(message);
+    }
+  }, []);
 
   const onChangeCategories = (e) => {
     setCategories(e.target.value);

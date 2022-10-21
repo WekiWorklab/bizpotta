@@ -33,6 +33,15 @@ export const addCompnay = createAsyncThunk("creator/addCompnay", async (data, th
   }
 });
 
+export const createMentorCourse = createAsyncThunk("creator/createMentorCourse", async (data, thunkAPI) => {
+  try {
+    return await creatorService.createMentorCourse(data);
+  } catch (error) {
+    const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
 export const creatorSlice = createSlice({
   name: "creatorData",
   initialState,
@@ -75,6 +84,10 @@ export const creatorSlice = createSlice({
         state.isUserUpdated = true;
       })
       .addCase(addCompnay.rejected, (state, { payload }) => {
+        state.isError = true;
+        state.message = payload;
+      })
+      .addCase(createMentorCourse.rejected, (state, { payload }) => {
         state.isError = true;
         state.message = payload;
       });
