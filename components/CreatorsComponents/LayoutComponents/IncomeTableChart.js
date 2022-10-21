@@ -60,8 +60,13 @@ const IncomeTableChart = () => {
   return (
     <div className='flex flex-col mx-auto'>
       {!activities && (
-        <div className='w-full h-[450px] centerFlex'>
-          <NoActivities />
+        <div className='flex flex-col mx-auto'>
+          <div className='flex flex-col mx-auto'>
+            <div className='w-full h-[450px] flex flex-col justify-center items-center'>
+              <NoActivities />
+              <p className='text-[#787878] text-[14px] font-bold mt-4'>No courses yet</p>
+            </div>
+          </div>
         </div>
       )}
 

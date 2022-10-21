@@ -6,8 +6,11 @@ import React from "react";
 import { AiOutlinePicture } from "react-icons/ai";
 import InputForm from "./InstructorProfileComponent/InputForm";
 import { Button } from "../../../components/Auth-Components/Button";
+import { useSelector } from "react-redux";
 
 const CourseLanding = ({ data, setSelect }) => {
+  const { user } = useSelector((state) => state.auth);
+
   const [categories, setCategories] = React.useState();
   const [loading, setLoading] = React.useState(false);
   const [subCategoriesSeleted, setSubCategoriesSeleted] = React.useState();
@@ -18,8 +21,9 @@ const CourseLanding = ({ data, setSelect }) => {
     courseDescription: Yup.string().required("Course Description is required"),
     coursePrice: Yup.string().required("Course Price is required"),
     language: Yup.string().required("Course Language is required"),
-    category: Yup.string().required("Course Category is required"),
-    subCategory: Yup.string().required("Course Sub Category is required"),
+    category: Yup.string(),
+    subCategory: Yup.string(),
+    industries: Yup.string(),
     level: Yup.string().required("Course Level is required"),
   });
 
@@ -38,6 +42,12 @@ const CourseLanding = ({ data, setSelect }) => {
     setCategories(e.target.value);
     setValue("category", e.target.value);
   };
+
+  const onChangeIndustries = (e) => {
+    setCategories(e.target.value);
+    setValue("industries", e.target.value);
+  };
+
   const onChangeLevel = (e) => {
     setLevelSeleted(e.target.value);
     setValue("level", e.target.value);
@@ -48,6 +58,8 @@ const CourseLanding = ({ data, setSelect }) => {
   };
 
   const subCategories = data?.subCategories?.filter((item) => item.course_category_id == categories);
+
+  const industries = data?.industries;
 
   const level = [
     { id: "Beginner", name: "Beginner" },
@@ -142,22 +154,37 @@ const CourseLanding = ({ data, setSelect }) => {
             </div>
             <div className='px-4 text-red-500 text-[12px] md:text-sm font-medium'>{errors.level?.message}</div>
           </div>
+          {user?.roles_id === 4 && (
+            <>
+              <div className=' mt-10'>
+                <p className='text-[13px] font-bold'>Course Category</p>
+                <div className='flex flex-row gap-x-8 mt-2'>
+                  <SelectForm width='500px' data={data?.categories} name='categories' onChange={onChangeCategories} />
+                </div>
+                <div className='px-4 text-red-500 text-[12px] md:text-sm font-medium'>{errors.category?.message}</div>
+              </div>
 
-          <div className=' mt-10'>
-            <p className='text-[13px] font-bold'>Course Category</p>
-            <div className='flex flex-row gap-x-8 mt-2'>
-              <SelectForm width='500px' data={data?.categories} name='categories' onChange={onChangeCategories} />
-            </div>
-            <div className='px-4 text-red-500 text-[12px] md:text-sm font-medium'>{errors.category?.message}</div>
-          </div>
+              <div className=' mt-10'>
+                <p className='text-[13px] font-bold'>Course SubCategory</p>
+                <div className='flex flex-row gap-x-8 mt-2'>
+                  <SelectForm width='500px' data={subCategories} name='subCategories' onChange={onChangeSubCategories} />
+                </div>
+                <div className='px-4 text-red-500 text-[12px] md:text-sm font-medium'>{errors.subCategory?.message}</div>
+              </div>
+            </>
+          )}
 
-          <div className=' mt-10'>
-            <p className='text-[13px] font-bold'>Course SubCategory</p>
-            <div className='flex flex-row gap-x-8 mt-2'>
-              <SelectForm width='500px' data={subCategories} name='subCategories' onChange={onChangeSubCategories} />
-            </div>
-            <div className='px-4 text-red-500 text-[12px] md:text-sm font-medium'>{errors.subCategory?.message}</div>
-          </div>
+          {user?.roles_id === 3 && (
+            <>
+              <div className=' mt-10'>
+                <p className='text-[13px] font-bold'>Course Category</p>
+                <div className='flex flex-row gap-x-8 mt-2'>
+                  <SelectForm width='500px' data={industries} name='industries' onChange={onChangeIndustries} />
+                </div>
+                <div className='px-4 text-red-500 text-[12px] md:text-sm font-medium'>{errors.industries?.message}</div>
+              </div>
+            </>
+          )}
 
           <div className=' mt-10'>
             <p className='text-[13px] font-bold'>Course Image</p>
@@ -206,6 +233,7 @@ function SelectForm({ type, placeholder, width, name, data, onChange }) {
       onChange={onChange}
       className={`h-[40px] w-[${width}] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-gray-600 pl-4 text-[14px]`}
       name={name}
+      required
     >
       <option value=''>Select</option>
       {data?.map((item) => (

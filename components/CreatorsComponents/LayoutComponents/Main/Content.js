@@ -13,7 +13,7 @@ import IncomeTableChart from "../IncomeTableChart";
 import { MdOutlineArrowUpward } from "react-icons/md";
 import { AiOutlineLeftCircle, AiOutlineRightCircle } from "react-icons/ai";
 import { IoLogoWhatsapp } from "react-icons/io5";
-import { BlueFacebook, BlueGroup, BlueInstagram, BlueTelegram, BlueTwitter, Filter, Money, Suprise } from "../../../../public";
+import { BlueFacebook, BlueGroup, BlueInstagram, BlueTelegram, BlueTwitter, Filter, Money, NoActivities, Suprise } from "../../../../public";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
@@ -28,7 +28,7 @@ const Content = () => {
   const [showWithdrawModal, setShowWithdrawModal] = useState(false);
   const [amount, setAmount] = useState(null);
 
-  const ongoing = true;
+  const ongoing = false;
 
   const times = {
     total: 90,
@@ -79,7 +79,7 @@ const Content = () => {
       {select === "income" && <WithdrawSection token={token} setShowWithdrawModal={setShowWithdrawModal} />}
 
       <div className='mt-6 lg:mt-12 w-full'>
-        <RenderTableChart select={select} />
+        <RenderTableChart select={select} courses={data?.courses} />
       </div>
 
       {select === "income" && <AffiliateSection code={user?.referral_code} />}
@@ -114,9 +114,18 @@ const Content = () => {
 
 export default Content;
 
-const RenderTableChart = ({ select }) => {
+const RenderTableChart = ({ select, courses }) => {
   if (select === "courses") {
-    return <CoursesTable />;
+    return courses.length > 0 ? (
+      <CoursesTable courses={courses} />
+    ) : (
+      <div className='flex flex-col mx-auto'>
+        <div className='w-full h-[450px] flex flex-col justify-center items-center'>
+          <NoActivities />
+          <p className='text-[#787878] text-[14px] font-bold mt-4'>No courses yet</p>
+        </div>
+      </div>
+    );
   } else if (select === "income") {
     return <IncomeTableChart />;
   } else if (select === "enrollment") {
