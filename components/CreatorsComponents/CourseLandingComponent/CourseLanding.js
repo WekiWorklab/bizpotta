@@ -6,10 +6,11 @@ import React from "react";
 import { AiOutlinePicture } from "react-icons/ai";
 import InputForm from "./InstructorProfileComponent/InputForm";
 import { Button } from "../../../components/Auth-Components/Button";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const CourseLanding = ({ data, setSelect }) => {
   const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   const [categories, setCategories] = React.useState();
   const [loading, setLoading] = React.useState(false);
@@ -34,25 +35,23 @@ const CourseLanding = ({ data, setSelect }) => {
   const { errors } = formState;
 
   const router = useRouter();
-  const submitCourse = (data) => {
-    let formData = new formData();
-    formData.append("image", image.files[0]);
-    formData.append("video", video.files[0]);
-    formData.append("title", data.courseTitle);
-    formData.append("short_description", data.courseSubTitle);
-    formData.append("description", data.courseDescription);
-    formData.append("industry_id", data.industries);
-    formData.append("price", data.coursePrice);
-    formData.append("level", data.level);
-    formData.append("language", data.language);
-    formData.append("category_id", data.category);
-    formData.append("subcategory_id", data.subCategory);
-    formData.append("user_id", user.id);
 
-    console.log(data);
-    // router.query.courseId = "VALUE";
-    // router.push(router);
-    // setSelect("structure");
+  const submitCourse = (data) => {
+    let UploadData = new FormData();
+    UploadData.append("image", data.image[0]);
+    UploadData.append("video", data.video[0]);
+    UploadData.append("title", data.courseTitle);
+    UploadData.append("short_description", data.courseSubTitle);
+    UploadData.append("description", data.courseDescription);
+    UploadData.append("industry_id", data.industries);
+    UploadData.append("price", data.coursePrice);
+    UploadData.append("level", data.level);
+    UploadData.append("language", data.language);
+    UploadData.append("category_id", data.category);
+    UploadData.append("subcategory_id", data.subCategory);
+    UploadData.append("user_id", user.id);
+    if (user?.roles_id == 3) dispatch(CreateMentorCourse);
+    if (user?.roles_id == 4) dispatch(CreateMentorCourse);
   };
 
   const onChangeCategories = (e) => {
