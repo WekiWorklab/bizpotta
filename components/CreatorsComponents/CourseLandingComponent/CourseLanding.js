@@ -25,6 +25,8 @@ const CourseLanding = ({ data, setSelect }) => {
     subCategory: Yup.string(),
     industries: Yup.string(),
     level: Yup.string().required("Course Level is required"),
+    image: Yup.mixed().required("Course Image is required"),
+    video: Yup.mixed().required("Course Video is required"),
   });
 
   const formOptions = { resolver: yupResolver(validationSchema) };
@@ -32,10 +34,25 @@ const CourseLanding = ({ data, setSelect }) => {
   const { errors } = formState;
 
   const router = useRouter();
-  const submitCourse = () => {
-    router.query.courseId = "VALUE";
-    router.push(router);
-    setSelect("structure");
+  const submitCourse = (data) => {
+    let formData = new formData();
+    formData.append("image", image.files[0]);
+    formData.append("video", video.files[0]);
+    formData.append("title", data.courseTitle);
+    formData.append("short_description", data.courseSubTitle);
+    formData.append("description", data.courseDescription);
+    formData.append("industry_id", data.industries);
+    formData.append("price", data.coursePrice);
+    formData.append("level", data.level);
+    formData.append("language", data.language);
+    formData.append("category_id", data.category);
+    formData.append("subcategory_id", data.subCategory);
+    formData.append("user_id", user.id);
+
+    console.log(data);
+    // router.query.courseId = "VALUE";
+    // router.push(router);
+    // setSelect("structure");
   };
 
   const onChangeCategories = (e) => {
@@ -192,7 +209,7 @@ const CourseLanding = ({ data, setSelect }) => {
 
             <div className='h-[40px] w-full sm:w-[300px] lg:w-[500px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-[#C4C4C4] pl-4 text-[15px] flex flex-row items-center gap-x-4'>
               <AiOutlinePicture size={18} />
-              <input type='file' name='image' className='text-[12px] ml-2 focus:ring-0 focus:outline-none' required />
+              <input type='file' name='image' {...register("image")} className='text-[12px] ml-2 focus:ring-0 focus:outline-none' required />
             </div>
             <div className='px-4 text-red-500 text-[12px] md:text-sm font-medium'>{errors.image?.message}</div>
           </div>
@@ -203,9 +220,17 @@ const CourseLanding = ({ data, setSelect }) => {
 
             <div className='h-[40px] w-full sm:w-[300px] lg:w-[500px] bg-[#FCFDFE] focus:ring-0 focus:outline-none border rounded-md text-[#C4C4C4] pl-4 text-[15px] flex flex-row items-center gap-x-4'>
               <AiOutlinePicture size={18} />
-              <input type='file' name='video' className='text-[12px] ml-2 focus:ring-0 focus:outline-none' required />
+              <input type='file' {...register("video")} name='video' className='text-[12px] ml-2 focus:ring-0 focus:outline-none' required />
             </div>
             <div className='px-4 text-red-500 text-[12px] md:text-sm font-medium'>{errors.video?.message}</div>
+          </div>
+
+          <div className=' mt-10'>
+            <p className='text-[13px] font-bold'>Course Price</p>
+            <div className='flex flex-row gap-x-8 mt-2'>
+              <InputForm width='500px' placeholder='Course Price' type='text' register={register} InputName='coursePrice' />
+            </div>
+            <div className='px-4 text-red-500 text-[12px] md:text-sm font-medium'>{errors.coursePrice?.message}</div>
           </div>
 
           <div className='flex justify-end mt-6 cursor-pointer'>

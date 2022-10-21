@@ -40,11 +40,26 @@ const getCourses = async () => {
   });
 };
 
+const createMentorCourse = async ({ courseTitle, courseSubTitle, courseDescription, industries, image, price, level }) => {
+  return AxoisApi.post(`${APIS.MENTORS.CREATE_COURSE}`, {
+    title: courseTitle,
+    short_description: courseSubTitle,
+    description: courseDescription,
+    industry_id: industries,
+    image: image,
+    price: price,
+    level: level,
+  }).then((res) => {
+    return res.data;
+  });
+};
+
 const creatorService = {
   onBoardMentor,
   onBoardTutor,
   addCompnay,
   getCourses,
+  createMentorCourse,
 };
 
 export default creatorService;
