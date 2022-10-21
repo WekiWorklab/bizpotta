@@ -373,3 +373,7 @@ blockquote:after {
     color: #111;
   }
 }
+
+button {
+  @apply cursor-pointer;
+}

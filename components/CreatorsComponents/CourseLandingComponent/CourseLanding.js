@@ -8,6 +8,7 @@ import InputForm from "./InstructorProfileComponent/InputForm";
 import { Button } from "../../../components/Auth-Components/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { createMentorCourse, createTutorCourse } from "../../../store/creatorSlice";
 
 const CourseLanding = ({ data, setSelect }) => {
   const { user } = useSelector((state) => state.auth);
@@ -18,6 +19,7 @@ const CourseLanding = ({ data, setSelect }) => {
   const [loading, setLoading] = React.useState(false);
   const [subCategoriesSeleted, setSubCategoriesSeleted] = React.useState();
   const [levelSeleted, setLevelSeleted] = React.useState();
+
   const validationSchema = Yup.object().shape({
     courseTitle: Yup.string().required("Course Title is required"),
     courseSubTitle: Yup.string().required("Course Sub Description is required"),
@@ -52,8 +54,8 @@ const CourseLanding = ({ data, setSelect }) => {
     UploadData.append("category_id", data.category);
     UploadData.append("subcategory_id", data.subCategory);
     UploadData.append("user_id", user.id);
-    if (user?.roles_id == 3) dispatch(CreateMentorCourse);
-    if (user?.roles_id == 4) dispatch(CreateMentorCourse);
+    if (user?.roles_id == 3) dispatch(createMentorCourse(UploadData));
+    if (user?.roles_id == 4) dispatch(createTutorCourse(UploadData));
   };
 
   useEffect(() => {
@@ -65,7 +67,7 @@ const CourseLanding = ({ data, setSelect }) => {
     if (isError) {
       toast.error(message);
     }
-  }, []);
+  }, [isError, isSuccess, courseID, message, router]);
 
   const onChangeCategories = (e) => {
     setCategories(e.target.value);
