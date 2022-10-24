@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     if (user && user?.is_onboarded) {
-      if (user?.roles_id != 3 || user?.roles_id != 4) {
+      if (user?.roles_id != 3 && user?.roles_id != 4) {
         router.push("/auth/login");
       }
       setLoading(false);
