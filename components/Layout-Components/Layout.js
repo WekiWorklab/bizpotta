@@ -20,19 +20,13 @@ const Layout = ({ children }) => {
   const [slideIn, setSlideIn] = useState(false);
 
   useEffect(() => {
-    if (!user) {
-    }
-    if (user) {
-      if (user?.is_onboarded == true) {
-        if (user.roles_id == 3 && user.roles_id == 4) {
-          router.push("/creators");
-        }
-        setLoading(false);
-      } else {
-        router.push("/auth/login");
-        setLoading(false);
+    if (user && user?.is_onboarded) {
+      if (user?.roles_id == 3 || user?.roles_id == 4) {
+        router.push("/creators");
       }
+      setLoading(false);
     }
+    if (!user) router.push("/auth/login");
   }, [isAuthenticated, router, user, user?.is_onboarded, user?.roles_id]);
 
   if (loading) return <FullPageSpinner />;

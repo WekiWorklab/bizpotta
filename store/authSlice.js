@@ -124,6 +124,7 @@ export const authSlice = createSlice({
       .addCase(setUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isRegistered = false;
+        state.userUpdatedFromServer = true;
       })
       .addCase(setUser.rejected, (state, action) => {
         state.isLoading = false;

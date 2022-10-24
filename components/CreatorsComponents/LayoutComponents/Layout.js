@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import BlueFooter from "../../BlueFooter";
 import Header from "../../CreatorHeader";
@@ -18,18 +17,14 @@ const Layout = ({ children }) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (user) {
-      if (user?.is_onboarded == true) {
-        if (user.roles_id !== 3 && user.roles_id !== 4) {
-          router.push("/auth/login");
-        }
-        setLoading(false);
-      } else {
+    if (user && user?.is_onboarded) {
+      if (user?.roles_id != 3 || user?.roles_id != 4) {
         router.push("/auth/login");
       }
-    } else {
-      router.push("/auth/login");
+      setLoading(false);
     }
+    if (user && !user?.is_onboarded) router.push("/onboarding");
+    if (!user) router.push("/auth/login");
   }, [router, user]);
 
   if (loading) return <FullPageSpinner />;
