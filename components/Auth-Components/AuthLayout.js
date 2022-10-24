@@ -17,17 +17,24 @@ export default function AuthLayout({ children }) {
     if (isError) {
       toast.error(message);
     }
+    if (!user) {
+      setLoading(false);
+    }
+
     if (isRegistered) {
       toast.success("Registration successful");
       dispatch(reset());
       dispatch(setUser());
       router.push("/auth/verify-email");
     }
+
     if (user) {
       if (user.email_verified_at === null) {
-        if (router.pathname !== "/auth/verify-email") {
-          router.push("/auth/verify-email");
-        }
+        setTimeout(() => {
+          if (router.pathname !== "/auth/verify-email") {
+            router.push("/auth/verify-email");
+          }
+        }, 1000);
       } else {
         if (user?.is_onboarded) {
           switch (user?.roles_id) {
@@ -46,9 +53,7 @@ export default function AuthLayout({ children }) {
         }
       }
     }
-    if (!user) {
-      setLoading(false);
-    }
+
     dispatch(reset());
   }, [isError, isRegistered, message, dispatch, router, isAuthenticated, user?.is_onboarded, user?.roles_id, user]);
 
