@@ -43,14 +43,16 @@ export default function SelectCourse({ optionsLists, optionsLists1 }) {
   };
 
   return (
-    <div className='w-full h-screen bg-gray-50 flex  flex-col items-center py-40 px-4 font-light'>
+    <div className='w-full h-screen bg-gray-50 flex  flex-col justify-center items-center  px-4 font-light'>
       <h1 className='font-fancy text-2xl md:text-3xl text-bizpotta-purple px-4'>Explore our course library</h1>
-      <div className='flex flex-col space-y-4 py-4'>
-        <Tabs current={id} courseCategories={optionsLists1} />
+      <div className='flex flex-col space-y-4 py-4 '>
+        <div>
+          <Tabs current={id} courseCategories={optionsLists1} />
+        </div>
 
         {/* This div will be the parent reference */}
         <div
-          className='flex flex-col items-center justify-center gap-6 md:grid md:grid-cols-2 md:gap-4 md:gap-x-[50px]  xl:grid-cols-3 xl:gap-8  py-8'
+          className='flex flex-col items-center justify-center gap-6 md:grid md:grid-cols-2 md:gap-4 md:gap-x-[50px]  xl:grid-cols-3 xl:gap-8  justify-items-center py-8'
           ref={parentRef}
         >
           {optionsLists.map((option, index) => (

@@ -83,8 +83,8 @@ const SelectCoursesModal = ({ courses }) => {
                       className='flex items-center text-[18px] justify-center bg-[#E8ECFF] mb-4 w-full py-2 cursor-pointer'
                       onClick={handleContinue}
                     >
-                      Continue
-                      {isLoading && "loading"}
+                      
+                      {isLoading ? "loading" : "Continue"}
                     </div>
                     <div className='flex items-center text-[18px] justify-center bg-[#E8ECFF] w-full py-2 cursor-pointer' onClick={closeModal}>
                       Go back
