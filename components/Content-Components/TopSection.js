@@ -165,7 +165,7 @@ const TopSection = () => {
 
         <div>
           <div className='pt-[50px] flex flex-col bg-white'>
-            <p className='text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8  '>
+            <p className='text-[14px] text-center lg:text-left  mb-4 md:text-md font-semibold md:font-bold md:mb-8  '>
               Recommended Courses on Vocational Education
             </p>
             <div className='block w-[360px] m-auto md:hidden w-full'>
@@ -179,7 +179,7 @@ const TopSection = () => {
             </div>
           </div>
           <div className='pt-[50px] flex flex-col bg-white'>
-            <p className='text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8  '>
+            <p className='text-[14px] text-center lg:text-left  mb-4 md:text-md font-semibold md:font-bold md:mb-8  '>
               Popular courses on vocational program
             </p>
             <div className='block w-[360px] m-auto md:hidden w-full'>
@@ -193,7 +193,7 @@ const TopSection = () => {
             </div>
           </div>
           <div className='pt-[50px] flex flex-col bg-white'>
-            <p className='text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8'>
+            <p className='text-[14px] text-center lg:text-left  mb-4 md:text-md font-semibold md:font-bold md:mb-8'>
               Take your business to the next level by exploring any of these courses
             </p>
             <div className='block w-[360px] m-auto md:hidden w-full'>
@@ -207,7 +207,7 @@ const TopSection = () => {
             </div>
           </div>
           <div className='pt-[50px] flex flex-col'>
-            <p className='text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8'>Instructors</p>
+            <p className='text-[14px] text-center lg:text-left mb-4 md:text-md font-semibold md:font-bold md:mb-8'>Instructors</p>
             <div className='block w-[360px] m-auto md:hidden w-full'>
               <InstructorCarousel data={instructorData} screen={[1.5, 10]} />
             </div>
@@ -219,7 +219,7 @@ const TopSection = () => {
             </div>
           </div>
 
-          <p className='text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8 mt-10'>Up-coming</p>
+          <p className='text-[14px] text-center lg:text-left mb-4 md:text-md font-semibold md:font-bold md:mb-8 mt-10'>Up-coming</p>
           <div className='block w-[360px] m-auto md:hidden w-full'>
             <StyleCarousel screen={[1, 10]} />
           </div>
