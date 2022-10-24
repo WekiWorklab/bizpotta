@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { FullPageSpinner } from "../../Lib";
 import { useRouter } from "next/router";
+import PlainFooter from "../../PlainFooter";
 
 const Layout = ({ children }) => {
   const [loading, setLoading] = useState(true);
@@ -39,6 +40,7 @@ const Layout = ({ children }) => {
       <motion.div className='w-full' initial={{ opacity: 0, x: "-20%" }} animate={{ opacity: 1, x: 0 }} transition={{ ease: "easeOut", duration: 1 }}>
         {children}
       </motion.div>
+      <PlainFooter/>
       <Sidebar />
       <XSidebar show={show} setShow={setShow} slideIn={slideIn} setSlideIn={setSlideIn} />
     </div>

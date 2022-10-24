@@ -46,17 +46,17 @@ function Sidebar() {
                 <div
                   className={`${
                     path === "/creators/courses" ? "text-darkBlue font-semibold" : "text-gray-400 font-light"
-                  } text-sm   ml-5 hover:text-darkBlue`}
+                  } text-sm ml-5 hover:text-darkBlue`}
                 >
                   Courses
                 </div>
               </div>
             </li>
 
-            {user?.roles_id === 1 && (
+            {user?.roles_id === 3 || user?.roles_id === 4  && (
               <li className='items-center cursor-pointer  mb-5' onClick={() => router.push("/creators/live-session")}>
                 <div className='flex flex-row justify-start items-center'>
-                  <MdOutlineLiveTv color={path === "/creators/live-session" ? "#121F4C" : "gray"} />
+                  <MdOutlineLiveTv color={path === "/creators/live-session" || path === "/creators/live-session/new" ? "#121F4C" : "gray"} />
                   <div
                     className={`${
                       path === "/creators/live-session" ? "text-darkBlue font-semibold" : "text-gray-400 font-light"
