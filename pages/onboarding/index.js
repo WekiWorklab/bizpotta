@@ -18,7 +18,7 @@ const Index = ({ data }) => {
       }
     }
     if (user?.email_verified_at !== null) {
-      if (user?.onboarded === 1) {
+      if (user?.is_onboarded === 1) {
         router.push("/auth/login");
       }
     }
