@@ -14,18 +14,30 @@ const DashBoardCard = ({ select, title, setSelected, value, type }) => {
       } rounded-md p-2 lg:p-8`}
       onClick={() => setSelected(title)}
     >
-      <div className='flex flex-row justify-between items-center mb-4'>
+      <div className="flex flex-row justify-between items-center mb-4">
         {/* <AiOutlineInbox size = {24} color='#787878'/> */}
-        {title === "income" ? <IncomeIcon /> : title === "courses" ? <CoursesIcon /> : <EnrollmentIcon />}
-        <BsChevronDown size={14} color='#787878' />
+        {title === "income" ? (
+          <IncomeIcon />
+        ) : title === "courses" ? (
+          <CoursesIcon />
+        ) : (
+          <EnrollmentIcon />
+        )}
+        <BsChevronDown size={14} color="#787878" />
       </div>
 
-      <p className='text-bizpotta-green mb-2 capitalize font-bold'>{title}</p>
+      <p className="text-bizpotta-green mb-2 capitalize font-bold">{title}</p>
 
-      <div className='font-[600] text-[14px] lg:text-base  text-bizpotta-gray-700'>
+      <div className="font-[600] text-[14px] lg:text-base  text-bizpotta-gray-700">
         {type == 1 ? "₦" : ""}
         {type == 1 ? Number(value).toLocaleString() : value}
-        {type == 2 ? <span className='text-[12px]'> students</span> : type == 3 ? <span className='text-[12px]'> courses</span> : ""}
+        {type == 2 ? (
+          <span className="text-[12px]"> students</span>
+        ) : type == 3 ? (
+          <span className="text-[12px]"> courses</span>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
