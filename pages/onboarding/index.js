@@ -19,7 +19,17 @@ const Index = ({ data }) => {
     }
     if (user?.email_verified_at !== null) {
       if (user?.is_onboarded === 1) {
-        router.push("/auth/login");
+        switch (user?.roles_id) {
+          case 1:
+            router.push("/admin");
+            break;
+          case 2:
+            router.push("/students");
+            break;
+          default:
+            router.push("/creators");
+            break;
+        }
       }
     }
     setLoading(false);
