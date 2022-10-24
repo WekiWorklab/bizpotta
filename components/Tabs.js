@@ -15,14 +15,14 @@ export default function Tabs({ current, courseCategories }) {
 
   return (
     <div>
-      <div className='sm:hidden'>
-        <label htmlFor='tabs' className='sr-only'>
+      <div className="sm:hidden">
+        <label htmlFor="tabs" className="sr-only">
           Select a tab
         </label>
         <select
-          id='tabs'
-          name='tabs'
-          className='block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md'
+          id="tabs"
+          name="tabs"
+          className="block w-full focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md"
           defaultValue={tabs.find((tab) => tab.current)?.name}
         >
           {tabs.map((tab) => (
@@ -30,16 +30,18 @@ export default function Tabs({ current, courseCategories }) {
           ))}
         </select>
       </div>
-      <div className='hidden sm:block'>
-        <nav className='flex space-x-4' aria-label='Tabs'>
+      <div className="hidden sm:block w-[550px] mx-auto lg:w-full overflow-x-scroll lg:overflow-x-visible horizontal-scrollbar">
+        <nav className="flex space-x-4 justify-center items-center" aria-label="Tabs">
           {tabs.map((tab) => (
             <a
               key={tab.name}
-              href='#'
+              href="#"
               onClick={() => handleClick(tab.id)}
               className={classNames(
-                tab.id == current ? "font-bold" : "text-gray-500 hover:text-gray-700",
-                "px-3 py-2 font-medium text-lg rounded-md"
+                tab.id == current
+                  ? "font-bold"
+                  : "text-gray-500 hover:text-gray-700",
+                "px-3 py-2 font-medium   xl:text-lg rounded-md"
               )}
               aria-current={tab.id == current ? "page" : undefined}
             >
