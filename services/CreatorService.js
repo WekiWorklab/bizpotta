@@ -40,21 +40,22 @@ const getCourses = async () => {
   });
 };
 
-const createMentorCourse = async ({ courseTitle, courseSubTitle, courseDescription, industries, image, price, level }) => {
+const createMentorCourse = async (data) => {
+  console.log(data);
   return AxoisApi.post(`${APIS.MENTORS.CREATE_COURSE}`, {
-    title: courseTitle,
-    short_description: courseSubTitle,
-    description: courseDescription,
-    industry_id: industries,
-    image: image,
-    price: price,
-    level: level,
+    title: data.courseTitle,
+    short_description: data.courseSubTitle,
+    description: data.courseDescription,
+    industry_id: data.industries,
+    image: data.image,
+    price: data.price,
+    level: data.level,
   }).then((res) => {
     return res.data;
   });
 };
 const createTutorCourse = async ({ courseTitle, courseSubTitle, courseDescription, category_id, subcategory_id, image, price, level }) => {
-  return AxoisApi.post(`${APIS.MENTORS.CREATE_COURSE}`, {
+  return AxoisApi.post(`${APIS.TUTORS.CREATE_COURSE}`, {
     title: courseTitle,
     short_description: courseSubTitle,
     description: courseDescription,

@@ -41,7 +41,7 @@ const CourseLanding = ({ data, setSelect }) => {
   const router = useRouter();
 
   const submitCourse = (data) => {
-    let UploadData = new FormData();
+    const UploadData = new FormData();
     UploadData.append("image", data.image[0]);
     UploadData.append("video", data.video[0]);
     UploadData.append("title", data.courseTitle);
@@ -54,6 +54,7 @@ const CourseLanding = ({ data, setSelect }) => {
     UploadData.append("category_id", data.category);
     UploadData.append("subcategory_id", data.subCategory);
     UploadData.append("user_id", user.id);
+
     if (user?.roles_id == 3) dispatch(createMentorCourse(UploadData));
     if (user?.roles_id == 4) dispatch(createTutorCourse(UploadData));
   };

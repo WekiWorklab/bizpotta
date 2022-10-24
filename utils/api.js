@@ -23,6 +23,7 @@ export const APIS = {
     SET_TUTORING_PREFERENCES: `${api}/creators/set-tutor-preferences`,
     ADD_COMPANY: `${api}/creators/add-company`,
     GET_COURSES: `${api}/creators/get-courses`,
+    CREATE_COURSE: `${api}/creators/tutor/create-courses`,
   },
   COMPANIES: {
     SET_COMPANY_PREFERENCES: `${api}/creators/set-institue-preferences`,
