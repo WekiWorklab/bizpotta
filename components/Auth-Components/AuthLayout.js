@@ -8,7 +8,9 @@ import { FullPageSpinner } from "../Lib";
 
 export default function AuthLayout({ children }) {
   const router = useRouter();
-  const { isAuthenticated, isError, isRegistered, message, user } = useSelector((state) => state.auth);
+  const { isAuthenticated, isError, isRegistered, message, user } = useSelector(
+    (state) => state.auth
+  );
   const dispatch = useDispatch();
 
   const [loading, setLoading] = React.useState(true);
@@ -55,14 +57,24 @@ export default function AuthLayout({ children }) {
     }
 
     dispatch(reset());
-  }, [isError, isRegistered, message, dispatch, router, isAuthenticated, user?.is_onboarded, user?.roles_id, user]);
+  }, [
+    isError,
+    isRegistered,
+    message,
+    dispatch,
+    router,
+    isAuthenticated,
+    user?.is_onboarded,
+    user?.roles_id,
+    user,
+  ]);
 
   if (loading) return <FullPageSpinner />;
 
   return (
-    <div className='flex items-center justify-center h-screen py-2 '>
-      <div className='hidden md:block md:w-2/4 h-screen bg-auth-pattern bg-cover'></div>
-      <div className='w-full md:w-7/12'>{children}</div>
+    <div className="flex items-center justify-center h-screen py-2 ">
+      <div className="hidden md:block md:w-2/4 h-screen bg-auth-pattern bg-cover"></div>
+      <div className="w-full md:w-7/12">{children}</div>
     </div>
   );
 }

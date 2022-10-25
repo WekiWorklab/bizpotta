@@ -33,7 +33,9 @@ export default function Login() {
   const { isLoading } = useSelector((state) => state.auth);
 
   const handlePassword = () => {
-    setPasswordType((prevState) => (prevState === "password" ? "text" : "password"));
+    setPasswordType((prevState) =>
+      prevState === "password" ? "text" : "password"
+    );
   };
 
   const validationSchema = Yup.object().shape({
@@ -55,71 +57,89 @@ export default function Login() {
         <title>Login | Bizpotta</title>
       </Head>
 
-      <div className=' h-[100vh] flex flex-col justify-center items-center'>
-        <div className='w-[130px] h-[65px] mb-2 '>
-          <Link href='/'>
-            <img src={logo.src} alt='' className='w-full h-full object-contain cursor-pointer' />
+      <div className=" h-[100vh] flex flex-col justify-center items-center">
+        <div className="w-[130px] h-[65px] mb-2 ">
+          <Link href="/">
+            <img
+              src={logo.src}
+              alt=""
+              className="w-full h-full object-contain cursor-pointer"
+            />
           </Link>
         </div>
         <form onSubmit={handleSubmit(submitForm)}>
-          <div className=' w-[360px] py-[30px] sm:py-[40px] bg-[#FAFAFA] sm:bg-white flex flex-col justify-center items-center '>
-            <div className=' w-[330px]'>
-              <h3 className='text-[18px] text-[#282828]'>Sign into your account</h3>
-              <p className='text-[12px] text-[#999999] mt-[10px]'>
+          <div className=" w-[360px] py-[30px] sm:py-[40px] bg-[#FAFAFA] sm:bg-white flex flex-col justify-center items-center ">
+            <div className=" w-[330px]">
+              <h3 className="text-[18px] text-[#282828]">
+                Sign into your account
+              </h3>
+              <p className="text-[12px] text-[#999999] mt-[10px]">
                 Don&apos;t have an account?{" "}
-                <span className='text-[#475F8F]'>
+                <span className="text-[#475F8F]">
                   <Link href={`/auth/register`}>Sign up</Link>
                 </span>
               </p>{" "}
             </div>
 
-            <div className=' flex flex-col mt-[20px]'>
-              <p className='text-[#282828]'> Email Address</p>
+            <div className=" flex flex-col mt-[20px]">
+              <p className="text-[#282828]"> Email Address</p>
               <FormInput
                 register={register}
                 handleChange={handleChange}
                 value={loginData.email}
-                name='email'
-                type='email'
-                placeholder='someone@gmail.com'
+                name="email"
+                type="email"
+                placeholder="someone@gmail.com"
                 required
               />
             </div>
 
-            <div className=' flex flex-col mt-[25px]'>
-              <p className='text-[#282828]'>Password</p>
-              <div className='relative'>
+            <div className=" flex flex-col mt-[25px]">
+              <p className="text-[#282828]">Password</p>
+              <div className="relative">
                 <FormInput
                   register={register}
                   handleChange={handleChange}
                   value={loginData.password}
-                  name='password'
+                  name="password"
                   type={passwordType}
-                  placeholder='********'
+                  placeholder="********"
                   required
                   setPasswordType={setPasswordType}
                 />
 
                 {passwordType === "password" ? (
-                  <BiShow size={20} color='#999999' className='absolute top-[12px] right-[10px] ' onClick={() => handlePassword()} />
+                  <BiShow
+                    size={20}
+                    color="#999999"
+                    className="absolute top-[12px] right-[10px] "
+                    onClick={() => handlePassword()}
+                  />
                 ) : (
-                  <BiHide size={20} color='#999999' className='absolute top-[12px] right-[10px]' onClick={() => handlePassword()} />
+                  <BiHide
+                    size={20}
+                    color="#999999"
+                    className="absolute top-[12px] right-[10px]"
+                    onClick={() => handlePassword()}
+                  />
                 )}
               </div>
             </div>
 
-            <p className='text-xs text-[#999999] mt-4 ml-[55%]'>Forgot password</p>
+            <p className="text-xs text-[#999999] mt-4 ml-[55%]">
+              Forgot password
+            </p>
 
-            <button type='submit' className='mt-6 '>
-              <Button name='Sign In' type={"submit"} loading={isLoading} />
+            <button type="submit" className="mt-6 ">
+              <Button name="Sign In" type={"submit"} loading={isLoading} />
             </button>
 
-            <div type='submit' className='mt-6 '>
+            <div type="submit" className="mt-6 ">
               <WhiteButton
                 onClick={() => {
                   console.log("pressed");
                 }}
-                name='Sign up with Google'
+                name="Sign up with Google"
                 type={"button"}
                 loading={isLoading}
               />
