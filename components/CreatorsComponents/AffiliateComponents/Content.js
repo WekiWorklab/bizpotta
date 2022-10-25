@@ -124,7 +124,7 @@ const Content = () => {
           <IoLogoWhatsapp size={22} />
         </a>
       </div>
-    </div>
+      </div>
 
 
       </div>

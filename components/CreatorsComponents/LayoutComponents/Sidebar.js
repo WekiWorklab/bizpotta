@@ -68,9 +68,10 @@ function Sidebar() {
               </li>
             )}
 
-            <li className='items-center cursor-not-allowed mb-5'>
+            <li className='items-center cursor-not-allowed mb-5' onClick={() => router.push("/creators/market-insight")} >
               <div className='flex flex-row justify-start items-center'>
-                <MdOutlineSchool color='gray' />
+                {/* <MdOutlineSchool color='gray' /> */}
+                <MdOutlineSchool color={path === "/creators/market-insight"  ? "#121F4C" : "gray"} />
                 <div className='text-sm text-gray-600 font-light ml-5'>Market Insight</div>
               </div>
             </li>
