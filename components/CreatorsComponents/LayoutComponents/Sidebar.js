@@ -121,7 +121,7 @@ function Sidebar() {
           </ul>
 
           <ul className='md:flex-col md:min-w-full flex flex-col list-none mb-10 mt-5 '>
-            <li className='items-center cursor-pointer mb-5'>
+            <li className='items-center cursor-pointer mb-5' onClick = {() => router.push("/creators/affiliate")}>
               <div className='flex flex-row justify-start items-center'>
                 <AffiliateSVG color={path === "/creators/affiliate" ? "#121F4C" : "gray"} />
 

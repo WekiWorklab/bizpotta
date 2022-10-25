@@ -11,7 +11,7 @@ import { SlPicture } from "react-icons/si";
 import { useEffect } from "react";
 
 const Content = () => {
-  const [select, setSelect] = useState("account");
+  const [select, setSelect] = useState("personal");
   const [open, setOpen] = useState("0");
   /**The open and setOpen objects are used to make sure that multiple select dropdowns can't be open at the same time */
 
