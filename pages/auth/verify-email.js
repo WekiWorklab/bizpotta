@@ -55,11 +55,21 @@ export default function VerifyEmailPage() {
   };
 
   useEffect(() => {
-    dispatch(setUser());
-    dispatch(reset());
-    dispatch(sendVerificationCode());
+    setTimeout(() => {
+      updateUser();
+    }, 2000);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const updateUser = () => {
+    dispatch(setUser());
+    dispatch(reset());
+    setTimeout(() => {
+      dispatch(sendVerificationCode());
+      dispatch(reset());
+    }, 2000);
+  };
 
   useEffect(() => {
     if (isError) {
