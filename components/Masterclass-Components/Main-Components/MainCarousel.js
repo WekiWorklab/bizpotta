@@ -77,6 +77,8 @@ export const MainCarousel = () => {
         <SwiperSlide
           key={index}
           style={{
+            display: "flex", 
+            justifyContent:"start", 
             backgroundColor: "transparent",
             height: "530px",
             border: "none",

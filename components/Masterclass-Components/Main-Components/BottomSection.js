@@ -4,15 +4,21 @@ import { useRef } from 'react'
 
 import {BsArrowRight, BsDashLg} from 'react-icons/bs'
 import { GoPrimitiveDot } from 'react-icons/go'
-import { offer } from '../../../public'
+import { LeftGroupCard, offer, RightGroupCard } from '../../../public'
 import { ExpertsCarousel, MainCarousel, TestimonialCarousel } from './MainCarousel'
 
 const BottomSection = () => {
   return (
     <div className='w-full  bg-gradient-to-b from-[#FDFFFA] to-[#FDFFFA] pb-20 pt-10'>
-        <p className='ml-40 text-xl font-bold'>Upcoming Sessions </p>
+        <p className='px-40 text-xl font-bold'>Upcoming Sessions </p>
 
-        <div className='my-8 px-20 py-10 masters-shadow '>
+        <div className='my-8 px-20 py-10 masters-shadow relative'>
+        <div className="absolute left-0 top-0">
+            <LeftGroupCard />
+        </div>
+        <div className="absolute right-0 top-0">
+            <RightGroupCard />
+        </div>
         <div className='w-full flex items-center gap-x-10  '>
             <div className='flex items-center  rounded-md px-6 py-8 w-3/4  mx-auto'>
                 <div className='w-3/4'>
