@@ -66,7 +66,16 @@ const Content = () => {
             <p className="text-[14px] mb-4 md:text-md font-semibold md:mb-8 ml-4 ">
               Instructors
             </p>
-            <div className="block w-[360px] m-auto md:hidden">
+            <div className="block w-[360px] m-auto md:hidden w-full">
+              <InstructorCarousel data={instructorData} screen={[1.5, 10]} />
+            </div>
+            <div className="hidden m-auto md:block lg:hidden w-full">
+              <InstructorCarousel data={instructorData} screen={[2, 20]} />
+            </div>
+            <div className="hidden lg:block w-full">
+              <InstructorCarousel data={instructorData} screen={[4, 30]} />
+            </div>
+            {/* <div className="block w-[360px] m-auto md:hidden">
               <InstructorCarousel data={instructorData} smallScreen={true} />
             </div>
             <div className="hidden md:block">
@@ -75,7 +84,7 @@ const Content = () => {
                 smallScreen={false}
                 bottom={true}
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
