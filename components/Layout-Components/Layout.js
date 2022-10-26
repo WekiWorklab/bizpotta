@@ -14,24 +14,24 @@ import { motion } from "framer-motion";
 
 const Layout = ({ children }) => {
   const router = useRouter();
-  const { user, isAuthenticated } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(true);
   const [slideIn, setSlideIn] = useState(false);
 
   useEffect(() => {
     if (user && user?.is_onboarded) {
-      if(user?.roles_id == 2) {
+      if (user?.roles_id == 2) {
         router.push("/students");
       }
       if (user?.roles_id == 3 || user?.roles_id == 4) {
-        // router.push("/creators");
         router.push("/creators");
       }
 
       setLoading(false);
     }
     if (!user) router.push("/auth/login");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, user?.is_onboarded, user?.roles_id]);
 
   if (loading) return <FullPageSpinner />;
