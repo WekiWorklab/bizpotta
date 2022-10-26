@@ -32,7 +32,7 @@ const Layout = ({ children }) => {
       setLoading(false);
     }
     if (!user) router.push("/auth/login");
-  }, [isAuthenticated, router, user, user?.is_onboarded, user?.roles_id]);
+  }, [user, user?.is_onboarded, user?.roles_id]);
 
   if (loading) return <FullPageSpinner />;
 
