@@ -28,7 +28,8 @@ const MiddleSection = () => {
             <p className="text-lg sm:text-xl font-bold text-center xl:text-left">
             How mentors on Bizpotta can help achieve your dreams
             </p>
-            <div className="w-full grid grid-cols-1 justify-items-center sm:grid-cols-2 gap-x-16 gap-y-10 xl:flex xl:items-center xl:justify-center xl:gap-x-16 mt-10">
+            {/* xl:flex xl:items-center xl:justify-center xl:gap-x-16 */}
+            <div className="w-full grid grid-cols-1 justify-items-center sm:grid-cols-2 xl:grid-cols-3 sm:gap-x-3 gap-y-10 sm:gap-y-4 md:gap-x-16 md:gap-y-10  mt-10">
                 <div className="w-[300px] h-[180px] text-white bg-darkBlue rounded-md py-4 px-6 flex flex-col justify-between">
                     <p>Career advice</p>
                     <p className="text-sm w-[90%]">
@@ -51,7 +52,7 @@ const MiddleSection = () => {
                     </div>
                 </div>
                 
-                <div className="sm:col-span-2 flex justify-center w-full">
+                <div className="sm:col-span-2 xl:col-span-1 flex justify-center w-full">
                     <div className=" w-[300px] align-center h-[180px] text-white bg-darkBlue rounded-md py-4 px-6 flex flex-col justify-between">
                         <p>Skills</p>
                         <p className="text-sm w-[90%]">
@@ -67,17 +68,17 @@ const MiddleSection = () => {
         </div>
       </div>
 
-      <div className="w-full flex redBorder flex-col xl:flex-row items-center gap-x-10 px-3 sm:px-10 xl:px-20 mt-40">
+      <div className="w-full flex  flex-col xl:flex-row items-center gap-x-10 px-3 sm:px-10 xl:px-20 mt-40">
         <div className="flex flex-col sm:flex-row items-center border masters-shadow2 border-[#b1adad] rounded-md px-2 sm:px-6 py-3 sm:py-8 w-full xl:w-[70%]">
-          <div className="w-full  sm:w-2/3 redBorder">
+          <div className="w-full  sm:w-2/3 ">
             <div className="flex items-center gap-x-2">
               <GoPrimitiveDot size={14} color="red" />
               <p className="font-bold text-[14px]">Live</p>
             </div>
-            <p className="redBorder text-center sm:text-left text-lg text-darkBlue font-bold mt-3">
+            <p className=" text-center sm:text-left text-lg text-darkBlue font-bold mt-3">
               Getting the right client
             </p>
-            <div className=" redBorder flex justify-center sm:justify-start items-center  gap-x-4">
+            <div className="  flex justify-center sm:justify-start items-center  gap-x-4">
               <p className="text-[13px]">Jan 12th, 2022</p>
               <p className="text-[12px]">Friday, 10:00pm</p>
             </div>
@@ -185,10 +186,10 @@ const MiddleSection = () => {
 
     <div className="px-3 sm:px-10 xl:px-20">
       <div className="w-full mt-16 lg:mt-32">
-        <div className="text-xl sm:text-xl font-bold">
+        <div className="text-center sm:text-left text-xl sm:text-xl font-bold">
           Top courses on business plan development
         </div>
-        <div className="block w-[360px]  md:hidden w-full">
+        <div className="block w-[360px] mx-auto md:hidden w-full">
             <MainCarousel screen={[1, 10]} />
         </div>
         <div className="hidden  md:block lg:hidden w-full">
@@ -200,10 +201,10 @@ const MiddleSection = () => {
       </div>
 
       <div className="w-full mt-16 lg:mt-32">
-        <div className="text-xl sm:text-xl font-bold">
+        <div className="text-center sm:text-left text-xl sm:text-xl font-bold">
           Most enrolled courses on disruptive business model
         </div>
-        <div className="block w-[360px] m-auto md:hidden w-full">
+        <div className="block w-[360px] mx-auto md:hidden w-full">
             <MainCarousel screen={[1, 10]} />
         </div>
         <div className="hidden m-auto md:block lg:hidden w-full">

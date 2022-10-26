@@ -9,18 +9,18 @@ import "swiper/css/pagination";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { FaQuoteLeft } from "react-icons/fa";
 
-export const ExpertsCarousel = () => {
+export const ExpertsCarousel = ({screen}) => {
   const arr = new Array(9).fill("");
 
   return (
     <Swiper
-      slidesPerView={3}
-      spaceBetween={10}
+      slidesPerView={screen[0]}
+      spaceBetween={screen[1]}
       pagination={{
         clickable: true,
       }}
       modules={[Pagination]}
-      style={{ backgroundColor: "transparent" }}
+      style={{ backgroundColor: "transparent"}}
     >
       {arr.map((el, index) => (
         <SwiperSlide
@@ -31,7 +31,7 @@ export const ExpertsCarousel = () => {
             backgroundColor: "transparent",
           }}
         >
-          <div className="w-[350px] p-3 flex flex-row gap-x-4">
+          <div className="w-[350px] py-3 flex flex-row gap-x-4">
             <div
               className="bg-no-repeat bg-cover bg-center w-[50px] h-[50px] rounded-full"
               style={{ backgroundImage: `url(${offer.src})` }}
@@ -115,13 +115,13 @@ export const MainCarousel = ({screen}) => {
   );
 };
 
-export const TestimonialCarousel = () => {
+export const TestimonialCarousel = ({screen}) => {
   const arr = new Array(8).fill("");
 
   return (
     <Swiper
-      slidesPerView={2.7}
-      spaceBetween={10}
+      slidesPerView={screen[0]}
+      spaceBetween={screen[1]}
       pagination={{
         clickable: true,
       }}
@@ -132,10 +132,13 @@ export const TestimonialCarousel = () => {
       {arr.map((el, index) => (
         <SwiperSlide
           key={index}
-          style={{ backgroundColor: "transparent", padding: "0px" }}
+          style={{ display: "flex",
+          justifyContent: "start",
+          backgroundColor: "transparent", 
+          padding: "0px" }}
         >
-          <div className="w-[400px] h-[320px] relative  centerFlex ">
-            <div className="w-[380px] h-[250px] bg-white border rounded-md">
+          <div className=" w-[330px] md:w-[400px] h-[320px] relative  centerFlex ">
+            <div className=" w-[330px] md:w-[380px] h-[250px] bg-white border rounded-md">
               <div className="flex flex-row gap-x-1 mt-16 ml-8 mr-2">
                 <AiFillStar color="#94F236" size={18} />
                 <AiFillStar color="#94F236" size={18} />
@@ -143,7 +146,7 @@ export const TestimonialCarousel = () => {
                 <AiFillStar color="#94F236" size={18} />
                 <AiOutlineStar color="#94F236" size={18} />
               </div>
-              <div className="mt-4 ml-8 mr-2">
+              <div className="mt-4 ml-8 mr-2 text-[14px] md:text-base">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Volutpat mauris id malesuada commodo mattis.
               </div>
