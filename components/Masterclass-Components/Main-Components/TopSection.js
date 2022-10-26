@@ -23,7 +23,7 @@ const TopSection = () => {
     <div className="w-full rad-gradient pb-10">
       <Header />
       {/* <Navbars /> */}
-      <div className="px-24">
+      <div className="px-3 sm:px-10 xl:px-24">
         <div className="mt-10">
           <p className="text-darkBlue font-semibold">Master Program</p>
           <CurvyUnderline />
@@ -34,18 +34,18 @@ const TopSection = () => {
         <CircularProfileCarousel />
 
         <div className="w-full flex flex-col items-center justify-center gap-y-6 relative h-[630px]">
-          <div className="w-full px-[190px] flex flex-col items-center justify-center gap-y-6 ">
-            <p className="font-bold text-3xl uppercase text-center">
+          <div className="w-full md:px-14 xl:px-[190px] flex flex-col items-center justify-center gap-y-6 ">
+            <p className="font-bold text-lg md:text-xl xl:text-3xl uppercase text-center">
               Meet and connect with world best business expert
             </p>
-            <p className="text-xl text-center ">
+            <p className="text-sm md:text-lg xl:text-xl text-center ">
               Learn, grow, and connect with established entrepreneurs with
               results to show in their business journey
             </p>
             {/* <div className='w-[190px] h-[55px] mt-4 centerFlex rounded-md bg-darkBlue text-white'>
                     Watch Triller
                 </div> */}
-            <div className="w-[470px] h-[50px] pl-4 flex justify-end items-center gap-x-2 border border-[#b1adad] rounded-md">
+            <div className="w-full md:w-[470px] h-[50px] pl-4 flex justify-end items-center gap-x-2 border border-[#b1adad] rounded-md">
               <BiSearchAlt size={20} color="#b1adad" />
               <input
                 className="w-[35%] outline-none bg-transparent"

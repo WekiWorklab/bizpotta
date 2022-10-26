@@ -71,7 +71,7 @@ const BottomSection = () => {
         <div className='w-full mt-32 px-20'>
             <div className='text-xl font-bold'>Learn social tools for business success</div>              
             <div className='w-full'>  
-            <MainCarousel />
+            {/* <MainCarousel /> */}
             </div>
         </div>
 
