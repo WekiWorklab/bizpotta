@@ -90,13 +90,13 @@ export default function VerifyEmailPage() {
 
   useEffect(() => {
     if (!user) {
-      Router.push("/auth/login");
+      router.push("/auth/login");
     }
     if (user?.email_verified_at !== null) {
       dispatch(setUser());
       window.location.href = "/onboarding";
     }
-  }, [user, dispatch]);
+  }, [user, dispatch, router]);
 
   return (
     <div className='centerFlex h-screen py-2'>
