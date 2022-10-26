@@ -21,18 +21,18 @@ const Layout = ({ children }) => {
 
   useEffect(() => {
     if (user && user?.is_onboarded) {
-      if(user?.roles_id == 2) {
+      if (user?.roles_id == 2) {
         router.push("/students");
       }
       if (user?.roles_id == 3 || user?.roles_id == 4) {
-        // router.push("/creators");
         router.push("/creators");
       }
 
       setLoading(false);
     }
     if (!user) router.push("/auth/login");
-  }, [isAuthenticated, router, user, user?.is_onboarded, user?.roles_id]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, user?.is_onboarded, user?.roles_id]);
 
   if (loading) return <FullPageSpinner />;
 
