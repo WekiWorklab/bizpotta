@@ -55,11 +55,21 @@ export default function VerifyEmailPage() {
   };
 
   useEffect(() => {
-    dispatch(setUser());
-    dispatch(reset());
-    dispatch(sendVerificationCode());
+    setTimeout(() => {
+      updateUser();
+    }, 2000);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const updateUser = () => {
+    dispatch(setUser());
+    dispatch(reset());
+    setTimeout(() => {
+      dispatch(sendVerificationCode());
+      dispatch(reset());
+    }, 2000);
+  };
 
   useEffect(() => {
     if (isError) {
@@ -80,13 +90,13 @@ export default function VerifyEmailPage() {
 
   useEffect(() => {
     if (!user) {
-      Router.push("/auth/login");
+      router.push("/auth/login");
     }
     if (user?.email_verified_at !== null) {
       dispatch(setUser());
       window.location.href = "/onboarding";
     }
-  }, [user, dispatch]);
+  }, [user, dispatch, router]);
 
   return (
     <div className='centerFlex h-screen py-2'>
