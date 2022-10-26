@@ -14,7 +14,7 @@ import { motion } from "framer-motion";
 
 const Layout = ({ children }) => {
   const router = useRouter();
-  const { user, isAuthenticated } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(true);
   const [slideIn, setSlideIn] = useState(false);
