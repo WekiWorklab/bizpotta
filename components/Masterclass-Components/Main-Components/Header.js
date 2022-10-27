@@ -13,15 +13,15 @@ import { IoNotificationsOutline } from 'react-icons/io5'
 const Header = ({show, setShow, slideIn, setSlideIn}) => {
 
     const router = useRouter()
+    const [url, setUrl] = useState()
+    const [programDrop, setProgramDrop] = useState(false)
 
     useEffect(() => {
         setUrl(router.asPath)
     }, [router])
 
-    const [url, setUrl] = useState()
-    const [programDrop, setProgramDrop] = useState(false)
 
-    console.log(router.asPath)
+    // console.log(router.asPath)
 
   return (
     <div className='relative w-full h-[130px] flex flex-row items-center justify-between px-4 xl:px-16'>
@@ -40,8 +40,8 @@ const Header = ({show, setShow, slideIn, setSlideIn}) => {
                 <p className='text-darkBlue font-medium text-[16px] lg:text-[18px]'>Programs</p>
                 <AiOutlineDown color='#B1B1B1' onClick={() => { setProgramDrop(prev => !prev) }} />
                 {programDrop && (
-                    <div className=' absolute top-20 min-w-[220px] max-w-[250px] px-5 py-8 bg-white rounded-lg flex flex-col text-[14px] gap-y-5'>
-                        {(url !== '/masters') && <p className='cursor-pointer hover:text-bizpotta-green-500 hover:font-bold' onClick = {() => router.push('/masters')}>Masterclass Program</p>}
+                    <div className=' absolute top-20 min-w-[220px] max-w-[250px] px-5 py-8 bg-[#FEFEFE] rounded-lg flex flex-col text-[14px] gap-y-5'>
+                        {(url !== '/masterclass') && <p className='cursor-pointer hover:text-bizpotta-green-500 hover:font-bold' onClick = {() => router.push('/masterclass')}>Masterclass Program</p>}
                         {(url !== '/specialization') && <p className='cursor-pointer hover:text-bizpotta-green-500 hover:font-bold'>Specialization Program</p>}
                         {(url !== '/') && <p className='cursor-pointer hover:text-bizpotta-green-500 hover:font-bold' onClick = {() => router.push('/')}>Vocational Education Program</p>}
                     </div>    
@@ -69,66 +69,6 @@ const Header = ({show, setShow, slideIn, setSlideIn}) => {
 }
 
 export default Header
-
-
-
-
-
-
-
-
-
-// const [showCat, setShowCat] = useState(false)
-    // const [showSearch, setShowSearch] = useState(false)
-    
-    // const handleCat = () => {
-    //     setShowCat(prev => !prev)
-    // }
-
-    // const handleSearch = () => {
-    //     setShowSearch(prev => !prev)
-    // }
-
-/**
- * 
- * <div className='flex items-center font-bold text-darkBlue'>
-            <div className='flex items-center relative' >
-                <p>All categories</p>
-                <AiOutlineDown className='ml-1 mr-4 cursor-pointer' size={14} onClick={handleCat}/>
-                {showCat && <CategoryDropdown />}
-            </div>
-
-            <div className='flex items-center relative' >
-                <p>Search</p>
-                <FiSearch className='ml-1 cursor-pointer' size={14} onClick={handleSearch}/>
-                {showSearch && <SearchDropdown />}
-            </div>
-        </div>
-
-        <div className='flex items-center text-darkBlue gap-x-4'>
-            <AiOutlineShoppingCart size={20} className='text-darkBlue' />
-            <IoNotificationsOutline size={20} className='text-darkBlue' />
-            <img src={card_image.src} alt='' className='w-[36px] h-[36px] rounded-full' />
-            <div className='flex flex-col'>
-                <p className='text-sm'>Naomi Bell</p>
-                <p className='text-xs'>Student</p>
-
-            </div>
-        </div>
- 
- * 
- */
-
-
-
-
-
-
-
-
-
-
-
 
 
 

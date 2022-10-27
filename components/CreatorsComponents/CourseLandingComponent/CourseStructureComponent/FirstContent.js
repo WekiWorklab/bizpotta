@@ -104,7 +104,7 @@ const FirstContent = () => {
         </div>
 
         <div className="flex justify-end mt-8">
-          <button className="w-[150px] h-[40px] flex justify-center items-center text-[13px] text-white font-bold border rounded-md bg-darkBlue hover:text-darkBlue hover:bg-white hover:border border-darkBlue">
+          <button className="w-[150px] h-[40px] flex justify-center items-center text-[13px] hover:text-white font-bold border rounded-md hover:bg-darkBlue text-darkBlue bg-white border border-darkBlue hover:border-0">
             Save changes
           </button>
         </div>
