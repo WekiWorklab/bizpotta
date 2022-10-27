@@ -16,15 +16,13 @@ import { TextEditor } from "../../../TextEditor";
 import NotesSuccessModal from "./NotesSuccessModal";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import { setWeeksArray } from "../../../../store/courseSlice";
 
 const FirstContent = () => {
-  const [state, setState] = useState({
-    lecture: "",
-    resources: "",
-    projects: "",
-  });
-
-  const [weeksArray, setWeeksArray] = useState([1])
+  
+  const dispatch = useDispatch()
+  const weeksArray = useSelector(state => state.course.weeks_array)
 
   return (
     <div className="">
@@ -89,22 +87,20 @@ const FirstContent = () => {
         </div>
 
         <div className="mt-8 flex flex-col gap-y-8">
-          {weeksArray.map((el, index) => (
+          {weeksArray?.map((el, index) => (
             <WeekSection key={index} week_no={el} />
           ))}
 
         </div>
 
         <div className="flex justify-center mt-6">
-          <button className="w-[150px] h-[40px] flex justify-center items-center text-[13px] text-white font-bold border rounded-md bg-darkBlue hover:text-darkBlue hover:bg-white hover:border border-darkBlue" onClick={() => {
-            setWeeksArray(prev => [...prev, prev.length + 1])
-          }}>
-            Add Week {weeksArray.length + 1}
+          <button className="w-[150px] h-[40px] flex justify-center items-center text-[13px] text-white font-bold border rounded-md bg-darkBlue hover:text-darkBlue hover:bg-white hover:border border-darkBlue" onClick={() => {dispatch(setWeeksArray())}}>
+            Add Week {weeksArray?.length + 1}
           </button>
         </div>
 
         <div className="flex justify-end mt-8">
-          <button className="w-[150px] h-[40px] flex justify-center items-center text-[13px] hover:text-white font-bold border rounded-md hover:bg-darkBlue text-darkBlue bg-white border border-darkBlue hover:border-0">
+          <button className="w-[150px] h-[40px] flex justify-center items-center text-[13px] hover:text-white font-bold rounded-md hover:bg-darkBlue text-darkBlue bg-white border border-darkBlue hover:border-0">
             Save changes
           </button>
         </div>
@@ -115,8 +111,9 @@ const FirstContent = () => {
 
 export default FirstContent;
 
-const WeekSection = ({ week_no }) => {
-  const router = useRouter();
+const WeekSection = ({ week_no,  }) => {
+  const router = useRouter()
+  const {courseId} = router.query
 
   const [editWeekTitle, setEditWeekTitle] = useState(false); //controls the ability to change the title of the week
   const [collapseWeek, setCollapseWeek] = useState(week_no > 1 && true); //controls collapse and expansion of week
@@ -200,7 +197,7 @@ const WeekSection = ({ week_no }) => {
                   onClick={() =>
                     router.push({
                       pathname: "/creators/courses/create/structure",
-                      query: { type: "lecture", week_no: week_no },
+                      query: { type: "lecture", week_no: week_no, courseId: courseId },
                     })
                   }
                 ></div>
@@ -304,23 +301,3 @@ const WeekSection = ({ week_no }) => {
   );
 };
 
-{
-  /* <NotesSuccessModal success = {success}  setSuccess = {setSuccess}  value = {currentValue} setCurrentValue = {setCurrentValue} week = {week} type = {type} initialState = {initialState} setInitialState = {setInitialState}/> */
-}
-{/*
- <div className="flex flex-col gap-y-2 mt-4">
-    <div className="flex flex-row items-center gap-x-3">
-      <div className=" font-bold border rounded-md w-full md:w-[350px] h-[50px] flex flex-row items-center gap-x-2 pl-2">
-        <AiOutlineLink className="" size={26} color="#999999" />
-        <p>Paste link to resources</p>
-      </div>
-    </div>
-
-    <div className="flex flex-row items-center gap-x-3">
-      <div className=" font-bold border rounded-md w-full md:w-[350px] h-[50px] flex flex-row items-center gap-x-2 pl-2">
-        <AiOutlineLink className="" size={26} color="#999999" />
-        <p>Paste link to resources</p>
-      </div>
-    </div>
-  </div> 
-*/}
