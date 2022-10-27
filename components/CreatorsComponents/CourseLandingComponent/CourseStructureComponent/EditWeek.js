@@ -32,8 +32,10 @@ const QuizEdit = ({}) => {
   // console.log(quiz_no);
 
   const [quiz_data, setQuizQuestions] = useState({});
-  const [quiz_options, setQuizOptions] = useState({})
-  const [quiz_correct, setQuizCorrect] = useState({})
+  const [quiz_options, setQuizOptions] = useState({});
+  const [quiz_correct, setQuizCorrect] = useState({});
+
+  const [finalData, setFinalData] = useState([]);
 
   // useEffect(() => {
   //   console.log(quiz_data);
@@ -48,7 +50,7 @@ const QuizEdit = ({}) => {
   // }, [quiz_correct]);
 
   const AddQuestion = () => {
-      const num = quiz_no.length + 1
+    const num = quiz_no.length + 1;
 
     if (quiz_no.length <= 9) {
       dispatch(setQuizArray());
@@ -57,11 +59,16 @@ const QuizEdit = ({}) => {
         [`question${num}`]: "",
       }));
       setQuizOptions((prev) => ({
-        ...prev, [`optionA${num}`]: '', [`optionB${num}`]: '', [`optionC${num}`]: '', [`optionD${num}`]: ''
-      }))
+        ...prev,
+        [`optionA${num}`]: "",
+        [`optionB${num}`]: "",
+        [`optionC${num}`]: "",
+        [`optionD${num}`]: "",
+      }));
       setQuizCorrect((prev) => ({
-        ...prev, [`correct${num}`]: ""
-      }))
+        ...prev,
+        [`correct${num}`]: "",
+      }));
     } else return;
   };
 
@@ -79,55 +86,51 @@ const QuizEdit = ({}) => {
   //   };
   // };
 
-
   const SaveChanges = () => {
+    console.log(`Quiz Questions:`, quiz_data);
+    console.log(`Quiz Options:`, quiz_options);
+    console.log(`Quiz Correct:`, quiz_correct);
 
-    console.log(`Quiz Questions:`, quiz_data )
-    console.log(`Quiz Options:`, quiz_options )
-    console.log(`Quiz Correct:`, quiz_correct )
+    let data = [];
 
-    let data = []
-
-    for (let i = 1; i <= quiz_no.length; i++){
-      const questionObj = {question: "", options: []}
+    for (let i = 1; i <= quiz_no.length; i++) {
+      const questionObj = { question: "", options: [] };
 
       //Enter the question
       for (let [key, value] of Object.entries(quiz_data)) {
-        if (key[key.length - 1] == i ){
-          questionObj.question = value
+        if (key[key.length - 1] == i) {
+          questionObj.question = value;
         }
       }
 
       // Enter the options
-      for (let [key, value] of Object.entries(quiz_options)){
-        if (key[key.length - 1] == i){
+      for (let [key, value] of Object.entries(quiz_options)) {
+        if (key[key.length - 1] == i) {
           for (let [k, v] of Object.entries(quiz_correct)) {
-            if (k[k.length - 1] == i ){
-              if (key[key.length - 2] == v){
-                  questionObj.options.push({
-                    name: value,
-                    isCorrect: true
-                  } )
-              }
-              else {
+            if (k[k.length - 1] == i) {
+              if (key[key.length - 2] == v) {
                 questionObj.options.push({
                   name: value,
-                  isCorrect: false
-                } )
+                  isCorrect: true,
+                });
+              } else {
+                questionObj.options.push({
+                  name: value,
+                  isCorrect: false,
+                });
               }
             }
           }
         }
       }
 
-      data.push(questionObj)
+      data.push(questionObj);
     }
 
-    console.log(data)
+    console.log(data);
 
-
-  }
-
+    setFinalData(...data);
+  };
 
   const HandleQuestionsChange = (e) => {
     const { name, value } = e.target;
@@ -135,15 +138,14 @@ const QuizEdit = ({}) => {
   };
 
   const HandleOptionsChange = (e) => {
-    const {name, value} = e.target
-    setQuizOptions((prev) => ({...prev, [name]: value}))
-  }
+    const { name, value } = e.target;
+    setQuizOptions((prev) => ({ ...prev, [name]: value }));
+  };
 
   const HandleCorrectChange = (e) => {
-    const {name, value} = e.target
-    setQuizCorrect((prev) => ({...prev, [name]: value}))
-  }
-
+    const { name, value } = e.target;
+    setQuizCorrect((prev) => ({ ...prev, [name]: value }));
+  };
 
   return (
     <div className="w-full">
@@ -156,8 +158,8 @@ const QuizEdit = ({}) => {
             quiz_num={index + 1}
             quiz_data={quiz_data}
             HandleQuestionsChange={HandleQuestionsChange}
-            HandleOptionsChange = {HandleOptionsChange}
-            HandleCorrectChange = {HandleCorrectChange}
+            HandleOptionsChange={HandleOptionsChange}
+            HandleCorrectChange={HandleCorrectChange}
           />
         ))}
       </form>
@@ -183,14 +185,18 @@ const QuizEdit = ({}) => {
           Save Changes
         </div>
       </div>
-
     </div>
   );
 };
 
-const Quiz = ({ quiz_num, quiz_data, HandleCorrectChange, HandleOptionsChange, HandleQuestionsChange }) => {
-
-  const optionsArr = ["A", "B", "C", "D"]
+const Quiz = ({
+  quiz_num,
+  quiz_data,
+  HandleCorrectChange,
+  HandleOptionsChange,
+  HandleQuestionsChange,
+}) => {
+  const optionsArr = ["A", "B", "C", "D"];
 
   return (
     <div className="w-full mt-16">
@@ -204,25 +210,35 @@ const Quiz = ({ quiz_num, quiz_data, HandleCorrectChange, HandleOptionsChange, H
         required
       />
 
-      {
-        optionsArr.map((el, index) => (
-          <div key = {index} className="flex items-center gap-x-3">
-            <p className="text-[14px]">{el}:</p>
-            <input name = {`option${el}${quiz_num}`} required className="h-[40px] pl-2 mt-2 w-[320px] text-[14px] inputField" onChange={(e) => HandleOptionsChange(e)} />
-          </div>
-        ))
-      }
+      {optionsArr.map((el, index) => (
+        <div key={index} className="flex items-center gap-x-3">
+          <p className="text-[14px]">{el}:</p>
+          <input
+            name={`option${el}${quiz_num}`}
+            required
+            className="h-[40px] pl-2 mt-2 w-[320px] text-[14px] inputField"
+            onChange={(e) => HandleOptionsChange(e)}
+          />
+        </div>
+      ))}
 
       <div className="mt-5">
         <p className="text-[13px]">Please select the correct option</p>
-        <select className="outline-0 focus:ring-0 ring-0 text-[14px] rounded-md" required  defaultValue="A" name={`correct${quiz_num}`} onChange = {(e) => {HandleCorrectChange(e)}}>
+        <select
+          className="outline-0 focus:ring-0 ring-0 text-[14px] rounded-md"
+          required
+          defaultValue="A"
+          name={`correct${quiz_num}`}
+          onChange={(e) => {
+            HandleCorrectChange(e);
+          }}
+        >
           <option value="A">Option A</option>
           <option value="B">Option B</option>
           <option value="C">Option C</option>
           <option value="D">Option D</option>
-        </select>  
+        </select>
       </div>
-
     </div>
   );
 };
