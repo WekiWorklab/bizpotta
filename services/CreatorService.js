@@ -48,6 +48,7 @@ const createMentorCourse = async (data) => {
 
 const createTutorCourse = async (data) => {
   return AxoisApi.post(`${APIS.TUTORS.CREATE_COURSE}`, data).then((res) => {
+    console.log(res);
     return res.data;
   });
 };

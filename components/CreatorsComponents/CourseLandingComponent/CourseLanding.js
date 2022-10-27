@@ -63,7 +63,7 @@ const CourseLanding = ({ data, setSelect }) => {
 
   useEffect(() => {
     if (isSuccess && courseID) {
-      router.query.courseId = "VALUE";
+      router.query.courseId = courseID;
       router.push(router);
       setSelect("structure");
     }
