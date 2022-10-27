@@ -267,7 +267,14 @@ const WeekSection = ({ week_no,  }) => {
               </div>
 
               <div className="mt-6">
-                <div className=" min-h-[150px] w-full border break-all p-2"></div>
+                <div className=" min-h-[150px] w-full border break-all p-2 cursor-pointer"
+                 onClick={() =>
+                  router.push({
+                    pathname: "/creators/courses/create/structure",
+                    query: { type: "quiz", week_no: week_no, courseId: courseId },
+                  })
+                }
+                ></div>
               </div>
             </div>
 

@@ -11,7 +11,10 @@ const courseSlice = createSlice({
     show_upload_success_modal: false,
     show_notes: false,
     show_course_details_modal: false,
-    weeks_array: [1]
+    weeks_array: [1],
+    quiz_array: [],
+
+    quiz_data: []
   },
 
   reducers: {
@@ -45,6 +48,9 @@ const courseSlice = createSlice({
     setWeeksArray: (state, action) => {
       state.weeks_array = [...state.weeks_array, state.weeks_array.length + 1]
     },
+    setQuizArray: (state, action) => {
+      state.quiz_array = [...state.quiz_array, "x"]
+    },
 
     reset: (state) => {
       state.courseCategory = null;
@@ -70,7 +76,8 @@ export const {
   showNotes,
   showCourseDetailsModal,
   reset,
-  setWeeksArray
+  setWeeksArray,
+  setQuizArray
 } = courseSlice.actions;
 
 export default courseSlice.reducer;
