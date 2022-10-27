@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useRef } from 'react'
+import { AiOutlinePlus } from 'react-icons/ai'
 
 import {BsArrowRight, BsDashLg} from 'react-icons/bs'
 import { GoPrimitiveDot } from 'react-icons/go'
@@ -138,8 +139,8 @@ const BottomSection = () => {
         </div>
 
 
-        <div className='px-3 sm:px-10 xl:px-20 mt-20 xl:mt-32 pb-20 flex flex-col lg:flex-row items-center justify'>
-              <div>
+        <div className='px-3 sm:px-10 xl:px-20 mt-20 xl:mt-32 pb-20 flex flex-col lg:flex-row items-start'>
+              <div className=''>
                   <p className='text-[24px] md:text-[30px] font-bold'>Any questions ?</p>
                   <p className='text-[24px] md:text-[30px] font-bold'>We got you</p>
                   <p className='text-[14px]  md:mt-10'>Yet bed any for  assistance indulgence unpleasing. Not thoughts all exercise blessing. Indulgence way everything joy alteration boisterous the attachment.</p>
@@ -150,7 +151,7 @@ const BottomSection = () => {
                   </div>
               </div>
 
-              <div className='w-full md:min-w-[600px] mt-6  '>
+              <div className='w-full md:min-w-[600px]'>
                   <QuestionDropdown   title = 'How this work?' />
                   <QuestionDropdown   title = 'How this work?' />
                   <QuestionDropdown   title = 'How this work?' />
@@ -193,7 +194,7 @@ const QuestionDropdown = ({title}) => {
       <div className='w-full pb-4 border-b-2 border-gray-700 mt-4 '>
         <div className='flex flex-row items-center justify-between darkBlue mb-4'>
           <p className='font-bold'>{title}</p>
-          <BsDashLg onClick={ClickHandler}/>
+          {show ? <BsDashLg onClick={ClickHandler} className = "cursor-pointer"/> : <AiOutlinePlus  onClick={ClickHandler} className = "cursor-pointer"/>}
         </div>
   
         <div className=' overflow-y-hidden parent-drop' style={{height: `${height}px` }} ref={parentRef}>
