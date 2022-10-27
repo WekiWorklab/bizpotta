@@ -23,35 +23,45 @@ const TopSection = () => {
     <div className="w-full rad-gradient pb-10">
       <Header />
       {/* <Navbars /> */}
-      <div className="px-24">
-        <div className="mt-10">
+      <div className="px-3 sm:px-10 xl:px-24">
+        <div className="mt-2 sm:mt-10">
           <p className="text-darkBlue font-semibold">Master Program</p>
           <CurvyUnderline />
         </div>
         <p className="text-sm text-darkBlue font-semibold mt-10 mb-8">
           Live session
         </p>
-        <CircularProfileCarousel />
 
-        <div className="w-full flex flex-col items-center justify-center gap-y-6 relative h-[630px]">
-          <div className="w-full px-[190px] flex flex-col items-center justify-center gap-y-6 ">
-            <p className="font-bold text-3xl uppercase text-center">
+        {/* <CircularProfileCarousel /> */}
+        <div className="block w-full md:hidden w-full">
+            <CircularProfileCarousel screen={[4, 1]} />
+        </div>
+        <div className="hidden  md:block lg:hidden w-full">
+            <CircularProfileCarousel screen={[8, 1]} />
+        </div>
+        <div className="hidden lg:block w-full">
+            <CircularProfileCarousel screen={[12, 2]} />
+        </div>
+
+        <div className="w-full flex flex-col items-center justify-center gap-y-6 relative h-[300px] sm:h-[630px]">
+          <div className="w-full md:px-14 xl:px-[190px] flex flex-col items-center justify-center gap-y-6 ">
+            <p className="font-bold text-lg md:text-xl xl:text-3xl uppercase text-center">
               Meet and connect with world best business expert
             </p>
-            <p className="text-xl text-center ">
+            <p className="text-sm md:text-lg xl:text-xl text-center ">
               Learn, grow, and connect with established entrepreneurs with
               results to show in their business journey
             </p>
             {/* <div className='w-[190px] h-[55px] mt-4 centerFlex rounded-md bg-darkBlue text-white'>
                     Watch Triller
                 </div> */}
-            <div className="w-[470px] h-[50px] pl-4 flex justify-end items-center gap-x-2 border border-[#b1adad] rounded-md">
+            <div className="w-full md:w-[470px] h-[50px] pl-4 flex justify-between sm:justify-end items-center gap-x-2 border border-[#b1adad] rounded-md">
               <BiSearchAlt size={20} color="#b1adad" />
               <input
-                className="w-[35%] outline-none bg-transparent"
+                className="w-[50%] text-[13px] sm:text-base sm:w-[35%] outline-none bg-transparent"
                 placeholder="Search by name, role, or company"
               />
-              <div className="w-[30%] flex items-center justify-center gap-x-1 text-darkBlue border-l-2 border-[#b1adad]">
+              <div className="w-[30%] hidden sm:flex items-center justify-center gap-x-1 text-darkBlue border-l-2 border-[#b1adad]">
                 <p className="font-bold ">Expertise</p>
                 <AiOutlineDown />
               </div>
@@ -61,21 +71,21 @@ const TopSection = () => {
             </div>
           </div>
 
-          <div className="absolute top-[25px] left-[50%] ">
+          <div className="absolute hidden sm:block top-[25px] left-[50%] ">
             <UpCurvyArrow />
           </div>
-          <div className="absolute top-[70%] left-[44%] ">
+          <div className="absolute hidden sm:block top-[70%] left-[44%] ">
             <DownCurvyArrow />
           </div>
-          <div className="absolute top-[120px] right-[2px] ">
+          <div className="absolute hidden sm:block top-[120px] right-[2px] ">
             <RightEllipse />
           </div>
-          <div className="absolute top-[120px] left-[2px] ">
+          <div className="absolute hidden sm:block top-[120px] left-[2px] ">
             <LeftEllipse />
           </div>
           <div className="absolute top-[130px] left-[90px] w-[80px] h-[80px] rounded-full bg-[#94F236] opacity-40" />
-          <div className="absolute top-[380px] left-[90px] w-[40px] h-[40px] rounded-full bg-[#FF65D4] opacity-40" />
-          <div className="absolute top-[400px] left-[200px] w-[60px] h-[60px] rounded-full bg-[#6ECDFF] opacity-40" />
+          <div className="absolute top-[300px] sm:top-[380px] left-[90px] w-[40px] h-[40px] rounded-full bg-[#FF65D4] opacity-40" />
+          <div className="absolute top-[50px] sm:top-[400px] left-[200px] w-[60px] h-[60px] rounded-full bg-[#6ECDFF] opacity-40" />
         </div>
       </div>
     </div>
@@ -84,13 +94,13 @@ const TopSection = () => {
 
 export default TopSection;
 
-const CircularProfileCarousel = () => {
+const CircularProfileCarousel = ({screen}) => {
   const arr = new Array(20).fill("");
 
   return (
     <Swiper
-      slidesPerView={12}
-      spaceBetween={10}
+      slidesPerView={screen[0]}
+      spaceBetween={screen[1]}
       // pagination={{
       //   clickable: true,
       // }}

@@ -106,10 +106,16 @@
   box-shadow: 0px 0px 18px rgba(245, 245, 245, 0.21);
 }
 
+.cart {
+  border-bottom: 0.7px solid #FAFAFA;
+}
+.cart:nth-last-child(1) {
+  border: none;
+}
+
 .resources-child {
   border: 0.35px solid rgba(133, 133, 133, 0.16);
 }
-
 .resources-child:nth-last-child(2) {
   border: none;
 }

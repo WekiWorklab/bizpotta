@@ -9,18 +9,18 @@ import "swiper/css/pagination";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { FaQuoteLeft } from "react-icons/fa";
 
-export const ExpertsCarousel = () => {
+export const ExpertsCarousel = ({screen}) => {
   const arr = new Array(9).fill("");
 
   return (
     <Swiper
-      slidesPerView={3}
-      spaceBetween={10}
+      slidesPerView={screen[0]}
+      spaceBetween={screen[1]}
       pagination={{
         clickable: true,
       }}
       modules={[Pagination]}
-      style={{ backgroundColor: "transparent" }}
+      style={{ backgroundColor: "transparent"}}
     >
       {arr.map((el, index) => (
         <SwiperSlide
@@ -31,7 +31,7 @@ export const ExpertsCarousel = () => {
             backgroundColor: "transparent",
           }}
         >
-          <div className="w-[350px] p-3 flex flex-row gap-x-4">
+          <div className="w-[350px] py-3 flex flex-row gap-x-4">
             <div
               className="bg-no-repeat bg-cover bg-center w-[50px] h-[50px] rounded-full"
               style={{ backgroundImage: `url(${offer.src})` }}
@@ -56,13 +56,13 @@ export const ExpertsCarousel = () => {
   );
 };
 
-export const MainCarousel = () => {
+export const MainCarousel = ({screen}) => {
   const arr = new Array(9).fill("");
 
   return (
     <Swiper
-      slidesPerView={3}
-      spaceBetween={10}
+      slidesPerView={screen[0]}
+      spaceBetween={screen[1]}
       pagination={{
         clickable: true,
       }}
@@ -71,18 +71,21 @@ export const MainCarousel = () => {
         backgroundColor: "transparent",
         height: "540px",
         border: "none",
+       
       }}
     >
       {arr.map((el, index) => (
         <SwiperSlide
           key={index}
           style={{
+            display: "flex",
+            justifyContent: "start",
             backgroundColor: "transparent",
             height: "530px",
             border: "none",
           }}
         >
-          <div className="min-w-[330px]  max-w-[350px] max-h-[450px] min-h-[450px] relative">
+          <div className="min-w-[330px] max-w-[350px] max-h-[450px] min-h-[450px] relative">
             <div className="absolute top-3 w-[300px] h-[430px] border-2 border-darkBlue" />
             <div className="absolute top-0 left-3 w-[300px] h-[430px] border-2 border-bizpotta-green" />
             <div
@@ -112,13 +115,13 @@ export const MainCarousel = () => {
   );
 };
 
-export const TestimonialCarousel = () => {
+export const TestimonialCarousel = ({screen}) => {
   const arr = new Array(8).fill("");
 
   return (
     <Swiper
-      slidesPerView={2.7}
-      spaceBetween={10}
+      slidesPerView={screen[0]}
+      spaceBetween={screen[1]}
       pagination={{
         clickable: true,
       }}
@@ -129,10 +132,13 @@ export const TestimonialCarousel = () => {
       {arr.map((el, index) => (
         <SwiperSlide
           key={index}
-          style={{ backgroundColor: "transparent", padding: "0px" }}
+          style={{ display: "flex",
+          justifyContent: "start",
+          backgroundColor: "transparent", 
+          padding: "0px" }}
         >
-          <div className="w-[400px] h-[320px] relative  centerFlex ">
-            <div className="w-[380px] h-[250px] bg-white border rounded-md">
+          <div className=" w-[330px] md:w-[400px] h-[320px] relative  centerFlex ">
+            <div className=" w-[330px] md:w-[380px] h-[250px] bg-white border rounded-md">
               <div className="flex flex-row gap-x-1 mt-16 ml-8 mr-2">
                 <AiFillStar color="#94F236" size={18} />
                 <AiFillStar color="#94F236" size={18} />
@@ -140,7 +146,7 @@ export const TestimonialCarousel = () => {
                 <AiFillStar color="#94F236" size={18} />
                 <AiOutlineStar color="#94F236" size={18} />
               </div>
-              <div className="mt-4 ml-8 mr-2">
+              <div className="mt-4 ml-8 mr-2 text-[14px] md:text-base">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Volutpat mauris id malesuada commodo mattis.
               </div>
@@ -202,27 +208,3 @@ export const TestimonialCard = () => {
   );
 };
 
-// export const MainCard = () => {
-
-//     return (
-//         <div className='min-w-[370px]  max-w-[400px] min-h-[500px] relative'>
-//             <div className='absolute top-3 w-[350px] h-[470px] border-2 border-darkBlue '  />
-//             <div className='absolute top-0 left-5 w-[350px] h-[470px] border-2 border-bizpotta-green'  />
-//             <div className='absolute top-8 left-9  w-[350px] h-[450px] bg-no-repeat bg-center bg-cover px-4 py-4' style={{backgroundImage: `url(${offer.src})`}}>
-//               <div className='w-[50px] h-[30px] bg-white rounded-sm centerFlex text-darkBlue '>
-//                 New
-//               </div>
-//               <div className='flex flex-col justify-center items-center mt-[240px]'>
-//                 <p className='text-2xl font-extrabold text-white mb-3'>Increase Sales in 30 Days</p>
-//                 <div className='w-[70px] h-[4px] bg-white mb-2'></div>
-//                 <p className='text-lg font-bold text-white mb-2'>Charles Mark</p>
-//                 <div className='w-[120px] h-[35px] centerFlex bg-bizpotta-green rounded-md'>
-//                   Set reminder
-//                 </div>
-//               </div>
-
-//             </div>
-
-//         </div>
-//     )
-// }

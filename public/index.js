@@ -919,3 +919,27 @@ export const MarketInsight = () => (
 </svg>
 
 )
+
+
+export const LeftGroupCard = () => (
+  <svg width="111" height="106" viewBox="0 0 111 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.6">
+<rect x="-30" width="68.4383" height="64" fill="#FFC700"/>
+<rect x="83.3516" y="39" width="26.7337" height="25" fill="#94F236"/>
+<rect x="38.4375" y="64" width="44.9126" height="42" fill="#1B1C31"/>
+</g>
+</svg>
+
+)
+
+
+export const RightGroupCard = () => (
+  <svg width="110" height="106" viewBox="0 0 110 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.6">
+<rect width="68.4383" height="64" transform="matrix(-1 0 0 1 141 0)" fill="#FFC700"/>
+<rect width="26.7337" height="25" transform="matrix(-1 0 0 1 27.6484 39)" fill="#94F236"/>
+<rect width="44.9126" height="42" transform="matrix(-1 0 0 1 72.5625 64)" fill="#1B1C31"/>
+</g>
+</svg>
+
+)
