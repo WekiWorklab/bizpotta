@@ -3,19 +3,24 @@ import { AiOutlineVideoCamera } from "react-icons/ai";
 import { TextEditorNotesModal } from "./CourseStructureComponent/TextEditorNotesModal";
 
 const CourseProject = () => {
+  const [counter, setCounter] = useState(1);
 
-  const [counter, setCounter] = useState(1)
+  const [inputValue, setInputValue] = useState({
+    value1: "",
+    value2: "",
+    value3: "",
+    value4: "",
+    value5: "",
+  });
 
-  const [inputValue, setInputValue] = useState({value1: "", value2: "", value3: "", value4: "", value5: ""})
-  
   const handleChange = (e) => {
-    const {name, value} = e.target
-    setInputValue(prev => ({...prev, [name]: value}))
-  }
+    const { name, value } = e.target;
+    setInputValue((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleAddLinks = () => {
-    setCounter(prev => prev + 1)
-  }
+    setCounter((prev) => prev + 1);
+  };
 
   return (
     <div className="w-full">
@@ -80,23 +85,73 @@ const CourseProject = () => {
           </label>
         </div>
 
-        <div className = ''>
-          <input type = "text" className="inputField w-[320px] sm:min-w-[400px] mt-10" value = {inputValue.value1} name = 'value1' onChange={(e) => handleChange(e)} placeholder = 'paste link here'/>
+        <div className="flex flex-col">
+          <input
+            type="text"
+            className="inputField w-[320px] sm:min-w-[400px] mt-10"
+            value={inputValue.value1}
+            name="value1"
+            onChange={(e) => handleChange(e)}
+            placeholder="paste link here"
+          />
 
-          {counter > 1 && <input type = "text" className="inputField w-[320px] sm:min-w-[400px] mt-6" value = {inputValue.value2} name = 'value2' onChange={(e) => handleChange(e)} placeholder = 'paste link here'/> }
+          {counter > 1 && (
+            <input
+              type="text"
+              className="inputField w-[320px] sm:min-w-[400px] mt-6"
+              value={inputValue.value2}
+              name="value2"
+              onChange={(e) => handleChange(e)}
+              placeholder="paste link here"
+            />
+          )}
 
-          {counter > 2 && <input type = "text" className="inputField w-[320px] sm:min-w-[400px] mt-6" value = {inputValue.value3} name = 'value3' onChange={(e) => handleChange(e)} placeholder = 'paste link here'/> }
+          {counter > 2 && (
+            <input
+              type="text"
+              className="inputField w-[320px] sm:min-w-[400px] mt-6"
+              value={inputValue.value3}
+              name="value3"
+              onChange={(e) => handleChange(e)}
+              placeholder="paste link here"
+            />
+          )}
 
-          {counter > 3 && <input type = "text" className="inputField w-[320px] sm:min-w-[400px] mt-6" value = {inputValue.value4} name = 'value4' onChange={(e) => handleChange(e)} placeholder = 'paste link here'/> }
+          {counter > 3 && (
+            <input
+              type="text"
+              className="inputField w-[320px] sm:min-w-[400px] mt-6"
+              value={inputValue.value4}
+              name="value4"
+              onChange={(e) => handleChange(e)}
+              placeholder="paste link here"
+            />
+          )}
 
-          {counter > 4 && <input type = "text" className="inputField w-[320px] sm:min-w-[400px] mt-6" value = {inputValue.value5} name = 'value5' onChange={(e) => handleChange(e)} placeholder = 'paste link here'/> }
+          {counter > 4 && (
+            <input
+              type="text"
+              className="inputField w-[320px] sm:min-w-[400px] mt-6"
+              value={inputValue.value5}
+              name="value5"
+              onChange={(e) => handleChange(e)}
+              placeholder="paste link here"
+            />
+          )}
 
-          <div className="text-darkBlue text-[13px] cursor-pointer mt-3" onClick={() => handleAddLinks()}>+ add another link</div>
-
+          <div
+            className="text-darkBlue text-[13px] cursor-pointer mt-3"
+            onClick={() => handleAddLinks()}
+          >
+            + add another link
+          </div>
         </div>
 
         <div className="w-full flex justify-end">
-          <div className="w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16" onClick={() => console.log(inputValue)}>
+          <div
+            className="w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16"
+            onClick={() => console.log(inputValue)}
+          >
             Save Changes
           </div>
         </div>
@@ -107,10 +162,7 @@ const CourseProject = () => {
 
 export default CourseProject;
 
-
-
 // const NewInput = ({number, handleChange, objKey, links}) => {
-
 
 //   useEffect(() => {
 //     console.log(links)
@@ -120,7 +172,7 @@ export default CourseProject;
 
 //   return(
 //     <div className="flex">
-      
+
 //     <input type = "text" className="inputField min-w-[400px]" value = {Object.values(links)[number]} onChange={(e) => handleChange(e, number)} />
 //     <p>{number}</p>
 //     </div>
@@ -146,9 +198,8 @@ export default CourseProject;
   }, [counter, links, numLinks])
  */
 
-
-  // {
-  //   numLinks.map((el, index) => (
-  //     <NewInput key = {index} handleChange={handleChange} number = {el} links = {links} objKey = {`inputValue${el}`} />
-  //   ))
-  // }
+// {
+//   numLinks.map((el, index) => (
+//     <NewInput key = {index} handleChange={handleChange} number = {el} links = {links} objKey = {`inputValue${el}`} />
+//   ))
+// }

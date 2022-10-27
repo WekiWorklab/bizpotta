@@ -15,7 +15,7 @@ const CourseStructure = () => {
 
   if (loading) <FullPageSpinner />;
   return (
-    <div className=''>
+    <div className="">
       <FirstContent />
       {/* <OngoingCourses /> */}
     </div>
