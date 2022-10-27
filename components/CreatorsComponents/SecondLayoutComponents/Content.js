@@ -86,7 +86,7 @@ const RenderTable = ({ select, allCourses, activeCourses, deactivateCourses }) =
   switch (select) {
     case "Published courses":
       return allCourses?.length > 0 ? (
-        <PublishedCourses />
+        <PublishedCourses allCourses={allCourses} />
       ) : (
         <div className='flex flex-col mx-auto'>
           <div className='flex flex-col mx-auto'>
@@ -99,7 +99,7 @@ const RenderTable = ({ select, allCourses, activeCourses, deactivateCourses }) =
       );
     case "Active courses":
       return activeCourses?.length > 0 ? (
-        <ActiveCourses />
+        <ActiveCourses activeCourses={activeCourses} />
       ) : (
         <div className='flex flex-col mx-auto'>
           <div className='flex flex-col mx-auto'>
@@ -112,7 +112,7 @@ const RenderTable = ({ select, allCourses, activeCourses, deactivateCourses }) =
       );
     case "Deactivated courses":
       return deactivateCourses?.length > 0 ? (
-        <DeactivateCourses />
+        <DeactivateCourses deactivateCourses={deactivateCourses} />
       ) : (
         <div className='flex flex-col mx-auto'>
           <div className='flex flex-col mx-auto'>
