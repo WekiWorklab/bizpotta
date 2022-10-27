@@ -36,7 +36,7 @@ function GlobalFilter({ preGlobalFilteredRows, globalFilter, setGlobalFilter }) 
         setValue(e.target.value);
         onChange(e.target.value);
       }}
-      value = {value}
+      value={value}
       id='search'
       name='search'
     />
@@ -86,8 +86,8 @@ export function StatusPill({ value }) {
     <span
       className={classNames(
         "px-3 py-1 capitalize leading-wide font-bold text-xs rounded-full shadow-sm",
-        status.startsWith("paid" || "yes") ? "px-2 inline-flex text-xs leading-5 font-semibold rounded-lg bg-[#6EFF7E] text-green-800" : null,
-        status.startsWith("unpaid" || "no") ? "px-2 inline-flex text-xs leading-5 font-semibold rounded-lg bg-[#FDE8E8] text-red-800" : null
+        status.startsWith("active" || "yes") ? "px-2 inline-flex text-xs leading-5 font-semibold rounded-lg bg-[#2DE200]/40 text-green-800" : null,
+        status.startsWith("inactive" || "no") ? "px-2 inline-flex text-xs leading-5 font-semibold rounded-lg bg-[#FC4A4A]/30  text-[#B40303]" : null
       )}
     >
       {status}

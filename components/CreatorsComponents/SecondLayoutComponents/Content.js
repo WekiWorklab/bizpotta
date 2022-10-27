@@ -45,7 +45,7 @@ const MainContent = ({ select, setSelected, setClickedCourse }) => {
       <div className='w-full flex flex-row flex-wrap justify-center gap-3 mt-10 sm:gap-8 xl:gap-0 xl:justify-between '>
         <NewDashBoardCard select={select} title='Published courses' setSelected={setSelected} count={data?.courses_count} />
         <NewDashBoardCard select={select} title='Active courses' setSelected={setSelected} count={data?.activeCourses_count} />
-        <NewDashBoardCard select={select} title='Deactivated courses' setSelected={setSelected} count={data?.inactivateCourses_count} />
+        <NewDashBoardCard select={select} title='Inactive courses' setSelected={setSelected} count={data?.inactivateCourses_count} />
       </div>
 
       <div className='mt-6 lg:mt-8 w-full'>
@@ -110,7 +110,7 @@ const RenderTable = ({ select, allCourses, activeCourses, deactivateCourses }) =
           </div>
         </div>
       );
-    case "Deactivated courses":
+    case "Inactive courses":
       return deactivateCourses?.length > 0 ? (
         <DeactivateCourses deactivateCourses={deactivateCourses} />
       ) : (
@@ -125,7 +125,7 @@ const RenderTable = ({ select, allCourses, activeCourses, deactivateCourses }) =
       );
     default:
       return allCourses?.length > 0 ? (
-        <PublishedCourses />
+        <PublishedCourses allCourses={allCourses} />
       ) : (
         <div className='flex flex-col mx-auto'>
           <div className='flex flex-col mx-auto'>

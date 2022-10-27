@@ -13,24 +13,23 @@ import CreatorTable, { SelectColumnFilter, StatusPill } from "../../Tables/Creat
 const PublishedCourses = ({ allCourses }) => {
   const router = useRouter();
 
-  console.log(allCourses);
-
-  const data = allCourses.map((item) => {
+  const data = allCourses?.map((item, index) => {
     return {
       name: item.name,
-      date: item.created_at,
+      date: moment(item.created_at).format("DD MMM YYYY"),
       price: item.price,
-      status: item.status,
+      status: item.status === 1 ? "Active" : "Inactive",
       id: item.id,
       students: 0,
+      serial: index + 1,
     };
   });
 
   const columns = React.useMemo(
     () => [
       {
-        Header: "ID",
-        accessor: "course_id",
+        Header: "#",
+        accessor: "serial",
       },
       {
         Header: "Course Title",
@@ -61,7 +60,7 @@ const PublishedCourses = ({ allCourses }) => {
 
   return (
     <div className='flex flex-col mx-auto'>
-      <CreatorTable columns={columns} data={allCourses} title='Published Courses' />
+      <CreatorTable columns={columns} data={data} title='Published Courses' />
     </div>
   );
 };
