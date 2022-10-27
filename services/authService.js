@@ -57,7 +57,6 @@ const getUser = () => {
   let user = null;
   if (typeof window !== "undefined" && window.localStorage.getItem("user")) {
     user = window.localStorage.getItem("user");
-    console.log("local", user);
     if (user != "undefined") {
       return JSON.parse(user);
     }

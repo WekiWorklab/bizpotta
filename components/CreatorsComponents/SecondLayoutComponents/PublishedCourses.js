@@ -8,89 +8,60 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { TableFooter, TableHeader } from "./Content";
 import { NoActivities } from "../../../public";
-import CreatorTable from "../../Tables/CreatorTable";
+import CreatorTable, { SelectColumnFilter, StatusPill } from "../../Tables/CreatorTable";
 
-const PublishedCourses = () => {
+const PublishedCourses = ({ allCourses }) => {
   const router = useRouter();
 
-  const data = [
-    {
-      item: 1,
-      name: "Chibuike Umoh",
-      price: "N12,000",
-      course: "Introduction to fashion designing Introduction to fashion designing",
-      subscription: "Monthly",
-      student: 30,
-      coupon: "10%",
-      date: Date.now(),
-      status: false,
-      code: "0001KJH",
-    },
-    {
-      item: 2,
-      name: "Chibuike Umoh",
-      price: "N12,000",
-      course: "Marketing and finance",
-      subscription: "Monthly",
-      student: 30,
-      coupon: "10%",
-      date: Date.now(),
-      status: true,
-      code: "0001KJH",
-    },
-    {
-      item: 3,
-      name: "Chibuike Umoh",
-      price: "N12,000",
-      course: "Introduction to tech",
-      subscription: "Monthly",
-      student: 30,
-      coupon: "10%",
-      date: Date.now(),
-      status: true,
-      code: "0001KJH",
-    },
-    {
-      item: 4,
-      name: "Chibuike Umoh",
-      price: "N12,000",
-      course: "Getting started in fashion designing",
-      subscription: "Monthly",
-      student: 30,
-      coupon: "10%",
-      date: Date.now(),
-      status: true,
-      code: "0001KJH",
-    },
-    {
-      item: 5,
-      name: "Chibuike Umoh",
-      price: "N12,000",
-      course: "Introduction to fashion designing",
-      subscription: "Monthly",
-      student: 30,
-      coupon: "10%",
-      date: Date.now(),
-      status: false,
-      code: "0001KJH",
-    },
-    {
-      item: 6,
-      name: "Chibuike Umoh",
-      price: "N12,000",
-      course: "Introduction to fashion designing",
-      subscription: "Monthly",
-      student: 30,
-      coupon: "10%",
-      date: Date.now(),
-      status: true,
-      code: "0001KJH",
-    },
-  ];
+  console.log(allCourses);
+
+  const data = allCourses.map((item) => {
+    return {
+      name: item.name,
+      date: item.created_at,
+      price: item.price,
+      status: item.status,
+      id: item.id,
+      students: 0,
+    };
+  });
+
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: "ID",
+        accessor: "course_id",
+      },
+      {
+        Header: "Course Title",
+        accessor: "name",
+      },
+      {
+        Header: "Price",
+        accessor: "price",
+      },
+      {
+        Header: "Students",
+        accessor: "students",
+      },
+      {
+        Header: "Status",
+        accessor: "status",
+        Filter: SelectColumnFilter,
+        filter: "includes",
+        Cell: StatusPill,
+      },
+      {
+        Header: "Date",
+        accessor: "date",
+      },
+    ],
+    []
+  );
 
   return (
     <div className='flex flex-col mx-auto'>
-      <CreatorTable columns={columns} data={data} title='Published Courses' showFilter={showFilter} showExport={showExport} />
+      <CreatorTable columns={columns} data={allCourses} title='Published Courses' />
     </div>
   );
 };
