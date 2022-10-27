@@ -108,7 +108,7 @@ export const creatorSlice = createSlice({
         state.isLoading = false;
         state.message = payload.message;
         state.isSuccess = true;
-        state.courseID = payload.data;
+        state.courseID = payload.data.id;
       })
       .addCase(createTutorCourse.rejected, (state, { payload }) => {
         state.isError = true;
@@ -123,7 +123,7 @@ export const creatorSlice = createSlice({
         state.isLoading = false;
         state.message = payload.message;
         state.isSuccess = true;
-        state.courseID = payload.data;
+        state.courseID = payload.data.id;
       });
   },
 });

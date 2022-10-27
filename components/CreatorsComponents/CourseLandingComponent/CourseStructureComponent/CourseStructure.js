@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { FullPageSpinner } from "../../../Lib";
 import FirstContent from "./FirstContent";
-import OngoingCourses from "./OngoingCourses";
-import SecondContent from "./SecondContent";
+import { useRouter } from "next/router";
 
 const CourseStructure = () => {
-  const first = true;
+  const [loading, setLoading] = useState(true);
+  const router = useRouter();
+
+  const { courseId } = router.query;
+
+  useEffect(() => {
+    if (courseId) setLoading(false);
+  }, [courseId]);
+
+  if (loading) <FullPageSpinner />;
   return (
     <div className="">
-      {first ? <FirstContent /> : <SecondContent />}
+      <FirstContent />
       {/* <OngoingCourses /> */}
     </div>
   );
