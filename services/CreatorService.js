@@ -57,6 +57,11 @@ const getCourse = async (id) => {
     return res.data;
   });
 };
+const createLecture = async (data) => {
+  return AxoisApi.post(`${APIS.TUTORS.CREATE_LECTURE}`, data).then((res) => {
+    return res.data;
+  });
+};
 
 const creatorService = {
   onBoardMentor,
