@@ -142,6 +142,11 @@ const TestContent = () => {
                   >
                     Referral code
                   </th>
+                  <th
+                    scope="col"
+                    className="px-2 py-3 text-center text-xs font-medium text-gray-500 tracking-wider"
+                  >
+                  </th>
                   
                 </tr>
               </thead>
@@ -168,6 +173,18 @@ const TestContent = () => {
                     </td>
                     <td className="px-2 py-4 whitespace-nowrap text-center">
                       <div className="text-sm text-gray-900 text-center">{el.code}</div>
+                    </td>
+                    <td className="px-2 py-4 whitespace-nowrap text-center">
+                      <div className="relative text-sm text-gray-900 text-center">
+                        <div className = "bg-[#F3F3FF] rounded-2xl py-2 px-[2px] cursor-pointer flex flex-col items-center gap-y-1">
+                          <div className='w-[8px] h-[8px]  rounded-full bg-darkBlue' />
+                          <div className='w-[8px] h-[8px]  rounded-full bg-darkBlue' />
+                           <div className = "absolute top-10 bg-[#FEFEFE] dashboard-card-shadow left-[-57px] py-3 px-2 border z-20 ">
+                            <p className='text-[14px] '>Edit course</p>
+                           </div>
+
+                        </div>
+                      </div>
                     </td>
                     
                   </tr>

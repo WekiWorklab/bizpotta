@@ -267,7 +267,7 @@ const ResourceEdit = ({ API_KEY }) => {
       <p className="text-[#999999] text-[13px] mt-8">
         Links to other resources go here
       </p>
-      <div className="">
+      <div className=" grid gird-cols-1">
         <input
           type='text'
           className='inputField w-[320px] sm:min-w-[400px] mt-6'
