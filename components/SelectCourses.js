@@ -7,7 +7,7 @@ import { AiOutlineCheck } from 'react-icons/ai';
 const SelectCourses = ({selectCourse, setSelectCourse}) => {
    
     const base = process.env.NEXT_PUBLIC_REACT_APP_API_URL;
-    console.log(base)
+    // console.log(base)
 
     const [optionsLists1, setOptionsLists1] = useState([])
     const [optionsLists, setOptionsLists] = useState([])
@@ -15,13 +15,13 @@ const SelectCourses = ({selectCourse, setSelectCourse}) => {
     useEffect(() => {
         const fetchCourseCategories = async() => {
             const results = await axios.get(`${base}/courses-categories`)
-            console.log(results.data.data)
+            // console.log(results.data.data)
             setOptionsLists1(results.data.data)
         }
         const fetchCourseSubCategories = async(id) => {
             const results = await axios.get(`${base}/courses-sub-categories/${id}`)
             setOptionsLists(results.data.data)
-            console.log(results.data.data)
+            // console.log(results.data.data)
         }
         fetchCourseCategories()
         fetchCourseSubCategories(3)

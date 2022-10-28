@@ -13,6 +13,9 @@ export const APIS = {
   },
   LEARNERS: {
     SET_LEARNING_PREFERENCES: `${api}/set-learning-preferences`,
+    GET_COURSES: `${api}/learners/courses`,
+    GET_COURSE: (id) =>  `${api}/learners/course/${id}`
+
   },
   MENTORS: {
     SET_MENTORING_PREFERENCES: `${api}/creators/set-mentor-preferences`,

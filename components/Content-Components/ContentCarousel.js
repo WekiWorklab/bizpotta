@@ -18,7 +18,7 @@ const ContentCarousel = ({ data, type, screen }) => {
       modules={[Pagination]}
       className="mySwiper "
     >
-      {data.map((el, index) => (
+      {data?.map((el, index) => (
         <SwiperSlide key={index} style={{display: "flex", justifyContent:"start", backgroundColor: "transparent" }}>
           <ContentCard data={el} type={type} />
         </SwiperSlide>

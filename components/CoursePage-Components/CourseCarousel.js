@@ -48,7 +48,7 @@ const CourseCarousel = ({ data, screen, type }) => {
       }}
       modules={[Pagination, Scrollbar]}
       style={{ backgroundColor: "transparent" }}
-      onSwiper={(swiper) => console.log(swiper)}
+      // onSwiper={(swiper) => console.log(swiper)}
     >
       {data.map((el, index) => (
         <SwiperSlide
@@ -75,18 +75,4 @@ const CourseCarousel = ({ data, screen, type }) => {
 
 export default CourseCarousel;
 
-// marginLeft: "-10px"
 
-//  style={screen === "mobile" ? {backgroundColor: "white", margin: "auto"} : {backgroundColor: "#F9FAFB", margin: "auto"} }
-
-//#F9FAFB
-
-/**
- * {data.map((el, index) => (
-                <SwiperSlide key={index} style={screen==="mobile" ? {width:"325px", backgroundColor: "white",paddingLeft: "-16px", cursor: "pointer"} : {width:"325px", backgroundColor: "#F9FAFB",paddingLeft: "-16px", cursor: "pointer"}} onClick = {() => handleClick()}> 
-                    <CourseCard data = {el} length={data.length}/>
-                </SwiperSlide> 
-                )
-              )
-            }
- */

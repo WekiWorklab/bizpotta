@@ -5,7 +5,7 @@ import CourseCard from "./CourseCard";
 import CourseCarousel from "./CourseCarousel";
 import { Data } from "./Data";
 
-const TopSection = () => {
+const TopSection = ({}) => {
   const router = useRouter();
   const [pathName, setPathName] = useState("");
 
@@ -13,7 +13,7 @@ const TopSection = () => {
     setPathName(router.asPath);
   });
 
-  console.log(pathName);
+  // console.log(pathName);
 
   return (
     <div className="pt-6">
