@@ -12,11 +12,24 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { setWeeksArray, deleteLastWeek } from "../../../../store/courseSlice";
+import creatorService from "../../../../services/CreatorService";
+import { useQuery } from "@tanstack/react-query";
 
 const FirstContent = () => {
   const dispatch = useDispatch();
   const weeksArray = useSelector((state) => state.course.weeks_array);
-  console.log(weeksArray);
+  const router = useRouter();
+  const { courseId } = router.query;
+
+  const getSingeCourse = async () => {
+    const res = await creatorService.getCourse(courseId);
+    return res?.data;
+  };
+
+  const { data } = useQuery(["single-courses"], getSingeCourse);
+
+  console.log(data);
+
   return (
     <div className=''>
       <div className='w-full border-[1px] rounded-sm border-gray-500 mt-8 py-10 px-4 md:pl-10'>
@@ -62,7 +75,7 @@ const FirstContent = () => {
 
         <div className='mt-8 flex flex-col gap-y-8'>
           {weeksArray?.map((el, index) => (
-            <WeekSection key={index} week_no={el} />
+            <WeekSection key={index} week_no={el} course_week={data?.course_weeks[el]} />
           ))}
         </div>
 

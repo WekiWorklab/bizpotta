@@ -24,6 +24,8 @@ export const APIS = {
     ADD_COMPANY: `${api}/creators/add-company`,
     GET_COURSES: `${api}/creators/get-courses`,
     CREATE_COURSE: `${api}/creators/tutor/create-courses`,
+    GET_COURSE: (id) => `${api}/creators/get-course/${id}`,
+    CREATE_LECTURE: `${api}/creators/create-lecture`,
   },
   COMPANIES: {
     SET_COMPANY_PREFERENCES: `${api}/creators/set-institue-preferences`,
