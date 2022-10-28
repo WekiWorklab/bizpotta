@@ -4,15 +4,19 @@ import React from "react";
 
 export default function Card({ clip }) {
   return (
-    <div className='mx-auto flex md:w-96 flex-col justify-center bg-bizpotta-purple rounded-md shadow-xl shadow-slate-300/60'>
+    // <div className='mx-auto flex md:w-96 flex-col justify-center bg-bizpotta-purple rounded-md shadow-xl shadow-slate-300/60'></div>
+    <div className='mx-auto flex w-96 flex-col justify-center bg-bizpotta-purple rounded-md shadow-xl shadow-slate-300/60'>
       {/* <!-- img --> */}
       <img
-        className='aspect-video md:w-96 rounded-t-2xl object-cover object-center'
+        // className='aspect-video md:w-96 rounded-t-2xl object-cover object-center'
+        className='aspect-video w-full rounded-t-2xl object-cover object-center'
         src='https://images.pexels.com/photos/3118214/pexels-photo-3118214.jpeg?cs=srgb&dl=pexels-oladimeji-ajegbile-3118214.jpg&fm=jpg'
         alt='Card image'
       />
 
       {/* <!-- text information --> */}
+      {/* <div className={`p-4 bg-[#121F4C] rounded-b-md -mt-56 pb-8 ${clip ? "clip-card-path  pt-12" : ""}`}> */}
+      
       <div className={`p-4 bg-[#121F4C] rounded-b-md -mt-56 pb-8 ${clip ? "clip-card-path  pt-12" : ""}`}>
         <div className='flex justify-end items-end mb-10'>
           <button className='px-6 py-1 bg-[#94F236] rounded-md'>

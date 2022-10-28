@@ -19,7 +19,7 @@ export default function HomePageSlider() {
         clickable: true,
       }}
       modules={[Pagination]}
-      className='mySwiper'
+      className="mySwiper"
     >
       <SwiperSlide>
         <Card clip={true} />

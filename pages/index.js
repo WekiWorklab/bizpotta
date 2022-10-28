@@ -124,7 +124,6 @@ export default function Home() {
           setSlideIn={setSlideIn}
         />
 
-
         <div className="relative overflow-hidden">
           <main>
             <div className=" bg-gradient-to-b from-[#D6F7BA] to-white  ">
@@ -371,7 +370,7 @@ export default function Home() {
             </div>
             {/* Programs Section */}
             <div className="relative bg-gray-50 pt-10 pb-6 sm:pt-10 lg:pt-14 px-6 md:pl-28">
-              <h1 className="text-start text-base md:text-lg font-light tracking-wider text-black">
+              <h1 className="text-start text-base md:text-lg font-light tracking-wider text-darkBlue">
                 <span className="font-bold">Programs</span>
               </h1>
               <p className="text-start flex flex-col text-[13px] md:text-base font-light tracking-wider text-bizpotta-gray-800">
@@ -397,7 +396,6 @@ export default function Home() {
                   Learn in-demand skills to increase your value in the Market
                 </span>
               </p>
-              {/** <div className='pt-8 flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-24 pb-8'>*/}
               <div className="hidden pt-8 md:flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-28 pb-8">
                 <HomePageSlider />
               </div>
@@ -504,8 +502,7 @@ export default function Home() {
 }
 
 const HomeSideBar = ({ show, setShow, slideIn, setSlideIn }) => {
-
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <div
@@ -547,7 +544,9 @@ const HomeSideBar = ({ show, setShow, slideIn, setSlideIn }) => {
 
           <li
             className={`flex w-full justify-start items-center h-[50px] cursor-pointer mb-2 pl-4 pr-2`}
-            onClick={() => {router.push("/auth/register")}}
+            onClick={() => {
+              router.push("/auth/register");
+            }}
           >
             <div className="flex w-full flex-row justify-between items-center text-[#282828]">
               <div className="text-sm font-light ">Sign up</div>
@@ -557,7 +556,9 @@ const HomeSideBar = ({ show, setShow, slideIn, setSlideIn }) => {
 
           <li
             className={`flex w-full justify-start items-center  h-[50px]  cursor-pointer mb-2 pl-4 pr-2`}
-            onClick={() => {router.push("/auth/login")}}
+            onClick={() => {
+              router.push("/auth/login");
+            }}
           >
             <div className="flex w-full flex-row justify-between items-center text-[#282828]">
               <div className="text-sm font-light ">Sign in</div>
@@ -584,7 +585,9 @@ const HomeSideBar = ({ show, setShow, slideIn, setSlideIn }) => {
 
           <li
             className={`flex  w-full justify-start items-center  h-[50px]  cursor-pointer mb-2 pl-4 pr-2`}
-            onClick={() => {router.push("/students")}}
+            onClick={() => {
+              router.push("/students");
+            }}
           >
             <div className="flex w-full flex-row justify-between items-center text-[#282828]">
               <div className="text-sm font-light ">Vocational Education</div>
@@ -891,9 +894,3 @@ const BlueSection = ({ router, currentIndex }) => {
     </section>
   );
 };
-
-
-
-
-
-

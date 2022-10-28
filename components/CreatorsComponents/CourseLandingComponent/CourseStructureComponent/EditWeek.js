@@ -244,6 +244,20 @@ const Quiz = ({
 };
 
 const ResourceEdit = ({ API_KEY }) => {
+
+  const [inputValue, setInputValue] = useState({value1: "", value2: "", value3: "", value4: "", value5: ""})
+
+  const [counter, setCounter]= useState(1)
+ 
+  const handleChange = (e) => {
+    const {name, value} = e.target
+    setInputValue(prev => ({...prev, [name]: value}))
+  }
+
+  const handleAddLinks = () => {
+    setCounter(prev => prev + 1)
+  }
+
   return (
     <div className="w-full">
       <p className="text-[14px] font-bold">Resources</p>
@@ -272,7 +286,7 @@ const ResourceEdit = ({ API_KEY }) => {
       <p className="text-[#999999] text-[13px] mt-8">
         Links to other resources go here
       </p>
-      <div className="">
+      <div className=" grid grid-cols-1">
         <input
           type="text"
           className="inputField w-[320px] sm:min-w-[400px] mt-6"
@@ -334,7 +348,7 @@ const ResourceEdit = ({ API_KEY }) => {
         </div>
       </div>
 
-      <button className="w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16">
+      <button className="w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16" onClick={() => console.log(inputValue)}>
         Save Changes
       </button>
     </div>
