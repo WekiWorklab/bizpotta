@@ -5,8 +5,8 @@ import { offer } from "../../public";
 import { useDispatch } from "react-redux";
 import { showCourseDetailsModal } from "../../store/courseSlice";
 import { wordShortner } from "../../utils/wordShortner";
-
-const ContentCard = ({ data, type }) => {
+ 
+export const ContentCard = ({ data, type }) => {
   const imageSrc =
     "https://images.pexels.com/photos/1172253/pexels-photo-1172253.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
 
@@ -31,7 +31,6 @@ const ContentCard = ({ data, type }) => {
       style={{ backgroundImage: `url(${data?.image})` }}
       onClick={() => {
         dispatch(showCourseDetailsModal(true));
-        console.log("kjhgfdxcvbhjkjhygtfdc");
       }}
     >
       <div
@@ -45,8 +44,7 @@ const ContentCard = ({ data, type }) => {
           </div>
         </div>
 
-        {/* <div className="text-[13px] mt-[3px] break-words">{data.name}</div> */}
-        <div className="text-[14px] mt-[3px] break-words">{wordShortner(data.name, 26)}</div>
+        <div className="text-[14px] mt-[3px] break-words">{wordShortner(data?.name, 26)}</div>
         <div className="flex flex-row justify-between items-center mt-0">
           <div className="">
             <div className="flex items-center gap-x-1">

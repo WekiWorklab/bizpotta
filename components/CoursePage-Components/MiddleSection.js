@@ -3,26 +3,22 @@ import BrowseCourse from "./BrowseCourse";
 import { Data, instructorData } from "../Content-Components/Data";
 import ContentCarousel from "../Content-Components/ContentCarousel";
 import InstructorCarousel from "../Content-Components/InstructorCarousel";
-import SelectCourses from "../SelectCourses";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import ContentCard from "../Content-Components/ContentCard";
-import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
-import { useEffect } from "react";
-import { Pagination } from "@mantine/core";
 
 const MiddleSection = ({data, loading}) => {
-  const dummyCourses = new Array(20).fill({
-    name: "Fashion Design",
-    category: "Design, styling",
-    total_students: 500,
-    rating: 4,
-    academy: "Dth academy",
-  });
+  const base = process.env.NEXT_PUBLIC_REACT_APP_API_URL;
 
-  const [selectCourse, setSelectCourse] = useState("");
+  const fetchCourseCategories = async () => {
+    const results = await axios.get(`${base}/courses-categories`);
+    return results.data.data
+  };
 
-  // if (loading) {
-  //   return <div>jdhskdm</div>
-  // }
+
+  const query = useQuery(["course_cat"], fetchCourseCategories)
+
+
 
   return (
     // <div>
@@ -49,13 +45,13 @@ const MiddleSection = ({data, loading}) => {
         </p>
         <div className="pt-3 rounded-sm">
           <div className="block w-full sm:w-[360px] md:hidden w-full ">
-            <ContentCarousel data={Data} screen={[1.5, 10]} type="vocational" />
+            <ContentCarousel data={data} screen={[1.5, 10]} type="vocational" />
           </div>
           <div className="hidden md:block lg:hidden w-full">
-            <ContentCarousel data={Data} screen={[2, 20]} type="vocational" />
+            <ContentCarousel data={data} screen={[2, 20]} type="vocational" />
           </div>
           <div className="hidden lg:block w-full">
-            <ContentCarousel data={Data} screen={[4, 30]} type="vocational" />
+            <ContentCarousel data={data} screen={[4, 30]} type="vocational" />
           </div>
         </div>
       </div>
@@ -65,13 +61,13 @@ const MiddleSection = ({data, loading}) => {
         </p>
         <div className="pt-3 rounded-sm">
           <div className="block w-full sm:w-[360px] md:hidden w-full ">
-            <ContentCarousel data={Data} screen={[1.5, 10]} type="vocational" />
+            <ContentCarousel data={data} screen={[1.5, 10]} type="vocational" />
           </div>
           <div className="hidden md:block lg:hidden w-full">
-            <ContentCarousel data={Data} screen={[2, 20]} type="vocational" />
+            <ContentCarousel data={data} screen={[2, 20]} type="vocational" />
           </div>
           <div className="hidden lg:block w-full">
-            <ContentCarousel data={Data} screen={[4, 30]} type="vocational" />
+            <ContentCarousel data={data} screen={[4, 30]} type="vocational" />
           </div>
         </div>
       </div>
@@ -81,13 +77,13 @@ const MiddleSection = ({data, loading}) => {
         </p>
         <div className="pt-3 rounded-sm">
           <div className="block w-full sm:w-[360px] md:hidden w-full">
-            <ContentCarousel data={Data} screen={[1.5, 10]} type="vocational" />
+            <ContentCarousel data={data} screen={[1.5, 10]} type="vocational" />
           </div>
           <div className="hidden md:block lg:hidden w-full">
-            <ContentCarousel data={Data} screen={[2, 20]} type="vocational" />
+            <ContentCarousel data={data} screen={[2, 20]} type="vocational" />
           </div>
           <div className="hidden lg:block w-full">
-            <ContentCarousel data={Data} screen={[4, 30]} type="vocational" />
+            <ContentCarousel data={data} screen={[4, 30]} type="vocational" />
           </div>
         </div>
       </div>
@@ -118,66 +114,60 @@ const MiddleSection = ({data, loading}) => {
         </div>
       </div>
 
-      <div className="flex">
-        <SelectCourses
-          selectCourse={selectCourse}
-          setSelectCourse={setSelectCourse}
-        />
+      <div className="w-full horizontal-scrollbar overflow-x-scroll flex flex-col font-light mt-10">
+        <div className="w-[1100px] flex flex-col space-y-4 py-4 px-2">
+        {query.data ? <CourseTabs courseCategories={query.data} /> : null}
+        </div>
       </div>
 
-      {selectCourse && (
-        <div className="mt-10 w-full">
-          <div className="w-full mx-auto grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-12">
-            {dummyCourses.map((el, index) => (
-              <div className="mx-auto" key={index}>
-                <ContentCard data={el} type="vocational" />
-              </div>
-            ))}
-          </div>
+      <div className="w-full grid justify-items-center sm:justify-items-start sm:grid-cols-2  lg:grid-cols-3 lg:justify-items-center xl:grid-cols-4 gap-x-10 gap-y-10 mt-10 ">
+        {data?.map((el, index) => (
+          <ContentCard key={index}  data={el} />
+        ))}
+      </div>
 
-          <div className="w-full flex justify-end mr-4 mt-6">
-            <Pagination
-              total={10}
-              position="center"
-              styles={(theme) => ({
-                item: {
-                  "&[data-active]": {
-                    backgroundColor: "#121F4C",
-                  },
-                },
-              })}
-            />
-          </div>
-        </div>
-      )}
-    </div>
+      </div>
   );
 };
 
 export default MiddleSection;
 
-// <div className='w-[40px] h-[40px] rounded-l-md centerFlex bg-white'><AiOutlineLeft /></div>
-//     {
-//         pageNum.map((el, index) => (
-//             <div key={index} className = 'w-[40px] h-[40px] centerFlex bg-white text-[18px] font-bold centerFlex'>
-//                 {el}
-//             </div>
-//         ))
-//     }
 
-// <div className='w-[40px] h-[40px] rounded-r-md centerFlex bg-white'><AiOutlineRight /></div>
 
-/**
- * <div className='pt-[50px] flex flex-col '>
-                <p className="text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">Popular courses on vocational programs</p>
-                <div className='block w-[360px] m-auto md:hidden w-full'>
-                    <ContentCarousel data = {Data} screen = {[1.5, 10]} type = 'vocational'/>
-                </div>
-                <div className='hidden m-auto md:block lg:hidden w-full'>
-                    <ContentCarousel data = {Data} screen = {[2, 20]} type = 'vocational'/>
-                </div>
-                <div className='hidden lg:block w-full'>
-                    <ContentCarousel data = {Data} screen = {[3, 40]} type = 'vocational'/>
-                </div> 
-            </div>
- */
+
+
+
+const CourseTabs = ({ courseCategories }) => {
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
+
+  const tabs = courseCategories;
+
+  const [currentTab, setCurrentTab] = useState(1);
+
+  const handleClick = (id) => {
+    setCurrentTab(id);
+  };
+
+  return (
+    <div className="">
+      <nav className="flex space-x-4" aria-label="Tabs">
+        {tabs.map((tab) => (
+          <div
+            key={tab.name}
+            onClick={() => handleClick(tab.id)}
+            className={classNames(
+              tab.id == currentTab
+                ? "font-bold"
+                : "text-gray-500 hover:text-gray-700",
+              "px-3 py-2 font-medium rounded-md text-[15px]"
+            )}
+          >
+            {tab.name}
+          </div>
+        ))}
+      </nav>
+    </div>
+  );
+};
