@@ -15,7 +15,7 @@ import {
 const BottomSection = () => {
   return (
     <div className="w-full  bg-gradient-to-b from-[#FDFFFA] to-[#FDFFFA] pb-20 pt-10">
-      <p className="px-40 text-xl font-bold">Upcoming Sessions </p>
+      <p className=" text-center sm:px-40 text-xl font-bold">Upcoming Sessions </p>
 
       <div className="my-8 px-20 py-10 masters-shadow relative">
         <div className="absolute left-0 top-0">
@@ -26,7 +26,7 @@ const BottomSection = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center px-2 sm:px-6 py-3 sm:py-8 w-full ">
-          <div className="w-full  sm:w-2/3 ">
+          <div className="w-full mt-10 md:mt-0  sm:w-2/3 ">
             <div className="flex items-center gap-x-2">
               <GoPrimitiveDot size={14} color="red" />
               <p className="font-bold text-[14px]">Live</p>
