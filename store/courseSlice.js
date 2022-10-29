@@ -14,6 +14,7 @@ const courseSlice = createSlice({
     weeks_array: [1],
     quiz_array: [],
     quiz_data: [],
+    cart_array: [324, 988, 1987],
   },
 
   reducers: {
@@ -56,6 +57,14 @@ const courseSlice = createSlice({
       state.quiz_array = [...state.quiz_array, "x"];
     },
 
+    addToCart: (state, action) => {
+      state.cart_array = [...state.cart_array, action.payload]
+    },
+
+    removeFromCart: (state, action) => {
+      state.cart_array = state.cart_array.filter(el => el != action.payload)
+    },
+
     reset: (state) => {
       state.courseCategory = null;
       state.total_courses = [];
@@ -83,6 +92,8 @@ export const {
   setWeeksArray,
   setQuizArray,
   deleteLastWeek,
+  addToCart,
+  removeFromCart
 } = courseSlice.actions;
 
 export default courseSlice.reducer;

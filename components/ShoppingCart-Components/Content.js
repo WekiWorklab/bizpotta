@@ -1,19 +1,31 @@
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
 import { AiFillStar } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
 import { offer } from "../../public";
 import ContentCarousel from "../Content-Components/ContentCarousel";
 import { Data, instructorData } from "../Content-Components/Data";
 import InstructorCarousel from "../Content-Components/InstructorCarousel";
+import { useRouter } from "next/router";
 
 const Content = () => {
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    const cart = JSON.parse(localStorage.getItem("cart"));
+    cart && setCartItems((prev) => [...prev, ...cart]);
+  }, []);
+
   return (
-    <div className="relative w-full h-full bg-white  flex flex-col mt-[90px] md:mt-[120px]  md:translate-x-[200px] md:w-[calc(100%-200px)] pl-8 py-10">
+    <div className="relative w-full h-full bg-white  flex flex-col mt-[90px] md:mt-[120px]  md:translate-x-[200px] md:w-[calc(100%-200px)] px-2 py-10">
       <div className="text-md font-bold">Shopping Cart</div>
 
-      <div className="flex flex-row mt-8 gap-x-48">
-        <div>
-          <CourseCard />
-          <CourseCard />
+      <div className="flex flex-col lg:flex-row mt-8 justify-between xl:pr-10">
+        <div className="flex-col gap-y-4">
+          {cartItems?.map((el, index) => (
+            <CourseCard key={index} id={el} cartItems={cartItems} />
+          ))}
         </div>
 
         <CouponCard />
@@ -72,19 +84,31 @@ const Content = () => {
 
 export default Content;
 
-const CourseCard = () => {
+const CourseCard = ({ id }) => {
+  const router = useRouter();
+
+  const RemoveItem = (ID) => {
+    const cart = JSON.parse(localStorage.getItem("cart"));
+    const newCart = cart.filter((el) => el != ID);
+    localStorage.setItem("cart", JSON.stringify([...newCart]));
+
+    setTimeout(() => {
+      router.reload(window.location.pathname);
+    }, 1000);
+  };
+
   return (
-    <div className="w-[600px] h-[140px] bg-white shadow-xl flex flex-row  px-4 mb-8">
+    <div className="w-full sm:w-[500px] sm:h-[140px] bg-white dropdown-shadow flex flex-col items-center py-3 sm:py-0 sm:flex-row px-10 sm:px-4 mb-8">
       <div className="h-full flex items-center justify-start">
         <img
           src={offer.src}
           alt=""
-          className="w-[85px] h-[85px] rounded-full "
+          className="min-w-[85px] min-h-[85px] max-w-[85px] max-h-[85px] rounded-full "
         />
       </div>
-      <div className="flex flex-col justify-center ml-3 w-[350px]">
+      <div className="flex flex-col items-center sm:items-start justify-center sm:ml-3 w-[350px]">
         <p className="text-[14px] font-bold">Introduction to Hydroponics</p>
-        <p className="text-[11px] text-gray-400 ">
+        <p className="text-[11px] text-center sm:text-left text-gray-400 ">
           By Introduction to Hydroponics Introduction to Hydroponics
           Introduction to Hydroponics
         </p>
@@ -98,9 +122,14 @@ const CourseCard = () => {
           <AiFillStar size={14} color="#FFC700" />
         </div>
       </div>
-      <div className="text-[13px] flex flex-col justify-center">
-        <div>Remove</div>
-        <div>Add to wish list</div>
+      <div className="text-[13px]  flex flex-col justify-center">
+        {/* <div>Remove from cart</div> */}
+        <div
+          className=" border-[1px] border-red-300 text-center cursor-pointer p-2 rounded-md hover:text-white hover:border-0 hover:bg-red-400 mt-3 sm:mt-0"
+          onClick={() => RemoveItem(id)}
+        >
+          Remove from cart
+        </div>
       </div>
     </div>
   );

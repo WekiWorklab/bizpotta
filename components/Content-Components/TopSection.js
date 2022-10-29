@@ -195,8 +195,8 @@ const TopSection = () => {
           </div>
         </div>
 
-        <div>
-          <div className="pt-[50px] flex flex-col bg-white">
+        <div className="px-2">
+          <div className="pt-[50px] flex flex-col  bg-white">
             <p className="text-[14px] text-center lg:text-left  mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
               Recommended Courses on Vocational Education
             </p>
@@ -257,8 +257,8 @@ const TopSection = () => {
           <p className="text-[14px] text-center lg:text-left mb-4 md:text-md font-semibold md:font-bold md:mb-8 mt-10">
             Up-coming
           </p>
-          <div className="block w-[360px] m-auto md:hidden w-full">
-            <StyleCarousel screen={[1, 10]} />
+          <div className="flex justify-center w-full md:hidden w-full">
+            <StyleCarousel screen={[1.1, 10]} />
           </div>
           <div className="hidden m-auto md:block lg:hidden w-full">
             <StyleCarousel screen={[1.7, 10]} />

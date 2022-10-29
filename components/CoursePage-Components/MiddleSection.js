@@ -7,18 +7,15 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import ContentCard from "../Content-Components/ContentCard";
 
-const MiddleSection = ({data, loading}) => {
+const MiddleSection = ({ data, loading }) => {
   const base = process.env.NEXT_PUBLIC_REACT_APP_API_URL;
 
   const fetchCourseCategories = async () => {
     const results = await axios.get(`${base}/courses-categories`);
-    return results.data.data
+    return results.data.data;
   };
 
-
-  const query = useQuery(["course_cat"], fetchCourseCategories)
-
-
+  const query = useQuery(["course_cat"], fetchCourseCategories);
 
   return (
     // <div>
@@ -28,7 +25,7 @@ const MiddleSection = ({data, loading}) => {
           Browse course based on your recent activities
         </p>
         <div className="pt-3 rounded-sm">
-          <div className="block w-full sm:w-[360px] md:hidden w-full ">
+          <div className="block w-full sm:w-[400px] md:hidden w-full ">
             <ContentCarousel data={data} screen={[1.5, 10]} type="vocational" />
           </div>
           <div className="hidden md:block lg:hidden w-full">
@@ -116,26 +113,20 @@ const MiddleSection = ({data, loading}) => {
 
       <div className="w-full horizontal-scrollbar overflow-x-scroll flex flex-col font-light mt-10">
         <div className="w-[1100px] flex flex-col space-y-4 py-4 px-2">
-        {query.data ? <CourseTabs courseCategories={query.data} /> : null}
+          {query.data ? <CourseTabs courseCategories={query.data} /> : null}
         </div>
       </div>
 
       <div className="w-full grid justify-items-center sm:justify-items-start sm:grid-cols-2  lg:grid-cols-3 lg:justify-items-center xl:grid-cols-4 gap-x-10 gap-y-10 mt-10 ">
         {data?.map((el, index) => (
-          <ContentCard key={index}  data={el} />
+          <ContentCard key={index} data={el} />
         ))}
       </div>
-
-      </div>
+    </div>
   );
 };
 
 export default MiddleSection;
-
-
-
-
-
 
 const CourseTabs = ({ courseCategories }) => {
   function classNames(...classes) {

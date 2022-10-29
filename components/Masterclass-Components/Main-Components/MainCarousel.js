@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { FaQuoteLeft } from "react-icons/fa";
 
-export const ExpertsCarousel = ({screen}) => {
+export const ExpertsCarousel = ({ screen }) => {
   const arr = new Array(9).fill("");
 
   return (
@@ -20,7 +20,7 @@ export const ExpertsCarousel = ({screen}) => {
         clickable: true,
       }}
       modules={[Pagination]}
-      style={{ backgroundColor: "transparent"}}
+      style={{ backgroundColor: "transparent" }}
     >
       {arr.map((el, index) => (
         <SwiperSlide
@@ -56,7 +56,7 @@ export const ExpertsCarousel = ({screen}) => {
   );
 };
 
-export const MainCarousel = ({screen}) => {
+export const MainCarousel = ({ screen }) => {
   const arr = new Array(9).fill("");
 
   return (
@@ -71,7 +71,6 @@ export const MainCarousel = ({screen}) => {
         backgroundColor: "transparent",
         height: "540px",
         border: "none",
-       
       }}
     >
       {arr.map((el, index) => (
@@ -115,7 +114,7 @@ export const MainCarousel = ({screen}) => {
   );
 };
 
-export const TestimonialCarousel = ({screen}) => {
+export const TestimonialCarousel = ({ screen }) => {
   const arr = new Array(8).fill("");
 
   return (
@@ -132,10 +131,12 @@ export const TestimonialCarousel = ({screen}) => {
       {arr.map((el, index) => (
         <SwiperSlide
           key={index}
-          style={{ display: "flex",
-          justifyContent: "start",
-          backgroundColor: "transparent", 
-          padding: "0px" }}
+          style={{
+            display: "flex",
+            justifyContent: "start",
+            backgroundColor: "transparent",
+            padding: "0px",
+          }}
         >
           <div className=" w-[330px] md:w-[400px] h-[320px] relative  centerFlex ">
             <div className=" w-[330px] md:w-[380px] h-[250px] bg-white border rounded-md">
@@ -207,4 +208,3 @@ export const TestimonialCard = () => {
     </div>
   );
 };
-

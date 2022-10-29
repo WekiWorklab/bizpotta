@@ -5,7 +5,7 @@ import { offer } from "../../public";
 import { useDispatch } from "react-redux";
 import { showCourseDetailsModal } from "../../store/courseSlice";
 import { wordShortner } from "../../utils/wordShortner";
- 
+
 export const ContentCard = ({ data, type }) => {
   const imageSrc =
     "https://images.pexels.com/photos/1172253/pexels-photo-1172253.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
@@ -23,15 +23,13 @@ export const ContentCard = ({ data, type }) => {
 
   const dispatch = useDispatch();
 
-  const name = "kjjhgvbn;iuhygjhmb,nmhbvihuFvhsjaiouyjGVHbniudbaegujnm;lkjgbnm."
+  const name =
+    "kjjhgvbn;iuhygjhmb,nmhbvihuFvhsjaiouyjGVHbniudbaegujnm;lkjgbnm.";
 
   return (
     <div
       className="w-[220px] h-[220px] rounded-[4px] bg-no-repeat bg-cover bg-center flex flex-col justify-end"
       style={{ backgroundImage: `url(${data?.image})` }}
-      onClick={() => {
-        dispatch(showCourseDetailsModal(true));
-      }}
     >
       <div
         className={`clip-card-path2 ${colorType(
@@ -39,12 +37,19 @@ export const ContentCard = ({ data, type }) => {
         )} text-[white] h-3/5 flex flex-col justify-end px-2 pb-2 rounded-b-md`}
       >
         <div className="flex flex-row justify-end">
-          <div className="text-[13px] w-[50px] h-[25px] rounded-[5px] flex justify-center items-center bg-[#94F236] text-darkBlue">
+          <div
+            className="text-[13px] w-[50px] h-[25px] rounded-[5px] flex justify-center items-center cursor-pointer bg-[#94F236] text-darkBlue"
+            onClick={() => {
+              dispatch(showCourseDetailsModal(true));
+            }}
+          >
             Enroll
           </div>
         </div>
 
-        <div className="text-[14px] mt-[3px] break-words">{wordShortner(data?.name, 26)}</div>
+        <div className="text-[14px] mt-[3px] break-words">
+          {wordShortner(data?.name, 26)}
+        </div>
         <div className="flex flex-row justify-between items-center mt-0">
           <div className="">
             <div className="flex items-center gap-x-1">

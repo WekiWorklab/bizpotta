@@ -36,7 +36,38 @@ export const StyleCarousel = ({ screen }) => {
             justifyContent: "start",
           }}
         >
-          <div className="min-w-[330px]  max-w-[350px] max-h-[450px] min-h-[450px] relative">
+          <div className="min-w-[330px] max-w-[330px] sm:max-w-[350px] max-h-[450px] min-h-[450px] relative ">
+            <div className="absolute top-3  w-[280px] sm:w-[300px] h-[430px] border-2 border-darkBlue" />
+            <div className="absolute top-0 left-1 sm:left-3  w-[280px] sm:w-[300px] h-[430px] border-2 border-bizpotta-green" />
+            <div
+              className="absolute top-5 left-3 sm:left-5 w-[280px] sm:w-[300px] h-[420px] bg-no-repeat bg-center bg-cover px-4 py-4 rounded-xl flex flex-col justify-between"
+              style={{ backgroundImage: `url(${offer.src})` }}
+            >
+              <div className="w-[50px] h-[30px] text-[14px] bg-white rounded-sm centerFlex text-darkBlue ">
+                New
+              </div>
+              <div className="flex flex-col justify-center items-center">
+                <p className="text-[20px] text-center sm:text-[22px] font-extrabold text-white mb-3">
+                  Increase Sales in 30 Days
+                </p>
+                <div className="w-[70px] h-[4px] bg-white mb-2"></div>
+                <p className="text-lg font-bold text-white mb-2">
+                  Charles Mark
+                </p>
+                <div className="w-[120px] h-[35px] text-[14px] centerFlex bg-bizpotta-green rounded-md">
+                  Get started
+                </div>
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  );
+};
+
+/**
+ * <div className="min-w-[330px]  max-w-[350px] max-h-[450px] min-h-[450px] relative">
             <div className="absolute top-3 w-[300px] h-[430px] border-2 border-darkBlue" />
             <div className="absolute top-0 left-3 w-[300px] h-[430px] border-2 border-bizpotta-green" />
             <div
@@ -60,8 +91,4 @@ export const StyleCarousel = ({ screen }) => {
               </div>
             </div>
           </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
-  );
-};
+ */

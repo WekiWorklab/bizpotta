@@ -410,7 +410,7 @@ export default function Home() {
   );
 }
 
-const HomeSideBar = ({ show, setShow, slideIn, setSlideIn }) => {
+export const HomeSideBar = ({ show, setShow, slideIn, setSlideIn }) => {
   const router = useRouter();
 
   return (

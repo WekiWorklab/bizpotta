@@ -17,11 +17,13 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { AiOutlineDown } from "react-icons/ai";
 import Navbars from "../../Navbars";
+import { HomeSideBar } from "../../../pages";
 
-const TopSection = () => {
+const TopSection = ({show, setShow, slideIn, setSlideIn}) => {
   return (
-    <div className="w-full rad-gradient pb-10">
-      <Header />
+    <div className="w-full rad-gradient pb-10 relative">
+      <Header show={show} setShow={setShow} slideIn={slideIn} setSlideIn={setSlideIn}/>
+
       {/* <Navbars /> */}
       <div className="px-3 sm:px-10 xl:px-24">
         <div className="mt-2 sm:mt-10">

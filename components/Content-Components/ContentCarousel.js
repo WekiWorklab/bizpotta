@@ -8,6 +8,9 @@ import "swiper/css/pagination";
 import { useSwiper } from "swiper/react";
 
 const ContentCarousel = ({ data, type, screen }) => {
+
+  console.log(data)
+
   return (
     <Swiper
       slidesPerView={screen[0]}

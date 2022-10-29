@@ -139,7 +139,7 @@ const BottomSection = () => {
           <TestimonialCarousel screen={[1, 5]} />
         </div>
         <div className="hidden  md:block lg:hidden w-full">
-          <TestimonialCarousel screen={[2, 20]} />
+          <TestimonialCarousel screen={[1.6, 20]} />
         </div>
         <div className="hidden lg:block w-full">
           <TestimonialCarousel screen={[2.5, 30]} />
