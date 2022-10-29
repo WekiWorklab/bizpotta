@@ -9,7 +9,7 @@ import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { useEffect } from "react";
 import { Pagination } from "@mantine/core";
 
-const MiddleSection = ({data}) => {
+const MiddleSection = ({data, loading}) => {
   const dummyCourses = new Array(20).fill({
     name: "Fashion Design",
     category: "Design, styling",
@@ -19,6 +19,10 @@ const MiddleSection = ({data}) => {
   });
 
   const [selectCourse, setSelectCourse] = useState("");
+
+  // if (loading) {
+  //   return <div>jdhskdm</div>
+  // }
 
   return (
     // <div>
@@ -43,7 +47,7 @@ const MiddleSection = ({data}) => {
         <p className="text-[14px] text-start mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
           Popular courses on vocational programs
         </p>
-        {/* <div className="pt-3 rounded-sm">
+        <div className="pt-3 rounded-sm">
           <div className="block w-full sm:w-[360px] md:hidden w-full ">
             <ContentCarousel data={Data} screen={[1.5, 10]} type="vocational" />
           </div>
@@ -53,13 +57,13 @@ const MiddleSection = ({data}) => {
           <div className="hidden lg:block w-full">
             <ContentCarousel data={Data} screen={[4, 30]} type="vocational" />
           </div>
-        </div> */}
+        </div>
       </div>
       <div className="pt-[50px] flex flex-col ">
         <p className="text-[14px] text-start mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
           Based on recent activities
         </p>
-        {/* <div className="pt-3 rounded-sm">
+        <div className="pt-3 rounded-sm">
           <div className="block w-full sm:w-[360px] md:hidden w-full ">
             <ContentCarousel data={Data} screen={[1.5, 10]} type="vocational" />
           </div>
@@ -69,13 +73,13 @@ const MiddleSection = ({data}) => {
           <div className="hidden lg:block w-full">
             <ContentCarousel data={Data} screen={[4, 30]} type="vocational" />
           </div>
-        </div> */}
+        </div>
       </div>
       <div className="pt-[50px] flex flex-col ">
         <p className="text-[14px] text-start mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
           Trending courses
         </p>
-        {/* <div className="pt-3 rounded-sm">
+        <div className="pt-3 rounded-sm">
           <div className="block w-full sm:w-[360px] md:hidden w-full">
             <ContentCarousel data={Data} screen={[1.5, 10]} type="vocational" />
           </div>
@@ -85,7 +89,7 @@ const MiddleSection = ({data}) => {
           <div className="hidden lg:block w-full">
             <ContentCarousel data={Data} screen={[4, 30]} type="vocational" />
           </div>
-        </div> */}
+        </div>
       </div>
       <div className="pt-[50px] flex flex-col">
         <p className="text-[14px] text-start mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
