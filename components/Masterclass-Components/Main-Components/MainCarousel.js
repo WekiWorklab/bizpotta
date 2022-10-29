@@ -82,14 +82,14 @@ export const MainCarousel = ({screen}) => {
             justifyContent: "start",
             backgroundColor: "transparent",
             height: "530px",
-            border: "none",
+            // border: "1px solid red",
           }}
         >
-          <div className="min-w-[330px] max-w-[350px] max-h-[450px] min-h-[450px] relative">
+          <div className="min-w-[330px] max-w-[330px] sm:max-w-[350px] max-h-[450px] min-h-[450px] relative ">
             <div className="absolute top-3 w-[300px] h-[430px] border-2 border-darkBlue" />
-            <div className="absolute top-0 left-3 w-[300px] h-[430px] border-2 border-bizpotta-green" />
+            <div className="absolute top-0 left-1 sm:left-3 w-[300px] h-[430px] border-2 border-bizpotta-green" />
             <div
-              className="absolute top-5 left-5  w-[300px] h-[420px] bg-no-repeat bg-center bg-cover px-4 py-4 rounded-xl"
+              className="absolute top-5 left-3 sm:left-5  w-[300px] h-[420px] bg-no-repeat bg-center bg-cover px-4 py-4 rounded-xl"
               style={{ backgroundImage: `url(${offer.src})` }}
             >
               <div className="w-[50px] h-[30px] text-[14px] bg-white rounded-sm centerFlex text-darkBlue ">

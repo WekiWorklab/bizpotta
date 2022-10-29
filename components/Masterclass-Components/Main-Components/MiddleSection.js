@@ -7,62 +7,61 @@ import { MainCarousel, TestimonialCarousel } from "./MainCarousel";
 const MiddleSection = () => {
   return (
     <div className="w-full  bg-gradient-to-b from-[#FDFFFA] to-[#FDFFFA] py-24">
-        <div className="px-3 sm:px-10 xl:px-20">
-            <p className="text-lg sm:text-xl font-bold">
-            Expand your skillset, gain insights, and get support from mentors
-            </p>
-            <div
-            className="w-full h-[350px] md:h-[500px] mt-10 bg-center bg-no-repeat bg-cover rounded-lg"
-            style={{ backgroundImage: `url(${offer.src})` }}
-            />
-        </div>
+      <div className="px-3 sm:px-10 xl:px-20">
+        <p className="text-lg sm:text-xl font-bold">
+          Expand your skillset, gain insights, and get support from mentors
+        </p>
+        <div
+          className="w-full h-[350px] md:h-[500px] mt-10 bg-center bg-no-repeat bg-cover rounded-lg"
+          style={{ backgroundImage: `url(${offer.src})` }}
+        />
+      </div>
 
       <div className="relative mt-16 sm:mt-20 md:mt-40 flex item-center justify-center">
         <div className="absolute left-0 top-0">
-            <LeftGroupCard />
+          <LeftGroupCard />
         </div>
         <div className="absolute right-0 top-0">
-            <RightGroupCard />
+          <RightGroupCard />
         </div>
         <div className="mt-10">
-            <p className="text-lg sm:text-xl font-bold text-center xl:text-left">
+          <p className="text-lg sm:text-xl font-bold text-center xl:text-left">
             How mentors on Bizpotta can help achieve your dreams
-            </p>
-            {/* xl:flex xl:items-center xl:justify-center xl:gap-x-16 */}
-            <div className="w-full grid grid-cols-1 justify-items-center sm:grid-cols-2 xl:grid-cols-3 sm:gap-x-3 gap-y-10 sm:gap-y-4 md:gap-x-16 md:gap-y-10  mt-10">
-                <div className="w-[300px] h-[180px] text-white bg-darkBlue rounded-md py-4 px-6 flex flex-col justify-between">
-                    <p>Career advice</p>
-                    <p className="text-sm w-[90%]">
-                    Navigate career transitions, promotions and access a sounding
-                    board for career decisions.
-                    </p>
-                    <div className="w-[100px] h-[30px] centerFlex border rounded-md text-xs">
-                    Get started
-                    </div>
-                </div>
+          </p>
+          <div className="w-full grid grid-cols-1 justify-items-center sm:grid-cols-2 xl:grid-cols-3 sm:gap-x-3 gap-y-10 sm:gap-y-4 md:gap-x-16 md:gap-y-10  mt-10">
+            <div className="w-[300px] h-[180px] text-white bg-darkBlue rounded-md py-4 px-6 flex flex-col justify-between">
+              <p>Career advice</p>
+              <p className="text-sm w-[90%]">
+                Navigate career transitions, promotions and access a sounding
+                board for career decisions.
+              </p>
+              <div className="w-[100px] h-[30px] centerFlex border rounded-md text-xs">
+                Get started
+              </div>
+            </div>
 
-                <div className="w-[300px] h-[180px] text-white bg-darkBlue rounded-md py-4 px-6 flex flex-col justify-between">
-                    <p>Business Development</p>
-                    <p className="text-sm w-[90%]">
-                    Develop specific skills you want to improve in order to succeed in
-                    your career..
-                    </p>
-                    <div className="w-[100px] h-[30px] centerFlex border rounded-md text-xs">
-                    Get started
-                    </div>
+            <div className="w-[300px] h-[180px] text-white bg-darkBlue rounded-md py-4 px-6 flex flex-col justify-between">
+              <p>Business Development</p>
+              <p className="text-sm w-[90%]">
+                Develop specific skills you want to improve in order to succeed
+                in your career..
+              </p>
+              <div className="w-[100px] h-[30px] centerFlex border rounded-md text-xs">
+                Get started
+              </div>
+            </div>
+
+            <div className="sm:col-span-2 xl:col-span-1 flex justify-center w-full">
+              <div className=" w-[300px] align-center h-[180px] text-white bg-darkBlue rounded-md py-4 px-6 flex flex-col justify-between">
+                <p>Skills</p>
+                <p className="text-sm w-[90%]">
+                  Develop specific skills you want to improve in order to
+                  succeed in your career.
+                </p>
+                <div className="w-[100px] h-[30px] centerFlex border rounded-md text-xs">
+                  Get started
                 </div>
-                
-                <div className="sm:col-span-2 xl:col-span-1 flex justify-center w-full">
-                    <div className=" w-[300px] align-center h-[180px] text-white bg-darkBlue rounded-md py-4 px-6 flex flex-col justify-between">
-                        <p>Skills</p>
-                        <p className="text-sm w-[90%]">
-                        Develop specific skills you want to improve in order to succeed in
-                        your career.
-                        </p>
-                        <div className="w-[100px] h-[30px] centerFlex border rounded-md text-xs">
-                        Get started
-                    </div>
-                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -136,7 +135,9 @@ const MiddleSection = () => {
         </div>
 
         <div className="w-full md:w-1/2 xl:w-[30%] h-full mt-12 xl:mt-0">
-          <p className="text-[15px] mb-2 font-bold text-center xl:text-left">Upcoming events</p>
+          <p className="text-[15px] mb-2 font-bold text-center xl:text-left">
+            Upcoming events
+          </p>
           <div className="gap-y-3 flex flex-col">
             <div className="bg-[#FFFFFF] rounded-md py-4 px-6 border-[1px] border-[#E7E7E7] rounded-md flex flex-col justify-center">
               <p className="text-[14px] w-2/3 font-bold">
@@ -184,38 +185,37 @@ const MiddleSection = () => {
         </div>
       </div>
 
-    <div className="px-3 sm:px-10 xl:px-20">
-      <div className="w-full mt-16 lg:mt-32">
-        <div className="text-center sm:text-left text-xl sm:text-xl font-bold">
-          Top courses on business plan development
-        </div>
-        <div className="block w-[360px] mx-auto md:hidden w-full">
-            <MainCarousel screen={[1, 10]} />
-        </div>
-        <div className="hidden  md:block lg:hidden w-full">
+      <div className="px-2 sm:px-10 xl:px-20">
+        <div className="w-full mt-16  lg:mt-32">
+          <div className="text-center sm:text-left text-xl sm:text-xl font-bold">
+            Top courses on business plan development
+          </div>
+          <div className="flex justify-center w-full md:hidden w-full">
+            <MainCarousel screen={[1.1, 10]} />
+          </div>
+          <div className="hidden  md:block lg:hidden w-full">
             <MainCarousel screen={[2, 20]} />
-        </div>
-        <div className="hidden lg:block w-full">
+          </div>
+          <div className="hidden lg:block w-full">
             <MainCarousel screen={[3, 30]} />
+          </div>
+        </div>
+
+        <div className="w-full mt-16 lg:mt-32">
+          <div className="text-center sm:text-left text-xl sm:text-xl font-bold">
+            Most enrolled courses on disruptive business model
+          </div>
+          <div className="flex justify-center w-full md:hidden w-full">
+            <MainCarousel screen={[1.1, 10]} />
+          </div>
+          <div className="hidden m-auto md:block lg:hidden w-full">
+            <MainCarousel screen={[2, 20]} />
+          </div>
+          <div className="hidden lg:block w-full">
+            <MainCarousel screen={[3, 30]} />
+          </div>
         </div>
       </div>
-
-      <div className="w-full mt-16 lg:mt-32">
-        <div className="text-center sm:text-left text-xl sm:text-xl font-bold">
-          Most enrolled courses on disruptive business model
-        </div>
-        <div className="block w-[360px] mx-auto md:hidden w-full">
-            <MainCarousel screen={[1, 10]} />
-        </div>
-        <div className="hidden m-auto md:block lg:hidden w-full">
-            <MainCarousel screen={[2, 20]} />
-        </div>
-        <div className="hidden lg:block w-full">
-            <MainCarousel screen={[3, 30]} />
-        </div>
-      </div>
-    </div>
-
     </div>
   );
 };
