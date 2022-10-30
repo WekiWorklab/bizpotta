@@ -6,8 +6,8 @@ import "swiper/css/pagination";
 import { offer } from "../../public";
 import ProgramCarousel from "../CoursePage-Components/ProgramCarousel";
 import ClassCards, { ClassCardsMobile } from "../ClassCards";
-import { StyleCarousel } from "../StyleCarousel";
-import ContentCarousel from "../Content-Components/ContentCarousel";
+import { MasterclassCourseSection, StyleCarousel } from "../StyleCarousel";
+import ContentCarousel, { ContentCardSection } from "../Content-Components/ContentCarousel";
 import { Data as data } from "../Content-Components/Data";
 
 const NoContent = () => {
@@ -45,76 +45,33 @@ const NoContent = () => {
         </div>
       </div>
 
-      <p className="text-[14px] text-center lg:text-left  mb-4 md:text-md font-semibold md:font-bold md:mb-8 mt-10">
-        Up-coming live session
-      </p>
-      <div className="block w-full sm:w-[400px] mx-auto md:hidden w-full ">
-        <StyleCarousel screen={[1.2, 10]} />
-      </div>
-      <div className="hidden m-auto md:block lg:hidden w-full">
-        <StyleCarousel screen={[1.7, 10]} />
-      </div>
-      <div className="hidden lg:block lg:w-full xl:w-[90%] ">
-        <StyleCarousel screen={[2.4, 10]} />
+      <div className="mt-9">
+        <MasterclassCourseSection contentTitle = 'Up-coming live session' />
       </div>
 
-      <p className="text-[14px] text-center lg:text-left   mb-4 md:text-md font-semibold md:font-bold md:mb-8 mt-10">
-        Top business acceleration program
-      </p>
-      {/* <div className="block w-[360px] mx-auto md:hidden w-full"> */}
-      <div className="block w-full sm:w-[400px] mx-auto md:hidden w-full ">
-        <StyleCarousel screen={[1.2, 10]} />
-      </div>
-      <div className="hidden m-auto md:block lg:hidden w-full">
-        <StyleCarousel screen={[1.7, 10]} />
-      </div>
-      <div className="hidden lg:block lg:w-full xl:w-[90%] ">
-        <StyleCarousel screen={[2.4, 10]} />
+      <div className="mt-9">
+        <MasterclassCourseSection contentTitle = 'Top business acceleration program' />
       </div>
 
-      <p className="mt-10 text-[14px] text-center lg:text-left  mb-4 md:text-md font-semibold md:font-bold md:mb-8 mt-10">
-        Take your business to the next level by exploring any of this course
-      </p>
-      <div className="block w-[360px] m-auto md:hidden w-full ">
-        <ContentCarousel data={data} screen={[1.5, 10]} type="masterclass" />
-      </div>
-      <div className="hidden m-auto md:block lg:hidden w-full">
-        <ContentCarousel data={data} screen={[2, 20]} type="masterclass" />
-      </div>
-      <div className="hidden lg:block w-full">
-        <ContentCarousel data={data} screen={[4, 30]} type="masterclass" />
+      <div className="w-full mt-[50px]">
+        <ContentCardSection data = {data} courseType = "masterclass" contentTitle="Take your business to the next level by exploring any of this course" />
       </div>
 
-      <p className="text-[14px] text-center lg:text-left   mb-4 md:text-md font-semibold md:font-bold md:mb-8 mt-10">
-        Take your business to the next level by exploring any of this course
-      </p>
-      <div className="block w-[360px] m-auto md:hidden w-full ">
-        <ContentCarousel data={data} screen={[1.5, 10]} type="masterclass" />
-      </div>
-      <div className="hidden m-auto md:block lg:hidden w-full">
-        <ContentCarousel data={data} screen={[2, 20]} type="masterclass" />
-      </div>
-      <div className="hidden lg:block w-full">
-        <ContentCarousel data={data} screen={[4, 30]} type="masterclass" />
+      <div className="w-full mt-[50px]">
+        <ContentCardSection data = {data} courseType = "masterclass" contentTitle="Take your business to the next level by exploring any of this course" />
       </div>
 
-      <p className="text-[14px] text-center lg:text-left   mb-4 md:text-md font-semibold md:font-bold md:mb-8 mt-10">
-        Take your business to the next level by exploring any of this course
-      </p>
-      <div className="block w-[360px] m-auto md:hidden w-full ">
-        <ContentCarousel data={data} screen={[1.5, 10]} type="masterclass" />
-      </div>
-      <div className="hidden m-auto md:block lg:hidden w-full">
-        <ContentCarousel data={data} screen={[2, 20]} type="masterclass" />
-      </div>
-      <div className="hidden lg:block w-full">
-        <ContentCarousel data={data} screen={[4, 30]} type="masterclass" />
+      <div className="w-full mt-[50px]">
+        <ContentCardSection data = {data} courseType = "masterclass" contentTitle="Take your business to the next level by exploring any of this course" />
       </div>
     </div>
   );
 };
 
 export default NoContent;
+
+
+
 
 const RoundProfileCarousel = ({ screen }) => {
   const arr = new Array(20).fill("");
@@ -159,6 +116,3 @@ const RoundProfileCarousel = ({ screen }) => {
     </Swiper>
   );
 };
-
-
-

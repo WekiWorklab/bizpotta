@@ -1,15 +1,15 @@
 import React from "react";
-import ContentCarousel from "../Content-Components/ContentCarousel";
+import ContentCarousel, { ContentCardSection, CourseCategories } from "../Content-Components/ContentCarousel";
 import { instructorData } from "../Content-Components/Data";
 import { Data } from "./Data";
-import InstructorCarousel from "../Content-Components/InstructorCarousel";
+import InstructorCarousel, { InstructorSection } from "../Content-Components/InstructorCarousel";
 import ProgramCarousel from "./ProgramCarousel";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useState } from "react";
 import ClassCards, { ClassCardsMobile } from "../ClassCards";
 
-const NoContent = ({data}) => {
+const NoContent = ({ data }) => {
   const router = useRouter();
   const [pathName, setPathName] = useState("");
 
@@ -38,63 +38,27 @@ const NoContent = ({data}) => {
       </div>
 
       <div className="bg-transparent w-full  lg:mx-auto lg:mx-0 ">
-        <div className="pt-[50px] flex flex-col">
-          <p className="text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8">
-            Recommended Courses on Vocational Education
-          </p>
-          <div className="block w-[360px] m-auto md:hidden w-full ">
-            <ContentCarousel data={data} screen={[1.5, 10]} />
-          </div>
-          <div className="hidden m-auto md:block lg:hidden w-full">
-            <ContentCarousel data={data} screen={[2, 20]} />
-          </div>
-          <div className="hidden lg:block w-full">
-            <ContentCarousel data={data} screen={[4, 30]} />
-          </div>
+        <div className="w-full mt-[50px]">
+          <ContentCardSection data = {data} courseType = "vocational" contentTitle="Recommended Courses on Vocational Education" />
         </div>
-        <div className="pt-[50px] flex flex-col">
-          <p className="text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
-            Popular courses on vocational program
-          </p>
-          <div className="block w-[360px] m-auto md:hidden w-full">
-            <ContentCarousel data={data} screen={[1.5, 10]} />
-          </div>
-          <div className="hidden m-auto md:block lg:hidden w-full">
-            <ContentCarousel data={data} screen={[2, 20]} />
-          </div>
-          <div className="hidden lg:block w-full">
-            <ContentCarousel data={data} screen={[4, 30]} />
-          </div>
+
+        <div className="w-full mt-[50px]">
+          <ContentCardSection data = {data} courseType = "vocational" contentTitle="Popular courses on vocational program" />
         </div>
-        <div className="pt-[50px] flex flex-col">
-          <p className="text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8">
-            Take your business to the next level by exploring any of these
-            courses
-          </p>
-          <div className="block w-[360px] m-auto md:hidden w-full">
-            <ContentCarousel data={data} screen={[1.5, 10]} />
-          </div>
-          <div className="hidden m-auto md:block lg:hidden w-full">
-            <ContentCarousel data={data} screen={[2, 20]} />
-          </div>
-          <div className="hidden lg:block w-full">
-            <ContentCarousel data={data} screen={[4, 30]} />
-          </div>
+
+        <div className="w-full mt-[50px]">
+          <ContentCardSection data = {data} courseType = "vocational" contentTitle="Take your business to the next level by exploring any of these
+            courses" />
         </div>
-        <div className="pt-[50px] flex flex-col">
-          <p className="text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8">
-            Instructors
-          </p>
-          <div className="block w-[360px] m-auto md:hidden w-full">
-            <InstructorCarousel data={instructorData} screen={[1.5, 10]} />
-          </div>
-          <div className="hidden m-auto md:block lg:hidden w-full">
-            <InstructorCarousel data={instructorData} screen={[2, 20]} />
-          </div>
-          <div className="hidden lg:block w-full">
-            <InstructorCarousel data={instructorData} screen={[4, 30]} />
-          </div>
+        
+        <div className="mt-[40px]">
+           <InstructorSection />
         </div>
+
+        <div className="mt-14">
+          <CourseCategories data={data} />
+        </div>
+
       </div>
     </div>
   );

@@ -14,14 +14,12 @@ const Index = () => {
   };
 
   const { data, loading } = useQuery(["all-courses"], getCourses);
-  console.log(data);
 
-  const enrolled = false;
+  const enrolled = true;
 
   return (
     <Layout>
-      {enrolled === true ? <Content data = {data} /> : <NoContent data = {data} />}
-      {/* <Content /> */}
+      {enrolled === true ? <Content data={data} loading = {loading} /> : <NoContent data={data} loading = {loading} />}
     </Layout>
   );
 };

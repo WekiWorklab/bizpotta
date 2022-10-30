@@ -81,7 +81,7 @@ const CourseDetailsModal = () => {
           >
             <div className=" relative inline-block align-top mt-24 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all">
               <div
-                className="absolute w-10 h-10 top-0 right-2 z-20 centerFlex"
+                className="absolute w-10 h-10 top-0 right-2 z-20 centerFlex cursor-pointer"
                 onClick={() => closeModal()}
               >
                 <MdOutlineCancel color="#7A7575" size={28} />
