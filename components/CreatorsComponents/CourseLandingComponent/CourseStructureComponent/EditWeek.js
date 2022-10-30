@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { AiOutlineFilePdf, AiOutlineVideoCamera } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import { setQuizArray } from "../../../../store/courseSlice";
 import { TextEditor } from "../../../TextEditor";
 import { TextEditorNotesModal } from "./TextEditorNotesModal";
@@ -12,12 +13,14 @@ const EditWeek = () => {
   const router = useRouter();
   const API_KEY = process.env.NEXT_PUBLIC_TINY_API_KEY;
 
+  const {courseId, week_no} = router.query;
+
   return (
     <div className='relative w-full min-h-screen bg-[#FDFDFD] flex flex-col mt-[90px] md:mt-[120px] md:justify-start items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 xl:px-16 py-10 text-darkGray'>
-      {router.query.type === "lecture" && <LectureEdit API_KEY={API_KEY} />}
-      {router.query.type === "assignment" && <AssignmentEdit API_KEY={API_KEY} />}
-      {router.query.type === "resource" && <ResourceEdit API_KEY={API_KEY} />}
-      {router.query.type === "quiz" && <QuizEdit API_KEY={API_KEY} />}
+  {router.query.type === "lecture" && <LectureEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} />}
+      {router.query.type === "assignment" && <AssignmentEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} />}
+      {router.query.type === "resource" && <ResourceEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} />}
+      {router.query.type === "quiz" && <QuizEdit API_KEY={API_KEY}  courseId={courseId} weekId={week_no}/>}
     </div>
   );
 };
@@ -236,26 +239,26 @@ const Quiz = ({ quiz_num, quiz_data, HandleCorrectChange, HandleOptionsChange, H
 };
 
 const ResourceEdit = ({ API_KEY }) => {
+  const [inputValue, setInputValue] = useState({ value1: "", value2: "", value3: "", value4: "", value5: "" });
+  const [textValue, setTextValue] = useState("");
 
-  const [inputValue, setInputValue] = useState({value1: "", value2: "", value3: "", value4: "", value5: ""})
+  const [counter, setCounter] = useState(1);
 
-  const [counter, setCounter]= useState(1)
- 
   const handleChange = (e) => {
-    const {name, value} = e.target
-    setInputValue(prev => ({...prev, [name]: value}))
-  }
+    const { name, value } = e.target;
+    setInputValue((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleAddLinks = () => {
-    setCounter(prev => prev + 1)
-  }
+    setCounter((prev) => prev + 1);
+  };
 
   return (
     <div className='w-full'>
       <p className='text-[14px] font-bold'>Resources</p>
 
       <div className='min-h-400px mt-7'>
-        <TextEditorNotesModal api_key={API_KEY} />
+        <TextEditorNotesModal api_key={API_KEY} setValue={setTextValue} />
       </div>
 
       <label htmlFor='file' className='mt-5 flex w-[300px] h-[40px] inputField items-center gap-x-3 px-2 cursor-pointer'>
@@ -264,10 +267,8 @@ const ResourceEdit = ({ API_KEY }) => {
         <input type='file' id='file' multiple accept='.pdf, .docx, .pptx, .xslx, .png, .jpeg' className='hidden' />
       </label>
 
-      <p className="text-[#999999] text-[13px] mt-8">
-        Links to other resources go here
-      </p>
-      <div className=" grid gird-cols-1">
+      <p className='text-[#999999] text-[13px] mt-8'>Links to other resources go here</p>
+      <div className=' grid gird-cols-1'>
         <input
           type='text'
           className='inputField w-[320px] sm:min-w-[400px] mt-6'
@@ -326,7 +327,7 @@ const ResourceEdit = ({ API_KEY }) => {
         </div>
       </div>
 
-      <button className="w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16">
+      <button className='w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16'>
         Save Changes
       </button>
     </div>
@@ -334,11 +335,13 @@ const ResourceEdit = ({ API_KEY }) => {
 };
 
 const AssignmentEdit = ({ API_KEY }) => {
+  const [textValue, setTextValue] = useState("");
+
   return (
     <div className='w-full'>
       <p className='text-[14px] font-bold'>Assignment</p>
       <div className='min-h-400px mt-7'>
-        <TextEditorNotesModal api_key={API_KEY} />
+        <TextEditorNotesModal api_key={API_KEY} setValue={setTextValue} />
       </div>
 
       <button className='w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16'>
@@ -348,17 +351,35 @@ const AssignmentEdit = ({ API_KEY }) => {
   );
 };
 
-const LectureEdit = ({ API_KEY }) => {
+const LectureEdit = ({ API_KEY, courseId , weekId}) => {
+  const [textValue, setTextValue] = useState("");
+  const [url, setUrl] = useState("");
+
+  const handleSubmitLecture = async () => {
+    if (textValue === "") {
+      toast.error("Please enter a lecture note");
+      return;
+    }
+    if (url === "") {
+      toast.error("Please add a video url");
+      return;
+    }
+    console.log(textValue, url);
+  };
+
   return (
     <div className='w-full'>
       <p className='text-[14px] font-bold'>Lecture</p>
       <div className='min-h-400px mt-7'>
-        <TextEditorNotesModal api_key={API_KEY} />
+        <TextEditorNotesModal api_key={API_KEY} setValue={setTextValue} />
       </div>
-      <input type='text' className='w-[300px] h-[40px] inputField mt-10' />
+      <input type='text' className='w-[300px] h-[40px] inputField mt-10' value={url} onChange={(e) => setUrl(e.target.value)} />
       <p className='text-[12px] text-gray-400 mt-3'>Paste video link here</p>
 
-      <button className='w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16'>
+      <button
+        onClick={handleSubmitLecture}
+        className='w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16'
+      >
         Save Changes
       </button>
     </div>

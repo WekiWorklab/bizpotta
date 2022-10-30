@@ -1,13 +1,14 @@
 import React, { useMemo, useState, useRef } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 
-export const TextEditorNotesModal = ({ api_key }) => {
+export const TextEditorNotesModal = ({ api_key, setValue }) => {
   const editorRef = useRef(null);
 
   const log = () => {
     let stringValue = editorRef.current?.getContent();
     if (stringValue === null || stringValue === "") return false;
     else stringValue = stringValue.toString().replace(/(<([^>]+)>)/gi, "");
+    setValue(stringValue);
   };
 
   return (
@@ -15,6 +16,7 @@ export const TextEditorNotesModal = ({ api_key }) => {
       <Editor
         apiKey={api_key}
         onInit={(evt, editor) => (editorRef.current = editor)}
+        onChange={log}
         // initialValue='value'
         init={{
           width: "100%",
