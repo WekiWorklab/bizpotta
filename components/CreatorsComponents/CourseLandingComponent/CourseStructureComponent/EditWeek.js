@@ -257,7 +257,12 @@ const ResourceEdit = ({ API_KEY }) => {
     setCounter((prev) => prev + 1);
   };
 
-  const handleCreateResources = () => {};
+  const handleCreateResources = () => {
+
+    const data = {    }
+
+    console.log(data);
+  };
 
   return (
     <div className='w-full'>
