@@ -95,6 +95,7 @@ const CourseCard = ({ id, setCartItems, Data, setData }) => {
 const CouponCard = ({ cartItems, Data }) => {
   const [total, setTotal] = useState(0);
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   const { user } = useSelector((state) => state.auth);
   const config = {
@@ -121,10 +122,14 @@ const CouponCard = ({ cartItems, Data }) => {
   }, [Data, cartItems]);
 
   const handleMakePayment = () => {
+    setLoading(true);
     let data = {
       courses: cartItems,
       total: total,
+      reference: config.reference,
     };
+
+    purchaseCourse(data, setLoading);
 
     initializePayment(onSuccess, onClose);
   };

@@ -16,9 +16,16 @@ const getLearningPreferences = () => {
   });
 };
 
+const purchaseCourse = async (data) => {
+  return AxoisApi.post(`${APIS.LEARNERS.PURCHASE_COURSE}`, data).then((res) => {
+    return res.data;
+  });
+};
+
 const learnersService = {
   getLearningPreferences,
   setLearnersPreferences,
+  purchaseCourse,
 };
 
 export default learnersService;
