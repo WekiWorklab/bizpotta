@@ -15,14 +15,14 @@ const EditWeek = () => {
   const router = useRouter();
   const API_KEY = process.env.NEXT_PUBLIC_TINY_API_KEY;
 
-  const { courseId, week_no } = router.query;
+  const { courseId, week_no, week_title } = router.query;
 
   return (
     <div className='relative w-full min-h-screen bg-[#FDFDFD] flex flex-col mt-[90px] md:mt-[120px] md:justify-start items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 xl:px-16 py-10 text-darkGray'>
-      {router.query.type === "lecture" && <LectureEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} />}
-      {router.query.type === "assignment" && <AssignmentEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} />}
-      {router.query.type === "resource" && <ResourceEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} />}
-      {router.query.type === "quiz" && <QuizEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} />}
+      {router.query.type === "lecture" && <LectureEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} week_title={week_title} />}
+      {router.query.type === "assignment" && <AssignmentEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} week_title={week_title} />}
+      {router.query.type === "resource" && <ResourceEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} week_title={week_title} />}
+      {router.query.type === "quiz" && <QuizEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} week_title={week_title} />}
     </div>
   );
 };
@@ -353,7 +353,7 @@ const AssignmentEdit = ({ API_KEY }) => {
   );
 };
 
-const LectureEdit = ({ API_KEY, courseId, weekId }) => {
+const LectureEdit = ({ API_KEY, courseId, weekId, week_title }) => {
   const router = useRouter();
   const [textValue, setTextValue] = useState("");
   const [url, setUrl] = useState("");
@@ -374,6 +374,7 @@ const LectureEdit = ({ API_KEY, courseId, weekId }) => {
       week_no: weekId,
       lecture_note: textValue,
       video_url: url,
+      week_title: week_title,
     };
 
     handleCreatelecture(data, setLoading)

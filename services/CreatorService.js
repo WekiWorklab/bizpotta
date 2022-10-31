@@ -61,6 +61,12 @@ const createLecture = async (data) => {
   });
 };
 
+const createResource = async (data) => {
+  return AxoisApi.post(`${APIS.TUTORS.CREATE_RESOURCE}`, data).then((res) => {
+    return res.data;
+  });
+};
+
 const creatorService = {
   onBoardMentor,
   onBoardTutor,
