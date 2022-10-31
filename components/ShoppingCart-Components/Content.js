@@ -123,15 +123,16 @@ const CouponCard = ({ cartItems, Data }) => {
 
   const handleMakePayment = () => {
     setLoading(true);
+
     let data = {
       courses: cartItems,
       total: total,
       reference: config.reference,
     };
 
-    purchaseCourse(data, setLoading);
-
-    initializePayment(onSuccess, onClose);
+    purchaseCourse(data, setLoading).then((res) => {
+      initializePayment(onSuccess, onClose);
+    });
   };
 
   const onSuccess = (reference) => {
