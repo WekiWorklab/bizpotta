@@ -17,8 +17,7 @@ export const APIS = {
     GET_COURSE: (id) => `${api}/learners/course/${id}`,
     GET_RECOMMENDED: `${api}/learners/get-recommended-courses`,
     GET_POPULAR: `${api}/learners/get-popular-courses`,
-    GET_FEATURED_COURSES: `${api}/learners/get-featured-courses`,
-    GET_VC_COURSES: (id) => `${api}/learners/get-vc-courses/${id}`
+    GET_FEATURED_COURSES:`${api}/learners/get-featured-courses`,
   },
   MENTORS: {
     SET_MENTORING_PREFERENCES: `${api}/creators/set-mentor-preferences`,
@@ -32,6 +31,7 @@ export const APIS = {
     CREATE_COURSE: `${api}/creators/tutor/create-courses`,
     GET_COURSE: (id) => `${api}/creators/get-course/${id}`,
     CREATE_LECTURE: `${api}/creators/create-lecture`,
+    CREATE_RESOURCE: `${api}/creators/create-resource`,
   },
   COMPANIES: {
     SET_COMPANY_PREFERENCES: `${api}/creators/set-institue-preferences`,

@@ -15,14 +15,14 @@ const EditWeek = () => {
   const router = useRouter();
   const API_KEY = process.env.NEXT_PUBLIC_TINY_API_KEY;
 
-  const { courseId, week_no } = router.query;
+  const { courseId, week_no, week_title } = router.query;
 
   return (
     <div className='relative w-full min-h-screen bg-[#FDFDFD] flex flex-col mt-[90px] md:mt-[120px] md:justify-start items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 xl:px-16 py-10 text-darkGray'>
-      {router.query.type === "lecture" && <LectureEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} />}
-      {router.query.type === "assignment" && <AssignmentEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} />}
-      {router.query.type === "resource" && <ResourceEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} />}
-      {router.query.type === "quiz" && <QuizEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} />}
+      {router.query.type === "lecture" && <LectureEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} week_title={week_title} />}
+      {router.query.type === "assignment" && <AssignmentEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} week_title={week_title} />}
+      {router.query.type === "resource" && <ResourceEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} week_title={week_title} />}
+      {router.query.type === "quiz" && <QuizEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} week_title={week_title} />}
     </div>
   );
 };
@@ -241,8 +241,10 @@ const Quiz = ({ quiz_num, quiz_data, HandleCorrectChange, HandleOptionsChange, H
 };
 
 const ResourceEdit = ({ API_KEY }) => {
+  const [loading, setLoading] = useState(false);
   const [inputValue, setInputValue] = useState({ value1: "", value2: "", value3: "", value4: "", value5: "" });
   const [textValue, setTextValue] = useState("");
+  const { handleCreatelecture } = useCourse();
 
   const [counter, setCounter] = useState(1);
 
@@ -253,6 +255,13 @@ const ResourceEdit = ({ API_KEY }) => {
 
   const handleAddLinks = () => {
     setCounter((prev) => prev + 1);
+  };
+
+  const handleCreateResources = () => {
+
+    const data = {    }
+
+    console.log(data);
   };
 
   return (
@@ -329,9 +338,9 @@ const ResourceEdit = ({ API_KEY }) => {
         </div>
       </div>
 
-      <button className='w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16'>
-        Save Changes
-      </button>
+      <Button type='button' onClick={handleSubmitLecture} name={" Save changes"} size={"w-[120px] mt-16"} loading={loading}>
+        Save changes
+      </Button>
     </div>
   );
 };
@@ -353,12 +362,13 @@ const AssignmentEdit = ({ API_KEY }) => {
   );
 };
 
-const LectureEdit = ({ API_KEY, courseId, weekId }) => {
+const LectureEdit = ({ API_KEY, courseId, weekId, week_title }) => {
   const router = useRouter();
   const [textValue, setTextValue] = useState("");
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const { handleCreatelecture } = useCourse();
+
   const handleSubmitLecture = async () => {
     if (textValue === "") {
       toast.error("Please enter a lecture note");
@@ -374,6 +384,7 @@ const LectureEdit = ({ API_KEY, courseId, weekId }) => {
       week_no: weekId,
       lecture_note: textValue,
       video_url: url,
+      week_title: week_title,
     };
 
     handleCreatelecture(data, setLoading)
