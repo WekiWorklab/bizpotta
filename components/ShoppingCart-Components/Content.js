@@ -82,7 +82,7 @@ const CourseCard = ({ id, setCartItems }) => {
         <p className="text-[11px] text-center sm:text-left text-gray-400 ">
           By Introduction to Hydroponics 
         </p>
-        <div>{id}</div>
+        {/* <div>{id}</div> */}
         <p className="text-[12px] text-gray-400">Price: ${data?.price}</p>
         <div className="text-[12px] text-gray-400 flex flex-row items-center">
           <p className="mr-2"> Rating. 4.7</p>
