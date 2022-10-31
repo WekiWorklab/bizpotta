@@ -350,8 +350,7 @@ export default function Home() {
                   Learn how to run sustainable and profitable businesses and accelerate business growth{" "}
                 </span>
               </p>
-              {/* list of radio in boxes */}
-              {/* <div className='flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-24'> */}
+             
 
               {/* For mobile view only */}
               <div className='block sm:hidden'>
@@ -369,11 +368,11 @@ export default function Home() {
             </div>
 
             {/* Market and sell your Expertise Program Section */}
-            <div className='relative bg-gray-50 mt-28 pb-8'>
-              <h1 className='px-6 md:pl-28 text-start text-[15px] md:text-lg font-light tracking-wider text-bizpotta-purple'>
+            <div className='relative bg-gray-50 mt-10 sm:mt-28 px-6 sm:px-0 pb-8'>
+              <h1 className=' text-start sm:text-center text-[15px] md:text-lg font-light tracking-wider text-bizpotta-purple'>
                 <span className='font-bold md:font-medium'>Bizpotta Community</span>
               </h1>
-              <p className='px-6 md:pl-28 text-start flex flex-col text-[13px] sm:text-base font-light tracking-wider text-bizpotta-gray-800'>
+              <p className='  text-start sm:text-center flex flex-col text-[13px] sm:text-base font-light tracking-wider text-bizpotta-gray-800'>
                 <span className='text-bizpotta-gray-800 '>A community that is intensional about your business growth</span>
               </p>
 
@@ -409,6 +408,15 @@ export default function Home() {
     </>
   );
 }
+
+
+
+
+
+
+
+
+
 
 export const HomeSideBar = ({ show, setShow, slideIn, setSlideIn }) => {
   const router = useRouter();
@@ -503,7 +511,10 @@ export const HomeSideBar = ({ show, setShow, slideIn, setSlideIn }) => {
   );
 };
 
-// AiOutlineRight
+
+
+
+
 
 const Carousel = () => {
   const router = useRouter();
