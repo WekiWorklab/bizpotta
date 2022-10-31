@@ -244,7 +244,7 @@ const ResourceEdit = ({ API_KEY }) => {
   const [loading, setLoading] = useState(false);
   const [inputValue, setInputValue] = useState({ value1: "", value2: "", value3: "", value4: "", value5: "" });
   const [textValue, setTextValue] = useState("");
-  const { handleCreatelecture } = useCourse();
+  const { handleCreateResource} = useCourse();
 
   const [counter, setCounter] = useState(1);
 
