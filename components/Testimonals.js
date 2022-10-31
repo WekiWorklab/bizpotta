@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Testimonals() {
   return (
-    <div className='max-w-sm rounded overflow-hidden px-6 '>
+    <div className='max-w-sm rounded overflow-hidden '>
       <img
         className='w-full rounded-lg'
         src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'

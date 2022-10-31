@@ -57,7 +57,7 @@ const LandingTestimonialCarousel = () => {
       navigation={true}
       modules={[Pagination]}
       className="mySwiper"
-      style={{display: "flex", justifyContent: "flex-start", }}
+      style={{display: "flex", justifyContent: "flex-start", border: "1px solid red" }}
     >
       {data.map((el, index) => (
         <SwiperSlide key={index}  style={{

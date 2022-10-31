@@ -122,7 +122,7 @@ export default function Home() {
                   <div className='lg:grid lg:grid-cols-2 lg:gap-4'>
                     <div className='mx-auto max-w-4xl px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center'>
                       <div className='lg:py-24'>
-                        <h1 className='w-full mt-4 text-4xl font-medium text-bizpotta-gray-800 sm:mt-5 sm:text-4xl lg:mt-6 xl:text-5xl'>
+                        <h1 className='w-full mt-4 text-2xl font-medium text-bizpotta-gray-800 sm:mt-5 sm:text-4xl lg:mt-6 xl:text-5xl'>
                           <span className='font-fancy'>
                             Learn outstanding business
                             <span className='pt-2'> skills, advance and become a</span>
@@ -193,11 +193,11 @@ export default function Home() {
             </div>
 
             {/* What we offer section */}
-            <div className='relative mt-20 '>
+            <div className='relative mt-12 sm:mt-20 redBorder'>
               <div className='lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start'>
                 <div className='relative sm:py-16 lg:py-0'>
-                  <div className='relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0 lg:max-w-none lg:py-20'>
-                    <div className='relative mx-4 pt-40 pb-40 md:pt-64 md:pb-56 rounded-2xl shadow-xl overflow-hidden'>
+                  <div className='relative mx-auto max-w-md  sm:max-w-3xl px-0 sm:px-6 lg:px-0 lg:max-w-none lg:py-20'>
+                    <div className='relative sm:mx-4 pt-40 pb-40 md:pt-64 md:pb-56 sm:rounded-2xl shadow-xl overflow-hidden'>
                       <img className='absolute inset-0 h-full w-full object-cover' src={offer.src} alt='' />
                     </div>
                   </div>
@@ -309,7 +309,7 @@ export default function Home() {
             </div>
             {/* Programs Section */}
             <div className='relative bg-gray-50 pt-10 pb-6 sm:pt-10 lg:pt-14 px-6 md:pl-28'>
-              <h1 className='text-start text-base md:text-lg font-light tracking-wider text-black'>
+              <h1 className='text-start text-base md:text-lg font-light tracking-wider text-darkBlue'>
                 <span className='font-bold'>Programs</span>
               </h1>
               <p className='text-start flex flex-col text-[13px] md:text-base font-light tracking-wider text-bizpotta-gray-800'>
@@ -341,11 +341,11 @@ export default function Home() {
             <Carousel />
 
             {/* Market and sell your Expertise Program Section */}
-            <div className='relative bg-gray-50 pt-2 md:pt-36 pb-2 '>
-              <h1 className=' px-6 md:pl-28 text-start text-lg font-light tracking-wider text-bizpotta-purple'>
+            <div className='relative bg-gray-50 pt-16 sm:mt-20 md:pt-36 px-6 md:px-28 pb-2 '>
+              <h1 className='text-start sm:text-center lg:text-start text-lg font-light tracking-wider text-bizpotta-purple'>
                 <span className='text-[15px] font-bold md:font-medium  md:text-2xl'>Market and sell your Expertise</span>
               </h1>
-              <p className='px-6 md:pl-28 text-start flex flex-col text-[13px] md:text-base font-light tracking-wider text-bizpotta-gray-800'>
+              <p className=' text-start flex flex-col text-[13px] md:text-base font-light tracking-wider text-bizpotta-gray-800'>
                 <span className='text-bizpotta-gray-800 '>
                   Learn how to run sustainable and profitable businesses and accelerate business growth{" "}
                 </span>
@@ -357,19 +357,19 @@ export default function Home() {
                 <LandingMarketingCarousel />
               </div>
 
-              <div className='hidden sm:flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-28 '>
+              <div className='hidden sm:flex flex-col w-full justify-center items-center md:flex-row md:mx-auto gap-4  '>
                 <Team />
               </div>
               {/*Explore Courses */}
               <a href='#' className='pb-6 flex gap-2 w-full justify-center items-center font-bold text-[13px] sm:text-base text-bizpotta-purple'>
                 <span>Learn More</span>
-                <ArrowRightIcon className='w-3 h-3 sm:h-4  sm:w-4 text-bizpotta-purple' aria-hidden='true' />
+                <ArrowRightIcon className='w-3 h-3 sm:h-4 sm:w-4 text-bizpotta-purple' aria-hidden='true' />
               </a>
             </div>
 
             {/* Market and sell your Expertise Program Section */}
-            <div className='relative bg-gray-50 mt-10 sm:mt-28 px-6 sm:px-0 pb-8'>
-              <h1 className=' text-start sm:text-center text-[15px] md:text-lg font-light tracking-wider text-bizpotta-purple'>
+            <div className='relative bg-gray-50 pt-16 sm:mt-20   md:pt-36 px-6 md:px-28 pb-2'>
+              <h1 className=' text-start sm:text-center lg:text-start text-[15px] md:text-lg font-light tracking-wider text-bizpotta-purple'>
                 <span className='font-bold md:font-medium'>Bizpotta Community</span>
               </h1>
               <p className='  text-start sm:text-center flex flex-col text-[13px] sm:text-base font-light tracking-wider text-bizpotta-gray-800'>
@@ -382,14 +382,14 @@ export default function Home() {
               </div>
 
               {/* list of radio in boxes */}
-              <div className='hidden sm:flex flex-col w-full items-center px-10 lg:px-2 md:flex-row md:mx-auto gap-4 md:px-36 '>
-                <div className=' py-4 px-4 max-w-7xl sm:px-6 lg:px-0 lg:py-12 md:mx-auto '>
-                  <ul className='space-y-4 lg:grid lg:grid-cols-3 lg:items-start lg:gap-x-8  lg:space-y-0 '>
+              <div className='hidden sm:flex flex-col w-full items-center md:flex-row redBorder gap-4 '>
+                {/* <div className=' py-4 max-w-7xl lg:py-12  '> */}
+                  <div className='space-y-4 mx-auto grid sm:grid-cols-1  lg:grid-cols-3 justify-items-start redBorder lg:gap-x-8  lg:space-y-0 '>
                     <Testimonals />
                     <Testimonals />
                     <Testimonals />
-                  </ul>
-                </div>
+                  </div>
+                {/* </div> */}
               </div>
               {/*Explore Courses */}
               <a
