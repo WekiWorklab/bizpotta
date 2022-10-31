@@ -8,19 +8,21 @@ import { toast } from "react-toastify";
 import { setQuizArray } from "../../../../store/courseSlice";
 import { TextEditor } from "../../../TextEditor";
 import { TextEditorNotesModal } from "./TextEditorNotesModal";
+import useCourse from "../../../../hooks/useCourse";
+import { Button } from "../../../Auth-Components/Button";
 
 const EditWeek = () => {
   const router = useRouter();
   const API_KEY = process.env.NEXT_PUBLIC_TINY_API_KEY;
 
-  const {courseId, week_no} = router.query;
+  const { courseId, week_no } = router.query;
 
   return (
     <div className='relative w-full min-h-screen bg-[#FDFDFD] flex flex-col mt-[90px] md:mt-[120px] md:justify-start items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 xl:px-16 py-10 text-darkGray'>
-  {router.query.type === "lecture" && <LectureEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} />}
+      {router.query.type === "lecture" && <LectureEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} />}
       {router.query.type === "assignment" && <AssignmentEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} />}
       {router.query.type === "resource" && <ResourceEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} />}
-      {router.query.type === "quiz" && <QuizEdit API_KEY={API_KEY}  courseId={courseId} weekId={week_no}/>}
+      {router.query.type === "quiz" && <QuizEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} />}
     </div>
   );
 };
@@ -351,10 +353,12 @@ const AssignmentEdit = ({ API_KEY }) => {
   );
 };
 
-const LectureEdit = ({ API_KEY, courseId , weekId}) => {
+const LectureEdit = ({ API_KEY, courseId, weekId }) => {
+  const router = useRouter();
   const [textValue, setTextValue] = useState("");
   const [url, setUrl] = useState("");
-
+  const [loading, setLoading] = useState(false);
+  const { handleCreatelecture } = useCourse();
   const handleSubmitLecture = async () => {
     if (textValue === "") {
       toast.error("Please enter a lecture note");
@@ -364,7 +368,21 @@ const LectureEdit = ({ API_KEY, courseId , weekId}) => {
       toast.error("Please add a video url");
       return;
     }
-    console.log(textValue, url);
+
+    let data = {
+      course_id: courseId,
+      week_no: weekId,
+      lecture_note: textValue,
+      video_url: url,
+    };
+
+    handleCreatelecture(data, setLoading)
+      .then(() => {
+        router.push(`/creators/courses/create?courseId=${courseId}`);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -375,13 +393,18 @@ const LectureEdit = ({ API_KEY, courseId , weekId}) => {
       </div>
       <input type='text' className='w-[300px] h-[40px] inputField mt-10' value={url} onChange={(e) => setUrl(e.target.value)} />
       <p className='text-[12px] text-gray-400 mt-3'>Paste video link here</p>
+      <br />
 
-      <button
+      <Button
+        className='w-full md:w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16'
+        type='button'
         onClick={handleSubmitLecture}
-        className='w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16'
+        name={" Save changes"}
+        size={"w-[120px]"}
+        loading={loading}
       >
-        Save Changes
-      </button>
+        Save changes
+      </Button>
     </div>
   );
 };

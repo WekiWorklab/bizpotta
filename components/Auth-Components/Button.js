@@ -1,11 +1,12 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 
-const Button = ({ name, loading, type, size }) => {
+const Button = ({ name, loading, type, size, onClick }) => {
   return (
     <button
       type={type}
       disabled={loading}
+      onClick={onClick}
       className={
         size
           ? `${size} h-[45px] flex justify-center items-center bg-darkBlue text-white text-sm rounded-md hover:bg-white hover:text-darkBlue hover:text-sm hover:border-[1px] hover:font-bold hover:border-darkBlue`
