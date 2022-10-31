@@ -3,14 +3,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { AiFillStar } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { offer } from "../../public";
-import ContentCarousel from "../Content-Components/ContentCarousel";
-import InstructorCarousel from "../Content-Components/InstructorCarousel";
 import { useRouter } from "next/router";
 import { usePaystackPayment } from "react-paystack";
 
 import { useQuery } from "@tanstack/react-query";
-// import studentService from "../../../../services/StudentService";
 import studentService from "../../services/StudentService";
 
 const Content = () => {
@@ -98,6 +94,7 @@ const CourseCard = ({ id, setCartItems, Data, setData }) => {
 
 const CouponCard = ({ cartItems, Data }) => {
   const [total, setTotal] = useState(0);
+  const router = useRouter();
 
   const { user } = useSelector((state) => state.auth);
   const config = {
@@ -135,6 +132,11 @@ const CouponCard = ({ cartItems, Data }) => {
   const onSuccess = (reference) => {
     // Implementation for whatever you want to do with reference and after success call.
     console.log(reference);
+    // remove cart items from local storage
+    localStorage.removeItem("cart");
+
+    // redirect to dashboard
+    router.push("/students");
   };
 
   const onClose = () => {

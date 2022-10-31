@@ -1,13 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../../components/Layout-Components/Layout";
 import Content from "../../components/Content";
 import NoContent from "../../components/Content-Components/NoContent";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import studentService from "../../services/StudentService";
 import { useQuery } from "@tanstack/react-query";
+import { setUser } from "../../store/authSlice";
 
 const StudentDashboard = () => {
   const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setUser());
+
+    return () => {
+      dispatch(setUser());
+    };
+  }, [dispatch]);
 
   const getRecommendedCourses = async () => {
     const res = await studentService.getRecommended();
