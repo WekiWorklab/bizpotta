@@ -76,6 +76,7 @@ const creatorService = {
   createTutorCourse,
   getCourse,
   createLecture,
+  createResource,
 };
 
 export default creatorService;

@@ -241,8 +241,10 @@ const Quiz = ({ quiz_num, quiz_data, HandleCorrectChange, HandleOptionsChange, H
 };
 
 const ResourceEdit = ({ API_KEY }) => {
+  const [loading, setLoading] = useState(false);
   const [inputValue, setInputValue] = useState({ value1: "", value2: "", value3: "", value4: "", value5: "" });
   const [textValue, setTextValue] = useState("");
+  const { handleCreatelecture } = useCourse();
 
   const [counter, setCounter] = useState(1);
 
@@ -254,6 +256,8 @@ const ResourceEdit = ({ API_KEY }) => {
   const handleAddLinks = () => {
     setCounter((prev) => prev + 1);
   };
+
+  const handleCreateResources = () => {};
 
   return (
     <div className='w-full'>
@@ -329,9 +333,9 @@ const ResourceEdit = ({ API_KEY }) => {
         </div>
       </div>
 
-      <button className='w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16'>
-        Save Changes
-      </button>
+      <Button type='button' onClick={handleSubmitLecture} name={" Save changes"} size={"w-[120px] mt-16"} loading={loading}>
+        Save changes
+      </Button>
     </div>
   );
 };
@@ -359,6 +363,7 @@ const LectureEdit = ({ API_KEY, courseId, weekId, week_title }) => {
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const { handleCreatelecture } = useCourse();
+
   const handleSubmitLecture = async () => {
     if (textValue === "") {
       toast.error("Please enter a lecture note");
