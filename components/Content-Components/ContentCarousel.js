@@ -38,13 +38,12 @@ export const ContentCardSection = ({data, contentTitle, courseType}) => {
       </div>
   )
 
-
-
 }
 
-export default function ContentCarousel ({ data, type, screen }) {
-  // console.log(data);
 
+
+
+export default function ContentCarousel ({ data, type, screen }) {
   return (
     <Swiper
       slidesPerView={screen[0]}
