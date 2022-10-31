@@ -14,7 +14,7 @@ const Content = () => {
 
   useEffect(() => {
     const cart = JSON.parse(localStorage.getItem("cart"));
-    cart && setCartItems((prev) => [...prev, ...cart]);
+    cart && setCartItems(cart);
   }, []);
 
   return (
@@ -29,48 +29,6 @@ const Content = () => {
         </div>
 
         <CouponCard />
-      </div>
-
-      <div className='flex flex-col mt-10 xl:flex-row  w-full'>
-        <div className='bg-white w-full m-auto  '>
-          <div className='pt-[50px] flex flex-col'>
-            <p className='text-[14px] mb-4 md:text-md font-semibold md:mb-8'>Because you liked a course on fashion designing</p>
-            <div className='block w-[360px] m-auto md:hidden w-full'>
-              <ContentCarousel data={Data} screen={[1.5, 10]} />
-            </div>
-            <div className='hidden m-auto md:block lg:hidden w-full'>
-              <ContentCarousel data={Data} screen={[2, 20]} />
-            </div>
-            <div className='hidden lg:block w-full'>
-              <ContentCarousel data={Data} screen={[4, 30]} />
-            </div>
-          </div>
-          <div className='pt-[50px] flex flex-col'>
-            <p className='text-[14px] mb-4 md:text-md font-semibold md:mb-8 '>Based on recent activites</p>
-
-            <div className='block w-[360px] m-auto md:hidden w-full'>
-              <ContentCarousel data={Data} screen={[1.5, 10]} />
-            </div>
-            <div className='hidden m-auto md:block lg:hidden w-full'>
-              <ContentCarousel data={Data} screen={[2, 20]} />
-            </div>
-            <div className='hidden lg:block w-full'>
-              <ContentCarousel data={Data} screen={[4, 30]} />
-            </div>
-          </div>
-          <div className='pt-[50px] flex flex-col'>
-            <p className='text-[14px] mb-4 md:text-md font-semibold md:mb-8 '>Instructors</p>
-            <div className='block w-[360px] m-auto md:hidden w-full'>
-              <InstructorCarousel data={instructorData} screen={[1.5, 10]} />
-            </div>
-            <div className='hidden m-auto md:block lg:hidden w-full'>
-              <InstructorCarousel data={instructorData} screen={[2, 20]} />
-            </div>
-            <div className='hidden lg:block w-full'>
-              <InstructorCarousel data={instructorData} screen={[4, 30]} />
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
