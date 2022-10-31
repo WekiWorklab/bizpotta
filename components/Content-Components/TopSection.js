@@ -4,13 +4,15 @@ import AreaChart from "./AreaChart";
 import { BsHeart, BsPersonPlus, BsChatDots } from "react-icons/bs";
 import { BiTransfer } from "react-icons/bi";
 import { card_image } from "../../public";
-import ContentCarousel from "./ContentCarousel";
+import ContentCarousel, { StudentContentCardSection } from "./ContentCarousel";
 import { Data, instructorData } from "./Data";
 import PieChart from "./PieChart";
 import InstructorCarousel from "./InstructorCarousel";
 import { StyleCarousel } from "../StyleCarousel";
 
-const TopSection = () => {
+const TopSection = ({ dataObj }) => {
+  // console.log(dataObj)
+
   return (
     <div className=" pl-0 lg:pl-5 lg:pt-5 flex flex-col xl:flex-row w-full bg-white pb-10">
       {/* Start of left section */}
@@ -196,49 +198,31 @@ const TopSection = () => {
         </div>
 
         <div className="px-2">
-          <div className="pt-[50px] flex flex-col  bg-white">
-            <p className="text-[14px] text-center lg:text-left  mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
-              Recommended Courses on Vocational Education
-            </p>
-            <div className="block w-[360px] m-auto md:hidden w-full">
-              <ContentCarousel data={Data} screen={[1.5, 10]} />
-            </div>
-            <div className="hidden m-auto md:block lg:hidden w-full">
-              <ContentCarousel data={Data} screen={[2, 20]} />
-            </div>
-            <div className="hidden lg:block w-full">
-              <ContentCarousel data={Data} screen={[3, 30]} />
-            </div>
+          <div className="w-full mt-[50px]">
+            <StudentContentCardSection
+              data={dataObj.recommended}
+              courseType="vocational"
+              contentTitle="Recommended courses"
+            />
           </div>
-          <div className="pt-[50px] flex flex-col bg-white">
-            <p className="text-[14px] text-center lg:text-left  mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
-              Popular courses on vocational program
-            </p>
-            <div className="block w-[360px] m-auto md:hidden w-full">
-              <ContentCarousel data={Data} screen={[1.5, 10]} />
-            </div>
-            <div className="hidden m-auto md:block lg:hidden w-full">
-              <ContentCarousel data={Data} screen={[2, 20]} />
-            </div>
-            <div className="hidden lg:block w-full">
-              <ContentCarousel data={Data} screen={[3, 30]} />
-            </div>
+
+          <div className="w-full mt-[50px]">
+            <StudentContentCardSection
+              data={dataObj.popular}
+              courseType="vocational"
+              contentTitle="Popular courses on vocational program"
+            />
           </div>
-          <div className="pt-[50px] flex flex-col bg-white">
-            <p className="text-[14px] text-center lg:text-left  mb-4 md:text-md font-semibold md:font-bold md:mb-8">
-              Take your business to the next level by exploring any of these
-              courses
-            </p>
-            <div className="block w-[360px] m-auto md:hidden w-full">
-              <ContentCarousel data={Data} screen={[1.5, 10]} />
-            </div>
-            <div className="hidden m-auto md:block lg:hidden w-full">
-              <ContentCarousel data={Data} screen={[2, 20]} />
-            </div>
-            <div className="hidden lg:block w-full">
-              <ContentCarousel data={Data} screen={[3, 30]} />
-            </div>
+
+          <div className="w-full mt-[50px]">
+            <StudentContentCardSection
+              data={dataObj.featured}
+              courseType="vocational"
+              contentTitle="Take your business to the next level by exploring any of these
+              courses"
+            />
           </div>
+
           <div className="pt-[50px] flex flex-col">
             <p className="text-[14px] text-center lg:text-left mb-4 md:text-md font-semibold md:font-bold md:mb-8">
               Instructors

@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 
 import { useSwiper } from "swiper/react";
 import { BsStarFill } from "react-icons/bs";
-import { showCourseDetailsModal } from "../../store/courseSlice";
+import { setCourseDetails, showCourseDetailsModal } from "../../store/courseSlice";
 import { wordShortner } from "../../utils/wordShortner";
 import { offer } from "../../public";
 import { useQuery } from "@tanstack/react-query";
@@ -44,6 +44,7 @@ export const ContentCardSection = ({data, contentTitle, courseType}) => {
 
 
 export default function ContentCarousel ({ data, type, screen }) {
+  // console.log(data)
   return (
     <Swiper
       slidesPerView={screen[0]}
@@ -72,7 +73,34 @@ export default function ContentCarousel ({ data, type, screen }) {
   );
 };
 
+
+export const StudentContentCardSection = ({data, contentTitle, courseType}) => {
+
+  return(
+    <div className="flex flex-col">
+        <p className="text-[14px] text-start mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
+          {contentTitle}
+        </p>
+        <div className="pt-3 rounded-sm">
+          <div className="block w-full sm:w-[400px] md:hidden w-full ">
+            <ContentCarousel data={data} screen={[1.5, 10]} type={courseType}/>
+          </div>
+          <div className="hidden md:block lg:hidden w-full">
+            <ContentCarousel data={data} screen={[2, 20]} />
+          </div>
+          <div className="hidden lg:block w-full">
+            <ContentCarousel data={data} screen={[3, 30]} type={courseType}/>
+          </div>
+        </div>
+      </div>
+  )
+
+}
+
 const ContentCard = ({ data, type }) => {
+
+  // console.log(data)
+
   const imageSrc =
     "https://images.pexels.com/photos/1172253/pexels-photo-1172253.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
 
@@ -107,6 +135,7 @@ const ContentCard = ({ data, type }) => {
             className="text-[13px] w-[50px] h-[25px] rounded-[5px] flex justify-center items-center cursor-pointer bg-[#94F236] text-darkBlue"
             onClick={() => {
               dispatch(showCourseDetailsModal(true));
+              dispatch(setCourseDetails(data))
             }}
           >
             Enroll
@@ -154,7 +183,9 @@ export const CourseCategories = ({data}) => {
 
   const query = useQuery(["course_cat"], fetchCourseCategories);
 
-  console.log(query.data)
+  // const [query: data1] = useQuery([""])
+
+  // console.log(query.data)
 
   return (
     <div>

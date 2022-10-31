@@ -15,6 +15,9 @@ const CourseDetailsModal = () => {
   const success = useSelector(
     (state) => state.course.show_course_details_modal
   );
+  const data = useSelector((state) => state.course.course_details)
+
+  console.log(data)
 
   const closeModal = () => {
     dispatch(showCourseDetailsModal(false));
@@ -24,13 +27,14 @@ const CourseDetailsModal = () => {
 
   const AddToCart = () => {
     // used a random id for testing here
-    const randomId = Math.round(Math.random() * 10000);
+    // const randomId = Math.round(Math.random() * 10000);
 
     const prevCart = localStorage.getItem("cart");
     if (!prevCart) {
-      localStorage.setItem("cart", JSON.stringify([randomId]));
+      localStorage.setItem("cart", JSON.stringify([data.id]));
     } else {
-      const newCart = [...JSON.parse(prevCart), randomId];
+      const cartSet = new Set([...[...JSON.parse(prevCart), data.id]]);
+      const newCart = [...cartSet]
       localStorage.setItem("cart", JSON.stringify(newCart));
     }
 
@@ -89,12 +93,13 @@ const CourseDetailsModal = () => {
               <div className="w-full sm:w-[500px] pb-8 overflow-y-scroll styled-scrollbar  h-[500px] bg-white">
                 <div
                   className="w-full h-[200px] sm:h-[250px] pb-6 bg-center bg-cover bg-no-repeat flex flex-col justify-end items-center "
-                  style={{ backgroundImage: `url(${specialization.src})` }}
+                  style={{ backgroundImage: `url(${data?.image})` }}
                 >
                   <p className="text-white font-bold text-[20px]">
-                    Increase Sales in 30 days
+                    {/* Increase Sales in 30 days */}
+                    {data?.name}
                   </p>
-                  <p className="text-white font-bold mt-0">Charles Mark</p>
+                  <p className="text-white font-bold mt-0">{data?.instructor != null ? `${data?.instructor.firstName} " " ${data?.instructor.lastName}` : "Charles Mark"}</p>
                   <div
                     className="w-[120px] h-[30px] mt-4 centerFlex text-[13px] bg-bizpotta-green cursor-pointer rounded-lg"
                     onClick={() => AddToCart()}
@@ -106,18 +111,18 @@ const CourseDetailsModal = () => {
                 <div className="w-full px-5 mt-3 ">
                   <div className="w-full flex justify-center gap-x-2 text-[12px] text-darkBlue">
                     <p className={`border-b-2 border-darkBlue`}>Course Info</p>
-                    <p>FAQ</p>
+                    <p className="cursor-not-allowed">FAQ</p>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 w-full mt-4 justify-start gap-x-4 items-center">
                     <div className="flex flex-col gap-y-2">
                       <div className="flex items-center gap-x-3">
                         <img
-                          src={specialization.src}
+                          src={specialization.src} //instructor's image here
                           className="w-[30px] h-[30px] rounded-full"
                         />
                         <p className="text-darkText text-[12px]">
-                          by Thomas Mat (Ph.d, Ms.c)
+                          by {data?.instructor != null ? `${data?.instructor.firstName} " " ${data?.instructor.lastName}` : "Charles Mark"}
                         </p>
                       </div>
                       <div className="flex items-center gap-x-3">
@@ -132,13 +137,13 @@ const CourseDetailsModal = () => {
                     </div>
                     <div className="flex flex-col gap-y-2 mt-2 sm:mt-0">
                       <div className="flex items-center gap-x-3">
-                        <p className="text-darkText text-[12px]">Price</p>
-                        <p className="text-darkText text-[13px]">$25</p>
+                        <p className="text-darkText text-[12px]">Price:</p>
+                        <p className="text-darkText text-[13px]">$ {Number(data?.price)}</p>
                       </div>
-                      <div className="flex items-center">
+                      <div className="flex items-center gap-x-2">
                         <HiUserGroup color="#121F4C" size={13} />
                         <p className="text-darkText text-[12px]">
-                          1,321 enrolled
+                          {data?.course_student_count} enrolled
                         </p>
                       </div>
                     </div>
@@ -153,27 +158,27 @@ const CourseDetailsModal = () => {
                         <p className="text-darkText text-[12px] font-bold">
                           Skill level:
                         </p>
-                        <p className="text-darkText text-[12px]">Beginner</p>
+                        <p className="text-darkText text-[12px] capitalize">{data?.level}</p>
                       </div>
                       <div className="flex items-center gap-x-3">
                         <p className="text-darkText text-[12px] font-bold">
                           Audio:
                         </p>
-                        <p className="text-darkText text-[12px]">English</p>
+                        <p className="text-darkText text-[12px] capitalize">{data?.language}</p>
                       </div>
-                      <div className="flex items-center gap-x-3">
+                      {/* <div className="flex items-center gap-x-3">
                         <p className="text-darkText text-[12px] font-bold">
                           Caption:
                         </p>
                         <p className="text-darkText text-[12px]">English</p>
-                      </div>
+                      </div> */}
                     </div>
                     <div className="flex flex-col ">
                       <div className="flex items-center gap-x-3">
                         <p className="text-darkText text-[12px] font-bold">
                           Video:
                         </p>
-                        <p className="text-darkText text-[12px]">24 videos</p>
+                        <p className="text-darkText text-[12px]">{data?.course_weeks.length} videos</p>
                       </div>
                       <div className="flex items-center gap-x-3">
                         <p className="text-darkText text-[12px] font-bold">
@@ -218,37 +223,27 @@ const CourseDetailsModal = () => {
                   </p>
                   <p className="text-darkText text-[12px]">
                     {" "}
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Orci blandit id mollis metus porttitor ut aliquam. Aliquam
-                    fermentum felis viverra egestas justo, lacinia ac. Nibh
-                    etiam morbi egestas sed id iaculis. Eu eget ac felis ac.
-                    Quisque phasellus sit et eget ut quis pellentesque. Quam sed
-                    bibendum integer odio lacus elit sit scelerisque. Nunc
-                    volutpat vel dictum neque. Commodo euismod vulputate congue
-                    urna adipiscing bibendum. Sit nulla sed velit tellus rhoncus
-                    elementum ac elementum, malesuada. Vivamus faucibus sed
-                    augue massa habitasse neque. Aliquam, curabitur pulvinar
-                    auctor turpis a. Placerat sed tortor, quisque a, tel sed
-                    egestas sodales. Habitant quam sagittis elit habitant dui.
+                      {data?.description}
                   </p>
 
                   <p className="text-[14px] font-bold text-darkBlue  text-left mt-4">
                     Lesson outline
                   </p>
 
-                  {lessonOutline.map((el, index) => (
+                  {data?.course_weeks.map((el, index) => (
                     <div
                       key={index}
                       className="flex items-center justify-start gap-x-2 text-[12px] text-darkText"
                     >
                       <div className="">
-                        {index + 1 < 10 ? `0${index + 1}` : index + 1}.
+                        {el.week_number < 10 ? `0${el.week_number}.` : `${el.week_number}.`}
+                        {/* {el.week_number}. */}
                       </div>
-                      <p className="">{el}</p>
+                      <p className="">{el.title}</p>
                     </div>
                   ))}
 
-                  <p className="text-[14px] font-bold text-darkBlue  text-left mt-4">
+                  {/* <p className="text-[14px] font-bold text-darkBlue  text-left mt-4">
                     About Leo’s Photography
                   </p>
                   <p className="text-darkText text-[12px]">
@@ -265,9 +260,9 @@ const CourseDetailsModal = () => {
                     augue massa habitasse neque. Aliquam, curabitur pulvinar
                     auctor turpis a. Placerat sed tortor, quisque a, tel sed
                     egestas sodales. Habitant quam sagittis elit habitant dui.
-                  </p>
+                  </p> */}
 
-                  <p className="text-[14px] font-bold text-darkBlue  text-left mt-4">
+                  {/* <p className="text-[14px] font-bold text-darkBlue  text-left mt-4">
                     About Instructors
                   </p>
                   <p className="text-darkText text-[12px]">
@@ -284,7 +279,7 @@ const CourseDetailsModal = () => {
                     augue massa habitasse neque. Aliquam, curabitur pulvinar
                     auctor turpis a. Placerat sed tortor, quisque a, tel sed
                     egestas sodales. Habitant quam sagittis elit habitant dui.
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>
