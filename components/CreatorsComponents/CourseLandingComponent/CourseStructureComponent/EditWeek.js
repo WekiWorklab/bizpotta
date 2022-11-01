@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useRef } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { AiOutlineFilePdf, AiOutlineVideoCamera } from "react-icons/ai";
@@ -240,13 +240,14 @@ const Quiz = ({ quiz_num, quiz_data, HandleCorrectChange, HandleOptionsChange, H
   );
 };
 
-const ResourceEdit = ({ API_KEY }) => {
+const ResourceEdit = ({ API_KEY, courseId, weekId, week_title }) => {
+  const { handleCreateResource } = useCourse();
   const [loading, setLoading] = useState(false);
   const [inputValue, setInputValue] = useState({ value1: "", value2: "", value3: "", value4: "", value5: "" });
   const [textValue, setTextValue] = useState("");
-  const { handleCreateResource} = useCourse();
-
+  const [file, setFile] = useState([]);
   const [counter, setCounter] = useState(1);
+  const uploadFileRef = useRef();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -257,11 +258,48 @@ const ResourceEdit = ({ API_KEY }) => {
     setCounter((prev) => prev + 1);
   };
 
-  const handleCreateResources = () => {
+  const handleSubmitResource = () => {
+    const data = {
+      description: textValue,
+      files: file,
+      links: [
+        { link: inputValue.value1 },
+        { link: inputValue.value3 },
+        { link: inputValue.value2 },
+        { link: inputValue.value3 },
+        { link: inputValue.value5 },
+      ],
+    };
 
-    const data = {    }
+    const formData = new FormData();
+    formData.append("files", file);
+    formData.append("description", textValue);
+    formData.append("links", JSON.stringify(data.links));
+    formData.append("courseId", courseId);
+    formData.append("weekId", weekId);
+    formData.append("week_title", week_title);
 
-    console.log(data);
+    handleCreateResource(formData, setLoading).then((res) => {
+      console.log(res);
+    });
+  };
+
+  console.log(file);
+
+  const addFile = (e) => {
+    e.preventDefault();
+
+    if (e.target.files[0]) {
+      var pendingFiles = [...file];
+
+      console.log(Array.from(e.target.files));
+
+      for (let i = 0; i < e.target.files.length; i++) {
+        console.log(e.target.files[i]); // DISPLAYS EACH FILE
+        pendingFiles = [...file, e.target.files[i].name];
+        setFile(pendingFiles);
+      }
+    }
   };
 
   return (
@@ -274,8 +312,18 @@ const ResourceEdit = ({ API_KEY }) => {
 
       <label htmlFor='file' className='mt-5 flex w-[300px] h-[40px] inputField items-center gap-x-3 px-2 cursor-pointer'>
         <AiOutlineFilePdf color='gray' size={24} />
-        <p className='mt-[0.5px] text-[13px] text-[#999999]'>Click to upload multiple resource files</p>
-        <input type='file' id='file' multiple accept='.pdf, .docx, .pptx, .xslx, .png, .jpeg' className='hidden' />
+        <p className='mt-[0.5px] text-[13px] text-[#999999]'>
+          {!file.length > 0 ? "Click to upload multiple resource files" : ` You have uploaded ${file.length} files`}
+        </p>
+        <input
+          type='file'
+          id='file'
+          multiple
+          accept='.pdf, .docx, .pptx, .xslx, .png, .jpeg'
+          className='hidden'
+          onChange={(e) => addFile(e)}
+          ref={uploadFileRef}
+        />
       </label>
 
       <p className='text-[#999999] text-[13px] mt-8'>Links to other resources go here</p>
@@ -338,7 +386,7 @@ const ResourceEdit = ({ API_KEY }) => {
         </div>
       </div>
 
-      <Button type='button' onClick={handleSubmitLecture} name={" Save changes"} size={"w-[120px] mt-16"} loading={loading}>
+      <Button type='button' onClick={handleSubmitResource} name={" Save changes"} size={"w-[120px] mt-16"} loading={loading}>
         Save changes
       </Button>
     </div>

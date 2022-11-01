@@ -22,6 +22,23 @@ const useCourse = () => {
         });
     });
   };
+  const handleCreateResource = (data, setShowLoader) => {
+    return new Promise((resolve) => {
+      setShowLoader(true);
+
+      CreatorService.createResource(data)
+        .then((res) => {
+          handleSuccess(res?.message);
+          resolve(res?.data);
+        })
+        .catch((error) => {
+          handleError(error);
+        })
+        .finally(() => {
+          setShowLoader(false);
+        });
+    });
+  };
 
   const purchaseCourse = (data, setShowLoader) => {
     return new Promise((resolve) => {
@@ -68,7 +85,7 @@ const useCourse = () => {
       learnersService
         .purchaseCourseFailed(data)
         .then((res) => {
-          handleSuccess(res?.message);
+          handleError(res?.message);
           resolve(res?.data);
         })
         .catch((error) => {
@@ -115,6 +132,7 @@ const useCourse = () => {
     purchaseCourseFailed,
     getMyCourses,
     getMyCourse,
+    handleCreateResource,
   };
 };
 
