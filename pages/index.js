@@ -368,11 +368,11 @@ export default function Home() {
             </div>
 
             {/* Market and sell your Expertise Program Section */}
-            <div className='relative bg-gray-50 pt-16 sm:mt-20   md:pt-36 px-6 md:px-28 pb-2'>
+            <div className='relative bg-gray-50 pt-16 sm:mt-20   px-6 md:px-28 pb-2'>
               <h1 className=' text-start sm:text-center lg:text-start text-[15px] md:text-lg font-light tracking-wider text-bizpotta-purple'>
                 <span className='font-bold md:font-medium'>Bizpotta Community</span>
               </h1>
-              <p className='  text-start sm:text-center flex flex-col text-[13px] sm:text-base font-light tracking-wider text-bizpotta-gray-800'>
+              <p className='  text-start sm:text-center lg:text-start flex flex-col text-[13px] sm:text-base font-light tracking-wider text-bizpotta-gray-800'>
                 <span className='text-bizpotta-gray-800 '>A community that is intensional about your business growth</span>
               </p>
 

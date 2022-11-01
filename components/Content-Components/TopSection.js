@@ -9,9 +9,12 @@ import { Data, instructorData } from "./Data";
 import PieChart from "./PieChart";
 import InstructorCarousel from "./InstructorCarousel";
 import { StyleCarousel } from "../StyleCarousel";
+import { useRouter } from "next/router";
 
 const TopSection = ({ dataObj }) => {
   // console.log(dataObj)
+
+  const router = useRouter()
 
   return (
     <div className=" pl-0 lg:pl-5 lg:pt-5 flex flex-col xl:flex-row w-full bg-white pb-10">
@@ -268,10 +271,10 @@ const TopSection = ({ dataObj }) => {
           <p className="text-xs">Project Management</p>
 
           <div className="flex flex-row w-[2 0px] m-auto text-[13px] text-darkBlue justify-between mt-10">
-            <div className="text-white bg-darkBlue h-10 w-[100px] flex justify-center items-center rounded-md hover:text-darkBlue hover:bg-white hover:border hover:border-darkBlue cursor-pointer">
+            <div className="text-white bg-darkBlue h-10 w-[100px] flex justify-center items-center rounded-md hover:text-darkBlue hover:bg-white hover:border hover:border-darkBlue cursor-pointer" onClick = {() => router.push("/students/profile")}>
               View Profile
             </div>
-            <div className="h-10 w-[100px] flex justify-center items-center border border-darkBlue rounded-md hover:text-white hover:bg-darkBlue cursor-pointer">
+            <div className="h-10 w-[100px] flex justify-center items-center border border-darkBlue rounded-md hover:text-white hover:bg-darkBlue cursor-pointer" onClick = {() => router.push("/students/profile")}>
               Edit Profile
             </div>
           </div>

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 
 //////////
 import { useSelector, useDispatch } from "react-redux";
@@ -8,22 +8,29 @@ import { addToCart, showCourseDetailsModal } from "../store/courseSlice";
 import { offer, specialization } from "../public";
 import { HiUserGroup } from "react-icons/hi";
 import { useRouter } from "next/router";
+import learnersService from "../services/LearnersService";
+import useCourse from "../hooks/useCourse";
 
 const CourseDetailsModal = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const success = useSelector((state) => state.course.show_course_details_modal);
   const data = useSelector((state) => state.course.course_details);
+  const {getMyCourse} = useCourse()
+  const [courseId, setCourseId] = useState()
 
   const closeModal = () => {
     dispatch(showCourseDetailsModal(false));
   };
 
-  const lessonOutline = new Array(13).fill("Lorem ipsum jshdf");
+
+  useEffect(() => {
+    data?.id ? getMyCourse(data.id).then(res => setCourseId(res?.course_id)) : null
+
+  }, [data, data?.id])
+
 
   const AddToCart = () => {
-    // used a random id for testing here
-    // const randomId = Math.round(Math.random() * 10000);
 
     const prevCart = localStorage.getItem("cart");
     if (!prevCart) {
@@ -40,6 +47,8 @@ const CourseDetailsModal = () => {
       pathname: "/students/cart",
     });
   };
+
+  console.log(courseId)
 
   return (
     <Transition.Root show={success} as={Fragment}>
@@ -84,14 +93,19 @@ const CourseDetailsModal = () => {
                     {data?.name}
                   </p>
                   <p className='text-white font-bold mt-0'>
-                    {data?.instructor != null ? `${data?.instructor.firstName} " " ${data?.instructor.lastName}` : "Charles Mark"}
+                    {data?.instructor != null ? `${data.instructor.firstName} " " ${data.instructor.lastName}` : "Charles Mark"}
                   </p>
-                  <div
+                  {!courseId ? <div
                     className='w-[120px] h-[30px] mt-4 centerFlex text-[13px] bg-bizpotta-green cursor-pointer rounded-lg'
                     onClick={() => AddToCart()}
                   >
                     Purchase course
-                  </div>
+                  </div> : <div
+                    className='w-[120px] h-[30px] mt-4 centerFlex text-[13px] bg-bizpotta-green cursor-pointer rounded-lg'
+                    onClick={() => router.push(`/students/courses/${courseId}`)}
+                  >
+                    Go to Course
+                  </div>}
                 </div>
 
                 <div className='w-full px-5 mt-3 '>

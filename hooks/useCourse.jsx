@@ -85,7 +85,7 @@ const useCourse = () => {
       learnersService
         .getMyCourses()
         .then((res) => {
-          handleSuccess(res?.message);
+          // handleSuccess(res?.message);
           resolve(res?.data);
         })
         .catch((error) => {
@@ -99,7 +99,7 @@ const useCourse = () => {
       learnersService
         .getMyCourse(id)
         .then((res) => {
-          handleSuccess(res?.message);
+          // handleSuccess(res?.message);
           resolve(res?.data);
         })
         .catch((error) => {

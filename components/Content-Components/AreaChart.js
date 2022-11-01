@@ -34,50 +34,40 @@ export default AreaChart
 const data = [
   {
       month: "Jan",
-      time: 3
-  },
+      time:  0  },
   {
       month: "Feb",
-      time: 7
-  },
+      time:  0  },
   {
       month: "Mar",
-      time: 4
-  },
+      time:  0  },
   {
       month: "Apr",
-      time: 2
-  },
+      time:  0  },
   {
       month: "May",
-      time: 10
+      time:  0
   },
   {
       month: "Jun",
-      time: 6
-  },
+      time:  0  },
   {
       month: "Jul",
-      time: 1
-  },
+      time:  0  },
   {
       month: "Aug",
-      time: 4
-  },
+      time:  0  },
   {
       month: "Sep",
-      time: 13
-  },
+      time:   0  },
   {
       month: "Oct",
-      time: 20
-  },
+      time:   0  },
   {
       month: "Nov",
-      time: 12
-  },
+      time:   0  },
   {
       month: "Dec",
-      time: 10
+      time: 0
   },
 ]
