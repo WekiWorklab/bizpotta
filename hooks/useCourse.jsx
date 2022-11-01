@@ -68,7 +68,7 @@ const useCourse = () => {
       learnersService
         .purchaseCourseFailed(data)
         .then((res) => {
-          handleSuccess(res?.message);
+          handleError(res?.message);
           resolve(res?.data);
         })
         .catch((error) => {
