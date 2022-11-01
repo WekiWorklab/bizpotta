@@ -4,7 +4,7 @@ import AreaChart from "./AreaChart";
 import { BsHeart, BsPersonPlus, BsChatDots } from "react-icons/bs";
 import { BiTransfer } from "react-icons/bi";
 import { card_image } from "../../public";
-import ContentCarousel, { StudentContentCardSection } from "./ContentCarousel";
+import ContentCarousel, { StudentContentCardSection, StudentLoadingCardSection } from "./ContentCarousel";
 import { Data, instructorData } from "./Data";
 import PieChart from "./PieChart";
 import InstructorCarousel from "./InstructorCarousel";
@@ -199,28 +199,31 @@ const TopSection = ({ dataObj }) => {
 
         <div className="px-2">
           <div className="w-full mt-[50px]">
-            <StudentContentCardSection
+            {dataObj.r_loading ? <StudentLoadingCardSection /> :
+             <StudentContentCardSection
               data={dataObj.recommended}
               courseType="vocational"
               contentTitle="Recommended courses"
-            />
+            />}
           </div>
 
           <div className="w-full mt-[50px]">
-            <StudentContentCardSection
+            {dataObj.p_loading ? <StudentLoadingCardSection /> :
+             <StudentContentCardSection
               data={dataObj.popular}
               courseType="vocational"
               contentTitle="Popular courses on vocational program"
-            />
+            />}
           </div>
 
           <div className="w-full mt-[50px]">
+            {dataObj.f_loading ? <StudentLoadingCardSection /> :
             <StudentContentCardSection
               data={dataObj.featured}
               courseType="vocational"
               contentTitle="Take your business to the next level by exploring any of these
               courses"
-            />
+            />}
           </div>
 
           <div className="pt-[50px] flex flex-col">

@@ -39,6 +39,27 @@ export const LoadingCardSection = ({ contentTitle }) => {
   );
 };
 
+export const StudentLoadingCardSection = ({ contentTitle }) => {
+  const arr = new Array(4).fill("");
+
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2  xl:grid-cols-3 gap-x-8 gap-y-10 justify-items-center mb-20">
+      {arr.map((el, index) => (
+        <div
+          key={index}
+          className="w-[220px] h-[220px] flex flex-col justify-end rounded-[4px] skeleton-parent dropdown-shadow "
+        >
+          <div className="clip-card-path2 text-[white] h-3/5 flex flex-col gap-y-2 justify-end  px-2 pb-2 rounded-b-md skeleton-child1">
+            <div className="w-3/4 h-[15px]  skeleton-child2" />
+            <div className="w-3/4 h-[15px]  skeleton-child2" />
+            {/* <div/> */}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
 export const ContentCardSection = ({ data, contentTitle, courseType }) => {
   return (
     <div className="flex flex-col">

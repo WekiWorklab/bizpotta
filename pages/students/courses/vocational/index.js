@@ -8,13 +8,6 @@ import studentService from "../../../../services/StudentService";
 const Index = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
 
-  // const getCourses = async () => {
-  //   const res = await studentService.getCourses();
-  //   return res?.data;
-  // };
-
-  // const { data, loading } = useQuery(["all-courses"], getCourses);
-
   const getRecommendedCourses = async () => {
     const res = await studentService.getRecommended();
     console.log(res.data);
@@ -36,24 +29,23 @@ const Index = () => {
   const { data: recommended, isLoading: r_loading } = useQuery(
     ["recommended"],
     getRecommendedCourses,
-    { staleTime: 60 * 1000 * 10, retry: 2 } //loading: r_loading
+    { staleTime: 60 * 1000 * 10, retry: 2 } 
   );
   const { data: popular,  isLoading: p_loading} = useQuery(
     ["popular"],
     getPopularCourses,
-    { staleTime: 60 * 1000 * 10, retry: 2 } //loading: p_loading
+    { staleTime: 60 * 1000 * 10, retry: 2 } 
   );
   const { data: featured, isLoading: f_loading} = useQuery(
     ["featured"],
     getFeaturedCourse,
-    { staleTime: 60 * 1000 * 10, retry: 2 } // loading: f_loading
+    { staleTime: 60 * 1000 * 10, retry: 2 } 
   );
 
 
-  console.log(r_loading)
 
 
-  const enrolled = true;
+  const enrolled = false;
 
   return (
     <Layout>

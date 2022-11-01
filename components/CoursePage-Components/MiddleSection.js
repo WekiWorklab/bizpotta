@@ -41,9 +41,9 @@ const MiddleSection = ({ dataObj}) => {
       </div>
 
       <div className="w-full mt-[50px]">
-      {dataObj.p_loading ? <LoadingCardSection /> :
+      {dataObj.f_loading ? <LoadingCardSection /> :
         <ContentCardSection
-          data={dataObj.popular}
+          data={dataObj.featured}
           courseType="vocational"
           contentTitle="Take your business to the next level by exploring any of these courses"
         />}

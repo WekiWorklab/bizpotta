@@ -1,27 +1,29 @@
 import React from "react";
-import ContentCarousel, { ContentCardSection } from "./ContentCarousel";
+import ContentCarousel, { ContentCardSection, StudentContentCardSection, StudentLoadingCardSection } from "./ContentCarousel";
 import InstructorCarousel from "./InstructorCarousel";
 import { Data as data, instructorData } from "./Data";
 import { card_image } from "../../public";
 
-const BottomSection = ({dataObj}) => {
+const BottomSection = ({ dataObj }) => {
   return (
     <div className="pl-0  flex flex-col xl:flex-row  w-full">
       <div className=" w-full m-auto">
         <div className="w-full mt-[50px]">
-          <ContentCardSection
-            data={dataObj.recommended}
-            courseType="vocational"
-            contentTitle="Recommended Courses"
-          />
-        </div>
-        <div className="w-full mt-[50px]">
-          <ContentCardSection
-            data={dataObj.popular}
-            courseType="vocational"
-            contentTitle="Trending Courses"
-          />
-        </div>
+            {dataObj.r_loading ? <StudentLoadingCardSection /> :
+             <StudentContentCardSection
+              data={dataObj.recommended}
+              courseType="vocational"
+              contentTitle="Recommended courses"
+            />}
+          </div>
+          <div className="w-full mt-[50px]">
+            {dataObj.p_loading ? <StudentLoadingCardSection /> :
+             <StudentContentCardSection
+              data={dataObj.popular}
+              courseType="vocational"
+              contentTitle="Popular courses on vocational program"
+            />}
+          </div>
         <div className="pt-[50px] flex flex-col">
           <p className="text-[14px] text-center lg:text-left lg:pl-4  mb-4 md:text-md font-semibold md:font-bold md:mb-8">
             Instructors
