@@ -21,7 +21,7 @@ const MiddleSection = ({ dataObj}) => {
 
   return (
     <div className="bg-transparent w-full xl:w-full">
-{/* 
+
       <div className="w-full mt-[50px]">
         {dataObj.r_loading ? <LoadingCardSection /> :
         <ContentCardSection
@@ -32,26 +32,26 @@ const MiddleSection = ({ dataObj}) => {
       </div>
 
       <div className="w-full mt-[50px]">
-        {dataObj.p_loading && <LoadingCardSection />}
+        {dataObj.p_loading ? <LoadingCardSection /> :
         <ContentCardSection
           data={dataObj.popular}
           courseType="vocational"
           contentTitle="Popular courses on vocational programs"
-        />
+        />}
       </div>
 
       <div className="w-full mt-[50px]">
-      {dataObj.p_loading && <LoadingCardSection />}
+      {dataObj.p_loading ? <LoadingCardSection /> :
         <ContentCardSection
           data={dataObj.popular}
           courseType="vocational"
           contentTitle="Take your business to the next level by exploring any of these courses"
-        />
+        />}
       </div>
 
       <div className="mt-[40px]">
         <InstructorSection />
-      </div> */}
+      </div>
 
       <div className="mt-14">
         <CourseCategories data={data} />

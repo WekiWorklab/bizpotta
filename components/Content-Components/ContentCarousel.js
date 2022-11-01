@@ -189,15 +189,16 @@ const ContentCard = ({ data, type }) => {
 
 export const CourseCategories = () => {
   const base = process.env.NEXT_PUBLIC_REACT_APP_API_URL;
-  const [catId, setCatId] = useState(1);
+  const [catId, setCatId] = useState();
 
   const fetchCourseCategories = async () => {
     const results = await axios.get(`${base}/courses-categories`);
     return results.data.data;
   };
 
-  const fetchCourses = async (catId) => {
-    const res = await studentService.getVCCourses(catId);
+  const fetchCourses = async (Id) => {
+    console.log(Id)
+    const res = await studentService.getVCCourses(Id.queryKey[1]);
     return res?.data;
   };
 
@@ -245,13 +246,14 @@ const CourseTabs = ({ courseCategories, setCatId, catId }) => {
 
   const tabs = courseCategories;
 
-  const [currentTab, setCurrentTab] = useState(1);
+  const [currentTab, setCurrentTab] = useState(catId || 1);
 
   useEffect(() => {
     setCatId(currentTab);
   }, [currentTab]);
 
   const handleClick = (id) => {
+    console.log(id)
     setCurrentTab(id);
     setCatId(id);
   };
