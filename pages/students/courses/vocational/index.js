@@ -33,22 +33,24 @@ const Index = () => {
 
   
 
-  const { data: recommended, loading: r_loading } = useQuery(
+  const { data: recommended, isLoading: r_loading } = useQuery(
     ["recommended"],
     getRecommendedCourses,
-    { staleTime: 60 * 1000 * 10, retry: 2 }
+    { staleTime: 60 * 1000 * 10, retry: 2 } //loading: r_loading
   );
-  const { data: popular, loading: p_loading } = useQuery(
+  const { data: popular,  isLoading: p_loading} = useQuery(
     ["popular"],
     getPopularCourses,
-    { staleTime: 60 * 1000 * 10, retry: 2 }
+    { staleTime: 60 * 1000 * 10, retry: 2 } //loading: p_loading
   );
-  const { data: featured, loading: f_loading } = useQuery(
+  const { data: featured, isLoading: f_loading} = useQuery(
     ["featured"],
     getFeaturedCourse,
-    { staleTime: 60 * 1000 * 10, retry: 2 }
+    { staleTime: 60 * 1000 * 10, retry: 2 } // loading: f_loading
   );
 
+
+  console.log(r_loading)
 
 
   const enrolled = true;

@@ -35,9 +35,10 @@ const StudentDashboard = () => {
     return res?.data;
   };
 
-  const { data: recommended, loading: r_loading } = useQuery(["recommended"], getRecommendedCourses, { staleTime: 60 * 1000 * 10, retry: 2 });
-  const { data: popular, loading: p_loading } = useQuery(["popular"], getPopularCourses, { staleTime: 60 * 1000 * 10, retry: 2 });
-  const { data: featured, loading: f_loading } = useQuery(["featured"], getFeaturedCourse, { staleTime: 60 * 1000 * 10, retry: 2 });
+  const { data: recommended, isLoading: r_loading } = useQuery(["recommended"], getRecommendedCourses, { staleTime: 60 * 1000 * 10, retry: 2 });
+  const { data: popular, isLoading: p_loading} = useQuery(["popular"], getPopularCourses, { staleTime: 60 * 1000 * 10, retry: 2 });
+  const { data: featured, isLoading: f_loading } = useQuery(["featured"], getFeaturedCourse, { staleTime: 60 * 1000 * 10, retry: 2 });
+  
 
   return (
     <Layout>
