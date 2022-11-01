@@ -207,7 +207,7 @@ const WeekSection = ({ week_no, course_week }) => {
                     })
                   }
                 >
-                  <p>{wordShortner(course_week?.week_lectures?.description, 150)}</p>
+                  <p>{course_week ? wordShortner(course_week?.week_lectures?.description, 150) : ""}</p>
                 </div>
               </div>
               {/* 
