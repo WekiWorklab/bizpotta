@@ -2,7 +2,7 @@ import useNotification from "./useNotification";
 import CreatorService from "../services/CreatorService";
 import learnersService from "../services/LearnersService";
 
-const useTask = () => {
+const useCourse = () => {
   const { handleError, handleSuccess } = useNotification();
 
   const handleCreatelecture = (data, setShowLoader) => {
@@ -48,4 +48,4 @@ const useTask = () => {
   };
 };
 
-export default useTask;
+export default useCourse;
