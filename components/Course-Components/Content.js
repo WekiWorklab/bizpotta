@@ -25,6 +25,9 @@ const Content = () => {
               router.push("/students")
             }
             setData(res);
+          }).catch(() => {
+            // setLoading(false);
+            // router.push('/students/')
           })
           .finally(() => setLoading(false))
       : null;
