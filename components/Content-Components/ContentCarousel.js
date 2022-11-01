@@ -1,49 +1,45 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import { useDispatch } from "react-redux";
 
-
 import { useSwiper } from "swiper/react";
 import { BsStarFill } from "react-icons/bs";
-import { setCourseDetails, showCourseDetailsModal } from "../../store/courseSlice";
+import {
+  setCourseDetails,
+  showCourseDetailsModal,
+} from "../../store/courseSlice";
 import { wordShortner } from "../../utils/wordShortner";
 import { offer } from "../../public";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import axios from "axios";
+import studentService from "../../services/StudentService";
 
-
-export const ContentCardSection = ({data, contentTitle, courseType}) => {
-
-
-  return(
+export const ContentCardSection = ({ data, contentTitle, courseType }) => {
+  return (
     <div className="flex flex-col">
-        <p className="text-[14px] text-start   mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
-          {contentTitle}
-        </p>
-        <div className="pt-3 rounded-sm">
-          <div className="block w-full sm:w-[400px] md:hidden w-full ">
-            <ContentCarousel data={data} screen={[1.5, 10]} type={courseType} />
-          </div>
-          <div className="hidden md:block lg:hidden w-full">
-            <ContentCarousel data={data} screen={[2, 20]} type={courseType} />
-          </div>
-          <div className="hidden lg:block w-full">
-            <ContentCarousel data={data} screen={[4, 30]} type={courseType} />
-          </div>
+      <p className="text-[14px] text-start   mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
+        {contentTitle}
+      </p>
+      <div className="pt-3 rounded-sm">
+        <div className="block w-full sm:w-[400px] md:hidden w-full ">
+          <ContentCarousel data={data} screen={[1.5, 10]} type={courseType} />
+        </div>
+        <div className="hidden md:block lg:hidden w-full">
+          <ContentCarousel data={data} screen={[2, 20]} type={courseType} />
+        </div>
+        <div className="hidden lg:block w-full">
+          <ContentCarousel data={data} screen={[4, 30]} type={courseType} />
         </div>
       </div>
-  )
+    </div>
+  );
+};
 
-}
-
-
-
-
-export default function ContentCarousel ({ data, type, screen }) {
+export default function ContentCarousel({ data, type, screen }) {
   // console.log(data)
   return (
     <Swiper
@@ -71,34 +67,34 @@ export default function ContentCarousel ({ data, type, screen }) {
       <div className="h-14"></div>
     </Swiper>
   );
-};
-
-
-export const StudentContentCardSection = ({data, contentTitle, courseType}) => {
-
-  return(
-    <div className="flex flex-col">
-        <p className="text-[14px] text-start mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
-          {contentTitle}
-        </p>
-        <div className="pt-3 rounded-sm">
-          <div className="block w-full sm:w-[400px] md:hidden w-full ">
-            <ContentCarousel data={data} screen={[1.5, 10]} type={courseType}/>
-          </div>
-          <div className="hidden md:block lg:hidden w-full">
-            <ContentCarousel data={data} screen={[2, 20]} />
-          </div>
-          <div className="hidden lg:block w-full">
-            <ContentCarousel data={data} screen={[3, 30]} type={courseType}/>
-          </div>
-        </div>
-      </div>
-  )
-
 }
 
-const ContentCard = ({ data, type }) => {
+export const StudentContentCardSection = ({
+  data,
+  contentTitle,
+  courseType,
+}) => {
+  return (
+    <div className="flex flex-col">
+      <p className="text-[14px] text-start mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
+        {contentTitle}
+      </p>
+      <div className="pt-3 rounded-sm">
+        <div className="block w-full sm:w-[400px] md:hidden w-full ">
+          <ContentCarousel data={data} screen={[1.5, 10]} type={courseType} />
+        </div>
+        <div className="hidden md:block lg:hidden w-full">
+          <ContentCarousel data={data} screen={[2, 20]} />
+        </div>
+        <div className="hidden lg:block w-full">
+          <ContentCarousel data={data} screen={[3, 30]} type={courseType} />
+        </div>
+      </div>
+    </div>
+  );
+};
 
+const ContentCard = ({ data, type }) => {
   // console.log(data)
 
   const imageSrc =
@@ -135,7 +131,7 @@ const ContentCard = ({ data, type }) => {
             className="text-[13px] w-[50px] h-[25px] rounded-[5px] flex justify-center items-center cursor-pointer bg-[#94F236] text-darkBlue"
             onClick={() => {
               dispatch(showCourseDetailsModal(true));
-              dispatch(setCourseDetails(data))
+              dispatch(setCourseDetails(data));
             }}
           >
             Enroll
@@ -170,44 +166,48 @@ const ContentCard = ({ data, type }) => {
   );
 };
 
-
-
-export const CourseCategories = ({data}) => {
-
+export const CourseCategories = () => {
   const base = process.env.NEXT_PUBLIC_REACT_APP_API_URL;
+  const [catId, setCatId] = useState(1)
 
   const fetchCourseCategories = async () => {
     const results = await axios.get(`${base}/courses-categories`);
     return results.data.data;
   };
 
+  const fetchCourses = async (catId) => {
+    const res = await studentService.getVCCourses(catId);
+    console.log(res?.data)
+    return res?.data
+  }
+
+// fetchCourses()
+
   const query = useQuery(["course_cat"], fetchCourseCategories);
 
-  // const [query: data1] = useQuery([""])
+  const {data, loading} = useQuery(["courses", catId], fetchCourses);
+  // const {data, loading} = useQuery(["courses_category",], fetchCourses);
 
-  // console.log(query.data)
+
 
   return (
     <div>
       <div className="w-full horizontal-scrollbar overflow-x-scroll flex flex-col font-light ">
         <div className="w-[1100px] flex flex-col space-y-4 py-4 px-2">
-          {query.data ? <CourseTabs courseCategories={query.data} /> : null}
+          {query?.data ? <CourseTabs courseCategories={query.data} catId = {catId} setCatId = {setCatId} /> : null}
         </div>
       </div>
 
-      <div className="w-full grid justify-items-center sm:justify-items-start sm:grid-cols-2  lg:grid-cols-3 lg:justify-items-center xl:grid-cols-4 gap-x-10 gap-y-10 mt-10 ">
+      <div className="w-full grid justify-items-center sm:justify-items-start sm:grid-cols-2  lg:grid-cols-3  xl:grid-cols-4 gap-x-10 gap-y-10 mt-10">
         {data?.map((el, index) => (
           <ContentCard key={index} data={el} />
         ))}
       </div>
     </div>
-  )
+  );
+};
 
-}
-
-
-
-const CourseTabs = ({ courseCategories }) => {
+const CourseTabs = ({ courseCategories, setCatId, catId }) => {
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
@@ -216,8 +216,14 @@ const CourseTabs = ({ courseCategories }) => {
 
   const [currentTab, setCurrentTab] = useState(1);
 
+
+  useEffect(() => {
+    setCatId(currentTab)
+  }, [currentTab])
+  
   const handleClick = (id) => {
     setCurrentTab(id);
+    setCatId(id)
   };
 
   return (

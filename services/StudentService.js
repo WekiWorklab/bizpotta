@@ -23,7 +23,7 @@ const getFeatured = async() => {
     return AxoisApi.get(`${APIS.LEARNERS.GET_FEATURED_COURSES}`).then(res => res.data)
 }
 
-const getVCCourses = async() => {
+const getVCCourses = async(id) => {
     return AxoisApi.get(`${APIS.LEARNERS.GET_VC_COURSES(id)}`).then(res => res.data)
 }
 

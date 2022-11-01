@@ -53,9 +53,9 @@ const MiddleSection = ({ dataObj}) => {
         <InstructorSection />
       </div>
 
-      {/* <div className="mt-14">
+      <div className="mt-14">
         <CourseCategories data={data} />
-      </div> */}
+      </div>
     </div>
   );
 };
