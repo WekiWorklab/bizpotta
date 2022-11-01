@@ -96,7 +96,7 @@ const CourseCard = ({ id, setCartItems, Data, setData }) => {
 
 const CouponCard = ({ cartItems, Data }) => {
   const [total, setTotal] = useState(0);
-  const { purchaseCourse } = useCourse();
+  const { purchaseCourse, purchasedCourse, purchaseCourseFailed } = useCourse();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -129,7 +129,7 @@ const CouponCard = ({ cartItems, Data }) => {
 
     let data = {
       courses: cartItems,
-      total: total,
+      total_amount: total,
       reference: config.reference,
     };
 
@@ -139,18 +139,22 @@ const CouponCard = ({ cartItems, Data }) => {
   };
 
   const onSuccess = (reference) => {
-    // Implementation for whatever you want to do with reference and after success call.
-    console.log(reference);
-    // remove cart items from local storage
-    localStorage.removeItem("cart");
-
-    // redirect to dashboard
-    router.push("/students");
+    purchasedCourse(reference, setLoading).then((res) => {
+      // remove cart items from local storage
+      localStorage.removeItem("cart");
+      // redirect to dashboard
+      router.push("/students");
+    });
   };
 
   const onClose = () => {
     // implementation for  whatever you want to do when the Paystack dialog closed.
-    console.log("closed");
+    let data = {
+      reference: config.reference,
+    };
+    purchaseCourseFailed(data, setLoading).finally(() => {
+      setLoading(false);
+    });
   };
 
   return (
