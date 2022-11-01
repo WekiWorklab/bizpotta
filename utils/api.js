@@ -19,7 +19,11 @@ export const APIS = {
     GET_POPULAR: `${api}/learners/get-popular-courses`,
     GET_FEATURED_COURSES: `${api}/learners/get-featured-courses`,
     PURCHASE_COURSE: `${api}/learners/purchase-course`,
-    GET_VC_COURSES: (id) => `${api}/learners/get-vc-courses/${id}`
+    GET_VC_COURSES: (id) => `${api}/learners/get-vc-courses/${id}`,
+    GET_MY_COURSES: `${api}/learners/get-purchased-courses`,
+    GET_MY_COURSE: (id) => `${api}/learners/get-purchased-course/${id}`,
+    COURSE_PURCHASED: `${api}/learners/course-purchased`,
+    COURSE_PURCHASE_FAILED: `${api}/learners/course-purchase-failed`,
   },
   MENTORS: {
     SET_MENTORING_PREFERENCES: `${api}/creators/set-mentor-preferences`,

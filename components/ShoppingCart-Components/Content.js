@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -8,6 +9,7 @@ import { usePaystackPayment } from "react-paystack";
 
 import { useQuery } from "@tanstack/react-query";
 import studentService from "../../services/StudentService";
+import useCourse from "../../hooks/useCourse";
 
 const Content = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -94,6 +96,7 @@ const CourseCard = ({ id, setCartItems, Data, setData }) => {
 
 const CouponCard = ({ cartItems, Data }) => {
   const [total, setTotal] = useState(0);
+  const { purchaseCourse } = useCourse();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 

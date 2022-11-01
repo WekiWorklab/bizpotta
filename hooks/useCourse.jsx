@@ -2,7 +2,7 @@ import useNotification from "./useNotification";
 import CreatorService from "../services/CreatorService";
 import learnersService from "../services/LearnersService";
 
-const useTask = () => {
+const useCourse = () => {
   const { handleError, handleSuccess } = useNotification();
 
   const handleCreatelecture = (data, setShowLoader) => {
@@ -42,10 +42,80 @@ const useTask = () => {
     });
   };
 
+  const purchasedCourse = (data, setShowLoader) => {
+    return new Promise((resolve) => {
+      setShowLoader(true);
+
+      learnersService
+        .purchasedCourse(data)
+        .then((res) => {
+          handleSuccess(res?.message);
+          resolve(res?.data);
+        })
+        .catch((error) => {
+          handleError(error);
+        })
+        .finally(() => {
+          setShowLoader(false);
+        });
+    });
+  };
+
+  const purchaseCourseFailed = (data, setShowLoader) => {
+    return new Promise((resolve) => {
+      setShowLoader(true);
+
+      learnersService
+        .purchaseCourseFailed(data)
+        .then((res) => {
+          handleSuccess(res?.message);
+          resolve(res?.data);
+        })
+        .catch((error) => {
+          handleError(error);
+        })
+        .finally(() => {
+          setShowLoader(false);
+        });
+    });
+  };
+
+  const getMyCourses = () => {
+    return new Promise((resolve) => {
+      learnersService
+        .getMyCourses()
+        .then((res) => {
+          handleSuccess(res?.message);
+          resolve(res?.data);
+        })
+        .catch((error) => {
+          handleError(error);
+        });
+    });
+  };
+
+  const getMyCourse = (id) => {
+    return new Promise((resolve) => {
+      learnersService
+        .getMyCourse(id)
+        .then((res) => {
+          handleSuccess(res?.message);
+          resolve(res?.data);
+        })
+        .catch((error) => {
+          handleError(error);
+        });
+    });
+  };
+
   return {
     handleCreatelecture,
     purchaseCourse,
+    purchasedCourse,
+    purchaseCourseFailed,
+    getMyCourses,
+    getMyCourse,
   };
 };
 
-export default useTask;
+export default useCourse;
