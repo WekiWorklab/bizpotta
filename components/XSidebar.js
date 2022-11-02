@@ -106,13 +106,20 @@ export default function XSidebar({ show, setShow, slideIn, setSlideIn }) {
               </div>
             </li>
 
-            <li className="items-center cursor-pointer mb-2" onClick={() => router.push("/students/live-session")}>
-              <div className="flex items-center h-[45px]">
-                <MdOutlineSchool  />
-                <div className="text-sm text-gray-600 w-[230px] font-light ml-5">
-                  Classroom
-                </div>
-                <VscChevronRight color="#999999" />
+            <li
+              className="items-center cursor-pointer mb-2"
+              onClick={() => router.push("/students/live-session")}
+            >
+              <div
+                className={` ${
+                  path.includes("/students/live-session")
+                    ? "text-darkBlue font-semibold"
+                    : "text-gray-600 font-light"
+                } flex items-center h-[45px]`}
+              >
+                <MdOutlineSchool />
+                <div className="text-sm w-[230px]  ml-5">Live Session</div>
+                <VscChevronRight />
               </div>
             </li>
           </ul>
@@ -190,23 +197,33 @@ export default function XSidebar({ show, setShow, slideIn, setSlideIn }) {
           {/* Divider */}
           <hr className="my-4 md:min-w-full border" />
           <ul className="md:flex-col md:min-w-full flex flex-col list-none mb-10 mt-5 ">
-            <li className="items-center cursor-pointer mb-2">
+            <li
+              className={` ${
+                path === "/students/profile"
+                  ? "text-darkBlue font-semibold"
+                  : "text-gray-600 font-light"
+              } items-center cursor-pointer mb-2`}
+              onClick={() => router.push("/students/profile")}
+            >
               <div className="flex items-center h-[45px]">
-                <CgProfile color="gray" />
-                <div className="text-sm text-gray-600 w-[230px] font-light ml-5">
-                  Profile
-                </div>
-                <VscChevronRight color="#999999" />
+                <CgProfile />
+                <div className="text-sm w-[230px] ml-5">Profile</div>
+                <VscChevronRight />
               </div>
             </li>
 
-            <li className="items-center cursor-pointer mb-2">
+            <li
+              className={` ${
+                path === "/students/settings"
+                  ? "text-darkBlue font-semibold"
+                  : "text-gray-600 font-light"
+              } items-center cursor-pointer mb-2`}
+              onClick={() => router.push("/students/settings")}
+            >
               <div className="flex items-center h-[45px]">
-                <IoSettingsOutline color="gray" />
-                <div className="text-sm text-gray-600 w-[230px] font-light ml-5">
-                  Settings
-                </div>
-                <VscChevronRight color="#999999" />
+                <IoSettingsOutline />
+                <div className="text-sm w-[230px] ml-5">Settings</div>
+                <VscChevronRight />
               </div>
             </li>
 

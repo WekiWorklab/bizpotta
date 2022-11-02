@@ -7,8 +7,9 @@ import paypal from "./images/paypal.jpg";
 import cards from "./images/cards.jpg";
 import specialization from "./images/home_page/specialization.png";
 import smile from './images/smile.jpg'
+import adminProfile from './images/AdminProfile.png'
 
-export { home_page, logo, offer, card_image, masterclass, paypal, cards, specialization, smile };
+export { home_page, logo, offer, card_image, masterclass, paypal, cards, specialization, smile, adminProfile };
 
 export const Facebook = () => (
   <svg width='24' height='24' viewBox='0 0 21 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -943,3 +944,45 @@ export const RightGroupCard = () => (
 </svg>
 
 )
+
+
+
+
+export const AdminHome = () => (
+  <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path opacity="0.4" d="M19.8319 6.01002L13.2819 0.770018C12.0019 -0.249982 10.0019 -0.259982 8.73192 0.760018L2.18192 6.01002C1.24192 6.76002 0.671916 8.26002 0.871916 9.44002L2.13192 16.98C2.42192 18.67 3.99192 20 5.70192 20H16.3019C17.9919 20 19.5919 18.64 19.8819 16.97L21.1419 9.43002C21.3219 8.26002 20.7519 6.76002 19.8319 6.01002Z" fill="#121F4C"/>
+</svg>
+
+)
+
+export const AdminCourses = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.5909 12.26C18.4242 12.26 20.7209 9.96323 20.7209 7.13C20.7209 4.29678 18.4242 2 15.5909 2C12.7577 2 10.4609 4.29678 10.4609 7.13C10.4609 9.96323 12.7577 12.26 15.5909 12.26Z" fill="#94F236" stroke="#121F4C" strokeWidth="1.5" strokeMiterlimit="10"/>
+<path d="M6.35928 19.4398C8.06032 19.4398 9.4393 18.0608 9.4393 16.3598C9.4393 14.6587 8.06032 13.2798 6.35928 13.2798C4.65825 13.2798 3.2793 14.6587 3.2793 16.3598C3.2793 18.0608 4.65825 19.4398 6.35928 19.4398Z" fill="#94F236" stroke="#121F4C" strokeWidth="1.5" strokeMiterlimit="10"/>
+<path d="M16.6205 21.9999C18.0344 21.9999 19.1805 20.8537 19.1805 19.4399C19.1805 18.026 18.0344 16.8799 16.6205 16.8799C15.2067 16.8799 14.0605 18.026 14.0605 19.4399C14.0605 20.8537 15.2067 21.9999 16.6205 21.9999Z" fill="#121F4C" stroke="#121F4C" strokeWidth="1.5" strokeMiterlimit="10"/>
+</svg>
+
+)
+
+export const AdminInstitutions = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.0001 7.16C17.9401 7.15 17.8701 7.15 17.8101 7.16C16.4301 7.11 15.3301 5.98 15.3301 4.58C15.3301 3.15 16.4801 2 17.9101 2C19.3401 2 20.4901 3.16 20.4901 4.58C20.4801 5.98 19.3801 7.11 18.0001 7.16Z" fill="#94F236" stroke="#121F4C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+<path d="M16.9695 14.4402C18.3395 14.6702 19.8495 14.4302 20.9095 13.7202C22.3195 12.7802 22.3195 11.2402 20.9095 10.3002C19.8395 9.59016 18.3095 9.35016 16.9395 9.59016" stroke="#121F4C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+<path d="M5.96852 7.16C6.02852 7.15 6.09852 7.15 6.15852 7.16C7.53852 7.11 8.63852 5.98 8.63852 4.58C8.63852 3.15 7.48852 2 6.05852 2C4.62852 2 3.47852 3.16 3.47852 4.58C3.48852 5.98 4.58852 7.11 5.96852 7.16Z" fill="#94F236" stroke="#121F4C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+<path d="M6.99945 14.4402C5.62945 14.6702 4.11945 14.4302 3.05945 13.7202C1.64945 12.7802 1.64945 11.2402 3.05945 10.3002C4.12945 9.59016 5.65945 9.35016 7.02945 9.59016" stroke="#121F4C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+<path d="M12.0001 14.6302C11.9401 14.6202 11.8701 14.6202 11.8101 14.6302C10.4301 14.5802 9.33008 13.4502 9.33008 12.0502C9.33008 10.6202 10.4801 9.47021 11.9101 9.47021C13.3401 9.47021 14.4901 10.6302 14.4901 12.0502C14.4801 13.4502 13.3801 14.5902 12.0001 14.6302Z" fill="#94F236" stroke="#121F4C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+<path d="M9.0907 17.7804C7.6807 18.7204 7.6807 20.2603 9.0907 21.2003C10.6907 22.2703 13.3107 22.2703 14.9107 21.2003C16.3207 20.2603 16.3207 18.7204 14.9107 17.7804C13.3207 16.7204 10.6907 16.7204 9.0907 17.7804Z" stroke="#121F4C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+</svg>
+
+)
+
+
+export const AdminIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M21.0802 8.58003V15.42C21.0802 16.54 20.4802 17.58 19.5102 18.15L13.5702 21.58C12.6002 22.14 11.4002 22.14 10.4202 21.58L4.48016 18.15C3.51016 17.59 2.91016 16.55 2.91016 15.42V8.58003C2.91016 7.46003 3.51016 6.41999 4.48016 5.84999L10.4202 2.42C11.3902 1.86 12.5902 1.86 13.5702 2.42L19.5102 5.84999C20.4802 6.41999 21.0802 7.45003 21.0802 8.58003Z" stroke="#051070" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+<path d="M11.9999 10.9998C13.2867 10.9998 14.3299 9.95662 14.3299 8.6698C14.3299 7.38298 13.2867 6.33984 11.9999 6.33984C10.7131 6.33984 9.66992 7.38298 9.66992 8.6698C9.66992 9.95662 10.7131 10.9998 11.9999 10.9998Z" fill="#404CCF" stroke="#051070" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+<path d="M16 16.6599C16 14.8599 14.21 13.3999 12 13.3999C9.79 13.3999 8 14.8599 8 16.6599" stroke="#051070" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+</svg>
+
+)
+

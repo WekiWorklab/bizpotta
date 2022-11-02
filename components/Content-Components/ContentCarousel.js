@@ -62,7 +62,7 @@ export const StudentLoadingCardSection = ({ contentTitle }) => {
 
 export const ContentCardSection = ({ data, contentTitle, courseType }) => {
 
-  console.log(data, contentTitle)
+  // console.log(data, contentTitle)
   return (
     <div className = "">
     {data.length > 0 ? <div className="flex flex-col">
@@ -70,7 +70,7 @@ export const ContentCardSection = ({ data, contentTitle, courseType }) => {
         {contentTitle}
       </p>
       <div className="pt-3 rounded-sm">
-        <div className="block w-full sm:w-[400px] md:hidden w-full ">
+        <div className="block w-full sm:w-[400px] md:hidden ">
           <ContentCarousel data={data} screen={[1.5, 10]} type={courseType} />
         </div>
         <div className="hidden md:block lg:hidden w-full">
@@ -121,21 +121,26 @@ export const StudentContentCardSection = ({
   courseType,
 }) => {
   return (
-    <div className="flex flex-col">
-      <p className="text-[14px] text-start mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
-        {contentTitle}
-      </p>
-      <div className="pt-3 rounded-sm">
-        <div className="block w-full sm:w-[400px] md:hidden w-full ">
-          <ContentCarousel data={data} screen={[1.5, 10]} type={courseType} />
-        </div>
-        <div className="hidden md:block lg:hidden w-full">
-          <ContentCarousel data={data} screen={[2, 20]} />
-        </div>
-        <div className="hidden lg:block w-full">
-          <ContentCarousel data={data} screen={[3, 30]} type={courseType} />
+    <div>
+    {data.length > 0 ? 
+        <div className="flex flex-col">
+        <p className="text-[14px] text-start mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
+          {contentTitle}
+        </p>
+        <div className="pt-3 rounded-sm">
+          <div className="block w-full sm:w-[400px] md:hidden w-full ">
+            <ContentCarousel data={data} screen={[1.5, 10]} type={courseType} />
+          </div>
+          <div className="hidden md:block lg:hidden w-full">
+            <ContentCarousel data={data} screen={[2, 20]} />
+          </div>
+          <div className="hidden lg:block w-full">
+            <ContentCarousel data={data} screen={[3, 30]} type={courseType} />
+          </div>
         </div>
       </div>
+        : null
+        }
     </div>
   );
 };
