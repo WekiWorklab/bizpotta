@@ -8,8 +8,6 @@ import { AiOutlineRight } from "react-icons/ai";
 import { FaCircleNotch } from "react-icons/fa";
 import { useRouter } from "next/router";
 
-
-
 const Description = ({ show, desc }) => {
   return (
     <div className={`${show ? "dropdown" : "no-dropdown"} text-xs`}>
@@ -24,9 +22,8 @@ const Description = ({ show, desc }) => {
   );
 };
 
-const ScheduleCard = ({data, index}) => {
-
-    const router = useRouter()
+const ScheduleCard = ({ data, index }) => {
+  const router = useRouter();
 
   const [show, setShow] = useState(false);
   const desc =
@@ -39,7 +36,12 @@ const ScheduleCard = ({data, index}) => {
           <div className="font-[600] text-[14px] mr-4"> Week {index + 1}</div>
           <div className="text-[13px]">Estimated time 3hrs 30mins</div>
         </div>
-        <div className="flex flex-row  justify-center md:block cursor-pointer" onClick={() => router.push(`/students/courses/${data?.course_id}/week/${data?.id}`)}>
+        <div
+          className="flex flex-row  justify-center md:block cursor-pointer"
+          onClick={() =>
+            router.push(`/students/courses/${data?.course_id}/week/${data?.id}`)
+          }
+        >
           <span className="inline  text-[13px] md:mr-4">Go to lesson</span>
           <BsArrowRight className="inline" size={18} />
         </div>

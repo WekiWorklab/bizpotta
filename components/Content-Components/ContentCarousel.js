@@ -61,8 +61,11 @@ export const StudentLoadingCardSection = ({ contentTitle }) => {
 };
 
 export const ContentCardSection = ({ data, contentTitle, courseType }) => {
+
+  console.log(data, contentTitle)
   return (
-    <div className="flex flex-col">
+    <div className = "">
+    {data.length > 0 ? <div className="flex flex-col">
       <p className="text-[14px] text-start   mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
         {contentTitle}
       </p>
@@ -77,6 +80,7 @@ export const ContentCardSection = ({ data, contentTitle, courseType }) => {
           <ContentCarousel data={data} screen={[4, 30]} type={courseType} />
         </div>
       </div>
+    </div> : null}
     </div>
   );
 };

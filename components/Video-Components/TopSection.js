@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React from "react";
 
-import {wordShortner} from '../../utils/wordShortner'
+import { wordShortner } from "../../utils/wordShortner";
 
 //////////////
 import {
@@ -11,14 +11,15 @@ import {
 } from "react-icons/ai";
 import ReactPlayer from "react-player";
 
-const TopSection = ({data}) => {
+const TopSection = ({ data }) => {
   const router = useRouter();
-    console.log(data)
-
+  console.log(data);
 
   const handleClick = () => {
     router.back();
   };
+
+  console.log(data)
 
   return (
     <div className=" pt-2 md:pt-8">
@@ -29,7 +30,7 @@ const TopSection = ({data}) => {
       <div className="flex flex-row text-[13px] items-center justify-between mt-4">
         <div className="flex flex-row">
           <p>{wordShortner(data?.title, 15)} / </p>
-          <p>Week {data.week_number} /</p>
+          <p>Week {data?.week_number} /</p>
           <p>{wordShortner(data?.week_lectures.description, 20)}</p>
         </div>
         <div className="flex flex-row">

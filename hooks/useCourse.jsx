@@ -112,7 +112,7 @@ const useCourse = () => {
   };
 
   const getMyCourse = (id) => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       learnersService
         .getMyCourse(id)
         .then((res) => {
@@ -120,7 +120,8 @@ const useCourse = () => {
           resolve(res?.data);
         })
         .catch((error) => {
-          handleError(error);
+          reject(error)
+          // handleError(error);
         });
     });
   };

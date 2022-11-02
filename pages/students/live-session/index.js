@@ -1,15 +1,14 @@
 import React from 'react'
-
-///////
-import NewLayout from '../../../components/Layout-Components/NewLayout'
+import Layout from '../../../components/Layout-Components/Layout'
 import Content from '../../../components/Masterclass-Components/LiveSession-Components/Content'
 
-const index = () => {
+
+const Index = () => {
   return (
-    <NewLayout>
+    <Layout>
         <Content />
-    </NewLayout>
+    </Layout>
   )
 }
 
-export default index
+export default Index

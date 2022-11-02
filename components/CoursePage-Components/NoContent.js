@@ -38,38 +38,47 @@ const NoContent = ({ data, dataObj }) => {
         </div>
 
         <ClassCards />
-        <div className="w-[370px] mx-auto md:hidden">
+        <div className="w-[370px]  md:hidden">
           <ClassCardsMobile />
         </div>
       </div>
 
       <div className="bg-transparent w-full  lg:mx-auto lg:mx-0 ">
         <div className="w-full mt-[50px]">
-          {dataObj.r_loading ? <LoadingCardSection /> :
-          <ContentCardSection
-            data={dataObj.recommended}
-            courseType="vocational"
-            contentTitle="Recommended courses on vocational education"
-          />}
+          {dataObj.r_loading ? (
+            <LoadingCardSection />
+          ) : (
+            <ContentCardSection
+              data={dataObj.recommended}
+              courseType="vocational"
+              contentTitle="Recommended courses on vocational education"
+            />
+          )}
         </div>
 
         <div className="w-full mt-[50px]">
-        {dataObj.p_loading ? <LoadingCardSection /> :
-        <ContentCardSection
-          data={dataObj.popular}
-          courseType="vocational"
-          contentTitle="Popular courses on vocational programs"
-        />}
-      </div>
+          {dataObj.p_loading ? (
+            <LoadingCardSection />
+          ) : (
+            <ContentCardSection
+              data={dataObj.popular}
+              courseType="vocational"
+              contentTitle="Popular courses on vocational programs"
+            />
+          )}
+        </div>
 
-      <div className="w-full mt-[50px]">
-      {dataObj.f_loading ? <LoadingCardSection /> :
-        <ContentCardSection
-          data={dataObj.featured}
-          courseType="vocational"
-          contentTitle="Take your business to the next level by exploring any of these courses"
-        />}
-      </div>
+        <div className="w-full mt-[50px]">
+          {dataObj.f_loading ? (
+            <LoadingCardSection />
+          ) : (
+            <ContentCardSection
+              data={dataObj.featured}
+              courseType="vocational"
+              contentTitle="Take your business to the next level by exploring any of these courses"
+            />
+          )}
+        </div>
 
         <div className="mt-[40px]">
           <InstructorSection />

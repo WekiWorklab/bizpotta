@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useState } from "react";
 
-const TopSection = ({data}) => {
+const TopSection = ({ data }) => {
   const image =
     "https://cdn.pixabay.com/photo/2022/01/17/17/20/bored-6945309__340.png";
 
@@ -19,13 +19,13 @@ const TopSection = ({data}) => {
   const { id } = router.query;
 
   const handleClick = () => {
-    router.push(`/students/courses/${id}/week/1`);
+    router.push(`/students/courses/${id}/week/15`);
   };
   const handleBack = () => {
     router.back();
   };
 
-  console.log(data)
+  console.log(data);
 
   return (
     <div className=" w-full flex flex-col pt-4 pr-2 md:pr-6 ">
@@ -42,28 +42,27 @@ const TopSection = ({data}) => {
         <FaPlay size={40} color="white" />
       </div>
 
-      <h1 className="text-[18px] font-[600] mt-4">
-        {data?.course?.name}
-      </h1>
+      <h1 className="text-[18px] font-[600] mt-4">{data?.course?.name}</h1>
       <div className="flex flex-row items-center w-full justify-between ">
         <div className="flex flex-row items-center ">
           <img src={image} className="w-[40px] h-[40px] rounded-full mr-4 " />
           <p className="text-[12px] sm:text-base ">
-            by {data?.course?.course_instructor.firstName} {data?.course?.course_instructor.lastName}
+            by {data?.course?.course_instructor.firstName}{" "}
+            {data?.course?.course_instructor.lastName}
           </p>
         </div>
         <div className="flex flex-row justify-self-end  items-center">
           <IoIosPeople className="text-[20px] mr-4" />
-          <p className="text-[13px] mr-4">{data?.course.course_student?.length} enrolled</p>
+          <p className="text-[13px] mr-4">
+            {data?.course.course_student?.length} enrolled
+          </p>
           <AiOutlineHeart className="text-[20px] mr-4" />
           <AiOutlineUpload className="text-[20px]" />
         </div>
       </div>
 
       <h1 className="mt-6 font-[600] text-[14px]">About this course</h1>
-      <p className="text-[13px]">
-        {data?.course?.description}
-      </p>
+      <p className="text-[13px]">{data?.course?.description}</p>
 
       <h1 className="text-[13px] font-[600] mt-6">Description</h1>
       <div className=" flex flex-row justify-between md:grid grid-cols-3 text-[13px] ">
@@ -76,10 +75,6 @@ const TopSection = ({data}) => {
             <span className="font-[600]">Audio: </span>
             <span>{data?.course.language}</span>
           </div>
-          {/* <div>
-            <span className="font-[600]">Caption:</span>
-            <span>English</span>
-          </div> */}
         </div>
 
         <div className="flex flex-col col-start-2">
@@ -102,19 +97,15 @@ const TopSection = ({data}) => {
       <p className="text-[13px]">Certificate is issued on completion</p>
 
       <h1 className="font-[600] text-[14px] mt-6 ">What you will learn</h1>
-      
-      {
-        data?.course?.course_weeks.map((el, index) => (
-            <div key = {index} className=''>
-                <li className="font-[600] text-[14px] mt-4 list-disc ">
-                    {el.title}
-                </li>
-                <p className="text-[13px] leading-[24px]">
-                    {el.week_lectures.description}
-                </p>
-            </div>
-        ))
-      }
+
+      {data?.course?.course_weeks.map((el, index) => (
+        <div key={index} className="">
+          <li className="font-[600] text-[14px] mt-4 list-disc ">{el.title}</li>
+          <p className="text-[13px] leading-[24px]">
+            {el.week_lectures.description}
+          </p>
+        </div>
+      ))}
     </div>
   );
 };

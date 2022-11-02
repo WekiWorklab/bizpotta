@@ -19,6 +19,8 @@ const Layout = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [slideIn, setSlideIn] = useState(false);
 
+  const show_course_modal = useSelector(state => state.course.show_course_details_modal)
+
   useEffect(() => {
     if (user && user?.is_onboarded) {
       if (user?.roles_id == 3 || user?.roles_id == 4) {
@@ -41,13 +43,9 @@ const Layout = ({ children }) => {
       </motion.div>
       <Sidebar />
       <XSidebar show={show} setShow={setShow} slideIn={slideIn} setSlideIn={setSlideIn} />
-      {typeof window !== "undefined" && <CourseDetailsModal />}
+      {show_course_modal ? <CourseDetailsModal /> : null}
     </div>
   );
 };
     
 export default Layout;
-
-{
-  /* {show ? <XSidebar  show = {show} setShow = {setShow} slideIn = {slideIn} setSlideIn={setSlideIn} /> : null} * Sidebar with toggle functionality */
-}

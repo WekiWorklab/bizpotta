@@ -74,11 +74,17 @@ function Sidebar() {
               </div>
             </li>
 
-            <li className="items-center cursor-pointer">
+            <li className="items-center cursor-pointer" onClick={() => router.push("/students/live-session")}>
               <div className="flex flex-row justify-start items-center">
-                <MdOutlineSchool color="gray" />
-                <div className="text-sm text-gray-600 font-light ml-5">
-                  Classroom
+                <MdOutlineSchool  color={path === "/students/live-session" ? "#121F4C" : "gray"} />
+                <div
+                  className={`${
+                    path === "/students/live-session"
+                      ? "text-darkBlue font-semibold"
+                      : "text-gray-400 font-light"
+                  } text-sm ml-5`}
+                >
+                  Live Session
                 </div>
               </div>
             </li>
