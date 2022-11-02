@@ -4,7 +4,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Dialog, Transition } from "@headlessui/react";
 import { MdOutlineCancel } from "react-icons/md";
-import { addToCart, showCourseDetailsModal } from "../store/courseSlice";
+import { addToCart, setCourseDetails, showCourseDetailsModal } from "../store/courseSlice";
 import { offer, specialization } from "../public";
 import { HiUserGroup } from "react-icons/hi";
 import { useRouter } from "next/router";
@@ -21,6 +21,8 @@ const CourseDetailsModal = () => {
 
   const closeModal = () => {
     dispatch(showCourseDetailsModal(false));
+    setCourseId(null)
+    dispatch(setCourseDetails(null))
   };
 
 
@@ -48,7 +50,9 @@ const CourseDetailsModal = () => {
     });
   };
 
-  console.log(courseId)
+
+  // TODO: Since there is a lag btw when courseId switches "purchase course" to "go to course" let the modal be in a loading state until courseId is determined from the useEffect above  
+
 
   return (
     <Transition.Root show={success} as={Fragment}>

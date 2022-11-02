@@ -218,16 +218,18 @@ export const CourseCategories = () => {
   };
 
   const fetchCourses = async (Id) => {
-    console.log(Id)
-    const res = await studentService.getVCCourses(Id.queryKey[1]);
+    console.log(Id);
+    // const res = await studentService.getVCCourses(Id.queryKey[1]);
+    const res = await studentService.getVCCourses(Id);
+    console.log(res?.data)
     return res?.data;
   };
 
-  // fetchCourses()
 
   const query = useQuery(["course_cat"], fetchCourseCategories);
+  // const { data, isLoading } = useQuery(["courses", catId], fetchCourses);
 
-  const { data, isLoading } = useQuery(["courses", catId], fetchCourses);
+  const { data, isLoading } = useQuery(["courses", catId], () => fetchCourses(catId));
 
   if (isLoading) {
     return (
@@ -274,7 +276,7 @@ const CourseTabs = ({ courseCategories, setCatId, catId }) => {
   }, [currentTab]);
 
   const handleClick = (id) => {
-    console.log(id)
+    console.log(id);
     setCurrentTab(id);
     setCatId(id);
   };
