@@ -345,7 +345,7 @@ export default function Home() {
               <h1 className='text-start sm:text-center lg:text-start text-lg font-light tracking-wider text-bizpotta-purple'>
                 <span className='text-[15px] font-bold md:font-medium  md:text-2xl'>Market and sell your Expertise</span>
               </h1>
-              <p className=' text-start flex flex-col text-[13px] md:text-base font-light tracking-wider text-bizpotta-gray-800'>
+              <p className='text-start sm:text-center lg:text-start flex flex-col text-[13px] md:text-base font-light tracking-wider text-bizpotta-gray-800'>
                 <span className='text-bizpotta-gray-800 '>
                   Learn how to run sustainable and profitable businesses and accelerate business growth{" "}
                 </span>
@@ -382,9 +382,9 @@ export default function Home() {
               </div>
 
               {/* list of radio in boxes */}
-              <div className='hidden sm:flex flex-col w-full items-center md:flex-row redBorder gap-4 '>
+              <div className='hidden sm:flex flex-col w-full items-center md:flex-row  gap-4 '>
                 {/* <div className=' py-4 max-w-7xl lg:py-12  '> */}
-                  <div className='space-y-4 mx-auto grid sm:grid-cols-1  lg:grid-cols-3 justify-items-start redBorder lg:gap-x-8  lg:space-y-0 '>
+                  <div className='space-y-4 mx-auto grid sm:grid-cols-1  lg:grid-cols-3 justify-items-start  lg:gap-x-8  lg:space-y-0 '>
                     <Testimonals />
                     <Testimonals />
                     <Testimonals />
@@ -529,14 +529,14 @@ const Carousel = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      nextSlide();
+      // nextSlide();
     }, autoplayTime);
 
     return () => clearTimeout(timer);
   }, [currentIndex]);
 
   return (
-    <div className='mx-auto mt-12 w-[85vw] flex flex-row overflow-x-hidden overflow-y-hidden relative '>
+    <div className='mx-auto mt-12 h-[400px] sm:h-[600px] w-[85vw] flex flex-row overflow-x-hidden overflow-y-hidden relative '>
       <BlueSection currentIndex={currentIndex} router={router} />
       <GreenSection currentIndex={currentIndex} router={router} />
       <Indicator currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} />
@@ -565,35 +565,35 @@ const GreenSection = ({ router, currentIndex }) => {
       style={{
         marginLeft: currentIndex === 1 ? "0" : "100%",
       }}
-      className={`bg-[#1F9A5F] mx-auto flex  h-[600px] min-w-[85vw] rounded-xl ${currentIndex === 1 ? "slider" : "sliding"}`}
+      className={`bg-[#1F9A5F] mx-auto flex  h-full min-w-[85vw] rounded-xl ${currentIndex === 1 ? "slider" : "sliding"}`}
     >
-      <div className=' w-1/2 px-14 py-14'>
+      <div className=' xl:w-1/2 px-4 py-4 sm:px-10 sm:py-8 md:px-14 md:py-14'>
         {/* <div className=""> */}
         <div className='flex flex-row items-center gap-x-8'>
           <div className='min-w-[70px] min-h-[5px] rounded-xl bg-bizpotta-green' />
           <div className='text-white text-[18px]'>Coming soon</div>
         </div>
 
-        <div className='text-base mt-12 tracking-tight font-bold md:font-light sm:text-4xl xl:text-5xl text-white '>Specialization Program</div>
-        <div className='text-base md:text-xl text-white mt-5 w-'>
+        <div className='text-base mt-8 sm:mt-12 tracking-tight font-bold md:font-light sm:text-4xl xl:text-5xl text-white '>Specialization Program</div>
+        <div className='text-base md:text-xl text-white mt-5'>
           Learn the basics of business development and management, get certificate on completion.{" "}
         </div>
         <div className='text-base md:text-xl text-white mt-5'>
           This program will empower you with skills needed to manage your business effectively.
         </div>
-        <div className='text-white text-[18px] mt-16'>Get notifications when we launch</div>
+        <div className='text-white text-[18px] mt-4 sm:mt-16'>Get notifications when we launch</div>
 
-        <div className='w-full lg:w-[450px] h-[40px] lg:h-[60px] rounded-md  flex flex-row items-center mt-10'>
+        <div className='w-full lg:w-[450px] h-[40px] lg:h-[60px] rounded-md  flex flex-row items-center mt-4 sm:mt-10'>
           <input
             type='text'
             placeholder='Enter email address'
-            className='w-full h-[50px] outline-none border-0 bg-white text-gray-500 text-[15px] rounded-l-md '
+            className='w-full h-[40px] sm:h-[50px] outline-none border-0 bg-white text-gray-500 text-[15px] rounded-l-md '
           />
-          <div className='h-[50px] w-[180px] bg-darkBlue centerFlex  rounded-r-md text-white'>Notify me</div>
+          <div className='h-[40px] sm:h-[50px] w-[100px] sm:w-[180px] bg-darkBlue centerFlex text-[14px] sm:text-base rounded-r-md text-white'>Notify me</div>
         </div>
         {/* </div> */}
       </div>
-      <div className='w-1/2 rounded-r-xl bg-no-repeat bg-cover bg-center h-full' style={{ backgroundImage: `url(${specialization.src})` }}></div>
+      <div className='md-hidden lg:block lg:w-[60%] xl:w-1/2 rounded-r-xl bg-no-repeat bg-cover bg-center h-full' style={{ backgroundImage: `url(${specialization.src})` }}></div>
     </section>
   );
 };
@@ -605,14 +605,14 @@ const BlueSection = ({ router, currentIndex }) => {
       style={{
         marginLeft: currentIndex === 0 ? "0%" : "-100%",
       }}
-      className={`bg-gradient-to-br from-[#9DB9E4] to-[#B5DDFA] mx-auto blueShadow  py-8 md:py-14 px-6 md:px-10 h-[600px] min-w-[85vw] rounded-xl ${
+      className={`bg-gradient-to-br from-[#9DB9E4] to-[#B5DDFA] mx-auto blueShadow  py-8 md:py-14 px-6 md:px-10 h-full min-w-[85vw] rounded-xl ${
         currentIndex === 0 ? " slide" : "slide "
       } `}
     >
       <div className='max-w-7xl lg:grid lg:grid-cols-12 lg:gap-8 '>
         <div className='sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left'>
           <h1>
-            <span className='pl-0 md:px-8 block text-base md:text-2xl tracking-tight font-bold md:font-light sm:text-5xl xl:text-6xl'>
+            <span className='pl-0 md:px-8 block text-xl tracking-tight font-bold  sm:text-5xl xl:text-6xl'>
               <span className='block text-gray-900 '>Masterclass Program</span>
             </span>
           </h1>

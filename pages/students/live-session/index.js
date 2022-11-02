@@ -1,14 +1,14 @@
-import React from 'react'
-import Layout from '../../../components/Layout-Components/Layout'
-import Content from '../../../components/Masterclass-Components/LiveSession-Components/Content'
-
+import React from "react";
+import LiveComponent from "../../../components/Course-Components/LiveComponent";
+import Layout from "../../../components/Layout-Components/Layout";
+// import Content from "../../../components/Masterclass-Components/LiveSession-Components/Content";
 
 const Index = () => {
   return (
     <Layout>
-        <Content />
+      <LiveComponent />
     </Layout>
-  )
-}
+  );
+};
 
-export default Index
+export default Index;

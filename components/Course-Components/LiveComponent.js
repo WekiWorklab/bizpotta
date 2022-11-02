@@ -1,10 +1,12 @@
+import { useRouter } from "next/router";
 import React from "react";
 import { useState } from "react";
 import { GoPrimitiveDot } from "react-icons/go";
-import { specialization } from "../../../public";
+import { specialization } from "../../public"; 
 
-const Content = () => {
+const LiveComponent = () => {
   const [session, setSession] = useState("");
+  const router = useRouter()
 
   return (
     <div className="relative w-full h-full bg-[#FDFDFD] flex flex-col pt-[90px] md:pt-[120px] md:justify-start md:translate-x-[200px] md:w-[calc(100%-200px)] px-2 md:px-16 pb-10">
@@ -12,16 +14,16 @@ const Content = () => {
 
       <SessionTabs session={session} setSession={setSession} />
 
-      <LiveSessionCard />
+      <LiveSessionCard router = {router}/>
 
-      <LiveSessionCard />
+      <LiveSessionCard router = {router}/>
     </div>
   );
 };
 
-export default Content;
+export default LiveComponent;
 
-const LiveSessionCard = () => {
+const LiveSessionCard = ({router}) => {
   return (
     <div className="flex items-center border masters-shadow2 border-[#b1adad] rounded-md px-3 sm:px-6 py-4 sm:py-8 w-full mt-16">
       <div className="w-full sm:w-2/3">
@@ -59,7 +61,7 @@ const LiveSessionCard = () => {
         </div>
 
         <div className="flex gap-x-4 items-center mt-8">
-          <div className="w-[150px] h-[40px] rounded-md bg-bizpotta-green centerFlex text-[15px] ">
+          <div className="w-[150px] h-[40px] rounded-md bg-bizpotta-green centerFlex text-[15px] cursor-pointer" onClick={() => router.push("/students/live-session/1")}>
             Register
           </div>
           <div className="w-[150px] h-[40px] rounded-md bg-transparent centerFlex text-[15px] border border-[#b1adad]">
@@ -91,7 +93,7 @@ const LiveSessionCard = () => {
   );
 };
 
-export function SessionTabs({ session, setSession }) {
+function SessionTabs({ session, setSession }) {
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }

@@ -57,7 +57,7 @@ const LandingTestimonialCarousel = () => {
       navigation={true}
       modules={[Pagination]}
       className="mySwiper"
-      style={{display: "flex", justifyContent: "flex-start", border: "1px solid red" }}
+      style={{display: "flex", justifyContent: "flex-start"}}
     >
       {data.map((el, index) => (
         <SwiperSlide key={index}  style={{
@@ -78,7 +78,7 @@ export default LandingTestimonialCarousel;
 
 export const TestimonialCard = ({ el: { imageUrl, note, name, location } }) => {
   return (
-    <div className="w-[250px] flex flex-col items-start redBorder bg-gray-50 ">
+    <div className="w-[250px] flex flex-col items-start bg-gray-50 ">
       <div
         className="w-full h-[200px] bg-no-repeat bg-cover bg-center rounded-md"
         style={{ backgroundImage: `url(${imageUrl})` }}
