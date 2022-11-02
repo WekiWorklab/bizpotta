@@ -12,8 +12,7 @@ import { logout, reset } from "../store/authSlice";
 function Sidebar() {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
   const dispatch = useDispatch();
-  // const [color, setColor] = useState("dashboard")
-  // const color = useSelector(state => state.course.color)
+
 
   const router = useRouter();
   const path = router.asPath;
@@ -74,20 +73,20 @@ function Sidebar() {
               </div>
             </li>
 
-            <li className="items-center cursor-pointer" onClick={() => router.push("/students/live-session")}>
-              <div className="flex flex-row justify-start items-center">
-                <MdOutlineSchool  color={path === "/students/live-session" ? "#121F4C" : "gray"} />
-                <div
-                  className={`${
-                    path === "/students/live-session"
-                      ? "text-darkBlue font-semibold"
-                      : "text-gray-400 font-light"
-                  } text-sm ml-5`}
-                >
+            
+            <li
+              className="items-center cursor-pointer"
+              onClick={() => router.push("/students/live-session")}
+            >
+              <div className={`${path.includes("/students/live-session") ? "text-darkBlue font-semibold" : "text-gray-400 font-light"} flex flex-row justify-start items-center`}>
+                <MdOutlineSchool />
+                <div className={`text-sm ml-5`}>
                   Live Session
                 </div>
               </div>
             </li>
+
+            
           </ul>
 
           {/* Divider */}
@@ -107,7 +106,7 @@ function Sidebar() {
                     path === "/students/all-projects"
                       ? "text-darkBlue font-semibold"
                       : "text-gray-400 font-light"
-                  } text-sm   ml-5`}
+                  } text-sm ml-5`}
                 >
                   Projects
                 </div>
@@ -151,23 +150,33 @@ function Sidebar() {
           {/* Divider */}
           <hr className="my-4 md:min-w-full border" />
           <ul className="md:flex-col md:min-w-full flex flex-col list-none mb-10 mt-5 ">
-            <li className="items-center cursor-pointer mb-5">
+            <li className={`${path === '/students/profile' ? "text-darkBlue font-semibold" : "text-gray-400 font-light"} items-center cursor-pointer mb-5`} onClick = {() => router.push("/students/profile")}>
               <div className="flex flex-row justify-start items-center">
-                <CgProfile color="gray" />
-                <div className="text-sm text-gray-600 font-light ml-5">
+                <CgProfile  />
+                <div className="text-sm  ml-5">
                   Profile
                 </div>
               </div>
             </li>
 
-            <li className="items-center cursor-pointer mb-5">
+
+            <li className={`${path === '/students/settings' ? "text-darkBlue font-semibold" : "text-gray-400 font-light"} items-center cursor-pointer mb-5`} onClick={() => router.push('/students/settings') }>
+              <div className="flex flex-row justify-start items-center">
+                <IoSettingsOutline  />
+                <div className="text-sm  ml-5">
+                Settings
+                </div>
+              </div>
+            </li>
+
+            {/* <li className="items-center cursor-pointer mb-5" onClick={() => router.push('/students/settings') }>
               <div className="flex flex-row justify-start items-center">
                 <IoSettingsOutline color="gray" />
                 <div className="text-sm text-gray-600 font-light ml-5">
                   Settings
                 </div>
               </div>
-            </li>
+            </li> */}
 
             <li className="items-center cursor-pointer">
               <div
