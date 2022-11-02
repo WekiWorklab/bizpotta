@@ -27,6 +27,7 @@ module.exports = {
         darkBlue: "#121F4C",
         seaBlue: "#3771C8",
         darkText: "#282828",
+        lightDark: "#191919"
       },
       backgroundImage: (theme) => ({
         "auth-pattern": "url('/images/authLayoutImg.png')",

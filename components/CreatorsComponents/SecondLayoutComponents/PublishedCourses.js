@@ -8,7 +8,10 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { TableFooter, TableHeader } from "./Content";
 import { NoActivities } from "../../../public";
-import CreatorTable, { SelectColumnFilter, StatusPill } from "../../Tables/CreatorTable";
+import CreatorTable, {
+  SelectColumnFilter,
+  StatusPill,
+} from "../../Tables/CreatorTable";
 
 const PublishedCourses = ({ allCourses }) => {
   const router = useRouter();
@@ -59,8 +62,8 @@ const PublishedCourses = ({ allCourses }) => {
   );
 
   return (
-    <div className='flex flex-col mx-auto'>
-      <CreatorTable columns={columns} data={data} title='Published Courses' />
+    <div className="flex flex-col mx-auto">
+      <CreatorTable columns={columns} data={data} title="Published Courses" />
     </div>
   );
 };

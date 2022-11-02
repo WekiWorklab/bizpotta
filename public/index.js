@@ -986,3 +986,19 @@ export const AdminIcon = () => (
 
 )
 
+export const AdminMenuDots = () => (
+<svg width="8" height="40" viewBox="0 0 8 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="4" cy="4" r="4" fill="#C0C0C0"/>
+<circle cx="4" cy="20" r="4" fill="#C0C0C0"/>
+<circle cx="4" cy="36" r="4" fill="#C0C0C0"/>
+</svg>
+
+)
+
+export const TableRowToggle = () => (
+  <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="13" cy="13" r="13" fill="#E5E5FF"/>
+<circle cx="13" cy="8" r="3" fill="#051070"/>
+<circle cx="13" cy="18" r="3" fill="#051070"/>
+</svg>
+)

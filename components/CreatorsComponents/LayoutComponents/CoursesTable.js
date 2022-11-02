@@ -84,90 +84,135 @@ const CoursesTable = ({ courses }) => {
   const courseFilter = ["All courses", "New added course", "Deleted courses"];
 
   return (
-    <div className='flex flex-col mx-auto'>
+    <div className="flex flex-col mx-auto">
       {!activities && (
-        <div className='flex flex-col mx-auto'>
-          <div className='flex flex-col mx-auto'>
-            <div className='w-full h-[450px] flex flex-col justify-center items-center'>
+        <div className="flex flex-col mx-auto">
+          <div className="flex flex-col mx-auto">
+            <div className="w-full h-[450px] flex flex-col justify-center items-center">
               <NoActivities />
-              <p className='text-[#787878] text-[14px] font-bold mt-4'>No courses yet</p>
+              <p className="text-[#787878] text-[14px] font-bold mt-4">
+                No courses yet
+              </p>
             </div>
           </div>
         </div>
       )}
 
       {activities && (
-        <div className='my-2 horizontal-scrollbar overflow-x-scroll xl:overflow-x-visible'>
+        <div className="my-2 horizontal-scrollbar overflow-x-scroll xl:overflow-x-visible">
           <MainTableHeader filter={courseFilter} />
 
-          <div className='py-2 align-middle inline-block min-w-[1050px] xl:w-full'>
+          <div className="py-2 align-middle inline-block min-w-[1050px] xl:w-full">
             {
-              <table className=' min-w-full divide-y divide-gray-200'>
-                <thead className='bg-gray-50'>
+              <table className=" min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
                   <tr>
-                    <th scope='col' className='px-2 py-3 text-center text-xs font-medium text-gray-500 tracking-wider'>
+                    <th
+                      scope="col"
+                      className="px-2 py-3 text-center text-xs font-medium text-gray-500 tracking-wider"
+                    >
                       #
                     </th>
 
-                    <th scope='col' className='px-2 py-3 text-center text-xs font-medium text-gray-500 tracking-wider'>
+                    <th
+                      scope="col"
+                      className="px-2 py-3 text-center text-xs font-medium text-gray-500 tracking-wider"
+                    >
                       Creators name
                     </th>
-                    <th scope='col' className='px-2 py-3 text-center text-xs font-medium text-gray-500 tracking-wider'>
+                    <th
+                      scope="col"
+                      className="px-2 py-3 text-center text-xs font-medium text-gray-500 tracking-wider"
+                    >
                       Course Title
                     </th>
-                    <th scope='col' className='px-2 py-3 text-center text-xs font-medium text-gray-500 tracking-wider'>
+                    <th
+                      scope="col"
+                      className="px-2 py-3 text-center text-xs font-medium text-gray-500 tracking-wider"
+                    >
                       Type
                     </th>
-                    <th scope='col' className='px-2 py-3 text-center text-xs font-medium text-gray-500 tracking-wider'>
+                    <th
+                      scope="col"
+                      className="px-2 py-3 text-center text-xs font-medium text-gray-500 tracking-wider"
+                    >
                       Price
                     </th>
-                    <th scope='col' className='px-2 py-3 text-center text-xs font-medium text-gray-500 tracking-wider'>
+                    <th
+                      scope="col"
+                      className="px-2 py-3 text-center text-xs font-medium text-gray-500 tracking-wider"
+                    >
                       Coupon
                     </th>
-                    <th scope='col' className='px-2 py-3 text-center text-xs font-medium text-gray-500 tracking-wider'>
+                    <th
+                      scope="col"
+                      className="px-2 py-3 text-center text-xs font-medium text-gray-500 tracking-wider"
+                    >
                       Date
                     </th>
-                    <th scope='col' className='px-2 py-3 text-center text-xs font-medium text-gray-500 tracking-wider'>
+                    <th
+                      scope="col"
+                      className="px-2 py-3 text-center text-xs font-medium text-gray-500 tracking-wider"
+                    >
                       Status
                     </th>
-                    <th scope='col' className='px-2 py-3 text-center text-xs font-medium text-gray-500 tracking-wider'>
+                    <th
+                      scope="col"
+                      className="px-2 py-3 text-center text-xs font-medium text-gray-500 tracking-wider"
+                    >
                       Referral code
                     </th>
                   </tr>
                 </thead>
-                <tbody className='bg-white divide-y divide-gray-200'>
+                <tbody className="bg-white divide-y divide-gray-200">
                   {data.map((el) => (
                     <tr key={el.item}>
-                      <td className='px-2 py-4 whitespace-nowrap'>
-                        <div className='text-sm text-gray-900'>{el.item}</div>
+                      <td className="px-2 py-4 whitespace-nowrap">
+                        <div className="text-sm text-gray-900">{el.item}</div>
                       </td>
 
-                      <td className='px-2 py-4 max-w-[200px] break-words text-sm text-gray-500 text-center'>{el.name}</td>
+                      <td className="px-2 py-4 max-w-[200px] break-words text-sm text-gray-500 text-center">
+                        {el.name}
+                      </td>
 
-                      <td className='px-2 py-4 max-w-[200px] break-words text-sm text-gray-500 text-center'>{el.course}</td>
-                      <td className='px-2 py-4 whitespace-nowrap text-center'>
-                        <div className='text-sm text-gray-900 text-center'>{el.type}</div>
+                      <td className="px-2 py-4 max-w-[200px] break-words text-sm text-gray-500 text-center">
+                        {el.course}
                       </td>
-                      <td className='px-2 py-4 whitespace-nowrap text-center'>
-                        <div className='text-sm text-gray-900 text-center'>{el.price}</div>
+                      <td className="px-2 py-4 whitespace-nowrap text-center">
+                        <div className="text-sm text-gray-900 text-center">
+                          {el.type}
+                        </div>
                       </td>
-                      <td className='px-2 py-4 whitespace-nowrap text-center'>
-                        <div className='text-sm text-gray-900 text-center'>{el.coupon}</div>
+                      <td className="px-2 py-4 whitespace-nowrap text-center">
+                        <div className="text-sm text-gray-900 text-center">
+                          {el.price}
+                        </div>
                       </td>
-                      <td className='px-2 py-4 whitespace-nowrap text-center'>
-                        <div className='text-sm text-gray-900 text-center'>{moment(el.date).format("MMM Do YYYY")}</div>
+                      <td className="px-2 py-4 whitespace-nowrap text-center">
+                        <div className="text-sm text-gray-900 text-center">
+                          {el.coupon}
+                        </div>
                       </td>
-                      <td className='px-2 py-4 whitespace-nowrap text-center'>
+                      <td className="px-2 py-4 whitespace-nowrap text-center">
+                        <div className="text-sm text-gray-900 text-center">
+                          {moment(el.date).format("MMM Do YYYY")}
+                        </div>
+                      </td>
+                      <td className="px-2 py-4 whitespace-nowrap text-center">
                         <div
                           className={`text-sm text-gray-900 text-[12px] text-center p-1 rounded-md ${
-                            el.status ? "bg-[#2DE200] bg-opacity-[0.15] text-[#26B403]" : "bg-[#FC4A4A] bg-opacity-[0.15] text-[#B40303]"
+                            el.status
+                              ? "bg-[#2DE200] bg-opacity-[0.15] text-[#26B403]"
+                              : "bg-[#FC4A4A] bg-opacity-[0.15] text-[#B40303]"
                           } `}
                         >
                           {el.status ? "Active" : "Inactive"}
                         </div>
                       </td>
-                      <td className='px-2 py-4 whitespace-nowrap text-center'>
-                        <div className='text-sm text-gray-900 text-center'>{el.code}</div>
+                      <td className="px-2 py-4 whitespace-nowrap text-center">
+                        <div className="text-sm text-gray-900 text-center">
+                          {el.code}
+                        </div>
                       </td>
                     </tr>
                   ))}
