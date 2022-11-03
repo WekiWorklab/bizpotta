@@ -18,8 +18,8 @@ const Header = ({ show, setShow, setSlideIn }) => {
   const [showHover, setShowHover] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
 
-  const [showCart, setShowCart] = useState(false)
-  const [showNotifications, setShowNotifications] = useState(false)
+  const [showCart, setShowCart] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
 
   const router = useRouter();
   // console.log(user)
@@ -46,24 +46,23 @@ const Header = ({ show, setShow, setSlideIn }) => {
     } else {
       setShowHover(true);
     }
-
   };
 
   const handleMouseOut = () => {
     setShowHover(false);
   };
 
-  const cartArr = new Array(3).fill("")
+  const cartArr = new Array(3).fill("");
 
   const toggleCart = () => {
-    setShowCart(prev => !prev)
-    setShowNotifications(false)
-  }
+    setShowCart((prev) => !prev);
+    setShowNotifications(false);
+  };
 
   const toggleNotifications = () => {
-    setShowNotifications(prev => !prev)
-    setShowCart(false)
-  }
+    setShowNotifications((prev) => !prev);
+    setShowCart(false);
+  };
 
   /*
     Be sure to change onFocus with an onChange event when onChange is implemented
@@ -109,33 +108,58 @@ const Header = ({ show, setShow, setSlideIn }) => {
       {/* Accounts info, carts and notification icons */}
       <div className=" hidden md:flex flex-row  w-[100px] md:w-[280px] justify-evenly items-center">
         <div className="relative">
-          <AiOutlineShoppingCart className=" text-darkBlue text-2xl cursor-pointer" onClick={() => toggleCart()}/>
-          {showCart ? <div className = 'absolute top-[40px] left-[-250px] lg:left-[-80px] w-[340px] py-6 dashboard-card-shadow bg-[#FFFFFF]'>
-              <p className="text-darkBlue text-[17px] font-bold ml-4 mb-4">Cart</p>
+          <AiOutlineShoppingCart
+            className=" text-darkBlue text-2xl cursor-pointer"
+            onClick={() => toggleCart()}
+          />
+          {showCart ? (
+            <div className="absolute top-[40px] left-[-250px] lg:left-[-80px] w-[340px] py-6 dashboard-card-shadow bg-[#FFFFFF]">
+              <p className="text-darkBlue text-[17px] font-bold ml-4 mb-4">
+                Cart
+              </p>
               <div className="w-full ">
-              { 
-                cartArr.map((el, index) => (
-                  <div key={index} className="w-full border-b-[1px] border-[#FAFAFA] px-4 py-3 flex items-center gap-x-3 cursor-pointer ">
-                      <img src={specialization.src} className='w-[30px] h-[30px] rounded-full ' />
-                      <div>
-                        <p className="text-[13px] break-words">Introduction to Hydroponics </p>
-                        <p className="text-[#808080] text-[11px]">By Adam Peter</p>
-                      </div>
-                      <p className = 'text-[12px]'>$5,000</p>
-                      <p  className="text-[11px] text-[#FF0000] cursor-pointer" onClick={() => {}}>Remove</p>
+                {cartArr.map((el, index) => (
+                  <div
+                    key={index}
+                    className="w-full border-b-[1px] border-[#FAFAFA] px-4 py-3 flex items-center gap-x-3 cursor-pointer "
+                  >
+                    <img
+                      src={specialization.src}
+                      className="w-[30px] h-[30px] rounded-full "
+                    />
+                    <div>
+                      <p className="text-[13px] break-words">
+                        Introduction to Hydroponics{" "}
+                      </p>
+                      <p className="text-[#808080] text-[11px]">
+                        By Adam Peter
+                      </p>
+                    </div>
+                    <p className="text-[12px]">$5,000</p>
+                    <p
+                      className="text-[11px] text-[#FF0000] cursor-pointer"
+                      onClick={() => {}}
+                    >
+                      Remove
+                    </p>
                   </div>
-                ))
-              }
+                ))}
               </div>
-              
-              <div className="text-right px-4 font-bold text-[15px] mt-4">Total: $15,000</div>
-              
-              <div className="flex justify-center">
-                <div className='font-medium text-[14px] hover:bg-opacity-70 text-white px-3 py-2 bg-darkBlue mt-3 rounded-md cursor-pointer' onClick = {() => router.push("/students/cart")}>Continue</div>
-              </div>
-              
 
-            </div> : null}
+              <div className="text-right px-4 font-bold text-[15px] mt-4">
+                Total: $15,000
+              </div>
+
+              <div className="flex justify-center">
+                <div
+                  className="font-medium text-[14px] hover:bg-opacity-70 text-white px-3 py-2 bg-darkBlue mt-3 rounded-md cursor-pointer"
+                  onClick={() => router.push("/students/cart")}
+                >
+                  Continue
+                </div>
+              </div>
+            </div>
+          ) : null}
         </div>
 
         <IoNotificationsOutline className="text-darkBlue text-2xl" />
@@ -162,12 +186,11 @@ const Header = ({ show, setShow, setSlideIn }) => {
           {/* Search Icon for small screens */}
           <BiSearchAlt size={20} color="#121F4C" className="block" />
 
-          <div className = 'relative '>
+          <div className="relative ">
             <AiOutlineShoppingCart size={20} className="text-darkBlue" />
-            
           </div>
 
-          <IoNotificationsOutline size={20}  className="text-darkBlue " />
+          <IoNotificationsOutline size={20} className="text-darkBlue " />
 
           <IoMenuOutline
             size={20}

@@ -49,7 +49,8 @@ const MobileAdminSideBar = ({show, setShow, slideIn, setSlideIn}) => {
 
     return (
         <div className={`${slideIn ? "SideBar" : "NoSideBar" } fixed block lg:hidden overflow-y-scroll no-vertical-scrollbar left-0 top-0 z-30 w-[300px] h-screen max-h-screen rounded-r-xl dropdown-shadow bg-white `}>
-            <div className='min-h-screen py-4 '>
+            {/* <div className='min-h-screen py-4 '> */}
+            <div className='min-h-[1000px] py-4 '>
             <div className='w-full flex justify-between items-center px-3 '>
                 <img src={logo.src} className = 'w-1/2'/>
                 <MdOutlineCancel className='text-gray-500 text-[24px] cursor-pointer'  onClick={() => {setShow(false); setSlideIn(false) } }/>
@@ -58,8 +59,8 @@ const MobileAdminSideBar = ({show, setShow, slideIn, setSlideIn}) => {
             <div className='flex flex-col gap-y-3 mt-2'>
                 {
                     SidebarNav.map((el, index) => (
-                        <Link href={el.to} key={index} >
-                            <div className='h-[48px] flex items-center gap-x-6 cursor-pointer hover:bg-gray-300'>
+                        <Link href={el.to} key={index} className='bg-current ' >
+                            <div className='h-[48px] flex items-center gap-x-6 cursor-pointer hover:bg-gray-300' onClick={() => setShow(false)}>
                                 <div className={`h-full w-[4px] rounded-r-[20px] ${ path == el.to ? "bg-darkBlue" : "bg-transparent"}`} /> 
                                 <div>
                                 {el.icon}
