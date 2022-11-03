@@ -18,7 +18,7 @@ const AdminLayout = ({children}) => {
         {/* Sidebar toggle icon for mobile view */}
         
         <AdminHeader show = {show} setShow = {setShow} slideIn = {slideIn} setSlideIn = {setSlideIn} />
-        <div className='w-full md:translate-x-[250px] md:w-[calc(100%-250px)] '>
+        <div className='w-full lg:translate-x-[250px] lg:w-[calc(100%-250px)] '>
             {children}
         </div>
         <AdminSideBar show = {show} setShow = {setShow} />
@@ -35,8 +35,8 @@ export default AdminLayout
 const AdminHeader = ({show, setShow, slideIn, setSlideIn}) => {
     
     return (
-        <div className='sticky top-0 w-full bg-white flex justify-end px-6 h-6 z-10'>
-            {!show ? <HiMenu className='block md:hidden text-[24px] text-darkBlue cursor-pointer' onClick={() => {setShow(true); setSlideIn(true)}}/> : null}
+        <div className='sticky top-0 w-full bg-white flex justify-end items-end px-6 h-10 z-10'>
+            {!show ? <HiMenu className='block lg:hidden text-[24px] text-darkBlue cursor-pointer' onClick={() => {setShow(true); setSlideIn(true)}}/> : null}
         </div>
     )
 }
@@ -48,7 +48,8 @@ const MobileAdminSideBar = ({show, setShow, slideIn, setSlideIn}) => {
     const path = router.asPath
 
     return (
-        <div className={`${slideIn ? "SideBar" : "NoSideBar" } fixed block md:hidden left-0 top-0 z-30 w-[300px] h-screen rounded-r-xl dropdown-shadow bg-white pt-2`}>
+        <div className={`${slideIn ? "SideBar" : "NoSideBar" } fixed block lg:hidden overflow-y-scroll no-vertical-scrollbar left-0 top-0 z-30 w-[300px] h-screen max-h-screen rounded-r-xl dropdown-shadow bg-white `}>
+            <div className='min-h-screen py-4 '>
             <div className='w-full flex justify-between items-center px-3 '>
                 <img src={logo.src} className = 'w-1/2'/>
                 <MdOutlineCancel className='text-gray-500 text-[24px] cursor-pointer'  onClick={() => {setShow(false); setSlideIn(false) } }/>
@@ -88,6 +89,8 @@ const MobileAdminSideBar = ({show, setShow, slideIn, setSlideIn}) => {
                 <AdminMenuDots className="" />
 
             </div>
+
+            </div>
             
         </div>
     )
@@ -102,7 +105,7 @@ const AdminSideBar = () => {
     const path = router.asPath
 
     return (
-        <div className='fixed hidden md:block bg-white left-0 top-0 z-30 w-[250px] h-screen border border-r-2  pt-2'>
+        <div className='fixed hidden lg:block bg-white left-0 top-0 z-30 w-[250px] h-screen border border-r-2  pt-2'>
             <div className='w-full centerFlex'>
                 <img src={logo.src} className = 'w-3/4'/>
             </div>

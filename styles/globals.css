@@ -393,6 +393,14 @@ blockquote:after {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  .no-vertical-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-vertical-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 @media (max-width: 600px) {
