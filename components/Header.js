@@ -69,7 +69,7 @@ const Header = ({ show, setShow, setSlideIn }) => {
      */
 
   return (
-    <div className="fixed w-full z-20 h-[90px] md:h-[120px] bg-white flex flex-row justify-between items-center px-4 lg:px-8 redBorder">
+    <div className="fixed w-full z-20 h-[90px] md:h-[120px] bg-white flex flex-row justify-between items-center px-4 lg:px-8">
       {/* Logo */}
       <div className="flex flex-row justify-start items-center ">
         <div
