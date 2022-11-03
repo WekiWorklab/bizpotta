@@ -209,13 +209,16 @@ function CreatorTable({ columns, data }) {
       </div>
       {/* table */}
       {select === "table" && (
-        <div className='overflow-x-auto'>
+        // <div className='overflow-x-auto'>
+        <div className="min-w-[1050px] xl:w-full">
           <div className='mt-4 flex flex-col'>
             <div className=''>
-              <div className='py-2 align-middle inline-block min-w-full '>
+              {/* <div className='py-2 align-middle inline-block min-w-full '> */}
+            <div className='  '>
+
                 <div className='shadow overflow-hidden border-b border-[#F0F1EB]'>
                   <table {...getTableProps()} className='min-w-full divide-y divide-gray-200'>
-                    <thead className='bg-gray-50'>
+                    <thead className='bg-gray-50 '>
                       {headerGroups.map((headerGroup) => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
                           {headerGroup.headers.map((column) => (
@@ -247,7 +250,7 @@ function CreatorTable({ columns, data }) {
                         </tr>
                       ))}
                     </thead>
-                    <tbody {...getTableBodyProps()} className='divide-y divide-[#F0F1EB]'>
+                    <tbody {...getTableBodyProps()} className='divide-y divide-[#F0F1EB] '>
                       {page.map((row, i) => {
                         // new
                         prepareRow(row);
