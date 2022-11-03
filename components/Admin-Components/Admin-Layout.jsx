@@ -50,7 +50,7 @@ const MobileAdminSideBar = ({show, setShow, slideIn, setSlideIn}) => {
     return (
         <div className={`${slideIn ? "SideBar" : "NoSideBar" } fixed block lg:hidden overflow-y-scroll no-vertical-scrollbar left-0 top-0 z-30 w-[300px] h-screen max-h-screen rounded-r-xl dropdown-shadow bg-white `}>
             {/* <div className='min-h-screen py-4 '> */}
-            <div className='min-h-[1000px] py-4 '>
+            <div className='min-h-[900px] py-4 '>
             <div className='w-full flex justify-between items-center px-3 '>
                 <img src={logo.src} className = 'w-1/2'/>
                 <MdOutlineCancel className='text-gray-500 text-[24px] cursor-pointer'  onClick={() => {setShow(false); setSlideIn(false) } }/>
