@@ -5,6 +5,24 @@ import learnersService from "../services/LearnersService";
 const useCourse = () => {
   const { handleError, handleSuccess } = useNotification();
 
+  const handleSaveCourse = (course_id) => {
+    return new Promise((resolve) => {
+      setShowLoader(true);
+
+      CreatorService.saveCourse(course_id)
+        .then((res) => {
+          handleSuccess(res?.message);
+          resolve(res?.data);
+        })
+        .catch((error) => {
+          handleError(error);
+        })
+        .finally(() => {
+          setShowLoader(false);
+        });
+    });
+  };
+
   const handleCreatelecture = (data, setShowLoader) => {
     return new Promise((resolve) => {
       setShowLoader(true);
@@ -170,6 +188,7 @@ const useCourse = () => {
     handleCreateResource,
     handleCreateQuiz,
     handleCreateAssignment,
+    handleSaveCourse,
   };
 };
 

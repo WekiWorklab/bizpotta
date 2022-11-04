@@ -16,6 +16,7 @@ import creatorService from "../../../../services/CreatorService";
 import { useQuery } from "@tanstack/react-query";
 import { wordShortner } from "../../../../utils/wordShortner";
 import { Button } from "../../../Auth-Components/Button";
+import useCourse from "../../../../hooks/useCourse";
 
 const FirstContent = () => {
   const dispatch = useDispatch();
@@ -23,10 +24,19 @@ const FirstContent = () => {
   const router = useRouter();
   const { courseId } = router.query;
   const [loading, setLoading] = useState(false);
+  const { saveCourse } = useCourse();
 
   const getSingeCourse = async () => {
     const res = await creatorService.getCourse(courseId);
     return res?.data;
+  };
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    saveCourse(courseId).then((res) => {
+      setLoading(false);
+      router.push(`/creator/course/${courseId}/edit`);
+    });
   };
 
   const { data } = useQuery(["single-courses"], getSingeCourse);
