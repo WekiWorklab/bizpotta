@@ -15,6 +15,7 @@ import { setWeeksArray, deleteLastWeek } from "../../../../store/courseSlice";
 import creatorService from "../../../../services/CreatorService";
 import { useQuery } from "@tanstack/react-query";
 import { wordShortner } from "../../../../utils/wordShortner";
+import { Button } from "../../../Auth-Components/Button";
 
 const FirstContent = () => {
   const dispatch = useDispatch();
@@ -94,8 +95,8 @@ const FirstContent = () => {
           <Button
             className='w-full md:w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16'
             type='button'
-            onClick={handleSubmitLecture}
-            name={" Save changes"}
+            onClick={handleSubmit}
+            name={"Save changes"}
             size={"w-[120px]"}
             loading={loading}
           />
