@@ -15,16 +15,27 @@ import { setWeeksArray, deleteLastWeek } from "../../../../store/courseSlice";
 import creatorService from "../../../../services/CreatorService";
 import { useQuery } from "@tanstack/react-query";
 import { wordShortner } from "../../../../utils/wordShortner";
+import { WButton } from "../../../Auth-Components/Button";
+import useCourse from "../../../../hooks/useCourse";
 
 const FirstContent = () => {
   const dispatch = useDispatch();
   const weeksArray = useSelector((state) => state.course.weeks_array);
   const router = useRouter();
   const { courseId } = router.query;
+  const [loading, setLoading] = useState(false);
+  const { handleSaveCourse } = useCourse();
 
   const getSingeCourse = async () => {
     const res = await creatorService.getCourse(courseId);
     return res?.data;
+  };
+
+  const handleSubmit = async (courseId) => {
+    handleSaveCourse(courseId, setLoading).then((res) => {
+      setLoading(false);
+      // router.push(`/creator/course/${courseId}/edit`);
+    });
   };
 
   const { data } = useQuery(["single-courses"], getSingeCourse);
@@ -90,9 +101,14 @@ const FirstContent = () => {
         </div>
 
         <div className='flex justify-end mt-8'>
-          <button className='w-[150px] h-[40px] flex justify-center items-center text-[13px] hover:text-white font-bold rounded-md hover:bg-darkBlue text-darkBlue bg-white border border-darkBlue hover:border-0'>
-            Save changes
-          </button>
+          <WButton
+            className='w-full md:w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16'
+            type='button'
+            onClick={() => handleSubmit(courseId)}
+            name={"Save changes"}
+            size={"w-[150px]"}
+            loading={loading}
+          />
         </div>
       </div>
     </div>
@@ -247,10 +263,12 @@ const WeekSection = ({ week_no, course_week }) => {
                   onClick={() =>
                     router.push({
                       pathname: "/creators/courses/create/structure",
-                      query: { type: "resource", week_no: week_no },
+                      query: { type: "resource", week_no: week_no, courseId: courseId, week_title: weekTitle },
                     })
                   }
-                ></div>
+                >
+                  <p>{course_week ? wordShortner(course_week?.week_resources?.description, 150) : ""}</p>
+                </div>
               </div>
             </div>
 
@@ -275,10 +293,13 @@ const WeekSection = ({ week_no, course_week }) => {
                         type: "quiz",
                         week_no: week_no,
                         courseId: courseId,
+                        week_title: weekTitle,
                       },
                     })
                   }
-                ></div>
+                >
+                  <p>{course_week?.week_test?.length > 0 ? "Quiz Submitted" : ""}</p>
+                </div>
               </div>
             </div>
 
@@ -299,10 +320,12 @@ const WeekSection = ({ week_no, course_week }) => {
                   onClick={() =>
                     router.push({
                       pathname: "/creators/courses/create/structure",
-                      query: { type: "assignment", week_no: week_no },
+                      query: { type: "assignment", week_no: week_no, courseId: courseId, week_title: weekTitle },
                     })
                   }
-                ></div>
+                >
+                  <p>{course_week ? wordShortner(course_week?.week_assignments?.description, 150) : ""}</p>
+                </div>
               </div>
             </div>
           </div>

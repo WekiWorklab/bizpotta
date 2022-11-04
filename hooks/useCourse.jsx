@@ -5,6 +5,24 @@ import learnersService from "../services/LearnersService";
 const useCourse = () => {
   const { handleError, handleSuccess } = useNotification();
 
+  const handleSaveCourse = (course_id, setShowLoader) => {
+    return new Promise((resolve) => {
+      setShowLoader(true);
+
+      CreatorService.saveCourse(course_id)
+        .then((res) => {
+          handleSuccess(res?.message);
+          resolve(res?.data);
+        })
+        .catch((error) => {
+          handleError(error);
+        })
+        .finally(() => {
+          setShowLoader(false);
+        });
+    });
+  };
+
   const handleCreatelecture = (data, setShowLoader) => {
     return new Promise((resolve) => {
       setShowLoader(true);
@@ -27,6 +45,40 @@ const useCourse = () => {
       setShowLoader(true);
 
       CreatorService.createResource(data)
+        .then((res) => {
+          handleSuccess(res?.message);
+          resolve(res?.data);
+        })
+        .catch((error) => {
+          handleError(error);
+        })
+        .finally(() => {
+          setShowLoader(false);
+        });
+    });
+  };
+  const handleCreateQuiz = (data, setShowLoader) => {
+    return new Promise((resolve) => {
+      setShowLoader(true);
+
+      CreatorService.createQuiz(data)
+        .then((res) => {
+          handleSuccess(res?.message);
+          resolve(res?.data);
+        })
+        .catch((error) => {
+          handleError(error);
+        })
+        .finally(() => {
+          setShowLoader(false);
+        });
+    });
+  };
+  const handleCreateAssignment = (data, setShowLoader) => {
+    return new Promise((resolve) => {
+      setShowLoader(true);
+
+      CreatorService.createAssignment(data)
         .then((res) => {
           handleSuccess(res?.message);
           resolve(res?.data);
@@ -120,7 +172,7 @@ const useCourse = () => {
           resolve(res?.data);
         })
         .catch((error) => {
-          reject(error)
+          reject(error);
           // handleError(error);
         });
     });
@@ -134,6 +186,9 @@ const useCourse = () => {
     getMyCourses,
     getMyCourse,
     handleCreateResource,
+    handleCreateQuiz,
+    handleCreateAssignment,
+    handleSaveCourse,
   };
 };
 

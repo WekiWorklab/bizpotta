@@ -9,7 +9,7 @@ import { setQuizArray } from "../../../../store/courseSlice";
 import { TextEditor } from "../../../TextEditor";
 import { TextEditorNotesModal } from "./TextEditorNotesModal";
 import useCourse from "../../../../hooks/useCourse";
-import { Button } from "../../../Auth-Components/Button";
+import { Button, WButton } from "../../../Auth-Components/Button";
 
 const EditWeek = () => {
   const router = useRouter();
@@ -60,7 +60,9 @@ export default EditWeek;
 const QuizEdit = ({}) => {
   const quiz_no = useSelector((state) => state.course.quiz_array);
   const dispatch = useDispatch();
-  // console.log(quiz_no);
+  const [loading, setLoading] = useState(false);
+  const { handleCreateQuiz } = useCourse();
+  const router = useRouter();
 
   const [quiz_data, setQuizQuestions] = useState({});
   const [quiz_options, setQuizOptions] = useState({});
@@ -91,25 +93,7 @@ const QuizEdit = ({}) => {
     } else return;
   };
 
-  // const handleSubmitQuiz = () => {
-  //   let data = [];
-
-  //   let question = {
-  //     question: "Whatever",
-  //     options: [
-  //       {
-  //         name: "Who Knows",
-  //         isCorrect: false,
-  //       },
-  //     ],
-  //   };
-  // };
-
   const SaveChanges = () => {
-    console.log(`Quiz Questions:`, quiz_data);
-    console.log(`Quiz Options:`, quiz_options);
-    console.log(`Quiz Correct:`, quiz_correct);
-
     let data = [];
 
     for (let i = 1; i <= quiz_no.length; i++) {
@@ -149,6 +133,28 @@ const QuizEdit = ({}) => {
     console.log(data);
 
     setFinalData(...data);
+
+    setLoading(true);
+
+    let quizData = {
+      course_id: router.query.courseId,
+      week_no: router.query.week_no,
+      week_title: router.query.week_title,
+      quizData: data,
+    };
+
+    setTimeout(() => {
+      handleCreateQuiz(quizData, setLoading)
+        .then((res) => {
+          router.push(`/creators/courses/create?courseId=${router.query.courseId}`);
+        })
+        .catch((err) => {
+          toast.error("Something went wrong");
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }, 1000);
   };
 
   const HandleQuestionsChange = (e) => {
@@ -183,26 +189,23 @@ const QuizEdit = ({}) => {
         ))}
       </form>
 
-      <div className="mt-6">
-        <div
-          className="w-[120px]  h-[35px] centerFlex rounded-md bg-darkBlue text-[13px] text-white"
-          onClick={() => {
-            AddQuestion();
-          }}
-        >
-          Add question {quiz_no.length + 1}
-        </div>
-      </div>
+      <div className='mt-6 flex justify-between items-center'>
+        <Button
+          className='w-full md:w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16'
+          type='button'
+          onClick={AddQuestion}
+          name={`Add question ${quiz_no.length + 1}`}
+          size={"w-[120px] mt-10"}
+        />
 
-      <div className="mt-6">
-        <div
-          className="w-[120px]  h-[35px] centerFlex rounded-md bg-darkBlue text-[13px] text-white"
-          onClick={() => {
-            SaveChanges();
-          }}
-        >
-          Save Changes
-        </div>
+        <WButton
+          className='w-full md:w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16'
+          type='button'
+          onClick={SaveChanges}
+          name={"Submit"}
+          size={"w-[120px] mt-10"}
+          loading={loading}
+        />
       </div>
     </div>
   );
@@ -263,6 +266,7 @@ const Quiz = ({
 };
 
 const ResourceEdit = ({ API_KEY, courseId, weekId, week_title }) => {
+  const router = useRouter();
   const { handleCreateResource } = useCourse();
   const [loading, setLoading] = useState(false);
   const [inputValue, setInputValue] = useState({
@@ -287,9 +291,18 @@ const ResourceEdit = ({ API_KEY, courseId, weekId, week_title }) => {
   };
 
   const handleSubmitResource = () => {
+    if (!textValue) return toast.error("Please enter the resource message");
+    if (!file.length) return toast.error("Please upload the resource file");
+
+    let images = [];
+
+    file.forEach((el) => {
+      images.push(el);
+    });
+    setLoading(true);
     const data = {
       description: textValue,
-      files: file,
+      files: [...images],
       links: [
         { link: inputValue.value1 },
         { link: inputValue.value3 },
@@ -300,33 +313,32 @@ const ResourceEdit = ({ API_KEY, courseId, weekId, week_title }) => {
     };
 
     const formData = new FormData();
-    formData.append("files", file);
+
+    // formData.append("files", data.files);
+    for (let i = 0; i < data.files.length; i++) {
+      formData.append("files[]", file[i]);
+    }
+
     formData.append("description", textValue);
     formData.append("links", JSON.stringify(data.links));
     formData.append("courseId", courseId);
     formData.append("weekId", weekId);
     formData.append("week_title", week_title);
 
-    handleCreateResource(formData, setLoading).then((res) => {
-      console.log(res);
-    });
+    handleCreateResource(formData, setLoading)
+      .then(() => {
+        router.push(`/creators/courses/create?courseId=${courseId}`);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
-
-  console.log(file);
 
   const addFile = (e) => {
     e.preventDefault();
-
-    if (e.target.files[0]) {
-      var pendingFiles = [...file];
-
-      console.log(Array.from(e.target.files));
-
-      for (let i = 0; i < e.target.files.length; i++) {
-        console.log(e.target.files[i]); // DISPLAYS EACH FILE
-        pendingFiles = [...file, e.target.files[i].name];
-        setFile(pendingFiles);
-      }
+    // upload multiple files
+    for (let i = 0; i < e.target.files.length; i++) {
+      setFile((prev) => [...prev, e.target.files[i]]);
     }
   };
 
@@ -352,8 +364,9 @@ const ResourceEdit = ({ API_KEY, courseId, weekId, week_title }) => {
           type="file"
           id="file"
           multiple
-          accept=".pdf, .docx, .pptx, .xslx, .png, .jpeg"
-          className="hidden"
+          name='file[]'
+          accept='.pdf, .docx, .pptx, .xslx, .png, .jpeg'
+          className='hidden'
           onChange={(e) => addFile(e)}
           ref={uploadFileRef}
         />
@@ -437,8 +450,33 @@ const ResourceEdit = ({ API_KEY, courseId, weekId, week_title }) => {
   );
 };
 
-const AssignmentEdit = ({ API_KEY }) => {
+const AssignmentEdit = ({ API_KEY, courseId, weekId, week_title }) => {
   const [textValue, setTextValue] = useState("");
+  const [loading, setLoading] = useState(false);
+  const { handleCreateAssignment } = useCourse();
+  const router = useRouter();
+
+  const handleSubmitAssignment = async () => {
+    if (textValue === "") {
+      toast.error("Please enter a assignment note");
+      return;
+    }
+
+    let data = {
+      course_id: courseId,
+      week_no: weekId,
+      assignment_note: textValue,
+      week_title: week_title,
+    };
+
+    handleCreateAssignment(data, setLoading)
+      .then(() => {
+        router.push(`/creators/courses/create?courseId=${courseId}`);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
 
   return (
     <div className="w-full">
@@ -447,9 +485,14 @@ const AssignmentEdit = ({ API_KEY }) => {
         <TextEditorNotesModal api_key={API_KEY} setValue={setTextValue} />
       </div>
 
-      <button className="w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16">
-        Save Changes
-      </button>
+      <Button
+        className='w-full md:w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16'
+        type='button'
+        onClick={handleSubmitAssignment}
+        name={"Save changes"}
+        size={"mt-16 w-[120px]"}
+        loading={loading}
+      />
     </div>
   );
 };
