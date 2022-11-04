@@ -23,8 +23,6 @@ export const ContentCard = ({ data, type }) => {
 
   const dispatch = useDispatch();
 
-  const name =
-    "kjjhgvbn;iuhygjhmb,nmhbvihuFvhsjaiouyjGVHbniudbaegujnm;lkjgbnm.";
 
   return (
     <div

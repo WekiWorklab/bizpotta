@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
+import { FcCheckmark } from 'react-icons/fc'
 import { toast } from 'react-toastify'
 import { Button } from '../Auth-Components/Button'
 
@@ -13,7 +14,6 @@ const StudentQuiz = () => {
   const [answers, setAnswers] = useState({question1: "", question2: "", question3: "", question4: "", question5: "", question6: "", question7: "", question8: "", question9: "", question10: "", })
 
   // final store for question and answer
-  // const [finalAns, setFinalAns] = useState([])
   const finalAns = []
 
 
@@ -27,8 +27,8 @@ const StudentQuiz = () => {
 
         <QuizForSubmission quizState = {quizState} setQuizState = {setQuizState} answers = {answers} setAnswers = {setAnswers} finalAns = {finalAns}/> :
         
-        // <QuizAnsReview />
-        null
+        <QuizAnsReview />
+        // null
         
         }
 
@@ -91,11 +91,11 @@ const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalA
     for (const[key, value] of Object.entries(answers)) {
       let question_id = Number(key.split("question")[1])
       finalAns.push({question_id: question_id, answer_id: value})
-      console.log(finalAns)
-      setQuizState(false)
     }
-
     console.log(finalAns)
+
+    setQuizState(false)     
+
 
   } 
 
@@ -122,9 +122,15 @@ const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalA
 const QuestionCard = ({el, quizState, answers, setAnswers, returnedData}) => {
   // console.log(el)
   const [option, setOption] = useState(null)
+  const [localAns, setLocalAns] = useState() //for answers stored in local storage
+
+  // for fetching the answers stored in local storage
+  // useEffect(() => {
+  //   const rawAns = localStorage.getItem("answers", )
+  //   setLocalAns([...JSON.parse(rawAns)])
+  // }, [])
 
   const handleClick = (optionId) => {
-
     if(quizState) {
       setOption(optionId)
       setAnswers(prev => ({...prev, [`question${el.question.id}`]: optionId }))
@@ -133,6 +139,8 @@ const QuestionCard = ({el, quizState, answers, setAnswers, returnedData}) => {
       // .....
     }
   }
+
+  console.log(localAns)
 
   return (
     <div className = "redBorder">
@@ -150,38 +158,75 @@ const QuestionCard = ({el, quizState, answers, setAnswers, returnedData}) => {
               {quizState ?
                 <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == el.question.test_answer[0].id ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(el.question.test_answer[0].id)} />
                 :
-                <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == el.question.test_answer[0].id ? "bg-darkBlue" : "bg-white" } `}/>
+                (returnedData ? <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${returnedData.results[el.question.id - 1].answer_id == 1  ? "bg-darkBlue" : "bg-white" } `}/> : null)
               }
             </div>
-            {/* {
+            {/* This is for controlling the good mark or bad mark sign is shown for the option */}
+            {
               !quizState ? (
-                
+                returnedData.results[el.question.id - 1].correct_id == 1 ? <FcCheckmark /> : <p className='text-[14px] text-red-500 font-bold'>X</p>
                 ) : null
-              } */}
+              }
           </div>
+
+
           <div className='flex items-center gap-x-3'>
             <div className='w-full sm:w-[400px] lg:w-[550px] text-[14px] lg:text-base h-[55px] bg-[#F3F3F3] flex items-center justify-between px-3 rounded-md' >
               <p className='break-words'>{el.question.test_answer[1].title}</p>
+              {quizState ? 
               <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == el.question.test_answer[1].id ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(el.question.test_answer[1].id)} />
+                :
+                (returnedData ? <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${returnedData.results[el.question.id - 1].answer_id == 2  ? "bg-darkBlue" : "bg-white" } `}/> : null)
+              }
             </div>
+            {/* This is for controlling the good mark or bad mark sign is shown for the option */}
+            {
+              !quizState ? (
+                returnedData.results[el.question.id - 1].correct_id == 2 ? <FcCheckmark /> : <p className='text-[14px] text-red-500 font-bold'>X</p>
+                ) : null
+              }
           </div>
+
+
 
           <div className='flex items-center gap-x-3'>
             <div className='w-full sm:w-[400px] lg:w-[550px] text-[14px] lg:text-base h-[55px] bg-[#F3F3F3] flex items-center justify-between px-3 rounded-md' >
               <p className='break-words'>{el.question.test_answer[2].title}</p>
-              <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == el.question.test_answer[2].id ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(el.question.test_answer[2].id)} />
+              {quizState ? 
+                <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == el.question.test_answer[2].id ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(el.question.test_answer[2].id)} />
+                :
+                (returnedData ? <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${returnedData.results[el.question.id - 1].answer_id == 3  ? "bg-darkBlue" : "bg-white" } `}/> : null)
+              }
             </div>
+            {/* This is for controlling the good mark or bad mark sign is shown for the option */}
+            {
+              !quizState ? (
+                returnedData.results[el.question.id - 1].correct_id == 3 ? <FcCheckmark /> : <p className='text-[14px] text-red-500 font-bold'>X</p>
+                ) : null
+              }
           </div>
+
+
 
           <div className='flex items-center gap-x-3'>
             <div className='w-full sm:w-[400px] lg:w-[550px] text-[14px] lg:text-base h-[55px] bg-[#F3F3F3] flex items-center justify-between px-3 rounded-md' >
               <p className='break-words'>{el.question.test_answer[3].title}</p>
-              <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == el.question.test_answer[3].id ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(el.question.test_answer[3].id)} />
+              {quizState ? 
+                <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == el.question.test_answer[3].id ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(el.question.test_answer[3].id)} />
+              :
+              (returnedData ? <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${returnedData.results[el.question.id - 1].answer_id == 4  ? "bg-darkBlue" : "bg-white" } `}/> : null)
+              }
             </div>
+            {/* This is for controlling the good mark or bad mark sign is shown for the option */}
+            {
+              !quizState ? (
+                returnedData.results[el.question.id - 1].correct_id == 4 ? <FcCheckmark /> : <p className='text-[14px] text-red-500 font-bold'>X</p>
+                ) : null
+              }
           </div>
+
+
         </div>
-
-
     </div>
 
   )
@@ -195,7 +240,7 @@ const returnedData = {
   results: [ 
     {
     question_id: 1,
-    answer_id: 2,
+    answer_id: 1,
     correct_id: 2
     },
     {
@@ -205,22 +250,22 @@ const returnedData = {
     },
     {
       question_id: 3,
-      answer_id: 4,
+      answer_id: 3,
       correct_id: 4
     },
     {
       question_id: 4,
-      answer_id: 3,
+      answer_id: 4,
       correct_id: 3
     },
     {
       question_id: 5,
-      answer_id: 1,
+      answer_id: 3,
       correct_id: 1
     },
     {
       question_id: 6,
-      answer_id: 4,
+      answer_id: 2,
       correct_id: 1
     }
 ]

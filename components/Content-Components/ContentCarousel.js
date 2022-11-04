@@ -61,26 +61,31 @@ export const StudentLoadingCardSection = ({ contentTitle }) => {
 };
 
 export const ContentCardSection = ({ data, contentTitle, courseType }) => {
-
   // console.log(data, contentTitle)
   return (
-    <div className = "">
-    {data.length > 0 ? <div className="flex flex-col">
-      <p className="text-[14px] text-start   mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
-        {contentTitle}
-      </p>
-      <div className="pt-3 rounded-sm">
-        <div className="block w-full sm:w-[400px] md:hidden ">
-          <ContentCarousel data={data} screen={[1.5, 10]} type={courseType} />
+    <div className="">
+      {data.length > 0 ? (
+        <div className="flex flex-col">
+          <p className="text-[14px] text-start   mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
+            {contentTitle}
+          </p>
+          <div className="pt-3 rounded-sm">
+            <div className="block w-full sm:w-[400px] md:hidden ">
+              <ContentCarousel
+                data={data}
+                screen={[1.5, 10]}
+                type={courseType}
+              />
+            </div>
+            <div className="hidden md:block lg:hidden w-full">
+              <ContentCarousel data={data} screen={[2, 20]} type={courseType} />
+            </div>
+            <div className="hidden lg:block w-full">
+              <ContentCarousel data={data} screen={[4, 30]} type={courseType} />
+            </div>
+          </div>
         </div>
-        <div className="hidden md:block lg:hidden w-full">
-          <ContentCarousel data={data} screen={[2, 20]} type={courseType} />
-        </div>
-        <div className="hidden lg:block w-full">
-          <ContentCarousel data={data} screen={[4, 30]} type={courseType} />
-        </div>
-      </div>
-    </div> : null}
+      ) : null}
     </div>
   );
 };
@@ -122,25 +127,28 @@ export const StudentContentCardSection = ({
 }) => {
   return (
     <div>
-    {data?.length > 0 ? 
+      {data?.length > 0 ? (
         <div className="flex flex-col">
-        <p className="text-[14px] text-start mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
-          {contentTitle}
-        </p>
-        <div className="pt-3 rounded-sm">
-          <div className="block w-full sm:w-[400px] md:hidden w-full ">
-            <ContentCarousel data={data} screen={[1.5, 10]} type={courseType} />
-          </div>
-          <div className="hidden md:block lg:hidden w-full">
-            <ContentCarousel data={data} screen={[2, 20]} />
-          </div>
-          <div className="hidden lg:block w-full">
-            <ContentCarousel data={data} screen={[3, 30]} type={courseType} />
+          <p className="text-[14px] text-start mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
+            {contentTitle}
+          </p>
+          <div className="pt-3 rounded-sm">
+            <div className="block w-full sm:w-[400px] md:hidden w-full ">
+              <ContentCarousel
+                data={data}
+                screen={[1.5, 10]}
+                type={courseType}
+              />
+            </div>
+            <div className="hidden md:block lg:hidden w-full">
+              <ContentCarousel data={data} screen={[2, 20]} />
+            </div>
+            <div className="hidden lg:block w-full">
+              <ContentCarousel data={data} screen={[3, 30]} type={courseType} />
+            </div>
           </div>
         </div>
-      </div>
-        : null
-        }
+      ) : null}
     </div>
   );
 };
@@ -230,15 +238,16 @@ export const CourseCategories = () => {
     console.log(Id);
     // const res = await studentService.getVCCourses(Id.queryKey[1]);
     const res = await studentService.getVCCourses(Id);
-    console.log(res?.data)
+    console.log(res?.data);
     return res?.data;
   };
-
 
   const query = useQuery(["course_cat"], fetchCourseCategories);
   // const { data, isLoading } = useQuery(["courses", catId], fetchCourses);
 
-  const { data, isLoading } = useQuery(["courses", catId], () => fetchCourses(catId));
+  const { data, isLoading } = useQuery(["courses", catId], () =>
+    fetchCourses(catId)
+  );
 
   if (isLoading) {
     return (
