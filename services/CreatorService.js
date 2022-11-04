@@ -66,6 +66,16 @@ const createResource = async (data) => {
     return res.data;
   });
 };
+const createQuiz = async (data) => {
+  return AxoisApi.post(`${APIS.TUTORS.CREATE_QUIZ}`, data).then((res) => {
+    return res.data;
+  });
+};
+const createAssignment = async (data) => {
+  return AxoisApi.post(`${APIS.TUTORS.CREATE_ASSIGNMENT}`, data).then((res) => {
+    return res.data;
+  });
+};
 
 const creatorService = {
   onBoardMentor,
@@ -77,6 +87,8 @@ const creatorService = {
   getCourse,
   createLecture,
   createResource,
+  createQuiz,
+  createAssignment,
 };
 
 export default creatorService;

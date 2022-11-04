@@ -21,6 +21,7 @@ const FirstContent = () => {
   const weeksArray = useSelector((state) => state.course.weeks_array);
   const router = useRouter();
   const { courseId } = router.query;
+  const [loading, setLoading] = useState(false);
 
   const getSingeCourse = async () => {
     const res = await creatorService.getCourse(courseId);
@@ -90,6 +91,14 @@ const FirstContent = () => {
         </div>
 
         <div className='flex justify-end mt-8'>
+          <Button
+            className='w-full md:w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16'
+            type='button'
+            onClick={handleSubmitLecture}
+            name={" Save changes"}
+            size={"w-[120px]"}
+            loading={loading}
+          />
           <button className='w-[150px] h-[40px] flex justify-center items-center text-[13px] hover:text-white font-bold rounded-md hover:bg-darkBlue text-darkBlue bg-white border border-darkBlue hover:border-0'>
             Save changes
           </button>
@@ -247,10 +256,12 @@ const WeekSection = ({ week_no, course_week }) => {
                   onClick={() =>
                     router.push({
                       pathname: "/creators/courses/create/structure",
-                      query: { type: "resource", week_no: week_no },
+                      query: { type: "resource", week_no: week_no, courseId: courseId, week_title: weekTitle },
                     })
                   }
-                ></div>
+                >
+                  <p>{course_week ? wordShortner(course_week?.week_resources?.description, 150) : ""}</p>
+                </div>
               </div>
             </div>
 
@@ -275,10 +286,13 @@ const WeekSection = ({ week_no, course_week }) => {
                         type: "quiz",
                         week_no: week_no,
                         courseId: courseId,
+                        week_title: weekTitle,
                       },
                     })
                   }
-                ></div>
+                >
+                  <p>{course_week?.week_test?.length > 0 ? "Quiz Submitted" : ""}</p>
+                </div>
               </div>
             </div>
 
@@ -299,10 +313,12 @@ const WeekSection = ({ week_no, course_week }) => {
                   onClick={() =>
                     router.push({
                       pathname: "/creators/courses/create/structure",
-                      query: { type: "assignment", week_no: week_no },
+                      query: { type: "assignment", week_no: week_no, courseId: courseId, week_title: weekTitle },
                     })
                   }
-                ></div>
+                >
+                  <p>{course_week ? wordShortner(course_week?.week_assignments?.description, 150) : ""}</p>
+                </div>
               </div>
             </div>
           </div>

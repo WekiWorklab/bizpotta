@@ -39,6 +39,40 @@ const useCourse = () => {
         });
     });
   };
+  const handleCreateQuiz = (data, setShowLoader) => {
+    return new Promise((resolve) => {
+      setShowLoader(true);
+
+      CreatorService.createQuiz(data)
+        .then((res) => {
+          handleSuccess(res?.message);
+          resolve(res?.data);
+        })
+        .catch((error) => {
+          handleError(error);
+        })
+        .finally(() => {
+          setShowLoader(false);
+        });
+    });
+  };
+  const handleCreateAssignment = (data, setShowLoader) => {
+    return new Promise((resolve) => {
+      setShowLoader(true);
+
+      CreatorService.createAssignment(data)
+        .then((res) => {
+          handleSuccess(res?.message);
+          resolve(res?.data);
+        })
+        .catch((error) => {
+          handleError(error);
+        })
+        .finally(() => {
+          setShowLoader(false);
+        });
+    });
+  };
 
   const purchaseCourse = (data, setShowLoader) => {
     return new Promise((resolve) => {
@@ -120,7 +154,7 @@ const useCourse = () => {
           resolve(res?.data);
         })
         .catch((error) => {
-          reject(error)
+          reject(error);
           // handleError(error);
         });
     });
@@ -134,6 +168,8 @@ const useCourse = () => {
     getMyCourses,
     getMyCourse,
     handleCreateResource,
+    handleCreateQuiz,
+    handleCreateAssignment,
   };
 };
 

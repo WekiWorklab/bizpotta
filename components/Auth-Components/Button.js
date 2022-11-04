@@ -19,6 +19,24 @@ const Button = ({ name, loading, type, size, onClick }) => {
   );
 };
 
+const WButton = ({ name, loading, type, size, onClick }) => {
+  return (
+    <button
+      type={type}
+      disabled={loading}
+      onClick={onClick}
+      className={
+        size
+          ? `${size} gap-2 h-[45px] flex justify-center items-center bg-white text-darkBlue text-sm rounded-md hover:bg-white hover:text-darkBlue hover:text-sm border-[1px] hover:font-bold border-darkBlue `
+          : "w-[330px] gap-2 h-[45px] flex justify-center items-center bg-white text-darkBlue text-sm rounded-md hover:bg-white hover:text-darkBlue hover:text-sm border-[1px] hover:font-bold border-darkBlue "
+      }
+    >
+      {name}
+      {loading ? <Spinner /> : null}
+    </button>
+  );
+};
+
 const Spinner = () => {
   return (
     <svg
@@ -55,4 +73,4 @@ const WhiteButton = ({ name, loading, type, onClick }) => {
   );
 };
 
-export { Button, WhiteButton };
+export { Button, WhiteButton, WButton };
