@@ -1,13 +1,13 @@
-import React from 'react'
-import Content from '../../../components/Grades-Components/Content'
-import NewLayout from '../../../components/Layout-Components/NewLayout'
+import React from "react";
+import Content from "../../../components/Grades-Components/Content";
+import NewLayout from "../../../components/Layout-Components/NewLayout";
 
 const index = () => {
   return (
     <NewLayout>
-        <Content/>
+      <Content />
     </NewLayout>
-  )
-}
+  );
+};
 
-export default index
+export default index;

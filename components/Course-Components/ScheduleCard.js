@@ -29,6 +29,18 @@ const ScheduleCard = ({ data, index }) => {
   const desc =
     "Facilisis quis sem convallis odio pellentesque. Convallis leo urna eleifend tellus ut vel amet ullamcorper nunc. Sit mauris pellentesque pellentesque aenean amet massa eget vitae. Duis lacus, hendrerit urna sit bibendum. Et enim sapien dictum egestas platea. Facilisi pretium eget nibh nam arcu. Cras etiam pellentesque dui tempor purus porttitor nec ut. Velit viverra lectus a vel faucibus sed id integer at.";
 
+
+    const handleToQuiz = () => {
+      router.push({
+        pathname: `/students/quiz/[id]/week/[weekId]`,
+        query: {
+          id: data?.course_id,
+          weekId: data?.id
+        }
+      })
+    }
+
+
   return (
     <div className="w-full lg:w-full mt-4">
       <div className="h-16 md:h-14 bg-darkBlue  text-white flex flex-row justify-between  md:justify-between px-4 md:pl-6 md:pr-10 items-center">
@@ -48,19 +60,19 @@ const ScheduleCard = ({ data, index }) => {
       </div>
 
       <div className="bg-white gap-y-[20px] grid grid-cols-1 md:grid-cols-2 px-14 md:px-10 py-6 Group">
-        <div className=" flex flex-row items-center">
+        <div className=" flex flex-row items-center cursor-pointer">
           <div className="w-8 h-8 rounded-full border-2 border-darkBlue"></div>
           <p className="ml-8">Lecture</p>
         </div>
-        <div className=" flex flex-row items-center">
+        <div className=" flex flex-row items-center cursor-pointer" onClick={() => handleToQuiz()}>
           <div className="w-8 h-8 rounded-full border-2 border-darkBlue"></div>
-          <p className="ml-8">Notes</p>
+          <p className="ml-8">Quiz</p>
         </div>
-        <div className=" flex flex-row items-center">
+        <div className=" flex flex-row items-center cursor-pointer">
           <div className="w-8 h-8 rounded-full border-2 border-darkBlue bg-gray-100"></div>
           <p className="ml-8">Assignment</p>
         </div>
-        <div className="relative flex flex-row items-center ">
+        <div className="relative flex flex-row items-center cursor-pointer">
           <div className="w-8 h-8 rounded-full border-2 border-darkBlue "></div>
           <div className="ml-8 flex flex-row items-center flex-grow-[1] justify-between pr-12">
             <p>Description</p>

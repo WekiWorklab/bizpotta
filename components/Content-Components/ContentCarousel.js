@@ -122,7 +122,7 @@ export const StudentContentCardSection = ({
 }) => {
   return (
     <div>
-    {data.length > 0 ? 
+    {data?.length > 0 ? 
         <div className="flex flex-col">
         <p className="text-[14px] text-start mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
           {contentTitle}
