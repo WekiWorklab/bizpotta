@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import React from 'react'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
@@ -26,7 +27,9 @@ const StudentQuiz = () => {
 
         <QuizForSubmission quizState = {quizState} setQuizState = {setQuizState} answers = {answers} setAnswers = {setAnswers} finalAns = {finalAns}/> :
         
+        // <QuizAnsReview />
         null
+        
         }
 
 
@@ -41,11 +44,38 @@ const StudentQuiz = () => {
 export default StudentQuiz
 
 
-const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalAns}) => {
 
-  /**
-   * 
-   */
+const QuizAnsReview = ( {quizState, setQuizState, answers, setAnswers, finalAns}) => {
+
+  const router = useRouter()
+
+  const handleButton = () => {
+    router.push(`/students/quiz/${router.query.id}`)
+  }
+
+
+
+  return (
+    <div className='w-full flex flex-col gap-y-16'>
+    {/* Questions */}
+    {
+      quizData.map((el, index) => (
+        <QuestionCard key={index} el={el} quizState={quizState} answers = {answers} setAnswers = {setAnswers} returnedData = {returnedData} />
+      ))
+    }
+
+    <div className='w-full flex justify-end lg:px-20'>
+        <Button onClick={handleButton} size = "w-[150px]" name = "Continue"/>
+    </div>
+
+    </div>
+  )
+
+
+} 
+
+
+const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalAns}) => {
 
   const handleButton = () => {
     console.log(answers)
@@ -61,6 +91,8 @@ const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalA
     for (const[key, value] of Object.entries(answers)) {
       let question_id = Number(key.split("question")[1])
       finalAns.push({question_id: question_id, answer_id: value})
+      console.log(finalAns)
+      setQuizState(false)
     }
 
     console.log(finalAns)
@@ -87,7 +119,7 @@ const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalA
 }
 
 
-const QuestionCard = ({el, quizState, answers, setAnswers}) => {
+const QuestionCard = ({el, quizState, answers, setAnswers, returnedData}) => {
   // console.log(el)
   const [option, setOption] = useState(null)
 
@@ -115,7 +147,11 @@ const QuestionCard = ({el, quizState, answers, setAnswers}) => {
           <div className='flex items-center gap-x-3'>
             <div className='w-full sm:w-[400px] lg:w-[550px] text-[14px] lg:text-base h-[55px] bg-[#F3F3F3] flex items-center justify-between px-3 rounded-md' >
               <p className='break-words'>{el.question.test_answer[0].title}</p>
-              <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == el.question.test_answer[0].id ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(el.question.test_answer[0].id)} />
+              {quizState ?
+                <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == el.question.test_answer[0].id ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(el.question.test_answer[0].id)} />
+                :
+                <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == el.question.test_answer[0].id ? "bg-darkBlue" : "bg-white" } `}/>
+              }
             </div>
             {/* {
               !quizState ? (
@@ -152,6 +188,43 @@ const QuestionCard = ({el, quizState, answers, setAnswers}) => {
 }
 
 
+
+
+const returnedData = {
+  total: 10,
+  results: [ 
+    {
+    question_id: 1,
+    answer_id: 2,
+    correct_id: 2
+    },
+    {
+      question_id: 2,
+      answer_id: 2,
+      correct_id: 1
+    },
+    {
+      question_id: 3,
+      answer_id: 4,
+      correct_id: 4
+    },
+    {
+      question_id: 4,
+      answer_id: 3,
+      correct_id: 3
+    },
+    {
+      question_id: 5,
+      answer_id: 1,
+      correct_id: 1
+    },
+    {
+      question_id: 6,
+      answer_id: 4,
+      correct_id: 1
+    }
+]
+}
 
 
 const quizData = [
