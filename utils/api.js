@@ -40,6 +40,7 @@ export const APIS = {
     CREATE_RESOURCE: `${api}/creators/create-resource`,
     CREATE_QUIZ: `${api}/creators/create-quiz`,
     CREATE_ASSIGNMENT: `${api}/creators/create-assignment`,
+    SAVE_COURSE: `${api}/creators/save-course`,
   },
   COMPANIES: {
     SET_COMPANY_PREFERENCES: `${api}/creators/set-institue-preferences`,

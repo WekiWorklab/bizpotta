@@ -27,8 +27,8 @@ const WButton = ({ name, loading, type, size, onClick }) => {
       onClick={onClick}
       className={
         size
-          ? `${size} gap-2 h-[45px] flex justify-center items-center bg-white text-darkBlue text-sm rounded-md hover:bg-white hover:text-darkBlue hover:text-sm border-[1px] hover:font-bold border-darkBlue `
-          : "w-[330px] gap-2 h-[45px] flex justify-center items-center bg-white text-darkBlue text-sm rounded-md hover:bg-white hover:text-darkBlue hover:text-sm border-[1px] hover:font-bold border-darkBlue "
+          ? `${size} gap-2 h-[45px] flex justify-center items-center bg-white text-darkBlue text-sm rounded-md hover:text-sm border-[1px] hover:font-bold border-darkBlue hover:bg-darkBlue hover:text-white`
+          : "w-[330px] gap-2 h-[45px] flex justify-center items-center bg-white text-darkBlue text-sm rounded-md hover:text-sm border-[1px] hover:font-bold border-darkBlue  hover:bg-darkBlue hover:text-white"
       }
     >
       {name}

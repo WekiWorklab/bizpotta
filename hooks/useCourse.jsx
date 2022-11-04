@@ -5,7 +5,7 @@ import learnersService from "../services/LearnersService";
 const useCourse = () => {
   const { handleError, handleSuccess } = useNotification();
 
-  const handleSaveCourse = (course_id) => {
+  const handleSaveCourse = (course_id, setShowLoader) => {
     return new Promise((resolve) => {
       setShowLoader(true);
 

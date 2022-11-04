@@ -15,7 +15,7 @@ import { setWeeksArray, deleteLastWeek } from "../../../../store/courseSlice";
 import creatorService from "../../../../services/CreatorService";
 import { useQuery } from "@tanstack/react-query";
 import { wordShortner } from "../../../../utils/wordShortner";
-import { Button } from "../../../Auth-Components/Button";
+import { WButton } from "../../../Auth-Components/Button";
 import useCourse from "../../../../hooks/useCourse";
 
 const FirstContent = () => {
@@ -24,18 +24,17 @@ const FirstContent = () => {
   const router = useRouter();
   const { courseId } = router.query;
   const [loading, setLoading] = useState(false);
-  const { saveCourse } = useCourse();
+  const { handleSaveCourse } = useCourse();
 
   const getSingeCourse = async () => {
     const res = await creatorService.getCourse(courseId);
     return res?.data;
   };
 
-  const handleSubmit = async () => {
-    setLoading(true);
-    saveCourse(courseId).then((res) => {
+  const handleSubmit = async (courseId) => {
+    handleSaveCourse(courseId, setLoading).then((res) => {
       setLoading(false);
-      router.push(`/creator/course/${courseId}/edit`);
+      // router.push(`/creator/course/${courseId}/edit`);
     });
   };
 
@@ -102,17 +101,14 @@ const FirstContent = () => {
         </div>
 
         <div className='flex justify-end mt-8'>
-          <Button
+          <WButton
             className='w-full md:w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16'
             type='button'
-            onClick={handleSubmit}
+            onClick={() => handleSubmit(courseId)}
             name={"Save changes"}
-            size={"w-[120px]"}
+            size={"w-[150px]"}
             loading={loading}
           />
-          <button className='w-[150px] h-[40px] flex justify-center items-center text-[13px] hover:text-white font-bold rounded-md hover:bg-darkBlue text-darkBlue bg-white border border-darkBlue hover:border-0'>
-            Save changes
-          </button>
         </div>
       </div>
     </div>
