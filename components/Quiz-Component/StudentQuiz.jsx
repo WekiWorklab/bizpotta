@@ -1,27 +1,59 @@
+import { useQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { FcCheckmark } from 'react-icons/fc'
 import { toast } from 'react-toastify'
+import useCourse from '../../hooks/useCourse'
+import learnersService from '../../services/LearnersService'
 import { Button } from '../Auth-Components/Button'
 
 const StudentQuiz = () => {
 
+  const {getMyCourse} = useCourse()
+  const router = useRouter()
+
   const [quizState, setQuizState] = useState(true) // Controls rendering of quiz questions to be answered or quiz questions with answers and results
-
-
   // State for storing the values of the answers for each question
   const [answers, setAnswers] = useState({question1: "", question2: "", question3: "", question4: "", question5: "", question6: "", question7: "", question8: "", question9: "", question10: "", })
 
+  const [courseData, setCourseData ] = useState()
+  const [courseQuiz, setCourseQuiz] = useState()
+
   // final store for question and answer
   const finalAns = []
+  const {id, weekId} = router.query
+  console.log(id, weekId)
+
+   const fetchForQuiz = async (Id) => {
+    const res = await learnersService.getMyCourse(Id.queryKey[1])
+    return res.data
+  }
+
+  // Fetch the data for the quiz here
+  const {data, isLoading} = useQuery(['student_quiz', id ], fetchForQuiz, {
+    onSuccess: (data) => {
+      for (const el of data.course.course_weeks) {
+        if (el.week_number == weekId) {
+          setCourseData(el)
+          setCourseQuiz(el.week_test)
+      }
+      }
+    }
+  })
+  // console.log(data?.course?.course_weeks)
+  console.log('courseData -->', courseData)
+  console.log( "course quiz -->", courseQuiz)
+  /**Note: In the course_weeks array, i used the (weekId - 1) as the index of the element in the array that i will take as the actual course data for that the week.
+   * A better way is to run the onSuccess fucntion after every successsful query and get the required course data anbd corresponding course quiz for that week and store them in state. This was done to reduce length object chaining.
+   */
 
 
   return (
     <div className='relative w-full h-full bg-[#FDFDFD] flex flex-col pt-[90px] md:pt-[120px] md:justify-start items-center md:translate-x-[200px] md:w-[calc(100%-200px)] px-2 lg:px-10  pb-10'>
   
-      <div className='w-full redBorder'>
-        <div className='w-full text-darkText mb-10'> Human Resource Management / Week 2 / Organization Resourses</div>
+      <div className='w-full redBorder mt-10'>
+        <div className='w-full text-darkText mb-10'> {data?.course?.name} / Week {weekId} / {data?.course?.course_weeks[weekId-1].title}</div>
 
        {quizState ?
 
@@ -123,12 +155,6 @@ const QuestionCard = ({el, quizState, answers, setAnswers, returnedData}) => {
   // console.log(el)
   const [option, setOption] = useState(null)
   const [localAns, setLocalAns] = useState() //for answers stored in local storage
-
-  // for fetching the answers stored in local storage
-  // useEffect(() => {
-  //   const rawAns = localStorage.getItem("answers", )
-  //   setLocalAns([...JSON.parse(rawAns)])
-  // }, [])
 
   const handleClick = (optionId) => {
     if(quizState) {
