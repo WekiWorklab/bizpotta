@@ -37,3 +37,10 @@ const MiddleSection = ({ data }) => {
 };
 
 export default MiddleSection;
+
+
+
+/**
+ * Note that week_number was the best identifier available for now for trhe weekId query parameter for routing in this section even though week_number 4 appears twice and 6 is missing. id would have been used as it is unique but the data was not arranged orderly according to id.
+ */
+

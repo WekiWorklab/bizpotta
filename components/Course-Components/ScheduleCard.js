@@ -29,17 +29,16 @@ const ScheduleCard = ({ data, index }) => {
   const desc =
     "Facilisis quis sem convallis odio pellentesque. Convallis leo urna eleifend tellus ut vel amet ullamcorper nunc. Sit mauris pellentesque pellentesque aenean amet massa eget vitae. Duis lacus, hendrerit urna sit bibendum. Et enim sapien dictum egestas platea. Facilisi pretium eget nibh nam arcu. Cras etiam pellentesque dui tempor purus porttitor nec ut. Velit viverra lectus a vel faucibus sed id integer at.";
 
-
-    const handleToQuiz = () => {
-      router.push({
-        pathname: `/students/quiz/[id]/week/[weekId]`,
-        query: {
-          id: data?.course_id,
-          weekId: data?.id
-        }
-      })
-    }
-
+  const handleToQuiz = () => {
+    router.push({
+      pathname: `/students/quiz/[id]/week/[weekId]`,
+      query: {
+        id: data?.course_id,
+        // weekId: data?.id,
+        weekId: data?.week_number
+      },
+    });
+  };
 
   return (
     <div className="w-full lg:w-full mt-4">
@@ -51,7 +50,7 @@ const ScheduleCard = ({ data, index }) => {
         <div
           className="flex flex-row  justify-center md:block cursor-pointer"
           onClick={() =>
-            router.push(`/students/courses/${data?.course_id}/week/${data?.id}`)
+            router.push(`/students/courses/${data?.course_id}/week/${data?.week_number}`)
           }
         >
           <span className="inline  text-[13px] md:mr-4">Go to lesson</span>
@@ -64,7 +63,10 @@ const ScheduleCard = ({ data, index }) => {
           <div className="w-8 h-8 rounded-full border-2 border-darkBlue"></div>
           <p className="ml-8">Lecture</p>
         </div>
-        <div className=" flex flex-row items-center cursor-pointer" onClick={() => handleToQuiz()}>
+        <div
+          className=" flex flex-row items-center cursor-pointer"
+          onClick={() => handleToQuiz()}
+        >
           <div className="w-8 h-8 rounded-full border-2 border-darkBlue"></div>
           <p className="ml-8">Quiz</p>
         </div>
@@ -95,3 +97,8 @@ const ScheduleCard = ({ data, index }) => {
 };
 
 export default ScheduleCard;
+
+
+/**
+ * Note that week_number was the best identifier available for now for trhe weekId query parameter for routing in this section even though week_number 4 appears twice and 6 is missing. id would have been used as it is unique but the data was not arranged orderly according to id.
+ */
