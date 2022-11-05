@@ -36,39 +36,42 @@ const StudentQuiz = () => {
       for (const el of data.course.course_weeks) {
         if (el.week_number == weekId) {
           setCourseData(el)
-          setCourseQuiz(el.week_test)
+          setCourseQuiz(el?.week_test)
       }
       }
     }
   })
   // console.log(data?.course?.course_weeks)
   console.log('courseData -->', courseData)
-  console.log( "course quiz -->", courseQuiz)
+  console.log( "courseQuiz -->", courseQuiz)
   /**Note: In the course_weeks array, i used the (weekId - 1) as the index of the element in the array that i will take as the actual course data for that the week.
-   * A better way is to run the onSuccess fucntion after every successsful query and get the required course data anbd corresponding course quiz for that week and store them in state. This was done to reduce length object chaining.
+   * A better way is to run the onSuccess fucntion after every successsful query and get the required course data and corresponding course quiz for that week and store them in state. This was done to reduce length object chaining.
+   */
+
+  /**
+   * Just in case react query causes rerenders and state changes switch back to useEffect for the api call.
+   * Also in certain cases i didnt use the id for some data because the one coming in from the api is random. Instead i used hard numbers or index of elements in an array
    */
 
 
   return (
     <div className='relative w-full h-full bg-[#FDFDFD] flex flex-col pt-[90px] md:pt-[120px] md:justify-start items-center md:translate-x-[200px] md:w-[calc(100%-200px)] px-2 lg:px-10  pb-10'>
   
-      <div className='w-full redBorder mt-10'>
+      <div className='w-full  mt-10'>
         <div className='w-full text-darkText mb-10'> {data?.course?.name} / Week {weekId} / {data?.course?.course_weeks[weekId-1].title}</div>
 
        {quizState ?
 
-        <QuizForSubmission quizState = {quizState} setQuizState = {setQuizState} answers = {answers} setAnswers = {setAnswers} finalAns = {finalAns}/> :
+        <QuizForSubmission quizState = {quizState} setQuizState = {setQuizState} answers = {answers} setAnswers = {setAnswers} finalAns = {finalAns} courseQuiz = {courseQuiz}/> :
         
-        <QuizAnsReview />
+        <QuizAnsReview courseQuiz = {courseQuiz}/>
         // null
         
         }
 
 
       </div>
-    
-
-        
+            
     </div>
   )
 }
@@ -77,7 +80,7 @@ export default StudentQuiz
 
 
 
-const QuizAnsReview = ( {quizState, setQuizState, answers, setAnswers, finalAns}) => {
+const QuizAnsReview = ( {courseQuiz, quizState, setQuizState, answers, setAnswers, finalAns}) => {
 
   const router = useRouter()
 
@@ -91,8 +94,8 @@ const QuizAnsReview = ( {quizState, setQuizState, answers, setAnswers, finalAns}
     <div className='w-full flex flex-col gap-y-16'>
     {/* Questions */}
     {
-      quizData.map((el, index) => (
-        <QuestionCard key={index} el={el} quizState={quizState} answers = {answers} setAnswers = {setAnswers} returnedData = {returnedData} />
+      courseQuiz?.map((el, index) => (
+        <QuestionCard key={index} el={el} proxyIndex = {index + 1} quizState={quizState} answers = {answers} setAnswers = {setAnswers} returnedData = {returnedData} />
       ))
     }
 
@@ -107,14 +110,14 @@ const QuizAnsReview = ( {quizState, setQuizState, answers, setAnswers, finalAns}
 } 
 
 
-const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalAns}) => {
+const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalAns, courseQuiz}) => {
 
   const handleButton = () => {
     console.log(answers)
 
     // Check if all the questions were answered
     for (const [key, value] of Object.entries(answers)) {
-      if (value == "" && Number(key.split("question")[1]) <= quizData.length ) {
+      if (value == "" && Number(key.split("question")[1]) <= courseQuiz.length ) {
         toast.error(`Please ${key} was not answered`)
         return
       }
@@ -125,10 +128,7 @@ const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalA
       finalAns.push({question_id: question_id, answer_id: value})
     }
     console.log(finalAns)
-
-    setQuizState(false)     
-
-
+    setQuizState(false)  //switch from QuizForSubmission to QuizAnsReview
   } 
 
   return (
@@ -136,8 +136,8 @@ const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalA
     <div className='w-full flex flex-col gap-y-16'>
     {/* Questions */}
     {
-      quizData.map((el, index) => (
-        <QuestionCard key={index} el={el} quizState={quizState} answers = {answers} setAnswers = {setAnswers} />
+    courseQuiz?.map((el, index) => (
+        <QuestionCard key={index} el={el} proxyIndex = {index + 1} quizState={quizState} answers = {answers} setAnswers = {setAnswers}  />
       ))
     }
 
@@ -151,7 +151,7 @@ const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalA
 }
 
 
-const QuestionCard = ({el, quizState, answers, setAnswers, returnedData}) => {
+const QuestionCard = ({el, proxyIndex, quizState, answers, setAnswers, returnedData, }) => {
   // console.log(el)
   const [option, setOption] = useState(null)
   const [localAns, setLocalAns] = useState() //for answers stored in local storage
@@ -159,7 +159,7 @@ const QuestionCard = ({el, quizState, answers, setAnswers, returnedData}) => {
   const handleClick = (optionId) => {
     if(quizState) {
       setOption(optionId)
-      setAnswers(prev => ({...prev, [`question${el.question.id}`]: optionId }))
+      setAnswers(prev => ({...prev, [`question${proxyIndex}`]: optionId }))
     }
     else {
       // .....
@@ -167,30 +167,31 @@ const QuestionCard = ({el, quizState, answers, setAnswers, returnedData}) => {
   }
 
   console.log(localAns)
+  // console.log(courseQuiz)
 
   return (
-    <div className = "redBorder">
+    <div className = "">
         {/* Question title */}
         <div className='flex items-center gap-x-2 font-bold'>
-            <p>Q{el.question.id}.</p>
-            <p>{el.question.title}</p>
+            <p>Q{proxyIndex}.</p>
+            <p>{el?.title}</p>
         </div>
 
         {/* Question Options */}
         <div className='flex flex-col gap-y-3 mt-4'>
           <div className='flex items-center gap-x-3'>
             <div className='w-full sm:w-[400px] lg:w-[550px] text-[14px] lg:text-base h-[55px] bg-[#F3F3F3] flex items-center justify-between px-3 rounded-md' >
-              <p className='break-words'>{el.question.test_answer[0].title}</p>
+              <p className='break-words'>{el?.answers?.[0]?.title}</p>
               {quizState ?
-                <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == el.question.test_answer[0].id ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(el.question.test_answer[0].id)} />
-                :
-                (returnedData ? <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${returnedData.results[el.question.id - 1].answer_id == 1  ? "bg-darkBlue" : "bg-white" } `}/> : null)
+                <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == 1 ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(1)} />
+                : 
+                (returnedData ? <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${returnedData.results[proxyIndex - 1].answer_id == 1  ? "bg-darkBlue" : "bg-white" } `}/> : null)
               }
             </div>
             {/* This is for controlling the good mark or bad mark sign is shown for the option */}
             {
               !quizState ? (
-                returnedData.results[el.question.id - 1].correct_id == 1 ? <FcCheckmark /> : <p className='text-[14px] text-red-500 font-bold'>X</p>
+                returnedData.results[proxyIndex - 1].correct_id == 1 ? <FcCheckmark /> : <p className='text-[14px] text-red-500 font-bold'>X</p>
                 ) : null
               }
           </div>
@@ -198,36 +199,17 @@ const QuestionCard = ({el, quizState, answers, setAnswers, returnedData}) => {
 
           <div className='flex items-center gap-x-3'>
             <div className='w-full sm:w-[400px] lg:w-[550px] text-[14px] lg:text-base h-[55px] bg-[#F3F3F3] flex items-center justify-between px-3 rounded-md' >
-              <p className='break-words'>{el.question.test_answer[1].title}</p>
+            <p className='break-words'>{el?.answers?.[1]?.title}</p>
               {quizState ? 
-              <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == el.question.test_answer[1].id ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(el.question.test_answer[1].id)} />
-                :
-                (returnedData ? <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${returnedData.results[el.question.id - 1].answer_id == 2  ? "bg-darkBlue" : "bg-white" } `}/> : null)
+              <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == 2 ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(2)} />
+                : 
+                (returnedData ? <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${returnedData.results[proxyIndex - 1].answer_id == 2  ? "bg-darkBlue" : "bg-white" } `}/> : null)
               }
             </div>
             {/* This is for controlling the good mark or bad mark sign is shown for the option */}
             {
               !quizState ? (
-                returnedData.results[el.question.id - 1].correct_id == 2 ? <FcCheckmark /> : <p className='text-[14px] text-red-500 font-bold'>X</p>
-                ) : null
-              }
-          </div>
-
-
-
-          <div className='flex items-center gap-x-3'>
-            <div className='w-full sm:w-[400px] lg:w-[550px] text-[14px] lg:text-base h-[55px] bg-[#F3F3F3] flex items-center justify-between px-3 rounded-md' >
-              <p className='break-words'>{el.question.test_answer[2].title}</p>
-              {quizState ? 
-                <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == el.question.test_answer[2].id ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(el.question.test_answer[2].id)} />
-                :
-                (returnedData ? <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${returnedData.results[el.question.id - 1].answer_id == 3  ? "bg-darkBlue" : "bg-white" } `}/> : null)
-              }
-            </div>
-            {/* This is for controlling the good mark or bad mark sign is shown for the option */}
-            {
-              !quizState ? (
-                returnedData.results[el.question.id - 1].correct_id == 3 ? <FcCheckmark /> : <p className='text-[14px] text-red-500 font-bold'>X</p>
+                returnedData.results[proxyIndex - 1].correct_id == 2 ? <FcCheckmark /> : <p className='text-[14px] text-red-500 font-bold'>X</p>
                 ) : null
               }
           </div>
@@ -236,17 +218,36 @@ const QuestionCard = ({el, quizState, answers, setAnswers, returnedData}) => {
 
           <div className='flex items-center gap-x-3'>
             <div className='w-full sm:w-[400px] lg:w-[550px] text-[14px] lg:text-base h-[55px] bg-[#F3F3F3] flex items-center justify-between px-3 rounded-md' >
-              <p className='break-words'>{el.question.test_answer[3].title}</p>
+            <p className='break-words'>{el?.answers?.[2]?.title}</p>
               {quizState ? 
-                <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == el.question.test_answer[3].id ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(el.question.test_answer[3].id)} />
-              :
-              (returnedData ? <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${returnedData.results[el.question.id - 1].answer_id == 4  ? "bg-darkBlue" : "bg-white" } `}/> : null)
+                <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == 3 ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(3)} />
+                : 
+                (returnedData ? <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${returnedData.results[proxyIndex - 1].answer_id == 3  ? "bg-darkBlue" : "bg-white" } `}/> : null)
               }
             </div>
             {/* This is for controlling the good mark or bad mark sign is shown for the option */}
             {
               !quizState ? (
-                returnedData.results[el.question.id - 1].correct_id == 4 ? <FcCheckmark /> : <p className='text-[14px] text-red-500 font-bold'>X</p>
+                returnedData.results[proxyIndex - 1].correct_id == 3 ? <FcCheckmark /> : <p className='text-[14px] text-red-500 font-bold'>X</p>
+                ) : null
+              }
+          </div>
+
+
+
+          <div className='flex items-center gap-x-3'>
+            <div className='w-full sm:w-[400px] lg:w-[550px] text-[14px] lg:text-base h-[55px] bg-[#F3F3F3] flex items-center justify-between px-3 rounded-md' >
+            <p className='break-words'>{el?.answers?.[3]?.title}</p>
+              {quizState ? 
+                <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == 4 ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(4)} />
+              : 
+              (returnedData ? <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${returnedData.results[proxyIndex - 1].answer_id == 4  ? "bg-darkBlue" : "bg-white" } `}/> : null)
+              }
+            </div>
+            {/* This is for controlling the good mark or bad mark sign is shown for the option */}
+            {
+              !quizState ? (
+                returnedData.results[proxyIndex - 1].correct_id == 4 ? <FcCheckmark /> : <p className='text-[14px] text-red-500 font-bold'>X</p>
                 ) : null
               }
           </div>
