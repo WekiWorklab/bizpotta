@@ -19,8 +19,8 @@ function NewSidebar({ courseId }) {
       pathname: `/students/${section}/[id]`,
       query: { id: courseId },
     });
-  };
-
+  };                                                  
+         
 
   const handleQuizClick = () => {
 
