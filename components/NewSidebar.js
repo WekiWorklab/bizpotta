@@ -21,6 +21,22 @@ function NewSidebar({ courseId }) {
     });
   };
 
+
+  const handleQuizClick = () => {
+
+    if (route_path.includes("/students/quiz")){
+      // if the student is on the quiz/[id]/week/[weekid] page Bring up a modal that asks the student if he or she wants to go to the quiz/[id] page 
+      //however if the student is on the quiz/[id] page do nothing
+    }
+    else{
+      router.push({
+        pathname: "/students/quiz/[id]",
+        query: {id: courseId}
+      })
+    }
+
+  }
+
   return (
     <>
       <nav className="fixed top-0 left-0 w-[200px] pt-[140px] px-6 bg-white hidden md:flex flex-row flex-wrap  justify-between h-full z-10 ">
@@ -58,20 +74,6 @@ function NewSidebar({ courseId }) {
               <div className="text-sm text-gray-600 font-light ">Notes</div>
             </li>
 
-            {/* <li className={`flex  justify-start items-center h-[40px] ${router.asPath === '/students/discussion' ? "border-r-4 border-darkBlue" : ""} cursor-pointer mb-2`} onClick = {() => { router.push('/students/discussion')}}>
-                <div className="text-sm text-gray-600 font-light ">
-                Discussion Forums
-                </div>
-            </li> */}
-
-            {/* <li className={`flex  justify-start items-center h-[40px] ${router.asPath === '/students/live-session' ? "border-r-4 border-darkBlue" : ""} cursor-pointer mb-2`} onClick = {() => { router.push('/students/live-session')}}>
-                <div  className="flex flex-row justify-start items-center">
-                <div className="text-sm text-gray-600 font-light ">
-                    Live sessions
-                </div>
-                </div>
-            </li> */}
-
             <li
               className={`flex  justify-start items-center h-[40px] ${
                 route_path.includes("/students/quiz")
@@ -79,7 +81,7 @@ function NewSidebar({ courseId }) {
                   : ""
               } cursor-pointer mb-2`}
               onClick={() => {
-                handleClick("quiz");
+                handleQuizClick();
               }}
             >
               <div className="flex flex-row justify-start items-center">
@@ -94,7 +96,7 @@ function NewSidebar({ courseId }) {
                   : ""
               } cursor-pointer mb-2`}
               onClick={() => {
-                router.push("/students/message");
+                handleClick("message");
               }}
             >
               <div className="flex flex-row justify-start items-center">
@@ -111,7 +113,7 @@ function NewSidebar({ courseId }) {
                   : ""
               } cursor-pointer mb-2`}
               onClick={() => {
-                router.push("/students/resources");
+                handleClick("resources");
               }}
             >
               <div className="flex flex-row justify-start items-center">

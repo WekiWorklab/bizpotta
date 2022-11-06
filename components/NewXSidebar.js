@@ -1,17 +1,34 @@
 import React from "react";
 import { useRouter } from "next/router";
 
-export default function NewXSidebar({ show, setShow, slideIn, setSlideIn, courseId }) {
+export default function NewXSidebar({
+  show,
+  setShow,
+  slideIn,
+  setSlideIn,
+  courseId,
+}) {
   const router = useRouter();
   const route_path = router.asPath;
 
   const handleClick = (section) => {
     router.push({
-        pathname: `/students/${section}/[id]`,
-        query: {id: courseId}
-    })
-  }
+      pathname: `/students/${section}/[id]`,
+      query: { id: courseId },
+    });
+  };
 
+  const handleQuizClick = () => {
+    if (route_path.includes("/students/quiz")) {
+      // if the student is on the quiz/[id]/week/[weekid] page Bring up a modal that asks the student if he or she wants to go to the quiz/[id] page
+      //however if the student is on the quiz/[id] page do nothing
+    } else {
+      router.push({
+        pathname: "/students/quiz/[id]",
+        query: { id: courseId },
+      });
+    }
+  };
 
   return (
     <>
@@ -53,7 +70,7 @@ export default function NewXSidebar({ show, setShow, slideIn, setSlideIn, course
                   : ""
               } cursor-pointer mb-2`}
               onClick={() => {
-                router.push("courses");
+                handleClick("courses");
               }}
             >
               <div className="text-sm text-gray-600 font-light">Overview</div>
@@ -79,7 +96,7 @@ export default function NewXSidebar({ show, setShow, slideIn, setSlideIn, course
                   : ""
               } cursor-pointer mb-2`}
               onClick={() => {
-                router.push("notes");
+                handleClick("notes");
               }}
             >
               <div className="text-sm text-gray-600 font-light ">Notes</div>
@@ -92,14 +109,11 @@ export default function NewXSidebar({ show, setShow, slideIn, setSlideIn, course
                   : ""
               } cursor-pointer mb-2`}
               onClick={() => {
-                router.push("quiz");
+                handleQuizClick();
               }}
             >
-              <div className="text-sm text-gray-600 font-light ">
-                Quiz
-              </div>
+              <div className="text-sm text-gray-600 font-light ">Quiz</div>
             </li>
-
 
             <li
               className={`flex  justify-start items-center h-[40px] ${
@@ -108,7 +122,7 @@ export default function NewXSidebar({ show, setShow, slideIn, setSlideIn, course
                   : ""
               } cursor-pointer mb-2`}
               onClick={() => {
-                router.push("/students/message");
+                handleClick("message");
               }}
             >
               <div className="flex flex-row justify-start items-center">
@@ -125,7 +139,7 @@ export default function NewXSidebar({ show, setShow, slideIn, setSlideIn, course
                   : ""
               } cursor-pointer mb-2`}
               onClick={() => {
-                router.push("/students/resources");
+                handleClick("resources");
               }}
             >
               <div className="flex flex-row justify-start items-center">
