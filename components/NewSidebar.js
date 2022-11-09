@@ -19,23 +19,19 @@ function NewSidebar({ courseId }) {
       pathname: `/students/${section}/[id]`,
       query: { id: courseId },
     });
-  };                                                  
-         
+  };
 
   const handleQuizClick = () => {
-
-    if (route_path.includes("/students/quiz")){
-      // if the student is on the quiz/[id]/week/[weekid] page Bring up a modal that asks the student if he or she wants to go to the quiz/[id] page 
+    if (route_path.includes("/students/quiz")) {
+      // if the student is on the quiz/[id]/week/[weekid] page Bring up a modal that asks the student if he or she wants to go to the quiz/[id] page
       //however if the student is on the quiz/[id] page do nothing
-    }
-    else{
+    } else {
       router.push({
         pathname: "/students/quiz/[id]",
-        query: {id: courseId}
-      })
+        query: { id: courseId },
+      });
     }
-
-  }
+  };
 
   return (
     <>
