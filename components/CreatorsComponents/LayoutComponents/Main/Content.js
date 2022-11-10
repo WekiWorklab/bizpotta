@@ -29,6 +29,7 @@ import { toast } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
 import WithdrawalModal from "./WithdrawalModal";
 
+
 const baseUrl = process.env.NEXT_PUBLIC_REACT_APP_API_URL;
 
 const Content = () => {

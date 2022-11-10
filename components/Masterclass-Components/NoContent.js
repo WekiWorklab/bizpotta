@@ -7,7 +7,9 @@ import { offer } from "../../public";
 import ProgramCarousel from "../CoursePage-Components/ProgramCarousel";
 import ClassCards, { ClassCardsMobile } from "../ClassCards";
 import { MasterclassCourseSection, StyleCarousel } from "../StyleCarousel";
-import ContentCarousel, { ContentCardSection } from "../Content-Components/ContentCarousel";
+import ContentCarousel, {
+  ContentCardSection,
+} from "../Content-Components/ContentCarousel";
 import { Data as data } from "../Content-Components/Data";
 
 const NoContent = () => {
@@ -46,32 +48,41 @@ const NoContent = () => {
       </div>
 
       <div className="mt-9">
-        <MasterclassCourseSection contentTitle = 'Up-coming live session' />
+        <MasterclassCourseSection contentTitle="Up-coming live session" />
       </div>
 
       <div className="mt-9">
-        <MasterclassCourseSection contentTitle = 'Top business acceleration program' />
+        <MasterclassCourseSection contentTitle="Top business acceleration program" />
       </div>
 
       <div className="w-full mt-[50px]">
-        <ContentCardSection data = {data} courseType = "masterclass" contentTitle="Take your business to the next level by exploring any of this course" />
+        <ContentCardSection
+          data={data}
+          courseType="masterclass"
+          contentTitle="Take your business to the next level by exploring any of this course"
+        />
       </div>
 
       <div className="w-full mt-[50px]">
-        <ContentCardSection data = {data} courseType = "masterclass" contentTitle="Take your business to the next level by exploring any of this course" />
+        <ContentCardSection
+          data={data}
+          courseType="masterclass"
+          contentTitle="Take your business to the next level by exploring any of this course"
+        />
       </div>
 
       <div className="w-full mt-[50px]">
-        <ContentCardSection data = {data} courseType = "masterclass" contentTitle="Take your business to the next level by exploring any of this course" />
+        <ContentCardSection
+          data={data}
+          courseType="masterclass"
+          contentTitle="Take your business to the next level by exploring any of this course"
+        />
       </div>
     </div>
   );
 };
 
 export default NoContent;
-
-
-
 
 const RoundProfileCarousel = ({ screen }) => {
   const arr = new Array(20).fill("");

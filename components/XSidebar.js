@@ -31,10 +31,12 @@ export default function XSidebar({ show, setShow, slideIn, setSlideIn }) {
       <nav
         className={`${
           slideIn ? "SideBar" : "NoSideBar"
-        }  fixed md:hidden top-0  w-[350px] pt-14 px-6 bg-gray-50 rounded-r-[20px] shadow-md flex-wrap items-center justify-between h-full z-[9999]`}
+        }  fixed md:hidden top-0  w-[350px] pt-6 px-6 bg-gray-50 rounded-r-[20px] shadow-md flex-wrap items-center justify-between h-screen z-[9999] overflow-y-scroll no-scrollbar`}
       >
+        <div className="relative min-h-screen w-full">
+
         <div
-          className="absolute top-[40px] right-[20px] cursor-pointer"
+          className="absolute top-[0px] right-[0px] cursor-pointer"
           onClick={() => {
             setShow(false);
             setSlideIn(false);
@@ -56,7 +58,6 @@ export default function XSidebar({ show, setShow, slideIn, setSlideIn }) {
           </svg>
         </div>
 
-        {/* <MdOutlineCancel size={22} color = '#121F4C' className='md:ml-[10px] hover:cursor-pointer md:hidden' onClick={() => setShow(false)} /> */}
 
         <div className="w-full ">
           <ul className="md:flex-col md:min-w-full flex flex-col list-none mb-8 mt-5 ">
@@ -81,8 +82,6 @@ export default function XSidebar({ show, setShow, slideIn, setSlideIn }) {
               </div>
             </li>
 
-            {/* "#E5E5E5" */}
-            {/* text-[#999999] */}
             <li
               className="items-center cursor-pointer mb-2"
               onClick={() => handleClick("/students/courses/vocational")}
@@ -238,7 +237,7 @@ export default function XSidebar({ show, setShow, slideIn, setSlideIn }) {
             </li>
           </ul>
         </div>
-        {/* </div> */}
+        </div>
       </nav>
     </>
   );

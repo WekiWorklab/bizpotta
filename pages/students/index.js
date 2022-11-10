@@ -40,7 +40,7 @@ const StudentDashboard = () => {
   const { data: featured, isLoading: f_loading } = useQuery(["featured"], getFeaturedCourse, { staleTime: 60 * 1000 * 10, retry: 2 });
   
 
-  // const show = false
+  const show = false
   // user?.has_purchased_course
 
   return (

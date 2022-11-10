@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { onBoardUser } from "../store/creatorSlice";
 import { setUser, reset } from "../store/authSlice";
+import { wordShortner } from "../utils/wordShortner";
 
 const Onboard = ({ data }) => {
   const router = useRouter();
@@ -130,16 +131,25 @@ const Onboard = ({ data }) => {
   ];
 
   return (
-    <div className='w-full min-h-screen px-2 md:px-4 xl:px-32 relative py-20'>
-      <div className='flex h-auto item-center my-auto gap-x-6 xl:justify-around mt-20 '>
-        <div className='hidden lg:flex flex-col justify-center items-center'>
-          <OnboardingSvg />
+    <div className='w-full min-h-screen px-2 md:px-4 xl:px-32 relative flex flex-col  items-center justify-center'>
+      <div className="w-full">
+      <div className='flex h-auto flex-col md:flex-row justify-center item-center my-auto gap-x-6 xl:justify-around mt-20 '>
+        <div className='flex flex-col justify-center items-center'>
+          <div className="block md:hidden">
+            <OnboardingSvg w = "200" h = "120" />
+          </div>
+          <div className="hidden md:block lg:hidden">
+            <OnboardingSvg w = "250" h = "150" />
+          </div>
+          <div className="hidden lg:block">
+            <OnboardingSvg w = "450" h = "285" />
+          </div>
           <p className='font-bold text-center mt-8'>New to bizpotta?</p>
           <p className='text-[13px] text-[#7C7C7C] text-center mt-4'>Help us know the best program you would like to run</p>
         </div>
 
-        <div className='flex flex-col justify-start items-start'>
-          <p className='font-bold text-lg'>Lets help you set up</p>
+        <div className='flex flex-col mt-10 md:mt-0 justify-start items-start'>
+          <p className='font-bold w-full text-center md:text-start text-lg'>Lets help you set up</p>
 
           <PersonnelDropDown
             data={personnel}
@@ -155,7 +165,7 @@ const Onboard = ({ data }) => {
           {(userType?.name === "Mentor" || userType?.name === "Tutor") && (
             <div className=''>
               <div>
-                <div className='flex gap-x-3 md:gap-x-6 mt-10 items-center justify-center'>
+                <div className='flex gap-x-3 md:gap-x-6 mt-10 items-center justify-start '>
                   <p className='text-[#282828] text-[14px]'>I am representing</p>
                   <div className='-mt-4 relative min-w-[120px] border-b-[3px] border-bizpotta-green pp'>
                     {/* Input for Mentors */}
@@ -198,7 +208,7 @@ const Onboard = ({ data }) => {
                     )}
                   </div>
                 </div>
-                <div className='w-full flex justify-end text-[10px] pr-16'>(Where do you work)</div>
+                <div className='w-full flex justify-center text-[10px] pr-16'>(Where do you work)</div>
               </div>
 
               <IndustryDropDown
@@ -227,6 +237,7 @@ const Onboard = ({ data }) => {
 
           <div></div>
         </div>
+      </div>
       </div>
       <div className='w-full flex justify-end mt-16 items-end'>
         <button
@@ -401,7 +412,7 @@ const IndustryDropDown = ({ data, industry, setIndustry, userType, toggleDrop, s
     <div className='flex gap-x-3 md:gap-x-6 mt-6'>
       <p className='text-[#282828] text-[14px]'>My business industry is ?</p>
       <div className='-mt-1 relative min-w-[100px] border-b-[3px] border-bizpotta-green pp' onClick={() => handleDropDown()}>
-        <p className='text-center text-[14px] text-[#282828] mr-4'>{industry?.name}</p>
+        <p className='text-center text-[14px] text-[#282828] mr-4'>{wordShortner(industry?.name, 30)}</p>
         <BiChevronDown className='absolute right-0 text-[20px] top-1' color='#8F8F8F' />
         {toggleDrop.instructor && (
           <div className='absolute top-8 left-[-20px] sm:left-2 z-10 px-2 py-3 flex flex-col justify-center items-start bg-white shadow-md rounded-lg'>

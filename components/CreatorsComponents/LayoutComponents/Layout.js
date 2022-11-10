@@ -30,14 +30,29 @@ const Layout = ({ children }) => {
   if (loading) return <FullPageSpinner />;
 
   return (
-    <div className='relative overflow-hidden'>
-      <Header show={show} setShow={setShow} slideIn={slideIn} setSlideIn={setSlideIn} />
-      <motion.div className='w-full' initial={{ opacity: 0, x: "-20%" }} animate={{ opacity: 1, x: 0 }} transition={{ ease: "easeOut", duration: 1 }}>
+    <div className="relative overflow-hidden">
+      <Header
+        show={show}
+        setShow={setShow}
+        slideIn={slideIn}
+        setSlideIn={setSlideIn}
+      />
+      <motion.div
+        className="w-full"
+        initial={{ opacity: 0, x: "-20%" }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ ease: "easeOut", duration: 1 }}
+      >
         {children}
       </motion.div>
-      <PlainFooter/>
+      <PlainFooter />
       <Sidebar />
-      <XSidebar show={show} setShow={setShow} slideIn={slideIn} setSlideIn={setSlideIn} />
+      <XSidebar
+        show={show}
+        setShow={setShow}
+        slideIn={slideIn}
+        setSlideIn={setSlideIn}
+      />
     </div>
   );
 };
