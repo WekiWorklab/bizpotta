@@ -5,7 +5,7 @@ import NoContent from '../../../../components/Masterclass-Components/NoContent'
 
 const index = () => {
   
-  const enrolled = false
+  const enrolled = true
 
   return (
     <Layout>

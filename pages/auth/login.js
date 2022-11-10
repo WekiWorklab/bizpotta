@@ -58,12 +58,12 @@ export default function Login() {
       </Head>
 
       <div className=" h-[100vh] flex flex-col justify-center items-center">
-        <div className="w-[130px] h-[65px] mb-2 ">
+        <div className="w-[130px]  h-[65px] mb-2 ">
           <Link href="/">
             <img
               src={logo.src}
               alt=""
-              className="w-full h-full object-contain cursor-pointer"
+              className="w-full h-full object-contain cursor-pointer "
             />
           </Link>
         </div>

@@ -157,7 +157,7 @@ const CouponCard = ({ cartItems, Data }) => {
     purchasedCourse(reference, setLoading).then((res) => {
       // remove cart items from local storage
       localStorage.removeItem("cart");
-      // redirect to dashboard
+      // redirect to dashboard ////////////////////
       router.push("/students/courses/vocational");
     });
   };

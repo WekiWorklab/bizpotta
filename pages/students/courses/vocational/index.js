@@ -24,49 +24,48 @@ const Index = () => {
     return res?.data;
   };
 
-  
-
   const { data: recommended, isLoading: r_loading } = useQuery(
     ["recommended"],
     getRecommendedCourses,
-    { staleTime: 60 * 1000 * 10, retry: 2 } 
+    { staleTime: 60 * 1000 * 10, retry: 2 }
   );
-  const { data: popular,  isLoading: p_loading} = useQuery(
+  const { data: popular, isLoading: p_loading } = useQuery(
     ["popular"],
     getPopularCourses,
-    { staleTime: 60 * 1000 * 10, retry: 2 } 
+    { staleTime: 60 * 1000 * 10, retry: 2 }
   );
-  const { data: featured, isLoading: f_loading} = useQuery(
+  const { data: featured, isLoading: f_loading } = useQuery(
     ["featured"],
     getFeaturedCourse,
-    { staleTime: 60 * 1000 * 10, retry: 2 } 
+    { staleTime: 60 * 1000 * 10, retry: 2 }
   );
 
-
-
-
-  const enrolled = false;
+  const enrolled = true;
 
   return (
     <Layout>
       {enrolled === true ? (
-        <Content dataObj={{
-          recommended: recommended,
-          popular: popular,
-          featured: featured,
-          r_loading: r_loading,
-          p_loading: p_loading,
-          f_loading: f_loading,
-        }}  />
+        <Content
+          dataObj={{
+            recommended: recommended,
+            popular: popular,
+            featured: featured,
+            r_loading: r_loading,
+            p_loading: p_loading,
+            f_loading: f_loading,
+          }}
+        />
       ) : (
-        <NoContent dataObj={{
-          recommended: recommended,
-          popular: popular,
-          featured: featured,
-          r_loading: r_loading,
-          p_loading: p_loading,
-          f_loading: f_loading,
-        }} />
+        <NoContent
+          dataObj={{
+            recommended: recommended,
+            popular: popular,
+            featured: featured,
+            r_loading: r_loading,
+            p_loading: p_loading,
+            f_loading: f_loading,
+          }}
+        />
       )}
     </Layout>
   );

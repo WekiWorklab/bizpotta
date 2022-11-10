@@ -13,7 +13,7 @@ import { AiOutlineProject } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { IoSettingsOutline, IoLogOutOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-import { AffiliateSVG } from "../../../public";
+import { AffiliateSVG, CreatorDashboard } from "../../../public";
 import { logout } from "../../../store/authSlice";
 
 function Sidebar() {
@@ -36,8 +36,8 @@ function Sidebar() {
               onClick={() => router.push("/creators")}
             >
               <div className="flex flex-row justify-start items-center">
-                <MdOutlineDashboard
-                  color={path === "/creators" ? "#121F4C" : "gray"}
+                <CreatorDashboard
+                  color={path === "/creators" ? "text-[#121F4C] font-bold" : "text-gray-400"}
                 />
                 <div
                   className={`${
@@ -57,7 +57,7 @@ function Sidebar() {
             >
               <div className="flex flex-row justify-start items-center">
                 <HiOutlineBookOpen
-                  color={path === "/creators/courses" ? "#121F4C" : "gray"}
+                  color={path === "/creators/courses" ? "text-[#121F4C]" : "text-gray-400"}
                 />
                 <div
                   className={`${
