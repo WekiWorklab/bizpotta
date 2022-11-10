@@ -16,7 +16,9 @@ const StudentQuiz = () => {
 
   const [quizState, setQuizState] = useState(true) // Controls rendering of quiz questions to be answered or quiz questions with answers and results
   // State for storing the values of the answers for each question
-  const [answers, setAnswers] = useState({question1: "", question2: "", question3: "", question4: "", question5: "", question6: "", question7: "", question8: "", question9: "", question10: "", })
+  // const [answers, setAnswers] = useState({question1: "", question2: "", question3: "", question4: "", question5: "", question6: "", question7: "", question8: "", question9: "", question10: "", })
+
+  const [answers, setAnswers] = useState({})
 
   const [courseData, setCourseData ] = useState()
   const [courseQuiz, setCourseQuiz] = useState()
@@ -65,7 +67,7 @@ const StudentQuiz = () => {
     <div className='relative w-full h-full bg-[#FDFDFD] flex flex-col pt-[90px] md:pt-[120px] md:justify-start items-center md:translate-x-[200px] md:w-[calc(100%-200px)] px-2 lg:px-10  pb-10'>
   
       <div className='w-full  mt-10'>
-        <div className='w-full text-darkText mb-10'> {data?.course?.name} / Week {weekId} / {data?.course?.course_weeks?.filter(el => el.id == weekId)?.[0].title}</div>
+        <div className='w-full text-darkText mb-10'> {data?.course?.name} / Week {data?.course?.course_weeks?.filter(el => el.id == weekId)?.[0].week_number} / {data?.course?.course_weeks?.filter(el => el.id == weekId)?.[0].title}</div>
 
        {quizState ?
 
@@ -124,8 +126,8 @@ const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalA
 
     // Check if all the questions were answered
     for (const [key, value] of Object.entries(answers)) {
-      if (value == "" && Number(key.split("question")[1]) <= courseQuiz.length ) {
-        toast.error(`Please ${key} was not answered`)
+      if (value == "") {
+        toast.error(`Please answer all questions`)
         return
       }
     }
@@ -152,7 +154,7 @@ const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalA
     {/* Questions */}
     {
     courseQuiz?.map((el, index) => (
-        <QuestionCard key={index} el={el} proxyIndex = {el.id} quizState={quizState} answers = {answers} setAnswers = {setAnswers}  />
+        <QuestionCard key={index} el={el} elemIndex = {index + 1} proxyIndex = {el.id}  quizState={quizState} answers = {answers} setAnswers = {setAnswers}  />
       ))
     }
 
@@ -166,7 +168,7 @@ const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalA
 }
 
 
-const QuestionCard = ({el, proxyIndex, quizState, answers, setAnswers, returnedData, }) => {
+const QuestionCard = ({el, proxyIndex, quizState, answers, setAnswers, returnedData, elemIndex}) => {
   // console.log(proxyIndex)  
   const [option, setOption] = useState(null)
 
@@ -187,7 +189,7 @@ const QuestionCard = ({el, proxyIndex, quizState, answers, setAnswers, returnedD
     <div className = "">
         {/* Question title */}
         <div className='flex items-center gap-x-2 font-bold'>
-            <p>Q{proxyIndex}.</p>
+            <p>Q{elemIndex}.</p>
             <p>{el?.title}</p>
         </div>
 
@@ -197,7 +199,7 @@ const QuestionCard = ({el, proxyIndex, quizState, answers, setAnswers, returnedD
             <div className='w-full sm:w-[400px] lg:w-[550px] text-[14px] lg:text-base h-[55px] bg-[#F3F3F3] flex items-center justify-between px-3 rounded-md' >
               <p className='break-words'>{el?.answers?.[0]?.title}</p>
               {quizState ?
-                <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == 1 ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(1)} />
+                <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == el.answers[0].id ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(el.answers[0].id)} />
                 : 
                 (returnedData ? <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${returnedData.results[proxyIndex - 1].answer_id == 1  ? "bg-darkBlue" : "bg-white" } `}/> : null)
               }
@@ -215,7 +217,7 @@ const QuestionCard = ({el, proxyIndex, quizState, answers, setAnswers, returnedD
             <div className='w-full sm:w-[400px] lg:w-[550px] text-[14px] lg:text-base h-[55px] bg-[#F3F3F3] flex items-center justify-between px-3 rounded-md' >
             <p className='break-words'>{el?.answers?.[1]?.title}</p>
               {quizState ? 
-              <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == 2 ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(2)} />
+              <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == el.answers[1].id ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(el.answers[1].id)} />
                 : 
                 (returnedData ? <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${returnedData.results[proxyIndex - 1].answer_id == 2  ? "bg-darkBlue" : "bg-white" } `}/> : null)
               }
@@ -234,7 +236,7 @@ const QuestionCard = ({el, proxyIndex, quizState, answers, setAnswers, returnedD
             <div className='w-full sm:w-[400px] lg:w-[550px] text-[14px] lg:text-base h-[55px] bg-[#F3F3F3] flex items-center justify-between px-3 rounded-md' >
             <p className='break-words'>{el?.answers?.[2]?.title}</p>
               {quizState ? 
-                <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == 3 ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(3)} />
+                <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == el.answers[2].id ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(el.answers[2].id)} />
                 : 
                 (returnedData ? <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${returnedData.results[proxyIndex - 1].answer_id == 3  ? "bg-darkBlue" : "bg-white" } `}/> : null)
               }
@@ -253,7 +255,7 @@ const QuestionCard = ({el, proxyIndex, quizState, answers, setAnswers, returnedD
             <div className='w-full sm:w-[400px] lg:w-[550px] text-[14px] lg:text-base h-[55px] bg-[#F3F3F3] flex items-center justify-between px-3 rounded-md' >
             <p className='break-words'>{el?.answers?.[3]?.title}</p>
               {quizState ? 
-                <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == 4 ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(4)} />
+                <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == el.answers[3].id ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(el.answers[3].id)} />
               : 
               (returnedData ? <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${returnedData.results[proxyIndex - 1].answer_id == 4  ? "bg-darkBlue" : "bg-white" } `}/> : null)
               }

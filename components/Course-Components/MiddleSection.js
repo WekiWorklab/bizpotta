@@ -10,14 +10,14 @@ const MiddleSection = ({ data }) => {
     <div className=" w-full mt-10 pt-4 pr-2 lg:pr-24 text-[darkBlue]">
       <div className=" overflow-x-scroll no-scrollbar">
         <div className="min-w-[630px] max-w-[630px] flex flex-row">
-          {data?.course?.course_weeks.sort(AscComparatorFunc).map((el, index) => (
+          {data?.course?.course_weeks?.map((el, index) => (
             <div key={index} className="flex">
               <div className="flex flex-col justify-center items-center">
                 <div className="w-[20px] h-[20px] rounded-full bg-darkBlue"></div>
                 <p className="min-w-[50px] text-center text-[11px] mt-2">
-                  Week {el?.id}
+                  {/* Week {el?.id} */}
                   {/* Week {el.week_number} */}
-                  {/* Week {index + 1}  */}
+                  Week {index + 1} 
                 </p>
               </div>
               {index == data?.course?.course_weeks?.length - 1 ? (
@@ -31,8 +31,8 @@ const MiddleSection = ({ data }) => {
       </div>
 
       <div className="mt-10">
-        {data?.course.course_weeks.sort(AscComparatorFunc).map((el, index) => (
-          <ScheduleCard key={index} data={el} index={index} />
+        {data?.course?.course_weeks?.map((el, index) => (
+          <ScheduleCard key={index} data={el} index={index + 1} />
         ))}
       </div>
     </div>
