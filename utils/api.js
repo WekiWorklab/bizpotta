@@ -24,6 +24,7 @@ export const APIS = {
     GET_MY_COURSE: (id) => `${api}/learners/get-purchased-course/${id}`,
     COURSE_PURCHASED: `${api}/learners/course-purchased`,
     COURSE_PURCHASE_FAILED: `${api}/learners/course-purchase-failed`,
+    SUBMIT_ANSWERS: `${api}/learners/submit-answers`
   },
   MENTORS: {
     SET_MENTORING_PREFERENCES: `${api}/creators/set-mentor-preferences`,

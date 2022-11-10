@@ -20,7 +20,9 @@ const Content = () => {
               router.push("/students");
             }
             // setData(res)
-            setData(res?.course?.course_weeks?.find((el) => el.week_number == weekId));
+            setData(
+              res?.course?.course_weeks?.find((el) => el.week_number == weekId)
+            );
           })
           .finally(() => setLoading(false))
       : null;

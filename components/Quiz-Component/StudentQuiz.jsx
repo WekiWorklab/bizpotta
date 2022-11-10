@@ -6,6 +6,7 @@ import { FcCheckmark } from 'react-icons/fc'
 import { toast } from 'react-toastify'
 import useCourse from '../../hooks/useCourse'
 import learnersService from '../../services/LearnersService'
+import { AscComparatorFunc } from '../../utils/wordShortner'
 import { Button } from '../Auth-Components/Button'
 
 const StudentQuiz = () => {
@@ -27,14 +28,15 @@ const StudentQuiz = () => {
 
    const fetchForQuiz = async (Id) => {
     const res = await learnersService.getMyCourse(Id.queryKey[1])
+    console.log(res.data)
     return res.data
   }
 
   // Fetch the data for the quiz here
   const {data, isLoading} = useQuery(['student_quiz', id ], fetchForQuiz, {
     onSuccess: (data) => {
-      for (const el of data.course.course_weeks) {
-        if (el.week_number == weekId) {
+      for (const el of data.course.course_weeks.sort(AscComparatorFunc)) {
+        if (el.id == weekId) {
           setCourseData(el)
           setCourseQuiz(el?.week_test)
       }
@@ -53,16 +55,21 @@ const StudentQuiz = () => {
    * Also in certain cases i didnt use the id for some data because the one coming in from the api is random. Instead i used hard numbers or index of elements in an array
    */
 
+  /**
+   * data.course.course_weeks.filter((el, index) => el.id == weekId).title
+   * {data?.course?.course_weeks?.[0].title } 
+   * 
+   *    */
 
   return (
     <div className='relative w-full h-full bg-[#FDFDFD] flex flex-col pt-[90px] md:pt-[120px] md:justify-start items-center md:translate-x-[200px] md:w-[calc(100%-200px)] px-2 lg:px-10  pb-10'>
   
       <div className='w-full  mt-10'>
-        <div className='w-full text-darkText mb-10'> {data?.course?.name} / Week {weekId} / {data?.course?.course_weeks[weekId-1].title}</div>
+        <div className='w-full text-darkText mb-10'> {data?.course?.name} / Week {weekId} / {data?.course?.course_weeks?.filter(el => el.id == weekId)?.[0].title}</div>
 
        {quizState ?
 
-        <QuizForSubmission quizState = {quizState} setQuizState = {setQuizState} answers = {answers} setAnswers = {setAnswers} finalAns = {finalAns} courseQuiz = {courseQuiz}/> :
+        <QuizForSubmission quizState = {quizState} setQuizState = {setQuizState} answers = {answers} setAnswers = {setAnswers} finalAns = {finalAns} courseQuiz = {courseQuiz} courseId = {id} weekId = {weekId} /> :
         
         <QuizAnsReview courseQuiz = {courseQuiz}/>
         // null
@@ -110,10 +117,10 @@ const QuizAnsReview = ( {courseQuiz, quizState, setQuizState, answers, setAnswer
 } 
 
 
-const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalAns, courseQuiz}) => {
+const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalAns, courseQuiz, courseId, weekId}) => {
 
-  const handleButton = () => {
-    console.log(answers)
+  const handleButton = async () => {
+    console.log("answers -->", answers)
 
     // Check if all the questions were answered
     for (const [key, value] of Object.entries(answers)) {
@@ -128,7 +135,15 @@ const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalA
       finalAns.push({question_id: question_id, answer_id: value})
     }
     console.log(finalAns)
-    setQuizState(false)  //switch from QuizForSubmission to QuizAnsReview
+
+
+    // Submit the answers before switching quiz state
+    const results = await learnersService.submitAnswers(finalAns, courseId, weekId )
+    console.log(results)
+
+
+
+    // setQuizState(false)  //switch from QuizForSubmission to QuizAnsReview
   } 
 
   return (
@@ -137,7 +152,7 @@ const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalA
     {/* Questions */}
     {
     courseQuiz?.map((el, index) => (
-        <QuestionCard key={index} el={el} proxyIndex = {index + 1} quizState={quizState} answers = {answers} setAnswers = {setAnswers}  />
+        <QuestionCard key={index} el={el} proxyIndex = {el.id} quizState={quizState} answers = {answers} setAnswers = {setAnswers}  />
       ))
     }
 
@@ -152,9 +167,8 @@ const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalA
 
 
 const QuestionCard = ({el, proxyIndex, quizState, answers, setAnswers, returnedData, }) => {
-  // console.log(el)
+  // console.log(proxyIndex)  
   const [option, setOption] = useState(null)
-  const [localAns, setLocalAns] = useState() //for answers stored in local storage
 
   const handleClick = (optionId) => {
     if(quizState) {
@@ -166,7 +180,7 @@ const QuestionCard = ({el, proxyIndex, quizState, answers, setAnswers, returnedD
     }
   }
 
-  console.log(localAns)
+  // console.log(localAns)
   // console.log(courseQuiz)
 
   return (

@@ -46,6 +46,15 @@ const getMyCourse = (id) => {
   });
 };
 
+
+const submitAnswers = (data, course_id, week_id) => {
+  return AxoisApi.post(`${APIS.LEARNERS.SUBMIT_ANSWERS}`, {
+    data: data,
+    course_id: course_id,
+    course_week_id: week_id
+  })
+}
+
 const learnersService = {
   getLearningPreferences,
   setLearnersPreferences,
@@ -54,6 +63,7 @@ const learnersService = {
   purchaseCourseFailed,
   getMyCourses,
   getMyCourse,
+  submitAnswers
 };
 
 export default learnersService;

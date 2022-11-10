@@ -26,7 +26,7 @@ const NewLayout = ({ children }) => {
   // router.id, router.weekId
 
   useEffect(() => {
-    const course_id = router.query.id;
+    const course_id = router?.query?.id;
     course_id
       ? getMyCourse(course_id)
           .then((res) => {
@@ -60,14 +60,14 @@ const NewLayout = ({ children }) => {
       >
         {children}
       </motion.div>
-      <NewSidebar courseId={courseId} />
-      <NewXSidebar
+       <NewSidebar courseId={courseId} /> 
+       <NewXSidebar
         show={show}
         setShow={setShow}
         slideIn={slideIn}
         setSlideIn={setSlideIn}
         courseId={courseId}
-      />
+      /> 
     </div>
   );
 };

@@ -6,3 +6,12 @@ export const wordShortner = (word, max_length) => {
     } else return word;
   }
 };
+
+
+export const AscComparatorFunc = (a, b) => {
+  if (a.id < b.id)
+     return -1;
+  if (a.id > b.id)
+    return 1;
+  return 0;
+}
