@@ -92,6 +92,24 @@ const useCourse = () => {
     });
   };
 
+  const handleCreateCourseProject = (data, setShowLoader) => {
+    return new Promise((resolve) => {
+      setShowLoader(true);
+
+      CreatorService.createProject(data)
+        .then((res) => {
+          handleSuccess(res?.message);
+          resolve(res?.data);
+        })
+        .catch((error) => {
+          handleError(error);
+        })
+        .finally(() => {
+          setShowLoader(false);
+        });
+    });
+  };
+
   const purchaseCourse = (data, setShowLoader) => {
     return new Promise((resolve) => {
       setShowLoader(true);
@@ -189,6 +207,7 @@ const useCourse = () => {
     handleCreateQuiz,
     handleCreateAssignment,
     handleSaveCourse,
+    handleCreateCourseProject,
   };
 };
 
