@@ -22,6 +22,7 @@ const StudentQuiz = () => {
 
   const [courseData, setCourseData ] = useState()
   const [courseQuiz, setCourseQuiz] = useState()
+  const [returned, setReturned] = useState()
 
   // final store for question and answer
   const finalAns = []
@@ -57,12 +58,6 @@ const StudentQuiz = () => {
    * Also in certain cases i didnt use the id for some data because the one coming in from the api is random. Instead i used hard numbers or index of elements in an array
    */
 
-  /**
-   * data.course.course_weeks.filter((el, index) => el.id == weekId).title
-   * {data?.course?.course_weeks?.[0].title } 
-   * 
-   *    */
-
   return (
     <div className='relative w-full h-full bg-[#FDFDFD] flex flex-col pt-[90px] md:pt-[120px] md:justify-start items-center md:translate-x-[200px] md:w-[calc(100%-200px)] px-2 lg:px-10  pb-10'>
   
@@ -71,9 +66,10 @@ const StudentQuiz = () => {
 
        {quizState ?
 
-        <QuizForSubmission quizState = {quizState} setQuizState = {setQuizState} answers = {answers} setAnswers = {setAnswers} finalAns = {finalAns} courseQuiz = {courseQuiz} courseId = {id} weekId = {weekId} /> :
+        <QuizForSubmission quizState = {quizState} setQuizState = {setQuizState} answers = {answers} setAnswers = {setAnswers} finalAns = {finalAns} courseQuiz = {courseQuiz} courseId = {id} weekId = {weekId} returned = {returned} setReturned = {setReturned}
+        /> :
         
-        <QuizAnsReview courseQuiz = {courseQuiz}/>
+        <QuizAnsReview courseQuiz = {courseQuiz} returned = {returned}/>
         // null
         
         }
@@ -89,7 +85,7 @@ export default StudentQuiz
 
 
 
-const QuizAnsReview = ( {courseQuiz, quizState, setQuizState, answers, setAnswers, finalAns}) => {
+const QuizAnsReview = ( {courseQuiz, quizState, setQuizState, answers, setAnswers, finalAns, returned}) => {
 
   const router = useRouter()
 
@@ -104,7 +100,7 @@ const QuizAnsReview = ( {courseQuiz, quizState, setQuizState, answers, setAnswer
     {/* Questions */}
     {
       courseQuiz?.map((el, index) => (
-        <QuestionCard key={index} el={el} proxyIndex = {index + 1} quizState={quizState} answers = {answers} setAnswers = {setAnswers} returnedData = {returnedData} />
+        <QuestionCard key={index} el={el} elemIndex = {index + 1} proxyIndex = {el.id} quizState={quizState} answers = {answers} setAnswers = {setAnswers} returnedData = {returnedData} returned = {returned} />
       ))
     }
 
@@ -119,7 +115,7 @@ const QuizAnsReview = ( {courseQuiz, quizState, setQuizState, answers, setAnswer
 } 
 
 
-const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalAns, courseQuiz, courseId, weekId}) => {
+const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalAns, courseQuiz, courseId, weekId, setReturned, returned}) => {
 
   const handleButton = async () => {
     console.log("answers -->", answers)
@@ -141,7 +137,8 @@ const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalA
 
     // Submit the answers before switching quiz state
     const results = await learnersService.submitAnswers(finalAns, courseId, weekId )
-    console.log(results)
+    console.log( "results -->", results)
+    setReturned(results.data)
 
 
 
@@ -168,7 +165,7 @@ const QuizForSubmission = ({quizState, setQuizState, answers, setAnswers, finalA
 }
 
 
-const QuestionCard = ({el, proxyIndex, quizState, answers, setAnswers, returnedData, elemIndex}) => {
+const QuestionCard = ({el, proxyIndex, quizState, answers, setAnswers, returnedData, elemIndex, returned}) => {
   // console.log(proxyIndex)  
   const [option, setOption] = useState(null)
 
@@ -182,8 +179,6 @@ const QuestionCard = ({el, proxyIndex, quizState, answers, setAnswers, returnedD
     }
   }
 
-  // console.log(localAns)
-  // console.log(courseQuiz)
 
   return (
     <div className = "">
