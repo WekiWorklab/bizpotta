@@ -37,7 +37,7 @@ const StudentQuiz = () => {
   // Fetch the data for the quiz here
   const {data, isLoading} = useQuery(['student_quiz', id ], fetchForQuiz, {
     onSuccess: (data) => {
-      for (const el of data.course.course_weeks.sort(AscComparatorFunc)) {
+      for (const el of data.course.course_weeks) {
         if (el.id == weekId) {
           setCourseData(el)
           setCourseQuiz(el?.week_test)
