@@ -54,7 +54,9 @@ const NewSession = ({ data }) => {
     UploadData.append("date", data.date);
     UploadData.append("time", data.time);
 
-    const res = await handleCreateLiveSession(UploadData, setLoading);
+    const res = await handleCreateLiveSession(UploadData, setLoading).then((res) => {
+      router.push("/creators/live-session");
+    });
     console.log(res);
   };
 

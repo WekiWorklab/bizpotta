@@ -89,6 +89,18 @@ const createLiveSession = async (data) => {
   });
 };
 
+const getLiveSessions = async () => {
+  return AxoisApi.get(`${APIS.MENTORS.GET_LIVE_SESSIONS}`).then((res) => {
+    return res.data;
+  });
+};
+
+const getLiveSession = async (id) => {
+  return AxoisApi.get(`${APIS.MENTORS.GET_LIVE_SESSION(id)}`).then((res) => {
+    return res.data;
+  });
+};
+
 const creatorService = {
   onBoardMentor,
   onBoardTutor,
@@ -103,6 +115,8 @@ const creatorService = {
   createAssignment,
   saveCourse,
   createLiveSession,
+  getLiveSessions,
+  getLiveSession,
 };
 
 export default creatorService;

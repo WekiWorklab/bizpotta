@@ -22,8 +22,39 @@ const useLiveSession = () => {
     });
   };
 
+  const handleGetLiveSessions = () => {
+    return new Promise((resolve) => {
+      CreatorService.getLiveSessions()
+        .then((res) => {
+          resolve(res?.liveSessions);
+        })
+        .catch((error) => {
+          handleError(error);
+        });
+    });
+  };
+
+  const handleGetLiveSession = (id, setShowLoader) => {
+    return new Promise((resolve) => {
+      setShowLoader(true);
+
+      CreatorService.getLiveSession(id)
+        .then((res) => {
+          resolve(res?.data);
+        })
+        .catch((error) => {
+          handleError(error);
+        })
+        .finally(() => {
+          setShowLoader(false);
+        });
+    });
+  };
+
   return {
     handleCreateLiveSession,
+    handleGetLiveSessions,
+    handleGetLiveSession,
   };
 };
 
