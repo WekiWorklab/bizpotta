@@ -14,6 +14,7 @@ const initialState = {
   message: "",
   isRegistered: false,
   token: token ? token : null,
+  userUpdatedFromServer: false,
 };
 
 // set user

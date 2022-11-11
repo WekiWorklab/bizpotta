@@ -24,12 +24,15 @@ export const APIS = {
     GET_MY_COURSE: (id) => `${api}/learners/get-purchased-course/${id}`,
     COURSE_PURCHASED: `${api}/learners/course-purchased`,
     COURSE_PURCHASE_FAILED: `${api}/learners/course-purchase-failed`,
-    SUBMIT_ANSWERS: `${api}/learners/submit-answers`
+    SUBMIT_ANSWERS: `${api}/learners/submit-answers`,
   },
   MENTORS: {
     SET_MENTORING_PREFERENCES: `${api}/creators/set-mentor-preferences`,
     CREATE_MENTORING_SESSION: `${api}/creators/create-mentoring-session`,
     CREATE_COURSE: `${api}/creators/mentor/create-courses`,
+    CREATE_LIVE_SESSION: `${api}/creators/mentor/create-live-session`,
+    GET_LIVE_SESSIONS: `${api}/creators/mentor/get-live-sessions`,
+    GET_LIVE_SESSION: (id) => `${api}/creators/mentor/get-live-session/${id}`,
   },
   TUTORS: {
     SET_TUTORING_PREFERENCES: `${api}/creators/set-tutor-preferences`,
