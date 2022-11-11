@@ -72,8 +72,29 @@ const NewSession = () => {
           <p className='text-[14px] font-bold'>Image</p>
 
           <label htmlFor='file' className='inputField w-full flex justify-between items-center px-2 py-3 mt-3'>
-            <p className='text-[12px] text-[#CCCCCC] text-opacity-[0.45]'>Set your course price range</p>
-            <MdOutlinePhotoSizeSelectActual className='text-[20px] text-darkBlue' />
+            <p className='text-[12px] text-[#CCCCCC] text-opacity-[0.45]'>Upload an image for easy identification</p>
+
+            {/* <MdOutlinePhotoSizeSelectActual className='text-[20px] text-darkBlue' /> */}
+            <svg width='26' height='25' viewBox='0 0 26 25' fill='none' xmlns='http://www.w3.org/2000/svg'>
+              <path
+                d='M1.33301 5.50065C1.33301 4.26297 1.82467 3.07599 2.69984 2.20082C3.57501 1.32565 4.762 0.833984 5.99967 0.833984H19.9997C21.2374 0.833984 22.4243 1.32565 23.2995 2.20082C24.1747 3.07599 24.6663 4.26297 24.6663 5.50065V19.5007C24.6663 20.7383 24.1747 21.9253 23.2995 22.8005C22.4243 23.6757 21.2374 24.1673 19.9997 24.1673H5.99967C4.762 24.1673 3.57501 23.6757 2.69984 22.8005C1.82467 21.9253 1.33301 20.7383 1.33301 19.5007V5.50065Z'
+                stroke='#121F4C'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              />
+              <path
+                d='M8.91667 11.3333C10.5275 11.3333 11.8333 10.0275 11.8333 8.41667C11.8333 6.80584 10.5275 5.5 8.91667 5.5C7.30584 5.5 6 6.80584 6 8.41667C6 10.0275 7.30584 11.3333 8.91667 11.3333Z'
+                stroke='#121F4C'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              />
+              <path
+                d='M15.947 13.2245L6 24.1667H20.1552C21.3517 24.1667 22.4992 23.6914 23.3453 22.8453C24.1913 21.9992 24.6667 20.8517 24.6667 19.6552V19.5C24.6667 18.9564 24.4625 18.7475 24.095 18.345L19.3933 13.2175C19.1742 12.9785 18.9077 12.7878 18.6107 12.6575C18.3137 12.5272 17.9929 12.4603 17.6686 12.4609C17.3443 12.4616 17.0238 12.5298 16.7273 12.6613C16.4309 12.7928 16.1652 12.9846 15.947 13.2245V13.2245Z'
+                stroke='#121F4C'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              />
+            </svg>
             <input type='file' id='file' accept='.jpeg, .png, .jpg' className='hidden' />
           </label>
           <p className='w-full break-words text-[12px] text-[#999999] mt-3'>
@@ -107,7 +128,11 @@ const SelectOptions = ({ data, option, setOption, width, type, open, setOpen }) 
     <div className='relative mt-4'>
       <div className='flex items-center gap-x-3'>
         <div
-          className={`w-[${width}] h-[40px] px-2 rounded-md focus:ring-0 outline-none border border-[1px] border-[#CCCCCC] border-opacity-[0.45] flex justify-between items-center text-[13px] text-gray-400`}
+          className={`w-[${width}] cursor-pointer h-[40px] px-2 rounded-md focus:ring-0 outline-none border-[1px] border-[#CCCCCC] border-opacity-[0.45] flex justify-between items-center text-[13px] text-gray-400`}
+          onClick={() => {
+            setShowSelect((prev) => !prev);
+            setOpen(type);
+          }}
         >
           {option || "select"}
           <AiFillCaretDown
@@ -121,7 +146,7 @@ const SelectOptions = ({ data, option, setOption, width, type, open, setOpen }) 
         </div>
       </div>
       {showSelect && open === type && (
-        <div className='absolute min-w-[200px] z-20 top-[42px] left-0 py-4 bg-white rounded-md dropdown-shadow'>
+        <div className='absolute cursor-pointer min-w-[200px] z-20 top-[42px] left-0 py-4 bg-white rounded-md dropdown-shadow'>
           {data.map((el, index) => (
             <div
               key={index}
