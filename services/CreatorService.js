@@ -83,6 +83,11 @@ const saveCourse = async (data) => {
     return res.data;
   });
 };
+const createLiveSession = async (data) => {
+  return AxoisApi.post(`${APIS.MENTORS.CREATE_LIVE_SESSION}`, data).then((res) => {
+    return res.data;
+  });
+};
 
 const creatorService = {
   onBoardMentor,
@@ -97,6 +102,7 @@ const creatorService = {
   createQuiz,
   createAssignment,
   saveCourse,
+  createLiveSession,
 };
 
 export default creatorService;

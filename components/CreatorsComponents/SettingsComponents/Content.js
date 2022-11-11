@@ -116,7 +116,11 @@ const SelectOptions = ({
     <div className="relative mt-4">
       <div className="flex items-center gap-x-3">
         <div
-          className={`w-[${width}] h-[40px] px-2 rounded-md focus:ring-0 outline-none border border-[1px] border-[#CCCCCC] border-opacity-[0.45] flex justify-between items-center text-[13px] text-gray-400`}
+          className={`w-[${width}]  cursor-pointer h-[40px] px-2 rounded-md focus:ring-0 outline-none border border-[1px] border-[#CCCCCC] border-opacity-[0.45] flex justify-between items-center text-[13px] text-gray-400`}
+          onClick={() => {
+              setShowSelect((prev) => !prev);
+              setOpen(type);
+            }}
         >
           {option || "select"}
           <AiFillCaretDown
@@ -130,7 +134,7 @@ const SelectOptions = ({
         </div>
       </div>
       {showSelect && open === type && (
-        <div className="absolute min-w-[200px] z-20 top-[42px] left-0 py-4 bg-white rounded-md dropdown-shadow">
+        <div className="absolute cursor-pointer min-w-[200px] z-20 top-[42px] left-0 py-4 bg-white rounded-md dropdown-shadow">
           {data.map((el, index) => (
             <div
               key={index}
