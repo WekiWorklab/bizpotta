@@ -103,7 +103,7 @@ export default function VerifyEmailPage() {
       <Head>
         <title>Verify Email | Bizpotta</title>
       </Head>
-      <div className='hidden md:block md:w-2/4 h-screen bg-auth-pattern bg-cover'></div>
+      {/* <div className='hidden md:block md:w-2/4 h-screen bg-auth-pattern bg-cover'></div> */}
       <div className='w-full md:w-7/12'>
         <div className='h-[100vh] flex flex-col justify-center items-center'>
           <div className='w-[130px] h-[65px] mb-2 '>
