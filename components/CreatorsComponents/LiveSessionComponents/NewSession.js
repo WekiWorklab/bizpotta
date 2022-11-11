@@ -44,7 +44,17 @@ const NewSession = ({ data }) => {
   const submitHandler = async (data) => {
     setLoading(true);
     console.log(data);
-    const res = await handleCreateLiveSession(data, setLoading);
+    const UploadData = new FormData();
+    UploadData.append("image", data.image[0]);
+    UploadData.append("name", data.name);
+    UploadData.append("description", data.description);
+    UploadData.append("industry_id", data.category_id);
+    UploadData.append("price", data.price);
+    UploadData.append("custom_price", data.custom_price);
+    UploadData.append("date", data.date);
+    UploadData.append("time", data.time);
+
+    const res = await handleCreateLiveSession(UploadData, setLoading);
     console.log(res);
   };
 
