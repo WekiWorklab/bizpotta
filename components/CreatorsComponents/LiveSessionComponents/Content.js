@@ -140,9 +140,13 @@ const Content = () => {
 
             <div className='xl:w-full px-5 py-7 rounded-md mt-10 bg-[#FFFFFF]'>
               <p className='text-[17px] text-[#444444] font-bold w-full border-b-[1px] pb-4'>Upcoming</p>
-              <p className='text-[#444444] text-[17px] font-bold mt-4'>OBIdients town hall meeting</p>
-              <p className='text-[12px] text-[#999999] mt-2'>2k people registered</p>
-              <div className='w-full h-[40px] centerFlex text-darkBlue text-[14px] border border-darkBlue rounded-lg mt-4'> Share link </div>
+              {data.slice(1).map((item, index) => (
+                <div key={item.id}>
+                  <p className='text-[#444444] text-[17px] font-bold mt-4'>{item.name}</p>
+                  <p className='text-[12px] text-[#999999] mt-2'>{Number(item.attendees_count)} people registered</p>
+                </div>
+              ))}
+              {/* <div className='w-full h-[40px] centerFlex text-darkBlue text-[14px] border border-darkBlue rounded-lg mt-4'> Share link </div> */}
             </div>
           </div>
         </div>
