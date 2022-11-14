@@ -55,6 +55,18 @@ const submitAnswers = (data, course_id, week_id) => {
   })
 }
 
+
+const getLiveSessions = () => {
+  // return AxoisApi.get(APIS.LEARNERS.GET_LIVE_SESSIONS).then(res => {
+  //   return res.data
+  // })
+  return AxoisApi.get(APIS.LEARNERS.GET_LIVE_SESSIONS)
+}
+
+const getLiveSession = (id) => {
+  return AxoisApi.get(APIS.LEARNERS.GET_LIVE_SESSION(id))
+}
+
 const learnersService = {
   getLearningPreferences,
   setLearnersPreferences,
@@ -63,7 +75,9 @@ const learnersService = {
   purchaseCourseFailed,
   getMyCourses,
   getMyCourse,
-  submitAnswers
+  submitAnswers,
+  getLiveSessions,
+  getLiveSession
 };
 
 export default learnersService;

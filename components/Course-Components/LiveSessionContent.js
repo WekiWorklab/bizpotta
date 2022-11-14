@@ -11,22 +11,46 @@ import { FullPageSpinner } from "../../components/Lib";
 import { AiOutlineHeart, AiOutlineLeft, AiOutlineUpload } from "react-icons/ai";
 import { FaPlay } from "react-icons/fa";
 import { IoIosPeople } from "react-icons/io";
+import learnersService from "../../services/LearnersService";
 
 const Content = () => {
   const router = useRouter();
-  const { id } = router.query;
-  const [data, setData] = useState();
-  const [loading, setLoading] = useState(true);
+  const {query:{id}} = router
+  // const [data, setData] = useState();
+  const {getLiveSession} = useCourse()
+  
+    // useEffect(()=> {
+    //   const get = async () => {
+    //     try{
+    //     const result = await getLiveSession(router.query.id)
+    //     console.log(result)
+    //   }
+    //     catch(error) {
+    //       console.log(error)
+    //     }
+    //     // const result = await learnersService.getLiveSession(id)
+    //     // console.log(result)
+    //   }
+    //   get()
+    // }, [router.query.id])
 
-  useEffect(() => {
-    setLoading(false)
-  }, [router, id]);
+    const getLive = async (query_data) => {
+      const results = await getLiveSession(query_data.queryKey[1])
+      return results
+    } 
+
+
+
+    const {data} = useQuery(['get_LiveSession', id], getLive)
 
   const image =
     "https://cdn.pixabay.com/photo/2022/01/17/17/20/bored-6945309__340.png";
 
     const weeksArr = new Array(6).fill("")
- 
+    // get Liv session data here
+  
+    
+
 
   return (
     <div className="relative w-full h-full bg-gray-50 flex flex-col pt-[90px] md:pt-[120px] md:justify-start md:translate-x-[200px] md:w-[calc(100%-200px)] px-2 md:px-4 pb-10">
@@ -38,33 +62,33 @@ const Content = () => {
 
       <div
         className="w-full h-[230px] mt-4  bg-no-repeat bg-cover bg-center flex justify-center items-center cursor-pointer"
-        style={{ backgroundImage: `url(${image}) ` }}
+        style={{ backgroundImage: `url(${data?.liveSession?.image}) ` }}
         >
         <FaPlay size={40} color="white" />
       </div>
 
-      <h1 className="text-[18px] font-[600] mt-4">Fundamentals of DSLR Photography</h1>
+      <h1 className="text-[18px] font-[600] mt-4">{data?.liveSession?.name}</h1>
       <div className="flex flex-row items-center w-full justify-between ">
         <div className="flex flex-row items-center ">
-          <img src={image} className="w-[40px] h-[40px] rounded-full mr-4 " />
+          <img src={data?.liveSession?.image} className="w-[40px] h-[40px] rounded-full mr-4 " />
           <p className="text-[12px] sm:text-base ">
-            by Thomas Mat (Ph.d, Ms.c)
+            by {data?.liveSession?.host.firstName}
           </p>
         </div>
         <div className="flex flex-row justify-self-end  items-center">
           <IoIosPeople className="text-[20px] mr-4" />
           <p className="text-[13px] mr-4">
-            1032 enrolled
+            {data?.liveSession?.attendees_count}
           </p>
           <AiOutlineHeart className="text-[20px] mr-4" />
           <AiOutlineUpload className="text-[20px]" />
         </div>
       </div>
 
-      <h1 className="mt-6 font-[600] text-[14px]">About this course</h1>
-      <p className="text-[13px]">{data?.course?.description}</p>
+      <h1 className="mt-6 font-[600] text-[14px]">About this live session</h1>
+      <p className="text-[13px]">{data?.liveSession?.description}</p>
 
-      <h1 className="text-[13px] font-[600] mt-6">Description</h1>
+      {/* <h1 className="text-[13px] font-[600] mt-6">Description</h1>
       <div className=" flex flex-row justify-between md:grid grid-cols-3 text-[13px] ">
         <div className="flex flex-col ">
           <div>
@@ -91,7 +115,7 @@ const Content = () => {
             <span>{data?.course?.course_weeks.length * 0.5} hrs</span>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <h1 className="font-[600] text-[14px] mt-6">Certificate</h1>
       <p className="text-[13px]">Certificate is issued on completion</p>

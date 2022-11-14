@@ -1,12 +1,23 @@
+import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { GoPrimitiveDot } from "react-icons/go";
+import useCourse from "../../hooks/useCourse";
 import { specialization } from "../../public"; 
 
 const LiveComponent = () => {
   const [session, setSession] = useState("");
   const router = useRouter()
+  const {getLiveSessions} = useCourse()
+
+  // Get live sessions data here   
+  const {data, isLoading} = useQuery(['student_livesessions'], getLiveSessions)
+
+  console.log(data)
+
+
 
   return (
     <div className="relative w-full h-full bg-[#FDFDFD] flex flex-col pt-[90px] md:pt-[120px] md:justify-start md:translate-x-[200px] md:w-[calc(100%-200px)] px-2 md:px-16 pb-10">
@@ -14,35 +25,49 @@ const LiveComponent = () => {
 
       <SessionTabs session={session} setSession={setSession} />
 
-      <LiveSessionCard router = {router}/>
+    <div className="w-full">
+      {data?.liveSessions.map((el, index) => (
+        <LiveSessionCard key={index} data = {el} />
+      ))
+      }
+    </div>
 
-      <LiveSessionCard router = {router}/>
+      {/* <LiveSessionCard router = {router}/> */}
     </div>
   );
 };
 
 export default LiveComponent;
 
-const LiveSessionCard = ({router}) => {
+const LiveSessionCard = ({data}) => {
+  const router = useRouter()
+  
+  const handleClick = () => {
+    router.push({
+      pathname: `/students/live-session/[id]`,
+      query: {
+        id: data.id
+      }
+    
+    })
+  } 
+
   return (
-    <div className="flex items-center border masters-shadow2 border-[#b1adad] rounded-md px-3 sm:px-6 py-4 sm:py-8 w-full mt-16">
+    <div className="flex items-center border masters-shadow2 border-[#b1adad] rounded-md px-3 sm:px-6 py-4 sm:py-8 w-full mt-16 cursor-pointer" onClick = {handleClick}>
       <div className="w-full sm:w-2/3">
         <div className="flex items-center gap-x-2">
           <GoPrimitiveDot size={14} color="red" />
           <p className="font-bold text-[14px]">Live</p>
         </div>
         <p className="text-lg text-darkBlue font-bold mt-3">
-          Getting the right client
+          {data?.name}
         </p>
         <div className="flex items-center gap-x-4">
-          <p className="text-[13px]">Jan 12th, 2022</p>
-          <p className="text-[12px]">Friday, 10:00pm</p>
+          <p className="text-[13px]">{data?.date}</p>
+          <p className="text-[12px]">{data?.time}</p>
         </div>
         <div className="text-[12px] sm:w-4/5 mt-4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Orci blandit
-          id mollis metus porttitor ut aliquam. Aliquam fermentum felis viverra
-          egestas justo, lacinia ac. Nibh etiam morbi egestas sed id iaculis. Eu
-          eget ac felis ac. Quisque phasellus
+          {data?.description}
         </div>
         <div className="mt-4 flex items-center text-xs gap-x-2">
           <p>Hastags</p>
@@ -55,9 +80,9 @@ const LiveSessionCard = ({router}) => {
         <div className="mt-4 flex items-center text-xs gap-x-2">
           <div
             className="w-[40px] h-[40px] rounded-full bg-no-repeat bg-cover bg-center"
-            style={{ backgroundImage: `url(${specialization.src})` }}
+            style={{ backgroundImage: `url(${data?.image})` }}
           />
-          <p>723+ attending</p>
+          <p>{data?.attendees_count}+ attending</p>
         </div>
 
         <div className="flex gap-x-4 items-center mt-8">
@@ -72,7 +97,7 @@ const LiveSessionCard = ({router}) => {
       <div className="hidden sm:flex flex-col justify-center items-center  w-1/3">
         <div
           className="w-full h-[200px] bg-no-repeat bg-cover bg-center "
-          style={{ backgroundImage: `url(${specialization.src})` }}
+          style={{ backgroundImage: `url(${data?.image})` }}
         ></div>
         <div className="w-full grid grid-cols-3 gap-x-1 mt-2">
           <div className="flex flex-col items-center justify-center py-1 rounded-md border border-[#b1adad]">

@@ -211,7 +211,6 @@ export const CourseCategories = () => {
 
   const query = useQuery(["course_cat"], fetchCourseCategories);
   // const { data, isLoading } = useQuery(["courses", catId], fetchCourses);
-
   const { data, isLoading } = useQuery(["courses", catId], () => fetchCourses(catId));
 
   if (isLoading) {

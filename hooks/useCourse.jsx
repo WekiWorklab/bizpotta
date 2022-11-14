@@ -196,6 +196,41 @@ const useCourse = () => {
     });
   };
 
+  const getLiveSessions = () => {
+    return new Promise((resolve, reject) => {
+      learnersService.getLiveSessions()
+      .then(res => { resolve(res.data) })
+      .catch((error) => {
+        reject(error)
+      })
+    })
+  }
+
+  const getLiveSession = (id) => {
+    return new Promise((resolve, reject) => {
+      learnersService.getLiveSession(id)
+      .then((res) => resolve(res.data))
+      .catch((error) => {
+        reject(error)
+      })
+    })
+  }
+
+  // the sequence here is different from other fxns. Was just trying smth new
+  // const getLiveSession = (id) => {
+  //   return new Promise((resolve, reject) => {
+  //     const res = learnersService.getLiveSession(id)
+  //     if (res) {
+  //       // console.log(res)
+  //       resolve(res)
+  //     }
+  //     else {
+  //       reject("there is an error")
+  //     }
+  //   })
+  // }
+
+
   return {
     handleCreatelecture,
     purchaseCourse,
@@ -203,6 +238,8 @@ const useCourse = () => {
     purchaseCourseFailed,
     getMyCourses,
     getMyCourse,
+    getLiveSessions,
+    getLiveSession,
     handleCreateResource,
     handleCreateQuiz,
     handleCreateAssignment,
