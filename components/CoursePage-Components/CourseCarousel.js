@@ -13,7 +13,7 @@ const CourseCarousel = ({ data, screen, type }) => {
 
   const slidesPerView = () => {
     if (screen === "big") {
-      return 3.2;
+      return 2.5;
     } else if (screen === "medium") {
       return 2.4;
     } else if (screen === "small") {
@@ -25,19 +25,18 @@ const CourseCarousel = ({ data, screen, type }) => {
 
   const spaceBtw = () => {
     if (screen === "big") {
-      return 20;
+      return 10;
     } else if (screen === "medium") {
       return 10;
     } else if (screen === "small") {
-      return 5;
+      return 10;
     } else if (screen === "mobile") {
       return 10;
     }
   };
 
-  const handleClick = () => {
-    router.push("/students/course");
-  };
+
+  console.log(data)
 
   return (
     <Swiper
@@ -48,9 +47,8 @@ const CourseCarousel = ({ data, screen, type }) => {
       }}
       modules={[Pagination, Scrollbar]}
       style={{ backgroundColor: "transparent" }}
-      // onSwiper={(swiper) => console.log(swiper)}
     >
-      {data.map((el, index) => (
+      {data?.map((el, index) => (
         <SwiperSlide
           key={index}
           style={{
@@ -62,9 +60,9 @@ const CourseCarousel = ({ data, screen, type }) => {
             backgroundColor: "transparent",
           }}
           className=" "
-          onClick={() => handleClick()}
+          
         >
-          <CourseCard data={el} length={data.length} />
+          <CourseCard data={el} length = {data.length} ID = {index + 1} />
         </SwiperSlide>
       ))}
 

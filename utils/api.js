@@ -25,13 +25,15 @@ export const APIS = {
     COURSE_PURCHASED: `${api}/learners/course-purchased`,
     COURSE_PURCHASE_FAILED: `${api}/learners/course-purchase-failed`,
     SUBMIT_ANSWERS: `${api}/learners/submit-answers`,
+    GET_LIVE_SESSIONS: `${api}/learners/get-live-sessions`,/** */
+    GET_LIVE_SESSION: (id) => `${api}/learners/get-live-session/${id}`,/** */
   },
   MENTORS: {
     SET_MENTORING_PREFERENCES: `${api}/creators/set-mentor-preferences`,
     CREATE_MENTORING_SESSION: `${api}/creators/create-mentoring-session`,
     CREATE_COURSE: `${api}/creators/mentor/create-courses`,
     CREATE_LIVE_SESSION: `${api}/creators/mentor/create-live-session`,
-    GET_LIVE_SESSIONS: `${api}/creators/mentor/get-live-sessions`,
+    GET_LIVE_SESSIONS: `${api}/creators/mentor/get-live-sessions`,/** */
     GET_LIVE_SESSION: (id) => `${api}/creators/mentor/get-live-session/${id}`,
   },
   TUTORS: {

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import studentService from "../../services/StudentService";
 import { useQuery } from "@tanstack/react-query";
 import { setUser } from "../../store/authSlice";
+import useCourse from "../../hooks/useCourse";
 
 const StudentDashboard = () => {
   const { user } = useSelector((state) => state.auth);
@@ -21,7 +22,7 @@ const StudentDashboard = () => {
 
   const getRecommendedCourses = async () => {
     const res = await studentService.getRecommended();
-    console.log(res.data);
+    // console.log(res.data);
     return res?.data;
   };
 
@@ -35,12 +36,24 @@ const StudentDashboard = () => {
     return res?.data;
   };
 
-  const { data: recommended, isLoading: r_loading } = useQuery(["recommended"], getRecommendedCourses, { staleTime: 60 * 1000 * 10, retry: 2 });
-  const { data: popular, isLoading: p_loading} = useQuery(["popular"], getPopularCourses, { staleTime: 60 * 1000 * 10, retry: 2 });
-  const { data: featured, isLoading: f_loading } = useQuery(["featured"], getFeaturedCourse, { staleTime: 60 * 1000 * 10, retry: 2 });
-  
+  const { data: recommended, isLoading: r_loading } = useQuery(
+    ["recommended"],
+    getRecommendedCourses,
+    { staleTime: 60 * 1000 * 10, retry: 2 }
+  );
+  const { data: popular, isLoading: p_loading } = useQuery(
+    ["popular"],
+    getPopularCourses,
+    { staleTime: 60 * 1000 * 10, retry: 2 }
+  );
+  const { data: featured, isLoading: f_loading } = useQuery(
+    ["featured"],
+    getFeaturedCourse,
+    { staleTime: 60 * 1000 * 10, retry: 2 }
+  );
 
-  const show = false
+
+  const show = false;
   // user?.has_purchased_course
 
   return (
