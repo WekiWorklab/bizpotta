@@ -5,16 +5,26 @@ import { BsHeart, BsPersonPlus, BsChatDots } from "react-icons/bs";
 import { BiTransfer } from "react-icons/bi";
 import { card_image } from "../../public";
 import ContentCarousel, { StudentContentCardSection, StudentLoadingCardSection } from "./ContentCarousel";
-import { Data, instructorData } from "./Data";
+import {  instructorData } from "./Data";
 import PieChart from "./PieChart";
 import InstructorCarousel from "./InstructorCarousel";
 import { StyleCarousel } from "../StyleCarousel";
 import { useRouter } from "next/router";
+import CourseCarousel from "../CoursePage-Components/CourseCarousel";
+import { Data } from "../CoursePage-Components/Data";
+import useCourse from "../../hooks/useCourse";
+import { useQuery } from "@tanstack/react-query";
 
 const TopSection = ({ dataObj }) => {
-  // console.log(dataObj)
 
+  const {getMyCourses} = useCourse()
   const router = useRouter()
+
+  const {data, isLoading} = useQuery(["purchased_courses"], getMyCourses)
+  // console.log(data)
+  console.log(data)
+
+
 
   return (
     <div className=" pl-0 lg:pl-5 lg:pt-5 flex flex-col xl:flex-row w-full bg-white pb-10">
@@ -200,7 +210,28 @@ const TopSection = ({ dataObj }) => {
           </div>
         </div>
 
-        <div className="px-2">
+        <div className="px-2  w-full mt-10">
+
+          {/* Big screens */}
+        <div className="hidden xl:flex xl:w-full">
+          <CourseCarousel screen="big" data={data} />
+        </div>
+
+        {/* Medium screens */}
+        <div className="hidden lg:flex lg:w-full xl:hidden">
+          <CourseCarousel screen="medium" data={data} />
+        </div>
+
+        {/* Small screens */}
+        <div className="hidden sm:flex sm:flex-nowrap sm:w-full lg:hidden">
+          <CourseCarousel screen="small" data={data} />
+        </div>
+
+        {/* Mobile */}
+        <div className="flex w-full sm:hidden">
+          <CourseCarousel screen="mobile" data={data} />
+        </div>
+
           <div className="w-full mt-[50px]">
             {dataObj.r_loading ? <StudentLoadingCardSection /> :
              <StudentContentCardSection

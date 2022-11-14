@@ -13,7 +13,6 @@ const TopSection = ({}) => {
     setPathName(router.asPath);
   });
 
-
   return (
     <div className="pt-6">
       <p className=" hidden sm:block sm:font-[600] sm:mb-[20px]">
@@ -26,27 +25,9 @@ const TopSection = ({}) => {
         </p>
       </div>
 
-      {/* Big screens */}
-      <div className="hidden xl:flex xl:w-full">
-        <CourseCarousel screen="big" data={Data} />
-      </div>
-
-      {/* Medium screens */}
-      <div className="hidden lg:flex lg:w-full xl:hidden">
-        <CourseCarousel screen="medium" data={Data} />
-      </div>
-
-      {/* Small screens */}
-      <div className="hidden sm:flex sm:flex-nowrap sm:w-full lg:hidden">
-        <CourseCarousel screen="small" data={Data} />
-      </div>
-
-      {/* Mobile */}
-      <div className="flex w-full sm:hidden">
-        <CourseCarousel screen="mobile" data={Data} />
-      </div>
+      
       {/* #5FFC54 */}
-      <h1 className="text-[15px] font-semibold mt-6 w-full">
+      <h1 className="text-[15px] font-semibold mt-10 w-full">
         Explore various programs
       </h1>
 
@@ -66,3 +47,23 @@ const TopSection = ({}) => {
 export default TopSection;
 
 
+
+
+
+/**
+ <div className="hidden xl:flex xl:w-full">
+ <CourseCarousel screen="big" data={Data} />
+</div>
+
+<div className="hidden lg:flex lg:w-full xl:hidden">
+ <CourseCarousel screen="medium" data={Data} />
+</div>
+
+<div className="hidden sm:flex sm:flex-nowrap sm:w-full lg:hidden">
+ <CourseCarousel screen="small" data={Data} />
+</div>
+
+<div className="flex w-full sm:hidden">
+ <CourseCarousel screen="mobile" data={Data} />
+</div>
+ */
