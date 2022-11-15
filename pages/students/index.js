@@ -52,7 +52,6 @@ const StudentDashboard = () => {
     { staleTime: 60 * 1000 * 10, retry: 2 }
   );
 
-
   const show = false;
   // user?.has_purchased_course
 

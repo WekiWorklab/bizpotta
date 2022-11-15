@@ -15,19 +15,22 @@ const LiveComponent = () => {
   const router = useRouter()
   const {getLiveSessions} = useCourse()
 
+
   // Get live sessions data here   
   const {data, isLoading} = useQuery(['student_livesessions'], getLiveSessions)
 
 
   return (
     <div className="relative w-full h-full bg-[#FDFDFD] flex flex-col pt-[90px] md:pt-[120px] md:justify-start md:translate-x-[200px] md:w-[calc(100%-200px)] px-2 md:px-3 lg:px-16 pb-10">
-      <p className="mt-10">Live sessions</p>
+      <p className="mt-10 font-bold">Live sessions</p>
 
-      <SessionTabs session={session} setSession={setSession} />
+
+
+      <p className="mt-10  font-bold">Purchased live sessions </p>
 
       {/* loading state */}
       {isLoading ?  <div className="w-full">
-        <div className="flex flex-col  items-start border masters-shadow2 border-[#b1adad] rounded-md px-3 sm:px-6 py-4 sm:py-8 w-full mt-16  skeleton-parent h-[300px] sm:h-[400px]" >
+        <div className="flex flex-col  items-start border masters-shadow2 border-[#b1adad] rounded-md px-3 sm:px-6 py-4 sm:py-8 w-full mt-10  skeleton-parent h-[300px] sm:h-[400px]" >
           <div className="w-full h-3/4 sm:w-2/3 skeleton-child1" />
           <div className="w-full h-[20px] rounded-sm mt-8 skeleton-child1" />
           <div className="w-full h-[20px] rounded-sm mt-4 skeleton-child1" />
@@ -36,14 +39,22 @@ const LiveComponent = () => {
       </div> : null}
 
     {/* Data state */}
-    {data ? <div className="w-full">
+    {data ? <div className="w-full flex flex-col gap-y-10 mt-6">
       {data?.liveSessions.map((el, index) => (
         <LiveSessionCard key={index} data = {el} />
       ))
       }
     </div> : null}
 
+
+    <p className="mt-28  font-bold">See other live sessions </p>
+
+
       {/* <LiveSessionCard router = {router}/> */}
+      <div className="mt-4">
+      <SessionTabs session={session} setSession={setSession} />
+      </div>
+
     </div>
   );
 };
@@ -52,6 +63,9 @@ export default LiveComponent;
 
 const LiveSessionCard = ({data}) => {
   const router = useRouter()
+  const [time, setTime] = useState(moment(`${data?.date} ${data?.time}`).format("x"))
+  // 
+
   
   const handleClick = () => {
     router.push({
@@ -61,11 +75,26 @@ const LiveSessionCard = ({data}) => {
       }
     })
   } 
+  
+  useEffect(() => {
+    const myInterval = setInterval(() => {
+      const newTime = moment(`${data?.date} ${data?.time}`).format("x")
+      console.log(newTime)
+      setTime(Number(newTime))
+    }, 1800000);
 
+    return () => {
+      clearInterval(myInterval)
+    }
+  }, [time, data?.date, data?.time])
+  // Run the interval every 30mins
+
+  
   // Calc date time
 const liveSessionTime = useMemo(() => (
   moment(`${data?.date} ${data?.time}`).format()
 ), [data])
+
 
 
 //Renderer fxn
@@ -100,12 +129,13 @@ const Renderer = ({days, hours, minutes, seconds, completed}) => {
 
 
   return (
-    <div className="flex flex-col sm:flex-row   items-center border masters-shadow2 border-[#b1adad] rounded-md px-3 sm:px-6 md:px-3 lg:px-6 py-4 sm:py-8 w-full mt-16 cursor-pointer" onClick = {handleClick}>
+    <div className="flex flex-col sm:flex-row   items-center border masters-shadow2 border-[#b1adad] rounded-md px-3 sm:px-6 md:px-3 lg:px-6 py-4 sm:py-8 w-full  cursor-pointer" onClick = {handleClick}>
       <div className="w-full flex flex-col items-center sm:items-start sm:w-2/3">
-        <div className="flex items-center gap-x-2">
+        {Date.now() <= time ? <div className="flex items-center gap-x-2">
           <GoPrimitiveDot size={14} color="red" />
           <p className="font-bold text-[14px]">Live</p>
-        </div>
+          {/* <div>{time + Date.now()}</div> */}
+        </div> : null }
         <p className="text-lg text-darkBlue font-bold mt-2 sm:mt-3">
           {data?.name}
         </p>

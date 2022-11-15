@@ -13,7 +13,7 @@ import { AiOutlineProject } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { IoSettingsOutline, IoLogOutOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-import { AffiliateSVG, CreatorDashboard } from "../../../public";
+import { AffiliateSVG, CreatorAffiliate, CreatorCommunity, CreatorCourses, CreatorDashboard, CreatorEngagement, CreatorMarketInsight, CreatorSettings } from "../../../public";
 import { logout } from "../../../store/authSlice";
 
 function Sidebar() {
@@ -37,7 +37,7 @@ function Sidebar() {
             >
               <div className="flex flex-row justify-start items-center">
                 <CreatorDashboard
-                  color={path === "/creators" ? "text-[#121F4C] font-bold" : "text-gray-400"}
+                  color={path === "/creators" ? "#121F4C" : "#9CA3AF"}
                 />
                 <div
                   className={`${
@@ -56,8 +56,8 @@ function Sidebar() {
               onClick={() => router.push("/creators/courses")}
             >
               <div className="flex flex-row justify-start items-center">
-                <HiOutlineBookOpen
-                  color={path === "/creators/courses" ? "text-[#121F4C]" : "text-gray-400"}
+                <CreatorCourses
+                  color={path === "/creators/courses" ?  "#121F4C" : "#9CA3AF"}
                 />
                 <div
                   className={`${
@@ -82,12 +82,13 @@ function Sidebar() {
                         path === "/creators/live-session" ||
                         path === "/creators/live-session/new"
                           ? "#121F4C"
-                          : "gray"
+                          : "#9CA3AF"
                       }
                     />
                     <div
                       className={`${
-                        path === "/creators/live-session"
+                        path === "/creators/live-session" ||
+                        path === "/creators/live-session/new"
                           ? "text-darkBlue font-semibold"
                           : "text-gray-400 font-light"
                       } text-sm ml-5 hover:text-darkBlue`}
@@ -104,12 +105,18 @@ function Sidebar() {
             >
               <div className="flex flex-row justify-start items-center">
                 {/* <MdOutlineSchool color='gray' /> */}
-                <MdOutlineSchool
+                <CreatorMarketInsight
                   color={
-                    path === "/creators/market-insight" ? "#121F4C" : "gray"
+                    path === "/creators/market-insight" ? "#121F4C" : "#9CA3AF"
                   }
                 />
-                <div className="text-sm text-gray-600 font-light ml-5">
+                <div
+                  className={`${
+                    path === "/creators/market-insight"
+                      ? "text-darkBlue font-semibold"
+                      : "text-gray-400 font-light"
+                  } text-sm ml-5 hover:text-darkBlue`}
+                >
                   Market Insight
                 </div>
               </div>
@@ -120,8 +127,16 @@ function Sidebar() {
               onClick={() => router.push("/creators/community")}
             >
               <div className="flex flex-row justify-start items-center">
-                <MdOutlineSchool color="gray" />
-                <div className="text-sm text-gray-600 font-light ml-5">
+                <CreatorCommunity color={
+                    path === "/creators/community" ? "#121F4C" : "#9CA3AF"
+                  } />
+                <div
+                  className={`${
+                    path === "/creators/community"
+                      ? "text-darkBlue font-semibold"
+                      : "text-gray-400 font-light"
+                  } text-sm ml-5 hover:text-darkBlue`}
+                >
                   Community
                 </div>
               </div>
@@ -134,8 +149,8 @@ function Sidebar() {
               onClick={() => router.push("/creators/messages")}
             >
               <div className="flex flex-row justify-start items-center">
-                <AiOutlineProject
-                  color={path === "/creators/messages" ? "#121F4C" : "gray"}
+                <CreatorEngagement
+                  color={path === "/creators/messages" ? "#121F4C" : "#9CA3AF"}
                 />
                 <div
                   className={`${
@@ -188,8 +203,8 @@ function Sidebar() {
               onClick={() => router.push("/creators/affiliate")}
             >
               <div className="flex flex-row justify-start items-center">
-                <AffiliateSVG
-                  color={path === "/creators/affiliate" ? "#121F4C" : "gray"}
+                <CreatorAffiliate
+                  color={path === "/creators/affiliate" ? "#121F4C" : "#9CA3AF"}
                 />
 
                 <div
@@ -209,7 +224,7 @@ function Sidebar() {
               onClick={() => router.push("/creators/settings")}
             >
               <div className="flex flex-row justify-start items-center">
-                <IoSettingsOutline
+                <CreatorSettings
                   color={path === "/creators/settings" ? "#121F4C" : "gray"}
                 />
                 <div
