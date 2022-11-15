@@ -56,6 +56,7 @@ const submitAnswers = (data, course_id, week_id) => {
 }
 
 
+//The live session api fxns are diffrent from the others above. Was just trying new stuff out i.e no .then() after await fxn
 const getLiveSessions = () => {
   // return AxoisApi.get(APIS.LEARNERS.GET_LIVE_SESSIONS).then(res => {
   //   return res.data
