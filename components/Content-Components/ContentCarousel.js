@@ -24,7 +24,7 @@ export const LoadingCardSection = ({ contentTitle }) => {
   const arr = new Array(4).fill("");
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 gap-x-8 gap-y-10 justify-items-center mb-20">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-10 justify-items-center mb-20">
       {arr.map((el, index) => (
         <div
           key={index}
@@ -49,7 +49,7 @@ export const StudentLoadingCardSection = ({ contentTitle }) => {
       {arr.map((el, index) => (
         <div
           key={index}
-          className="w-[220px] h-[220px] flex flex-col justify-end rounded-[4px] skeleton-parent dropdown-shadow "
+          className="w-[220px] h-[220px] flex flex-col justify-end rounded-[4px] skeleton-parent dropdown-shadow"
         >
           <div className="clip-card-path2 text-[white] h-3/5 flex flex-col gap-y-2 justify-end  px-2 pb-2 rounded-b-md skeleton-child1">
             <div className="w-3/4 h-[15px]  skeleton-child2" />
@@ -333,7 +333,7 @@ export const StudentPurchaseSection = () => {
 
   if(isLoading){
     return(
-    <div className="w-4/5 h-[185px] flex flex-col p-3 rounded-md border skeleton-parent">
+    <div className="w-4/5 h-[185px] flex flex-col p-3 rounded-md border skeleton-parent mx-auto ">
       <div className="w-[100px] h-[100px] rounded-md skeleton-child1" />
       <div className="w-full h-[20px] skeleton-child1 mt-6" />
       <div className="w-full h-[20px] skeleton-child1 mt-6" />

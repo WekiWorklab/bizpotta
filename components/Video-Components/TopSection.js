@@ -19,7 +19,7 @@ const TopSection = ({ data }) => {
     router.back();
   };
 
-  console.log(data)
+  console.log(data);
 
   return (
     <div className=" pt-2 md:pt-8">

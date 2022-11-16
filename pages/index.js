@@ -193,7 +193,7 @@ export default function Home() {
             </div>
 
             {/* What we offer section */}
-            <div className='relative mt-12 sm:mt-20 redBorder'>
+            <div className='relative mt-12 sm:mt-20'>
               <div className='lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start'>
                 <div className='relative sm:py-16 lg:py-0'>
                   <div className='relative mx-auto max-w-md  sm:max-w-3xl px-0 sm:px-6 lg:px-0 lg:max-w-none lg:py-20'>
@@ -529,7 +529,7 @@ const Carousel = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      // nextSlide();
+      nextSlide();
     }, autoplayTime);
 
     return () => clearTimeout(timer);
