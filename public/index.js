@@ -3725,3 +3725,4 @@ export const CreatorSettings = ({color}) => (
 </svg>
 
 )
+
