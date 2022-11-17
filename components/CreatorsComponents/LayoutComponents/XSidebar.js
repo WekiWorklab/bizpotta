@@ -14,7 +14,15 @@ import { AiOutlineProject } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { IoSettingsOutline, IoLogOutOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-import { CreatorAffiliate, CreatorCommunity, CreatorCourses, CreatorDashboard, CreatorEngagement, CreatorMarketInsight, CreatorSettings } from "../../../public";
+import {
+  CreatorAffiliate,
+  CreatorCommunity,
+  CreatorCourses,
+  CreatorDashboard,
+  CreatorEngagement,
+  CreatorMarketInsight,
+  CreatorSettings,
+} from "../../../public";
 
 function XSidebar({ show, setShow, slideIn, setSlideIn }) {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
@@ -29,7 +37,7 @@ function XSidebar({ show, setShow, slideIn, setSlideIn }) {
       <nav
         className={`${
           slideIn ? "SideBar" : "NoSideBar"
-        } fixed md:hidden top-0  w-[350px] pt-6 px-6 bg-gray-50 rounded-r-[20px] shadow-md flex-wrap items-center justify-between h-screen z-[9999] overflow-y-scroll no-scrollbar`}
+        } fixed md:hidden top-0  w-[350px] pt-6 px-6 bg-gray-50 rounded-r-[20px] shadow-md flex-wrap items-center justify-between h-screen max-h-screen z-[9999] overflow-y-scroll no-scrollbar`}
       >
         <div className="relative min-h-screen w-full">
           <div
@@ -83,7 +91,7 @@ function XSidebar({ show, setShow, slideIn, setSlideIn }) {
               >
                 <div className="flex flex-row justify-start items-center">
                   <CreatorCourses
-                    color={path === "/creators/courses" ?  "#121F4C" : "#9CA3AF"}
+                    color={path === "/creators/courses" ? "#121F4C" : "#9CA3AF"}
                   />
                   <div
                     className={`${
@@ -124,31 +132,47 @@ function XSidebar({ show, setShow, slideIn, setSlideIn }) {
                 </li>
               )}
 
-              <li className="items-center cursor-pointer mb-5" onClick={() => router.push("/creators/market-insight")}>
+              <li
+                className="items-center cursor-pointer mb-5"
+                onClick={() => router.push("/creators/market-insight")}
+              >
                 <div className="flex flex-row justify-start items-center">
-                  <CreatorMarketInsight color={
-                    path === "/creators/market-insight" ? "#121F4C" : "#9CA3AF"
-                  } />
-                  <div className={`${
-                    path === "/creators/market-insight"
-                      ? "text-darkBlue font-semibold"
-                      : "text-gray-400 font-light"
-                  } text-sm ml-5 hover:text-darkBlue`}>
+                  <CreatorMarketInsight
+                    color={
+                      path === "/creators/market-insight"
+                        ? "#121F4C"
+                        : "#9CA3AF"
+                    }
+                  />
+                  <div
+                    className={`${
+                      path === "/creators/market-insight"
+                        ? "text-darkBlue font-semibold"
+                        : "text-gray-400 font-light"
+                    } text-sm ml-5 hover:text-darkBlue`}
+                  >
                     Market Insight
                   </div>
                 </div>
               </li>
 
-              <li className="items-center cursor-pointer mb-5" onClick={() => router.push("/creators/community")}>
+              <li
+                className="items-center cursor-pointer mb-5"
+                onClick={() => router.push("/creators/community")}
+              >
                 <div className="flex flex-row justify-start items-center">
-                  <CreatorCommunity color={
-                    path === "/creators/community" ? "#121F4C" : "#9CA3AF"
-                  } />
-                  <div className={`${
-                    path === "/creators/community"
-                      ? "text-darkBlue font-semibold"
-                      : "text-gray-400 font-light"
-                  } text-sm ml-5 hover:text-darkBlue`}>
+                  <CreatorCommunity
+                    color={
+                      path === "/creators/community" ? "#121F4C" : "#9CA3AF"
+                    }
+                  />
+                  <div
+                    className={`${
+                      path === "/creators/community"
+                        ? "text-darkBlue font-semibold"
+                        : "text-gray-400 font-light"
+                    } text-sm ml-5 hover:text-darkBlue`}
+                  >
                     Community
                   </div>
                 </div>
@@ -162,7 +186,9 @@ function XSidebar({ show, setShow, slideIn, setSlideIn }) {
               >
                 <div className="flex flex-row justify-start items-center">
                   <CreatorEngagement
-                    color={path === "/creators/messages" ? "#121F4C" : "#9CA3AF"}
+                    color={
+                      path === "/creators/messages" ? "#121F4C" : "#9CA3AF"
+                    }
                   />
                   <div
                     className={`${
@@ -242,14 +268,23 @@ function XSidebar({ show, setShow, slideIn, setSlideIn }) {
             </ul>
 
             <ul className="md:flex-col md:min-w-full flex flex-col list-none mb-10 mt-5 ">
-              <li className="items-center cursor-pointer mb-5" onClick={() => router.push("/creators/affiliate")}>
+              <li
+                className="items-center cursor-pointer mb-5"
+                onClick={() => router.push("/creators/affiliate")}
+              >
                 <div className="flex flex-row justify-start items-center">
-                  <CreatorAffiliate color={path === "/creators/affiliate" ? "#121F4C" : "#9CA3AF"} />
-                  <div className={`${
-                    path === "/creators/affiliate"
-                      ? "text-darkBlue font-semibold"
-                      : "text-gray-400 font-light"
-                  } text-sm   ml-5 hover:text-darkBlue`}>
+                  <CreatorAffiliate
+                    color={
+                      path === "/creators/affiliate" ? "#121F4C" : "#9CA3AF"
+                    }
+                  />
+                  <div
+                    className={`${
+                      path === "/creators/affiliate"
+                        ? "text-darkBlue font-semibold"
+                        : "text-gray-400 font-light"
+                    } text-sm   ml-5 hover:text-darkBlue`}
+                  >
                     Affiliate
                   </div>
                 </div>
@@ -260,12 +295,16 @@ function XSidebar({ show, setShow, slideIn, setSlideIn }) {
                 onClick={() => router.push("/creators/settings")}
               >
                 <div className="flex flex-row justify-start items-center">
-                  <CreatorSettings color={path === "/creators/settings" ? "#121F4C" : "gray"} />
-                  <div className={`${
-                    path === "/creators/settings"
-                      ? "text-darkBlue font-semibold"
-                      : "text-gray-400 font-light"
-                  } text-sm   ml-5 hover:text-darkBlue`}>
+                  <CreatorSettings
+                    color={path === "/creators/settings" ? "#121F4C" : "gray"}
+                  />
+                  <div
+                    className={`${
+                      path === "/creators/settings"
+                        ? "text-darkBlue font-semibold"
+                        : "text-gray-400 font-light"
+                    } text-sm   ml-5 hover:text-darkBlue`}
+                  >
                     Settings
                   </div>
                 </div>
