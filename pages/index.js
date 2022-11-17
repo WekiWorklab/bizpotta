@@ -425,9 +425,8 @@ export const HomeSideBar = ({ show, setShow, slideIn, setSlideIn }) => {
     <div
       className={`${
         slideIn ? "SideBar" : "NoSideBar"
-      } w-[320px] h-screen fixed z-40 opacity-1 rounded-r-3xl bg-[#FAFAFA] flex lg:hidden items-center  h-screen max-h-screen z-[9999] overflow-y-scroll no-scrollbar`}
+      } w-[320px] h-screen fixed z-40 opacity-1 rounded-r-3xl bg-[#FAFAFA] flex lg:hidden items-center `}
     >
-      <div className="relative min-h-screen w-full">
       <div
         className='absolute top-[40px] right-[20px] cursor-pointer'
         onClick={() => {
@@ -507,8 +506,6 @@ export const HomeSideBar = ({ show, setShow, slideIn, setSlideIn }) => {
             </div>
           </li>
         </ul>
-      </div>
-
       </div>
     </div>
   );
