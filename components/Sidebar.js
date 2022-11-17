@@ -58,12 +58,12 @@ function Sidebar() {
               <div className="flex flex-row justify-start items-center">
                 <HiOutlineBookOpen
                   color={
-                    path === "/students/courses/vocational" ? "#121F4C" : "gray"
+                    (path === "/students/courses/vocational" || path === "/students/courses/masterclass") ? "#121F4C" : "gray"
                   }
                 />
                 <div
                   className={`${
-                    path === "/students/courses/vocational"
+                    (path === "/students/courses/vocational" || path === "/students/courses/masterclass")
                       ? "text-darkBlue font-semibold"
                       : "text-gray-400 font-light"
                   } text-sm ml-5`}
@@ -86,7 +86,6 @@ function Sidebar() {
               </div>
             </li>
 
-            
           </ul>
 
           {/* Divider */}

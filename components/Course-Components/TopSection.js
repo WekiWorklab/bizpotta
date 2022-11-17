@@ -112,5 +112,3 @@ const TopSection = ({ data }) => {
 };
 
 export default TopSection;
-
-

@@ -68,6 +68,14 @@ const getLiveSession = (id) => {
   return AxoisApi.get(APIS.LEARNERS.GET_LIVE_SESSION(id))
 }
 
+
+const setLectureCompleted = (data) => {
+  return AxoisApi.post(`${APIS.LEARNERS.SET_LECTURE_COMPLETED}`, {
+    course_id: data.course_id,
+    course_week_id: data.course_week_id
+  })
+}
+
 const learnersService = {
   getLearningPreferences,
   setLearnersPreferences,
@@ -78,7 +86,8 @@ const learnersService = {
   getMyCourse,
   submitAnswers,
   getLiveSessions,
-  getLiveSession
+  getLiveSession,
+  setLectureCompleted
 };
 
 export default learnersService;

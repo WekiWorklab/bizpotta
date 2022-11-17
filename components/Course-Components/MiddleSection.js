@@ -17,7 +17,7 @@ const MiddleSection = ({ data }) => {
                 <p className="min-w-[50px] text-center text-[11px] mt-2">
                   {/* Week {el?.id} */}
                   {/* Week {el.week_number} */}
-                  Week {index + 1} 
+                  Week {index + 1}
                 </p>
               </div>
               {index == data?.course?.course_weeks?.length - 1 ? (
@@ -32,7 +32,7 @@ const MiddleSection = ({ data }) => {
 
       <div className="mt-10">
         {data?.course?.course_weeks?.map((el, index) => (
-          <ScheduleCard key={index} data={el} index={index + 1} />
+          <ScheduleCard key={index} data={el} completedWeeks = {data.completed_weeks} index={index + 1} />
         ))}
       </div>
     </div>
@@ -41,9 +41,6 @@ const MiddleSection = ({ data }) => {
 
 export default MiddleSection;
 
-
 /**
  * Ths AscComparatorFunc is for sorting array of course weeks in ascending order
  */
-
-

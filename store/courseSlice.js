@@ -11,6 +11,7 @@ const courseSlice = createSlice({
     show_upload_success_modal: false,
     show_notes: false,
     show_course_details_modal: false,
+    show_masterclass_modal: false,
     weeks_array: [1],
     quiz_array: [],
     quiz_data: [],
@@ -45,6 +46,9 @@ const courseSlice = createSlice({
     },
     showCourseDetailsModal: (state, action) => {
       state.show_course_details_modal = action.payload;
+    },
+    showMasterclassModal: (state, action) => {
+      state.show_masterclass_modal = action.payload;
     },
     setCourseDetails: (state, action) =>  {
       state.course_details = action.payload
@@ -99,7 +103,8 @@ export const {
   deleteLastWeek,
   addToCart,
   removeFromCart,
-  setCourseDetails
+  setCourseDetails,
+  showMasterclassModal
 } = courseSlice.actions;
 
 export default courseSlice.reducer;

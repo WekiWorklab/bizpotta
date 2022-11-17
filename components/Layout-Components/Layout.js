@@ -11,6 +11,7 @@ import CourseDetailsModal from "../CourseDetailsModal";
 import { FullPageSpinner } from "../Lib";
 
 import { motion } from "framer-motion";
+import MasterclassDetailsModal from "../MasterclassDetailsModal";
 
 const Layout = ({ children }) => {
   const router = useRouter();
@@ -19,7 +20,11 @@ const Layout = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [slideIn, setSlideIn] = useState(false);
 
-  const show_course_modal = useSelector(state => state.course.show_course_details_modal)
+  const show_course_modal = useSelector(
+    (state) => state.course.show_course_details_modal
+  );
+
+  const show_masterclass_modal = useSelector(state => state.course.show_masterclass_modal)
 
   useEffect(() => {
     if (user && user?.is_onboarded) {
@@ -36,16 +41,35 @@ const Layout = ({ children }) => {
   if (loading) return <FullPageSpinner />;
 
   return (
-    <div className='relative overflow-hidden'>
-      <Header show={show} setShow={setShow} slideIn={slideIn} setSlideIn={setSlideIn} />
-      <motion.div className='w-full' initial={{ opacity: 0, x: "20%" }} animate={{ opacity: 1, x: 0 }} transition={{ ease: "easeOut", duration: 1 }}>
+    <div className="relative overflow-hidden">
+      <Header
+        show={show}
+        setShow={setShow}
+        slideIn={slideIn}
+        setSlideIn={setSlideIn}
+      />
+      <motion.div
+        className="w-full"
+        initial={{ opacity: 0, x: "20%" }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ ease: "easeOut", duration: 1 }}
+      >
         {children}
       </motion.div>
       <Sidebar />
-      <XSidebar show={show} setShow={setShow} slideIn={slideIn} setSlideIn={setSlideIn} />
+      <XSidebar
+        show={show}
+        setShow={setShow}
+        slideIn={slideIn}
+        setSlideIn={setSlideIn}
+      />
       {show_course_modal ? <CourseDetailsModal /> : null}
+
+      {show_masterclass_modal ? <MasterclassDetailsModal /> : null}
+
+
     </div>
   );
 };
-    
+
 export default Layout;

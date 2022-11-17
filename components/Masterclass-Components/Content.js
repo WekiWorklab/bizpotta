@@ -15,6 +15,9 @@ import ContentCarousel, {
 } from "../Content-Components/ContentCarousel";
 
 const Content = () => {
+
+
+
   return (
     <div className="relative w-full h-full bg-white flex flex-col pt-[90px] md:pt-[120px] md:translate-x-[200px] md:w-[calc(100%-200px)] px-2 pb-10 ">
       <p className="text-sm text-darkBlue font-semibold  mt-10">Live session</p>

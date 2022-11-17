@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 const Content = () => {
   const router = useRouter();
   const { id, weekId } = router.query;
-  const { getMyCourse } = useCourse();
+  const { getMyCourse, setLectureCompleted } = useCourse();
   const [data, setData] = useState();
   const [others, setOthers] = useState({})
   const [loading, setLoading] = useState(true);
@@ -21,13 +21,28 @@ const Content = () => {
               router.push("/students");
             }
             setData(
-              res?.course?.course_weeks?.find((el) => el.week_number == weekId)
+              res?.course?.course_weeks?.find((el) => el.id == weekId)
             );
             setOthers({image: res?.course?.image, instructor: `${res?.course?.course_instructor?.firstName} ${res?.course?.course_instructor?.lastName}`, description: res?.course?.description})
           })
           .finally(() => setLoading(false))
       : null;
   }, [router, id]);
+
+
+
+
+  //Set lecture to completed
+  useEffect(() => {
+    (id && weekId) ? setLectureCompleted({course_id: Number(id), course_week_id: Number(weekId)}).then((res) => {
+      if(!res) {
+        console.log("FAILED!!!!!")
+      }
+      console.log(res)
+      
+    }) : null
+    
+  }, [id, weekId])
 
   if (loading) return <FullPageSpinner />;
 

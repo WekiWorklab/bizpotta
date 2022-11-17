@@ -1,5 +1,5 @@
 /////
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 
 //////
@@ -22,12 +22,27 @@ const Description = ({ show, desc }) => {
   );
 };
 
-const ScheduleCard = ({ data, index }) => {
+const ScheduleCard = ({ data, index, completedWeeks }) => {
   const router = useRouter();
 
   const [show, setShow] = useState(false);
+  const [completedData, setCompletedData] = useState()
   const desc =
     "Facilisis quis sem convallis odio pellentesque. Convallis leo urna eleifend tellus ut vel amet ullamcorper nunc. Sit mauris pellentesque pellentesque aenean amet massa eget vitae. Duis lacus, hendrerit urna sit bibendum. Et enim sapien dictum egestas platea. Facilisi pretium eget nibh nam arcu. Cras etiam pellentesque dui tempor purus porttitor nec ut. Velit viverra lectus a vel faucibus sed id integer at.";
+
+  useEffect(()=> {
+    if (completedWeeks.length > 0) {
+     for(const el of completedWeeks) {
+        if (el.week_id == data.id){
+          setCompletedData(el)
+        }
+        else{
+
+        }
+    }
+  }
+  }, [completedWeeks, data, ])
+
 
   const handleToQuiz = () => {
     router.push({
@@ -65,7 +80,7 @@ const ScheduleCard = ({ data, index }) => {
             router.push(`/students/courses/${data?.course_id}/week/${data?.id}`)
           }
         >
-          <div className="w-8 h-8 rounded-full border-2 border-darkBlue"></div>
+          <div className={`w-8 h-8 rounded-full border-2 border-darkBlue ${completedData?.is_lecture_completed ? "bg-darkBlue" : "bg-transparent"} `}></div>
           <p className="ml-8">Lecture</p>
         </div>
         <div

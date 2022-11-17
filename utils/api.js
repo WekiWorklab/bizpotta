@@ -27,6 +27,10 @@ export const APIS = {
     SUBMIT_ANSWERS: `${api}/learners/submit-answers`,
     GET_LIVE_SESSIONS: `${api}/learners/get-live-sessions`,/** */
     GET_LIVE_SESSION: (id) => `${api}/learners/get-live-session/${id}`,/** */
+    SET_LECTURE_COMPLETED: `${api}/learners/set-lecture-completed`,
+    SET_ASSIGNMENT_COMPLETED: `${api}/learners/set-assignment-completed`,
+    SET_NOTE: `${api}/learners/create-note`
+
   },
   MENTORS: {
     SET_MENTORING_PREFERENCES: `${api}/creators/set-mentor-preferences`,
