@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { MdOutlineDashboard, MdOutlineSchool } from "react-icons/md";
+import { MdOutlineDashboard, MdOutlineLiveTv, MdOutlineSchool } from "react-icons/md";
 import { HiOutlineBookOpen } from "react-icons/hi";
 import { AiOutlineProject } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
@@ -79,7 +79,7 @@ function Sidebar() {
               onClick={() => router.push("/students/live-session")}
             >
               <div className={`${path.includes("/students/live-session") ? "text-darkBlue font-semibold" : "text-gray-400 font-light"} flex flex-row justify-start items-center`}>
-                <MdOutlineSchool />
+                <MdOutlineLiveTv />
                 <div className={`text-sm ml-5`}>
                   Live Session
                 </div>

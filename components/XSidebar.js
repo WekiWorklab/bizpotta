@@ -5,6 +5,7 @@ import {
   MdOutlineDashboard,
   MdOutlineSchool,
   MdOutlineCancel,
+  MdOutlineLiveTv,
 } from "react-icons/md";
 import { HiOutlineBookOpen } from "react-icons/hi";
 import { AiOutlineProject, AiOutlineSave } from "react-icons/ai";
@@ -12,9 +13,12 @@ import { AiOutlineProject, AiOutlineSave } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { IoSettingsOutline, IoLogOutOutline } from "react-icons/io5";
 import { VscChevronRight } from "react-icons/vsc";
+import { useDispatch } from "react-redux";
+import { logout, reset } from "../store/authSlice";
 
 export default function XSidebar({ show, setShow, slideIn, setSlideIn }) {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
+  const dispatch = useDispatch();
 
   const router = useRouter();
 
@@ -23,6 +27,12 @@ export default function XSidebar({ show, setShow, slideIn, setSlideIn }) {
   const handleClick = (path) => {
     setShow(false);
     router.push(path);
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    dispatch(reset());
+    router.push("/auth/login");
   };
 
   return (
@@ -116,7 +126,7 @@ export default function XSidebar({ show, setShow, slideIn, setSlideIn }) {
                       : "text-gray-600 font-light"
                   } flex items-center h-[45px]`}
                 >
-                  <MdOutlineSchool />
+                  <MdOutlineLiveTv />
                   <div className="text-sm w-[230px]  ml-5">Live Session</div>
                   <VscChevronRight />
                 </div>
@@ -229,7 +239,7 @@ export default function XSidebar({ show, setShow, slideIn, setSlideIn }) {
               </li>
 
               <li className="items-center cursor-pointer mb-2">
-                <div className="flex items-center h-[45px]">
+                <div className="flex items-center h-[45px]" onClick={handleLogout}>
                   <IoLogOutOutline color="gray" />
                   <div className="text-sm text-gray-600 w-[230px] font-light ml-5">
                     LogOut
