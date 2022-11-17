@@ -1,6 +1,13 @@
 import { toast } from "react-toastify";
 
 const useNotification = () => {
+  const logoutUser = () => {
+    localStorage.removeItem("bizpotta_token");
+    localStorage.removeItem("user");
+
+    window.location.assign("/");
+  };
+
   const handleSuccess = (message) => {
     toast.success(message);
   };
