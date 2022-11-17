@@ -157,7 +157,6 @@ const QuestionCard = ({el, proxyIndex, quizState, answers, setAnswers, returnedD
         <div className='flex items-center gap-x-2 font-bold'>
             <p>Q{elemIndex}.</p>
             <p>{el?.title}</p>
-            <p>{proxyIndex}</p>
         </div>
 
   
@@ -165,7 +164,7 @@ const QuestionCard = ({el, proxyIndex, quizState, answers, setAnswers, returnedD
         <div className='flex flex-col gap-y-3 mt-4'>
           <div className='flex items-center gap-x-3'>
             <div className='w-full sm:w-[400px] lg:w-[550px] text-[14px] lg:text-base h-[55px] bg-[#F3F3F3] flex items-center justify-between px-3 rounded-md' >
-              <p className='break-words'>{el?.answers?.[0]?.title}   {el?.answers?.[0]?.id}</p>
+              <p className='break-words'>{el?.answers?.[0]?.title}</p>
               <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == el.answers?.[0]?.id ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(el.answers[0].id)} />
               
             </div> 
@@ -185,7 +184,7 @@ const QuestionCard = ({el, proxyIndex, quizState, answers, setAnswers, returnedD
 
           <div className='flex items-center gap-x-3'>
             <div className='w-full sm:w-[400px] lg:w-[550px] text-[14px] lg:text-base h-[55px] bg-[#F3F3F3] flex items-center justify-between px-3 rounded-md' >
-            <p className='break-words'>{el?.answers?.[1].title}   {el?.answers?.[1]?.id}</p>
+            <p className='break-words'>{el?.answers?.[1].title}</p>
 
               {<div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == el?.answers?.[1]?.id ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(el.answers[1].id)} />
               }
@@ -205,7 +204,7 @@ const QuestionCard = ({el, proxyIndex, quizState, answers, setAnswers, returnedD
 
           <div className='flex items-center gap-x-3'>
             <div className='w-full sm:w-[400px] lg:w-[550px] text-[14px] lg:text-base h-[55px] bg-[#F3F3F3] flex items-center justify-between px-3 rounded-md' >
-            <p className='break-words'>{el?.answers?.[2]?.title}    {el?.answers?.[2]?.id}</p>
+            <p className='break-words'>{el?.answers?.[2]?.title} </p>
               {
               <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == el.answers?.[2]?.id ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(el.answers[2].id)} />
               }
@@ -226,7 +225,7 @@ const QuestionCard = ({el, proxyIndex, quizState, answers, setAnswers, returnedD
 
           <div className='flex items-center gap-x-3'>
             <div className='w-full sm:w-[400px] lg:w-[550px] text-[14px] lg:text-base h-[55px] bg-[#F3F3F3] flex items-center justify-between px-3 rounded-md' >
-            <p className='break-words'>{el?.answers?.[3]?.title}   {el?.answers?.[3]?.id}</p>
+            <p className='break-words'>{el?.answers?.[3]?.title} </p>
               {
               <div className={`w-[20px] h-[20px] rounded-full cursor-pointer ${option == el.answers?.[3]?.id ? "bg-darkBlue" : "bg-white" } `} onClick={() => handleClick(el.answers[3].id)} />
               }
@@ -260,42 +259,6 @@ const QuestionCard = ({el, proxyIndex, quizState, answers, setAnswers, returnedD
    * Just in case react query causes rerenders and state changes switch back to useEffect for the api call.
    * Also in certain cases i didnt use the id for some data because the one coming in from the api is random. Instead i used hard numbers or index of elements in an array
    */
-
-
-
-
-
-   const QuizAnsReview = ( {courseQuiz, quizState, setQuizState, answers, setAnswers, finalAns, returned}) => {
-
-    const router = useRouter()
-  
-    const handleButton = () => {
-      router.push(`/students/quiz/${router.query.id}`)
-    }
-  
-  
-    console.log(courseQuiz)
-  
-    return (
-      <div className='w-full flex flex-col gap-y-16'>
-      {/* Questions */}
-      
-      {
-      courseQuiz?.map((el, index) => (
-          <QuestionCard key={index} el={el} elemIndex = {index + 1} proxyIndex = {el.id}  quizState={quizState} answers = {answers} setAnswers = {setAnswers} returnedData = {returnedData} returned = {returned} />
-        ))
-      }
-  
-      <div className='w-full flex justify-end lg:px-20'>
-          <Button onClick={handleButton} size = "w-[150px]" name = "Continue"/>
-      </div>
-  
-      </div>
-    )
-  
-  
-  } 
-
 
 
 
