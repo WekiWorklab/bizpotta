@@ -4,8 +4,12 @@ import AreaChart from "./AreaChart";
 import { BsHeart, BsPersonPlus, BsChatDots } from "react-icons/bs";
 import { BiTransfer } from "react-icons/bi";
 import { card_image } from "../../public";
-import ContentCarousel, { StudentContentCardSection, StudentLoadingCardSection } from "./ContentCarousel";
-import {  instructorData } from "./Data";
+import ContentCarousel, {
+  StudentContentCardSection,
+  StudentLoadingCardSection,
+  StudentPurchaseSection,
+} from "./ContentCarousel";
+import { instructorData } from "./Data";
 import PieChart from "./PieChart";
 import InstructorCarousel from "./InstructorCarousel";
 import { StyleCarousel } from "../StyleCarousel";
@@ -16,14 +20,7 @@ import useCourse from "../../hooks/useCourse";
 import { useQuery } from "@tanstack/react-query";
 
 const TopSection = ({ dataObj }) => {
-
-  const {getMyCourses} = useCourse()
-  const router = useRouter()
-
-  const {data, isLoading} = useQuery(["purchased_courses"], getMyCourses)
-  // console.log(data)
-  console.log(data)
-
+  const router = useRouter();
 
 
   return (
@@ -210,54 +207,48 @@ const TopSection = ({ dataObj }) => {
           </div>
         </div>
 
-        <div className="px-2  w-full mt-10">
-
-          {/* Big screens */}
-        <div className="hidden xl:flex xl:w-full">
-          <CourseCarousel screen="big" data={data} />
-        </div>
-
-        {/* Medium screens */}
-        <div className="hidden lg:flex lg:w-full xl:hidden">
-          <CourseCarousel screen="medium" data={data} />
-        </div>
-
-        {/* Small screens */}
-        <div className="hidden sm:flex sm:flex-nowrap sm:w-full lg:hidden">
-          <CourseCarousel screen="small" data={data} />
-        </div>
-
-        {/* Mobile */}
-        <div className="flex w-full sm:hidden">
-          <CourseCarousel screen="mobile" data={data} />
-        </div>
-
+        <div className="px-2 w-full mt-10">
+          
+          {/* Purchased courses */}
+          <div className="mt-24">
+            <StudentPurchaseSection />
+          </div>
+          
           <div className="w-full mt-[50px]">
-            {dataObj.r_loading ? <StudentLoadingCardSection /> :
-             <StudentContentCardSection
-              data={dataObj.recommended}
-              courseType="vocational"
-              contentTitle="Recommended courses"
-            />}
+            {dataObj.r_loading ? (
+              <StudentLoadingCardSection />
+            ) : (
+              <StudentContentCardSection
+                data={dataObj.recommended}
+                courseType="vocational"
+                contentTitle="Recommended courses"
+              />
+            )}
           </div>
 
           <div className="w-full mt-[50px]">
-            {dataObj.p_loading ? <StudentLoadingCardSection /> :
-             <StudentContentCardSection
-              data={dataObj.popular}
-              courseType="vocational"
-              contentTitle="Popular courses on vocational program"
-            />}
+            {dataObj.p_loading ? (
+              <StudentLoadingCardSection />
+            ) : (
+              <StudentContentCardSection
+                data={dataObj.popular}
+                courseType="vocational"
+                contentTitle="Popular courses on vocational program"
+              />
+            )}
           </div>
 
           <div className="w-full mt-[50px]">
-            {dataObj.f_loading ? <StudentLoadingCardSection /> :
-            <StudentContentCardSection
-              data={dataObj.featured}
-              courseType="vocational"
-              contentTitle="Take your business to the next level by exploring any of these
+            {dataObj.f_loading ? (
+              <StudentLoadingCardSection />
+            ) : (
+              <StudentContentCardSection
+                data={dataObj.featured}
+                courseType="vocational"
+                contentTitle="Take your business to the next level by exploring any of these
               courses"
-            />}
+              />
+            )}
           </div>
 
           <div className="pt-[50px] flex flex-col">
@@ -302,10 +293,16 @@ const TopSection = ({ dataObj }) => {
           <p className="text-xs">Project Management</p>
 
           <div className="flex flex-row w-[2 0px] m-auto text-[13px] text-darkBlue justify-between mt-10">
-            <div className="text-white bg-darkBlue h-10 w-[100px] flex justify-center items-center rounded-md hover:text-darkBlue hover:bg-white hover:border hover:border-darkBlue cursor-pointer" onClick = {() => router.push("/students/profile")}>
+            <div
+              className="text-white bg-darkBlue h-10 w-[100px] flex justify-center items-center rounded-md hover:text-darkBlue hover:bg-white hover:border hover:border-darkBlue cursor-pointer"
+              onClick={() => router.push("/students/profile")}
+            >
               View Profile
             </div>
-            <div className="h-10 w-[100px] flex justify-center items-center border border-darkBlue rounded-md hover:text-white hover:bg-darkBlue cursor-pointer" onClick = {() => router.push("/students/profile")}>
+            <div
+              className="h-10 w-[100px] flex justify-center items-center border border-darkBlue rounded-md hover:text-white hover:bg-darkBlue cursor-pointer"
+              onClick={() => router.push("/students/profile")}
+            >
               Edit Profile
             </div>
           </div>

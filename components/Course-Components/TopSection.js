@@ -20,7 +20,7 @@ const TopSection = ({ data }) => {
 
   const handleClick = () => {
     router.push(`/students/courses/${id}/week/1`);
-    // This should send the user to a particular course week but the default would be week 1 
+    // This should send the user to a particular course week but the default would be week 1
   };
   const handleBack = () => {
     router.back();
@@ -114,6 +114,3 @@ const TopSection = ({ data }) => {
 export default TopSection;
 
 
-/**
- * Note that week_number was the best identifier available for now for trhe weekId query parameter for routing in this section even though week_number 4 appears twice and 6 is missing. id would have been used as it is unique but the data was not arranged orderly according to id.
- */

@@ -118,9 +118,9 @@ const SelectOptions = ({
         <div
           className={`w-[${width}]  cursor-pointer h-[40px] px-2 rounded-md focus:ring-0 outline-none border border-[1px] border-[#CCCCCC] border-opacity-[0.45] flex justify-between items-center text-[13px] text-gray-400`}
           onClick={() => {
-              setShowSelect((prev) => !prev);
-              setOpen(type);
-            }}
+            setShowSelect((prev) => !prev);
+            setOpen(type);
+          }}
         >
           {option || "select"}
           <AiFillCaretDown
@@ -622,6 +622,26 @@ const PersonalInformation = () => {
 };
 
 const InformationEdit = ({ setShowEditSection }) => {
+
+  const [imageFile, setImageFile] = useState()
+  const formData = new FormData()
+
+
+  const handleChange = (e) => {
+    let image = e.target.files[0]
+    let imageElement = document.getElementById("imageId")
+    imageElement.src = URL.createObjectURL(image)
+    
+    formData.append("file", image)
+    for(const value of formData.values()){
+      console.log(value)
+    }
+    
+    setImageFile(image)
+  }
+
+  
+
   return (
     <div>
       <p className="font-bold text-[14px] text-center xl:text-left">
@@ -629,10 +649,12 @@ const InformationEdit = ({ setShowEditSection }) => {
       </p>
       <div className="w-full flex flex-col xl:flex-row gap-x-28 mt-7">
         <div className="">
+          
           <img
             src={specialization.src}
             alt=""
             className="min-w-[250px] min-h-[250px] max-w-[250px] max-h-[250px] rounded-md mx-auto xl:mx-[0px]"
+            id = "imageId"
           />
           <form className="mt-6 mx-auto centerFlex">
             <label htmlFor="file">
@@ -640,7 +662,7 @@ const InformationEdit = ({ setShowEditSection }) => {
                 {" "}
                 Change picture{" "}
               </div>
-              <input type="file" id="file" className="hidden" />
+              <input type="file" id="file" accept=".png, .jpeg, .jpg"  className="hidden"  onChange={handleChange}/>
             </label>
           </form>
         </div>

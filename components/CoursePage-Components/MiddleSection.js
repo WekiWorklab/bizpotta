@@ -5,6 +5,7 @@ import ContentCarousel, {
   ContentCardSection,
   CourseCategories,
   LoadingCardSection,
+  StudentPurchaseSection,
 } from "../Content-Components/ContentCarousel";
 // import {ContentCardSection} from "../Content-Components/ContentCardSection";
 
@@ -18,6 +19,12 @@ import ContentCard from "../Content-Components/ContentCard";
 const MiddleSection = ({ dataObj }) => {
   return (
     <div className="bg-transparent w-full xl:w-full">
+
+      {/* Purchased courses */}
+      <div className="mt-24">
+          <StudentPurchaseSection />
+        </div>
+
       <div className="w-full mt-[50px]">
         {dataObj.r_loading ? (
           <LoadingCardSection />

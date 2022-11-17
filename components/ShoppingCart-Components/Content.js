@@ -70,7 +70,7 @@ const CourseCard = ({ id, setCartItems, Data, setData }) => {
   });
 
   return (
-    <div className="w-full lg:w-[570px] sm:h-[140px] bg-white dropdown-shadow flex flex-col items-center py-3 sm:py-0 sm:flex-row justify-between px-10 sm:px-4 mb-8">
+    <div className="w-full lg:w-[570px] sm:h-[140px] bg-white dropdown-shadow flex flex-col items-center py-3 sm:py-0 sm:flex-row justify-between px-10 sm:px-2 lg:px-4 mb-8">
       <div className="flex flex-col sm:flex-row items-center gap-y-2  sm:gap-x-4 ">
         <div className="h-full flex items-center justify-start">
           <img
@@ -79,7 +79,7 @@ const CourseCard = ({ id, setCartItems, Data, setData }) => {
             className="min-w-[85px] min-h-[85px] max-w-[85px] max-h-[85px] rounded-full "
           />
         </div>
-        <div className="flex flex-col items-center sm:items-start justify-center  w-[350px]">
+        <div className="flex flex-col items-center sm:items-start justify-center break-words max-w-[300px]">
           <p className="text-[14px] font-bold">{data?.name}</p>
           <p className="text-[11px] text-center sm:text-left text-gray-400 ">
             By Introduction to Hydroponics
