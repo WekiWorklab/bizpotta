@@ -23,6 +23,7 @@ import {
   CreatorMarketInsight,
   CreatorSettings,
 } from "../../../public";
+import { logout, reset } from "../../../store/authSlice";
 
 function XSidebar({ show, setShow, slideIn, setSlideIn }) {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
@@ -31,6 +32,13 @@ function XSidebar({ show, setShow, slideIn, setSlideIn }) {
 
   const router = useRouter();
   const path = router.asPath;
+
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+    dispatch(reset());
+    router.push("/auth/login");
+  };
 
   return (
     <>
@@ -311,7 +319,7 @@ function XSidebar({ show, setShow, slideIn, setSlideIn }) {
               </li>
 
               <li className="items-center cursor-pointer">
-                <div className="flex flex-row justify-start items-center">
+                <div className="flex flex-row justify-start items-center" onClick={handleLogout}>
                   <IoLogOutOutline color="gray" />
                   <div className="text-sm text-gray-600 font-light ml-5">
                     Log-out

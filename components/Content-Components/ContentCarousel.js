@@ -20,6 +20,14 @@ import studentService from "../../services/StudentService";
 import useCourse from "../../hooks/useCourse";
 import { useRouter } from "next/router";
 
+
+
+
+/**
+ * If any carousel has issues showing the last item, just reduce the slideperview number for whatever viewport is affected
+ */
+
+
 export const LoadingCardSection = ({ contentTitle }) => {
   const arr = new Array(4).fill("");
 
@@ -322,55 +330,48 @@ const CourseTabs = ({ courseCategories, setCatId, catId }) => {
   );
 };
 
-
 export const StudentPurchaseSection = () => {
-
-
   const { getMyCourses } = useCourse();
   const router = useRouter();
 
   const { data, isLoading } = useQuery(["purchased_courses"], getMyCourses);
 
-  if(isLoading){
-    return(
-    <div className="w-4/5 h-[185px] flex flex-col p-3 rounded-md border skeleton-parent mx-auto ">
-      <div className="w-[100px] h-[100px] rounded-md skeleton-child1" />
-      <div className="w-full h-[20px] skeleton-child1 mt-6" />
-      <div className="w-full h-[20px] skeleton-child1 mt-6" />
-
-    </div>
-    )
+  if (isLoading) {
+    return (
+      <div className="w-4/5 h-[185px] flex flex-col p-3 rounded-md border skeleton-parent mx-auto ">
+        <div className="w-[100px] h-[100px] rounded-md skeleton-child1" />
+        <div className="w-full h-[20px] skeleton-child1 mt-6" />
+        <div className="w-full h-[20px] skeleton-child1 mt-6" />
+      </div>
+    );
   }
 
-
   return (
-      <div>
-          <p className="text-[14px] text-start mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
-            Purchased courses
-          </p>
-          <div className="hidden xl:flex xl:w-full">
-            <CourseCarousel screen="big" data={data} />
-          </div>
-
-          {/* Medium screens */}
-          <div className="hidden lg:flex lg:w-full xl:hidden">
-            <CourseCarousel screen="medium" data={data} />
-          </div>
-
-          {/* Small screens */}
-          <div className="hidden sm:flex sm:flex-nowrap sm:w-full lg:hidden">
-            <CourseCarousel screen="small" data={data} />
-          </div>
-
-          {/* Mobile */}
-          <div className="flex w-full sm:hidden">
-            <CourseCarousel screen="mobile" data={data} />
-          </div>
+    <div>
+      <p className="text-[14px] text-start mb-4 md:text-md font-semibold md:font-bold md:mb-8  ">
+        Purchased courses
+      </p>
+      <div className="hidden xl:flex xl:w-full">
+        <CourseCarousel screen="big" data={data} />
       </div>
-  )
 
-}
+      {/* Medium screens */}
+      <div className="hidden lg:flex lg:w-full xl:hidden">
+        <CourseCarousel screen="medium" data={data} />
+      </div>
 
+      {/* Small screens */}
+      <div className="hidden sm:flex sm:flex-nowrap sm:w-full lg:hidden">
+        <CourseCarousel screen="small" data={data} />
+      </div>
+
+      {/* Mobile */}
+      <div className="flex w-full sm:hidden">
+        <CourseCarousel screen="mobile" data={data} />
+      </div>
+    </div>
+  );
+};
 
 export const CourseCarousel = ({ data, screen, type }) => {
   const router = useRouter();
@@ -383,7 +384,7 @@ export const CourseCarousel = ({ data, screen, type }) => {
     } else if (screen === "small") {
       return 1.6;
     } else if (screen === "mobile") {
-      return 1.2;
+      return 1;
     }
   };
 
@@ -398,7 +399,6 @@ export const CourseCarousel = ({ data, screen, type }) => {
       return 10;
     }
   };
-
 
   return (
     <Swiper
@@ -422,9 +422,8 @@ export const CourseCarousel = ({ data, screen, type }) => {
             backgroundColor: "transparent",
           }}
           className=" "
-          
         >
-          <CourseCard data={el} length = {data.length} ID = {index + 1} />
+          <CourseCard data={el} length={data.length} ID={index + 1} />
         </SwiperSlide>
       ))}
 
@@ -433,20 +432,20 @@ export const CourseCarousel = ({ data, screen, type }) => {
   );
 };
 
-
-
-const CourseCard = ({data, ID, length}) => {
-  
-  const router = useRouter()
-  let total = 50
-  let completed = 23
+const CourseCard = ({ data, ID, length }) => {
+  const router = useRouter();
+  let total = 50;
+  let completed = 23;
 
   const handleClick = () => {
-    router.push(`/students/courses/${data.course.id}`)
-  }
+    router.push(`/students/courses/${data.course.id}`);
+  };
 
   return (
-    <div className="border sm:border-1 w-[325px] h-[185px] rounded-md bg-white relative flex flex-col pl-4 pr-2 pt-4 box-overflow justify-self-start" onClick={() => handleClick()}>
+    <div
+      className="border sm:border-1 w-[325px] h-[185px] rounded-md bg-white relative flex flex-col pl-4 pr-2 pt-4 box-overflow justify-self-start"
+      onClick={() => handleClick()}
+    >
       <p className="absolute top-[5px] right-[10px] text-[11px]">
         Lesson {ID} out of {length}
       </p>
@@ -459,7 +458,9 @@ const CourseCard = ({data, ID, length}) => {
       </div>
 
       <p className="mt-4 text-[15px] box-overflow">{data?.course?.name}</p>
-      <p className="text-[12px] mt-1 box-overflow">{data?.course?.course_instructor?.firstName}</p>
+      <p className="text-[12px] mt-1 box-overflow">
+        {data?.course?.course_instructor?.firstName}
+      </p>
       <div className="flex flex-row items-center justify-between mt-3">
         <ProgressBar time={{ completed, total }} />
         <span className="text-xs">{total - completed} mins left</span>
@@ -468,13 +469,13 @@ const CourseCard = ({data, ID, length}) => {
   );
 };
 
-
-
-const ProgressBar = ({time:{total, completed}}) => {
-    
+const ProgressBar = ({ time: { total, completed } }) => {
   return (
-    <div className='w-[225px] h-[10px] bg-[#C4C4C4] rounded-[10px]'>
-        <div className='h-full bg-[green] rounded-[10px]' style={{width: `${(completed/total) * 100}%`}}></div>
+    <div className="w-[225px] h-[10px] bg-[#C4C4C4] rounded-[10px]">
+      <div
+        className="h-full bg-[green] rounded-[10px]"
+        style={{ width: `${(completed / total) * 100}%` }}
+      ></div>
     </div>
-  )
-}
+  );
+};

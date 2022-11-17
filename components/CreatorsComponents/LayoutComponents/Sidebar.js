@@ -14,7 +14,7 @@ import { CgProfile } from "react-icons/cg";
 import { IoSettingsOutline, IoLogOutOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { AffiliateSVG, CreatorAffiliate, CreatorCommunity, CreatorCourses, CreatorDashboard, CreatorEngagement, CreatorMarketInsight, CreatorSettings } from "../../../public";
-import { logout } from "../../../store/authSlice";
+import { logout, reset } from "../../../store/authSlice";
 
 function Sidebar() {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
@@ -25,6 +25,12 @@ function Sidebar() {
   const path = router.asPath;
 
   const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+    dispatch(reset());
+    router.push("/auth/login");
+  };
+
 
   return (
     <>
@@ -241,9 +247,7 @@ function Sidebar() {
 
             <li
               className="items-center cursor-pointer"
-              onClick={() => {
-                dispatch(logout());
-              }}
+              onClick={handleLogout}
             >
               <div className="flex flex-row justify-start items-center">
                 <IoLogOutOutline color="gray" />
