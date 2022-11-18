@@ -38,86 +38,88 @@ function NewSidebar({ courseId }) {
       <nav className="fixed top-0 left-0 w-[200px] pt-[140px] px-6 bg-white hidden md:flex flex-row flex-wrap  justify-between h-full z-10 ">
         <div className="w-full ">
           <ul className="flex flex-col gap-y-3">
-            <li
-              className={`flex  justify-start items-center h-[40px] ${
+            <Link href={`/students/courses/${courseId}`}>
+              <li   className={`flex  justify-start items-center h-[40px] ${
                 route_path.includes("/students/courses")
                   ? "border-r-4 border-darkBlue"
                   : ""
-              } cursor-pointer mb-2`}
-              onClick={() => {
-                handleClick("courses");
-              }}
-            >
+              } cursor-pointer mb-2`}>
               <div className="text-sm text-gray-600 font-light ">Overview</div>
-            </li>
+              </li>
+            </Link>
 
-            {/* <li className={`flex  justify-start items-center h-[40px] ${router.asPath === '/students/grades' ? "border-r-4 border-darkBlue" : ""} cursor-pointer mb-2`} onClick = {() => {router.push('/students/grades')}}>
-                <div className="text-sm text-gray-600 font-light ">
-                Grades
-                </div>
-            </li> */}
 
-            <li
-              className={`flex  justify-start items-center h-[40px] ${
-                route_path.includes("/students/notes")
-                  ? "border-r-4 border-darkBlue"
-                  : ""
-              } cursor-pointer mb-2`}
-              onClick={() => {
-                handleClick("notes");
-              }}
-            >
-              <div className="text-sm text-gray-600 font-light ">Notes</div>
-            </li>
-
-            <li
-              className={`flex  justify-start items-center h-[40px] ${
+            <Link href={`/students/quiz/${courseId}`}>
+              <li className={`flex  justify-start items-center h-[40px] ${
                 route_path.includes("/students/quiz")
                   ? "border-r-4 border-darkBlue"
                   : ""
-              } cursor-pointer mb-2`}
-              onClick={() => {
-                handleQuizClick();
-              }}
-            >
-              <div className="flex flex-row justify-start items-center">
-                <div className="text-sm text-gray-600 font-light ">Quiz</div>
-              </div>
-            </li>
+              } cursor-pointer mb-2`}>
+                <div className="flex flex-row justify-start items-center">
+                  <div className="text-sm text-gray-600 font-light ">Quiz</div>
+                </div>
+              </li>
+            </Link>
 
-            <li
-              className={`flex  justify-start items-center h-[40px] ${
+            <Link href={`/students/assignments/${courseId}`}>
+              <li className={`flex justify-start items-center h-[40px] ${
+                route_path.includes("/students/assignments")
+                  ? "border-r-4 border-darkBlue"
+                  : ""
+              } cursor-pointer mb-2`}>
+                <div className="flex flex-row justify-start items-center">
+                  <div className="text-sm text-gray-600 font-light ">Assignments</div>
+                </div>
+              </li>
+            </Link>
+
+            <Link href={`/students/notes/${courseId}`}>
+              <li className={`flex  justify-start items-center h-[40px] ${
+                route_path.includes("/students/notes")
+                  ? "border-r-4 border-darkBlue"
+                  : ""
+              } cursor-pointer mb-2`}>
+                <div className="flex flex-row justify-start items-center">
+                  <div className="text-sm text-gray-600 font-light ">Notes</div>
+                </div>
+              </li>
+            </Link>
+
+
+
+            <Link href={`/students/message/${courseId}`}
+            >
+              <li  className={`flex  justify-start items-center h-[40px] ${
                 route_path.includes("/students/message")
                   ? "border-r-4 border-darkBlue"
                   : ""
-              } cursor-pointer mb-2`}
-              onClick={() => {
-                handleClick("message");
-              }}
-            >
+              } cursor-pointer mb-2`}>
               <div className="flex flex-row justify-start items-center">
                 <div className="text-sm text-gray-600 font-light ">
                   Messages
                 </div>
               </div>
-            </li>
 
-            <li
-              className={`flex  justify-start items-center h-[40px] ${
+              </li>
+            </Link>
+
+              
+            <Link href={`/students/resources/${courseId}`}
+            >
+              <li  className={`flex  justify-start items-center h-[40px] ${
                 route_path.includes("/students/resources")
                   ? "border-r-4 border-darkBlue"
                   : ""
-              } cursor-pointer mb-2`}
-              onClick={() => {
-                handleClick("resources");
-              }}
-            >
+              } cursor-pointer mb-2`}>
               <div className="flex flex-row justify-start items-center">
                 <div className="text-sm text-gray-600 font-light ">
                   Resources
                 </div>
               </div>
-            </li>
+
+              </li>
+            </Link>
+
           </ul>
         </div>
       </nav>

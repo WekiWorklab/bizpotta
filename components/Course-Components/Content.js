@@ -29,6 +29,9 @@ const Content = () => {
       : null;
   }, [router, id]);
 
+  console.log("Course --->", data)
+
+
   if (loading) return <FullPageSpinner />;
 
   return (

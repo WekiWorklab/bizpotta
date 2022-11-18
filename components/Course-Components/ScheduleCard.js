@@ -7,6 +7,7 @@ import { BsArrowRight } from "react-icons/bs";
 import { AiOutlineRight } from "react-icons/ai";
 import { FaCircleNotch } from "react-icons/fa";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Description = ({ show, desc }) => {
   return (
@@ -26,30 +27,26 @@ const ScheduleCard = ({ data, index, completedWeeks }) => {
   const router = useRouter();
 
   const [show, setShow] = useState(false);
-  const [completedData, setCompletedData] = useState()
+  const [completedData, setCompletedData] = useState();
   const desc =
     "Facilisis quis sem convallis odio pellentesque. Convallis leo urna eleifend tellus ut vel amet ullamcorper nunc. Sit mauris pellentesque pellentesque aenean amet massa eget vitae. Duis lacus, hendrerit urna sit bibendum. Et enim sapien dictum egestas platea. Facilisi pretium eget nibh nam arcu. Cras etiam pellentesque dui tempor purus porttitor nec ut. Velit viverra lectus a vel faucibus sed id integer at.";
 
-  useEffect(()=> {
+  useEffect(() => {
     if (completedWeeks.length > 0) {
-     for(const el of completedWeeks) {
-        if (el.week_id == data.id){
-          setCompletedData(el)
+      for (const el of completedWeeks) {
+        if (el.week_id == data.id) {
+          setCompletedData(el);
+        } else {
         }
-        else{
-
-        }
+      }
     }
-  }
-  }, [completedWeeks, data, ])
+  }, [completedWeeks, data]);
 
-
-  const handleToQuiz = () => {
+  const handleToClicked = (section) => {
     router.push({
-      pathname: `/students/quiz/[id]/week/[weekId]`,
+      pathname: `/students/${section}/[id]/week/[weekId]`,
       query: {
         id: data?.course_id,
-        // weekId: data?.id,
         weekId: data?.id,
       },
     });
@@ -80,20 +77,42 @@ const ScheduleCard = ({ data, index, completedWeeks }) => {
             router.push(`/students/courses/${data?.course_id}/week/${data?.id}`)
           }
         >
-          <div className={`w-8 h-8 rounded-full border-2 border-darkBlue ${completedData?.is_lecture_completed ? "bg-darkBlue" : "bg-transparent"} `}></div>
+          <div
+            className={`w-8 h-8 rounded-full border-2 border-darkBlue ${
+              completedData?.is_lecture_completed
+                ? "bg-darkBlue"
+                : "bg-transparent"
+            } `}
+          ></div>
           <p className="ml-8">Lecture</p>
         </div>
         <div
           className=" flex flex-row items-center cursor-pointer"
-          onClick={() => handleToQuiz()}
+          onClick={() => handleToClicked("quiz")}
         >
-          <div className="w-8 h-8 rounded-full border-2 border-darkBlue"></div>
+          <div
+            className={`w-8 h-8 rounded-full border-2 border-darkBlue ${
+              completedData?.is_quiz_completed
+                ? "bg-darkBlue"
+                : "bg-transparent"
+            } `}
+          ></div>
           <p className="ml-8">Quiz</p>
         </div>
-        <div className=" flex flex-row items-center cursor-pointer">
-          <div className="w-8 h-8 rounded-full border-2 border-darkBlue bg-gray-100"></div>
-          <p className="ml-8">Assignment</p>
-        </div>
+
+
+        <Link href={`/students/assignments/${data?.course_id}/week/${data?.id}`}>
+          <div className=" flex flex-row items-center cursor-pointer">
+            <div className={`w-8 h-8 rounded-full border-2 border-darkBlue ${
+              completedData?.is_assignment_completed
+                  ? "bg-darkBlue"
+                  : "bg-transparent"
+                } `}></div>
+            <p className="ml-8">Assignment</p>
+          </div>
+          </Link>
+
+
         <div className="relative flex flex-row items-center cursor-pointer">
           <div className="w-8 h-8 rounded-full border-2 border-darkBlue "></div>
           <div className="ml-8 flex flex-row items-center flex-grow-[1] justify-between pr-12">

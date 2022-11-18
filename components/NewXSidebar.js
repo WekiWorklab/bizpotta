@@ -1,5 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function NewXSidebar({
   show,
@@ -63,75 +64,81 @@ export default function NewXSidebar({
 
         <div className="w-full ">
           <ul className="flex flex-col gap-y-3 mt-10">
+            <Link href={`/students/courses/${courseId}`}>
             <li
               className={`flex  justify-start items-center h-[40px] ${
                 route_path.includes("/students/courses")
                   ? "border-r-4 border-darkBlue"
                   : ""
               } cursor-pointer mb-2`}
-              onClick={() => {
-                handleClick("courses");
-              }}
             >
               <div className="text-sm text-gray-600 font-light">Overview</div>
             </li>
+            </Link>
 
-            {/* <li
-              className={`flex  justify-start items-center h-[40px] ${
-                router.asPath === "/students/grades"
-                  ? "border-r-4 border-darkBlue"
-                  : ""
-              } cursor-pointer mb-2`}
-              onClick={() => {
-                router.push("/students/grades");
-              }}
-            >
-              <div className="text-sm text-gray-600 font-light ">Grades</div>
-            </li> */}
 
-            <li
-              className={`flex  justify-start items-center h-[40px] ${
-                route_path.includes("/students/notes")
-                  ? "border-r-4 border-darkBlue"
-                  : ""
-              } cursor-pointer mb-2`}
-              onClick={() => {
-                handleClick("notes");
-              }}
-            >
-              <div className="text-sm text-gray-600 font-light ">Notes</div>
-            </li>
+            
+            <Link href={`/students/quiz/${courseId}`}>
+              <li
+                className={`flex  justify-start items-center h-[40px] ${
+                  route_path.includes("/students/quiz")
+                    ? "border-r-4 border-darkBlue"
+                    : ""
+                } cursor-pointer mb-2`}
+                onClick={() => {
+                  handleQuizClick();
+                }}
+              >
+                <div className="text-sm text-gray-600 font-light ">Quiz</div>
+              </li>
+            </Link>
 
-            <li
-              className={`flex  justify-start items-center h-[40px] ${
-                route_path.includes("/students/quiz")
-                  ? "border-r-4 border-darkBlue"
-                  : ""
-              } cursor-pointer mb-2`}
-              onClick={() => {
-                handleQuizClick();
-              }}
-            >
-              <div className="text-sm text-gray-600 font-light ">Quiz</div>
-            </li>
 
+            <Link href={`/students/assignments/${courseId}`}>
+              <li
+                className={`flex  justify-start items-center h-[40px] ${
+                  route_path.includes("/students/assignments")
+                    ? "border-r-4 border-darkBlue"
+                    : ""
+                } cursor-pointer mb-2`}
+                >
+                <div className="text-sm text-gray-600 font-light ">Assignments</div>
+              </li>
+            </Link>
+
+
+
+            <Link href={`/students/notes/${courseId}`}>
+              <li
+                className={`flex  justify-start items-center h-[40px] ${
+                  route_path.includes("/students/notes")
+                    ? "border-r-4 border-darkBlue"
+                    : ""
+                } cursor-pointer mb-2`}
+                >
+                <div className="text-sm text-gray-600 font-light ">Notes</div>
+              </li>
+            </Link>
+
+
+        <Link href={`/students/message/${courseId}`}>
             <li
               className={`flex  justify-start items-center h-[40px] ${
                 route_path.includes("/students/message")
-                  ? "border-r-4 border-darkBlue"
-                  : ""
+                ? "border-r-4 border-darkBlue"
+                : ""
               } cursor-pointer mb-2`}
-              onClick={() => {
-                handleClick("message");
-              }}
-            >
+              >
               <div className="flex flex-row justify-start items-center">
                 <div className="text-sm text-gray-600 font-light ">
                   Messages
                 </div>
               </div>
             </li>
+          </Link>
 
+
+          <Link href={`/students/resources/${courseId}`}>
             <li
               className={`flex  justify-start items-center h-[40px] ${
                 route_path.includes("/students/resources")
@@ -148,6 +155,9 @@ export default function NewXSidebar({
                 </div>
               </div>
             </li>
+            </Link>
+
+
           </ul>
         </div>
         {/* </div> */}

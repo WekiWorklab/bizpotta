@@ -32,7 +32,12 @@ const MiddleSection = ({ data }) => {
 
       <div className="mt-10">
         {data?.course?.course_weeks?.map((el, index) => (
-          <ScheduleCard key={index} data={el} completedWeeks = {data.completed_weeks} index={index + 1} />
+          <ScheduleCard
+            key={index}
+            data={el}
+            completedWeeks={data.completed_weeks}
+            index={index + 1}
+          />
         ))}
       </div>
     </div>
