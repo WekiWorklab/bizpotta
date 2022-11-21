@@ -84,6 +84,14 @@ const setAssignments = (data) => {
   })
 }
 
+const setNote = (data) => {
+  return AxoisApi.post(`${APIS.LEARNERS.SET_NOTE}`, {
+    course_student_id: data.course_student_id,
+    week_id: data.week_id,
+    note: data.note
+  })
+}
+
 const learnersService = {
   getLearningPreferences,
   setLearnersPreferences,
@@ -96,7 +104,8 @@ const learnersService = {
   getLiveSessions,
   getLiveSession,
   setLectureCompleted,
-  setAssignments
+  setAssignments,
+  setNote
 };
 
 export default learnersService;

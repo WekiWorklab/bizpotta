@@ -25,6 +25,7 @@ const Content = () => {
               image: res?.course?.image,
               instructor: `${res?.course?.course_instructor?.firstName} ${res?.course?.course_instructor?.lastName}`,
               description: res?.course?.description,
+              dataId: res?.id
             });
           })
           .finally(() => setLoading(false))

@@ -34,9 +34,9 @@ const StudentAssignment = () => {
 
     const {data, isLoading} = useQuery(["get_assignment", id], () => fetchAssignments(id), {
         onSuccess: (data) => {
+            setDataId(data?.id)
             for (const el of data.course.course_weeks) {
                 if (el.id == weekId) {
-                    setDataId(data?.id)
                     setWorkData(el)
                     setAssignment(el?.week_assignments)
                 }
@@ -49,8 +49,8 @@ const StudentAssignment = () => {
     <div className="relative w-full h-full min-h-[100vh] bg-white sm:bg-gray-50 flex flex-col pt-[90px] md:pt-[120px] md:translate-x-[200px] md:w-[calc(100%-200px)] px-2 md:px-8 pb-10 text-darkGray">
         <div className='mt-10'>
             <div className='text-[18px] font-bold'>
-                Week {workData?.id} Assignment
             </div>
+                Week {workData?.id} Assignment
             <div className='mt-10 '>
                 {assignment?.description}
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,

@@ -1,13 +1,11 @@
 import React from 'react'
 import NewLayout from '../../../../components/Layout-Components/NewLayout'
-import Content from '../../../../components/Notes-Components/Content'
+import AllNotesComponent from '../../../../components/Notes-Components/AllNotesComponent'
 
 const index = () => {
-
-
   return (
     <NewLayout>
-        <Content/>
+        <AllNotesComponent />
     </NewLayout>
   )
 }

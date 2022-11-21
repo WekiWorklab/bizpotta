@@ -1,7 +1,11 @@
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { AiOutlineHeart, AiOutlineUpload } from 'react-icons/ai'
 import { IoIosPeople } from 'react-icons/io5'
-import Notes from './Notes'
+import useCourse from '../../hooks/useCourse'
+import { Button } from '../Auth-Components/Button'
+import { TextEditorNotesModal } from '../CreatorsComponents/CourseLandingComponent/CourseStructureComponent/TextEditorNotesModal'
+// import Notes from './Notes'
 import Transcript from './Transcript'
 
 
@@ -24,7 +28,7 @@ const MiddleSection = ({data, others}) => {
         <div className='mt-6'>
             {(section === 'overview') ? <Overview data={data} others = {others} /> : null}
             {(section === 'transcript') ? <Transcript /> : null}
-            { (section === 'notes') ? <Notes /> : null}
+            { (section === 'notes') ? <Notes others = {others}/> : null}
         </div>
     </div>
   )
@@ -32,6 +36,37 @@ const MiddleSection = ({data, others}) => {
 
 export default MiddleSection
 
+
+
+
+
+const Notes = ({others}) => {
+
+    const API_KEY = process.env.NEXT_PUBLIC_TINY_API_KEY
+    const [note, setWrittenNote] = useState()
+    const {setNote} = useCourse()
+
+    const router = useRouter()
+    // console.log(others.dataId, router.query.weekId)
+
+    
+
+    const handleClick = async () => {
+        //Send Note here
+        const results = await setNote({course_student_id: others.dataId, week_id: router.query.weekId, note: note  }).then(res => console.log(res)).catch((err) => console.log(err)) 
+    }
+
+    return (
+        <div className=''>
+            <TextEditorNotesModal api_key = {API_KEY} setValue = {setWrittenNote}/>
+
+            <div className='mt-5 w-full flex justify-end'>
+                <Button size="w-[150px]" name="Save Note" onClick={handleClick} />
+            </div>
+
+        </div>
+    )
+}
 
 
 
@@ -65,3 +100,6 @@ const Overview = ({data, others}) => {
         </div>
     )
 }
+
+
+

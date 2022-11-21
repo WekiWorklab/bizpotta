@@ -47,7 +47,8 @@ export const TextEditorNotesModal = ({ api_key, setValue }) => {
             "bold italic forecolor | alignleft aligncenter " +
             "alignright alignjustify | bullist numlist outdent indent | " +
             "removeformat | help",
-          content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+          content_style:
+            "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
         }}
       />
       {/* <button onClick={log} className='mx-auto border-2 w-[80px] h-[30px] text-[14px] rounded-md border my-2'>Save</button> */}

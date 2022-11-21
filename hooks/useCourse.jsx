@@ -242,6 +242,12 @@ const useCourse = () => {
     })
   }
 
+  const setNote = (data) => {
+    return new Promise((resolve, reject) => {
+      learnersService.setNote(data).then(res => resolve(res.data)).catch((error) => reject(error))
+    })
+  }
+
   return {
     handleCreatelecture,
     purchaseCourse,
@@ -257,7 +263,8 @@ const useCourse = () => {
     handleSaveCourse,
     handleCreateCourseProject,
     setLectureCompleted,
-    setAssignments
+    setAssignments,
+    setNote
   };
 };
 
