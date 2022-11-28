@@ -25,14 +25,12 @@ const Content = () => {
               image: res?.course?.image,
               instructor: `${res?.course?.course_instructor?.firstName} ${res?.course?.course_instructor?.lastName}`,
               description: res?.course?.description,
-              dataId: res?.id
+              dataId: res?.id,
             });
           })
           .finally(() => setLoading(false))
       : null;
   }, [router, id]);
-
-
 
   //Set lecture to completed
   useEffect(() => {
@@ -48,10 +46,6 @@ const Content = () => {
         })
       : null;
   }, [id, weekId]);
-
-
-  
-
 
   if (loading) return <FullPageSpinner />;
 
