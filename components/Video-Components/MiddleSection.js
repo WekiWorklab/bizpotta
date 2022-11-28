@@ -7,6 +7,8 @@ import { Button } from '../Auth-Components/Button'
 import { TextEditorNotesModal } from '../CreatorsComponents/CourseLandingComponent/CourseStructureComponent/TextEditorNotesModal'
 // import Notes from './Notes'
 import Transcript from './Transcript'
+import { toast } from "react-toastify";
+
 
 
 const MiddleSection = ({data, others}) => {
@@ -49,16 +51,20 @@ const Notes = ({others}) => {
     const router = useRouter()
     // console.log(others.dataId, router.query.weekId)
 
-    
+    const handleChange = (e) => {
+
+        setWrittenNote(e.target.value)
+    }    
 
     const handleClick = async () => {
+        console.log(note)
         //Send Note here
-        const results = await setNote({course_student_id: others.dataId, week_id: router.query.weekId, note: note  }).then(res => console.log(res)).catch((err) => console.log(err)) 
+        const results = await setNote({course_student_id: others.dataId, week_id: router.query.weekId, note: note  }).then(res => {console.log(res); toast.success("Note successfully created")}).catch((err) => {console.log(err); toast.error("Please check your connection")}) 
     }
 
     return (
         <div className=''>
-            <TextEditorNotesModal api_key = {API_KEY} setValue = {setWrittenNote}/>
+            <textarea onChange={handleChange} className = "w-full min-h-[200px] focus:ring-0 outline-none" />
 
             <div className='mt-5 w-full flex justify-end'>
                 <Button size="w-[150px]" name="Save Note" onClick={handleClick} />

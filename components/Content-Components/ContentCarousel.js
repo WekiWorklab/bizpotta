@@ -20,13 +20,9 @@ import studentService from "../../services/StudentService";
 import useCourse from "../../hooks/useCourse";
 import { useRouter } from "next/router";
 
-
-
-
 /**
  * If any carousel has issues showing the last item, just reduce the slideperview number for whatever viewport is affected
  */
-
 
 export const LoadingCardSection = ({ contentTitle }) => {
   const arr = new Array(4).fill("");

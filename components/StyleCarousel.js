@@ -12,11 +12,11 @@ import { showMasterclassModal } from "../store/courseSlice";
 
 export const StyleCarousel = ({ screen }) => {
   const arr = new Array(9).fill("");
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleClick = () => {
-    dispatch(showMasterclassModal(true))
-  }
+    dispatch(showMasterclassModal(true));
+  };
 
   return (
     <Swiper
@@ -61,7 +61,10 @@ export const StyleCarousel = ({ screen }) => {
                 <p className="text-lg font-bold text-white mb-2">
                   Charles Mark
                 </p>
-                <div className="w-[120px] h-[35px] text-[14px] centerFlex bg-bizpotta-green rounded-md" onClick={handleClick}>
+                <div
+                  className="w-[120px] h-[35px] text-[14px] centerFlex bg-bizpotta-green rounded-md"
+                  onClick={handleClick}
+                >
                   Register
                 </div>
               </div>

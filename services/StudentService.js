@@ -27,6 +27,14 @@ const getVCCourses = async(id) => {
     return AxoisApi.get(`${APIS.LEARNERS.GET_VC_COURSES(id)}`).then(res => res.data)
 }
 
+const getLatestVcCourses = async() => {
+    return AxoisApi.get(APIS.LEARNERS.GET_LATEST_VC_COURSES)
+}
+
+const getLatestMcCourses = async() => {
+    return AxoisApi.get(APIS.LEARNERS.GET_LATEST_MC_COURSES)
+}
+
 
 const studentService = {
     getCourse,
@@ -34,7 +42,9 @@ const studentService = {
     getRecommended,
     getPopular,
     getFeatured,
-    getVCCourses
+    getVCCourses,
+    getLatestVcCourses,
+    getLatestMcCourses
 }
 
 export default studentService

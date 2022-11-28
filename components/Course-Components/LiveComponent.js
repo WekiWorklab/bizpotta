@@ -6,8 +6,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { GoPrimitiveDot } from "react-icons/go";
 import useCourse from "../../hooks/useCourse";
-import {useDispatch} from "react-redux"
-import {showMasterclassModal} from "../../store/courseSlice"
+import { useDispatch } from "react-redux";
+import { showMasterclassModal } from "../../store/courseSlice";
 
 import Countdown from "react-countdown";
 
@@ -62,12 +62,11 @@ export default LiveComponent;
 
 const LiveSessionCard = ({ data }) => {
   const router = useRouter();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [time, setTime] = useState(
     moment(`${data?.date} ${data?.time}`).format("x")
   );
   //
-
 
   useEffect(() => {
     const myInterval = setInterval(() => {
@@ -91,8 +90,9 @@ const LiveSessionCard = ({ data }) => {
   //Renderer fxn
   const Renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
-      // Render a complete state
-      // return <Completionist />;
+      return <div>
+        
+      </div>
     } else {
       return (
         <div className="w-full grid grid-cols-4 gap-x-1 mt-2">
@@ -118,8 +118,7 @@ const LiveSessionCard = ({ data }) => {
   };
 
   return (
-    <div
-      className="flex flex-col sm:flex-row   items-center border masters-shadow2 border-[#b1adad] rounded-md px-3 sm:px-6 md:px-3 lg:px-6 py-4 sm:py-8 w-full  cursor-pointer" >
+    <div className="flex flex-col sm:flex-row   items-center border masters-shadow2 border-[#b1adad] rounded-md px-3 sm:px-6 md:px-3 lg:px-6 py-4 sm:py-8 w-full  cursor-pointer">
       <div className="w-full flex flex-col items-center sm:items-start sm:w-2/3">
         {Date.now() <= time ? (
           <div className="flex items-center gap-x-2">
@@ -149,7 +148,9 @@ const LiveSessionCard = ({ data }) => {
         <div className="flex gap-x-4 items-center mt-3 sm:mt-6">
           <div
             className="w-[150px] h-[40px] rounded-md bg-bizpotta-green centerFlex text-[15px] cursor-pointer"
-            onClick={() => {dispatch(showMasterclassModal(true))}}
+            onClick={() => {
+              dispatch(showMasterclassModal(true));
+            }}
           >
             Register
           </div>

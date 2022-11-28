@@ -92,6 +92,14 @@ const setNote = (data) => {
   })
 }
 
+const getNotes = (id) => {
+  return AxoisApi.get(APIS.LEARNERS.GET_NOTES(id))
+}
+
+const getNote = (id) => {
+  return AxoisApi.get(APIS.LEARNERS.GET_NOTE(id))
+}
+
 const learnersService = {
   getLearningPreferences,
   setLearnersPreferences,
@@ -105,7 +113,9 @@ const learnersService = {
   getLiveSession,
   setLectureCompleted,
   setAssignments,
-  setNote
+  setNote,
+  getNotes,
+  getNote
 };
 
 export default learnersService;

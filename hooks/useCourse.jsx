@@ -248,6 +248,19 @@ const useCourse = () => {
     })
   }
 
+  const getNotes = (id) => {
+    return new Promise((resolve, reject) => {
+      learnersService.getNotes(id).then((res) => resolve(res.data)).catch((error) => reject(error))
+    })
+  }
+
+  const getNote = (id) => {
+    return new Promise((resolve, reject) => {
+      learnersService.getNote(id).then((res) => resolve(res.data)).catch((error) => reject(error))
+    })
+  }
+
+
   return {
     handleCreatelecture,
     purchaseCourse,
@@ -264,7 +277,9 @@ const useCourse = () => {
     handleCreateCourseProject,
     setLectureCompleted,
     setAssignments,
-    setNote
+    setNote,
+    getNotes,
+    getNote
   };
 };
 

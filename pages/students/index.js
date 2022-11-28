@@ -36,6 +36,16 @@ const StudentDashboard = () => {
     return res?.data;
   };
 
+  const getLatestVC = async () => {
+    const res = await studentService.getLatestVcCourses()
+    return res?.data
+  }
+
+  const getLatestMC = async () => {
+    const res = await studentService.getLatestMcCourses()
+    return res?.data
+  }
+
   const { data: recommended, isLoading: r_loading } = useQuery(
     ["recommended"],
     getRecommendedCourses,
@@ -52,6 +62,18 @@ const StudentDashboard = () => {
     { staleTime: 60 * 1000 * 10, retry: 2 }
   );
 
+  // Get latest vc courses
+  const {data: latestVC, isLoading: vc_loading} = useQuery(["lastes-vc"], getLatestVC, {
+    staleTime: 60 * 1000 * 10, retry: 2
+  })
+
+  console.log(latestVC)
+
+  // Get latest masters courses
+  const {data: latestMC, isLoading: mc_loading} = useQuery(["lastes-mc"], getLatestMC, {
+    staleTime: 60 * 1000 * 10, retry: 2
+  })
+
   const show = false;
   // user?.has_purchased_course
 
@@ -63,9 +85,13 @@ const StudentDashboard = () => {
             recommended: recommended,
             popular: popular,
             featured: featured,
+            latestVC: latestVC,
+            latestMC: latestMC,
             r_loading: r_loading,
             p_loading: p_loading,
             f_loading: f_loading,
+            vc_loading: vc_loading,
+            mc_loading: mc_loading
           }}
         />
       ) : (
@@ -74,9 +100,13 @@ const StudentDashboard = () => {
             recommended: recommended,
             popular: popular,
             featured: featured,
+            latestVC: latestVC,
+            latestMC: latestMC,
             r_loading: r_loading,
             p_loading: p_loading,
             f_loading: f_loading,
+            vc_loading: vc_loading,
+            mc_loading: mc_loading
           }}
         />
       )}

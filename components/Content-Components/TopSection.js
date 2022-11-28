@@ -309,83 +309,68 @@ const TopSection = ({ dataObj }) => {
         </div>
 
         <div className=" hidden w-full xl:flex flex-col flex-wrap justify-evenly items-center xl:w-[252px] xl:mt-2  mx-auto ">
-          <h1 className="mt-10 mx-auto  xl:w-full">Newly added</h1>
-
-          <div className="w-[250px] h-[96px] bg-[#F9FFF3] relative rounded-md flex flex-row justify-evenly items-center mt-5">
-            <img src={card_image.src} className="h-12 w-12 rounded-md" />
-            <div className="flex flex-col">
-              <p className="text-[13px]">Cut and sew tops for women </p>
-              <p className="text-[11px]">By Queen Paul</p>
-            </div>
-            <p className="text-[9px] absolute top-[78px] right-2">Monday 9pm</p>
+          <h1 className="mt-10 mx-auto text-[14px] font-bold  xl:w-full">Newly added Vocational Courses</h1>
+          <div>
+              {dataObj?.latestVC?.data.map((el, index) => (
+                <div key={index} className="w-[250px] h-[96px] bg-[#F9FFF3] relative rounded-md flex flex-row px-2 gap-x-2 items-center mt-5">
+                  <img src={el?.image} className="h-12 w-12 rounded-md" />
+                  <div className="flex flex-col">
+                    <p className="text-[13px] break-words">{el?.name}</p>
+                    <p className="text-[11px] break-words">By {el?.course_instructor?.firstName} {el?.course_instructor?.lastName}</p>
+                  </div>
+                  {/* <p className="text-[9px] absolute top-[78px] right-2">Monday 9pm</p> */}
+                </div>
+              ))}
           </div>
 
-          <div className="w-[250px] h-[96px] bg-[#F9FFF3] relative rounded-md flex flex-row justify-evenly items-center mt-5">
-            <img src={card_image.src} className="h-12 w-12 rounded-md" />
-            <div className="flex flex-col">
-              <p className="text-[13px]">Cut and sew tops for women </p>
-              <p className="text-[11px]">By Queen Paul</p>
-            </div>
-            <p className="text-[9px] absolute top-[78px] right-2">Monday 9pm</p>
-          </div>
+          
 
-          <div className="w-[250px] h-[96px] bg-[#F9FFF3] relative rounded-md flex flex-row justify-evenly items-center mt-5">
-            <img src={card_image.src} className="h-12 w-12 rounded-md" />
-            <div className="flex flex-col">
-              <p className="text-[13px]">Cut and sew tops for women </p>
-              <p className="text-[11px]">By Queen Paul</p>
-            </div>
-            <p className="text-[9px] absolute top-[78px] right-2">Monday 9pm</p>
-          </div>
+          <h1 className="mt-16 mx-auto text-[14px] font-bold xl:w-full">Newly added Masterclass Courses</h1>
 
-          <div className="w-[250px] h-[96px] bg-[#F9FFF3] relative rounded-md flex flex-row justify-evenly items-center mt-5">
-            <img src={card_image.src} className="h-12 w-12 rounded-md" />
-            <div className="flex flex-col">
-              <p className="text-[13px]">Cut and sew tops for women </p>
-              <p className="text-[11px]">By Queen Paul</p>
-            </div>
-            <p className="text-[9px] absolute top-[78px] right-2">Monday 9pm</p>
-          </div>
+            {
+              dataObj?.latestMC?.data.map((el, index) => (
+                <div key={index} className="w-[250px] h-[96px] bg-[#F9FFF3] relative rounded-md flex flex-row px-2 gap-x-2 items-center mt-5">
+                  <img src={el?.image} className="h-12 w-12 rounded-md" />
+                  <div className="flex flex-col">
+                    <p className="text-[13px] break-words">{el?.name}</p>
+                    <p className="text-[11px] break-words">By {el?.course_instructor?.firstName} {el?.course_instructor?.lastName}</p>
+                  </div>
+                  {/* <p className="text-[9px] absolute top-[78px] right-2">Monday 9pm</p> */}
+                </div>
+              ))
+            }
+          
 
-          <h1 className="mt-16 mx-auto xl:w-full">Learn Courses for free</h1>
 
-          <div className="w-[250px] h-[96px] bg-[#F9FFF3] relative rounded-md flex flex-row justify-evenly items-center mt-5">
-            <img src={card_image.src} className="h-12 w-12 rounded-md" />
-            <div className="flex flex-col">
-              <p className="text-[13px]">Cut and sew tops for women </p>
-              <p className="text-[11px]">By Queen Paul</p>
-            </div>
-            <p className="text-[9px] absolute top-[78px] right-2">Monday 9pm</p>
-          </div>
+          
+        </div>
+      </div>
+    </div>
+  );
+};
 
-          <div className="w-[250px] h-[96px] bg-[#F9FFF3] relative rounded-md flex flex-row justify-evenly items-center mt-5">
-            <img src={card_image.src} className="h-12 w-12 rounded-md" />
-            <div className="flex flex-col">
-              <p className="text-[13px]">Cut and sew tops for women </p>
-              <p className="text-[11px]">By Queen Paul</p>
-            </div>
-            <p className="text-[9px] absolute top-[78px] right-2">Monday 9pm</p>
-          </div>
+export default TopSection;
 
-          <div className="w-[250px] h-[96px] bg-[#F9FFF3] relative rounded-md flex flex-row justify-evenly items-center mt-5">
-            <img src={card_image.src} className="h-12 w-12 rounded-md" />
-            <div className="flex flex-col">
-              <p className="text-[13px]">Cut and sew tops for women </p>
-              <p className="text-[11px]">By Queen Paul</p>
-            </div>
-            <p className="text-[9px] absolute top-[78px] right-2">Monday 9pm</p>
-          </div>
 
-          <div className="w-[250px] h-[96px] bg-[#F9FFF3] relative rounded-md flex flex-row justify-evenly items-center mt-5">
-            <img src={card_image.src} className="h-12 w-12 rounded-md" />
-            <div className="flex flex-col">
-              <p className="text-[13px]">Cut and sew tops for women </p>
-              <p className="text-[11px]">By Queen Paul</p>
-            </div>
-            <p className="text-[9px] absolute top-[78px] right-2">Monday 9pm</p>
-          </div>
 
-          <h1 className="mt-16 mx-auto xl:w-full">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * <h1 className="mt-16 mx-auto xl:w-full">
             Offering 50% discount on all course
           </h1>
 
@@ -424,10 +409,4 @@ const TopSection = ({ dataObj }) => {
             </div>
             <p className="text-[9px] absolute top-[78px] right-2">Monday 9pm</p>
           </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default TopSection;
+ */

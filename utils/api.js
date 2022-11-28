@@ -18,6 +18,8 @@ export const APIS = {
     GET_RECOMMENDED: `${api}/learners/get-recommended-courses`,
     GET_POPULAR: `${api}/learners/get-popular-courses`,
     GET_FEATURED_COURSES: `${api}/learners/get-featured-courses`,
+    GET_LATEST_VC_COURSES: `${api}/learners/get-vc-latest-courses`,
+    GET_LATEST_MC_COURSES: `${api}/learners/get-mc-latest-courses`,
     PURCHASE_COURSE: `${api}/learners/purchase-course`,
     GET_VC_COURSES: (id) => `${api}/learners/get-vc-courses/${id}`,
     GET_MY_COURSES: `${api}/learners/get-purchased-courses`,
@@ -29,7 +31,9 @@ export const APIS = {
     GET_LIVE_SESSION: (id) => `${api}/learners/get-live-session/${id}`,/** */
     SET_LECTURE_COMPLETED: `${api}/learners/set-lecture-completed`,
     SET_ASSIGNMENT_COMPLETED: `${api}/learners/set-assignment-completed`,
-    SET_NOTE: `${api}/learners/create-note`
+    SET_NOTE: `${api}/learners/create-note`,
+    GET_NOTES: (id) => `${api}/learners/get-notes/${id}`,
+    GET_NOTE: (id) => `${api}/learners/get-note/${id}`
 
   },
   MENTORS: {
