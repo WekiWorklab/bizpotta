@@ -1,16 +1,21 @@
+/* eslint-disable @next/next/no-img-element */
 // rafce
 
 import { useState } from "react";
+import { toast } from "react-toastify";
 import { Button } from "../components/Auth-Components/Button";
+import learnersService from "../services/LearnersService";
 
 const Reimagine = () => {
   const [data, setData] = useState({ name: "", email: "", city: "" });
 
   const handleSubmit = async () => {
-    const result = await learnersService.confUsers(data);
-
-    if (result.status === 200) {
-      console.log(result);
+    const result = await learnersService.confUsers(data).catch((err) => {
+      toast.error(err.response.data.message);
+    });
+    if (result?.status === 200) {
+      toast.success("Thank you for your submission");
+      setData({ name: "", email: "", city: "" });
     }
   };
 
@@ -40,9 +45,9 @@ const Reimagine = () => {
           <p className='text-[14px] font-bold text-center md:text-start'>Register for the event today!</p>
 
           <div className='flex flex-col gap-y-7 mt-4'>
-            <FormInput title='Full Name' type='text' name='name' setData={setData} />
-            <FormInput title='Email' type='email' name='email' setData={setData} />
-            <FormInput title='City' type='text' name='city' setData={setData} />
+            <FormInput title='Full Name' type='text' name='name' setData={setData} value={data.name} />
+            <FormInput title='Email' type='email' name='email' setData={setData} value={data.email} />
+            <FormInput title='City' type='text' name='city' setData={setData} value={data.city} />
           </div>
 
           <div className='mt-8'>
@@ -61,7 +66,7 @@ const Reimagine = () => {
 
 export default Reimagine;
 
-const FormInput = ({ title, name, type, setData }) => {
+const FormInput = ({ title, name, type, setData, value }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prev) => ({ ...prev, [name]: value }));
@@ -73,8 +78,9 @@ const FormInput = ({ title, name, type, setData }) => {
       <input
         type={type}
         name={name}
+        value={value}
         required
-        className='w-full h-[40px] rounded-md focus:ring-0 focus:outline-none outline-none border border-[1px] mt-1'
+        className='w-full h-[40px] rounded-md focus:ring-0 focus:outline-none outline-none border-[1px] mt-1'
         onChange={handleChange}
       />
     </div>
