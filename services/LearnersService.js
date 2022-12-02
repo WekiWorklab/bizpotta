@@ -46,59 +46,64 @@ const getMyCourse = (id) => {
   });
 };
 
-
 const submitAnswers = (data, course_id, week_id) => {
   return AxoisApi.post(`${APIS.LEARNERS.SUBMIT_ANSWERS}`, {
     data: data,
     course_id: course_id,
-    course_week_id: week_id
-  })
-}
-
+    course_week_id: week_id,
+  });
+};
 
 //The live session api fxns are diffrent from the others above. Was just trying new stuff out i.e no .then() after await fxn
 const getLiveSessions = () => {
   // return AxoisApi.get(APIS.LEARNERS.GET_LIVE_SESSIONS).then(res => {
   //   return res.data
   // })
-  return AxoisApi.get(APIS.LEARNERS.GET_LIVE_SESSIONS)
-}
+  return AxoisApi.get(APIS.LEARNERS.GET_LIVE_SESSIONS);
+};
 
 const getLiveSession = (id) => {
-  return AxoisApi.get(APIS.LEARNERS.GET_LIVE_SESSION(id))
-}
-
+  return AxoisApi.get(APIS.LEARNERS.GET_LIVE_SESSION(id));
+};
 
 const setLectureCompleted = (data) => {
   return AxoisApi.post(`${APIS.LEARNERS.SET_LECTURE_COMPLETED}`, {
     course_id: data.course_id,
-    course_week_id: data.course_week_id
-  })
-}
+    course_week_id: data.course_week_id,
+  });
+};
 
 const setAssignments = (data) => {
   return AxoisApi.post(`${APIS.LEARNERS.SET_ASSIGNMENT_COMPLETED}`, {
     course_student_id: data.course_student_id,
     week_id: data.week_id,
-    assignment_file: data.file
-  })
-}
+    assignment_file: data.file,
+  });
+};
 
 const setNote = (data) => {
   return AxoisApi.post(`${APIS.LEARNERS.SET_NOTE}`, {
     course_student_id: data.course_student_id,
     week_id: data.week_id,
-    note: data.note
-  })
-}
+    note: data.note,
+  });
+};
 
 const getNotes = (id) => {
-  return AxoisApi.get(APIS.LEARNERS.GET_NOTES(id))
-}
+  return AxoisApi.get(APIS.LEARNERS.GET_NOTES(id));
+};
 
 const getNote = (id) => {
-  return AxoisApi.get(APIS.LEARNERS.GET_NOTE(id))
-}
+  return AxoisApi.get(APIS.LEARNERS.GET_NOTE(id));
+};
+
+const confUsers = (data) => {
+  return AxoisApi.post(`${APIS.LEARNERS.CONF_USERS}`, {
+    name: data.name,
+    email: data.email,
+    city: data.city,
+  });
+};
 
 const learnersService = {
   getLearningPreferences,
@@ -115,7 +120,8 @@ const learnersService = {
   setAssignments,
   setNote,
   getNotes,
-  getNote
+  getNote,
+  confUsers,
 };
 
 export default learnersService;
