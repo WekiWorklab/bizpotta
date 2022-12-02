@@ -13,6 +13,7 @@ const Reimagine = () => {
     const result = await learnersService.confUsers(data).catch((err) => {
       toast.error(err.response.data.message);
     });
+
     if (result?.status === 200) {
       toast.success("Thank you for your submission");
       setData({ name: "", email: "", city: "" });
