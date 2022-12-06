@@ -22,6 +22,7 @@
     "@tanstack/react-table": "^8.5.13",
     "@tinymce/tinymce-react": "^4.2.0",
     "@vimeo/player": "^2.17.1",
+    "@zoomus/websdk": "^2.9.5",
     "axios": "^0.27.2",
     "chart.js": "^3.8.2",
     "cookies-next": "^2.1.1",
