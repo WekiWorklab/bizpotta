@@ -8,8 +8,10 @@ import learnersService from "../services/LearnersService";
 
 const Reimagine = () => {
   const [data, setData] = useState({ name: "", email: "", city: "" });
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async () => {
+    setLoading(true);
     const result = await learnersService.confUsers(data).catch((err) => {
       toast.error(err.response.data.message);
     });
@@ -17,7 +19,12 @@ const Reimagine = () => {
     if (result?.status === 200) {
       toast.success("Thank you for your submission");
       setData({ name: "", email: "", city: "" });
+      setLoading(false);
     }
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
   };
 
   return (
@@ -51,7 +58,7 @@ const Reimagine = () => {
           </div>
 
           <div className='mt-8'>
-            <Button name='Register' onClick={handleSubmit} size='w-[100px]' type='button' />
+            <Button name='Register' loading={loading} onClick={handleSubmit} size='w-[100px]' type='button' />
           </div>
         </form>
       </div>
