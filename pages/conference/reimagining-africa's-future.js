@@ -1,6 +1,9 @@
 import React from "react";
 
-import { ZoomMtg } from "@zoomus/websdk";
+const ZoomMtg = dynamic(() => import("@zoomus/websdk"), {
+  ssr: false,
+});
+
 import { useRouter } from "next/router";
 
 ZoomMtg.setZoomJSLib("https://source.zoom.us/2.9.5/lib", "/av");
