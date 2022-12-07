@@ -1,6 +1,5 @@
 import React from "react";
 
-import "./App.css";
 import { ZoomMtg } from "@zoomus/websdk";
 import { useRouter } from "next/router";
 
