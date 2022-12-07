@@ -2,6 +2,8 @@ import React from "react";
 import { useRouter } from "next/router";
 import { ZOOM_JWT_API_KEY, ZOOM_JWT_API_SECRET } from "../../constants/common";
 import { toKeyName } from "is-hotkey";
+import { FullPageSpinner } from "../../components/Lib";
+import Head from "next/head";
 
 const Meeting = () => {
   const { query } = useRouter();
@@ -37,9 +39,6 @@ const Meeting = () => {
     zoomModule.init({
       leaveUrl: `${window.location.origin}/thank-you`,
       isSupportAV: true,
-      // disableCORP: !window.crossOriginIsolated,
-      screenShare: true,
-      // disableRecord: false,
       disablePreview: true,
       success: (initResponse) => {
         console.log("initResponse: ", initResponse);
@@ -114,10 +113,19 @@ const Meeting = () => {
     await ZoomMtg.prepareWebSDK();
     ZoomMtg.i18n.load(lang);
     ZoomMtg.i18n.reload(lang);
-    ZoomMtg.reRender({ lang: lang });
     return ZoomMtg;
   };
 
-  return <>Loading...</>;
+  return (
+    <>
+      <Head>
+        <title key='title'>BizPotta - Reimagining Africa’s Future</title>
+        <link type='text/css' rel='stylesheet' href='https://source.zoom.us/2.9.5/css/bootstrap.css' />
+        <link type='text/css' rel='stylesheet' href='https://source.zoom.us/2.9.5/css/react-select.css' />
+      </Head>
+
+      <FullPageSpinner />
+    </>
+  );
 };
 export default Meeting;
