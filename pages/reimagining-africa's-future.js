@@ -41,6 +41,7 @@ const Reimagine = () => {
         />
 
         <div className='text-[14px] font-bold mt-4 text-center md:text-start'>Date: 9th - 10th Dec. 2022</div>
+        <div className='text-[14px] font-bold mt-4 text-center md:text-start'>Contact Number: 080*********</div>
 
         <form className='mt-10 w-full'>
           <p className='text-[14px] font-bold text-center md:text-start'>Register for the event today!</p>
