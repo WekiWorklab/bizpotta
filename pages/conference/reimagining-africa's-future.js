@@ -1,112 +1,123 @@
 import React from "react";
-import dynamic from "next/dynamic";
-
-const ZoomMtg = dynamic(() => import("@zoomus/websdk"), {
-  ssr: false,
-});
-
 import { useRouter } from "next/router";
+import { ZOOM_JWT_API_KEY, ZOOM_JWT_API_SECRET } from "../../constants/common";
+import { toKeyName } from "is-hotkey";
 
-ZoomMtg.setZoomJSLib("https://source.zoom.us/2.9.5/lib", "/av");
+const Meeting = () => {
+  const { query } = useRouter();
+  const { meeting_number: mn, email: email, password: pwd, userName: name, role = 0, lang = "en-US", china = 0, token } = query;
+  const SIGNATURE_ENDPOINT = "https://api.bizpotta.com/api/learners/zoom-signature";
+  const [zoomModule, setZoomModule] = React.useState(null);
 
-ZoomMtg.preLoadWasm();
-ZoomMtg.prepareWebSDK();
-// loads language files, also passes any error messages to the ui
-ZoomMtg.i18n.load("en-US");
-ZoomMtg.i18n.reload("en-US");
+  React.useEffect(() => {
+    if (zoomModule) {
+      onInitHandle();
+    }
+  }, [zoomModule]);
 
-function ReimagineConference() {
-  const router = useRouter();
+  React.useEffect(() => {
+    loadZoomMeeting();
+  }, []);
 
-  const { meeting_number, email } = router.query;
-
-  if (!meeting_number || !email) {
-    return <div>loading...</div>;
-  }
-
-  var signatureEndpoint = "https://api.bizpotta.com/api/learners/zoom-signature";
-  var sdkKey = process.env.NEXT_PUBLIC_ZOOM_SDK_KEY;
-  var meetingNumber = "123456789";
-  var role = 0;
-  var leaveUrl = "https://bizpotta.com";
-  var userName = "David";
-  var userEmail = "";
-  var passWord = "";
-  var registrantToken = "";
-
-  fetch("https://api.bizpotta.com/api/learners/zoom-toke ", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      webinar_id: meeting_number,
-      email: email,
-    }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      registrantToken = data.token;
+  const loadZoomMeeting = async () => {
+    await import("@zoomus/websdk").then(async (module) => {
+      try {
+        let module2 = await prepareLoadingWebSDK(module);
+        setZoomModule(module2);
+      } catch (error) {
+        console.error("loadZoomMeeting: ", error);
+        // window.location.href = "/"
+      }
     });
+  };
 
-  function getSignature(e) {
-    e.preventDefault();
+  const onInitHandle = () => {
+    console.log("window.location.origin: ", window.location.origin);
 
-    fetch(signatureEndpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        meeting_number: meetingNumber,
-        role: role,
-      }),
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        startMeeting(response.signature);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
-  function startMeeting(signature) {
-    document.getElementById("zmmtg-root").style.display = "block";
-
-    ZoomMtg.init({
-      leaveUrl: leaveUrl,
-      success: (success) => {
-        console.log(success);
-
-        ZoomMtg.join({
-          signature: signature,
-          meetingNumber: meetingNumber,
-          userName: userName,
-          sdkKey: sdkKey,
-          userEmail: userEmail,
-          passWord: passWord,
-          tk: registrantToken,
-          success: (success) => {
-            console.log(success);
+    zoomModule.init({
+      leaveUrl: `${window.location.origin}/thank-you`,
+      isSupportAV: true,
+      // disableCORP: !window.crossOriginIsolated,
+      screenShare: true,
+      // disableRecord: false,
+      disablePreview: true,
+      success: (initResponse) => {
+        console.log("initResponse: ", initResponse);
+        fetch(SIGNATURE_ENDPOINT, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
           },
-          error: (error) => {
-            console.log(error);
-          },
-        });
+          body: JSON.stringify({
+            meeting_number: mn.trim(),
+            role: role,
+          }),
+        })
+          .then((res) => res.json())
+          .then((response) => {
+            let signature = response.data;
+            console.log("signature: ", signature);
+            // Join meeting
+            zoomModule.join({
+              meetingNumber: mn.trim(),
+              userName: name,
+              userEmail: email,
+              passWord: pwd.trim(),
+              sdkKey: ZOOM_JWT_API_KEY,
+              tk: token,
+              signature: signature,
+              success: function (res) {
+                console.log("join meeting success");
+                console.log("get attendeelist");
+                zoomModule.getAttendeeslist({});
+                zoomModule.getCurrentUser({
+                  success: function (res) {
+                    console.log("success getCurrentUser", res.result.currentUser);
+                  },
+                });
+
+                zoomModule.inMeetingServiceListener("onUserJoin", function (data) {
+                  console.log("inMeetingServiceListener onUserJoin", data);
+                });
+
+                zoomModule.inMeetingServiceListener("onUserLeave", function (data) {
+                  console.log("inMeetingServiceListener onUserLeave", data);
+                });
+
+                zoomModule.inMeetingServiceListener("onUserIsInWaitingRoom", function (data) {
+                  console.log("inMeetingServiceListener onUserIsInWaitingRoom", data);
+                });
+
+                zoomModule.inMeetingServiceListener("onMeetingStatus", function (data) {
+                  console.log("inMeetingServiceListener onMeetingStatus", data);
+                });
+              },
+              error: function (res) {
+                console.log(res);
+              },
+            });
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
       },
-      error: (error) => {
-        console.log(error);
+      error: (initResponse) => {
+        console.log("initResponse: ", initResponse);
       },
     });
-  }
+  };
 
-  return (
-    <main>
-      <h1>Reimagining Africa&apos;s Future</h1>
+  const prepareLoadingWebSDK = async (module) => {
+    let ZoomMtg = module.ZoomMtg;
+    await ZoomMtg.setZoomJSLib("https://source.zoom.us/2.9.5/lib", "/av");
+    await ZoomMtg.preLoadWasm();
+    await ZoomMtg.prepareWebSDK();
+    ZoomMtg.i18n.load(lang);
+    ZoomMtg.i18n.reload(lang);
+    ZoomMtg.reRender({ lang: lang });
+    return ZoomMtg;
+  };
 
-      <button onClick={getSignature}>Join Meeting</button>
-    </main>
-  );
-}
-
-export default ReimagineConference;
+  return <>Loading...</>;
+};
+export default Meeting;
