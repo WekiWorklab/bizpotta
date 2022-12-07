@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { AdjustmentsIcon, ArrowRightIcon, CheckIcon, ExternalLinkIcon } from "@heroicons/react/solid";
+import { AdjustmentsIcon, ArrowRightIcon, CheckIcon, ExternalLinkIcon, XIcon } from "@heroicons/react/solid";
 import Navbars from "../components/Navbars";
 import { home_page, masterclass, offer, specialization } from "../public";
 import Card from "../components/Card";
@@ -28,6 +28,7 @@ import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import Header from "../components/Masterclass-Components/Main-Components/Header";
+import Link from "next/link";
 
 const optionsLists = [
   {
@@ -75,6 +76,7 @@ const optionsLists = [
 export default function Home() {
   const router = useRouter();
   const dispatch = useDispatch();
+  const [open, setOpen] = useState(true);
 
   const [width, setWidth] = useState(0);
 
@@ -117,6 +119,9 @@ export default function Home() {
             <div className=' bg-gradient-to-b from-[#D6F7BA] to-white  '>
               {/* <Navbars /> */}
               <Header show={show} setShow={setShow} slideIn={slideIn} setSlideIn={setSlideIn} />
+
+              {open ? <Banner setOpen={setOpen} /> : null}
+
               <div className='pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden'>
                 <div className='mx-auto max-w-7xl lg:px-8'>
                   <div className='lg:grid lg:grid-cols-2 lg:gap-4'>
@@ -350,7 +355,6 @@ export default function Home() {
                   Learn how to run sustainable and profitable businesses and accelerate business growth{" "}
                 </span>
               </p>
-             
 
               {/* For mobile view only */}
               <div className='block sm:hidden'>
@@ -384,11 +388,11 @@ export default function Home() {
               {/* list of radio in boxes */}
               <div className='hidden sm:flex flex-col w-full items-center md:flex-row  gap-4 '>
                 {/* <div className=' py-4 max-w-7xl lg:py-12  '> */}
-                  <div className='space-y-4 mx-auto grid sm:grid-cols-1  lg:grid-cols-3 justify-items-start  lg:gap-x-8  lg:space-y-0 '>
-                    <Testimonals />
-                    <Testimonals />
-                    <Testimonals />
-                  </div>
+                <div className='space-y-4 mx-auto grid sm:grid-cols-1  lg:grid-cols-3 justify-items-start  lg:gap-x-8  lg:space-y-0 '>
+                  <Testimonals />
+                  <Testimonals />
+                  <Testimonals />
+                </div>
                 {/* </div> */}
               </div>
               {/*Explore Courses */}
@@ -408,15 +412,6 @@ export default function Home() {
     </>
   );
 }
-
-
-
-
-
-
-
-
-
 
 export const HomeSideBar = ({ show, setShow, slideIn, setSlideIn }) => {
   const router = useRouter();
@@ -511,11 +506,6 @@ export const HomeSideBar = ({ show, setShow, slideIn, setSlideIn }) => {
   );
 };
 
-
-
-
-
-
 const Carousel = () => {
   const router = useRouter();
 
@@ -574,7 +564,9 @@ const GreenSection = ({ router, currentIndex }) => {
           <div className='text-white text-[18px]'>Coming soon</div>
         </div>
 
-        <div className='text-base mt-8 sm:mt-12 tracking-tight font-bold md:font-light sm:text-4xl xl:text-5xl text-white '>Specialization Program</div>
+        <div className='text-base mt-8 sm:mt-12 tracking-tight font-bold md:font-light sm:text-4xl xl:text-5xl text-white '>
+          Specialization Program
+        </div>
         <div className='text-base md:text-xl text-white mt-5'>
           Learn the basics of business development and management, get certificate on completion.{" "}
         </div>
@@ -589,11 +581,16 @@ const GreenSection = ({ router, currentIndex }) => {
             placeholder='Enter email address'
             className='w-full h-[40px] sm:h-[50px] outline-none border-0 bg-white text-gray-500 text-[15px] rounded-l-md '
           />
-          <div className='h-[40px] sm:h-[50px] w-[100px] sm:w-[180px] bg-darkBlue centerFlex text-[14px] sm:text-base rounded-r-md text-white'>Notify me</div>
+          <div className='h-[40px] sm:h-[50px] w-[100px] sm:w-[180px] bg-darkBlue centerFlex text-[14px] sm:text-base rounded-r-md text-white'>
+            Notify me
+          </div>
         </div>
         {/* </div> */}
       </div>
-      <div className='md-hidden lg:block lg:w-[60%] xl:w-1/2 rounded-r-xl bg-no-repeat bg-cover bg-center h-full' style={{ backgroundImage: `url(${specialization.src})` }}></div>
+      <div
+        className='md-hidden lg:block lg:w-[60%] xl:w-1/2 rounded-r-xl bg-no-repeat bg-cover bg-center h-full'
+        style={{ backgroundImage: `url(${specialization.src})` }}
+      ></div>
     </section>
   );
 };
@@ -756,3 +753,40 @@ const BlueSection = ({ router, currentIndex }) => {
     </section>
   );
 };
+
+function Banner({ setOpen }) {
+  return (
+    <div className='bg-bizpotta-purple'>
+      <div className='mx-auto max-w-7xl py-3 lg:py-1 px-3 sm:px-6 lg:px-4'>
+        <div className='flex flex-wrap items-center justify-between'>
+          <div className='flex flex-col lg:flex-row w-full flex-1 items-center'>
+            <p className='ml-3 flex-nowrap text-ellipsis overflow-hidden font-medium text-white text-sm lg:text-sm lg:w-full'>
+              <span className='md:hidden'>Bizpotta Global Entrepreneurship Conference 2022</span>
+              <span className='hidden md:inline'>Bizpotta Global Entrepreneurship Conference 2022: REIMAGINING AFRICA’S FUTURE</span>
+            </p>
+            <div className='lg:-ml-14 w-full flex items-center mt-0 justify-center lg:justify-start'>
+              <Link href={"/reimagining-africa's-future"} passHref>
+                <a
+                  href='#'
+                  className='flex items-center justify-center rounded-md  px-4 py-2 text-sm lg:text-sm font-[700] text-white  hover:text-bizpotta-green'
+                >
+                  Register Today
+                </a>
+              </Link>
+              <svg width='14' height='13' viewBox='0 0 14 13' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                <path d='M11.004 3.414L2.397 12.021L0.983002 10.607L9.589 2H2.004V0H13.004V11H11.004V3.414Z' fill='#F2FFE4' />
+              </svg>
+            </div>
+          </div>
+
+          <div className='order-2 flex-shrink-0 sm:order-3 sm:ml-3'>
+            <button onClick={() => setOpen(false)} type='button' className='-mr-1 flex rounded-md p-2  focus:outline-none focus:ring-0  sm:-mr-2'>
+              <span className='sr-only'>Dismiss</span>
+              <XIcon className='h-6 w-6 text-white hover:text-bizpotta-green' aria-hidden='true' />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

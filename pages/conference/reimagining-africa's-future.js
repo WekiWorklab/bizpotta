@@ -2,6 +2,7 @@ import React from "react";
 
 import "./App.css";
 import { ZoomMtg } from "@zoomus/websdk";
+import { useRouter } from "next/router";
 
 ZoomMtg.setZoomJSLib("https://source.zoom.us/2.9.5/lib", "/av");
 
@@ -12,9 +13,15 @@ ZoomMtg.i18n.load("en-US");
 ZoomMtg.i18n.reload("en-US");
 
 function ReimagineConference() {
-  // setup your signature endpoint here: https://github.com/zoom/meetingsdk-sample-signature-node.js
-  var signatureEndpoint = "";
-  // This Sample App has been updated to use SDK App type credentials https://marketplace.zoom.us/docs/guides/build/sdk-app
+  const router = useRouter();
+
+  const { meeting_number, email } = router.query;
+
+  if (!meeting_number || !email) {
+    return <div>loading...</div>;
+  }
+
+  var signatureEndpoint = "https://api.bizpotta.com/api/learners/zoom-signature";
   var sdkKey = process.env.NEXT_PUBLIC_ZOOM_SDK_KEY;
   var meetingNumber = "123456789";
   var role = 0;
@@ -22,10 +29,23 @@ function ReimagineConference() {
   var userName = "David";
   var userEmail = "";
   var passWord = "";
-  // pass in the registrant's token if your meeting or webinar requires registration. More info here:
-  // Meetings: https://marketplace.zoom.us/docs/sdk/native-sdks/web/client-view/meetings#join-registered
-  // Webinars: https://marketplace.zoom.us/docs/sdk/native-sdks/web/client-view/webinars#join-registered
   var registrantToken = "";
+
+  fetch("https://api.bizpotta.com/api/learners/zoom-toke ", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      webinar_id: meeting_number,
+      email: email,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      registrantToken = data.token;
+    });
 
   function getSignature(e) {
     e.preventDefault();
@@ -34,7 +54,7 @@ function ReimagineConference() {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        meetingNumber: meetingNumber,
+        meeting_number: meetingNumber,
         role: role,
       }),
     })
