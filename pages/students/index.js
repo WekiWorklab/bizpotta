@@ -37,14 +37,14 @@ const StudentDashboard = () => {
   };
 
   const getLatestVC = async () => {
-    const res = await studentService.getLatestVcCourses()
-    return res?.data
-  }
+    const res = await studentService.getLatestVcCourses();
+    return res?.data;
+  };
 
   const getLatestMC = async () => {
-    const res = await studentService.getLatestMcCourses()
-    return res?.data
-  }
+    const res = await studentService.getLatestMcCourses();
+    return res?.data;
+  };
 
   const { data: recommended, isLoading: r_loading } = useQuery(
     ["recommended"],
@@ -63,16 +63,26 @@ const StudentDashboard = () => {
   );
 
   // Get latest vc courses
-  const {data: latestVC, isLoading: vc_loading} = useQuery(["lastes-vc"], getLatestVC, {
-    staleTime: 60 * 1000 * 10, retry: 2
-  })
+  const { data: latestVC, isLoading: vc_loading } = useQuery(
+    ["lastes-vc"],
+    getLatestVC,
+    {
+      staleTime: 60 * 1000 * 10,
+      retry: 2,
+    }
+  );
 
-  console.log(latestVC)
+  console.log(latestVC);
 
   // Get latest masters courses
-  const {data: latestMC, isLoading: mc_loading} = useQuery(["lastes-mc"], getLatestMC, {
-    staleTime: 60 * 1000 * 10, retry: 2
-  })
+  const { data: latestMC, isLoading: mc_loading } = useQuery(
+    ["lastes-mc"],
+    getLatestMC,
+    {
+      staleTime: 60 * 1000 * 10,
+      retry: 2,
+    }
+  );
 
   const show = false;
   // user?.has_purchased_course
@@ -91,7 +101,7 @@ const StudentDashboard = () => {
             p_loading: p_loading,
             f_loading: f_loading,
             vc_loading: vc_loading,
-            mc_loading: mc_loading
+            mc_loading: mc_loading,
           }}
         />
       ) : (
@@ -106,7 +116,7 @@ const StudentDashboard = () => {
             p_loading: p_loading,
             f_loading: f_loading,
             vc_loading: vc_loading,
-            mc_loading: mc_loading
+            mc_loading: mc_loading,
           }}
         />
       )}
