@@ -12,7 +12,7 @@ export const APIS = {
     USER: `${api}/user`,
   },
   ADMIN: {
-    GET_ALL_REQUESTS: `${api}/admin/live-sessions`
+    GET_ALL_REQUESTS: `${api}/admin/live-sessions`,
   },
   LEARNERS: {
     SET_LEARNING_PREFERENCES: `${api}/set-learning-preferences`,
@@ -38,6 +38,7 @@ export const APIS = {
     GET_NOTES: (id) => `${api}/learners/get-notes/${id}`,
     GET_NOTE: (id) => `${api}/learners/get-note/${id}`,
     CONF_USERS: `${api}/learners/conf-users`,
+    CONF_USERS_1: `${api}/learners/conf-users-1`,
   },
   MENTORS: {
     SET_MENTORING_PREFERENCES: `${api}/creators/set-mentor-preferences`,
