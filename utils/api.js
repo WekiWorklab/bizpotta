@@ -11,6 +11,9 @@ export const APIS = {
     LOGOUT: `${api}/logout`,
     USER: `${api}/user`,
   },
+  ADMIN: {
+    GET_ALL_REQUESTS: `${api}/admin/live-sessions`
+  },
   LEARNERS: {
     SET_LEARNING_PREFERENCES: `${api}/set-learning-preferences`,
     GET_COURSES: `${api}/learners/courses`,

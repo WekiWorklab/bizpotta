@@ -90,9 +90,7 @@ const LiveSessionCard = ({ data }) => {
   //Renderer fxn
   const Renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
-      return <div>
-        
-      </div>
+      return <div></div>;
     } else {
       return (
         <div className="w-full grid grid-cols-4 gap-x-1 mt-2">

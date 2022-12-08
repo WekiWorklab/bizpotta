@@ -6,7 +6,10 @@ import moment from "moment";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { TableFooter, TableHeader } from "./Content";
-import CreatorTable, { SelectColumnFilter, StatusPill } from "../../Tables/CreatorTable";
+import CreatorTable, {
+  SelectColumnFilter,
+  StatusPill,
+} from "../../Tables/CreatorTable";
 
 const ActiveCourses = ({ activeCourses }) => {
   const router = useRouter();
@@ -57,8 +60,8 @@ const ActiveCourses = ({ activeCourses }) => {
   );
 
   return (
-    <div className='flex flex-col mx-auto'>
-      <CreatorTable columns={columns} data={data} title='Published Courses' />
+    <div className="flex flex-col mx-auto">
+      <CreatorTable columns={columns} data={data} title="Published Courses" />
     </div>
   );
 };

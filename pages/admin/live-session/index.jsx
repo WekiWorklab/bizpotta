@@ -2,7 +2,9 @@ import React from 'react'
 import AdminLayout from '../../../components/Admin-Components/Admin-Layout'
 import AdminLiveSession from '../../../components/Admin-Components/Admin-LiveSession'
 
-const index = () => {
+
+const Index = () => {
+
   return (
     <AdminLayout>
         <AdminLiveSession />
@@ -10,4 +12,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index

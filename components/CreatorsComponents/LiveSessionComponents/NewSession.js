@@ -220,6 +220,7 @@ export default NewSession;
 // Select Components
 const SelectOptions = ({ data, option, setOption, width, type, open, setOpen }) => {
   const [showSelect, setShowSelect] = useState(false);
+  console.log("data ---->", data)
 
   useEffect(() => {
     if (open != type) {
@@ -233,18 +234,21 @@ const SelectOptions = ({ data, option, setOption, width, type, open, setOpen }) 
     <div className='relative mt-4'>
       <div className='flex items-center gap-x-3'>
         <div
-          className={`w-[${width}] cursor-pointer h-[40px] px-2 rounded-md focus:ring-0 outline-none border-[1px] border-[#CCCCCC] border-opacity-[0.45] flex justify-between items-center text-[13px] text-gray-400`}
+          className={`w-[${width}] cursor-pointer h-[40px] px-2 rounded-md focus:ring-0 outline-none border-[1px] border-[#CCCCCC] border-opacity-[0.45] flex justify-between items-center text-[13px] text-gray-400 `}
           onClick={() => {
-            setShowSelect((prev) => !prev);
+            setShowSelect((prev) => (!prev));
             setOpen(type);
           }}
         >
+
+          {/* <div>{showSelect ? "true" : "false"}</div> */}
+
           {option?.name || "select"}
           <AiFillCaretDown
             size={20}
             color='#999999'
             onClick={() => {
-              setShowSelect((prev) => !prev);
+              setShowSelect((prev) => (!prev));
               setOpen(type);
             }}
           />
@@ -252,7 +256,7 @@ const SelectOptions = ({ data, option, setOption, width, type, open, setOpen }) 
       </div>
       {showSelect && open === type && (
         <div className='absolute cursor-pointer min-w-[200px] z-20 top-[42px] left-0 py-4 bg-white rounded-md dropdown-shadow'>
-          {data.map((el, index) => (
+          {data?.map((el, index) => (
             <div
               key={el.id}
               className='py-2 px-4 hover:bg-gray-500 hover:text-white text-[13px]'
@@ -261,7 +265,7 @@ const SelectOptions = ({ data, option, setOption, width, type, open, setOpen }) 
                 setShowSelect(false);
               }}
             >
-              {el.name}
+              {el?.name} 
             </div>
           ))}
         </div>

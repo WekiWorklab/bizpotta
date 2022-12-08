@@ -3,6 +3,9 @@ import NewSession from "../../../../components/CreatorsComponents/LiveSessionCom
 import Layout from "../../../../components/CreatorsComponents/LayoutComponents/Layout";
 
 const Index = ({ data }) => {
+
+  console.log(data)
+
   return (
     <Layout>
       <NewSession data={data} />

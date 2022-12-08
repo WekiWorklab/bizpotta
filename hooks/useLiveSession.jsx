@@ -1,5 +1,6 @@
 import useNotification from "./useNotification";
 import CreatorService from "../services/CreatorService";
+import adminService from "../services/AdminService";
 
 const useLiveSession = () => {
   const { handleError, handleSuccess } = useNotification();
@@ -51,10 +52,20 @@ const useLiveSession = () => {
     });
   };
 
+
+
+  const getAllRequests = () => {
+    return new Promise((resolve, reject) => {
+      adminService.getAllRequests().then((res) => resolve(res.data)).catch(err => reject(err))
+    })
+  }
+
+
   return {
     handleCreateLiveSession,
     handleGetLiveSessions,
     handleGetLiveSession,
+    getAllRequests,
   };
 };
 

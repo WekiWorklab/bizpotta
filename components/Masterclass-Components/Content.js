@@ -14,7 +14,7 @@ import ContentCarousel, {
   ContentCardSection,
 } from "../Content-Components/ContentCarousel";
 
-const Content = () => {
+const Content = ({dataObj}) => {
 
 
 
@@ -75,11 +75,11 @@ const Content = () => {
       </div>
 
       <div className="mt-9">
-        <MasterclassCourseSection contentTitle="Up-coming live session" />
+        <MasterclassCourseSection contentTitle="Up-coming live session" data = {dataObj}/>
       </div>
 
       <div className="mt-9">
-        <MasterclassCourseSection contentTitle="Top business acceleration program" />
+        <MasterclassCourseSection contentTitle="Top business acceleration program" data = {dataObj}/>
       </div>
 
       <div className="w-full mt-[50px]">
