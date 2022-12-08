@@ -105,6 +105,14 @@ const confUsers = (data) => {
   });
 };
 
+const confUsers1 = (data) => {
+  return AxoisApi.post(`${APIS.LEARNERS.CONF_USERS_1}`, {
+    name: data.name,
+    email: data.email,
+    city: data.city,
+  });
+};
+
 const learnersService = {
   getLearningPreferences,
   setLearnersPreferences,
@@ -122,6 +130,7 @@ const learnersService = {
   getNotes,
   getNote,
   confUsers,
+  confUsers1,
 };
 
 export default learnersService;
