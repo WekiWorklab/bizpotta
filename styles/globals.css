@@ -421,3 +421,13 @@ blockquote:after {
 button {
   @apply cursor-pointer;
 }
+
+
+.text-grad {
+  background: #32CD32;
+background: radial-gradient(circle farthest-corner at center center, #32CD32 4%, #121FCF 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+
+
+}
