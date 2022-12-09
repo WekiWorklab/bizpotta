@@ -48,7 +48,7 @@ const Reimagine = () => {
         />
 
         <div className='text-[14px] font-bold mt-4 text-center md:text-start'>Date: 9th - 10th Dec. 2022</div>
-        <form className='mt-10 w-full'>
+        <form className='mt-10 w-full redBorder' onSubmit={handleSubmit}>
           <p className='text-[14px] font-bold text-center md:text-start'>Register for the event today!</p>
 
           <div className='flex flex-col gap-y-7 mt-4'>
@@ -58,7 +58,7 @@ const Reimagine = () => {
           </div>
 
           <div className='mt-8'>
-            <Button name='Register' loading={loading} onClick={handleSubmit} size='w-[100px]' type='button' />
+            <Button name='Register' loading={loading}  size='w-[100px]' type='submit' />
           </div>
         </form>
       </div>
