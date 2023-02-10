@@ -30,10 +30,13 @@ export default function Login() {
     const newData = { [name]: value };
     setLoginData((prevState) => ({ ...prevState, ...newData }));
   };
+
   const { isLoading } = useSelector((state) => state.auth);
 
   const handlePassword = () => {
-    setPasswordType((prevState) => (prevState === "password" ? "text" : "password"));
+    setPasswordType((prevState) =>
+      prevState === "password" ? "text" : "password"
+    );
   };
 
   const validationSchema = Yup.object().shape({
@@ -58,13 +61,19 @@ export default function Login() {
       <div className=' h-[100vh] flex flex-col justify-center items-center'>
         <div className='w-[130px]  h-[65px] mb-2 '>
           <Link href='/'>
-            <img src={logo.src} alt='' className='w-full h-full object-contain cursor-pointer ' />
+            <img
+              src={logo.src}
+              alt=''
+              className='w-full h-full object-contain cursor-pointer '
+            />
           </Link>
         </div>
         <form onSubmit={handleSubmit(submitForm)}>
           <div className=' w-[360px] py-[30px] sm:py-[40px] bg-[#FAFAFA] sm:bg-white flex flex-col justify-center items-center '>
             <div className=' w-[330px]'>
-              <h3 className='text-[18px] text-[#282828]'>Sign into your account</h3>
+              <h3 className='text-[18px] text-[#282828]'>
+                Sign into your account
+              </h3>
               <p className='text-[12px] text-[#999999] mt-[10px]'>
                 Don&apos;t have an account?{" "}
                 <span className='text-[#475F8F]'>
@@ -101,14 +110,26 @@ export default function Login() {
                 />
 
                 {passwordType === "password" ? (
-                  <BiShow size={20} color='#999999' className='absolute top-[12px] right-[10px] ' onClick={() => handlePassword()} />
+                  <BiShow
+                    size={20}
+                    color='#999999'
+                    className='absolute top-[12px] right-[10px] '
+                    onClick={() => handlePassword()}
+                  />
                 ) : (
-                  <BiHide size={20} color='#999999' className='absolute top-[12px] right-[10px]' onClick={() => handlePassword()} />
+                  <BiHide
+                    size={20}
+                    color='#999999'
+                    className='absolute top-[12px] right-[10px]'
+                    onClick={() => handlePassword()}
+                  />
                 )}
               </div>
             </div>
 
-            <p className='text-xs text-[#999999] mt-4 ml-[55%]'>Forgot password</p>
+            <p className='text-xs text-[#999999] mt-4 ml-[55%]'>
+              Forgot password
+            </p>
 
             <button type='submit' className='mt-6 '>
               <Button name='Sign In' type={"submit"} loading={isLoading} />
