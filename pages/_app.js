@@ -6,6 +6,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Hydrate, QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+// testing
+
 function MyApp({ Component, pageProps }) {
   const [queryClient] = React.useState(() => new QueryClient());
 
