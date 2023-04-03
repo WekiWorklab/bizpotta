@@ -24,7 +24,9 @@ const Layout = ({ children }) => {
     (state) => state.course.show_course_details_modal
   );
 
-  const show_masterclass_modal = useSelector(state => state.course.show_masterclass_modal)
+  const show_masterclass_modal = useSelector(
+    (state) => state.course.show_masterclass_modal
+  );
 
   useEffect(() => {
     if (user && user?.is_onboarded) {
@@ -66,8 +68,6 @@ const Layout = ({ children }) => {
       {show_course_modal ? <CourseDetailsModal /> : null}
 
       {show_masterclass_modal ? <MasterclassDetailsModal /> : null}
-
-
     </div>
   );
 };

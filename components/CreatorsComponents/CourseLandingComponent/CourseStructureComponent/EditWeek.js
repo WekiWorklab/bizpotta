@@ -19,38 +19,10 @@ const EditWeek = () => {
 
   return (
     <div className="relative w-full min-h-screen bg-[#FDFDFD] flex flex-col mt-[90px] md:mt-[120px] md:justify-start items-start md:translate-x-[250px] md:w-[calc(100%-250px)] px-2 xl:px-16 py-10 text-darkGray">
-      {router.query.type === "lecture" && (
-        <LectureEdit
-          API_KEY={API_KEY}
-          courseId={courseId}
-          weekId={week_no}
-          week_title={week_title}
-        />
-      )}
-      {router.query.type === "assignment" && (
-        <AssignmentEdit
-          API_KEY={API_KEY}
-          courseId={courseId}
-          weekId={week_no}
-          week_title={week_title}
-        />
-      )}
-      {router.query.type === "resource" && (
-        <ResourceEdit
-          API_KEY={API_KEY}
-          courseId={courseId}
-          weekId={week_no}
-          week_title={week_title}
-        />
-      )}
-      {router.query.type === "quiz" && (
-        <QuizEdit
-          API_KEY={API_KEY}
-          courseId={courseId}
-          weekId={week_no}
-          week_title={week_title}
-        />
-      )}
+      {router.query.type === "lecture" && <LectureEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} week_title={week_title} />}
+      {router.query.type === "assignment" && <AssignmentEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} week_title={week_title} />}
+      {router.query.type === "resource" && <ResourceEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} week_title={week_title} />}
+      {router.query.type === "quiz" && <QuizEdit API_KEY={API_KEY} courseId={courseId} weekId={week_no} week_title={week_title} />}
     </div>
   );
 };
@@ -178,69 +150,32 @@ const QuizEdit = ({}) => {
 
       <form>
         {quiz_no.map((el, index) => (
-          <Quiz
-            key={index}
-            quiz_num={index + 1}
-            quiz_data={quiz_data}
-            HandleQuestionsChange={HandleQuestionsChange}
-            HandleOptionsChange={HandleOptionsChange}
-            HandleCorrectChange={HandleCorrectChange}
-          />
+          <Quiz key={index} quiz_num={index + 1} quiz_data={quiz_data} HandleQuestionsChange={HandleQuestionsChange} HandleOptionsChange={HandleOptionsChange} HandleCorrectChange={HandleCorrectChange} />
         ))}
       </form>
 
-      <div className='mt-6 flex justify-between items-center'>
-        <Button
-          className='w-full md:w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16'
-          type='button'
-          onClick={AddQuestion}
-          name={`Add question ${quiz_no.length + 1}`}
-          size={"w-[120px] mt-10"}
-        />
+      <div className="mt-6 flex justify-between items-center">
+        <Button className="w-full md:w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16" type="button" onClick={AddQuestion} name={`Add question ${quiz_no.length + 1}`} size={"w-[120px] mt-10"} />
 
-        <WButton
-          className='w-full md:w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16'
-          type='button'
-          onClick={SaveChanges}
-          name={"Submit"}
-          size={"w-[120px] mt-10"}
-          loading={loading}
-        />
+        <WButton className="w-full md:w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16" type="button" onClick={SaveChanges} name={"Submit"} size={"w-[120px] mt-10"} loading={loading} />
       </div>
     </div>
   );
 };
 
-const Quiz = ({
-  quiz_num,
-  quiz_data,
-  HandleCorrectChange,
-  HandleOptionsChange,
-  HandleQuestionsChange,
-}) => {
+const Quiz = ({ quiz_num, quiz_data, HandleCorrectChange, HandleOptionsChange, HandleQuestionsChange }) => {
   const optionsArr = ["A", "B", "C", "D"];
 
   return (
     <div className="w-full mt-16">
       <p className="text-[14px] text-darkBlue">Question {quiz_num}</p>
 
-      <textarea
-        className="w-full min-h-[150px] text-[14px] inputField"
-        name={`question${quiz_num}`}
-        onChange={(e) => HandleQuestionsChange(e)}
-        value={quiz_data[`question${quiz_num}`]}
-        required
-      />
+      <textarea className="w-full min-h-[150px] text-[14px] inputField" name={`question${quiz_num}`} onChange={(e) => HandleQuestionsChange(e)} value={quiz_data[`question${quiz_num}`]} required />
 
       {optionsArr.map((el, index) => (
         <div key={index} className="flex items-center gap-x-3">
           <p className="text-[14px]">{el}:</p>
-          <input
-            name={`option${el}${quiz_num}`}
-            required
-            className="h-[40px] pl-2 mt-2 w-[320px] text-[14px] inputField"
-            onChange={(e) => HandleOptionsChange(e)}
-          />
+          <input name={`option${el}${quiz_num}`} required className="h-[40px] pl-2 mt-2 w-[320px] text-[14px] inputField" onChange={(e) => HandleOptionsChange(e)} />
         </div>
       ))}
 
@@ -253,8 +188,7 @@ const Quiz = ({
           name={`correct${quiz_num}`}
           onChange={(e) => {
             HandleCorrectChange(e);
-          }}
-        >
+          }}>
           <option value="A">Option A</option>
           <option value="B">Option B</option>
           <option value="C">Option C</option>
@@ -303,13 +237,7 @@ const ResourceEdit = ({ API_KEY, courseId, weekId, week_title }) => {
     const data = {
       description: textValue,
       files: [...images],
-      links: [
-        { link: inputValue.value1 },
-        { link: inputValue.value3 },
-        { link: inputValue.value2 },
-        { link: inputValue.value3 },
-        { link: inputValue.value5 },
-      ],
+      links: [{ link: inputValue.value1 }, { link: inputValue.value3 }, { link: inputValue.value2 }, { link: inputValue.value3 }, { link: inputValue.value5 }],
     };
 
     const formData = new FormData();
@@ -350,100 +278,30 @@ const ResourceEdit = ({ API_KEY, courseId, weekId, week_title }) => {
         <TextEditorNotesModal api_key={API_KEY} setValue={setTextValue} />
       </div>
 
-      <label
-        htmlFor="file"
-        className="mt-5 flex w-[300px] h-[40px] inputField items-center gap-x-3 px-2 cursor-pointer"
-      >
+      <label htmlFor="file" className="mt-5 flex w-[300px] h-[40px] inputField items-center gap-x-3 px-2 cursor-pointer">
         <AiOutlineFilePdf color="gray" size={24} />
-        <p className="mt-[0.5px] text-[13px] text-[#999999]">
-          {!file.length > 0
-            ? "Click to upload multiple resource files"
-            : ` You have uploaded ${file.length} files`}
-        </p>
-        <input
-          type="file"
-          id="file"
-          multiple
-          name='file[]'
-          accept='.pdf, .docx, .pptx, .xslx, .png, .jpeg'
-          className='hidden'
-          onChange={(e) => addFile(e)}
-          ref={uploadFileRef}
-        />
+        <p className="mt-[0.5px] text-[13px] text-[#999999]">{!file.length > 0 ? "Click to upload multiple resource files" : ` You have uploaded ${file.length} files`}</p>
+        <input type="file" id="file" multiple name="file[]" accept=".pdf, .docx, .pptx, .xslx, .png, .jpeg" className="hidden" onChange={(e) => addFile(e)} ref={uploadFileRef} />
       </label>
 
-      <p className="text-[#999999] text-[13px] mt-8">
-        Links to other resources go here
-      </p>
+      <p className="text-[#999999] text-[13px] mt-8">Links to other resources go here</p>
       <div className=" grid gird-cols-1">
-        <input
-          type="text"
-          className="inputField w-[320px] sm:min-w-[400px] mt-6"
-          value={inputValue?.value1}
-          name="value1"
-          onChange={(e) => handleChange(e)}
-          placeholder="paste link here"
-        />
+        <input type="text" className="inputField w-[320px] sm:min-w-[400px] mt-6" value={inputValue?.value1} name="value1" onChange={(e) => handleChange(e)} placeholder="paste link here" />
 
-        {counter > 1 && (
-          <input
-            type="text"
-            className="inputField w-[320px] sm:min-w-[400px] mt-6"
-            value={inputValue?.value2}
-            name="value2"
-            onChange={(e) => handleChange(e)}
-            placeholder="paste link here"
-          />
-        )}
+        {counter > 1 && <input type="text" className="inputField w-[320px] sm:min-w-[400px] mt-6" value={inputValue?.value2} name="value2" onChange={(e) => handleChange(e)} placeholder="paste link here" />}
 
-        {counter > 2 && (
-          <input
-            type="text"
-            className="inputField w-[320px] sm:min-w-[400px] mt-6"
-            value={inputValue?.value3}
-            name="value3"
-            onChange={(e) => handleChange(e)}
-            placeholder="paste link here"
-          />
-        )}
+        {counter > 2 && <input type="text" className="inputField w-[320px] sm:min-w-[400px] mt-6" value={inputValue?.value3} name="value3" onChange={(e) => handleChange(e)} placeholder="paste link here" />}
 
-        {counter > 3 && (
-          <input
-            type="text"
-            className="inputField w-[320px] sm:min-w-[400px] mt-6"
-            value={inputValue?.value4}
-            name="value4"
-            onChange={(e) => handleChange(e)}
-            placeholder="paste link here"
-          />
-        )}
+        {counter > 3 && <input type="text" className="inputField w-[320px] sm:min-w-[400px] mt-6" value={inputValue?.value4} name="value4" onChange={(e) => handleChange(e)} placeholder="paste link here" />}
 
-        {counter > 4 && (
-          <input
-            type="text"
-            className="inputField w-[320px] sm:min-w-[400px] mt-6"
-            value={inputValue?.value5}
-            name="value5"
-            onChange={(e) => handleChange(e)}
-            placeholder="paste link here"
-          />
-        )}
+        {counter > 4 && <input type="text" className="inputField w-[320px] sm:min-w-[400px] mt-6" value={inputValue?.value5} name="value5" onChange={(e) => handleChange(e)} placeholder="paste link here" />}
 
-        <div
-          className="text-darkBlue text-[13px] cursor-pointer mt-3"
-          onClick={() => handleAddLinks()}
-        >
+        <div className="text-darkBlue text-[13px] cursor-pointer mt-3" onClick={() => handleAddLinks()}>
           + add another link
         </div>
       </div>
 
-      <Button
-        type="button"
-        onClick={handleSubmitResource}
-        name={" Save changes"}
-        size={"w-[120px] mt-16"}
-        loading={loading}
-      >
+      <Button type="button" onClick={handleSubmitResource} name={" Save changes"} size={"w-[120px] mt-16"} loading={loading}>
         Save changes
       </Button>
     </div>
@@ -485,14 +343,7 @@ const AssignmentEdit = ({ API_KEY, courseId, weekId, week_title }) => {
         <TextEditorNotesModal api_key={API_KEY} setValue={setTextValue} />
       </div>
 
-      <Button
-        className='w-full md:w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16'
-        type='button'
-        onClick={handleSubmitAssignment}
-        name={"Save changes"}
-        size={"mt-16 w-[120px]"}
-        loading={loading}
-      />
+      <Button className="w-full md:w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16" type="button" onClick={handleSubmitAssignment} name={"Save changes"} size={"mt-16 w-[120px]"} loading={loading} />
     </div>
   );
 };
@@ -537,23 +388,11 @@ const LectureEdit = ({ API_KEY, courseId, weekId, week_title }) => {
       <div className="min-h-400px mt-7">
         <TextEditorNotesModal api_key={API_KEY} setValue={setTextValue} />
       </div>
-      <input
-        type="text"
-        className="w-[300px] h-[40px] inputField mt-10"
-        value={url}
-        onChange={(e) => setUrl(e.target.value)}
-      />
+      <input type="text" className="w-[300px] h-[40px] inputField mt-10" value={url} onChange={(e) => setUrl(e.target.value)} />
       <p className="text-[12px] text-gray-400 mt-3">Paste video link here</p>
       <br />
 
-      <Button
-        className="w-full md:w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16"
-        type="button"
-        onClick={handleSubmitLecture}
-        name={" Save changes"}
-        size={"w-[120px]"}
-        loading={loading}
-      >
+      <Button className="w-full md:w-[120px] h-[40px] centerFlex bg-darkBlue text-white text-[13px] font-bold rounded-md cursor-pointer mt-16" type="button" onClick={handleSubmitLecture} name={" Save changes"} size={"w-[120px]"} loading={loading}>
         Save changes
       </Button>
     </div>

@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { AiOutlineCaretLeft, AiOutlineCaretRight, AiOutlineLineChart, AiOutlineMenu } from "react-icons/ai";
+import {
+  AiOutlineCaretLeft,
+  AiOutlineCaretRight,
+  AiOutlineLineChart,
+  AiOutlineMenu,
+} from "react-icons/ai";
 import LChart from "./Line-Chart";
 import { GoSettings } from "react-icons/go";
 import { MdOutlineArrowUpward } from "react-icons/md";
@@ -58,19 +63,29 @@ const IncomeTableChart = () => {
   const activities = data.length > 0 ? true : false;
 
   return (
-    <div className='flex flex-col mx-auto'>
+    <div className="flex flex-col mx-auto">
       {!activities && (
-        <div className='flex flex-col mx-auto'>
-          <div className='flex flex-col mx-auto'>
-            <div className='w-full h-[450px] flex flex-col justify-center items-center'>
+        <div className="flex flex-col mx-auto">
+          <div className="flex flex-col mx-auto">
+            <div className="w-full h-[450px] flex flex-col justify-center items-center">
               <NoActivities />
-              <p className='text-[#787878] text-[14px] font-bold mt-4'>No courses yet</p>
+              <p className="text-[#787878] text-[14px] font-bold mt-4">
+                No courses yet
+              </p>
             </div>
           </div>
         </div>
       )}
 
-      {activities && <CreatorTable columns={columns} data={data} title='Income' showFilter={showFilter} showExport={showExport} />}
+      {activities && (
+        <CreatorTable
+          columns={columns}
+          data={data}
+          title="Income"
+          showFilter={showFilter}
+          showExport={showExport}
+        />
+      )}
     </div>
   );
 };
