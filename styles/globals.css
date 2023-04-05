@@ -429,5 +429,9 @@ background: radial-gradient(circle farthest-corner at center center, #32CD32 4%,
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 
+}
 
+.imagePosition{
+  object-fit: contain;
+  height:max-content
 }

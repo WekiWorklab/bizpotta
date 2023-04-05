@@ -14,29 +14,25 @@ const Reimagine = () => {
   const [loading, setLoading] = useState(false);
 
   const handleNameChange = (e) => {
-    let {name, value} = e.target
+    let { name, value } = e.target;
 
-    let fullnameArr =  value.split(" ")
-    if(fullnameArr.length > 2) {
-      setNameError("Please enter only first name and last name")
-      setName(value)
+    let fullnameArr = value.split(" ");
+    if (fullnameArr.length > 2) {
+      setNameError("Please enter only first name and last name");
+      setName(value);
+    } else if (fullnameArr.length < 2) {
+      setNameError("Please enter both first name and last name");
+      setName(value);
+    } else {
+      setName(value);
+      setNameError("");
     }
-    else if (fullnameArr.length < 2 ) {
-      setNameError("Please enter both first name and last name")
-      setName(value)
-    }
-
-    else{
-      setName(value)
-      setNameError("")
-    }
-}
-
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (nameError != "") return 
-    let newData = {name: name, email: data.email, city: data.city}
+    if (nameError != "") return;
+    let newData = { name: name, email: data.email, city: data.city };
     setLoading(true);
     const result = await learnersService.confUsers(newData).catch((err) => {
       toast.error(err.response.data.message);
@@ -111,7 +107,9 @@ const Reimagine = () => {
                   className="w-full h-[40px] rounded-md focus:ring-0 focus:outline-none outline-none border-[1px] mt-1"
                   onChange={(e) => handleNameChange(e)}
                 />
-                <p className="text-[13px] font-bold text-red-400">{nameError}</p>
+                <p className="text-[13px] font-bold text-red-400">
+                  {nameError}
+                </p>
               </div>
 
               <FormInput
