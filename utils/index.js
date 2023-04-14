@@ -1,10 +1,7 @@
 import axios from "axios";
 
 function getToken() {
-  if (
-    typeof window !== "undefined" &&
-    window.localStorage.getItem("bizpotta_token")
-  ) {
+  if (typeof window !== "undefined" && window.localStorage.getItem("bizpotta_token")) {
     let token = localStorage.getItem("bizpotta_token") ?? null;
     return token;
   }
@@ -25,11 +22,7 @@ AxoisApi.interceptors.response.use(
   function (response) {
     let datares = response.data;
     if (typeof datares == "object") {
-      if (
-        Number(datares?.status) === 400 ||
-        Number(datares?.status) === 401 ||
-        Number(datares?.status) === 500
-      ) {
+      if (Number(datares?.status) === 400 || Number(datares?.status) === 401 || Number(datares?.status) === 500) {
         return Promise.reject(response);
       }
     }

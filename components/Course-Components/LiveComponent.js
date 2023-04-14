@@ -48,7 +48,7 @@ const LiveComponent = () => {
         </div>
       ) : null}
 
-      <p className="mt-28  font-bold">See other live sessions </p>
+      <p className="mt-28 font-bold">See other live sessions </p>
 
       {/* <LiveSessionCard router = {router}/> */}
       <div className="mt-4">

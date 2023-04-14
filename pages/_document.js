@@ -3,15 +3,22 @@ import regeneratorRuntime from "regenerator-runtime";
 
 export default function Document() {
   return (
-    <Html lang='en'>
+    <Html lang="en">
       <Head>
-        <meta charSet='utf-8' />
-        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' />
-        <link rel='preconnect' href='https://fonts.googleapis.com' />
-        <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='true' />
+        <meta charSet="utf-8" />
         <link
-          href='https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,700;0,800;0,900;1,700&display=swap'
-          rel='stylesheet'
+          rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="true"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,700;0,800;0,900;1,700&display=swap"
+          rel="stylesheet"
         ></link>
       </Head>
       <body>
