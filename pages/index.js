@@ -130,12 +130,15 @@ export default function Home() {
                       <div className='lg:py-24'>
                         <h1 className='w-full mt-4 text-2xl font-medium text-bizpotta-gray-800 sm:mt-5 sm:text-4xl lg:mt-6 xl:text-5xl'>
                           <span className='font-fancy'>
-                            Learn outstanding business
+                            Bridging the Skill Gap
                             <span className='pt-2'>
                               {" "}
-                              skills, advance and become a
+                              in Nigeria and Africa and helping MSMEs
                             </span>
-                            <span className='pt-2'> master in your craft</span>
+                            <span className='pt-2'>
+                              {" "}
+                              develop and grow their businesses.
+                            </span>
                           </span>
                         </h1>
                         <p className='text-base text-bizpotta-gray-800 sm:text-xl lg:text-base xl:text-lg pt-5 md:pt-10'>
