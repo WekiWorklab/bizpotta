@@ -1,42 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
-import {
-  AdjustmentsIcon,
-  ArrowRightIcon,
-  CheckIcon,
-  ExternalLinkIcon,
-  XIcon,
-} from "@heroicons/react/solid";
-import Navbars from "../components/Navbars";
-import { home_page, masterclass, offer, specialization } from "../public";
-import Card from "../components/Card";
-import LibraryRadioButton from "../components/LibraryRadioButton";
+import { ArrowRightIcon, XIcon } from "@heroicons/react/solid";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import HomePageSlider from "../components/HomePageSlider";
 import Team from "../components/Team";
-import Head from "next/head";
 import Testimonals from "../components/Testimonals";
-import Footer from "../components/Footer";
-import { useState } from "react";
-import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
+import { home_page, masterclass, offer, specialization } from "../public";
 import { addCategory } from "../store/courseSlice";
 
+import { useEffect, useRef } from "react";
 import { BsArrowRight, BsChevronRight } from "react-icons/bs";
-import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
-import LandingMarketingCarousel, {
-  MarketingCard,
-} from "../components/LandingMarketingCarousel";
-import LandingTestimonialCarousel from "../components/LandingTestimonialCarousel";
 import GreenFooter from "../components/GreenFooter";
-import { useRef } from "react";
-import { forwardRef } from "react";
-import { useEffect } from "react";
+import LandingMarketingCarousel from "../components/LandingMarketingCarousel";
+import LandingTestimonialCarousel from "../components/LandingTestimonialCarousel";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import Link from "next/link";
 import "swiper/css";
 import "swiper/css/pagination";
 import Header from "../components/Masterclass-Components/Main-Components/Header";
-import Link from "next/link";
 
 const optionsLists = [
   {
@@ -260,7 +243,7 @@ export default function Home() {
 
                 <div className='relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0 '>
                   <div className='pt-12 sm:pt-16 lg:pt-40 flex flex-col justify-center items-center mx-auto'>
-                    <h2 className='text-[18px] font-bold text-darkBlue md:text-3xl font-light tracking-tight '>
+                    <h2 className='text-[18px] font-bold text-darkBlue md:text-3xl  tracking-tight '>
                       What we offer
                     </h2>
                     <div className='mt-6 text-gray-500 space-y-6 relative'>
