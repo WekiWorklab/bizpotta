@@ -142,11 +142,11 @@ export default function Home() {
                           </span>
                         </h1>
                         <p className='text-base text-bizpotta-gray-800 sm:text-xl lg:text-base xl:text-lg pt-5 md:pt-10'>
-                          Bizpotta Learning is a massive business and vocational
-                          education platform designed to help entrepreneurs
-                          advance their learning and master their craft. It is
-                          designed as a platform where tutors and learners
-                          connect
+                          Bizpotta is Africa's first integrated business
+                          solutions platform dedicated to bridging the skill gap
+                          in Nigeria and Africa while offering comprehensive
+                          business management and development tools and
+                          solutions for MSMEs.
                         </p>
                         {/* two buttons  */}
                         <div className='mt-4 sm:mt-8 lg:mt-0 pt-5 md:10'>
