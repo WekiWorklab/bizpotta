@@ -67,7 +67,7 @@ const optionsLists = [
 export default function Home() {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const [width, setWidth] = useState(0);
 
