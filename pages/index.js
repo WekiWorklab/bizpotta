@@ -142,7 +142,7 @@ export default function Home() {
                           </span>
                         </h1>
                         <p className='text-base text-bizpotta-gray-800 sm:text-xl lg:text-base xl:text-lg pt-5 md:pt-10'>
-                          Bizpotta is Africa's first integrated business
+                          Bizpotta is Africa&apos;s first integrated business
                           solutions platform dedicated to bridging the skill gap
                           in Nigeria and Africa while offering comprehensive
                           business management and development tools and
