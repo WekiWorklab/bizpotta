@@ -78,12 +78,12 @@ const Header = ({ show, setShow, slideIn, setSlideIn }) => {
           )}
         </div>
         <Link href='/become-a-partner'>
-          <div className='text-darkBlue font-medium text-[16px] lg:text-[18px]'>
+          <div className='text-darkBlue font-medium text-[16px] lg:text-[18px] cursor-pointer'>
             Become a partner
           </div>
         </Link>
         <Link href='/become-a-tutor'>
-          <div className='text-darkBlue font-medium text-[16px] lg:text-[18px]'>
+          <div className='text-darkBlue font-medium text-[16px] lg:text-[18px] cursor-pointer'>
             Become a Tutor
           </div>
         </Link>

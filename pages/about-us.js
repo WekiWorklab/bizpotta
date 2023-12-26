@@ -15,7 +15,7 @@ export default function About() {
   return (
     <>
       <Head>
-        <title key='title'>BizPotta - Home</title>
+        <title key='title'>BizPotta - About Us</title>
       </Head>
 
       <div className='relative bg-gray-50 '>
