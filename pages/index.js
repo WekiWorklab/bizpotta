@@ -319,7 +319,7 @@ export default function Home() {
                           fill='none'
                           xmlns='http://www.w3.org/2000/svg'>
                           <path
-                            d='M6.625 7.125L10.375 10.875L19.375 1.125M0.625 7.125L4.375 10.875L0.625 7.125ZM9.625 4.875L13.375 1.125L9.625 4.875Z'
+                              d='M6.625 7.125L10.375 10.875L19.375 1.125M0.625 7.125L4.375 10.875L0.625 7.125ZM9.625 4.875L13.375 1.125L9.625 4.875Z'
                             stroke='#121F4C'
                             strokeWidth='0.8'
                             strokeLinecap='round'
