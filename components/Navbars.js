@@ -1,29 +1,28 @@
 /* eslint-disable @next/next/no-img-element */
 
-import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
-import classNames from "../utils/classNames";
 import {
-  CloudUploadIcon,
-  CogIcon,
-  LockClosedIcon,
   MenuIcon,
-  PhoneIcon,
   RefreshIcon,
-  ServerIcon,
   ShieldCheckIcon,
   XIcon,
 } from "@heroicons/react/outline";
-import { ChartBarIcon, ChevronDownIcon, CursorClickIcon, ExternalLinkIcon, PlayIcon, ViewGridIcon } from "@heroicons/react/solid";
-import { logo } from "../public";
+import {
+  ChartBarIcon,
+  CursorClickIcon,
+  ViewGridIcon,
+} from "@heroicons/react/solid";
 import Link from "next/link";
+import { Fragment } from "react";
+import { logo } from "../public";
 
 const navigation = [{ name: "Product", href: "#" }];
 const features = [
   {
     name: "Analytics",
     href: "#",
-    description: "Get a better understanding of where your traffic is coming from.",
+    description:
+      "Get a better understanding of where your traffic is coming from.",
     icon: ChartBarIcon,
   },
   {
@@ -32,7 +31,12 @@ const features = [
     description: "Speak directly to your customers in a more meaningful way.",
     icon: CursorClickIcon,
   },
-  { name: "Security", href: "#", description: "Your customers' data will be safe and secure.", icon: ShieldCheckIcon },
+  {
+    name: "Security",
+    href: "#",
+    description: "Your customers' data will be safe and secure.",
+    icon: ShieldCheckIcon,
+  },
   {
     name: "Integrations",
     href: "#",
@@ -42,7 +46,8 @@ const features = [
   {
     name: "Automations",
     href: "#",
-    description: "Build strategic funnels that will drive your customers to convert",
+    description:
+      "Build strategic funnels that will drive your customers to convert",
     icon: RefreshIcon,
   },
 ];
@@ -52,7 +57,9 @@ export default function Navbars() {
       {({ open }) => (
         <>
           <div className='pt-10'>
-            <nav className='relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6' aria-label='Global'>
+            <nav
+              className='relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6'
+              aria-label='Global'>
               <div className='flex items-center flex-1'>
                 <div className='flex items-center justify-between w-full md:w-auto'>
                   <a href='#'>
@@ -66,34 +73,34 @@ export default function Navbars() {
                     </Popover.Button>
                   </div>
                 </div>
-               
               </div>
               <div className='hidden md:flex md:items-center '>
-                
-                <Link href='/'>
-                  <a href='#' className='text-lg inline-flex font-medium items-center px-2 py-1 text-bizpotta-purple  hover:text-gray-300'>
+                <Link href='/become-a-partner'>
+                  <a
+                    href='#'
+                    className='text-lg inline-flex font-medium items-center px-2 py-1 text-bizpotta-purple  hover:text-gray-300'>
                     Become a Partner
                   </a>
                 </Link>
-                
-                <Link href='/'>
+
+                <Link href='/become-a-tutor'>
                   <a
                     href='#'
-                    className='text-lg inline-flex font-medium items-center px-8 py-1 text-bizpotta-purple border-r border-[#BAD5A2] hover:text-gray-300'
-                  >
+                    className='text-lg inline-flex font-medium items-center px-8 py-1 text-bizpotta-purple border-r border-[#BAD5A2] hover:text-gray-300'>
                     Become a Tutor
                   </a>
                 </Link>
                 <Link href='/auth/login'>
-                  <a href='#' className='text-lg inline-flex font-medium items-center px-8 py-2  hover:text-gray-300 rounded-md text-bizpotta-purple'>
+                  <a
+                    href='#'
+                    className='text-lg inline-flex font-medium items-center px-8 py-2  hover:text-gray-300 rounded-md text-bizpotta-purple'>
                     Login
                   </a>
                 </Link>
                 <Link href='/auth/register'>
                   <a
                     href='#'
-                    className='inline-flex items-center px-8 py-2 border border-transparent text-lg font-medium rounded-md text-white bg-bizpotta-purple hover:bg-gray-700'
-                  >
+                    className='inline-flex items-center px-8 py-2 border border-transparent text-lg font-medium rounded-md text-white bg-bizpotta-purple hover:bg-gray-700'>
                     Join for free
                   </a>
                 </Link>
@@ -108,13 +115,19 @@ export default function Navbars() {
             enterTo='opacity-100 scale-100'
             leave='duration-100 ease-in'
             leaveFrom='opacity-100 scale-100'
-            leaveTo='opacity-0 scale-95'
-          >
-            <Popover.Panel focus static className='absolute top-0 inset-x-0 p-2 transition transform origin-top md:hidden'>
+            leaveTo='opacity-0 scale-95'>
+            <Popover.Panel
+              focus
+              static
+              className='absolute top-0 inset-x-0 p-2 transition transform origin-top md:hidden'>
               <div className='rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden'>
                 <div className='px-5 pt-4 flex items-center justify-between'>
                   <div>
-                    <img className='h-8 w-auto' src='https://tailwindui.com/img/logos/workflow-mark-teal-500-cyan-600.svg' alt='' />
+                    <img
+                      className='h-8 w-auto'
+                      src='https://tailwindui.com/img/logos/workflow-mark-teal-500-cyan-600.svg'
+                      alt=''
+                    />
                   </div>
                   <div className='-mr-2'>
                     <Popover.Button className='bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-600'>
@@ -126,7 +139,10 @@ export default function Navbars() {
                 <div className='pt-5 pb-6'>
                   <div className='px-2 space-y-1'>
                     {navigation.map((item) => (
-                      <a key={item.name} href={item.href} className='block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-50'>
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        className='block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-50'>
                         {item.name}
                       </a>
                     ))}
@@ -134,8 +150,7 @@ export default function Navbars() {
                   <div className='mt-6 px-5'>
                     <a
                       href='#'
-                      className='block text-center w-full py-3 px-4 rounded-md shadow bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-medium hover:from-teal-600 hover:to-cyan-700'
-                    >
+                      className='block text-center w-full py-3 px-4 rounded-md shadow bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-medium hover:from-teal-600 hover:to-cyan-700'>
                       Start free trial
                     </a>
                   </div>
