@@ -267,7 +267,7 @@ export default function Home() {
                           />
                         </svg>
                         <p className='text-[14px] md:text-lg ml-9 '>
-                          Learn from the best in various industries
+                          Bizpotta Learning
                         </p>
                       </dt>
                       <dt>
@@ -287,7 +287,7 @@ export default function Home() {
                           />
                         </svg>{" "}
                         <p className='text-[14px] md:text-lg ml-9  leading-7'>
-                          Have the best vocational skills at your finger tips
+                          Bizpotta Hub
                         </p>
                       </dt>
                       <dt>
@@ -307,7 +307,7 @@ export default function Home() {
                           />
                         </svg>{" "}
                         <p className='text-[14px] md:text-lg ml-9  leading-7'>
-                          Mentorship programs from top leaders in industries
+                          Bizpotta Business Lounge
                         </p>
                       </dt>
                       <dt>
@@ -327,7 +327,7 @@ export default function Home() {
                           />
                         </svg>{" "}
                         <p className='text-[14px] md:text-lg ml-9  leading-7'>
-                          Access to numerous resourses
+                          Bizpotta Work Bench
                         </p>
                       </dt>
                       <dt>
@@ -347,7 +347,7 @@ export default function Home() {
                           />
                         </svg>{" "}
                         <p className='text-[14px] md:text-lg ml-9  leading-7'>
-                          Business development and management
+                          Bizpotta Funding
                         </p>
                       </dt>
                     </div>
@@ -457,10 +457,10 @@ export default function Home() {
               {/* list of radio in boxes */}
               <div className='hidden sm:flex flex-col w-full items-center md:flex-row  gap-4 '>
                 {/* <div className=' py-4 max-w-7xl lg:py-12  '> */}
-                <div className='space-y-4 mx-auto grid sm:grid-cols-1  lg:grid-cols-3 justify-items-start  lg:gap-x-8  lg:space-y-0 '>
+                <div className='space-y-4 mx-auto grid sm:grid-cols-1 lg:grid-cols-3 justify-items-start  lg:gap-x-8  lg:space-y-0 '>
                   <Testimonals />
-                  <Testimonals />
-                  <Testimonals />
+                  {/* <Testimonals />
+                  <Testimonals /> */}
                 </div>
                 {/* </div> */}
               </div>
