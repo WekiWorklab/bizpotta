@@ -1,14 +1,23 @@
-import React from "react";
-import { useRouter } from "next/router";
-import { ZOOM_JWT_API_KEY, ZOOM_JWT_API_SECRET } from "../../constants/common";
-import { toKeyName } from "is-hotkey";
-import { FullPageSpinner } from "../../components/Lib";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import React from "react";
+import { FullPageSpinner } from "../../components/Lib";
+import { ZOOM_JWT_API_KEY } from "../../constants/common";
 
 const Meeting = () => {
   const { query } = useRouter();
-  const { meeting_number: mn, email: email, password: pwd, userName: name, role = 0, lang = "en-US", china = 0, token } = query;
-  const SIGNATURE_ENDPOINT = "https://api.bizpotta.com/api/learners/zoom-signature";
+  const {
+    meeting_number: mn,
+    email: email,
+    password: pwd,
+    userName: name,
+    role = 0,
+    lang = "en-US",
+    china = 0,
+    token,
+  } = query;
+  const SIGNATURE_ENDPOINT =
+    "https://api.bizpotta.com/api/learners/zoom-signature";
   const [zoomModule, setZoomModule] = React.useState(null);
 
   React.useEffect(() => {
@@ -71,25 +80,46 @@ const Meeting = () => {
                 zoomModule.getAttendeeslist({});
                 zoomModule.getCurrentUser({
                   success: function (res) {
-                    console.log("success getCurrentUser", res.result.currentUser);
+                    console.log(
+                      "success getCurrentUser",
+                      res.result.currentUser
+                    );
                   },
                 });
 
-                zoomModule.inMeetingServiceListener("onUserJoin", function (data) {
-                  console.log("inMeetingServiceListener onUserJoin", data);
-                });
+                zoomModule.inMeetingServiceListener(
+                  "onUserJoin",
+                  function (data) {
+                    console.log("inMeetingServiceListener onUserJoin", data);
+                  }
+                );
 
-                zoomModule.inMeetingServiceListener("onUserLeave", function (data) {
-                  console.log("inMeetingServiceListener onUserLeave", data);
-                });
+                zoomModule.inMeetingServiceListener(
+                  "onUserLeave",
+                  function (data) {
+                    console.log("inMeetingServiceListener onUserLeave", data);
+                  }
+                );
 
-                zoomModule.inMeetingServiceListener("onUserIsInWaitingRoom", function (data) {
-                  console.log("inMeetingServiceListener onUserIsInWaitingRoom", data);
-                });
+                zoomModule.inMeetingServiceListener(
+                  "onUserIsInWaitingRoom",
+                  function (data) {
+                    console.log(
+                      "inMeetingServiceListener onUserIsInWaitingRoom",
+                      data
+                    );
+                  }
+                );
 
-                zoomModule.inMeetingServiceListener("onMeetingStatus", function (data) {
-                  console.log("inMeetingServiceListener onMeetingStatus", data);
-                });
+                zoomModule.inMeetingServiceListener(
+                  "onMeetingStatus",
+                  function (data) {
+                    console.log(
+                      "inMeetingServiceListener onMeetingStatus",
+                      data
+                    );
+                  }
+                );
               },
               error: function (res) {
                 console.log(res);
@@ -120,8 +150,16 @@ const Meeting = () => {
     <>
       <Head>
         <title key='title'>BizPotta - Reimagining Africa’s Future</title>
-        <link type='text/css' rel='stylesheet' href='https://source.zoom.us/2.9.5/css/bootstrap.css' />
-        <link type='text/css' rel='stylesheet' href='https://source.zoom.us/2.9.5/css/react-select.css' />
+        <link
+          type='text/css'
+          rel='stylesheet'
+          href='https://source.zoom.us/2.9.5/css/bootstrap.css'
+        />
+        <link
+          type='text/css'
+          rel='stylesheet'
+          href='https://source.zoom.us/2.9.5/css/react-select.css'
+        />
       </Head>
 
       <FullPageSpinner />
