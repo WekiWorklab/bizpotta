@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { HomeSideBar } from "..";
 import BottomSection from "../../components/Masterclass-Components/Main-Components/BottomSection";
 import MiddleSection from "../../components/Masterclass-Components/Main-Components/MiddleSection";
@@ -9,7 +9,7 @@ const Index = () => {
   const [slideIn, setSlideIn] = useState(false);
 
   return (
-    <div className="w-full relative">
+    <div className='w-full relative'>
       <HomeSideBar
         show={show}
         setShow={setShow}
