@@ -83,13 +83,13 @@ export default function Navbars() {
                   </a>
                 </Link>
 
-                <Link href='/become-a-tutor'>
+                {/* <Link href='/become-a-tutor'>
                   <a
                     href='#'
                     className='text-lg inline-flex font-medium items-center px-8 py-1 text-bizpotta-purple border-r border-[#BAD5A2] hover:text-gray-300'>
                     Become a Tutor
                   </a>
-                </Link>
+                </Link> */}
                 <Link href='/auth/login'>
                   <a
                     href='#'
