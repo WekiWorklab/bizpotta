@@ -1,5 +1,4 @@
 import {
-  CurvyUnderline,
   DownCurvyArrow,
   LeftEllipse,
   offer,
@@ -27,13 +26,13 @@ const TopSection = ({ show, setShow, slideIn, setSlideIn }) => {
 
       {/* <Navbars /> */}
       <div className='px-3 sm:px-10 xl:px-24'>
-        <div className='mt-2 sm:mt-10'>
+        {/* <div className='mt-2 sm:mt-10'>
           <p className='text-darkBlue font-semibold'>Master Program</p>
           <CurvyUnderline />
         </div>
         <p className='text-sm text-darkBlue font-semibold mt-10 mb-8'>
           Live session
-        </p>
+        </p> */}
 
         {/* <CircularProfileCarousel /> */}
         {/* <div className="block w-full md:hidden w-full">
@@ -55,9 +54,7 @@ const TopSection = ({ show, setShow, slideIn, setSlideIn }) => {
               Learn, grow, and connect with established entrepreneurs with
               results to show in their business journey
             </p>
-            {/* <div className='w-[190px] h-[55px] mt-4 centerFlex rounded-md bg-darkBlue text-white'>
-                    Watch Triller
-                </div> */}
+
             <div className='w-full md:w-[470px] h-[50px] pl-4 flex justify-between sm:justify-end items-center gap-x-2 border border-[#b1adad] rounded-md'>
               <BiSearchAlt size={20} color='#b1adad' />
               <input
