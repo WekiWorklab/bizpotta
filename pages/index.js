@@ -16,6 +16,7 @@ import GreenFooter from "../components/GreenFooter";
 import LandingMarketingCarousel from "../components/LandingMarketingCarousel";
 import LandingTestimonialCarousel from "../components/LandingTestimonialCarousel";
 
+import Testimonals1 from "@/components/Testimonals1";
 import Link from "next/link";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -465,8 +466,9 @@ export default function Home() {
               {/* list of radio in boxes */}
               <div className='hidden sm:flex flex-col w-full items-center md:flex-row  gap-4 '>
                 {/* <div className=' py-4 max-w-7xl lg:py-12  '> */}
-                <div className='space-y-4 mx-auto grid sm:grid-cols-1 lg:grid-cols-3 justify-items-start  lg:gap-x-8  lg:space-y-0 '>
+                <div className='space-y-4 mx-auto grid sm:grid-cols-1 lg:grid-cols-3 justify-items-start lg:gap-x-8 lg:space-y-0 py-8'>
                   <Testimonals />
+                  <Testimonals1 />
                   {/* <Testimonals />
                   <Testimonals /> */}
                 </div>
