@@ -880,7 +880,8 @@ function Banner({ setOpen }) {
                 IELTS Success Accelerator Masterclass
               </span>
               <span className='hidden md:inline'>
-                Tailored Curriculum, Interactive Learning,Expert Guidance and more
+                IELTS Success Accelerator Masterclass: Empowering 100
+                individuals to achieve success
               </span>
             </p>
             <div className='lg:-ml-14 w-full flex items-center mt-0 justify-center lg:justify-start'>
