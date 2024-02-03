@@ -68,7 +68,7 @@ const optionsLists = [
 export default function Home() {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   const [width, setWidth] = useState(0);
 
@@ -877,15 +877,15 @@ function Banner({ setOpen }) {
           <div className='flex flex-col lg:flex-row w-full flex-1 items-center'>
             <p className='ml-3 flex-nowrap text-ellipsis overflow-hidden font-medium text-white text-sm lg:text-sm lg:w-full'>
               <span className='md:hidden'>
-                Bizpotta Global Entrepreneurship Conference 2022
+                IELTS Success Accelerator Masterclass
               </span>
               <span className='hidden md:inline'>
-                Bizpotta Global Entrepreneurship Conference 2022: REIMAGINING
-                AFRICA’S FUTURE
+                IELTS Success Accelerator Masterclass is designed to provide
+                participants with the skills and strategies
               </span>
             </p>
             <div className='lg:-ml-14 w-full flex items-center mt-0 justify-center lg:justify-start'>
-              <Link href={"/reimagining-africa's-future"} passHref>
+              <Link href={"/IELTS-Success-accelerator-masterclass"} passHref>
                 <a
                   href='#'
                   className='flex items-center justify-center rounded-md  px-4 py-2 text-sm lg:text-sm font-[700] text-white  hover:text-bizpotta-green'>
