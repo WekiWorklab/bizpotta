@@ -68,12 +68,12 @@ const Reimagine = () => {
           IELTS Success Accelerator Masterclass
         </p>
 
-        <div className='hidden md:block'>
-          <div className='text-[24px] font-bold uppercase mt-4'>
+        <div className='md:block'>
+          <div className='text-sm md:text-[24px] font-bold uppercase mt-4 text-center md:text-start'>
             <span className='text-darkBlue '>Objectives: </span>
             {/* <span className='text-[#C78108] '>Africa’s Future:</span> */}
           </div>
-          <div className='text-[12px] text-darkBlue mt-2'>
+          <div className='text-xs md:text-[12px] text-darkBlue mt-2 text-center md:text-start pb-2'>
             Exams Exclusive is working in partnership with Bizpotta to empower
             100 individuals to achieve success in the IELTS exam through an
             intensive and comprehensive training program. This IELTS Success
@@ -87,7 +87,7 @@ const Reimagine = () => {
         </div>
 
         <div
-          className=' block md:hidden bg-no-repeat bg-contain bg-center w-full h-[200px] mt-4'
+          className=' block md:hidden bg-no-repeat bg-contain bg-center w-full h-[300px] mt-4'
           style={{ backgroundImage: "url(./class.webp)" }}
         />
 
