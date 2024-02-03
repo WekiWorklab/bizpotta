@@ -36,7 +36,7 @@ const Reimagine = () => {
       name: name,
       email: data.email,
       city: data.city,
-      type: "IELTS Success Accelerator Masterclass",
+      event: "IELTS Success Accelerator Masterclass",
     };
     setLoading(true);
     const result = await learnersService.confUsers(newData).catch((err) => {

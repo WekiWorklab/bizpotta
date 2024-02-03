@@ -1,5 +1,5 @@
-import AxoisApi from "../utils/index";
 import { APIS } from "../utils/api";
+import AxoisApi from "../utils/index";
 
 const setLearnersPreferences = (data) => {
   return AxoisApi.post(`${APIS.LEARNERS.SET_LEARNING_PREFERENCES}`, {
@@ -23,15 +23,19 @@ const purchaseCourse = async (data) => {
 };
 
 const purchasedCourse = async (data) => {
-  return AxoisApi.post(`${APIS.LEARNERS.COURSE_PURCHASED}`, data).then((res) => {
-    return res.data;
-  });
+  return AxoisApi.post(`${APIS.LEARNERS.COURSE_PURCHASED}`, data).then(
+    (res) => {
+      return res.data;
+    }
+  );
 };
 
 const purchaseCourseFailed = async (data) => {
-  return AxoisApi.post(`${APIS.LEARNERS.COURSE_PURCHASE_FAILED}`, data).then((res) => {
-    return res.data;
-  });
+  return AxoisApi.post(`${APIS.LEARNERS.COURSE_PURCHASE_FAILED}`, data).then(
+    (res) => {
+      return res.data;
+    }
+  );
 };
 
 const getMyCourses = () => {
@@ -102,6 +106,7 @@ const confUsers = (data) => {
     name: data.name,
     email: data.email,
     city: data.city,
+    event: data.event,
   });
 };
 
