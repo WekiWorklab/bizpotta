@@ -88,7 +88,7 @@ const Reimagine = () => {
 
         <div
           className=' block md:hidden bg-no-repeat bg-contain bg-center w-full h-[200px] mt-4'
-          style={{ backgroundImage: "url(./images/EventMobile.webp)" }}
+          style={{ backgroundImage: "url(./class.webp)" }}
         />
 
         <div className='text-[14px] font-bold mt-4 text-center md:text-start'>
