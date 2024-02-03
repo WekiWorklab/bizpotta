@@ -156,7 +156,7 @@ const Reimagine = () => {
 
       <div
         className='bg-no-repeat bg-cover bg-center w-[40%] xl:w-[60%] hidden md:block md:h-screen'
-        style={{ backgroundImage: "url(./images/EventImage.webp)" }}
+        style={{ backgroundImage: "url(./class.webp)" }}
       />
     </div>
   );
