@@ -149,7 +149,9 @@ const Meeting = () => {
   return (
     <>
       <Head>
-        <title key='title'>BizPotta - Reimagining Africa’s Future</title>
+        <title key='title'>
+          BizPotta - IELTS Success Accelerator Masterclass
+        </title>
         <link
           type='text/css'
           rel='stylesheet'
