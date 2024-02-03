@@ -153,7 +153,11 @@ export default function Home() {
                         <div className='mt-4 sm:mt-8 lg:mt-0 pt-5 md:10'>
                           <div className='flex justify-center lg:justify-start'>
                             <div className='flex-shrink-0 space-x-2 md:space-x-2'>
-                              <button className='btn relative px-4 py-2  inline-flex items-center justify-start overflow-hidden transition-all rounded-md bg-bizpotta-purple group md:py-3 md:text-lg md:px-10'>
+                              <button
+                                onClick={() => {
+                                  router.push(`/auth/register`);
+                                }}
+                                className='btn relative px-4 py-2  inline-flex items-center justify-start overflow-hidden transition-all rounded-md bg-bizpotta-purple group md:py-3 md:text-lg md:px-10'>
                                 {/* purple box */}
                                 <span className='w-0 h-0 rounded bg-bizpotta-green absolute top-0 left-0 ease-out duration-500 transition-all group-hover:w-full group-hover:h-full -z-1'></span>
                                 <span className='w-full text-white  transition-colors duration-300 ease-in-out group-hover:text-bizpotta-purple'>
