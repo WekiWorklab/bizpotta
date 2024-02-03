@@ -880,8 +880,7 @@ function Banner({ setOpen }) {
                 IELTS Success Accelerator Masterclass
               </span>
               <span className='hidden md:inline'>
-                IELTS Success Accelerator Masterclass is designed to provide
-                participants with the skills and strategies
+                Tailored Curriculum, Interactive Learning,Expert Guidance and more
               </span>
             </p>
             <div className='lg:-ml-14 w-full flex items-center mt-0 justify-center lg:justify-start'>
