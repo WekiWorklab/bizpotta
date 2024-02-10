@@ -401,15 +401,6 @@ export default function Home() {
                 <HomePageSlider />
               </div>
               {/*Explore Courses */}
-              <a
-                href='#'
-                className='pt-6 md:pt-8 text-[13px] md:text-base flex gap-2 w-full justify-center items-center text-bizpotta-purple'>
-                <span>Explore Courses</span>
-                <ArrowRightIcon
-                  className='h-4 w-4 text-bizpotta-purple'
-                  aria-hidden='true'
-                />
-              </a>
             </div>
 
             {/* MasterClass Section */}
