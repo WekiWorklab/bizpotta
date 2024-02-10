@@ -370,7 +370,7 @@ export default function Home() {
             </div>
             {/* Programs Section */}
             <div className='relative bg-gray-50 pt-10 pb-6 sm:pt-10 lg:pt-14 px-6 md:pl-28'>
-              <h1 className='text-start text-base md:text-lg font-light tracking-wider text-darkBlue'>
+              <h1 className='px-6 md:pl-28 text-start md:text-lg font-light tracking-wider text-bizpotta-purple'>
                 <span className='font-bold'>Programs</span>
               </h1>
               <p className='text-start flex flex-col text-[13px] md:text-base font-light tracking-wider text-bizpotta-gray-800'>
@@ -386,7 +386,7 @@ export default function Home() {
 
             {/* CTA Section */}
             <div className='relative bg-gray-50 pb-10 '>
-              <h1 className='px-6 md:pl-28 text-start md:text-lg font-light tracking-wider text-bizpotta-purple'>
+              {/* <h1 className='px-6 md:pl-28 text-start md:text-lg font-light tracking-wider text-bizpotta-purple'>
                 <span className='font-bold md:font-medium text-[15px] md:text-2xl'>
                   Vocational Education
                 </span>
@@ -395,7 +395,7 @@ export default function Home() {
                 <span className='text-bizpotta-gray-800'>
                   Learn in-demand skills to increase your value in the Market
                 </span>
-              </p>
+              </p> */}
               {/** <div className='pt-8 flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-24 pb-8'>*/}
               <div className='hidden pt-8 md:flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-28 pb-8'>
                 <HomePageSlider />
