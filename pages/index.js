@@ -370,7 +370,7 @@ export default function Home() {
             </div>
             {/* Programs Section */}
             <div className='relative bg-gray-50 pt-10 pb-6 sm:pt-10 lg:pt-14 px-6 md:pl-28'>
-              <h1 className='px-6 md:pl-28 text-start md:text-lg font-light tracking-wider text-bizpotta-purple'>
+              <h1 className='px-6 text-start md:text-lg font-light tracking-wider text-bizpotta-purple'>
                 <span className='font-bold'>Programs</span>
               </h1>
               <p className='text-start flex flex-col text-[13px] md:text-base font-light tracking-wider text-bizpotta-gray-800'>
@@ -449,7 +449,7 @@ export default function Home() {
               </h1>
               <p className='  text-start sm:text-center lg:text-start flex flex-col text-[13px] sm:text-base font-light tracking-wider text-bizpotta-gray-800'>
                 <span className='text-bizpotta-gray-800 '>
-                  A community that is intensional about your business growth
+                  A community that is intentional about your business growth
                 </span>
               </p>
 
