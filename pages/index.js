@@ -440,6 +440,23 @@ export default function Home() {
               </a>
             </div>
 
+            {/* Add a picture in the middle  */}
+            <div className='relative pt-16 sm:mt-20 md:pt-36 px-6 md:px-28 pb-2 rounded-sm'>
+              <div className=' flex-col w-full justify-center items-center md:flex-row md:mx-auto gap-4  '>
+                <h1 className='text-start sm:text-center lg:text-start text-[15px] md:text-lg font-light tracking-wider text-bizpotta-purple pb-4'>
+                  <span className='font-bold md:font-medium'>Our Events</span>
+                </h1>
+
+                <div className='w-full h-[200px] md:h-full bg-gray-300 rounded-md'>
+                  <img
+                    src={"/images/Community.webp"}
+                    alt='masterclass'
+                    className='w-full'
+                  />
+                </div>
+              </div>
+            </div>
+
             {/* Market and sell your Expertise Program Section */}
             <div className='relative bg-gray-50 pt-16 sm:mt-20   px-6 md:px-28 pb-2'>
               <h1 className=' text-start sm:text-center lg:text-start text-[15px] md:text-lg font-light tracking-wider text-bizpotta-purple'>
