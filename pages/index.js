@@ -378,7 +378,7 @@ export default function Home() {
                   What do you want to learn?
                 </span>
                 <span>
-                  Explore our various program, personlised your search and
+                  Explore our various program, personalized your search and
                   select the course that best suit your need.
                 </span>
               </p>
