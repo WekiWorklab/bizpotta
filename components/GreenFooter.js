@@ -55,7 +55,8 @@ const GreenFooter = () => {
         <div className='flex flex-row items-center text-white gap-x-4'>
           <p className='font-bold'>Copyright 2024</p>
           <p className='text-[13px] font-bold hidden md:block'>
-            Bridging the skill gap in Nigeria.
+            Bridging the skill gap in Nigeria. Enpowering the businesses with
+            tools for profitablity.
           </p>
         </div>
 
