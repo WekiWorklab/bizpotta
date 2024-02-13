@@ -370,7 +370,7 @@ export default function Home() {
             </div>
             {/* Programs Section */}
             <div className='relative bg-gray-50 pt-10 pb-6 sm:pt-10 lg:pt-14 px-6 md:pl-28'>
-              <h1 className='px-6 text-start md:text-lg font-light tracking-wider text-bizpotta-purple'>
+              <h1 className='text-start md:text-lg font-light tracking-wider text-bizpotta-purple'>
                 <span className='font-bold'>Programs</span>
               </h1>
               <p className='text-start flex flex-col text-[13px] md:text-base font-light tracking-wider text-bizpotta-gray-800'>
