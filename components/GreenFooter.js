@@ -55,8 +55,7 @@ const GreenFooter = () => {
         <div className='flex flex-row items-center text-white gap-x-4'>
           <p className='font-bold'>Copyright 2024</p>
           <p className='text-[13px] font-bold hidden md:block'>
-            Figure based on direct platform sales plus estimated course salesvia
-            off platform payment processors. Listed in USD
+            Bridging the skill gap in Africa.
           </p>
         </div>
 
