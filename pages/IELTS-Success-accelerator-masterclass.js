@@ -76,12 +76,12 @@ const Reimagine = () => {
           <div className='text-xs md:text-[12px] text-darkBlue mt-2 text-center md:text-start pb-2'>
             Exams Exclusive is working in partnership with Bizpotta to empower
             100 individuals to achieve success in the IELTS exam through an
-            intensive and comprehensive training program. This IELTS Success
+            intensive and comprehensive training Programme. This IELTS Success
             Accelerator Masterclass is designed to provide participants with the
             skills and strategies needed to excel in all four sections of the
-            IELTS exam – Listening, Reading, Writing, and Speaking. This program
-            aims not only to enhance language proficiency but also to equip
-            candidates with effective test-taking strategies and
+            IELTS exam – Listening, Reading, Writing, and Speaking. This
+            Programme aims not only to enhance language proficiency but also to
+            equip candidates with effective test-taking strategies and
             confidence-building techniques.{" "}
           </div>
         </div>

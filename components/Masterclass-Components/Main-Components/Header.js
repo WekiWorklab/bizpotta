@@ -45,7 +45,7 @@ const Header = ({ show, setShow, slideIn, setSlideIn }) => {
       <div className='hidden lg:flex flex-row items-center gap-x-6'>
         <div className='flex flex-row items-center gap-x-1 text-darkBlue'>
           <p className='text-darkBlue font-medium text-[16px] lg:text-[18px]'>
-            Programs
+            Programmes
           </p>
           <AiOutlineDown
             color='#B1B1B1'
@@ -59,19 +59,19 @@ const Header = ({ show, setShow, slideIn, setSlideIn }) => {
                 <p
                   className='cursor-pointer hover:text-bizpotta-green-500 hover:font-bold'
                   onClick={() => router.push("/masterclass")}>
-                  Masterclass Program
+                  Masterclass Programme
                 </p>
               )}
               {url !== "/specialization" && (
                 <p className='cursor-pointer hover:text-bizpotta-green-500 hover:font-bold'>
-                  Specialization Program
+                  Specialization Programme
                 </p>
               )}
               {url !== "/" && (
                 <p
                   className='cursor-pointer hover:text-bizpotta-green-500 hover:font-bold'
                   onClick={() => router.push("/")}>
-                  Vocational Education Program
+                  Vocational Education Programme
                 </p>
               )}
             </div>

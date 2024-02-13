@@ -122,7 +122,7 @@ export default function BecomeAPartner() {
                     <p className='text-gray-500 dark:text-gray-400'>
                       ● Regular communication and collaboration to ensure the
                       success of joint initiatives. <br />● Participation in
-                      joint events, webinars, or training programs.
+                      joint events, webinars, or training programmes.
                     </p>
                   </CardContent>
                 </Card>

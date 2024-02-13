@@ -371,14 +371,14 @@ export default function Home() {
             {/* Programs Section */}
             <div className='relative bg-gray-50 pt-10 pb-6 sm:pt-10 lg:pt-14 px-6 md:pl-28'>
               <h1 className='text-start md:text-lg font-light tracking-wider text-bizpotta-purple'>
-                <span className='font-bold'>Programs</span>
+                <span className='font-bold'>Programmes</span>
               </h1>
               <p className='text-start flex flex-col text-[13px] md:text-base font-light tracking-wider text-bizpotta-gray-800'>
                 <span className='hidden md:block text-bizpotta-gray-800'>
                   What do you want to learn?
                 </span>
                 <span>
-                  Explore our various programs, personalize your search and
+                  Explore our various programmes, personalize your search and
                   select the courses that best suit your needs.
                 </span>
               </p>
@@ -577,7 +577,7 @@ export const HomeSideBar = ({ show, setShow, slideIn, setSlideIn }) => {
           <li
             className={`flex   justify-start items-center  h-[50px]  bg-[#F2FFE4] cursor-pointer mb-2 pl-4 pr-2`}
             onClick={() => {}}>
-            <div className='text-sm font-bold text-darkBlue'>Programs</div>
+            <div className='text-sm font-bold text-darkBlue'>Programmes</div>
           </li>
 
           <li
@@ -681,14 +681,14 @@ const GreenSection = ({ router, currentIndex }) => {
         </div>
 
         <div className='text-base mt-8 sm:mt-12 tracking-tight font-bold md:font-light sm:text-4xl xl:text-5xl text-white '>
-          Specialization Program
+          Specialization Programmes
         </div>
         <div className='text-base md:text-xl text-white mt-5'>
           Learn the basics of business development and management, get
           certificate on completion.{" "}
         </div>
         <div className='text-base md:text-xl text-white mt-5'>
-          This program will empower you with skills needed to manage your
+          This Programmes will empower you with skills needed to manage your
           business effectively.
         </div>
         <div className='text-white text-[18px] mt-4 sm:mt-16'>
