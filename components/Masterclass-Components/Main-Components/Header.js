@@ -79,7 +79,7 @@ const Header = ({ show, setShow, slideIn, setSlideIn }) => {
         </div>
         <Link href='/become-a-partner'>
           <div className='text-darkBlue font-medium text-[16px] lg:text-[18px] cursor-pointer'>
-            Become a partner
+            Become a Partner
           </div>
         </Link>
         {/* <Link href='/become-a-tutor'>
