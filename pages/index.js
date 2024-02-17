@@ -397,7 +397,7 @@ export default function Home() {
                 </span>
               </p> */}
               {/** <div className='pt-8 flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-24 pb-8'>*/}
-              <div className='hidden pt-8 md:flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-28 pb-8'>
+              <div className=' pt-8 flex flex-col w-full justify-center items-center px-10 md:flex-row md:mx-auto gap-4 md:px-28 pb-8'>
                 <HomePageSlider />
               </div>
               {/*Explore Courses */}
