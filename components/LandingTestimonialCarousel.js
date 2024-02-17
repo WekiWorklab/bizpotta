@@ -17,27 +17,6 @@ const LandingTestimonialCarousel = () => {
       note: "My name is Micheal Okechukwu, I run an Agro-value chain known as Anotu Ventures. I had the opportunity to be part of the Bizpotta Business Lounge and it has helped impact my business decisions positively. Hearing the business journeys of seasoned business people in the Lounge helped me recognize and exploit hidden opportunities in my field. This has led to a leap in our business growth. (CEO, Anotu Ventures)",
       location: "Nigeria",
     },
-    // {
-    //   imageUrl:
-    //     "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-    //   name: "Maxwell John",
-    //   note: "Hi, I am Tolu Oluyemi, I am a Project Management  with over 15+ years of experience. I have helped over 5,000 student get started in tech.",
-    //   location: "Cape Town, S.A",
-    // },
-    // {
-    //   imageUrl:
-    //     "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
-    //   name: "Maxwell John",
-    //   note: "Hi, I am Tolu Oluyemi, I am a Project Management  with over 15+ years of experience. I have helped over 5,000 student get started in tech.",
-    //   location: "Cape Town, S.A",
-    // },
-    // {
-    //   imageUrl:
-    //     "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
-    //   name: "Maxwell John",
-    //   note: "Hi, I am Tolu Oluyemi, I am a Project Management  with over 15+ years of experience. I have helped over 5,000 student get started in tech.",
-    //   location: "Cape Town, S.A",
-    // },
   ];
 
   return (
