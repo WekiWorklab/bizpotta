@@ -1,9 +1,6 @@
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ClassCards, { ClassCardsMobile } from "../ClassCards";
-import CourseCard from "./CourseCard";
-import CourseCarousel from "./CourseCarousel";
-import { Data } from "./Data";
 
 const TopSection = ({}) => {
   const router = useRouter();
@@ -14,30 +11,29 @@ const TopSection = ({}) => {
   });
 
   return (
-    <div className="pt-6">
-      <p className=" hidden sm:block sm:font-[600] sm:mb-[20px]">
+    <div className='pt-6'>
+      <p className=' hidden sm:block sm:font-[600] sm:mb-[20px]'>
         Welcome back Naomi, continue from where you stopped
       </p>
-      <div className="mb-[20px]">
-        <p className="block sm:hidden text-[12px]">Welcome back Naomi</p>
-        <p className="block sm:hidden text-[14px] font-[600]">
+      <div className='mb-[20px]'>
+        <p className='block sm:hidden text-[12px]'>Welcome back Naomi</p>
+        <p className='block sm:hidden text-[14px] font-[600]'>
           Continue from where you stopped
         </p>
       </div>
 
-      
       {/* #5FFC54 */}
-      <h1 className="text-[15px] font-semibold mt-10 w-full">
-        Explore various programs
+      <h1 className='text-[15px] font-semibold mt-10 w-full'>
+        Explore various programmes
       </h1>
 
-      <p className="text-gray-400 text-[13px] mt-2">
+      <p className='text-gray-400 text-[13px] mt-2'>
         Learn from the best in the industry and take your business
       </p>
 
       <ClassCards />
 
-      <div className="w-full sm:w-[400px] md:hidden mt-10">
+      <div className='w-full sm:w-[400px] md:hidden mt-10'>
         <ClassCardsMobile />
       </div>
     </div>
@@ -45,10 +41,6 @@ const TopSection = ({}) => {
 };
 
 export default TopSection;
-
-
-
-
 
 /**
  <div className="hidden xl:flex xl:w-full">

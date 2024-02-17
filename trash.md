@@ -1,7 +1,8 @@
 /*****Top section */
 
 /**
- * import React from 'react'
+
+* import React from 'react'
 import ProgramCarousel from './ProgramCarousel'
 import AreaChart from './AreaChart'
 import {BsHeart, BsPersonPlus, BsChatDots} from 'react-icons/bs'
@@ -13,7 +14,7 @@ const TopSection = () => {
     <div className=' pl-0 lg:pl-5 lg:pt-5 flex flex-col xl:flex-row w-full border border-red-400'>
             <div className=' w-full m-auto md:w-[650px] lg:w-[850px] '>
                 <div className='bg-white pl-4 pr-2 flex flex-col items-center '>
-                    <h1 className='text-sm font-semibold mt-8 mb-8 w-full '>Programs</h1>
+                    <h1 className='text-sm font-semibold mt-8 mb-8 w-full '>programmes</h1>
 
                     <div className='hidden items-center md:flex  flex-row flex-wrap w-full md:w-[90%] lg:w-[70%] xl:w-full justify-between pl-0 '>
                         <div className='w-[260px] bg-[#5FFC54] h-[125px] rounded-lg flex items-center text-sm pl-5 mb-10 '>VOCATIONAL EDUCATION</div>
@@ -241,25 +242,20 @@ const TopSection = () => {
         }
         
         export default TopSection
- * 
+ *
  */
-
-
-
 
 /*****Bottom section */
 
 /**
- * import React from 'react'
+
+* import React from 'react'
 import ContentCarousel from './ContentCarousel'
 import InstructorCarousel from './InstructorCarousel'
 import { Data, instructorData } from './Data'
 import { card_image } from '../../public'
 
 const BottomSection = () => {
-
-
-   
 
   return (
     <div className='pl-0 lg:pl-5 flex flex-col xl:flex-row  w-full'>
@@ -271,7 +267,7 @@ const BottomSection = () => {
                             </div>
                             <div className='hidden md:block'>
                                 <ContentCarousel data = {Data} smallScreen = {false}/>
-                            </div> 
+                            </div>
                     </div>
                     <div className='pt-[50px] flex flex-col'>
                             <p className="text-[14px] mb-4 md:text-md font-semibold md:mb-8 ml-4">Popular courses</p>
@@ -280,7 +276,7 @@ const BottomSection = () => {
                             </div>
                             <div className='hidden md:block'>
                                 <ContentCarousel data = {Data} smallScreen = {false}/>
-                            </div> 
+                            </div>
                     </div>
                     <div className='pt-[50px] flex flex-col'>
                             <p className="text-[14px] mb-4 md:text-md font-semibold md:mb-8 ml-4">Because you liked a course on fashion designing</p>
@@ -289,7 +285,7 @@ const BottomSection = () => {
                             </div>
                             <div className='hidden md:block'>
                                 <ContentCarousel data = {Data} smallScreen = {false}/>
-                            </div> 
+                            </div>
                     </div>
                     <div className='pt-[50px] flex flex-col'>
                             <p className="text-[14px] mb-4 md:text-md font-semibold md:mb-8 ml-4">Based on recent activites</p>
@@ -298,7 +294,7 @@ const BottomSection = () => {
                             </div>
                             <div className='hidden md:block'>
                                 <ContentCarousel data = {Data} smallScreen = {false}/>
-                            </div> 
+                            </div>
                     </div>
                     <div className='pt-[50px] flex flex-col'>
                             <p className="text-[14px] mb-4 md:text-md font-semibold md:mb-8 ml-4 ">Instructors</p>
@@ -307,10 +303,9 @@ const BottomSection = () => {
                             </div>
                             <div className='hidden md:block'>
                                 <InstructorCarousel data = {instructorData} smallScreen = {false}/>
-                            </div> 
+                            </div>
                     </div>
                 </div>
-
 
                 <div className=' bg-white w-full md:w-[650px] lg:w-[850px] flex flex-col sm:flex-row xl:flex-col items-start justify-start mx-auto pt-2'>
 
@@ -355,44 +350,10 @@ const BottomSection = () => {
 export default BottomSection
  */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /******Header Component 2*******/
 /***
- * import React, {useRef, useState} from 'react'
+
+* import React, {useRef, useState} from 'react'
 import { logo } from '../public'
 import {FiSearch} from 'react-icons/fi'
 import {AiOutlineShoppingCart} from 'react-icons/ai'
@@ -402,10 +363,6 @@ import {BsChevronDown} from 'react-icons/bs'
 import {IoMenuOutline} from 'react-icons/io5'
 import {MdOutlineCancel} from 'react-icons/md'
 import SearchMenu from './Header-Components/SearchMenu'
-
-
-
-
 
 const Header = ({show, setShow}) => {
 
@@ -438,15 +395,12 @@ const Header = ({show, setShow}) => {
         // setShowSearch(false)
     }
 
-
-   
-
   return (
     <div className='fixed w-full z-20 h-[120px] bg-white flex flex-row justify-between items-center px-2 lg:px-8 '>
         <div className='flex flex-row justify-start items-center'>
             <img className='  h-8 w-[120px] md:w-auto sm:h-10' src={logo.src} alt='' />
             <BsChevronDown className='hidden md:block text-sm text-[#999999] font-light ml-2'/>
-        </div>    
+        </div>
         <div className='flex flex-row h-[40px] justify-start '>
             <input className='w-[160px] ml-2 sm:w-[200px] md:w-[350px] outline-none pl-2 text-xs sm:text-sm md:text-base border-2 rounded-l-md border-r-0' placeholder='What do you want to learn' onBlur = {handleBlur} onFocus = {handleFocus} onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} />
             <div className=' w-[55px] h-full border  rounded-r-md bg-gradient-to-r from-[#121F4C] via-[#0E4858] via-[#0D585D] to-[#0B6C64] flex justify-center items-center'>
@@ -463,7 +417,7 @@ const Header = ({show, setShow}) => {
                 <p className='text-xs'>Student</p>
             </div>
         </div>
-        
+
         {!show ? 
             <IoMenuOutline size={22} color = '#121F4C' className='ml-[10px] hover:cursor-pointer md:hidden' onClick={() => setShow(true)} /> 
             : 
@@ -477,19 +431,12 @@ const Header = ({show, setShow}) => {
 
 export default Header
 
-
- * * */
-
-
-
-
-
-
-
+* * */
 
 /****Header Component 1*********/
 /****
- * import React from 'react'
+
+* import React from 'react'
 import { logo } from '../public'
 import {FiSearch} from 'react-icons/fi'
 import {AiOutlineShoppingCart} from 'react-icons/ai'
@@ -500,20 +447,14 @@ import {IoMenuOutline} from 'react-icons/io5'
 import {MdOutlineCancel} from 'react-icons/md'
 import HoverSearch from './Header-Components/HoverSearch'
 
-
-
-
-
 const Header = ({show, setShow}) => {
-
-   
 
   return (
     <div className='fixed w-full z-20 h-[120px] bg-white flex flex-row justify-between items-center px-2 lg:px-8 '>
         <div className='flex flex-row justify-start items-center'>
             <img className='  h-8 w-[120px] md:w-auto sm:h-10' src={logo.src} alt='' />
             <BsChevronDown className='hidden md:block text-sm text-[#999999] font-light ml-2'/>
-        </div>    
+        </div>
         <div className='flex flex-row h-[40px] justify-start '>
             <input className='w-[160px] ml-2 sm:w-[200px] md:w-[350px] outline-none pl-2 text-xs sm:text-sm md:text-base border-2 rounded-l-md border-r-0' placeholder='What do you want to learn'/>
             <div className=' w-[55px] h-full border  rounded-r-md bg-gradient-to-r from-[#121F4C] via-[#0E4858] via-[#0D585D] to-[#0B6C64] flex justify-center items-center'>
@@ -529,7 +470,7 @@ const Header = ({show, setShow}) => {
                 <p className='text-xs'>Student</p>
             </div>
         </div>
-        
+
         {!show ? 
             <IoMenuOutline size={22} color = '#121F4C' className='ml-[10px] hover:cursor-pointer md:hidden' onClick={() => setShow(true)} /> 
             : 
@@ -543,11 +484,7 @@ const Header = ({show, setShow}) => {
 
 export default Header
 
-
- * ** */
-
-
-
+* ** */
 
 /*********Sidebar Component******* */
 
@@ -560,7 +497,6 @@ export default Header
 // import {CgProfile} from 'react-icons/cg'
 // import {IoSettingsOutline, IoLogOutOutline} from 'react-icons/io5'
 
-
 // export default function Sidebar() {
 //   const [collapseShow, setCollapseShow] = React.useState("hidden");
 //   const router = useRouter();
@@ -568,7 +504,7 @@ export default Header
 //     <>
 //       <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
 //         <div className="md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto">
-         
+
 //           <Link href="/">
 //             <a
 //               href="#pablo"
@@ -577,15 +513,13 @@ export default Header
 //               Bizpotta
 //             </a>
 //           </Link>
-          
+
 //           <div
 //             className={
 //               " mt-20 md:flex md:flex-col md:items-stretch md:opacity-100 md:relative  md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded " +
 //               collapseShow
 //             }
 //           >
-
-            
 
 //             <ul className="md:flex-col md:min-w-full flex flex-col list-none mb-10 mt-5 ">
 //               <li className="items-center  mb-5">
@@ -594,7 +528,7 @@ export default Header
 //                   <div className="text-sm text-darkBlue font-semibold ml-5">
 //                     Dashboard
 //                   </div>
-                  
+
 //                 </div>
 //               </li>
 
@@ -604,7 +538,7 @@ export default Header
 //                   <div className="text-sm text-[#999999] font-light ml-5">
 //                     Courses
 //                   </div>
-                  
+
 //                 </div>
 //               </li>
 
@@ -614,7 +548,7 @@ export default Header
 //                   <div className="text-sm text-[#999999] font-light ml-5">
 //                     Classroom
 //                   </div>
-                  
+
 //                 </div>
 //               </li>
 
@@ -628,7 +562,7 @@ export default Header
 //                   <div className="text-sm text-[#999999] font-light ml-5">
 //                     Projects
 //                   </div>
-                  
+
 //                 </div>
 //               </li>
 
@@ -638,7 +572,7 @@ export default Header
 //                     My projects
 //                   </div>
 //                   <span className="text-sm text-[#999999] font-light ml-5"> 15 </span>
-                  
+
 //                 </div>
 //               </li>
 
@@ -647,7 +581,7 @@ export default Header
 //                   <div className="text-sm text-[#999999] font-light ml-8">
 //                     Browse
 //                   </div>
-                  
+
 //                 </div>
 //               </li>
 
@@ -661,7 +595,7 @@ export default Header
 //                   <div className="text-sm text-[#999999] font-light ml-5">
 //                     Profile
 //                   </div>
-                  
+
 //                 </div>
 //               </li>
 
@@ -671,7 +605,7 @@ export default Header
 //                   <div className="text-sm text-[#999999] font-light ml-5">
 //                     Settings
 //                   </div>
-                  
+
 //                 </div>
 //               </li>
 
@@ -681,13 +615,12 @@ export default Header
 //                   <div className="text-sm text-[#999999] font-light ml-5">
 //                     Log-out
 //                   </div>
-                  
+
 //                 </div>
 //               </li>
 
 //             </ul>
 
-                      
 //             </div>
 //         </div>
 //       </nav>
@@ -696,10 +629,6 @@ export default Header
 // }
 
 /******************** */
-
-
-
-
 
 /////////////////////// From Content Component 3
 
@@ -718,7 +647,6 @@ import ProgramCarousel from './Content-Components/ProgramCarousel'
 
 const Content = () => {
 
-    
     const Data = [
         {
             name: "Fashion Design",
@@ -806,7 +734,7 @@ const Content = () => {
 
 return (
     <div className='relative w-full  md:bg-gray-50 flex flex-col pt-[120px] md:justify-start md:translate-x-[200px] md:w-[calc(100%-200px)] text-darkBlue '>
-        
+
         {/* Top section */}
         <div className=' pl-0 lg:pl-5 pt-8 flex flex-col xl:flex-row w-full'>
             <div className=' w-full m-auto md:w-[650px] lg:w-[850px]'>
@@ -1138,23 +1066,7 @@ return (
 
 export default Content
 
-
-
-
 ***************************/
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //////////////// From Content Component 2
 
@@ -1172,7 +1084,6 @@ import InstructorCarousel from './Content-Components/InstructorCarousel'
 
 const Content = () => {
 
-    
     const Data = [
         {
             name: "Fashion Design",
@@ -1254,7 +1165,7 @@ const Content = () => {
 
   return (
     <div className='relative w-full bg-gray-50 flex flex-col pt-[120px] md:justify-start md:translate-x-[200px] md:w-[calc(100%-200px)] text-darkBlue '>
-        
+
         {/* Top section */}
         <div className=' pl-0 lg:pl-5 pt-8 flex flex-col xl:flex-row w-full border border-red-500'>
             <div className=' w-full m-auto md:w-[650px] lg:w-[850px]'>
@@ -1489,32 +1400,15 @@ const Content = () => {
 
 export default Content
 
-
-
-
                     {/* <div className='bg-white pt-10 lg:w-[850px] border border-red-500'></div> */}
 
-
 ****************************/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ////// From Content Component 1.
 
 /****************************************
- * import React from 'react'
+
+* import React from 'react'
 import {BsHeart, BsPersonPlus, BsChatDots} from 'react-icons/bs'
 import {BiTransfer} from 'react-icons/bi'
 import { card_image } from '../public'
@@ -1522,8 +1416,6 @@ import AreaChart from './Content-Components/AreaChart'
 import { CircleChart } from './Content-Components/DonutChart'
 
 const Content = () => {
-
-    
 
   return (
     <div className='relative w-full flex flex-col xl:flex-row pt-[120px] md:justify-start md:translate-x-[200px] md:w-[calc(100%-200px)] text-darkBlue border border-red-500'>
@@ -1668,8 +1560,5 @@ const Content = () => {
         }
         
         export default Content
-        
-    
-        
-        
+
  ********************************************** **** */

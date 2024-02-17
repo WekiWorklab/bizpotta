@@ -595,7 +595,9 @@ export const HomeSideBar = ({ show, setShow, slideIn, setSlideIn }) => {
             className={`flex w-full justify-start items-center  h-[50px]  cursor-pointer mb-2 pl-4 pr-2`}
             onClick={() => {}}>
             <div className='flex w-full flex-row justify-between items-center text-[#282828]'>
-              <div className='text-sm font-light '>Specialization Program</div>
+              <div className='text-sm font-light '>
+                Specialization Programme
+              </div>
               <BsChevronRight />
             </div>
           </li>
@@ -604,7 +606,7 @@ export const HomeSideBar = ({ show, setShow, slideIn, setSlideIn }) => {
             className={`flex w-full  justify-start items-center  h-[50px]  cursor-pointer mb-2 pl-4 pr-2`}
             onClick={() => {}}>
             <div className='w-full flex flex-row justify-between items-center text-[#282828]'>
-              <div className='text-sm font-light '>Masterclass Program</div>
+              <div className='text-sm font-light '>Masterclass Programme</div>
               <BsChevronRight />
             </div>
           </li>
@@ -728,7 +730,9 @@ const BlueSection = ({ router, currentIndex }) => {
         <div className='sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left'>
           <h1>
             <span className='pl-0 md:px-8 block text-xl tracking-tight font-bold  sm:text-5xl xl:text-6xl'>
-              <span className='block text-gray-900 '>Masterclass Program</span>
+              <span className='block text-gray-900 '>
+                Masterclass Programme
+              </span>
             </span>
           </h1>
 
