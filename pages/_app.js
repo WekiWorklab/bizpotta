@@ -1,11 +1,14 @@
-import React from "react";
-import { wrapper } from "../store/store";
-import "../styles/globals.css";
+import {
+  Hydrate,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 import NextNProgress from "nextjs-progressbar";
+import React from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Hydrate, QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
+import { wrapper } from "../store/store";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   const [queryClient] = React.useState(() => new QueryClient());

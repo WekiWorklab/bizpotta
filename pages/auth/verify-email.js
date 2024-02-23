@@ -1,21 +1,30 @@
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import React, { useEffect } from "react";
-import dynamic from "next/dynamic";
-import { sendVerificationCode, setUser, verifyEmail, reset } from "../../store/authSlice";
+import {
+  reset,
+  sendVerificationCode,
+  setUser,
+  verifyEmail,
+} from "../../store/authSlice";
 
 // import svg from vectors
-import svgFile from "../../public/vectors/NewEmail.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { Spinner } from "../../components/Lib";
-import { toast } from "react-toastify";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { Spinner } from "../../components/Lib";
+import svgFile from "../../public/vectors/NewEmail.svg";
 
 const OTPInput = dynamic(() => import("otp-input-react"), { ssr: false });
-const ResendOTP = dynamic(() => import("otp-input-react").then((mod) => mod.ResendOTP), { ssr: false });
+const ResendOTP = dynamic(
+  () => import("otp-input-react").then((mod) => mod.ResendOTP),
+  { ssr: false }
+);
 
 export default function VerifyEmailPage() {
-  const { user, isLoading, isError, message, isSuccess, isEmailVerified } = useSelector((state) => state.auth);
+  const { user, isLoading, isError, message, isSuccess, isEmailVerified } =
+    useSelector((state) => state.auth);
   const [OTP, setOTP] = React.useState("");
   const [disabled, setDisabled] = React.useState(true);
   const dispatch = useDispatch();
@@ -43,7 +52,9 @@ export default function VerifyEmailPage() {
   const renderButton = (buttonProps) => {
     return (
       <button {...buttonProps}>
-        {buttonProps.remainingTime !== 0 ? `You can send another OTP in ${buttonProps.remainingTime} secs.` : `Didn't get the mail? try again`}
+        {buttonProps.remainingTime !== 0
+          ? `You can send another OTP in ${buttonProps.remainingTime} secs.`
+          : `Didn't get the mail? try again`}
       </button>
     );
   };
@@ -66,7 +77,7 @@ export default function VerifyEmailPage() {
     dispatch(setUser());
     dispatch(reset());
     setTimeout(() => {
-      dispatch(sendVerificationCode());
+      // dispatch(sendVerificationCode());
       dispatch(reset());
     }, 2000);
   };
@@ -111,11 +122,16 @@ export default function VerifyEmailPage() {
           </div>
           <div className='w-full py-[30px] sm:py-[40px] bg-[#FAFAFA] sm:bg-white flex flex-col justify-center items-center '>
             <div className='w-[430px] flex flex-col items-center justify-center'>
-              <h3 className='text-[18px] text-[#282828] font-semibold'>Email Verification</h3>
+              <h3 className='text-[18px] text-[#282828] font-semibold'>
+                Email Verification
+              </h3>
               <p className='text-[12px] text-[#6E6B6B] mt-[10px] w-full text-center px-4 md:px-0'>
-                Hello {user?.firstName}, a confirmation mail has been sent to {hideEmail(user?.email)}
+                Hello {user?.firstName}, a confirmation mail has been sent to{" "}
+                {hideEmail(user?.email)}
               </p>
-              <p className='text-[12px] text-[#6E6B6B] mt-[10px]'>Kindly enter the 6 digit pin provided in your mail</p>
+              <p className='text-[12px] text-[#6E6B6B] mt-[10px]'>
+                Kindly enter the 6 digit pin provided in your mail
+              </p>
               <div className='w-[380px] md:w-[430px] mt-10 flex justify-center items-center'>
                 <OTPInput
                   value={OTP}
@@ -143,15 +159,18 @@ export default function VerifyEmailPage() {
                   disabled={disabled}
                   className={`w-full flex items-center justify-center mr-3 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-bizpotta-purple hover:bg-bizpotta-hover hover:text-bizpotta-purple cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-takke-green ${
                     isLoading && "opacity-50 cursor-not-allowed"
-                  }`}
-                >
+                  }`}>
                   <span className='mr-3'>Continue</span>
                   {isLoading ? <Spinner /> : null}
                 </a>
               </div>
               <div className='mb-4'>
                 <span className='text-[12px] text-[#999999] mb-[10px]'>
-                  <ResendOTP renderButton={renderButton} renderTime={renderTime} onResendClick={sendEmailVerificationCode} />
+                  <ResendOTP
+                    renderButton={renderButton}
+                    renderTime={renderTime}
+                    onResendClick={sendEmailVerificationCode}
+                  />
                 </span>
               </div>
             </div>
