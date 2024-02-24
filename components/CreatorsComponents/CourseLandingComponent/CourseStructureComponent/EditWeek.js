@@ -536,7 +536,6 @@ const LectureEdit = ({ API_KEY, courseId, weekId, week_title }) => {
       <div className='min-h-400px mt-7'>
         <TextEditorNotesModal api_key={API_KEY} setValue={setTextValue} />
       </div>
-      <p className='text-[12px] text-gray-400 mt-3'>Paste video link here</p>
       <br />
 
       <Button

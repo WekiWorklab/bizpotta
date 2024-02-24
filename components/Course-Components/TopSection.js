@@ -1,14 +1,10 @@
 ///
-import React from "react";
 
 /////
-import ReactPlayer from "react-player";
-import { AiOutlineLeft, AiOutlineHeart, AiOutlineUpload } from "react-icons/ai";
-import { IoIosPeople } from "react-icons/io";
-import { FaPlay } from "react-icons/fa";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
-import { useState } from "react";
+import { AiOutlineHeart, AiOutlineLeft, AiOutlineUpload } from "react-icons/ai";
+import { FaPlay } from "react-icons/fa";
+import { IoIosPeople } from "react-icons/io";
 
 const TopSection = ({ data }) => {
   const image =
@@ -29,80 +25,81 @@ const TopSection = ({ data }) => {
   console.log(data);
 
   return (
-    <div className=" w-full flex flex-col pt-4 pr-2 md:pr-6 ">
-      <div className="text-[13px] cursor-pointer" onClick={() => handleBack()}>
-        <AiOutlineLeft className="inline mr-2" />
-        <p className="inline">Go to home</p>
+    <div className=' w-full flex flex-col pt-4 pr-2 md:pr-6 '>
+      <div className='text-[13px] cursor-pointer' onClick={() => handleBack()}>
+        <AiOutlineLeft className='inline mr-2' />
+        <p className='inline'>Go to home</p>
       </div>
 
       <div
-        className="w-full h-[230px] w-full h-[500px]  mt-4  bg-no-repeat bg-cover bg-center flex justify-center items-center cursor-pointer"
-        style={{ backgroundImage: `url(${data?.course?.image}) ` }}
-        onClick={() => handleClick()}
-      >
-        <FaPlay size={40} color="white" />
+        className='w-full h-[230px]  md:h-[500px]  mt-4  bg-no-repeat bg-cover bg-center flex justify-center items-center cursor-pointer'
+        style={{
+          backgroundImage: `url(${process.env.NEXT_PUBLIC_REACT_APP_STORAGE_URL}/${data?.course?.image}) `,
+        }}
+        onClick={() => handleClick()}>
+        <FaPlay size={40} color='white' />
       </div>
 
-      <h1 className="text-[18px] font-[600] mt-4">{data?.course?.name}</h1>
-      <div className="flex flex-row items-center w-full justify-between ">
-        <div className="flex flex-row items-center ">
-          <img src={image} className="w-[40px] h-[40px] rounded-full mr-4 " />
-          <p className="text-[12px] sm:text-base ">
+      <h1 className='text-[18px] font-[600] mt-4'>{data?.course?.name}</h1>
+      <div className='flex flex-row items-center w-full justify-between '>
+        <div className='flex flex-row items-center '>
+          <img src={image} className='w-[40px] h-[40px] rounded-full mr-4 ' />
+          <p className='text-[12px] sm:text-base '>
             by {data?.course?.course_instructor.firstName}{" "}
             {data?.course?.course_instructor.lastName}
           </p>
         </div>
-        <div className="flex flex-row justify-self-end  items-center">
-          <IoIosPeople className="text-[20px] mr-4" />
-          <p className="text-[13px] mr-4">
+        <div className='flex flex-row justify-self-end  items-center'>
+          <IoIosPeople className='text-[20px] mr-4' />
+          <p className='text-[13px] mr-4'>
             {data?.course.course_student?.length} enrolled
           </p>
-          <AiOutlineHeart className="text-[20px] mr-4" />
-          <AiOutlineUpload className="text-[20px]" />
+          <AiOutlineHeart className='text-[20px] mr-4' />
+          <AiOutlineUpload className='text-[20px]' />
         </div>
       </div>
 
-      <h1 className="mt-6 font-[600] text-[14px]">About this course</h1>
-      <p className="text-[13px]">{data?.course?.description}</p>
+      <h1 className='mt-6 font-[600] text-[14px]'>About this course</h1>
+      <p className='text-[13px]'>{data?.course?.description}</p>
 
-      <h1 className="text-[13px] font-[600] mt-6">Description</h1>
-      <div className=" flex flex-row justify-between md:grid grid-cols-3 text-[13px] ">
-        <div className="flex flex-col ">
+      <h1 className='text-[13px] font-[600] mt-6'>Description</h1>
+      <div className=' flex flex-row justify-between md:grid grid-cols-3 text-[13px] '>
+        <div className='flex flex-col '>
           <div>
-            <span className="font-[600]">Skill level: </span>
+            <span className='font-[600]'>Skill level: </span>
             <span>{data?.course?.level}</span>
           </div>
           <div>
-            <span className="font-[600]">Audio: </span>
+            <span className='font-[600]'>Audio: </span>
             <span>{data?.course.language}</span>
           </div>
         </div>
 
-        <div className="flex flex-col col-start-2">
+        <div className='flex flex-col col-start-2'>
           <div>
-            <span className="font-[600]">Language: </span>
+            <span className='font-[600]'>Language: </span>
             <span>available in {data?.course?.language} language</span>
           </div>
           <div>
-            <span className="font-[600]">Videos: </span>
+            <span className='font-[600]'>Videos: </span>
             <span>{data?.course?.course_weeks.length}</span>
           </div>
           <div>
-            <span className="font-[600]">Estimated course time: </span>
+            <span className='font-[600]'>Estimated course time: </span>
             <span>{data?.course?.course_weeks.length * 0.5} hrs</span>
           </div>
         </div>
       </div>
 
-      <h1 className="font-[600] text-[14px] mt-6">Certificate</h1>
-      <p className="text-[13px]">Certificate is issued on completion</p>
+      <h1 className='font-[600] text-[14px] mt-6'>Certificate</h1>
+      <p className='text-[13px]'>Certificate is issued on completion</p>
 
-      <h1 className="font-[600] text-[14px] mt-6 ">What you will learn</h1>
+      <h1 className='font-[600] text-[14px] mt-6 '>What you will learn</h1>
 
       {data?.course?.course_weeks.map((el, index) => (
-        <div key={index} className="">
-          <li className="font-[600] text-[14px] mt-4 list-disc ">{el.title}</li>
-          <p className="text-[13px] leading-[24px]">
+        <div key={index} className=''>
+          <li className='font-[600] text-[14px] mt-4 list-disc '>{el.title}</li>
+          <p className='text-[13px] leading-[24px]'>
             {el.week_lectures.description}
           </p>
         </div>

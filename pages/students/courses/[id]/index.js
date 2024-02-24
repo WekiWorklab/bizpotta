@@ -1,7 +1,3 @@
-/////////////
-import React from "react";
-
-///////
 import Content from "../../../../components/Course-Components/Content";
 import NewLayout from "../../../../components/Layout-Components/NewLayout";
 

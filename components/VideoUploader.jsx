@@ -1,8 +1,9 @@
 import { useCallback, useMemo, useState } from "react";
 import { useDropzone } from "react-dropzone";
+import { toast } from "react-toastify";
 import { getToken } from "utils";
 
-const UploadVideo = ({ video_title }) => {
+const UploadVideo = ({ video_title, url, setUrl }) => {
   const [uploadProgress, setUploadProgress] = useState(0);
   const token = getToken();
   const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
@@ -63,6 +64,8 @@ const UploadVideo = ({ video_title }) => {
           if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 201) {
               console.log("File uploaded successfully");
+              setUrl(key);
+              toast.success("Video uploaded successfully");
             } else {
               console.error("Error uploading file:", xhr.statusText);
             }
