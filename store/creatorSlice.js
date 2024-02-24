@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import creatorService from "../services/CreatorService";
 
 const initialState = {
@@ -9,46 +9,72 @@ const initialState = {
 };
 
 // set user
-export const onBoardUser = createAsyncThunk("creator/onBoard", async (data, thunkAPI) => {
-  try {
-    if (data.user_type === 3) {
-      console.log("data", data);
-      return await creatorService.onBoardMentor(data);
-    }
-    if (data.user_type === 4) {
+export const onBoardUser = createAsyncThunk(
+  "creator/onBoard",
+  async (data, thunkAPI) => {
+    try {
       return await creatorService.onBoardTutor(data);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
     }
-  } catch (error) {
-    const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
-    return thunkAPI.rejectWithValue(message);
   }
-});
+);
 
-export const addCompnay = createAsyncThunk("creator/addCompnay", async (data, thunkAPI) => {
-  try {
-    return await creatorService.addCompnay(data);
-  } catch (error) {
-    const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
-    return thunkAPI.rejectWithValue(message);
+export const addCompnay = createAsyncThunk(
+  "creator/addCompnay",
+  async (data, thunkAPI) => {
+    try {
+      return await creatorService.addCompnay(data);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
   }
-});
+);
 
-export const createMentorCourse = createAsyncThunk("creator/createMentorCourse", async (data, thunkAPI) => {
-  try {
-    return await creatorService.createMentorCourse(data);
-  } catch (error) {
-    const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
-    return thunkAPI.rejectWithValue(message);
+export const createMentorCourse = createAsyncThunk(
+  "creator/createMentorCourse",
+  async (data, thunkAPI) => {
+    try {
+      return await creatorService.createMentorCourse(data);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
   }
-});
-export const createTutorCourse = createAsyncThunk("creator/createTutorCourse", async (data, thunkAPI) => {
-  try {
-    return await creatorService.createTutorCourse(data);
-  } catch (error) {
-    const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
-    return thunkAPI.rejectWithValue(message);
+);
+export const createTutorCourse = createAsyncThunk(
+  "creator/createTutorCourse",
+  async (data, thunkAPI) => {
+    try {
+      return await creatorService.createTutorCourse(data);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
   }
-});
+);
 
 export const creatorSlice = createSlice({
   name: "creatorData",

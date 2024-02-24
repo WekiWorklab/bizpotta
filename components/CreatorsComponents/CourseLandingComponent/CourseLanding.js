@@ -36,12 +36,13 @@ const CourseLanding = ({ data, setSelect }) => {
     industries: Yup.string(),
     level: Yup.string().required("Course Level is required"),
     image: Yup.mixed().required("Course Image is required"),
-    video: Yup.mixed().required("Course Video is required"),
   });
 
   const formOptions = { resolver: yupResolver(validationSchema) };
   const { register, handleSubmit, formState, setValue } = useForm(formOptions);
   const { errors, isSubmitting } = formState;
+
+  console.log(errors);
 
   const router = useRouter();
 
@@ -82,11 +83,6 @@ const CourseLanding = ({ data, setSelect }) => {
     setValue("category", e.target.value);
   };
 
-  const onChangeIndustries = (e) => {
-    setCategories(e.target.value);
-    setValue("industries", e.target.value);
-  };
-
   const onChangeLevel = (e) => {
     setLevelSeleted(e.target.value);
     setValue("level", e.target.value);
@@ -99,8 +95,6 @@ const CourseLanding = ({ data, setSelect }) => {
   const subCategories = data?.subCategories?.filter(
     (item) => item.course_category_id == categories
   );
-
-  const industries = data?.industries;
 
   const level = [
     { id: "Beginner", name: "Beginner" },

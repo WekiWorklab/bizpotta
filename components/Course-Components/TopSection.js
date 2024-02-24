@@ -43,7 +43,16 @@ const TopSection = ({ data }) => {
       <h1 className='text-[18px] font-[600] mt-4'>{data?.course?.name}</h1>
       <div className='flex flex-row items-center w-full justify-between '>
         <div className='flex flex-row items-center '>
-          <img src={image} className='w-[40px] h-[40px] rounded-full mr-4 ' />
+          <img
+            src={
+              "https://ui-avatars.com/api/?name=" +
+              data?.course?.course_instructor?.firstName +
+              " " +
+              data?.course?.course_instructor?.lastName
+            }
+            className='w-[40px] h-[40px] rounded-full mr-4 '
+            alt='course image'
+          />
           <p className='text-[12px] sm:text-base '>
             by {data?.course?.course_instructor.firstName}{" "}
             {data?.course?.course_instructor.lastName}
@@ -83,10 +92,6 @@ const TopSection = ({ data }) => {
           <div>
             <span className='font-[600]'>Videos: </span>
             <span>{data?.course?.course_weeks.length}</span>
-          </div>
-          <div>
-            <span className='font-[600]'>Estimated course time: </span>
-            <span>{data?.course?.course_weeks.length * 0.5} hrs</span>
           </div>
         </div>
       </div>

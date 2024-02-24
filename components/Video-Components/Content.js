@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import MiddleSection from "./MiddleSection";
-import TopSection from "./TopSection";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import useCourse from "../../hooks/useCourse.jsx";
 import { FullPageSpinner } from "../Lib";
-import { useRouter } from "next/router";
+import MiddleSection from "./MiddleSection";
+import TopSection from "./TopSection";
 
 const Content = () => {
   const router = useRouter();
@@ -50,7 +50,7 @@ const Content = () => {
   if (loading) return <FullPageSpinner />;
 
   return (
-    <div className="relative w-full h-full bg-white sm:bg-gray-50 flex flex-col pt-[90px] md:pt-[120px] md:justify-center items-center md:translate-x-[200px] md:w-[calc(100%-200px)] px-2 md:px-8 pb-10 text-darkGray ">
+    <div className='relative w-full h-full bg-white sm:bg-gray-50 flex flex-col pt-[90px] md:pt-[120px] md:justify-center items-center md:translate-x-[200px] md:w-[calc(100%-200px)] px-2 md:px-8 pb-10 text-darkGray '>
       <TopSection data={data} />
       <MiddleSection data={data} others={others} />
     </div>

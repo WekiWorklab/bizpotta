@@ -158,7 +158,7 @@ const ContentCard = ({ data, type }) => {
   // console.log(data)
 
   const imageSrc =
-    "https://images.pexels.com/photos/1172253/pexels-photo-1172253.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
+    process.env.NEXT_PUBLIC_REACT_APP_STORAGE_URL + "/" + data?.image;
 
   const colorType = (type) => {
     switch (type) {
@@ -179,11 +179,18 @@ const ContentCard = ({ data, type }) => {
   return (
     <div
       className='w-[220px] h-[220px] rounded-[4px] bg-no-repeat bg-cover bg-center flex flex-col justify-end'
-      style={{ backgroundImage: `url(${data?.image})` }}>
+      style={{
+        backgroundImage: `url(${process.env.NEXT_PUBLIC_REACT_APP_STORAGE_URL}/${data?.image})`,
+      }}>
+      <img
+        src={imageSrc}
+        alt=''
+        className='w-full h-full object-cover rounded-md'
+      />
       <div
-        className={`clip-card-path2 ${colorType(
+        className={` ${colorType(
           type
-        )} text-[white] h-3/5 flex flex-col justify-end px-2 pb-2 rounded-b-md`}>
+        )} text-[white] h-3/5 flex flex-col justify-end px-2 py-4 rounded-b-md`}>
         <div className='flex flex-row justify-end'>
           <div
             className='text-[13px] w-[50px] h-[25px] rounded-[5px] flex justify-center items-center cursor-pointer bg-[#94F236] text-darkBlue'
@@ -215,7 +222,7 @@ const ContentCard = ({ data, type }) => {
               <BsStarFill size={12} color='#FFC700' />
               <BsStarFill size={12} color='#FFC700' />
             </div>
-            <p className='text-[10px]'>{data.total_students} students</p>
+            <p className='text-[10px]'>{data.total_students || 0} students</p>
           </div>
         </div>
       </div>

@@ -1,22 +1,20 @@
 /////
-import React, { useEffect, useState } from "react";
-import { CSSTransition } from "react-transition-group";
+import { useEffect, useState } from "react";
 
 //////
-import { BsArrowRight } from "react-icons/bs";
-import { AiOutlineRight } from "react-icons/ai";
-import { FaCircleNotch } from "react-icons/fa";
-import { useRouter } from "next/router";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { AiOutlineRight } from "react-icons/ai";
+import { BsArrowRight } from "react-icons/bs";
 
 const Description = ({ show, desc }) => {
   return (
     <div className={`${show ? "dropdown" : "no-dropdown"} text-xs`}>
       {show ? (
-        <div className="dropdown-enter shadow-xl">{desc}</div>
+        <div className='dropdown-enter shadow-xl'>{desc}</div>
       ) : (
-        <div className="dropdown-exit">
-          <div className=""> {desc}</div>
+        <div className='dropdown-exit'>
+          <div className=''> {desc}</div>
         </div>
       )}
     </div>
@@ -53,69 +51,64 @@ const ScheduleCard = ({ data, index, completedWeeks }) => {
   };
 
   return (
-    <div className="w-full lg:w-full mt-4">
-      <div className="h-16 md:h-14 bg-darkBlue  text-white flex flex-row justify-between  md:justify-between px-4 md:pl-6 md:pr-10 items-center">
-        <div className="flex flex-col   md:flex-row md:items-center">
-          <div className="font-[600] text-[14px] mr-4"> Week {index}</div>
-          <div className="text-[13px]">Estimated time 3hrs 30mins</div>
+    <div className='w-full lg:w-full mt-4'>
+      <div className='h-16 md:h-14 bg-darkBlue  text-white flex flex-row justify-between  md:justify-between px-4 md:pl-6 md:pr-10 items-center'>
+        <div className='flex flex-col   md:flex-row md:items-center'>
+          <div className='font-[600] text-[14px] mr-4'> Week {index}</div>
+          <div className='text-[13px]'></div>
         </div>
         <div
-          className="flex flex-row  justify-center md:block cursor-pointer"
+          className='flex flex-row  justify-center md:block cursor-pointer'
           onClick={() =>
             router.push(`/students/courses/${data?.course_id}/week/${data?.id}`)
-          }
-        >
-          <span className="inline  text-[13px] md:mr-4">Go to lesson</span>
-          <BsArrowRight className="inline" size={18} />
+          }>
+          <span className='inline  text-[13px] md:mr-4'>Go to lesson</span>
+          <BsArrowRight className='inline' size={18} />
         </div>
       </div>
 
-      <div className="bg-white gap-y-[20px] grid grid-cols-1 md:grid-cols-2 px-14 md:px-10 py-6 Group">
+      <div className='bg-white gap-y-[20px] grid grid-cols-1 md:grid-cols-2 px-14 md:px-10 py-6 Group'>
         <div
-          className=" flex flex-row items-center cursor-pointer"
+          className=' flex flex-row items-center cursor-pointer'
           onClick={() =>
             router.push(`/students/courses/${data?.course_id}/week/${data?.id}`)
-          }
-        >
+          }>
           <div
             className={`w-8 h-8 rounded-full border-2 border-darkBlue ${
               completedData?.is_lecture_completed
                 ? "bg-darkBlue"
                 : "bg-transparent"
-            } `}
-          ></div>
-          <p className="ml-8">Lecture</p>
+            } `}></div>
+          <p className='ml-8'>Lecture</p>
         </div>
         <div
-          className=" flex flex-row items-center cursor-pointer"
-          onClick={() => handleToClicked("quiz")}
-        >
+          className=' flex flex-row items-center cursor-pointer'
+          onClick={() => handleToClicked("quiz")}>
           <div
             className={`w-8 h-8 rounded-full border-2 border-darkBlue ${
               completedData?.is_quiz_completed
                 ? "bg-darkBlue"
                 : "bg-transparent"
-            } `}
-          ></div>
-          <p className="ml-8">Quiz</p>
+            } `}></div>
+          <p className='ml-8'>Quiz</p>
         </div>
 
-
-        <Link href={`/students/assignments/${data?.course_id}/week/${data?.id}`}>
-          <div className=" flex flex-row items-center cursor-pointer">
-            <div className={`w-8 h-8 rounded-full border-2 border-darkBlue ${
-              completedData?.is_assignment_completed
+        <Link
+          href={`/students/assignments/${data?.course_id}/week/${data?.id}`}>
+          <div className=' flex flex-row items-center cursor-pointer'>
+            <div
+              className={`w-8 h-8 rounded-full border-2 border-darkBlue ${
+                completedData?.is_assignment_completed
                   ? "bg-darkBlue"
                   : "bg-transparent"
-                } `}></div>
-            <p className="ml-8">Assignment</p>
+              } `}></div>
+            <p className='ml-8'>Assignment</p>
           </div>
-          </Link>
+        </Link>
 
-
-        <div className="relative flex flex-row items-center cursor-pointer">
-          <div className="w-8 h-8 rounded-full border-2 border-darkBlue "></div>
-          <div className="ml-8 flex flex-row items-center flex-grow-[1] justify-between pr-12">
+        <div className='relative flex flex-row items-center cursor-pointer'>
+          <div className='w-8 h-8 rounded-full border-2 border-darkBlue '></div>
+          <div className='ml-8 flex flex-row items-center flex-grow-[1] justify-between pr-12'>
             <p>Description</p>
             <div onClick={() => setShow((prev) => !prev)}>
               <AiOutlineRight
@@ -126,9 +119,9 @@ const ScheduleCard = ({ data, index, completedWeeks }) => {
           <Description show={show} desc={data?.week_lectures?.description} />
           {/* <AiOutlineRight className='' /> */}
         </div>
-        <div className="flex flex-row items-center">
-          <div className="w-8 h-8 rounded-full border-2 border-darkBlue bg-gray-100"></div>
-          <p className="ml-8">Resources</p>
+        <div className='flex flex-row items-center'>
+          <div className='w-8 h-8 rounded-full border-2 border-darkBlue bg-gray-100'></div>
+          <p className='ml-8'>Resources</p>
         </div>
       </div>
     </div>

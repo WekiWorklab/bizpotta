@@ -51,14 +51,14 @@ const Onboard = ({ data }) => {
   useEffect(() => {
     if (userType?.name === "Student") {
       setShowButton(true);
-    } else if (userType?.name === "Partner") {
+    } else if (userType?.name === "Test") {
       if (!mentorWork || !industry || !jobDesc) {
         setShowButton(false);
       }
       if (mentorWork && industry && jobDesc) {
         setShowButton(true);
       }
-    } else if (userType?.name === "Tutor") {
+    } else if (userType?.name === "Partner") {
       if (tutorWork && industry && jobDesc) {
         setShowButton(true);
       } else if (!tutorWork || !industry || !jobDesc) {
@@ -79,18 +79,17 @@ const Onboard = ({ data }) => {
     if (userType.name === "Student") {
       router.push("/learners-onboarding");
     }
+    // if (userType.name === "Partner") {
+    //   const data = {
+    //     user_type: userType.id,
+    //     industry: industry.id,
+    //     work_type: mentorWork,
+    //     jobDesc: jobDesc?.name,
+    //   };
+    //   dispatch(onBoardUser(data));
+    // }
 
     if (userType.name === "Partner") {
-      const data = {
-        user_type: userType.id,
-        industry: industry.id,
-        work_type: mentorWork,
-        jobDesc: jobDesc?.name,
-      };
-      dispatch(onBoardUser(data));
-    }
-
-    if (userType.name === "Tutor") {
       const data = {
         user_type: userType.id,
         industry: industry.id,
@@ -170,17 +169,17 @@ const Onboard = ({ data }) => {
                     </p>
                     <div className='-mt-4 relative min-w-[120px] border-b-[3px] border-bizpotta-green pp'>
                       {/* Input for Mentors */}
-                      {userType?.name === "Partner" && (
+                      {/* {userType?.name === "Partner" && (
                         <input
                           className='text-center text-[#282828] text-[14px] mr-4 outline-0 ring-0 border-0 focus:border-0 focus:ring-0 w-full'
                           value={mentorWork}
                           onChange={handleMentorChange}
                           type='text'
                         />
-                      )}
+                      )} */}
 
                       {/* Input for Tutors */}
-                      {userType?.name === "Tutor" && (
+                      {userType?.name === "Partner" && (
                         <input
                           className='text-center text-[#282828] text-[14px] mr-4 outline-0 ring-0 border-0 focus:border-0 focus:ring-0 w-full'
                           value={tutorWork}
@@ -433,10 +432,10 @@ const IndustryDropDown = ({
 
   useEffect(() => {
     switch (userType.name) {
-      case "Tutor":
+      case "Partner":
         setData(data.categories);
         break;
-      case "Partner":
+      case "Tutor":
         setData(data.industries);
         break;
     }
@@ -499,14 +498,14 @@ const JobDescDropdown = ({
 
   useEffect(() => {
     switch (userType?.name) {
-      case "Tutor":
+      case "Partner":
         setData(
           data.subCategories.filter(
             (el) => el.course_category_id === industry.id
           )
         );
         break;
-      case "Partner":
+      case "tuu":
         // convert data.jobDescriptionsForCompany to array of objects with id and name properties
         const dataArr = [];
         for (let i = 0; i < data.jobDescriptionsForCompany.length; i++) {
